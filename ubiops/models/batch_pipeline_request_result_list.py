@@ -37,7 +37,7 @@ class BatchPipelineRequestResultList(object):
         'status': 'str',
         'time_created': 'datetime',
         'time_last_updated': 'datetime',
-        'request_data': 'dict(str, str)',
+        'request_data': 'object',
         'model_requests': 'list[BatchPipelineRequestModelRequest]',
         'error_message': 'str'
     }
@@ -179,7 +179,7 @@ class BatchPipelineRequestResultList(object):
 
 
         :return: The request_data of this BatchPipelineRequestResultList.  # noqa: E501
-        :rtype: dict(str, str)
+        :rtype: object
         """
         return self._request_data
 
@@ -189,7 +189,7 @@ class BatchPipelineRequestResultList(object):
 
 
         :param request_data: The request_data of this BatchPipelineRequestResultList.  # noqa: E501
-        :type: dict(str, str)
+        :type: object
         """
 
         self._request_data = request_data

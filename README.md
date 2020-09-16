@@ -15,12 +15,10 @@ Python 3.5+
 ## Installation & Usage
 ### pip install
 
-If the python package is hosted on a repository, you can install directly using:
-
 ```sh
-pip install git+https://github.com/UbiOps/client-library-python.git
+pip install ubiops
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/UbiOps/client-library-python.git`)
+(you may need to run `pip` with root permission: `sudo pip install ubiops`)
 
 Then import the package:
 ```python

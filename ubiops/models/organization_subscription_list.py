@@ -35,16 +35,20 @@ class OrganizationSubscriptionList(object):
     openapi_types = {
         'id': 'str',
         'subscription': 'str',
-        'start_date': 'date'
+        'start_date': 'date',
+        'subscription_agreement_user': 'str',
+        'subscription_update_user': 'str'
     }
 
     attribute_map = {
         'id': 'id',
         'subscription': 'subscription',
-        'start_date': 'start_date'
+        'start_date': 'start_date',
+        'subscription_agreement_user': 'subscription_agreement_user',
+        'subscription_update_user': 'subscription_update_user'
     }
 
-    def __init__(self, id=None, subscription=None, start_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, subscription=None, start_date=None, subscription_agreement_user=None, subscription_update_user=None, local_vars_configuration=None):  # noqa: E501
         """OrganizationSubscriptionList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -53,6 +57,8 @@ class OrganizationSubscriptionList(object):
         self._id = None
         self._subscription = None
         self._start_date = None
+        self._subscription_agreement_user = None
+        self._subscription_update_user = None
         self.discriminator = None
 
         if id is not None:
@@ -60,6 +66,8 @@ class OrganizationSubscriptionList(object):
         if subscription is not None:
             self.subscription = subscription
         self.start_date = start_date
+        self.subscription_agreement_user = subscription_agreement_user
+        self.subscription_update_user = subscription_update_user
 
     @property
     def id(self):
@@ -125,6 +133,54 @@ class OrganizationSubscriptionList(object):
             raise ValueError("Invalid value for `start_date`, must not be `None`")  # noqa: E501
 
         self._start_date = start_date
+
+    @property
+    def subscription_agreement_user(self):
+        """Gets the subscription_agreement_user of this OrganizationSubscriptionList.  # noqa: E501
+
+
+        :return: The subscription_agreement_user of this OrganizationSubscriptionList.  # noqa: E501
+        :rtype: str
+        """
+        return self._subscription_agreement_user
+
+    @subscription_agreement_user.setter
+    def subscription_agreement_user(self, subscription_agreement_user):
+        """Sets the subscription_agreement_user of this OrganizationSubscriptionList.
+
+
+        :param subscription_agreement_user: The subscription_agreement_user of this OrganizationSubscriptionList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_agreement_user is not None and len(subscription_agreement_user) > 128):
+            raise ValueError("Invalid value for `subscription_agreement_user`, length must be less than or equal to `128`")  # noqa: E501
+
+        self._subscription_agreement_user = subscription_agreement_user
+
+    @property
+    def subscription_update_user(self):
+        """Gets the subscription_update_user of this OrganizationSubscriptionList.  # noqa: E501
+
+
+        :return: The subscription_update_user of this OrganizationSubscriptionList.  # noqa: E501
+        :rtype: str
+        """
+        return self._subscription_update_user
+
+    @subscription_update_user.setter
+    def subscription_update_user(self, subscription_update_user):
+        """Sets the subscription_update_user of this OrganizationSubscriptionList.
+
+
+        :param subscription_update_user: The subscription_update_user of this OrganizationSubscriptionList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_update_user is not None and len(subscription_update_user) > 128):
+            raise ValueError("Invalid value for `subscription_update_user`, length must be less than or equal to `128`")  # noqa: E501
+
+        self._subscription_update_user = subscription_update_user
 
     def to_dict(self):
         """Returns the model properties as a dict"""

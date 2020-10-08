@@ -55,10 +55,7 @@ Method | HTTP request | Description
 [**models_get**](CoreApi.md#models_get) | **GET** /projects/{project_name}/models/{model_name} | Get details of model
 [**models_list**](CoreApi.md#models_list) | **GET** /projects/{project_name}/models | List models in project
 [**models_update**](CoreApi.md#models_update) | **PATCH** /projects/{project_name}/models/{model_name} | Update a model
-[**organization_invites_delete**](CoreApi.md#organization_invites_delete) | **DELETE** /organizations/{organization_name}/invites/{invite_id} | Delete an organization invitation of a user
-[**organization_invites_get**](CoreApi.md#organization_invites_get) | **GET** /organizations/{organization_name}/invites/{invite_id} | Get details of an organization invitation of a user
-[**organization_invites_list**](CoreApi.md#organization_invites_list) | **GET** /organizations/{organization_name}/invites | List the users invited to an organization
-[**organization_subscriptions_list**](CoreApi.md#organization_subscriptions_list) | **GET** /organizations/{organization_name}/subscriptions | List subscriptions for an organizations
+[**organization_subscriptions_list**](CoreApi.md#organization_subscriptions_list) | **GET** /organizations/{organization_name}/subscriptions | List subscriptions for an organization
 [**organization_usage_details_get**](CoreApi.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
 [**organization_usage_get**](CoreApi.md#organization_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 [**organization_users_create**](CoreApi.md#organization_users_create) | **POST** /organizations/{organization_name}/users | Add a user to an organization
@@ -69,7 +66,7 @@ Method | HTTP request | Description
 [**organizations_create**](CoreApi.md#organizations_create) | **POST** /organizations | Create organizations
 [**organizations_get**](CoreApi.md#organizations_get) | **GET** /organizations/{organization_name} | Get details of an organization
 [**organizations_list**](CoreApi.md#organizations_list) | **GET** /organizations | List organizations
-[**organizations_resource_usage**](CoreApi.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | List resource usage
+[**organizations_resource_usage**](CoreApi.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | List resource usage of an organization
 [**organizations_update**](CoreApi.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
 [**permissions_list**](CoreApi.md#permissions_list) | **GET** /permissions | List the available permissions
 [**pipeline_object_attachments_create**](CoreApi.md#pipeline_object_attachments_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/attachments | Create object attachments
@@ -100,8 +97,8 @@ Method | HTTP request | Description
 [**projects_get**](CoreApi.md#projects_get) | **GET** /projects/{project_name} | Get details of a project
 [**projects_list**](CoreApi.md#projects_list) | **GET** /projects | List projects
 [**projects_log_list**](CoreApi.md#projects_log_list) | **POST** /projects/{project_name}/logs | List logs for a project
+[**projects_resource_usage**](CoreApi.md#projects_resource_usage) | **GET** /projects/{project_name}/resources | List resource usage of a project
 [**projects_update**](CoreApi.md#projects_update) | **PATCH** /projects/{project_name} | Update a project
-[**projects_user_list**](CoreApi.md#projects_user_list) | **GET** /projects/{project_name}/users | List the users in the organization of a project
 [**role_assignments_create**](CoreApi.md#role_assignments_create) | **POST** /projects/{project_name}/role-assignments | Assign a role to a user in a project
 [**role_assignments_delete**](CoreApi.md#role_assignments_delete) | **DELETE** /projects/{project_name}/role-assignments/{id} | Delete a role from a user with the given role assignment id
 [**role_assignments_get**](CoreApi.md#role_assignments_get) | **GET** /projects/{project_name}/role-assignments/{id} | Get details of a role assignment
@@ -111,6 +108,11 @@ Method | HTTP request | Description
 [**roles_get**](CoreApi.md#roles_get) | **GET** /projects/{project_name}/roles/{role_name} | Get details of a role
 [**roles_list**](CoreApi.md#roles_list) | **GET** /projects/{project_name}/roles | List the available roles in a project
 [**roles_update**](CoreApi.md#roles_update) | **PATCH** /projects/{project_name}/roles/{role_name} | Update a role in a project
+[**scheduled_requests_create**](CoreApi.md#scheduled_requests_create) | **POST** /projects/{project_name}/schedules | Create scheduled requests
+[**scheduled_requests_delete**](CoreApi.md#scheduled_requests_delete) | **DELETE** /projects/{project_name}/schedules/{schedule_name} | Delete a scheduled request
+[**scheduled_requests_get**](CoreApi.md#scheduled_requests_get) | **GET** /projects/{project_name}/schedules/{schedule_name} | Get details of a scheduled request
+[**scheduled_requests_list**](CoreApi.md#scheduled_requests_list) | **GET** /projects/{project_name}/schedules | List scheduled requests
+[**scheduled_requests_update**](CoreApi.md#scheduled_requests_update) | **PATCH** /projects/{project_name}/schedules/{schedule_name} | Update a scheduled request
 [**service_status**](CoreApi.md#service_status) | **GET** /status | Service status
 [**service_users_create**](CoreApi.md#service_users_create) | **POST** /projects/{project_name}/service-users | Create a new service user
 [**service_users_delete**](CoreApi.md#service_users_delete) | **DELETE** /projects/{project_name}/service-users/{service_user_id} | Delete service user
@@ -150,7 +152,7 @@ A list of ids for the batch requests
 A list of dictionaries containing the details of the retrieved model requests with the following fields:
  - `id`: Unique identifier for the model request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `pipeline`: Boolean value that indicates whether the model request is part of a pipeline or not
+ - `success`: A boolean value that indicates whether the model request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
  - `request_data`: A dictionary containing the data that was sent when the request was created
@@ -163,7 +165,7 @@ A list of dictionaries containing the details of the retrieved model requests wi
   {
     "id": "2f909aeb-5c7e-4974-970d-cd0a6a073aca",
     "status": "pending",
-    "pipeline": false,
+    "success": false,
     "time_created": "2020-03-29T08:09:10.729+00:00",
     "time_last_updated": "2020-06-29T08:09:10.729+00:00",
     "request_data": {
@@ -175,7 +177,7 @@ A list of dictionaries containing the details of the retrieved model requests wi
   {
     "id": "85711124-54db-4794-b83d-24492247c6e1",
     "status": "pending",
-    "pipeline": false,
+    "success": false,
     "time_created": "2020-06-25T09:37:17.765+00:00",
     "time_last_updated": "2020-03-25T09:37:17.765+00:00",
     "request_data": {
@@ -200,8 +202,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -281,8 +282,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -397,8 +397,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -470,8 +469,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -533,7 +531,7 @@ Get a batch request for a model. With this method, the result of a batch request
 A dictionary containing the details of the model request with the following fields:
  - `id`: Unique identifier for the model request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `pipeline`: Boolean value that indicates whether the model request is part of a pipeline or not
+ - `success`: A boolean value that indicates whether the model request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
  - `request_data`: A dictionary containing the data that was sent when the request was created
@@ -545,7 +543,7 @@ A dictionary containing the details of the model request with the following fiel
 {
   "id": "2f909aeb-5c7e-4974-970d-cd0a6a073aca",
   "status": "pending",
-  "pipeline": false,
+  "success": false,
   "time_created": "2020-03-29T08:09:10.729+00:00",
   "time_last_updated": "2020-03-29T08:09:10.729+00:00",
   "request_data": {
@@ -569,8 +567,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -621,7 +618,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **batch_model_requests_list**
-> list[BatchModelRequestListResponse] batch_model_requests_list(project_name, model_name, version, status=status, pipeline=pipeline, limit=limit, offset=offset, sort=sort)
+> list[BatchModelRequestListResponse] batch_model_requests_list(project_name, model_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
 
 List batch model requests
 
@@ -632,7 +629,7 @@ List all requests for a model version
 ### Optional Parameters
 The following parameters should be given as Query parameters: 
 - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'
-- `pipeline`: Boolean value that indicates whether the model request is part of a pipeline or not
+- `success`: A boolean value that indicates whether the model request was successful
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
@@ -641,7 +638,7 @@ The following parameters should be given as Query parameters:
 A list of dictionaries containing the details of the model requests with the following fields:
  - `id`: Unique identifier for the model request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `pipeline`: Boolean value that indicates whether the model request is part of a pipeline or not
+ - `success`: A boolean value that indicates whether the model request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
 
@@ -651,14 +648,14 @@ A list of dictionaries containing the details of the model requests with the fol
   {
     "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
     "status": "pending",
-    "pipeline": True,
+    "success": false,
     "time_created": "2020-03-28T20:00:26.613+00:00",
     "time_last_updated": "2020-03-28T20:00:26.613+00:00"
   },
   {
     "id": "2521378e-263e-4e2e-85e9-a96254b36536",
-    "status": "success",
-    "pipeline": True,
+    "status": "completed",
+    "success": true,
     "time_created": "2020-03-28T20:00:26.613+00:00",
     "time_last_updated": "2020-03-28T20:00:26.613+00:00"
   }
@@ -678,8 +675,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -691,14 +687,14 @@ with ubiops.ApiClient(configuration) as api_client:
 model_name = 'model_name_example' # str | 
 version = 'version_example' # str | 
 status = 'status_example' # str |  (optional)
-pipeline = True # bool |  (optional)
+success = True # bool |  (optional)
 limit = 56 # int |  (optional)
 offset = 56 # int |  (optional)
 sort = 'sort_example' # str |  (optional)
 
     try:
         # List batch model requests
-        api_response = api_instance.batch_model_requests_list(project_name, model_name, version, status=status, pipeline=pipeline, limit=limit, offset=offset, sort=sort)
+        api_response = api_instance.batch_model_requests_list(project_name, model_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling CoreApi->batch_model_requests_list: %s\n" % e)
@@ -712,7 +708,7 @@ Name | Type | Description  | Notes
  **model_name** | **str**|  | 
  **version** | **str**|  | 
  **status** | **str**|  | [optional] 
- **pipeline** | **bool**|  | [optional] 
+ **success** | **bool**|  | [optional] 
  **limit** | **int**|  | [optional] 
  **offset** | **int**|  | [optional] 
  **sort** | **str**|  | [optional] 
@@ -759,8 +755,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -820,6 +815,7 @@ Get a batch request for a pipeline. With this method, the result of the batch re
 A dictionary containing the details of the pipeline request with the following fields:
  - `id`: Unique identifier for the pipeline request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
  - `request_data`: A dictionary containing the data that was sent when the request was created
@@ -831,6 +827,7 @@ A dictionary containing the details of the pipeline request with the following f
 {
   "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
   "status": "pending",
+  "success": true,
   "time_created": "2020-03-28T20:00:26.613+00:00",
   "time_last_updated": "2020-03-28T20:00:26.613+00:00",
   "request_data": {
@@ -854,8 +851,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -924,6 +920,7 @@ A list of ids for the batch requests
 A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
  - `id`: Unique identifier for the pipeline request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
  - `request_data`: A dictionary containing the data that was sent when the request was created
@@ -936,6 +933,7 @@ A list of dictionaries containing the details of the retrieved pipeline requests
     {
       "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
       "status": "pending",
+      "success": false,
       "time_created": "2020-063-28T20:00:26.613+00:00",
       "time_last_updated": "2020-03-28T20:00:26.613+00:00",
       "request_data": {
@@ -947,6 +945,7 @@ A list of dictionaries containing the details of the retrieved pipeline requests
     {
       "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
       "status": "pending",
+      "success": false,
       "time_created": "2020-063-28T20:00:26.613+00:00",
       "time_last_updated": "2020-03-28T20:00:26.613+00:00",
       "request_data": {
@@ -971,8 +970,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1050,8 +1048,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1165,8 +1162,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1215,7 +1211,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **batch_pipeline_requests_list**
-> list[BatchPipelineRequestListResponse] batch_pipeline_requests_list(project_name, pipeline_name, status=status, limit=limit, offset=offset, sort=sort)
+> list[BatchPipelineRequestListResponse] batch_pipeline_requests_list(project_name, pipeline_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
 
 List batch pipeline requests
 
@@ -1226,6 +1222,7 @@ List all requests for a pipeline
 ### Optional Parameters
 The following parameters should be given as query parameters: 
 - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+- `success`: A boolean value that indicates whether the pipeline request was successful
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
@@ -1234,6 +1231,7 @@ The following parameters should be given as query parameters:
 A list of dictionaries containing the details of the pipeline requests with the following fields:
  - `id`: Unique identifier for the pipeline request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
 
@@ -1243,12 +1241,14 @@ A list of dictionaries containing the details of the pipeline requests with the 
   {
     "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
     "status": "pending",
+    "success": false,
     "time_created": "2020-03-28T20:00:26.613+00:00",
     "time_last_updated": "2020-03-28T20:00:26.613+00:00"
   },
   {
     "id": "2521378e-263e-4e2e-85e9-a96254b36536",
-    "status": "success",
+    "status": "completed",
+    "success": true,
     "time_created": "2020-03-28T20:00:26.613+00:00",
     "time_last_updated": "2020-03-28T20:00:26.613+00:00"
   }
@@ -1268,8 +1268,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1280,13 +1279,14 @@ with ubiops.ApiClient(configuration) as api_client:
     project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 status = 'status_example' # str |  (optional)
+success = True # bool |  (optional)
 limit = 56 # int |  (optional)
 offset = 56 # int |  (optional)
 sort = 'sort_example' # str |  (optional)
 
     try:
         # List batch pipeline requests
-        api_response = api_instance.batch_pipeline_requests_list(project_name, pipeline_name, status=status, limit=limit, offset=offset, sort=sort)
+        api_response = api_instance.batch_pipeline_requests_list(project_name, pipeline_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling CoreApi->batch_pipeline_requests_list: %s\n" % e)
@@ -1299,6 +1299,7 @@ Name | Type | Description  | Notes
  **project_name** | **str**|  | 
  **pipeline_name** | **str**|  | 
  **status** | **str**|  | [optional] 
+ **success** | **bool**|  | [optional] 
  **limit** | **int**|  | [optional] 
  **offset** | **int**|  | [optional] 
  **sort** | **str**|  | [optional] 
@@ -1370,8 +1371,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1441,8 +1441,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1512,8 +1511,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1614,8 +1612,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1707,8 +1704,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1807,7 +1803,7 @@ Details of the created connector
 - `status`: The state of the connector. It is initialized as pending_verification.
 - `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
 - `creation_date`: The date when the connector was created
-- `last_modified`: The date when the connector was last updated
+- `last_updated`: The date when the connector was last updated
 
 #### Response Examples
 ```
@@ -1836,7 +1832,7 @@ Details of the created connector
     }
   ],
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_modified": "2020-05-12T16:23:15.456812Z"
+  "last_updated": "2020-05-12T16:23:15.456812Z"
 }
 ```
 
@@ -1853,8 +1849,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1919,8 +1914,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1987,7 +1981,7 @@ Details of the connector
 - `status`: The state of the connector. It can be pending_verification, failed_verification or available.
 - `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
 - `creation_date`: The date when the connector was created
-- `last_modified`: The date when the connector was last updated
+- `last_updated`: The date when the connector was last updated
 
 #### Response Examples 
 ```
@@ -2005,7 +1999,7 @@ Details of the connector
     "path_prefix": "blob"
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_modified": "2020-06-22T18:04:76.123754Z"
+  "last_updated": "2020-06-22T18:04:76.123754Z"
 }
 ```
 
@@ -2022,8 +2016,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2091,7 +2084,7 @@ A list of details of the connectors in the project
 - `status`: The state of the connector. It can be pending_verification, failed_verification or available.
 - `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
 - `creation_date`: The date when the connector was created
-- `last_modified`: The date when the connector was last updated
+- `last_updated`: The date when the connector was last updated
 
 #### Response Examples
 ```
@@ -2110,7 +2103,7 @@ A list of details of the connectors in the project
       "path_prefix": "blob"
     },
     "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_modified": "2020-05-19T11:52:21.163270Z"
+    "last_updated": "2020-05-19T11:52:21.163270Z"
   },
   {
     "id": "e0342249-853c-4879-bd08-5cd1af572d7e",
@@ -2137,7 +2130,7 @@ A list of details of the connectors in the project
       }
     ],
     "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_modified": "2020-06-22T18:04:76.123754Z"
+    "last_updated": "2020-06-22T18:04:76.123754Z"
   }
 ]
 ```
@@ -2155,8 +2148,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2265,7 +2257,7 @@ Details of the updated connector
 - `status`: The state of the connector. If the configuration parameters are updated, the connector is verified again.
 - `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
 - `creation_date`: The date when the connector was created
-- `last_modified`: The date when the connector was last updated
+- `last_updated`: The date when the connector was last updated
 
 #### Response Examples
 ```	
@@ -2283,7 +2275,7 @@ Details of the updated connector
     "path_prefix": "blob"
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_modified": "2020-06-22T18:04:76.123754Z"
+  "last_updated": "2020-06-22T18:04:76.123754Z"
 }
 ```
 
@@ -2300,8 +2292,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2387,7 +2378,7 @@ Details of the created credentials
  - `status`: The state of the credentials. It is initialized as pending_verification.
  - `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
  - `creation_date`: The date when the credentials was created
- - `last_modified`: The date when the credentials was last updated
+ - `last_updated`: The date when the credentials was last updated
 
 #### Response Examples 
 ```
@@ -2405,7 +2396,7 @@ Details of the created credentials
     "region": "eu-central-1"
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_modified": "2020-05-12T16:23:15.456812Z"
+  "last_updated": "2020-05-12T16:23:15.456812Z"
 }
 ```
 
@@ -2422,8 +2413,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2491,8 +2481,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2557,7 +2546,7 @@ Details of the credentials
 - `status`: The state of the credentials. It can be pending_verification, failed_verification or available.
 - `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
 - `creation_date`: The date when the credentials was created
-- `last_modified`: The date when the credentials was last updated
+- `last_updated`: The date when the credentials was last updated
 
 #### Response Examples 
 ```
@@ -2576,7 +2565,7 @@ Details of the credentials
     "port": "1234"
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_modified": "2020-06-22T18:04:76.123754Z"
+  "last_updated": "2020-06-22T18:04:76.123754Z"
 }
 ```
 
@@ -2593,8 +2582,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2660,7 +2648,7 @@ A list of details of the credentials in the project
 - `status`: The state of the credentials. It can be pending_verification, failed_verification or available.
 - `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
 - `creation_date`: The date when the credentials was created
-- `last_modified`: The date when the credentials was last updated
+- `last_updated`: The date when the credentials was last updated
 
 #### Response Examples 
 ```
@@ -2679,7 +2667,7 @@ A list of details of the credentials in the project
       "region": "eu-central-1"
     },
     "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_modified": "2020-05-19T11:52:21.163270Z"
+    "last_updated": "2020-05-19T11:52:21.163270Z"
   },
   {
     "id": "e07b3715-71c9-4a49-a8e5-179cf4778086",
@@ -2696,7 +2684,7 @@ A list of details of the credentials in the project
       "port": "1234"
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_modified": "2020-06-22T18:04:76.123754Z"
+    "last_updated": "2020-06-22T18:04:76.123754Z"
   }
 ]
 ```
@@ -2714,8 +2702,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2801,7 +2788,7 @@ Details of the updated credentials
 - `status`: The state of the credentials. If the configuration parameters are updated, the connector is verified again. If there is a connector referencing this credentials, it is also verified again with the updated configuration.
 - `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
 - `creation_date`: The date when the credentials was created
-- `last_modified`: The date when the credentials was last updated
+- `last_updated`: The date when the credentials was last updated
 
 #### Response Examples 
 ```
@@ -2820,7 +2807,7 @@ Details of the updated credentials
     "port": "1234"
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_modified": "2020-06-22T18:04:76.123754Z"
+  "last_updated": "2020-06-22T18:04:76.123754Z"
 }
 ```
 
@@ -2837,8 +2824,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2906,6 +2892,9 @@ Metrics on model version level:
  - `output_volume`: Volume of outgoing data in bytes
  - `outputs`: Number of outgoing data items 
  - `compute`: Time in seconds for a model request to complete
+ - `instances`: Number of active model instances
+ - `gb_seconds`: Usage of GB seconds, calculated by multiplying the model memory sizes in GB by the number of seconds the models are running
+ - `active_time`: Time in seconds that the model is active
  
 Metrics on connector level: 
  - `requests`: Number of requests made to the object
@@ -3009,8 +2998,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3119,8 +3107,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3190,8 +3177,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3279,8 +3265,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3381,8 +3366,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3481,8 +3465,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3568,7 +3551,7 @@ These parameters should be given as GET parameters
 ### Response Structure 
 Details of the created model request
 - `request_id`: Unique identifier for the model request
-- `success`: A boolean indicating whether the model request was successful
+- `success`: A boolean value that indicates whether the model request was successful
 - `result`: Model request result value. NULL if the request failed.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 
@@ -3577,7 +3560,7 @@ A failed model request
 ```
 {
   "request_id": "edcf07b5-ae15-46e6-ba29-daeed53eaa61",
-  "success": False,
+  "success": false,
   "result": None,
   "error_message": "Asset ID not supported"
 }
@@ -3587,7 +3570,7 @@ A successful model request
 ```
 {
   "request_id": "b98a6d68-3173-409a-9e6e-a56804045a9c",
-  "success": True,
+  "success": true,
   "result": {
     "model-output-field-1": "2.1369",
     "model-output-field-2": "5.5832",
@@ -3609,8 +3592,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3715,8 +3697,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3788,8 +3769,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3879,8 +3859,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3991,8 +3970,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4093,8 +4071,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4207,8 +4184,8 @@ Details of the created version
 - `status`: The state of the model version. It is set to *initialised* state on creation.
 - `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
 - `creation_date`: The date when the model version was created
-- `last_updated_date`: The date when the model version was last updated
-- `file_last_updated_date`: The date when a model file was last uploaded
+- `last_updated`: The date when the model version was last updated
+- `file_last_updated`: The date when a model file was last uploaded
 
 #### Response Examples 
 ```
@@ -4225,8 +4202,8 @@ Details of the created version
   "minimum_instances": 0,
   "maximum_idle_time": 10,
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated_date": "2020-05-12T16:23:15.456812Z",
-  "file_last_updated_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-05-12T16:23:15.456812Z",
+  "file_last_updated": "2020-05-12T16:23:15.456812Z",
 }
 ```
 
@@ -4243,8 +4220,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4314,8 +4290,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4387,8 +4362,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4465,8 +4439,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4539,8 +4512,8 @@ Details of a version
 - `status`: The state of the model version
 - `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
 - `creation_date`: The date when the model version was created
-- `last_updated_date`: The date when the model version was last updated
-- `file_last_updated_date`: The date when a model file was last uploaded
+- `last_updated`: The date when the model version was last updated
+- `file_last_updated`: The date when a model file was last uploaded
 
 #### Response Examples
 ```
@@ -4557,8 +4530,8 @@ Details of a version
   "minimum_instances": 1,
   "maximum_idle_time": 10,
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated_date": "2020-06-22T18:04:76.123754Z",
-  "file_last_updated_date": "2020-06-23T11:17:28.128652Z"
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "file_last_updated": "2020-06-23T11:17:28.128652Z"
 }
 ```
 
@@ -4575,8 +4548,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4647,8 +4619,8 @@ A list of details of the versions
 - `status`: The state of the model version
 - `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
 - `creation_date`: The date when the model version was created
-- `last_updated_date`: The date when the model version was last updated
-- `file_last_updated_date`: The date when a model file was last uploaded
+- `last_updated`: The date when the model version was last updated
+- `file_last_updated`: The date when a model file was last uploaded
 
 #### Response Examples
 ```
@@ -4666,8 +4638,8 @@ A list of details of the versions
     "minimum_instances": 1,
     "maximum_idle_time": 10,
     "creation_date": "2020-06-18T08:32:14.876451Z",
-    "last_updated_date": "2020-06-19T10:52:23.124784Z",
-    "file_last_updated_date": "2020-06-19T10:52:23.124784Z"
+    "last_updated": "2020-06-19T10:52:23.124784Z",
+    "file_last_updated": "2020-06-19T10:52:23.124784Z"
   },
   {
     "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
@@ -4682,8 +4654,8 @@ A list of details of the versions
     "minimum_instances": 0,
     "maximum_idle_time": 10,
     "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated_date": "2020-06-22T18:04:76.123754Z",
-    "file_last_updated_date": "2020-06-23T11:17:28.128652Z"
+    "last_updated": "2020-06-22T18:04:76.123754Z",
+    "file_last_updated": "2020-06-23T11:17:28.128652Z"
   }
 ]
 ```
@@ -4701,8 +4673,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4795,8 +4766,8 @@ Details of the updated version
 - `status`: The state of the model version
 - `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
 - `creation_date`: The date when the model version was created
-- `last_updated_date`: The date when the model version was last updated
-- `file_last_updated_date`: The date when a model file was last uploaded
+- `last_updated`: The date when the model version was last updated
+- `file_last_updated`: The date when a model file was last uploaded
 
 #### Response Examples 
 ```
@@ -4813,8 +4784,8 @@ Details of the updated version
   "minimum_instances": 1,
   "maximum_idle_time": 10,
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated_date": "2020-06-23T18:04:76.123754Z",
-  "file_last_updated_date": "2020-06-23T11:17:28.128652Z"
+  "last_updated": "2020-06-23T18:04:76.123754Z",
+  "file_last_updated": "2020-06-23T11:17:28.128652Z"
 }
 ```
 
@@ -4831,8 +4802,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4974,7 +4944,7 @@ Details of the created model
 - `output_fields`: The list of model output fields containing name and data_type
 - `description`: Description of the model
 - `creation_date`: The date when the model was created
-- `last_updated_date`: The date when the model was last updated
+- `last_updated`: The date when the model was last updated
 - `number_of_versions`: Number of versions that this model has
 
 #### Response Examples 
@@ -5003,7 +4973,7 @@ Details of the created model
     }
   ],
   "creation_date": "2020-06-18T08:32:14.876451Z",
-  "last_updated_date": "2020-06-18T08:32:14.876451Z",
+  "last_updated": "2020-06-18T08:32:14.876451Z",
   "number_of_versions": 0
 }
 ```
@@ -5021,8 +4991,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5090,8 +5059,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5156,7 +5124,7 @@ Details of a model
 - `output_fields`: The list of model output fields containing name and data_type
 - `description`: Description of the model
 - `creation_date`: The date when the model was created
-- `last_updated_date`: The date when the model was last updated
+- `last_updated`: The date when the model was last updated
 - `number_of_versions`: Number of versions that this model has
 
 #### Response Examples 
@@ -5185,7 +5153,7 @@ Details of a model
     }
   ],
   "creation_date": "2020-06-18T08:32:14.876451Z",
-  "last_updated_date": "2020-06-19T10:52:23.124784Z",
+  "last_updated": "2020-06-19T10:52:23.124784Z",
   "number_of_versions": 2
 }
 ```
@@ -5203,8 +5171,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5270,7 +5237,7 @@ A list of details of the models in the project
 - `output_fields`: The list of model output fields containing name and data_type. It is empty in case of plain output type models.
 - `description`: Description of the model
 - `creation_date`: The date when the model was created
-- `last_updated_date`: The date when the model was last updated
+- `last_updated`: The date when the model was last updated
 - `number_of_versions`: Number of versions that this model has
 
 #### Response Examples 
@@ -5300,7 +5267,7 @@ A list of details of the models in the project
       }
     ],
     "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated_date": "2020-06-22T18:04:76.123754Z",
+    "last_updated": "2020-06-22T18:04:76.123754Z",
     "number_of_versions": 1
   },
   {
@@ -5318,7 +5285,7 @@ A list of details of the models in the project
     ],
     "output_fields": [],
     "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_updated_date": "2020-05-19T11:52:21.163270Z",
+    "last_updated": "2020-05-19T11:52:21.163270Z",
     "number_of_versions": 2
   },
   {
@@ -5331,7 +5298,7 @@ A list of details of the models in the project
     "input_fields": [],
     "output_fields": [],
     "creation_date": "2020-06-18T08:32:14.876451Z",
-    "last_updated_date": "2020-06-19T10:52:23.124784Z",
+    "last_updated": "2020-06-19T10:52:23.124784Z",
     "number_of_versions": 1
   }
 ]
@@ -5350,8 +5317,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5426,7 +5392,7 @@ Details of the updated model
 - `output_fields`: The list of model output fields containing name and data_type
 - `description`: Description of the model
 - `creation_date`: The date when the model was created
-- `last_updated_date`: The date when the model was last updated
+- `last_updated`: The date when the model was last updated
 - `number_of_versions`: Number of versions that this model has
 
 #### Response Examples
@@ -5455,7 +5421,7 @@ Details of the updated model
     }
   ],
   "creation_date": "2020-06-18T08:32:14.876451Z",
-  "last_updated_date": "2020-06-19T10:52:23.124784Z",
+  "last_updated": "2020-06-19T10:52:23.124784Z",
   "number_of_versions": 2
 }
 ```
@@ -5473,8 +5439,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5522,264 +5487,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **organization_invites_delete**
-> organization_invites_delete(invite_id, organization_name)
-
-Delete an organization invitation of a user
-
-
-### Description 
-Delete the organization invitation of a user. The user making the request must be admin of the organization.
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    invite_id = 'invite_id_example' # str | 
-organization_name = 'organization_name_example' # str | 
-
-    try:
-        # Delete an organization invitation of a user
-        api_instance.organization_invites_delete(invite_id, organization_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_invites_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **invite_id** | **str**|  | 
- **organization_name** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **organization_invites_get**
-> OrganizationUserInviteList organization_invites_get(invite_id, organization_name)
-
-Get details of an organization invitation of a user
-
-
-### Description 
-Get the details of an organization invitation of a user in an organization. The user making the request must be admin of the organization.
-
-### Response Structure 
-Details of the invited user
-- `id`: Unique identifier for the user invitation (UUID) 
-
-- `email`: Email of the invited user 
-
-- `admin`: Boolean value indicating whether the user is added as an admin of the organization or not 
-
-- `invitation_creation_time`: Date when the user is invited to the organization 
-
-
-#### Response Examples 
-```
-{
-  "id": "42879106-fb95-42d5-931a-8b94c85ba41e",
-  "email": "user@example.com",
-  "admin": false
-  "invitation_creation_time": "2020-04-15 12:04:34.213309+02"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    invite_id = 'invite_id_example' # str | 
-organization_name = 'organization_name_example' # str | 
-
-    try:
-        # Get details of an organization invitation of a user
-        api_response = api_instance.organization_invites_get(invite_id, organization_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_invites_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **invite_id** | **str**|  | 
- **organization_name** | **str**|  | 
-
-### Return type
-
-[**OrganizationUserInviteList**](OrganizationUserInviteList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **organization_invites_list**
-> list[OrganizationUserInviteList] organization_invites_list(organization_name)
-
-List the users invited to an organization
-
-
-### Description 
-List pending user invitations for an organization. The user making the request must be admin of the organization.
-
-### Response Structure 
-List of details of invited users
-- `id`: Unique identifier for the user invitation (UUID) 
-
-- `email`: Email of the invited user 
-
-- `admin`: Boolean value indicating whether the user is added as an admin of the organization or not 
-
-- `invitation_creation_time`: Date when the user is invited to the organization 
-
-
-#### Response Examples
-```
-[
-  {
-    "id": "42879106-fb95-42d5-931a-8b94c85ba41e",
-    "email": "user@example.com",
-    "admin": true,
-    "invitation_creation_time": "2020-04-15 12:04:34.213309+02"
-  },
-  {
-    "id": "90f09c91-789b-4dda-a0c2-18954ac49fcf",
-    "email": "user@example.com",
-    "admin": false
-    "invitation_creation_time": "2020-04-15 12:04:34.213309+02"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
-
-    try:
-        # List the users invited to an organization
-        api_response = api_instance.organization_invites_list(organization_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_invites_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_name** | **str**|  | 
-
-### Return type
-
-[**list[OrganizationUserInviteList]**](OrganizationUserInviteList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **organization_subscriptions_list**
 > list[OrganizationSubscriptionList] organization_subscriptions_list(organization_name)
 
-List subscriptions for an organizations
+List subscriptions for an organization
 
 
 ### Description
@@ -5793,6 +5504,8 @@ A list of details of the subscriptions that the organization has had
 
 - `start_date`: Date the subscription started 
 
+- `subscription_agreement_user`: Email of the user who accepted the terms of subscription
+- `subscription_update_user`: Email of the user who updated the subscription to the current one
 
 #### Response Examples
 ```
@@ -5800,12 +5513,16 @@ A list of details of the subscriptions that the organization has had
   {
     "id": "56b26bcb-34b6-4c4d-a4aa-9d625e0aa9e2",
     "subscription": "professional",
-    "start_date": "2020-07-08"
+    "start_date": "2020-07-08",
+    "subscription_agreement_user": "test-user@test.com",
+    "subscription_update_user": ""test-user-2@test.com"
   },
   {
     "id": "3a27e5f8-b247-4866-a08c-5df136b6034c",
     "subscription": "starter",
-    "start_date": "2020-06-01"
+    "start_date": "2020-06-01",
+    "subscription_agreement_user": "test-user@test.com",
+    "subscription_update_user": ""
   }
 ]
 ```
@@ -5823,8 +5540,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5835,7 +5551,7 @@ with ubiops.ApiClient(configuration) as api_client:
     organization_name = 'organization_name_example' # str | 
 
     try:
-        # List subscriptions for an organizations
+        # List subscriptions for an organization
         api_response = api_instance.organization_subscriptions_list(organization_name)
         pprint(api_response)
     except ApiException as e:
@@ -5951,8 +5667,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5999,13 +5714,16 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **organization_usage_get**
-> list[UsagePerMonth] organization_usage_get(organization_name)
+> list[UsagePerMonth] organization_usage_get(organization_name, start_month=start_month)
 
 Get resource usage
 
 
 ### Description 
 Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per month.
+
+### Optional Parameters 
+- `start_month`: date indicating the start month to fetch usage data from, formatted `YYYY-MM`. If omitted results are generated from one year ago.
 
 ### Response Structure 
  - `metric`: The metric that was measured
@@ -6088,8 +5806,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6098,10 +5815,11 @@ with ubiops.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = ubiops.CoreApi(api_client)
     organization_name = 'organization_name_example' # str | 
+start_month = 'start_month_example' # str |  (optional)
 
     try:
         # Get resource usage
-        api_response = api_instance.organization_usage_get(organization_name)
+        api_response = api_instance.organization_usage_get(organization_name, start_month=start_month)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling CoreApi->organization_usage_get: %s\n" % e)
@@ -6112,6 +5830,7 @@ with ubiops.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **organization_name** | **str**|  | 
+ **start_month** | **str**|  | [optional] 
 
 ### Return type
 
@@ -6194,8 +5913,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6266,8 +5984,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6358,8 +6075,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6412,7 +6128,7 @@ List the users in an organization
 
 
 ### Description 
-List users and their details in an organization. The user making the request must be admin of the organization.
+List users and their details in an organization
 
 ### Response Structure 
 List of details of users
@@ -6460,8 +6176,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6563,8 +6278,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6679,8 +6393,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6767,8 +6480,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6854,8 +6566,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6898,7 +6609,7 @@ This endpoint does not need any parameter.
 # **organizations_resource_usage**
 > ResourceUsage organizations_resource_usage(organization_name)
 
-List resource usage
+List resource usage of an organization
 
 
 ### Description 
@@ -6945,8 +6656,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6957,7 +6667,7 @@ with ubiops.ApiClient(configuration) as api_client:
     organization_name = 'organization_name_example' # str | 
 
     try:
-        # List resource usage
+        # List resource usage of an organization
         api_response = api_instance.organizations_resource_usage(organization_name)
         pprint(api_response)
     except ApiException as e:
@@ -6998,13 +6708,13 @@ Update details of an organization
 
 ### Description 
 Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics.
-To delete the end date of the current subscription, make a new subscription and omit the 'subscription_end_date' parameter from the request.
+To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.
 
 ### Optional Parameters 
 - `name`: New organization name
 - `subscription`: New subscription
 - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription
-- `subscription_end_date`: End date of the new subscription. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, simply omit the 'subscription_end_date' or give a null value for it. The required format is `YYYY-MM-DD`.
+- `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for 'subscription_end_date'.
 
 #### Request Examples
 
@@ -7040,7 +6750,6 @@ Details of the organization
 
 #### Response Examples 
 ```
-```
 {
   "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
   "name": "test-organization",
@@ -7062,8 +6771,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7136,8 +6844,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7287,8 +6994,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7358,8 +7064,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7454,8 +7159,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7571,8 +7275,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7684,8 +7387,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7786,8 +7488,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7914,8 +7615,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7986,8 +7686,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8075,8 +7774,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8174,8 +7872,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8280,8 +7977,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8387,7 +8083,7 @@ Details of the created pipeline
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
 - `creation_date`: The date when the pipeline was created
-- `last_updated_date`: The date when the pipeline was last updated
+- `last_updated`: The date when the pipeline was last updated
 
 #### Response Examples 
 ```
@@ -8408,7 +8104,7 @@ Details of the created pipeline
     }
   ],
   "creation_date": "2020-03-24T09:43:51.791253Z",
-  "last_updated_date": "2020-03-24T09:43:51.791253Z"
+  "last_updated": "2020-03-24T09:43:51.791253Z"
 }
 ```
  
@@ -8421,7 +8117,7 @@ Details of the created pipeline
   "input_type": "plain",
   "input_fields": [],
   "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated_date": "2020-05-12T16:23:15.456812Z"
+  "last_updated": "2020-05-12T16:23:15.456812Z"
 }
 ```
 
@@ -8438,8 +8134,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8507,8 +8202,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8571,7 +8265,7 @@ Details of the pipeline
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
 - `creation_date`: The date when the pipeline was created
-- `last_updated_date`: The date when the pipeline was last updated
+- `last_updated`: The date when the pipeline was last updated
 
 #### Response Examples 
 ```
@@ -8583,7 +8277,7 @@ Details of the pipeline
   "input_type": "plain",
   "input_fields": [],
   "creation_date": "2020-03-24T09:43:51.791253Z",
-  "last_updated_date": "2020-05-19T11:52:21.163270Z"
+  "last_updated": "2020-05-19T11:52:21.163270Z"
 }
 ```
 
@@ -8600,8 +8294,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8665,7 +8358,7 @@ A list of details of the pipelines in the project
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
 - `creation_date`: The date when the pipeline was created
-- `last_updated_date`: The date when the pipeline was last updated
+- `last_updated`: The date when the pipeline was last updated
 
 #### Response Examples 
 ```
@@ -8687,7 +8380,7 @@ A list of details of the pipelines in the project
       }
     ],
     "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated_date": "2020-06-22T18:04:76.123754Z"
+    "last_updated": "2020-06-22T18:04:76.123754Z"
   },
   {
     "id": "b6f60ebf-48ef-4084-9fbb-9ac0f934093e",
@@ -8697,7 +8390,7 @@ A list of details of the pipelines in the project
     "input_type": "plain",
     "input_fields": [],
     "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_updated_date": "2020-05-19T11:52:21.163270Z"
+    "last_updated": "2020-05-19T11:52:21.163270Z"
   }
 ]
 ```
@@ -8715,8 +8408,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8793,7 +8485,7 @@ Maximum allowed value for both is 3600 seconds and the default value is 300 seco
 - `model_requests`: A list of dictionaries containing the results of the model requests made for the model objects in the pipeline. The dictionaries contain the following fields:
     - `request_id`: Unique identifier for the model request
     - `pipeline_object`: Name of the object in the pipeline
-    - `success`: A boolean indicating whether the model request was successful
+    - `success`: A boolean value that indicates whether the model request was successful
     - `request_data`: Input data for the model request
     - `result`: Model request result value. NULL if the request failed.
     - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
@@ -8846,8 +8538,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8962,7 +8653,7 @@ Details of the updated pipeline
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
 - `creation_date`: The date when the pipeline was created
-- `last_updated_date`: The date when the pipeline was last updated
+- `last_updated`: The date when the pipeline was last updated
 
 #### Response Examples 
 ```
@@ -8983,7 +8674,7 @@ Details of the updated pipeline
     }
   ],
   "creation_date": "2020-03-24T09:43:51.791253Z",
-  "last_updated_date": "2020-05-19T11:52:21.163270Z"
+  "last_updated": "2020-05-19T11:52:21.163270Z"
 }
 ```
 
@@ -9000,8 +8691,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9119,8 +8809,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9188,8 +8877,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9275,8 +8963,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9369,8 +9056,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9467,8 +9153,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9517,13 +9202,16 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **project_usage_get**
-> list[UsagePerMonth] project_usage_get(project_name)
+> list[UsagePerMonth] project_usage_get(project_name, start_month=start_month)
 
 Get resource usage
 
 
 ### Description 
 Get resource usage for the project. This returns a list of metrics that are used for billing, aggregated per month.
+
+### Optional Parameters 
+- `start_month`: date indicating the start month to fetch usage data from, formatted `YYYY-MM`. If omitted results are generated from one year ago.
 
 ### Response Structure 
  - `metric`: The metric that was measured
@@ -9606,8 +9294,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9616,10 +9303,11 @@ with ubiops.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = ubiops.CoreApi(api_client)
     project_name = 'project_name_example' # str | 
+start_month = 'start_month_example' # str |  (optional)
 
     try:
         # Get resource usage
-        api_response = api_instance.project_usage_get(project_name)
+        api_response = api_instance.project_usage_get(project_name, start_month=start_month)
         pprint(api_response)
     except ApiException as e:
         print("Exception when calling CoreApi->project_usage_get: %s\n" % e)
@@ -9630,6 +9318,7 @@ with ubiops.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
+ **start_month** | **str**|  | [optional] 
 
 ### Return type
 
@@ -9707,8 +9396,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9775,8 +9463,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9861,8 +9548,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9956,8 +9642,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10177,8 +9862,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10221,6 +9905,94 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **projects_resource_usage**
+> ProjectResourceUsage projects_resource_usage(project_name)
+
+List resource usage of a project
+
+
+### Description 
+List the total number of resources used in a project
+
+### Response Structure
+A list containing the number of
+- models 
+
+- versions 
+
+- connectors 
+
+- pipelines 
+
+currently defined in the project.
+
+#### Response Examples
+```
+{
+  "models": 30,
+  "versions": 47,
+  "connectors": 1,
+  "pipelines": 2
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import ubiops
+from ubiops.rest import ApiException
+from pprint import pprint
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+with ubiops.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = ubiops.CoreApi(api_client)
+    project_name = 'project_name_example' # str | 
+
+    try:
+        # List resource usage of a project
+        api_response = api_instance.projects_resource_usage(project_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CoreApi->projects_resource_usage: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+
+### Return type
+
+[**ProjectResourceUsage**](ProjectResourceUsage.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10276,8 +10048,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10314,103 +10085,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **projects_user_list**
-> list[OrganizationUserList] projects_user_list(project_name)
-
-List the users in the organization of a project
-
-
-### Description 
-List users in an organization. The reason that this method is available is that users with **roles.create** permission should be able to get the ids of the users to be able to assign roles to them.
-Therefore, only users who have roles.create permission are allowed to make this request.
-
-### Response Structure 
-List of details of users
-- `id`: Unique identifier for the user (UUID) 
-
-- `email`: Email of the user 
-
-- `name`: Name of the user 
-
-- `surname`: Surname of the user 
-
-
-#### Response Examples
-```
-[
-  {
-    "id": "54977bc3-2c3b-4d8f-97c7-aff89a95bf21",
-    "email": "user@example.com",
-    "name": "user",
-    "surname": "name"
-  },
-  {
-    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
-    "email": "user2@example.com",
-    "name": "user",
-    "surname": "name"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-
-    try:
-        # List the users in the organization of a project
-        api_response = api_instance.projects_user_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_user_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
-
-### Return type
-
-[**list[OrganizationUserList]**](OrganizationUserList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -10508,8 +10182,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10563,7 +10236,6 @@ Delete a role from a user with the given role assignment id
 
 ### Description 
 Delete a role of a user. The user making the request must have appropriate permissions. It is possible for a user to delete their own role if they have permissions to do so.
-**The role project-admin of an organization admin cannot be deleted.**    
 
 
 ### Example
@@ -10578,8 +10250,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10669,8 +10340,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10769,8 +10439,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10829,7 +10498,7 @@ The user making the request must have appropriate permissions.
 ### Required Parameters 
 - `name`: Name of the role which will be created. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
 
-- `permissions`: A list of permission names which the role will have. The list of available permissions can be obtained with */permissions* endpoint. 
+- `permissions`: A list of permissions which the role will contain. The list of available permissions can be obtained with */permissions* endpoint. 
 
 
 #### Request Examples
@@ -10846,14 +10515,20 @@ The user making the request must have appropriate permissions.
 
 ### Response Structure 
 Details of the created role
+- `id`: Unique identifier for the created role (UUID) 
+
 - `name`: Name of the created role 
 
-- `permissions`: A list of permission names which the role has
+- `default`: A boolean value that indicates whether the role is a default role or not 
+
+- `permissions`: A list of permissions which the role contains
 
 #### Response Examples
 ```
 {
+  "id": "18a4a60d-d5f0-4099-9c6e-543bf2fd5a1d",
   "name": "custom-model-editor-role",
+  "default": false,
   "permissions": [
     "models.list",
     "models.get",
@@ -10875,8 +10550,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10945,8 +10619,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11002,14 +10675,20 @@ Get the details of a role. The user making the request must have appropriate per
 
 ### Response Structure
 Details of the role
+- `id`: Unique identifier for the role (UUID) 
+
 - `name`: Name of the role 
 
-- `permissions`: A list of permission names which the role has
+- `default`: A boolean value that indicates whether the role is a default role or not 
+
+- `permissions`: A list of permissions which the role contains
 
 #### Response Examples
 ```
 {
+  "id": "18a4a60d-d5f0-4099-9c6e-543bf2fd5a1d",
   "name": "custom-model-editor-role",
+  "default": false,
   "permissions": [
     "models.list",
     "models.get",
@@ -11031,8 +10710,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11085,22 +10763,33 @@ List the available roles in a project
 
 
 ### Description 
-List the roles available in the scope of a project. This method only returns the names of the roles. Detailed information, such as which permissions each role contains, can be obtained with a call to get details of a single role.
+List the roles available in the scope of a project. Information on which permissions each role contains, can be obtained with a call to get details of a single role.
 
 ### Response Structure
-- `name`: Name of the role
+- `id`: Unique identifier for the role (UUID) 
+
+- `name`: Name of the role 
+
+- `default`: A boolean value that indicates whether the role is a default role or not 
+
 
 #### Response Examples
 ```
 [
   {
-    "name": "project-admin"
+    "id": "34e53855-9b50-47bc-b516-6cb971b1949c",
+    "name": "project-admin",
+    "default": true
   },
   {
-    "name": "project-editor"
+    "id": "00132911-b5dd-4017-b399-85f3ffd2a7c3",
+    "name": "project-editor",
+    "default": true
   },
   {
-    "name": "project-viewer"
+    "id": "bf0d5823-8062-40f6-bbd2-21bc732f3c3b",
+    "name": "project-viewer",
+    "default": true
   }
 ]
 ```
@@ -11118,8 +10807,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11176,18 +10864,13 @@ Update a role in a project. The user making the request must have appropriate pe
 ### Optional Parameters 
 - `name`: New name for the role. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
 
-- `permissions`: A new list of permission names which the role will have. The previous permissions will be replaced with the given ones. The list of available permissions can be obtained with */permissions* endpoint. 
+- `permissions`: A new list of permissions which the role will contain. The previous permissions will be replaced with the given ones. The list of available permissions can be obtained with */permissions* endpoint. 
 
 
 #### Request Examples
 ```
 {
-  "name": "new-model-editor-role"
-}
-```
-
-```
-{
+  "name": "new-model-editor-role",
   "permissions": [
     "models.list",
     "models.get"
@@ -11196,15 +10879,21 @@ Update a role in a project. The user making the request must have appropriate pe
 ```
 
 ### Response Structure 
-Details of the created role
+Details of the updated role
+- `id`: Unique identifier for the role (UUID) 
+
 - `name`: Name of the updated role 
 
-- `permissions`: A list of permission names which the role has
+- `default`: A boolean value that indicates whether the role is a default role or not 
+
+- `permissions`: A list of permissions which the role contains
 
 #### Response Examples
 ```
 {
+  "id": "18a4a60d-d5f0-4099-9c6e-543bf2fd5a1d",
   "name": "new-model-editor-role",
+  "default": false,
   "permissions": [
     "models.list",
     "models.get"
@@ -11225,8 +10914,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11257,6 +10945,586 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RoleDetailList**](RoleDetailList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **scheduled_requests_create**
+> ScheduleList scheduled_requests_create(project_name, data)
+
+Create scheduled requests
+
+
+### Description 
+Create a new scheduled request with the provided name
+
+### Required Parameters 
+- `name`: Name of the request. The name is unique per project. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
+
+- `object_type`: Type of object for which the request is made. Can be either 'model' or 'pipeline'. 
+
+- `object_name`: Name of model or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+
+### Optional Parameters
+- `version`: Name of version if type of object is 'model' 
+
+- `request_data`: Input data for the scheduled request. For structured models/pipelines, it must be a dictionary. 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds. This field is not used for batch requests. 
+
+- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled. Default is 'True'. 
+
+
+#### Request Examples 
+```
+{
+  "name": "test-request",
+  "object_type": "model",
+  "object_name": "test-model",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 300,
+  "enabled": true
+}
+```
+
+### Response Structure 
+Details of the created scheduled request
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of model or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'model' 
+
+- `request_data`: Input data for the scheduled request 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
+
+- `creation_date`: The date when the scheduled request was created
+
+#### Response Examples 
+```
+{
+  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+  "name": "test-request",
+  "object_type": "model",
+  "object_name": "test-model",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 300,
+  "enabled": true,
+  "creation_date": "2020-09-16T08:06:34.457679Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import ubiops
+from ubiops.rest import ApiException
+from pprint import pprint
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+with ubiops.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = ubiops.CoreApi(api_client)
+    project_name = 'project_name_example' # str | 
+data = ubiops.ScheduleCreate() # ScheduleCreate | 
+
+    try:
+        # Create scheduled requests
+        api_response = api_instance.scheduled_requests_create(project_name, data)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CoreApi->scheduled_requests_create: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **data** | [**ScheduleCreate**](ScheduleCreate.md)|  | 
+
+### Return type
+
+[**ScheduleList**](ScheduleList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **scheduled_requests_delete**
+> scheduled_requests_delete(project_name, schedule_name)
+
+Delete a scheduled request
+
+
+### Description 
+Delete the scheduled request from the project. 
+
+If you want to temporarily disable a scheduled request, update the request with `enabled` set to False.
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import ubiops
+from ubiops.rest import ApiException
+from pprint import pprint
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+with ubiops.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = ubiops.CoreApi(api_client)
+    project_name = 'project_name_example' # str | 
+schedule_name = 'schedule_name_example' # str | 
+
+    try:
+        # Delete a scheduled request
+        api_instance.scheduled_requests_delete(project_name, schedule_name)
+    except ApiException as e:
+        print("Exception when calling CoreApi->scheduled_requests_delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **schedule_name** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **scheduled_requests_get**
+> ScheduleList scheduled_requests_get(project_name, schedule_name)
+
+Get details of a scheduled request
+
+
+### Description 
+Retrieve details of a single scheduled request
+
+### Response Structure 
+Details of a scheduled request
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of model or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'model' 
+
+- `request_data`: Input data for the scheduled request 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
+
+- `creation_date`: The date when the scheduled request was created
+
+#### Response Examples 
+```
+{
+  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+  "name": "test-request",
+  "object_type": "model",
+  "object_name": "test-model",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 200,
+  "enabled": true,
+  "creation_date": "2020-09-16T08:06:34.457679Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import ubiops
+from ubiops.rest import ApiException
+from pprint import pprint
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+with ubiops.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = ubiops.CoreApi(api_client)
+    project_name = 'project_name_example' # str | 
+schedule_name = 'schedule_name_example' # str | 
+
+    try:
+        # Get details of a scheduled request
+        api_response = api_instance.scheduled_requests_get(project_name, schedule_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CoreApi->scheduled_requests_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **schedule_name** | **str**|  | 
+
+### Return type
+
+[**ScheduleList**](ScheduleList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **scheduled_requests_list**
+> list[ScheduleList] scheduled_requests_list(project_name)
+
+List scheduled requests
+
+
+### Description 
+List the scheduled requests in a project. The user has to have 'requests.list' permission on either 'models.versions' or 'pipelines' to list the scheduled requests.
+
+### Response Structure 
+A list of details of all scheduled requests in a project
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of model or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'model' 
+
+- `request_data`: Input data for the scheduled request 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
+
+- `creation_date`: The date when the scheduled request was created
+
+#### Response Examples 
+```
+[
+    {
+      "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+      "name": "test-request",
+      "object_type": "model",
+      "object_name": "test-model",
+      "version": "v1",
+      "schedule": "0 * 3 * *",
+      "request_data": {
+        "input_field_1": 2345,
+        "input_field_2": 8765
+      },
+      "batch": false,
+      "timeout": 200",
+      "enabled": true,
+      "creation_date": "2020-09-16T08:06:34.457679Z"
+    }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import ubiops
+from ubiops.rest import ApiException
+from pprint import pprint
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+with ubiops.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = ubiops.CoreApi(api_client)
+    project_name = 'project_name_example' # str | 
+
+    try:
+        # List scheduled requests
+        api_response = api_instance.scheduled_requests_list(project_name)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CoreApi->scheduled_requests_list: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+
+### Return type
+
+[**list[ScheduleList]**](ScheduleList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **scheduled_requests_update**
+> ScheduleList scheduled_requests_update(project_name, schedule_name, data)
+
+Update a scheduled request
+
+
+### Description 
+Update a scheduled request in a project. Create permissions on the object are necessary for this action.
+
+### Optional Parameters
+- `name`: Name of the request. The name is unique per project. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
+
+- `schedule`: Schedule in crontab format 
+
+- `request_data`: Input data for the scheduled request. For structured models/pipelines, it must be a dictionary. 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled. Default is 'True'. 
+
+
+#### Request Examples 
+```
+{
+  "name": "test-request",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": true,
+  "timeout": 360,
+  "enabled": false
+}
+```
+
+### Response Structure 
+Details of the updated scheduled request
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of model or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'model' 
+
+- `request_data`: Input data for the scheduled request 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
+
+- `creation_date`: The date when the scheduled request was created
+
+#### Response Examples 
+```
+{
+  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+  "name": "test-request",
+  "object_type": "model",
+  "object_name": "test-model",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 360,
+  "enabled": true,
+  "creation_date": "2020-09-16T08:06:34.457679Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+from __future__ import print_function
+import time
+import ubiops
+from ubiops.rest import ApiException
+from pprint import pprint
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+with ubiops.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = ubiops.CoreApi(api_client)
+    project_name = 'project_name_example' # str | 
+schedule_name = 'schedule_name_example' # str | 
+data = ubiops.ScheduleUpdate() # ScheduleUpdate | 
+
+    try:
+        # Update a scheduled request
+        api_response = api_instance.scheduled_requests_update(project_name, schedule_name, data)
+        pprint(api_response)
+    except ApiException as e:
+        print("Exception when calling CoreApi->scheduled_requests_update: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **schedule_name** | **str**|  | 
+ **data** | [**ScheduleUpdate**](ScheduleUpdate.md)|  | 
+
+### Return type
+
+[**ScheduleList**](ScheduleList.md)
 
 ### Authorization
 
@@ -11306,8 +11574,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11405,8 +11672,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11474,8 +11740,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11562,8 +11827,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11659,8 +11923,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11737,8 +12000,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11840,8 +12102,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -11962,8 +12223,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12029,8 +12289,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12120,8 +12379,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12208,8 +12466,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12319,8 +12576,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12374,13 +12630,8 @@ Create a new user
 
 ### Description 
 Create a new user with the given details - email, password, name and surname. After creation, an email is send to the email address to activate the acount.
-A user is required to accept the terms and conditions.
+A user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
 
-The password needs to meet the following requirements:
-- At least 8 characters long
-- At least one capital and one lowercase letter
-- At least one number
-- At least one of the following symbols: !#$%&')(*+,./:;"<=>?[@]^_`{|}~-" 
 
 ### Required Parameters
 - `email`: Email of the user. This is a unique field. 
@@ -12444,8 +12695,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12511,8 +12761,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12596,8 +12845,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -12722,8 +12970,7 @@ from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
+configuration.api_key_prefix['Authorization'] = ''
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"

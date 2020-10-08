@@ -3,9 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**request_id** | **str** |  | [optional] 
+**id** | **str** |  | [optional] 
 **pipeline_object** | **str** |  | 
-**status** | **str** |  | 
+**success** | **bool** |  | [optional] 
+**time_created** | **datetime** |  | 
+**time_last_updated** | **datetime** |  | 
 **request_data** | [**object**](.md) |  | [optional] 
 **result** | [**object**](.md) |  | [optional] 
 **error_message** | **str** |  | [optional] 

@@ -63,8 +63,6 @@ from ubiops.models.organization_subscription_list import OrganizationSubscriptio
 from ubiops.models.organization_update import OrganizationUpdate
 from ubiops.models.organization_user_create import OrganizationUserCreate
 from ubiops.models.organization_user_detail import OrganizationUserDetail
-from ubiops.models.organization_user_invite_list import OrganizationUserInviteList
-from ubiops.models.organization_user_list import OrganizationUserList
 from ubiops.models.organization_user_update import OrganizationUserUpdate
 from ubiops.models.permission_list import PermissionList
 from ubiops.models.pipeline_create import PipelineCreate
@@ -79,6 +77,7 @@ from ubiops.models.pipeline_request_list import PipelineRequestList
 from ubiops.models.pipeline_request_model_request import PipelineRequestModelRequest
 from ubiops.models.project_create import ProjectCreate
 from ubiops.models.project_list import ProjectList
+from ubiops.models.project_resource_usage import ProjectResourceUsage
 from ubiops.models.project_update import ProjectUpdate
 from ubiops.models.resource_usage import ResourceUsage
 from ubiops.models.role_assignment_create import RoleAssignmentCreate
@@ -87,6 +86,9 @@ from ubiops.models.role_create import RoleCreate
 from ubiops.models.role_detail_list import RoleDetailList
 from ubiops.models.role_list import RoleList
 from ubiops.models.role_update import RoleUpdate
+from ubiops.models.schedule_create import ScheduleCreate
+from ubiops.models.schedule_list import ScheduleList
+from ubiops.models.schedule_update import ScheduleUpdate
 from ubiops.models.service_user_create import ServiceUserCreate
 from ubiops.models.service_user_detail import ServiceUserDetail
 from ubiops.models.service_user_list import ServiceUserList

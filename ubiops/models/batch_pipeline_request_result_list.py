@@ -35,9 +35,10 @@ class BatchPipelineRequestResultList(object):
     openapi_types = {
         'id': 'str',
         'status': 'str',
+        'success': 'bool',
         'time_created': 'datetime',
         'time_last_updated': 'datetime',
-        'request_data': 'object',
+        'request_data': 'dict(str, str)',
         'model_requests': 'list[BatchPipelineRequestModelRequest]',
         'error_message': 'str'
     }
@@ -45,6 +46,7 @@ class BatchPipelineRequestResultList(object):
     attribute_map = {
         'id': 'id',
         'status': 'status',
+        'success': 'success',
         'time_created': 'time_created',
         'time_last_updated': 'time_last_updated',
         'request_data': 'request_data',
@@ -52,7 +54,7 @@ class BatchPipelineRequestResultList(object):
         'error_message': 'error_message'
     }
 
-    def __init__(self, id=None, status=None, time_created=None, time_last_updated=None, request_data=None, model_requests=None, error_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, status=None, success=None, time_created=None, time_last_updated=None, request_data=None, model_requests=None, error_message=None, local_vars_configuration=None):  # noqa: E501
         """BatchPipelineRequestResultList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,6 +62,7 @@ class BatchPipelineRequestResultList(object):
 
         self._id = None
         self._status = None
+        self._success = None
         self._time_created = None
         self._time_last_updated = None
         self._request_data = None
@@ -69,6 +72,7 @@ class BatchPipelineRequestResultList(object):
 
         self.id = id
         self.status = status
+        self.success = success
         self.time_created = time_created
         if time_last_updated is not None:
             self.time_last_updated = time_last_updated
@@ -130,6 +134,27 @@ class BatchPipelineRequestResultList(object):
         self._status = status
 
     @property
+    def success(self):
+        """Gets the success of this BatchPipelineRequestResultList.  # noqa: E501
+
+
+        :return: The success of this BatchPipelineRequestResultList.  # noqa: E501
+        :rtype: bool
+        """
+        return self._success
+
+    @success.setter
+    def success(self, success):
+        """Sets the success of this BatchPipelineRequestResultList.
+
+
+        :param success: The success of this BatchPipelineRequestResultList.  # noqa: E501
+        :type: bool
+        """
+
+        self._success = success
+
+    @property
     def time_created(self):
         """Gets the time_created of this BatchPipelineRequestResultList.  # noqa: E501
 
@@ -179,7 +204,7 @@ class BatchPipelineRequestResultList(object):
 
 
         :return: The request_data of this BatchPipelineRequestResultList.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._request_data
 
@@ -189,7 +214,7 @@ class BatchPipelineRequestResultList(object):
 
 
         :param request_data: The request_data of this BatchPipelineRequestResultList.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
 
         self._request_data = request_data
@@ -212,6 +237,8 @@ class BatchPipelineRequestResultList(object):
         :param model_requests: The model_requests of this BatchPipelineRequestResultList.  # noqa: E501
         :type: list[BatchPipelineRequestModelRequest]
         """
+        if self.local_vars_configuration.client_side_validation and model_requests is None:  # noqa: E501
+            raise ValueError("Invalid value for `model_requests`, must not be `None`")  # noqa: E501
 
         self._model_requests = model_requests
 

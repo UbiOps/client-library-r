@@ -40,7 +40,7 @@ class PipelineList(object):
         'input_type': 'str',
         'input_fields': 'list[PipelineInputFieldList]',
         'creation_date': 'datetime',
-        'last_updated_date': 'datetime'
+        'last_updated': 'datetime'
     }
 
     attribute_map = {
@@ -51,10 +51,10 @@ class PipelineList(object):
         'input_type': 'input_type',
         'input_fields': 'input_fields',
         'creation_date': 'creation_date',
-        'last_updated_date': 'last_updated_date'
+        'last_updated': 'last_updated'
     }
 
-    def __init__(self, id=None, name=None, project=None, description=None, input_type=None, input_fields=None, creation_date=None, last_updated_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, project=None, description=None, input_type=None, input_fields=None, creation_date=None, last_updated=None, local_vars_configuration=None):  # noqa: E501
         """PipelineList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -67,7 +67,7 @@ class PipelineList(object):
         self._input_type = None
         self._input_fields = None
         self._creation_date = None
-        self._last_updated_date = None
+        self._last_updated = None
         self.discriminator = None
 
         if id is not None:
@@ -80,8 +80,8 @@ class PipelineList(object):
         self.input_fields = input_fields
         if creation_date is not None:
             self.creation_date = creation_date
-        if last_updated_date is not None:
-            self.last_updated_date = last_updated_date
+        if last_updated is not None:
+            self.last_updated = last_updated
 
     @property
     def id(self):
@@ -254,25 +254,25 @@ class PipelineList(object):
         self._creation_date = creation_date
 
     @property
-    def last_updated_date(self):
-        """Gets the last_updated_date of this PipelineList.  # noqa: E501
+    def last_updated(self):
+        """Gets the last_updated of this PipelineList.  # noqa: E501
 
 
-        :return: The last_updated_date of this PipelineList.  # noqa: E501
+        :return: The last_updated of this PipelineList.  # noqa: E501
         :rtype: datetime
         """
-        return self._last_updated_date
+        return self._last_updated
 
-    @last_updated_date.setter
-    def last_updated_date(self, last_updated_date):
-        """Sets the last_updated_date of this PipelineList.
+    @last_updated.setter
+    def last_updated(self, last_updated):
+        """Sets the last_updated of this PipelineList.
 
 
-        :param last_updated_date: The last_updated_date of this PipelineList.  # noqa: E501
+        :param last_updated: The last_updated of this PipelineList.  # noqa: E501
         :type: datetime
         """
 
-        self._last_updated_date = last_updated_date
+        self._last_updated = last_updated
 
     def to_dict(self):
         """Returns the model properties as a dict"""

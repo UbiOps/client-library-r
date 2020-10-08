@@ -37,6 +37,7 @@ class OrganizationUserDetail(object):
         'email': 'str',
         'name': 'str',
         'surname': 'str',
+        'status': 'str',
         'admin': 'bool'
     }
 
@@ -45,10 +46,11 @@ class OrganizationUserDetail(object):
         'email': 'email',
         'name': 'name',
         'surname': 'surname',
+        'status': 'status',
         'admin': 'admin'
     }
 
-    def __init__(self, id=None, email=None, name=None, surname=None, admin=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, email=None, name=None, surname=None, status=None, admin=None, local_vars_configuration=None):  # noqa: E501
         """OrganizationUserDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -58,6 +60,7 @@ class OrganizationUserDetail(object):
         self._email = None
         self._name = None
         self._surname = None
+        self._status = None
         self._admin = None
         self.discriminator = None
 
@@ -67,6 +70,8 @@ class OrganizationUserDetail(object):
             self.name = name
         if surname is not None:
             self.surname = surname
+        if status is not None:
+            self.status = status
         if admin is not None:
             self.admin = admin
 
@@ -163,6 +168,27 @@ class OrganizationUserDetail(object):
         """
 
         self._surname = surname
+
+    @property
+    def status(self):
+        """Gets the status of this OrganizationUserDetail.  # noqa: E501
+
+
+        :return: The status of this OrganizationUserDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this OrganizationUserDetail.
+
+
+        :param status: The status of this OrganizationUserDetail.  # noqa: E501
+        :type: str
+        """
+
+        self._status = status
 
     @property
     def admin(self):

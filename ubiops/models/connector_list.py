@@ -44,7 +44,7 @@ class ConnectorList(object):
         'configuration': 'str',
         'input_fields': 'list[ConnectorFieldList]',
         'creation_date': 'datetime',
-        'last_modified': 'datetime'
+        'last_updated': 'datetime'
     }
 
     attribute_map = {
@@ -59,10 +59,10 @@ class ConnectorList(object):
         'configuration': 'configuration',
         'input_fields': 'input_fields',
         'creation_date': 'creation_date',
-        'last_modified': 'last_modified'
+        'last_updated': 'last_updated'
     }
 
-    def __init__(self, id=None, name=None, type=None, status=None, error_message=None, input_type=None, project=None, credentials=None, configuration=None, input_fields=None, creation_date=None, last_modified=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, type=None, status=None, error_message=None, input_type=None, project=None, credentials=None, configuration=None, input_fields=None, creation_date=None, last_updated=None, local_vars_configuration=None):  # noqa: E501
         """ConnectorList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -79,7 +79,7 @@ class ConnectorList(object):
         self._configuration = None
         self._input_fields = None
         self._creation_date = None
-        self._last_modified = None
+        self._last_updated = None
         self.discriminator = None
 
         if id is not None:
@@ -100,8 +100,8 @@ class ConnectorList(object):
             self.input_fields = input_fields
         if creation_date is not None:
             self.creation_date = creation_date
-        if last_modified is not None:
-            self.last_modified = last_modified
+        if last_updated is not None:
+            self.last_updated = last_updated
 
     @property
     def id(self):
@@ -364,25 +364,25 @@ class ConnectorList(object):
         self._creation_date = creation_date
 
     @property
-    def last_modified(self):
-        """Gets the last_modified of this ConnectorList.  # noqa: E501
+    def last_updated(self):
+        """Gets the last_updated of this ConnectorList.  # noqa: E501
 
 
-        :return: The last_modified of this ConnectorList.  # noqa: E501
+        :return: The last_updated of this ConnectorList.  # noqa: E501
         :rtype: datetime
         """
-        return self._last_modified
+        return self._last_updated
 
-    @last_modified.setter
-    def last_modified(self, last_modified):
-        """Sets the last_modified of this ConnectorList.
+    @last_updated.setter
+    def last_updated(self, last_updated):
+        """Sets the last_updated of this ConnectorList.
 
 
-        :param last_modified: The last_modified of this ConnectorList.  # noqa: E501
+        :param last_updated: The last_updated of this ConnectorList.  # noqa: E501
         :type: datetime
         """
 
-        self._last_modified = last_modified
+        self._last_updated = last_updated
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **reference_count** | **str** |  | [optional] [readonly] 
 **project** | **str** |  | 
 **creation_date** | **datetime** |  | [optional] 
-**last_modified** | **datetime** |  | [optional] 
+**last_updated** | **datetime** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

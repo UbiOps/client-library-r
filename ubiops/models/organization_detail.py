@@ -36,17 +36,19 @@ class OrganizationDetail(object):
         'id': 'str',
         'name': 'str',
         'creation_date': 'datetime',
-        'subscription': 'str'
+        'subscription': 'str',
+        'status': 'str'
     }
 
     attribute_map = {
         'id': 'id',
         'name': 'name',
         'creation_date': 'creation_date',
-        'subscription': 'subscription'
+        'subscription': 'subscription',
+        'status': 'status'
     }
 
-    def __init__(self, id=None, name=None, creation_date=None, subscription=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, creation_date=None, subscription=None, status=None, local_vars_configuration=None):  # noqa: E501
         """OrganizationDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -56,6 +58,7 @@ class OrganizationDetail(object):
         self._name = None
         self._creation_date = None
         self._subscription = None
+        self._status = None
         self.discriminator = None
 
         if id is not None:
@@ -65,6 +68,7 @@ class OrganizationDetail(object):
             self.creation_date = creation_date
         if subscription is not None:
             self.subscription = subscription
+        self.status = status
 
     @property
     def id(self):
@@ -157,6 +161,32 @@ class OrganizationDetail(object):
         """
 
         self._subscription = subscription
+
+    @property
+    def status(self):
+        """Gets the status of this OrganizationDetail.  # noqa: E501
+
+
+        :return: The status of this OrganizationDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this OrganizationDetail.
+
+
+        :param status: The status of this OrganizationDetail.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                status is not None and len(status) < 1):
+            raise ValueError("Invalid value for `status`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._status = status
 
     def to_dict(self):
         """Returns the model properties as a dict"""

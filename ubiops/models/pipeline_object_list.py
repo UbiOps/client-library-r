@@ -40,8 +40,8 @@ class PipelineObjectList(object):
         'version': 'str',
         'input_type': 'str',
         'output_type': 'str',
-        'input_fields': 'list[ModelInputFieldList]',
-        'output_fields': 'list[ModelOutputFieldList]'
+        'input_fields': 'list[ModelInputFieldCreate]',
+        'output_fields': 'list[ModelOutputFieldCreate]'
     }
 
     attribute_map = {
@@ -267,7 +267,7 @@ class PipelineObjectList(object):
 
 
         :return: The input_fields of this PipelineObjectList.  # noqa: E501
-        :rtype: list[ModelInputFieldList]
+        :rtype: list[ModelInputFieldCreate]
         """
         return self._input_fields
 
@@ -277,7 +277,7 @@ class PipelineObjectList(object):
 
 
         :param input_fields: The input_fields of this PipelineObjectList.  # noqa: E501
-        :type: list[ModelInputFieldList]
+        :type: list[ModelInputFieldCreate]
         """
 
         self._input_fields = input_fields
@@ -288,7 +288,7 @@ class PipelineObjectList(object):
 
 
         :return: The output_fields of this PipelineObjectList.  # noqa: E501
-        :rtype: list[ModelOutputFieldList]
+        :rtype: list[ModelOutputFieldCreate]
         """
         return self._output_fields
 
@@ -298,7 +298,7 @@ class PipelineObjectList(object):
 
 
         :param output_fields: The output_fields of this PipelineObjectList.  # noqa: E501
-        :type: list[ModelOutputFieldList]
+        :type: list[ModelOutputFieldCreate]
         """
 
         self._output_fields = output_fields

@@ -35,7 +35,7 @@ class BatchModelRequestListResponse(object):
     openapi_types = {
         'id': 'str',
         'status': 'str',
-        'pipeline': 'bool',
+        'success': 'bool',
         'time_created': 'datetime',
         'time_last_updated': 'datetime'
     }
@@ -43,12 +43,12 @@ class BatchModelRequestListResponse(object):
     attribute_map = {
         'id': 'id',
         'status': 'status',
-        'pipeline': 'pipeline',
+        'success': 'success',
         'time_created': 'time_created',
         'time_last_updated': 'time_last_updated'
     }
 
-    def __init__(self, id=None, status=None, pipeline=None, time_created=None, time_last_updated=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, status=None, success=None, time_created=None, time_last_updated=None, local_vars_configuration=None):  # noqa: E501
         """BatchModelRequestListResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -56,14 +56,14 @@ class BatchModelRequestListResponse(object):
 
         self._id = None
         self._status = None
-        self._pipeline = None
+        self._success = None
         self._time_created = None
         self._time_last_updated = None
         self.discriminator = None
 
         self.id = id
         self.status = status
-        self.pipeline = pipeline
+        self.success = success
         self.time_created = time_created
         self.time_last_updated = time_last_updated
 
@@ -120,27 +120,25 @@ class BatchModelRequestListResponse(object):
         self._status = status
 
     @property
-    def pipeline(self):
-        """Gets the pipeline of this BatchModelRequestListResponse.  # noqa: E501
+    def success(self):
+        """Gets the success of this BatchModelRequestListResponse.  # noqa: E501
 
 
-        :return: The pipeline of this BatchModelRequestListResponse.  # noqa: E501
+        :return: The success of this BatchModelRequestListResponse.  # noqa: E501
         :rtype: bool
         """
-        return self._pipeline
+        return self._success
 
-    @pipeline.setter
-    def pipeline(self, pipeline):
-        """Sets the pipeline of this BatchModelRequestListResponse.
+    @success.setter
+    def success(self, success):
+        """Sets the success of this BatchModelRequestListResponse.
 
 
-        :param pipeline: The pipeline of this BatchModelRequestListResponse.  # noqa: E501
+        :param success: The success of this BatchModelRequestListResponse.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and pipeline is None:  # noqa: E501
-            raise ValueError("Invalid value for `pipeline`, must not be `None`")  # noqa: E501
 
-        self._pipeline = pipeline
+        self._success = success
 
     @property
     def time_created(self):

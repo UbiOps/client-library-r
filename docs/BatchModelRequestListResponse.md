@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** |  | 
 **status** | **str** |  | 
-**pipeline** | **bool** |  | 
+**success** | **bool** |  | [optional] 
 **time_created** | **datetime** |  | 
 **time_last_updated** | **datetime** |  | 
 

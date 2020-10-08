@@ -45,8 +45,8 @@ class ModelVersionList(object):
         'minimum_instances': 'int',
         'maximum_idle_time': 'int',
         'creation_date': 'datetime',
-        'last_updated_date': 'datetime',
-        'file_last_updated_date': 'datetime'
+        'last_updated': 'datetime',
+        'file_last_updated': 'datetime'
     }
 
     attribute_map = {
@@ -62,11 +62,11 @@ class ModelVersionList(object):
         'minimum_instances': 'minimum_instances',
         'maximum_idle_time': 'maximum_idle_time',
         'creation_date': 'creation_date',
-        'last_updated_date': 'last_updated_date',
-        'file_last_updated_date': 'file_last_updated_date'
+        'last_updated': 'last_updated',
+        'file_last_updated': 'file_last_updated'
     }
 
-    def __init__(self, id=None, model=None, version=None, description=None, language=None, status=None, error_message=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, creation_date=None, last_updated_date=None, file_last_updated_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, model=None, version=None, description=None, language=None, status=None, error_message=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, creation_date=None, last_updated=None, file_last_updated=None, local_vars_configuration=None):  # noqa: E501
         """ModelVersionList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -84,8 +84,8 @@ class ModelVersionList(object):
         self._minimum_instances = None
         self._maximum_idle_time = None
         self._creation_date = None
-        self._last_updated_date = None
-        self._file_last_updated_date = None
+        self._last_updated = None
+        self._file_last_updated = None
         self.discriminator = None
 
         if id is not None:
@@ -107,10 +107,10 @@ class ModelVersionList(object):
             self.maximum_idle_time = maximum_idle_time
         if creation_date is not None:
             self.creation_date = creation_date
-        if last_updated_date is not None:
-            self.last_updated_date = last_updated_date
-        if file_last_updated_date is not None:
-            self.file_last_updated_date = file_last_updated_date
+        if last_updated is not None:
+            self.last_updated = last_updated
+        if file_last_updated is not None:
+            self.file_last_updated = file_last_updated
 
     @property
     def id(self):
@@ -418,46 +418,46 @@ class ModelVersionList(object):
         self._creation_date = creation_date
 
     @property
-    def last_updated_date(self):
-        """Gets the last_updated_date of this ModelVersionList.  # noqa: E501
+    def last_updated(self):
+        """Gets the last_updated of this ModelVersionList.  # noqa: E501
 
 
-        :return: The last_updated_date of this ModelVersionList.  # noqa: E501
+        :return: The last_updated of this ModelVersionList.  # noqa: E501
         :rtype: datetime
         """
-        return self._last_updated_date
+        return self._last_updated
 
-    @last_updated_date.setter
-    def last_updated_date(self, last_updated_date):
-        """Sets the last_updated_date of this ModelVersionList.
+    @last_updated.setter
+    def last_updated(self, last_updated):
+        """Sets the last_updated of this ModelVersionList.
 
 
-        :param last_updated_date: The last_updated_date of this ModelVersionList.  # noqa: E501
+        :param last_updated: The last_updated of this ModelVersionList.  # noqa: E501
         :type: datetime
         """
 
-        self._last_updated_date = last_updated_date
+        self._last_updated = last_updated
 
     @property
-    def file_last_updated_date(self):
-        """Gets the file_last_updated_date of this ModelVersionList.  # noqa: E501
+    def file_last_updated(self):
+        """Gets the file_last_updated of this ModelVersionList.  # noqa: E501
 
 
-        :return: The file_last_updated_date of this ModelVersionList.  # noqa: E501
+        :return: The file_last_updated of this ModelVersionList.  # noqa: E501
         :rtype: datetime
         """
-        return self._file_last_updated_date
+        return self._file_last_updated
 
-    @file_last_updated_date.setter
-    def file_last_updated_date(self, file_last_updated_date):
-        """Sets the file_last_updated_date of this ModelVersionList.
+    @file_last_updated.setter
+    def file_last_updated(self, file_last_updated):
+        """Sets the file_last_updated of this ModelVersionList.
 
 
-        :param file_last_updated_date: The file_last_updated_date of this ModelVersionList.  # noqa: E501
+        :param file_last_updated: The file_last_updated of this ModelVersionList.  # noqa: E501
         :type: datetime
         """
 
-        self._file_last_updated_date = file_last_updated_date
+        self._file_last_updated = file_last_updated
 
     def to_dict(self):
         """Returns the model properties as a dict"""

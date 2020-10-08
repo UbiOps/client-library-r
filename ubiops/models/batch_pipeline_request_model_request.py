@@ -33,64 +33,72 @@ class BatchPipelineRequestModelRequest(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'request_id': 'str',
+        'id': 'str',
         'pipeline_object': 'str',
-        'status': 'str',
+        'success': 'bool',
+        'time_created': 'datetime',
+        'time_last_updated': 'datetime',
         'request_data': 'object',
         'result': 'object',
         'error_message': 'str'
     }
 
     attribute_map = {
-        'request_id': 'request_id',
+        'id': 'id',
         'pipeline_object': 'pipeline_object',
-        'status': 'status',
+        'success': 'success',
+        'time_created': 'time_created',
+        'time_last_updated': 'time_last_updated',
         'request_data': 'request_data',
         'result': 'result',
         'error_message': 'error_message'
     }
 
-    def __init__(self, request_id=None, pipeline_object=None, status=None, request_data=None, result=None, error_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, pipeline_object=None, success=None, time_created=None, time_last_updated=None, request_data=None, result=None, error_message=None, local_vars_configuration=None):  # noqa: E501
         """BatchPipelineRequestModelRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._request_id = None
+        self._id = None
         self._pipeline_object = None
-        self._status = None
+        self._success = None
+        self._time_created = None
+        self._time_last_updated = None
         self._request_data = None
         self._result = None
         self._error_message = None
         self.discriminator = None
 
-        self.request_id = request_id
+        self.id = id
         self.pipeline_object = pipeline_object
-        self.status = status
+        self.success = success
+        self.time_created = time_created
+        self.time_last_updated = time_last_updated
         self.request_data = request_data
         self.result = result
         self.error_message = error_message
 
     @property
-    def request_id(self):
-        """Gets the request_id of this BatchPipelineRequestModelRequest.  # noqa: E501
+    def id(self):
+        """Gets the id of this BatchPipelineRequestModelRequest.  # noqa: E501
 
 
-        :return: The request_id of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :return: The id of this BatchPipelineRequestModelRequest.  # noqa: E501
         :rtype: str
         """
-        return self._request_id
+        return self._id
 
-    @request_id.setter
-    def request_id(self, request_id):
-        """Sets the request_id of this BatchPipelineRequestModelRequest.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this BatchPipelineRequestModelRequest.
 
 
-        :param request_id: The request_id of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :param id: The id of this BatchPipelineRequestModelRequest.  # noqa: E501
         :type: str
         """
 
-        self._request_id = request_id
+        self._id = id
 
     @property
     def pipeline_object(self):
@@ -119,27 +127,71 @@ class BatchPipelineRequestModelRequest(object):
         self._pipeline_object = pipeline_object
 
     @property
-    def status(self):
-        """Gets the status of this BatchPipelineRequestModelRequest.  # noqa: E501
+    def success(self):
+        """Gets the success of this BatchPipelineRequestModelRequest.  # noqa: E501
 
 
-        :return: The status of this BatchPipelineRequestModelRequest.  # noqa: E501
-        :rtype: str
+        :return: The success of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :rtype: bool
         """
-        return self._status
+        return self._success
 
-    @status.setter
-    def status(self, status):
-        """Sets the status of this BatchPipelineRequestModelRequest.
+    @success.setter
+    def success(self, success):
+        """Sets the success of this BatchPipelineRequestModelRequest.
 
 
-        :param status: The status of this BatchPipelineRequestModelRequest.  # noqa: E501
-        :type: str
+        :param success: The success of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
-        self._status = status
+        self._success = success
+
+    @property
+    def time_created(self):
+        """Gets the time_created of this BatchPipelineRequestModelRequest.  # noqa: E501
+
+
+        :return: The time_created of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._time_created
+
+    @time_created.setter
+    def time_created(self, time_created):
+        """Sets the time_created of this BatchPipelineRequestModelRequest.
+
+
+        :param time_created: The time_created of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and time_created is None:  # noqa: E501
+            raise ValueError("Invalid value for `time_created`, must not be `None`")  # noqa: E501
+
+        self._time_created = time_created
+
+    @property
+    def time_last_updated(self):
+        """Gets the time_last_updated of this BatchPipelineRequestModelRequest.  # noqa: E501
+
+
+        :return: The time_last_updated of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._time_last_updated
+
+    @time_last_updated.setter
+    def time_last_updated(self, time_last_updated):
+        """Sets the time_last_updated of this BatchPipelineRequestModelRequest.
+
+
+        :param time_last_updated: The time_last_updated of this BatchPipelineRequestModelRequest.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and time_last_updated is None:  # noqa: E501
+            raise ValueError("Invalid value for `time_last_updated`, must not be `None`")  # noqa: E501
+
+        self._time_last_updated = time_last_updated
 
     @property
     def request_data(self):

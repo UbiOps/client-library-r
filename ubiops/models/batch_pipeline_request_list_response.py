@@ -35,6 +35,7 @@ class BatchPipelineRequestListResponse(object):
     openapi_types = {
         'id': 'str',
         'status': 'str',
+        'success': 'bool',
         'time_created': 'datetime',
         'time_last_updated': 'datetime'
     }
@@ -42,11 +43,12 @@ class BatchPipelineRequestListResponse(object):
     attribute_map = {
         'id': 'id',
         'status': 'status',
+        'success': 'success',
         'time_created': 'time_created',
         'time_last_updated': 'time_last_updated'
     }
 
-    def __init__(self, id=None, status=None, time_created=None, time_last_updated=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, status=None, success=None, time_created=None, time_last_updated=None, local_vars_configuration=None):  # noqa: E501
         """BatchPipelineRequestListResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -54,12 +56,14 @@ class BatchPipelineRequestListResponse(object):
 
         self._id = None
         self._status = None
+        self._success = None
         self._time_created = None
         self._time_last_updated = None
         self.discriminator = None
 
         self.id = id
         self.status = status
+        self.success = success
         self.time_created = time_created
         self.time_last_updated = time_last_updated
 
@@ -114,6 +118,27 @@ class BatchPipelineRequestListResponse(object):
             )
 
         self._status = status
+
+    @property
+    def success(self):
+        """Gets the success of this BatchPipelineRequestListResponse.  # noqa: E501
+
+
+        :return: The success of this BatchPipelineRequestListResponse.  # noqa: E501
+        :rtype: bool
+        """
+        return self._success
+
+    @success.setter
+    def success(self, success):
+        """Sets the success of this BatchPipelineRequestListResponse.
+
+
+        :param success: The success of this BatchPipelineRequestListResponse.  # noqa: E501
+        :type: bool
+        """
+
+        self._success = success
 
     @property
     def time_created(self):

@@ -33,24 +33,22 @@ class ResourceUsage(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'projects': 'str',
-        'users': 'str',
-        'models': 'str',
-        'versions': 'str',
-        'connectors': 'str',
-        'pipelines': 'str'
+        'projects': 'int',
+        'users': 'int',
+        'deployments': 'int',
+        'versions': 'int',
+        'pipelines': 'int'
     }
 
     attribute_map = {
         'projects': 'projects',
         'users': 'users',
-        'models': 'models',
+        'deployments': 'deployments',
         'versions': 'versions',
-        'connectors': 'connectors',
         'pipelines': 'pipelines'
     }
 
-    def __init__(self, projects=None, users=None, models=None, versions=None, connectors=None, pipelines=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, projects=None, users=None, deployments=None, versions=None, pipelines=None, local_vars_configuration=None):  # noqa: E501
         """ResourceUsage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -58,9 +56,8 @@ class ResourceUsage(object):
 
         self._projects = None
         self._users = None
-        self._models = None
+        self._deployments = None
         self._versions = None
-        self._connectors = None
         self._pipelines = None
         self.discriminator = None
 
@@ -68,12 +65,10 @@ class ResourceUsage(object):
             self.projects = projects
         if users is not None:
             self.users = users
-        if models is not None:
-            self.models = models
+        if deployments is not None:
+            self.deployments = deployments
         if versions is not None:
             self.versions = versions
-        if connectors is not None:
-            self.connectors = connectors
         if pipelines is not None:
             self.pipelines = pipelines
 
@@ -83,7 +78,7 @@ class ResourceUsage(object):
 
 
         :return: The projects of this ResourceUsage.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._projects
 
@@ -93,7 +88,7 @@ class ResourceUsage(object):
 
 
         :param projects: The projects of this ResourceUsage.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._projects = projects
@@ -104,7 +99,7 @@ class ResourceUsage(object):
 
 
         :return: The users of this ResourceUsage.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._users
 
@@ -114,31 +109,31 @@ class ResourceUsage(object):
 
 
         :param users: The users of this ResourceUsage.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._users = users
 
     @property
-    def models(self):
-        """Gets the models of this ResourceUsage.  # noqa: E501
+    def deployments(self):
+        """Gets the deployments of this ResourceUsage.  # noqa: E501
 
 
-        :return: The models of this ResourceUsage.  # noqa: E501
-        :rtype: str
+        :return: The deployments of this ResourceUsage.  # noqa: E501
+        :rtype: int
         """
-        return self._models
+        return self._deployments
 
-    @models.setter
-    def models(self, models):
-        """Sets the models of this ResourceUsage.
+    @deployments.setter
+    def deployments(self, deployments):
+        """Sets the deployments of this ResourceUsage.
 
 
-        :param models: The models of this ResourceUsage.  # noqa: E501
-        :type: str
+        :param deployments: The deployments of this ResourceUsage.  # noqa: E501
+        :type: int
         """
 
-        self._models = models
+        self._deployments = deployments
 
     @property
     def versions(self):
@@ -146,7 +141,7 @@ class ResourceUsage(object):
 
 
         :return: The versions of this ResourceUsage.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._versions
 
@@ -156,31 +151,10 @@ class ResourceUsage(object):
 
 
         :param versions: The versions of this ResourceUsage.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._versions = versions
-
-    @property
-    def connectors(self):
-        """Gets the connectors of this ResourceUsage.  # noqa: E501
-
-
-        :return: The connectors of this ResourceUsage.  # noqa: E501
-        :rtype: str
-        """
-        return self._connectors
-
-    @connectors.setter
-    def connectors(self, connectors):
-        """Sets the connectors of this ResourceUsage.
-
-
-        :param connectors: The connectors of this ResourceUsage.  # noqa: E501
-        :type: str
-        """
-
-        self._connectors = connectors
 
     @property
     def pipelines(self):
@@ -188,7 +162,7 @@ class ResourceUsage(object):
 
 
         :return: The pipelines of this ResourceUsage.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._pipelines
 
@@ -198,7 +172,7 @@ class ResourceUsage(object):
 
 
         :param pipelines: The pipelines of this ResourceUsage.  # noqa: E501
-        :type: str
+        :type: int
         """
 
         self._pipelines = pipelines

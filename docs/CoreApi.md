@@ -4,58 +4,36 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**batch_model_requests_batch_collect**](CoreApi.md#batch_model_requests_batch_collect) | **POST** /projects/{project_name}/models/{model_name}/versions/{version}/request-batch-collect | Retrieve multiple batch model request results
-[**batch_model_requests_batch_delete**](CoreApi.md#batch_model_requests_batch_delete) | **POST** /projects/{project_name}/models/{model_name}/versions/{version}/request-batch-delete | Delete multiple batch model requests
-[**batch_model_requests_create**](CoreApi.md#batch_model_requests_create) | **POST** /projects/{project_name}/models/{model_name}/versions/{version}/request-batch | Create batch model requests
-[**batch_model_requests_delete**](CoreApi.md#batch_model_requests_delete) | **DELETE** /projects/{project_name}/models/{model_name}/versions/{version}/request-batch/{request_id} | Delete batch model requests
-[**batch_model_requests_get**](CoreApi.md#batch_model_requests_get) | **GET** /projects/{project_name}/models/{model_name}/versions/{version}/request-batch/{request_id} | Get batch model request
-[**batch_model_requests_list**](CoreApi.md#batch_model_requests_list) | **GET** /projects/{project_name}/models/{model_name}/versions/{version}/request-batch | List batch model requests
-[**batch_pipeline_request_delete**](CoreApi.md#batch_pipeline_request_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{pipeline_request_id} | Delete batch pipeline requests
-[**batch_pipeline_request_get**](CoreApi.md#batch_pipeline_request_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{pipeline_request_id} | Get batch pipeline request
-[**batch_pipeline_requests_batch_collect**](CoreApi.md#batch_pipeline_requests_batch_collect) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request-batch-collect | Retrieve multiple batch pipeline request results
+[**batch_deployment_requests_batch_delete**](CoreApi.md#batch_deployment_requests_batch_delete) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch-delete | Delete multiple batch deployment requests
+[**batch_deployment_requests_batch_get**](CoreApi.md#batch_deployment_requests_batch_get) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch-collect | Retrieve multiple batch deployment request results
+[**batch_deployment_requests_create**](CoreApi.md#batch_deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch | Create batch deployment requests
+[**batch_deployment_requests_delete**](CoreApi.md#batch_deployment_requests_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch/{request_id} | Delete batch deployment requests
+[**batch_deployment_requests_get**](CoreApi.md#batch_deployment_requests_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch/{request_id} | Get batch deployment request
+[**batch_deployment_requests_list**](CoreApi.md#batch_deployment_requests_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch | List batch deployment requests
 [**batch_pipeline_requests_batch_delete**](CoreApi.md#batch_pipeline_requests_batch_delete) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request-batch-delete | Delete multiple batch pipeline requests
+[**batch_pipeline_requests_batch_get**](CoreApi.md#batch_pipeline_requests_batch_get) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request-batch-collect | Retrieve multiple batch pipeline request results
 [**batch_pipeline_requests_create**](CoreApi.md#batch_pipeline_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request-batch | Create batch pipeline requests
+[**batch_pipeline_requests_delete**](CoreApi.md#batch_pipeline_requests_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{pipeline_request_id} | Delete batch pipeline requests
+[**batch_pipeline_requests_get**](CoreApi.md#batch_pipeline_requests_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{pipeline_request_id} | Get batch pipeline request
 [**batch_pipeline_requests_list**](CoreApi.md#batch_pipeline_requests_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/request-batch | List batch pipeline requests
 [**blobs_create**](CoreApi.md#blobs_create) | **POST** /projects/{project_name}/blobs | Upload a blob
 [**blobs_delete**](CoreApi.md#blobs_delete) | **DELETE** /projects/{project_name}/blobs/{blob_id} | Delete a blob
 [**blobs_get**](CoreApi.md#blobs_get) | **GET** /projects/{project_name}/blobs/{blob_id} | Get a blob
 [**blobs_list**](CoreApi.md#blobs_list) | **GET** /projects/{project_name}/blobs | List blobs
-[**configurations_list**](CoreApi.md#configurations_list) | **GET** /config/connectors | List available connector configurations
-[**connectors_create**](CoreApi.md#connectors_create) | **POST** /projects/{project_name}/connectors | Create a connector
-[**connectors_delete**](CoreApi.md#connectors_delete) | **DELETE** /projects/{project_name}/connectors/{connector_name} | Delete connectors
-[**connectors_get**](CoreApi.md#connectors_get) | **GET** /projects/{project_name}/connectors/{connector_name} | Get connectors
-[**connectors_list**](CoreApi.md#connectors_list) | **GET** /projects/{project_name}/connectors | List connectors
-[**connectors_update**](CoreApi.md#connectors_update) | **PATCH** /projects/{project_name}/connectors/{connector_name} | Update connectors
-[**credentials_create**](CoreApi.md#credentials_create) | **POST** /projects/{project_name}/credentials | Create credentials
-[**credentials_delete**](CoreApi.md#credentials_delete) | **DELETE** /projects/{project_name}/credentials/{credentials_name} | Delete credentials
-[**credentials_get**](CoreApi.md#credentials_get) | **GET** /projects/{project_name}/credentials/{credentials_name} | Get credentials
-[**credentials_list**](CoreApi.md#credentials_list) | **GET** /projects/{project_name}/credentials | List credentials
-[**credentials_update**](CoreApi.md#credentials_update) | **PATCH** /projects/{project_name}/credentials/{credentials_name} | Update credentials
+[**deployment_audit_events_list**](CoreApi.md#deployment_audit_events_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/audit | List audit events for a deployment
+[**deployment_environment_variables_copy**](CoreApi.md#deployment_environment_variables_copy) | **POST** /projects/{project_name}/deployments/{deployment_name}/copy-environment-variables | Copy deployment environment variable
+[**deployment_environment_variables_create**](CoreApi.md#deployment_environment_variables_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/environment-variables | Create deployment environment variable
+[**deployment_environment_variables_delete**](CoreApi.md#deployment_environment_variables_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/environment-variables/{id} | Delete deployment environment variable
+[**deployment_environment_variables_get**](CoreApi.md#deployment_environment_variables_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/environment-variables/{id} | Get deployment environment variable
+[**deployment_environment_variables_list**](CoreApi.md#deployment_environment_variables_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/environment-variables | List deployment environment variables
+[**deployment_environment_variables_update**](CoreApi.md#deployment_environment_variables_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/environment-variables/{id} | Update deployment environment variable
+[**deployment_requests_create**](CoreApi.md#deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request | Create deployment requests
+[**deployments_create**](CoreApi.md#deployments_create) | **POST** /projects/{project_name}/deployments | Create a deployment
+[**deployments_delete**](CoreApi.md#deployments_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name} | Delete a deployment
+[**deployments_get**](CoreApi.md#deployments_get) | **GET** /projects/{project_name}/deployments/{deployment_name} | Get details of deployment
+[**deployments_list**](CoreApi.md#deployments_list) | **GET** /projects/{project_name}/deployments | List deployments in project
+[**deployments_update**](CoreApi.md#deployments_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name} | Update a deployment
 [**metrics_get**](CoreApi.md#metrics_get) | **GET** /projects/{project_name}/metrics/{metric} | Get metrics
-[**model_environment_variables_create**](CoreApi.md#model_environment_variables_create) | **POST** /projects/{project_name}/models/{model_name}/environment-variables | Create model environment variable
-[**model_environment_variables_delete**](CoreApi.md#model_environment_variables_delete) | **DELETE** /projects/{project_name}/models/{model_name}/environment-variables/{id} | Delete model environment variable
-[**model_environment_variables_get**](CoreApi.md#model_environment_variables_get) | **GET** /projects/{project_name}/models/{model_name}/environment-variables/{id} | Get model environment variable
-[**model_environment_variables_list**](CoreApi.md#model_environment_variables_list) | **GET** /projects/{project_name}/models/{model_name}/environment-variables | List model environment variables
-[**model_environment_variables_update**](CoreApi.md#model_environment_variables_update) | **PATCH** /projects/{project_name}/models/{model_name}/environment-variables/{id} | Update model environment variable
-[**model_requests_create**](CoreApi.md#model_requests_create) | **POST** /projects/{project_name}/models/{model_name}/versions/{version}/request | Create model requests
-[**model_version_environment_variables_create**](CoreApi.md#model_version_environment_variables_create) | **POST** /projects/{project_name}/models/{model_name}/versions/{version}/environment-variables | Create model version environment variable
-[**model_version_environment_variables_delete**](CoreApi.md#model_version_environment_variables_delete) | **DELETE** /projects/{project_name}/models/{model_name}/versions/{version}/environment-variables/{id} | Delete model version environment variable
-[**model_version_environment_variables_get**](CoreApi.md#model_version_environment_variables_get) | **GET** /projects/{project_name}/models/{model_name}/versions/{version}/environment-variables/{id} | Get model version environment variable
-[**model_version_environment_variables_list**](CoreApi.md#model_version_environment_variables_list) | **GET** /projects/{project_name}/models/{model_name}/versions/{version}/environment-variables | List model version environment variables
-[**model_version_environment_variables_update**](CoreApi.md#model_version_environment_variables_update) | **PATCH** /projects/{project_name}/models/{model_name}/versions/{version}/environment-variables/{id} | Update model version environment variable
-[**model_versions_create**](CoreApi.md#model_versions_create) | **POST** /projects/{project_name}/models/{model_name}/versions | Create model versions
-[**model_versions_delete**](CoreApi.md#model_versions_delete) | **DELETE** /projects/{project_name}/models/{model_name}/versions/{version} | Delete model version
-[**model_versions_file_download**](CoreApi.md#model_versions_file_download) | **GET** /projects/{project_name}/models/{model_name}/versions/{version}/download | Download model files
-[**model_versions_file_upload**](CoreApi.md#model_versions_file_upload) | **PUT** /projects/{project_name}/models/{model_name}/versions/{version}/upload | Upload model files
-[**model_versions_get**](CoreApi.md#model_versions_get) | **GET** /projects/{project_name}/models/{model_name}/versions/{version} | Get model version
-[**model_versions_list**](CoreApi.md#model_versions_list) | **GET** /projects/{project_name}/models/{model_name}/versions | List model versions
-[**model_versions_update**](CoreApi.md#model_versions_update) | **PATCH** /projects/{project_name}/models/{model_name}/versions/{version} | Update model version
-[**models_create**](CoreApi.md#models_create) | **POST** /projects/{project_name}/models | Create a model
-[**models_delete**](CoreApi.md#models_delete) | **DELETE** /projects/{project_name}/models/{model_name} | Delete a model
-[**models_get**](CoreApi.md#models_get) | **GET** /projects/{project_name}/models/{model_name} | Get details of model
-[**models_list**](CoreApi.md#models_list) | **GET** /projects/{project_name}/models | List models in project
-[**models_update**](CoreApi.md#models_update) | **PATCH** /projects/{project_name}/models/{model_name} | Update a model
-[**organization_subscriptions_list**](CoreApi.md#organization_subscriptions_list) | **GET** /organizations/{organization_name}/subscriptions | List subscriptions for an organization
 [**organization_usage_details_get**](CoreApi.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
 [**organization_usage_get**](CoreApi.md#organization_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 [**organization_users_create**](CoreApi.md#organization_users_create) | **POST** /organizations/{organization_name}/users | Add a user to an organization
@@ -69,6 +47,7 @@ Method | HTTP request | Description
 [**organizations_resource_usage**](CoreApi.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | List resource usage of an organization
 [**organizations_update**](CoreApi.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
 [**permissions_list**](CoreApi.md#permissions_list) | **GET** /permissions | List the available permissions
+[**pipeline_audit_events_list**](CoreApi.md#pipeline_audit_events_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/audit | List audit events for a pipeline
 [**pipeline_object_attachments_create**](CoreApi.md#pipeline_object_attachments_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/attachments | Create object attachments
 [**pipeline_object_attachments_delete**](CoreApi.md#pipeline_object_attachments_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/objects/{source_name}/attachments/{destination_name} | Delete attachment of a source and destination object
 [**pipeline_object_attachments_get**](CoreApi.md#pipeline_object_attachments_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/objects/{source_name}/attachments/{destination_name} | Get an attachment of a source and destination object
@@ -80,12 +59,13 @@ Method | HTTP request | Description
 [**pipeline_objects_get**](CoreApi.md#pipeline_objects_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/objects/{name} | Get an object in a pipeline
 [**pipeline_objects_list**](CoreApi.md#pipeline_objects_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/objects | List objects in a pipeline
 [**pipeline_objects_update**](CoreApi.md#pipeline_objects_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name}/objects/{name} | Update an object in a pipeline
+[**pipeline_requests_create**](CoreApi.md#pipeline_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request | Make a request to a pipeline
 [**pipelines_create**](CoreApi.md#pipelines_create) | **POST** /projects/{project_name}/pipelines | Create pipelines
 [**pipelines_delete**](CoreApi.md#pipelines_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name} | Delete pipeline
 [**pipelines_get**](CoreApi.md#pipelines_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name} | Get pipeline
 [**pipelines_list**](CoreApi.md#pipelines_list) | **GET** /projects/{project_name}/pipelines | List pipelines
-[**pipelines_request**](CoreApi.md#pipelines_request) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request | Make a request to a pipeline
 [**pipelines_update**](CoreApi.md#pipelines_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name} | Update pipeline
+[**project_audit_events_list**](CoreApi.md#project_audit_events_list) | **GET** /projects/{project_name}/audit | List audit events in a project
 [**project_environment_variables_create**](CoreApi.md#project_environment_variables_create) | **POST** /projects/{project_name}/environment-variables | Create project environment variable
 [**project_environment_variables_delete**](CoreApi.md#project_environment_variables_delete) | **DELETE** /projects/{project_name}/environment-variables/{id} | Delete project environment variable
 [**project_environment_variables_get**](CoreApi.md#project_environment_variables_get) | **GET** /projects/{project_name}/environment-variables/{id} | Get project environment variable
@@ -99,6 +79,11 @@ Method | HTTP request | Description
 [**projects_log_list**](CoreApi.md#projects_log_list) | **POST** /projects/{project_name}/logs | List logs for a project
 [**projects_resource_usage**](CoreApi.md#projects_resource_usage) | **GET** /projects/{project_name}/resources | List resource usage of a project
 [**projects_update**](CoreApi.md#projects_update) | **PATCH** /projects/{project_name} | Update a project
+[**request_schedules_create**](CoreApi.md#request_schedules_create) | **POST** /projects/{project_name}/schedules | Create request schedules
+[**request_schedules_delete**](CoreApi.md#request_schedules_delete) | **DELETE** /projects/{project_name}/schedules/{schedule_name} | Delete a request schedule
+[**request_schedules_get**](CoreApi.md#request_schedules_get) | **GET** /projects/{project_name}/schedules/{schedule_name} | Get details of a request schedule
+[**request_schedules_list**](CoreApi.md#request_schedules_list) | **GET** /projects/{project_name}/schedules | List request schedules
+[**request_schedules_update**](CoreApi.md#request_schedules_update) | **PATCH** /projects/{project_name}/schedules/{schedule_name} | Update a request schedule
 [**role_assignments_create**](CoreApi.md#role_assignments_create) | **POST** /projects/{project_name}/role-assignments | Assign a role to a user in a project
 [**role_assignments_delete**](CoreApi.md#role_assignments_delete) | **DELETE** /projects/{project_name}/role-assignments/{id} | Delete a role from a user with the given role assignment id
 [**role_assignments_get**](CoreApi.md#role_assignments_get) | **GET** /projects/{project_name}/role-assignments/{id} | Get details of a role assignment
@@ -108,11 +93,6 @@ Method | HTTP request | Description
 [**roles_get**](CoreApi.md#roles_get) | **GET** /projects/{project_name}/roles/{role_name} | Get details of a role
 [**roles_list**](CoreApi.md#roles_list) | **GET** /projects/{project_name}/roles | List the available roles in a project
 [**roles_update**](CoreApi.md#roles_update) | **PATCH** /projects/{project_name}/roles/{role_name} | Update a role in a project
-[**scheduled_requests_create**](CoreApi.md#scheduled_requests_create) | **POST** /projects/{project_name}/schedules | Create scheduled requests
-[**scheduled_requests_delete**](CoreApi.md#scheduled_requests_delete) | **DELETE** /projects/{project_name}/schedules/{schedule_name} | Delete a scheduled request
-[**scheduled_requests_get**](CoreApi.md#scheduled_requests_get) | **GET** /projects/{project_name}/schedules/{schedule_name} | Get details of a scheduled request
-[**scheduled_requests_list**](CoreApi.md#scheduled_requests_list) | **GET** /projects/{project_name}/schedules | List scheduled requests
-[**scheduled_requests_update**](CoreApi.md#scheduled_requests_update) | **PATCH** /projects/{project_name}/schedules/{schedule_name} | Update a scheduled request
 [**service_status**](CoreApi.md#service_status) | **GET** /status | Service status
 [**service_users_create**](CoreApi.md#service_users_create) | **POST** /projects/{project_name}/service-users | Create a new service user
 [**service_users_delete**](CoreApi.md#service_users_delete) | **DELETE** /projects/{project_name}/service-users/{service_user_id} | Delete service user
@@ -120,25 +100,109 @@ Method | HTTP request | Description
 [**service_users_list**](CoreApi.md#service_users_list) | **GET** /projects/{project_name}/service-users | List service users
 [**service_users_token**](CoreApi.md#service_users_token) | **PUT** /projects/{project_name}/service-users/{service_user_id}/token | Reset the token of a service user
 [**service_users_update**](CoreApi.md#service_users_update) | **PATCH** /projects/{project_name}/service-users/{service_user_id} | Update service user details
-[**subscriptions_create**](CoreApi.md#subscriptions_create) | **POST** /subscriptions | Create subscriptions
-[**subscriptions_delete**](CoreApi.md#subscriptions_delete) | **DELETE** /subscriptions/{subscription_name} | Delete a subscription
-[**subscriptions_get**](CoreApi.md#subscriptions_get) | **GET** /subscriptions/{subscription_name} | Get details of a subscription
-[**subscriptions_list**](CoreApi.md#subscriptions_list) | **GET** /subscriptions | List subscriptions
-[**subscriptions_update**](CoreApi.md#subscriptions_update) | **PATCH** /subscriptions/{subscription_name} | Update details of a subscription
 [**user_create**](CoreApi.md#user_create) | **POST** /user | Create a new user
 [**user_delete**](CoreApi.md#user_delete) | **DELETE** /user | Delete user
-[**user_get**](CoreApi.md#user_get) | **GET** /user | Get user details
-[**user_update**](CoreApi.md#user_update) | **PATCH** /user | Update user details
+[**version_environment_variables_copy**](CoreApi.md#version_environment_variables_copy) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/copy-environment-variables | Copy version environment variable
+[**version_environment_variables_create**](CoreApi.md#version_environment_variables_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables | Create version environment variable
+[**version_environment_variables_delete**](CoreApi.md#version_environment_variables_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Delete version environment variable
+[**version_environment_variables_get**](CoreApi.md#version_environment_variables_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Get version environment variable
+[**version_environment_variables_list**](CoreApi.md#version_environment_variables_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables | List version environment variables
+[**version_environment_variables_update**](CoreApi.md#version_environment_variables_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Update version environment variable
+[**versions_create**](CoreApi.md#versions_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions | Create versions
+[**versions_delete**](CoreApi.md#versions_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Delete version
+[**versions_file_download**](CoreApi.md#versions_file_download) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/download | Download deployment files
+[**versions_file_upload**](CoreApi.md#versions_file_upload) | **PUT** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/upload | Upload deployment files
+[**versions_get**](CoreApi.md#versions_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Get version
+[**versions_list**](CoreApi.md#versions_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions | List versions
+[**versions_update**](CoreApi.md#versions_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Update version
 
 
-# **batch_model_requests_batch_collect**
-> list[BatchModelRequestResultList] batch_model_requests_batch_collect(project_name, model_name, version, data)
+# **batch_deployment_requests_batch_delete**
+> object batch_deployment_requests_batch_delete(project_name, deployment_name, version, data)
 
-Retrieve multiple batch model request results
+Delete multiple batch deployment requests
 
 
 ### Description
-Retrieve multiple batch model requests. If one of the given batch model requests does not exist, an error message is given and no request is returned. A maximum of 250 model requests can be retrieved with this method. The model requests are NOT returned in the order they are given in.
+Delete multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+
+### Required Parameters 
+A list of ids for the batch requests
+
+#### Request Examples 
+```
+["2f909aeb-5c7e-4974-970d-cd0a6a073aca", "85711124-54db-4794-b83d-24492247c6e1"]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+data = None # object | 
+
+# Delete multiple batch deployment requests
+api_response = api_instance.batch_deployment_requests_batch_delete(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+ **data** | **object**|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **batch_deployment_requests_batch_get**
+> list[BatchDeploymentRequestDetail] batch_deployment_requests_batch_get(project_name, deployment_name, version, data)
+
+Retrieve multiple batch deployment request results
+
+
+### Description
+Retrieve multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters 
 A list of ids for the batch requests
@@ -149,14 +213,14 @@ A list of ids for the batch requests
 ```
 
 ### Response Structure 
-A list of dictionaries containing the details of the retrieved model requests with the following fields:
- - `id`: Unique identifier for the model request
+A list of dictionaries containing the details of the retrieved deployment requests with the following fields:
+ - `id`: Unique identifier for the deployment request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `success`: A boolean value that indicates whether the model request was successful
+ - `success`: A boolean value that indicates whether the deployment request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
  - `request_data`: A dictionary containing the data that was sent when the request was created
- - `result`: Model request result value. NULL if the request is 'pending', 'processing' or 'failed'.
+ - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
 
 #### Response Examples 
@@ -194,11 +258,7 @@ A list of dictionaries containing the details of the retrieved model requests wi
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -207,20 +267,22 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
 version = 'version_example' # str | 
 data = None # object | 
 
-    try:
-        # Retrieve multiple batch model request results
-        api_response = api_instance.batch_model_requests_batch_collect(project_name, model_name, version, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_model_requests_batch_collect: %s\n" % e)
+# Retrieve multiple batch deployment request results
+api_response = api_instance.batch_deployment_requests_batch_get(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -228,13 +290,13 @@ data = None # object |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **model_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
  **version** | **str**|  | 
  **data** | **object**|  | 
 
 ### Return type
 
-[**list[BatchModelRequestResultList]**](BatchModelRequestResultList.md)
+[**list[BatchDeploymentRequestDetail]**](BatchDeploymentRequestDetail.md)
 
 ### Authorization
 
@@ -252,119 +314,41 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **batch_model_requests_batch_delete**
-> object batch_model_requests_batch_delete(project_name, model_name, version, data)
+# **batch_deployment_requests_create**
+> list[BatchDeploymentRequestCreateResponse] batch_deployment_requests_create(project_name, deployment_name, version, data)
 
-Delete multiple batch model requests
-
-
-### Description
-Delete multiple batch model requests. If one of the given batch model requests does not exist, an error message is given and no request is deleted. A maximum of 250 model requests can be deleted with this method.
-
-### Required Parameters 
-A list of ids for the batch requests
-
-#### Request Examples 
-```
-["2f909aeb-5c7e-4974-970d-cd0a6a073aca", "85711124-54db-4794-b83d-24492247c6e1"]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-data = None # object | 
-
-    try:
-        # Delete multiple batch model requests
-        api_response = api_instance.batch_model_requests_batch_delete(project_name, model_name, version, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_model_requests_batch_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
- **data** | **object**|  | 
-
-### Return type
-
-**object**
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **batch_model_requests_create**
-> list[BatchModelRequestCreateResponse] batch_model_requests_create(project_name, model_name, version, data)
-
-Create batch model requests
+Create batch deployment requests
 
 
 ### Description
-Request multiple predictions from a model. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the model request collect methods. It is only possible to make a model request if a model file is uploaded for that model version and the model build has succeeded (meaning that the model version is in available state).
+Request multiple predictions from a deployment. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
+In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
 
 If one of the requests is faulty, all requests are denied. The maximum number of requests per bulk call is 250.
 
 ### Required Parameters 
-A list of dictionaries, where each dictionary contains the input fields of the model as keys. It is also possible to send a single dictionary as input.
+In case of structured input deployment: A list of dictionaries, where each dictionary contains the input fields of the deployment as keys. It is also possible to send a single dictionary as input.
+In case of plain input deployment: A list of strings. It is also possible to send a single string as input.
 
 #### Request Examples 
 ```
 [
   {
-    "model-input-field-1": 5.0,
-    "model-input-field-2": "N",
-    "model-input-field-3": [0.25, 0.25, 2.1, 16.3]
+    "input-field-1": 5.0,
+    "input-field-2": "N",
+    "input-field-3": [0.25, 0.25, 2.1, 16.3]
   },
   {
-    "model-input-field-1": 3.0,
-    "model-input-field-2": "S",
-    "model-input-field-3": [4.23, 3.27, 2.41, 12.4]
+    "input-field-1": 3.0,
+    "input-field-2": "S",
+    "input-field-3": [4.23, 3.27, 2.41, 12.4]
   }
 ]
 ```
 
 ### Response Structure 
-A list of dictionaries containing the details of the created model requests with the following fields:
- - `id`: Unique identifier for the model request, which can be used to collect the result
+A list of dictionaries containing the details of the created deployment requests with the following fields:
+ - `id`: Unique identifier for the deployment request, which can be used to collect the result
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
  - `time_created`: Server time that the request was made (current time)
 
@@ -389,11 +373,7 @@ A list of dictionaries containing the details of the created model requests with
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -402,20 +382,22 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-data = [ubiops.ModelRequestCreate()] # list[ModelRequestCreate] | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Create batch model requests
-        api_response = api_instance.batch_model_requests_create(project_name, model_name, version, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_model_requests_create: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+data = [ubiops.DeploymentRequestCreate()] # list[DeploymentRequestCreate] | 
+
+# Create batch deployment requests
+api_response = api_instance.batch_deployment_requests_create(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -423,13 +405,13 @@ data = [ubiops.ModelRequestCreate()] # list[ModelRequestCreate] |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **model_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
  **version** | **str**|  | 
- **data** | [**list[ModelRequestCreate]**](ModelRequestCreate.md)|  | 
+ **data** | [**list[DeploymentRequestCreate]**](DeploymentRequestCreate.md)|  | 
 
 ### Return type
 
-[**list[BatchModelRequestCreateResponse]**](BatchModelRequestCreateResponse.md)
+[**list[BatchDeploymentRequestCreateResponse]**](BatchDeploymentRequestCreateResponse.md)
 
 ### Authorization
 
@@ -447,25 +429,21 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **batch_model_requests_delete**
-> batch_model_requests_delete(project_name, model_name, request_id, version)
+# **batch_deployment_requests_delete**
+> batch_deployment_requests_delete(project_name, deployment_name, request_id, version)
 
-Delete batch model requests
+Delete batch deployment requests
 
 
 ### Description
-Delete a batch model request
+Delete a batch deployment request
 
 
 ### Example
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -474,19 +452,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
 request_id = 'request_id_example' # str | 
 version = 'version_example' # str | 
 
-    try:
-        # Delete batch model requests
-        api_instance.batch_model_requests_delete(project_name, model_name, request_id, version)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_model_requests_delete: %s\n" % e)
+# Delete batch deployment requests
+api_instance.batch_deployment_requests_delete(project_name, deployment_name, request_id, version)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -494,7 +474,7 @@ version = 'version_example' # str |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **model_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
  **request_id** | **str**|  | 
  **version** | **str**|  | 
 
@@ -508,8 +488,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -518,24 +498,24 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **batch_model_requests_get**
-> BatchModelRequestResultList batch_model_requests_get(project_name, model_name, request_id, version)
+# **batch_deployment_requests_get**
+> BatchDeploymentRequestSingleDetail batch_deployment_requests_get(project_name, deployment_name, request_id, version)
 
-Get batch model request
+Get batch deployment request
 
 
 ### Description
-Get a batch request for a model. With this method, the result of a batch request may be retrieved.
+Get a batch request for a deployment. With this method, the result of a batch request may be retrieved.
 
 ### Response Structure 
-A dictionary containing the details of the model request with the following fields:
- - `id`: Unique identifier for the model request
+A dictionary containing the details of the deployment request with the following fields:
+ - `id`: Unique identifier for the deployment request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `success`: A boolean value that indicates whether the model request was successful
+ - `success`: A boolean value that indicates whether the deployment request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
  - `request_data`: A dictionary containing the data that was sent when the request was created
- - `result`: Model request result value. NULL if the request is 'pending', 'processing' or 'failed'.
+ - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
 
 #### Response Examples 
@@ -559,11 +539,7 @@ A dictionary containing the details of the model request with the following fiel
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -572,20 +548,22 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
 request_id = 'request_id_example' # str | 
 version = 'version_example' # str | 
 
-    try:
-        # Get batch model request
-        api_response = api_instance.batch_model_requests_get(project_name, model_name, request_id, version)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_model_requests_get: %s\n" % e)
+# Get batch deployment request
+api_response = api_instance.batch_deployment_requests_get(project_name, deployment_name, request_id, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -593,13 +571,13 @@ version = 'version_example' # str |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **model_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
  **request_id** | **str**|  | 
  **version** | **str**|  | 
 
 ### Return type
 
-[**BatchModelRequestResultList**](BatchModelRequestResultList.md)
+[**BatchDeploymentRequestSingleDetail**](BatchDeploymentRequestSingleDetail.md)
 
 ### Authorization
 
@@ -607,7 +585,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -617,28 +595,28 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **batch_model_requests_list**
-> list[BatchModelRequestListResponse] batch_model_requests_list(project_name, model_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
+# **batch_deployment_requests_list**
+> list[BatchDeploymentRequestList] batch_deployment_requests_list(project_name, deployment_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
 
-List batch model requests
+List batch deployment requests
 
 
 ### Description
-List all requests for a model version
+List all requests for a version
 
 ### Optional Parameters
 The following parameters should be given as Query parameters: 
 - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'
-- `success`: A boolean value that indicates whether the model request was successful
+- `success`: A boolean value that indicates whether the deployment request was successful
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
 
 ### Response Structure 
-A list of dictionaries containing the details of the model requests with the following fields:
- - `id`: Unique identifier for the model request
+A list of dictionaries containing the details of the deployment requests with the following fields:
+ - `id`: Unique identifier for the deployment request
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `success`: A boolean value that indicates whether the model request was successful
+ - `success`: A boolean value that indicates whether the deployment request was successful
  - `time_created`: Server time that the request was made (current time)
  - `time_last_updated`: Server time that the request was last updated
 
@@ -667,11 +645,7 @@ A list of dictionaries containing the details of the model requests with the fol
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -680,11 +654,13 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
 version = 'version_example' # str | 
 status = 'status_example' # str |  (optional)
 success = True # bool |  (optional)
@@ -692,12 +668,12 @@ limit = 56 # int |  (optional)
 offset = 56 # int |  (optional)
 sort = 'sort_example' # str |  (optional)
 
-    try:
-        # List batch model requests
-        api_response = api_instance.batch_model_requests_list(project_name, model_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_model_requests_list: %s\n" % e)
+# List batch deployment requests
+api_response = api_instance.batch_deployment_requests_list(project_name, deployment_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -705,7 +681,7 @@ sort = 'sort_example' # str |  (optional)
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **model_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
  **version** | **str**|  | 
  **status** | **str**|  | [optional] 
  **success** | **bool**|  | [optional] 
@@ -715,292 +691,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[BatchModelRequestListResponse]**](BatchModelRequestListResponse.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **batch_pipeline_request_delete**
-> batch_pipeline_request_delete(project_name, pipeline_name, pipeline_request_id)
-
-Delete batch pipeline requests
-
-
-### Description
-Delete a batch pipeline request. This action cancels all the model requests in the pipeline.
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-pipeline_name = 'pipeline_name_example' # str | 
-pipeline_request_id = 'pipeline_request_id_example' # str | 
-
-    try:
-        # Delete batch pipeline requests
-        api_instance.batch_pipeline_request_delete(project_name, pipeline_name, pipeline_request_id)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_pipeline_request_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **pipeline_name** | **str**|  | 
- **pipeline_request_id** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **batch_pipeline_request_get**
-> BatchPipelineRequestResultList batch_pipeline_request_get(project_name, pipeline_name, pipeline_request_id)
-
-Get batch pipeline request
-
-
-### Description
-Get a batch request for a pipeline. With this method, the result of the batch request may be retrieved.
-
-### Response Structure 
-A dictionary containing the details of the pipeline request with the following fields:
- - `id`: Unique identifier for the pipeline request
- - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `success`: A boolean value that indicates whether the pipeline request was successful
- - `time_created`: Server time that the request was made (current time)
- - `time_last_updated`: Server time that the request was last updated
- - `request_data`: A dictionary containing the data that was sent when the request was created
- - `model_requests`: A list of requests of the models in the pipeline. This field is empty when the request is initialized and is updated when all the model requests in the pipeline are completed.
- - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
-
-#### Response Examples 
-```
-{
-  "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
-  "status": "pending",
-  "success": true,
-  "time_created": "2020-03-28T20:00:26.613+00:00",
-  "time_last_updated": "2020-03-28T20:00:26.613+00:00",
-  "request_data": {
-    "input_field": 23.5
-  },
-  "model_requests": [],
-  "error_message": null
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-pipeline_name = 'pipeline_name_example' # str | 
-pipeline_request_id = 'pipeline_request_id_example' # str | 
-
-    try:
-        # Get batch pipeline request
-        api_response = api_instance.batch_pipeline_request_get(project_name, pipeline_name, pipeline_request_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_pipeline_request_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **pipeline_name** | **str**|  | 
- **pipeline_request_id** | **str**|  | 
-
-### Return type
-
-[**BatchPipelineRequestResultList**](BatchPipelineRequestResultList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **batch_pipeline_requests_batch_collect**
-> list[BatchPipelineRequestResultList] batch_pipeline_requests_batch_collect(project_name, pipeline_name, data)
-
-Retrieve multiple batch pipeline request results
-
-
-### Description
-Retrieve multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
-
-### Required Parameters 
-A list of ids for the batch requests
-
-#### Request Examples 
-```
-["2521378e-263e-4e2e-85e9-a96254b36536", "69eca481-8576-49e8-8e20-ea56f2005bcb"]
-```
-
-### Response Structure 
-A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
- - `id`: Unique identifier for the pipeline request
- - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `success`: A boolean value that indicates whether the pipeline request was successful
- - `time_created`: Server time that the request was made (current time)
- - `time_last_updated`: Server time that the request was last updated
- - `request_data`: A dictionary containing the data that was sent when the request was created
- - `model_requests`: A list of requests of the models in the pipeline. This field is empty when the request is initialized and is updated when all the model requests in the pipeline are completed.
- - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
-
-#### Response Examples 
-```
-[
-    {
-      "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
-      "status": "pending",
-      "success": false,
-      "time_created": "2020-063-28T20:00:26.613+00:00",
-      "time_last_updated": "2020-03-28T20:00:26.613+00:00",
-      "request_data": {
-        "input_field": 23.5
-      },
-      "model_requests": [],
-      "error_message": null
-    },
-    {
-      "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
-      "status": "pending",
-      "success": false,
-      "time_created": "2020-063-28T20:00:26.613+00:00",
-      "time_last_updated": "2020-03-28T20:00:26.613+00:00",
-      "request_data": {
-        "input_field": 23.5
-      },
-      "model_requests": [],
-      "error_message": null
-    }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-pipeline_name = 'pipeline_name_example' # str | 
-data = None # object | 
-
-    try:
-        # Retrieve multiple batch pipeline request results
-        api_response = api_instance.batch_pipeline_requests_batch_collect(project_name, pipeline_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_pipeline_requests_batch_collect: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **pipeline_name** | **str**|  | 
- **data** | **object**|  | 
-
-### Return type
-
-[**list[BatchPipelineRequestResultList]**](BatchPipelineRequestResultList.md)
+[**list[BatchDeploymentRequestList]**](BatchDeploymentRequestList.md)
 
 ### Authorization
 
@@ -1040,11 +731,7 @@ A list of ids for the batch requests
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1053,19 +740,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 data = None # object | 
 
-    try:
-        # Delete multiple batch pipeline requests
-        api_response = api_instance.batch_pipeline_requests_batch_delete(project_name, pipeline_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_pipeline_requests_batch_delete: %s\n" % e)
+# Delete multiple batch pipeline requests
+api_response = api_instance.batch_pipeline_requests_batch_delete(project_name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -1096,6 +785,123 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **batch_pipeline_requests_batch_get**
+> list[BatchPipelineRequestDetail] batch_pipeline_requests_batch_get(project_name, pipeline_name, data)
+
+Retrieve multiple batch pipeline request results
+
+
+### Description
+Retrieve multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
+
+### Required Parameters 
+A list of ids for the batch requests
+
+#### Request Examples 
+```
+["2521378e-263e-4e2e-85e9-a96254b36536", "69eca481-8576-49e8-8e20-ea56f2005bcb"]
+```
+
+### Response Structure 
+A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
+ - `id`: Unique identifier for the pipeline request
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline request was successful
+ - `time_created`: Server time that the request was made (current time)
+ - `time_last_updated`: Server time that the request was last updated
+ - `request_data`: A dictionary containing the data that was sent when the request was created
+ - `deployment_requests`: A list of requests to the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.
+ - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+
+#### Response Examples 
+```
+[
+    {
+      "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+      "status": "pending",
+      "success": false,
+      "time_created": "2020-063-28T20:00:26.613+00:00",
+      "time_last_updated": "2020-03-28T20:00:26.613+00:00",
+      "request_data": {
+        "input_field": 23.5
+      },
+      "deployment_requests": [],
+      "error_message": null
+    },
+    {
+      "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+      "status": "pending",
+      "success": false,
+      "time_created": "2020-063-28T20:00:26.613+00:00",
+      "time_last_updated": "2020-03-28T20:00:26.613+00:00",
+      "request_data": {
+        "input_field": 23.5
+      },
+      "deployment_requests": [],
+      "error_message": null
+    }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+pipeline_name = 'pipeline_name_example' # str | 
+data = None # object | 
+
+# Retrieve multiple batch pipeline request results
+api_response = api_instance.batch_pipeline_requests_batch_get(project_name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **pipeline_name** | **str**|  | 
+ **data** | **object**|  | 
+
+### Return type
+
+[**list[BatchPipelineRequestDetail]**](BatchPipelineRequestDetail.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **batch_pipeline_requests_create**
 > list[BatchPipelineRequestCreateResponse] batch_pipeline_requests_create(project_name, pipeline_name, data)
 
@@ -1108,7 +914,8 @@ Request multiple predictions from a pipeline. The request follows an asynchronou
 The maximum number of requests that can be created per batch is 100.
 
 ### Required Parameters 
-A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys
+In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
+In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.
 
 #### Request Examples 
 ```
@@ -1154,11 +961,7 @@ A list of dictionaries containing the details of the created pipeline requests w
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1167,19 +970,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 data = [ubiops.PipelineRequestCreate()] # list[PipelineRequestCreate] | 
 
-    try:
-        # Create batch pipeline requests
-        api_response = api_instance.batch_pipeline_requests_create(project_name, pipeline_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_pipeline_requests_create: %s\n" % e)
+# Create batch pipeline requests
+api_response = api_instance.batch_pipeline_requests_create(project_name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -1210,8 +1015,172 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **batch_pipeline_requests_delete**
+> batch_pipeline_requests_delete(project_name, pipeline_name, pipeline_request_id)
+
+Delete batch pipeline requests
+
+
+### Description
+Delete a batch pipeline request. This action cancels all the deployment requests in the pipeline.
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+pipeline_name = 'pipeline_name_example' # str | 
+pipeline_request_id = 'pipeline_request_id_example' # str | 
+
+# Delete batch pipeline requests
+api_instance.batch_pipeline_requests_delete(project_name, pipeline_name, pipeline_request_id)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **pipeline_name** | **str**|  | 
+ **pipeline_request_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **batch_pipeline_requests_get**
+> BatchPipelineRequestSingleDetail batch_pipeline_requests_get(project_name, pipeline_name, pipeline_request_id)
+
+Get batch pipeline request
+
+
+### Description
+Get a batch request for a pipeline. With this method, the result of the batch request may be retrieved.
+
+### Response Structure 
+A dictionary containing the details of the pipeline request with the following fields:
+ - `id`: Unique identifier for the pipeline request
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline request was successful
+ - `time_created`: Server time that the request was made (current time)
+ - `time_last_updated`: Server time that the request was last updated
+ - `request_data`: A dictionary containing the data that was sent when the request was created
+ - `deployment_requests`: A list of requests of the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.
+ - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+ - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+
+#### Response Examples 
+```
+{
+  "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+  "status": "pending",
+  "success": true,
+  "time_created": "2020-03-28T20:00:26.613+00:00",
+  "time_last_updated": "2020-03-28T20:00:26.613+00:00",
+  "request_data": {
+    "input_field": 23.5
+  },
+  "deployment_requests": [],
+  "error_message": null,
+  "created_by": "my.example.user@ubiops.com"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+pipeline_name = 'pipeline_name_example' # str | 
+pipeline_request_id = 'pipeline_request_id_example' # str | 
+
+# Get batch pipeline request
+api_response = api_instance.batch_pipeline_requests_get(project_name, pipeline_name, pipeline_request_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **pipeline_name** | **str**|  | 
+ **pipeline_request_id** | **str**|  | 
+
+### Return type
+
+[**BatchPipelineRequestSingleDetail**](BatchPipelineRequestSingleDetail.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **batch_pipeline_requests_list**
-> list[BatchPipelineRequestListResponse] batch_pipeline_requests_list(project_name, pipeline_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
+> list[BatchPipelineRequestList] batch_pipeline_requests_list(project_name, pipeline_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
 
 List batch pipeline requests
 
@@ -1260,11 +1229,7 @@ A list of dictionaries containing the details of the pipeline requests with the 
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1273,10 +1238,12 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 status = 'status_example' # str |  (optional)
 success = True # bool |  (optional)
@@ -1284,12 +1251,12 @@ limit = 56 # int |  (optional)
 offset = 56 # int |  (optional)
 sort = 'sort_example' # str |  (optional)
 
-    try:
-        # List batch pipeline requests
-        api_response = api_instance.batch_pipeline_requests_list(project_name, pipeline_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->batch_pipeline_requests_list: %s\n" % e)
+# List batch pipeline requests
+api_response = api_instance.batch_pipeline_requests_list(project_name, pipeline_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -1306,7 +1273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[BatchPipelineRequestListResponse]**](BatchPipelineRequestListResponse.md)
+[**list[BatchPipelineRequestList]**](BatchPipelineRequestList.md)
 
 ### Authorization
 
@@ -1314,7 +1281,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1331,13 +1298,13 @@ Upload a blob
 
 
 ### Description 
-Upload a blob to a project. The returned blob_id may be passed in a model or pipeline request as input.
+Upload a blob to a project. The returned blob_id may be passed in a deployment or pipeline request as input.
 
 The uploaded blob file can be retrieved by passing the blob_id as well. 
 
 ### Optional Parameters 
 These parameters should be given in the header.
-- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds (default = 259200 seconds, 3 days)
+- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 259200 seconds (or 72 hours), the minimum value is 900 seconds and the maximum value is 259200 seconds. 
 
 ### Response Structure 
 The details of the uploaded blob
@@ -1363,11 +1330,7 @@ The details of the uploaded blob
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1376,19 +1339,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 file = '/path/to/file' # file | 
 blob_ttl = 56 # int |  (optional)
 
-    try:
-        # Upload a blob
-        api_response = api_instance.blobs_create(project_name, file, blob_ttl=blob_ttl)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->blobs_create: %s\n" % e)
+# Upload a blob
+api_response = api_instance.blobs_create(project_name, file, blob_ttl=blob_ttl)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -1433,11 +1398,7 @@ Delete a blob from a project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1446,17 +1407,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 blob_id = 'blob_id_example' # str | 
 
-    try:
-        # Delete a blob
-        api_instance.blobs_delete(project_name, blob_id)
-    except ApiException as e:
-        print("Exception when calling CoreApi->blobs_delete: %s\n" % e)
+# Delete a blob
+api_instance.blobs_delete(project_name, blob_id)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -1476,8 +1439,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -1487,7 +1450,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **blobs_get**
-> BlobUpload blobs_get(project_name, blob_id)
+> file blobs_get(project_name, blob_id)
 
 Get a blob
 
@@ -1503,11 +1466,7 @@ Download a blob file in a project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1516,18 +1475,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 blob_id = 'blob_id_example' # str | 
 
-    try:
-        # Get a blob
-        api_response = api_instance.blobs_get(project_name, blob_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->blobs_get: %s\n" % e)
+# Get a blob
+with api_instance.blobs_get(project_name, blob_id) as response:
+    filename = response.getfilename()
+    content = response.read()
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -1539,7 +1501,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BlobUpload**](BlobUpload.md)
+**file**
 
 ### Authorization
 
@@ -1547,7 +1509,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1604,11 +1566,7 @@ A list of details of the blobs in the project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1617,19 +1575,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 range = 56 # int |  (optional)
 creation_date = 'creation_date_example' # str |  (optional)
 
-    try:
-        # List blobs
-        api_response = api_instance.blobs_list(project_name, range=range, creation_date=creation_date)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->blobs_list: %s\n" % e)
+# List blobs
+api_response = api_instance.blobs_list(project_name, range=range, creation_date=creation_date)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -1650,7 +1610,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1660,47 +1620,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **configurations_list**
-> list[ConfigurationList] configurations_list()
+# **deployment_audit_events_list**
+> list[AuditList] deployment_audit_events_list(project_name, deployment_name, action=action, limit=limit, offset=offset)
 
-List available connector configurations
+List audit events for a deployment
 
 
-### Description
-Get the details of available connectors. The configuration parameters for both the connectors and their corresponding credentials are returned with the required names and data types. These parameters must be provided when creating credentials and connectors.
-If a new connector is supported, the necessary configuration parameters can be accessed with this method.
+### Description 
+List all audit events for a deployment including versions
 
-### Response Structure
-Details of the available connectors and their credentials
-- `connector`: Name of the connector
-- `connector_type`: Type of the connector. It can be either structured or blob depending on what type of data is supported by the connector.
-- `connector_configuration`: A dictionary with the following keys:
-    - `parameter`: Name of the parameter necessary for the connector configuration
-    - `name`: Descriptive name of the parameter
-    - `description`: A description of the parameter
-    - `input_field`: The HTML input field type for the UI
-    - `default`: The default value for the parameter
-    - `protected`: A boolean field to indicate if the parameter should be kept as hidden.
-    - `regex`: The regex that is used to validate the parameter
-- `credentials_configuration`: A dictionary with the following keys:
-    - `parameter`: Name of the parameter necessary for the credentials configuration
-    - `name`: Descriptive name of the parameter
-    - `description`: A description of the parameter
-    - `input_field`: The HTML input field type for the UI
-    - `default`: The default value for the parameter
-    - `protected`: A boolean field to indicate if the parameter should be kept as hidden.
-    - `regex`: The regex that is used to validate the parameter
+### Optional Parameters
+The following parameters should be given as query parameters:
+- `action`: Type of action. It can be one of: create, update, delete, info.
+- `limit`: The maximum number of audit events given back, default is 50
+- `offset`: The number which forms the starting point of the audit events given back. If offset equals 2, then the first 2 events will be omitted from the list.
+
+### Response Structure 
+A list of details of the audit events for a deployment
+- `id`: Unique identifier for the audit event (UUID)
+- `date`: The date when the action was performed
+- `action`: Type of action. It can be one of: create, update, delete, info. *info* action denotes that the action does not fall into create, update or delete categories.
+- `user`: Email of the user who performed the action
+- `event`: Description of the event
+- `object_type`: Type of the object on which the action was performed
+- `object_name`: Name of the object on which the action was performed. If the object is deleted at the time of listing audit events, this field is empty.
+
+#### Response Examples 
+```
+[
+  {
+    "id": "25750859-e082-44df-bde9-cd85ca3f869c",
+    "date": "2020-10-23T12:03:55.675+00:00",
+    "action": "delete",
+    "user": "user@example.com",
+    "event": "Deleted environment variable ENV_VAR for deployment deployment-1",
+    "object_type": "deployment",
+    "object_name": "deployment-1"
+  },
+  {
+    "id": "ce81814d-b00c-4094-a483-814afdb80875",
+    "date": "2020-10-23T12:04:28.645+00:00",
+    "action": "create",
+    "user": "user@example.com",
+    "event": "Created version v1 for deployment deployment-1",
+    "object_type": "deployment",
+    "object_name": "audit-deployment"
+  }
+]
+```
 
 
 ### Example
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -1709,24 +1683,38 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # List available connector configurations
-        api_response = api_instance.configurations_list()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->configurations_list: %s\n" % e)
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+action = 'action_example' # str |  (optional)
+limit = 56 # int |  (optional)
+offset = 56 # int |  (optional)
+
+# List audit events for a deployment
+api_response = api_instance.deployment_audit_events_list(project_name, deployment_name, action=action, limit=limit, offset=offset)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **action** | **str**|  | [optional] 
+ **limit** | **int**|  | [optional] 
+ **offset** | **int**|  | [optional] 
 
 ### Return type
 
-[**list[ConfigurationList]**](ConfigurationList.md)
+[**list[AuditList]**](AuditList.md)
 
 ### Authorization
 
@@ -1734,7 +1722,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -1744,659 +1732,844 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **connectors_create**
-> ConnectorList connectors_create(project_name, data)
+# **deployment_environment_variables_copy**
+> list[InheritedEnvironmentVariableList] deployment_environment_variables_copy(project_name, deployment_name, data)
 
-Create a connector
+Copy deployment environment variable
 
 
 ### Description
-Create a connector by defining its necessary configuration parameters. Connectors use a reference to credentials which will be used in authentication.
-
-The type of a connector can be either a blob or structured. This input type is inferred from the given *type* field. For example, an aws_s3 connector is of type blob while a postgresql connector is structured.
-For the **blob** type connectors, a default field is created with the name *blob* and data type *blob*. When blob connectors are attached in a pipeline, this field must be used in the mapping. It is not possible to define other fields for blob connectors.
+Copy existing environment variables from a source object to the deployment. Variables of the deployment with the same name as ones from the source object will be overwritten with the new value. Only the copied variables are returned.
 
 ### Required Parameters
-- `name`: Name of the connector. It is unique within a project.
-- `type`: Type of the connector. It should be one of the supported connectors such as aws_s3, postgresql and gcp_cloud_storage. The full list of supported connectors can be obtained from */config/connectors* endpoint.
-- `credentials`: Name of referenced credentials
-- `configuration`: A dictionary which should contain the fields necessary for the given type
+- `source_deployment`: The name of the deployment from which the variables will be copied
 
 ### Optional Parameters
-- `input_fields`: A list of connector fields with name and data_type. For example, for postgresql type of connector, these fields correspond to the columns of a table. In case of blob connectors, the input_fields should be omitted or given as an empty list. For structured connectors, they must be provided.
+- `source_version`: The version of the object from which the variables will be copied
 
 #### Request Examples
-A postgresql connector
+Copy the environment variables from a deployment
 ```
 {
-  "name": "postgresql-connector",
-  "type": "postgresql",
-  "credentials": "postgresql-credentials",
-  "configuration": {
-    "database": "database-1",
-    "schema": "public",
-    "table": "table-1"
-  },
-  "input_fields": [
-    {
-      "name": "field-1",
-      "data_type": "int"
-    },
-     {
-      "name": "field-2",
-      "data_type": "double"
-    }
-  ]
+  "source_deployment": "example-deployment"
+}
+```
+
+Copy the environment variables from a version
+```
+{
+  "source_deployment": "example-deployment",
+  "source_version": "v1"
 }
 ```
 
 ### Response Structure 
-Details of the created connector 
-- `id`: Unique identifier for the connector (UUID)
-- `name`: Name of the connector
-- `type`: Type of the connector
-- `input_type`: Type of the connector according to the type field. It can be either structured or blob.
-- `project`: Project name in which the connector is created
-- `credentials`: Name of referenced credentials
-- `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
-- `input_fields`: A list of connector fields with name and data_type
-- `status`: The state of the connector. It is initialized as pending_verification.
-- `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
-- `creation_date`: The date when the connector was created
-- `last_updated`: The date when the connector was last updated
+A list of the copied variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+- `inheritance_type`: Type of parent object that this variable is inherited from. Will be null for copied environment variables.
+- `inheritance_name`: Name of the parent object that this variable is inherited from. Will be null for copied environment variables.
 
-#### Response Examples
+#### Response Examples 
+```
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "deployment_specific_variable",
+    "value": "some_value",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
+    "name": "database_password",
+    "value": null,
+    "secret": true,
+    "inheritance_type": null,
+    "inheritance_name": null
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+data = ubiops.EnvironmentVariableCopy() # EnvironmentVariableCopy | 
+
+# Copy deployment environment variable
+api_response = api_instance.deployment_environment_variables_copy(project_name, deployment_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **data** | [**EnvironmentVariableCopy**](EnvironmentVariableCopy.md)|  | 
+
+### Return type
+
+[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployment_environment_variables_create**
+> EnvironmentVariableList deployment_environment_variables_create(project_name, deployment_name, data)
+
+Create deployment environment variable
+
+
+### Description
+Create an environment variable for the deployment. This variable will be inherited by all versions of this deployment. Variables inherited from the project can be shadowed by creating a variable with the same name.
+
+### Required Parameters
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
+- `value`: The value of the variable as a string. It may be an empty string ("").
+- `secret`: If this variable contains sensitive information, set this to true to hide it from other users.
+
+#### Request Examples
 ```
 {
-  "id": "e0342249-853c-4879-bd08-5cd1af572d7e",
-  "name": "postgresql-connector",
-  "type": "postgresql",
-  "input_type": "structured",
-  "status": "pending_verification",
-  "error_message": "",
-  "project": "project-1",
-  "credentials": "postgresql-credentials",
-  "configuration": {
-    "database": "database-1",
-    "schema": "public",
-    "table": "table-1"
+  "name": "deployment_variable_a",
+  "value": "some_value",
+  "secret": false
+}
+```
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+{
+"id": "7c28a2be-507e-4fae-981d-54e94f22dab0",
+"name": "deployment_variable_a",
+"value": "some_value",
+"secret": false
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
+
+# Create deployment environment variable
+api_response = api_instance.deployment_environment_variables_create(project_name, deployment_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployment_environment_variables_delete**
+> deployment_environment_variables_delete(project_name, deployment_name, id)
+
+Delete deployment environment variable
+
+
+### Description
+Delete an environment variable of the deployment
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+id = 'id_example' # str | 
+
+# Delete deployment environment variable
+api_instance.deployment_environment_variables_delete(project_name, deployment_name, id)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployment_environment_variables_get**
+> EnvironmentVariableList deployment_environment_variables_get(project_name, deployment_name, id)
+
+Get deployment environment variable
+
+
+### Description
+Retrieve details of a deployment environment variable. This cannot be used to retrieve details of inherited variables.
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+[
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+id = 'id_example' # str | 
+
+# Get deployment environment variable
+api_response = api_instance.deployment_environment_variables_get(project_name, deployment_name, id)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **id** | **str**|  | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployment_environment_variables_list**
+> list[InheritedEnvironmentVariableList] deployment_environment_variables_list(project_name, deployment_name)
+
+List deployment environment variables
+
+
+### Description
+List the environment variables defined for the deployment. Includes environment variables defined at project level.
+ 
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project` or null if the variable was defined for the deployment directly
+- `inheritance_name`: Name of the parent object that this variable is inherited from - will be null if the variable was defined for the deployment directly
+
+#### Response Examples 
+```
+[
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
   },
+  {
+    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
+    "name": "database_password",
+    "value": null,
+    "secret": true,
+    "inheritance_type": "project",
+    "inheritance_name": "project_name"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+
+# List deployment environment variables
+api_response = api_instance.deployment_environment_variables_list(project_name, deployment_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+
+### Return type
+
+[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployment_environment_variables_update**
+> EnvironmentVariableList deployment_environment_variables_update(project_name, deployment_name, id, data)
+
+Update deployment environment variable
+
+
+### Description
+Update an environment variable for the deployment. This cannot be used to update inherited variables; to change an inherited variable for a specific deployment you can create a variable with the same name for the deployment.
+
+### Required Parameters
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
+- `value`: The value of the variable as a string. It may be an empty string ("").
+- `secret`: If this variable contains sensitive information, set this to true to hide it from other users. Can be updated from false to true, but not from true to false (i.e. secrets will stay secrets).
+
+#### Request Examples
+```
+{
+  "name": "deployment_variable_a",
+  "value": "some new value",
+  "secret": false
+}
+```
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+{
+  "id": "7c28a2be-507e-4fae-981d-54e94f22dab0",
+  "name": "deployment_variable_a",
+  "value": "some new value",
+  "secret": false
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+id = 'id_example' # str | 
+data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
+
+# Update deployment environment variable
+api_response = api_instance.deployment_environment_variables_update(project_name, deployment_name, id, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **id** | **str**|  | 
+ **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployment_requests_create**
+> DeploymentRequestList deployment_requests_create(project_name, deployment_name, version, data, timeout=timeout)
+
+Create deployment requests
+
+
+### Description 
+Request a prediction from a deployment. Deployment requests are made for a specific version of a deployment. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
+In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
+
+### Required Parameters
+A dictionary which contains the input fields of the deployment as keys
+
+### Optional Parameters
+These parameters should be given as GET parameters
+- `timeout`: Timeout for the deployment request in seconds. The maximum allowed value is 3600 and the default value is 300.
+
+#### Request Examples
+```
+{
+  "input-field-1": 5.0,
+  "input-field-2": "N",
+  "input-field-3": [0.25, 0.25, 2.1, 16.3]
+}
+```
+
+```
+{
+  "input-field-1": 5.0,
+  "blob-input-field": "f52ff875-4980-4d71-9798-a469ef8cece2"
+}
+```
+
+### Response Structure 
+Details of the created deployment request
+- `request_id`: Unique identifier for the deployment request
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `result`: Deployment request result value. NULL if the request failed.
+- `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+
+#### Response Examples
+A failed deployment request
+```
+{
+  "request_id": "edcf07b5-ae15-46e6-ba29-daeed53eaa61",
+  "success": false,
+  "result": None,
+  "error_message": "Asset ID not supported"
+}
+```
+
+A successful deployment request
+```
+{
+  "request_id": "b98a6d68-3173-409a-9e6e-a56804045a9c",
+  "success": true,
+  "result": {
+    "output-field-1": "2.1369",
+    "output-field-2": "5.5832",
+  },
+  "error_message": None
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+data = ubiops.DeploymentRequestCreate() # DeploymentRequestCreate | 
+timeout = 56 # int |  (optional)
+
+# Create deployment requests
+api_response = api_instance.deployment_requests_create(project_name, deployment_name, version, data, timeout=timeout)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+ **data** | [**DeploymentRequestCreate**](DeploymentRequestCreate.md)|  | 
+ **timeout** | **int**|  | [optional] 
+
+### Return type
+
+[**DeploymentRequestList**](DeploymentRequestList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **deployments_create**
+> DeploymentList deployments_create(project_name, data)
+
+Create a deployment
+
+
+### Description 
+Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.
+
+Possible data types for the input and output fields are:
+- **int**: integer
+- **string**: string
+- **double**: double precision floating point
+- **bool**: boolean value (False/True)
+- **timestamp**: timestamp
+- **array_int**: an array of integers
+- **array_double**: an array of double precision floating points
+- **array_string**: an array of strings
+- **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.
+
+### Required Parameters 
+- `name`: Name of the deployment. It is unique within a project.
+- `input_type`: Type of the input of the deployment. It can be either structured or plain.
+- `output_type`: Type of the output of the deployment. It can be either structured or plain.
+- `input_fields`: The list of required deployment input fields. It must contain the fields: name and data_type. The name of an input field is unique for a deployment.
+- `output_fields`: The list of required deployment output fields. It must contain the fields: name and data_type. The name of an output field is unique for a deployment.
+
+### Optional Parameters
+- `description`: Description of the deployment
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
+#### Request Examples
+A deployment with structured input and output type
+```
+{
+  "name": "deployment-1",
+  "input_type": "structured",
+  "output_type": "structured",
   "input_fields": [
     {
-      "name": "field-1",
+      "name": "input-field-1",
       "data_type": "int"
     },
-     {
-      "name": "field-2",
+    {
+      "name": "input-field-2",
       "data_type": "double"
     }
   ],
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-05-12T16:23:15.456812Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-data = ubiops.ConnectorCreate() # ConnectorCreate | 
-
-    try:
-        # Create a connector
-        api_response = api_instance.connectors_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->connectors_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **data** | [**ConnectorCreate**](ConnectorCreate.md)|  | 
-
-### Return type
-
-[**ConnectorList**](ConnectorList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **connectors_delete**
-> connectors_delete(project_name, connector_name)
-
-Delete connectors
-
-Delete a connector in a project
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-connector_name = 'connector_name_example' # str | 
-
-    try:
-        # Delete connectors
-        api_instance.connectors_delete(project_name, connector_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->connectors_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **connector_name** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **connectors_get**
-> ConnectorList connectors_get(project_name, connector_name)
-
-Get connectors
-
-
-### Description
-Get the details of a single connector
-
-### Response Structure
-Details of the connector
-- `id`: Unique identifier for the connector (UUID)
-- `name`: Name of the connector
-- `type`: Type of the connector
-- `input_type`: Type of the connector according to the type field. It can be either structured or blob.
-- `project`: Project name in which the connector is defined
-- `credentials`: Name of referenced credentials
-- `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
-- `input_fields`: A list of connector fields with name and data_type
-- `status`: The state of the connector. It can be pending_verification, failed_verification or available.
-- `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
-- `creation_date`: The date when the connector was created
-- `last_updated`: The date when the connector was last updated
-
-#### Response Examples 
-```
-{
-  "id": "662c326c-a560-4322-8ed3-1229224257c43",
-  "name": "s3-connector",
-  "type": "aws_s3",
-  "input_type": "blob",
-  "status": "available",
-  "error_message": "",
-  "project": "project-1",
-  "credentials": "s3-credentials",
-  "configuration": {
-    "bucket": "bucket-name",
-    "path_prefix": "blob"
-  },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-22T18:04:76.123754Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-connector_name = 'connector_name_example' # str | 
-
-    try:
-        # Get connectors
-        api_response = api_instance.connectors_get(project_name, connector_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->connectors_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **connector_name** | **str**|  | 
-
-### Return type
-
-[**ConnectorList**](ConnectorList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **connectors_list**
-> list[ConnectorList] connectors_list(project_name)
-
-List connectors
-
-
-### Description
-List the connectors in a project
-
-### Response Structure
-A list of details of the connectors in the project
-- `id`: Unique identifier for the connector (UUID)
-- `name`: Name of the connector
-- `type`: Type of the connector
-- `input_type`: Type of the connector according to type field. It can be either structured or blob.
-- `project`: Project name in which the connector is defined
-- `credentials`: Name of referenced credentials
-- `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
-- `input_fields`: A list of connector fields with name and data_type
-- `status`: The state of the connector. It can be pending_verification, failed_verification or available.
-- `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
-- `creation_date`: The date when the connector was created
-- `last_updated`: The date when the connector was last updated
-
-#### Response Examples
-```
-[
-  {
-    "id": "662c326c-a560-4322-8ed3-1229224257c43",
-    "name": "s3-connector",
-    "type": "aws_s3",
-    "input_type": "blob",
-    "status": "available",
-    "error_message": "",
-    "project": "project-1",
-    "credentials": "s3-credentials",
-    "configuration": {
-      "bucket": "bucket-name",
-      "path_prefix": "blob"
-    },
-    "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_updated": "2020-05-19T11:52:21.163270Z"
-  },
-  {
-    "id": "e0342249-853c-4879-bd08-5cd1af572d7e",
-    "name": "postgresql-connector",
-    "type": "postgresql",
-    "input_type": "structured",
-    "status": "available",
-    "error_message": "",
-    "project": "project-1",
-    "credentials": "postgresql-credentials",
-    "configuration": {
-      "database": "database-1",
-      "schema": "public",
-      "table": "table-1"
-    },
-    "input_fields": [
-      {
-        "name": "field-1",
-        "data_type": "int"
-      },
-      {
-        "name": "field-2",
-        "data_type": "double"
-      }
-    ],
-    "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated": "2020-06-22T18:04:76.123754Z"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-
-    try:
-        # List connectors
-        api_response = api_instance.connectors_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->connectors_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
-
-### Return type
-
-[**list[ConnectorList]**](ConnectorList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **connectors_update**
-> ConnectorList connectors_update(project_name, connector_name, data)
-
-Update connectors
-
-
-### Description
-Update a connector in a project. When updating, all necessary fields are validated again. It is not possible to update the **type** of a connector.
-
-### Optional Parameters
-- `name`: New name for the connector
-- `credentials`: A new credentials name to be referenced
-- `configuration`: A new dictionary with new values for credentials configuration. This dictionary may contain a subset of the necessary parameters for the credentials type. Only the given parameters are updated and the rest is kept at their old values.
-- `input_fields`: The old fields are changed with the new ones. If one or more old fields wanted to be kept for the connector, they must be provided again.
-
-#### Request Examples
-```	
-{
-  "name": "new-connector-name"
-}
-```
-
-```
-{
-  "configuration": {
-    "bucket": "new-bucket-name",
-    "path_prefix": "new-blob"
-  }
-}
-```
-
-```
-{
-  "credentials": "new-credentials-name"
-}
-```
-
-```
-{
-  "input_fields": [
+  "output_fields": [
     {
-      "name": "new-connector-field-1",
+      "name": "output-field",
       "data_type": "double"
-    },
-    {
-      "name": "new-connector-field-2",
-      "data_type": "array_int"
     }
   ]
 }
 ```
 
-### Response Structure
-Details of the updated connector
-- `id`: Unique identifier for the connector (UUID)
-- `name`: Name of the connector
-- `type`: Type of the connector
-- `input_type`: Type of the connector according to the type field. It can be either structured or blob.
-- `project`: Project name in which the connector is defined
-- `credentials`: Name of referenced credentials
-- `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
-- `input_fields`: A list of connector fields with name and data_type
-- `status`: The state of the connector. If the configuration parameters are updated, the connector is verified again.
-- `error_message`: The error message which explains why the connector has failed verification. It is empty if the connector is available.
-- `creation_date`: The date when the connector was created
-- `last_updated`: The date when the connector was last updated
-
-#### Response Examples
-```	
+A deployment with plain input type
+```
 {
-  "id": "662c326c-a560-4322-8ed3-1229224257c43",
-  "name": "new-s3-connector",
-  "type": "aws_s3",
-  "input_type": "blob",
-  "status": "available",
-  "error_message": "",
-  "project": "project-1",
-  "credentials": "s3-credentials",
-  "configuration": {
-    "bucket": "new-bucket-name",
-    "path_prefix": "blob"
-  },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-22T18:04:76.123754Z"
+  "name": "deployment-1",
+  "description": "Deployment one"
+  "input_type": "plain",
+  "output_type": "structured",
+  "output_fields": [
+    {
+      "name": "output-field",
+      "data_type": "double"
+    }
+  ]
 }
 ```
 
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-connector_name = 'connector_name_example' # str | 
-data = ubiops.ConnectorUpdate() # ConnectorUpdate | 
-
-    try:
-        # Update connectors
-        api_response = api_instance.connectors_update(project_name, connector_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->connectors_update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **connector_name** | **str**|  | 
- **data** | [**ConnectorUpdate**](ConnectorUpdate.md)|  | 
-
-### Return type
-
-[**ConnectorList**](ConnectorList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **credentials_create**
-> CredentialsList credentials_create(project_name, data)
-
-Create credentials
-
-
-### Description 
-Create a new credentials by defining its necessary configuration parameterss
-
-### Required Parameters 
-- `name`: Name of the credentials. It is unique within a project.
-- `type`: Type of the credentials. It should be one of the supported connectors such as aws_s3, postgresql and gcp_cloud_storage.
-- `configuration`: A dictionary which should contain the fields necessary for the given type
-
-#### Request Examples 
+A deployment with plain input and output type
 ```
 {
-  "name": "s3-credentials",
-  "type": "aws_s3",
-  "configuration": {
-    "access_key": "access_key",
-    "secret_key": "secret_key",
-    "region": "eu-central-1"
+  "name": "deployment-1",
+  "input_type": "plain",
+  "output_type": "plain"
+  "labels": {
+    "type": "deployment"
   }
 }
 ```
 
 ### Response Structure 
-Details of the created credentials
- - `id`: Unique identifier for the credentials (UUID)
- - `name`: Name of the credentials
- - `project`: Project name in which the credentials is created
- - `type`: Type of the credentials
- - `reference_count`: The number of connectors using this credentials. It is initialised as 0 when it is created.
- - `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
- - `status`: The state of the credentials. It is initialized as pending_verification.
- - `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
- - `creation_date`: The date when the credentials was created
- - `last_updated`: The date when the credentials was last updated
+Details of the created deployment
+- `id`: Unique identifier for the deployment (UUID)
+- `name`: Name of the deployment
+- `project`: Project name in which the deployment is created
+- `input_type`: Type of the input of the deployment
+- `output_type`: Type of the output of the deployment
+- `input_fields`: The list of deployment input fields containing name and data_type
+- `output_fields`: The list of deployment output fields containing name and data_type
+- `description`: Description of the deployment
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the deployment was created
+- `last_updated`: The date when the deployment was last updated
+- `number_of_versions`: Number of versions that this deployment has
 
 #### Response Examples 
 ```
 {
-  "id": "da4da757-373c-4cab-948e-90ff4ab2e9c3",
-  "name": "s3-credentials",
+  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
+  "name": "deployment-1",
   "project": "project-1",
-  "type": "aws_s3",
-  "status": "pending_verification",
-  "error_message": "",
-  "reference_count": 0,
-  "configuration": {
-    "access_key": null,
-    "secret_key": null,
-    "region": "eu-central-1"
+  "description": "",
+  "input_type": "structured",
+  "output_type": "structured",
+  "input_fields": [
+    {
+      "name": "input-field-1",
+      "data_type": "int"
+    },
+    {
+      "name": "input-field-2",
+      "data_type": "double"
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "output-field",
+      "data_type": "double"
+    }
+  ],
+  "labels": {
+    "type": "deployment"
   },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-05-12T16:23:15.456812Z"
+  "creation_date": "2020-06-18T08:32:14.876451Z",
+  "last_updated": "2020-06-18T08:32:14.876451Z",
+  "number_of_versions": 0
 }
 ```
 
@@ -2405,11 +2578,7 @@ Details of the created credentials
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -2418,18 +2587,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-data = ubiops.CredentialsCreate() # CredentialsCreate | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Create credentials
-        api_response = api_instance.credentials_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->credentials_create: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+data = ubiops.DeploymentCreate() # DeploymentCreate | 
+
+# Create a deployment
+api_response = api_instance.deployments_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -2437,11 +2608,11 @@ data = ubiops.CredentialsCreate() # CredentialsCreate |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **data** | [**CredentialsCreate**](CredentialsCreate.md)|  | 
+ **data** | [**DeploymentCreate**](DeploymentCreate.md)|  | 
 
 ### Return type
 
-[**CredentialsList**](CredentialsList.md)
+[**DeploymentList**](DeploymentList.md)
 
 ### Authorization
 
@@ -2459,25 +2630,21 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **credentials_delete**
-> credentials_delete(project_name, credentials_name)
+# **deployments_delete**
+> deployments_delete(project_name, deployment_name)
 
-Delete credentials
+Delete a deployment
 
- 
+
 ### Description 
-Delete a credentials. If there is a reference to the credentials from a connector, it is **not possible to delete** the credentials. The reference should be removed first.
+Delete a deployment. If any of the versions of the deployment are referenced in a pipeline, the deployment cannot be deleted.
 
 
 ### Example
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -2486,17 +2653,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-credentials_name = 'credentials_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Delete credentials
-        api_instance.credentials_delete(project_name, credentials_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->credentials_delete: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+
+# Delete a deployment
+api_instance.deployments_delete(project_name, deployment_name)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -2504,7 +2673,7 @@ credentials_name = 'credentials_name_example' # str |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **credentials_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
 
 ### Return type
 
@@ -2516,8 +2685,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -2526,46 +2695,61 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **credentials_get**
-> CredentialsListWithConfig credentials_get(project_name, credentials_name)
+# **deployments_get**
+> DeploymentList deployments_get(project_name, deployment_name)
 
-Get credentials
+Get details of deployment
 
 
 ### Description 
-Get the details of a single credentials
+Retrieve details of a single deployment in a project
 
 ### Response Structure 
-Details of the credentials
-- `id`: Unique identifier for the credentials (UUID)
-- `name`: Name of the credentials
-- `project`: Project name in which the credentials is defineds
-- `type`: Type of the credentials
-- `reference_count`: The number of connectors using the credentials
-- `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
-- `status`: The state of the credentials. It can be pending_verification, failed_verification or available.
-- `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
-- `creation_date`: The date when the credentials was created
-- `last_updated`: The date when the credentials was last updated
+Details of a deployment
+- `id`: Unique identifier for the deployment (UUID)
+- `name`: Name of the deployment
+- `project`: Project name in which the deployment is defined
+- `input_type`: Type of the input of the deployment
+- `output_type`: Type of the output of the deployment
+- `input_fields`: The list of deployment input fields containing name and data_type
+- `output_fields`: The list of deployment output fields containing name and data_type
+- `description`: Description of the deployment
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the deployment was created
+- `last_updated`: The date when the deployment was last updated
+- `number_of_versions`: Number of versions that this deployment has
 
 #### Response Examples 
 ```
-{ 
-  "id": "e07b3715-71c9-4a49-a8e5-179cf4778086",
-  "name": "postgresql-credentials",
+{
+  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
+  "name": "deployment-1",
   "project": "project-1",
-  "type": "postgresql",
-  "status": "available",
-  "error_message": "",
-  "reference_count": 2,
-  "configuration": {
-    "username": "user",
-    "password": null,
-    "host": "host",
-    "port": "1234"
+  "description": "",
+  "input_type": "structured",
+  "output_type": "structured",
+  "input_fields": [
+    {
+      "name": "input-field-1",
+      "data_type": "int"
+    },
+    {
+      "name": "input-field-2",
+      "data_type": "double"
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "output-field",
+      "data_type": "double"
+    }
+  ],
+  "labels": {
+    "type": "deployment"
   },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-22T18:04:76.123754Z"
+  "creation_date": "2020-06-18T08:32:14.876451Z",
+  "last_updated": "2020-06-19T10:52:23.124784Z",
+  "number_of_versions": 2
 }
 ```
 
@@ -2574,11 +2758,7 @@ Details of the credentials
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -2587,18 +2767,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-credentials_name = 'credentials_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Get credentials
-        api_response = api_instance.credentials_get(project_name, credentials_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->credentials_get: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+
+# Get details of deployment
+api_response = api_instance.deployments_get(project_name, deployment_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -2606,11 +2788,11 @@ credentials_name = 'credentials_name_example' # str |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **credentials_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
 
 ### Return type
 
-[**CredentialsListWithConfig**](CredentialsListWithConfig.md)
+[**DeploymentList**](DeploymentList.md)
 
 ### Authorization
 
@@ -2618,7 +2800,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -2628,63 +2810,99 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **credentials_list**
-> list[CredentialsList] credentials_list(project_name)
+# **deployments_list**
+> list[DeploymentList] deployments_list(project_name, labels=labels)
 
-List credentials
+List deployments in project
 
- 
-### Description
-List all the sets of credentials in a project
+
+### Description 
+Deployments can be filtered according to the labels they have by giving labels as a query parameter. Deployments that have at least one of the labels on which is filtered, are returned.
+
+### Optional Parameters
+- `labels`: Filter on labels of the deployment. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.
 
 ### Response Structure 
-A list of details of the credentials in the project
-- `id`: Unique identifier for the credentials (UUID)
-- `name`: Name of the credentials
-- `project`: Project name in which the credentials is defined
-- `type`: Type of the credentials
-- `reference_count`: The number of connectors using the credentials
-- `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
-- `status`: The state of the credentials. It can be pending_verification, failed_verification or available.
-- `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
-- `creation_date`: The date when the credentials was created
-- `last_updated`: The date when the credentials was last updated
+A list of details of the deployments in the project
+- `id`: Unique identifier for the deployment (UUID)
+- `name`: Name of the deployment
+- `project`: Project name in which the deployment is defined
+- `input_type`: Type of the input of the deployment
+- `output_type`: Type of the output of the deployment
+- `input_fields`: The list of deployment input fields containing name and data_type. It is empty in case of plain input type deployments.
+- `output_fields`: The list of deployment output fields containing name and data_type. It is empty in case of plain output type deployments.
+- `description`: Description of the deployment
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the deployment was created
+- `last_updated`: The date when the deployment was last updated
+- `number_of_versions`: Number of versions that this deployment has
 
 #### Response Examples 
 ```
 [
   {
-    "id": "da4da757-373c-4cab-948e-90ff4ab2e9c3",
-    "name": "s3-credentials",
+    "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
+    "name": "deployment-1",
     "project": "project-1",
-    "type": "aws_s3",
-    "status": "available",
-    "error_message": "",
-    "reference_count": 1,
-    "configuration": {
-      "access_key": null,
-      "secret_key": null,
-      "region": "eu-central-1"
-    },
-    "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_updated": "2020-05-19T11:52:21.163270Z"
-  },
-  {
-    "id": "e07b3715-71c9-4a49-a8e5-179cf4778086",
-    "name": "postgresql-credentials",
-    "project": "project-1",
-    "type": "postgresql",
-    "status": "available",
-    "error_message": "",
-    "reference_count": 2,
-    "configuration": {
-      "username": "user",
-      "password": null,
-      "host": "host",
-      "port": "1234"
+    "description": "Temperature deployment",
+    "input_type": "structured",
+    "output_type": "structured",
+    "input_fields": [
+      {
+        "name": "input-field-1",
+        "data_type": "int"
+      },
+      {
+        "name": "input-field-2",
+        "data_type": "double"
+      }
+    ],
+    "output_fields": [
+      {
+        "name": "output-field",
+        "data_type": "double"
+      }
+    ],
+    "labels": {
+      "type": "deployment"
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated": "2020-06-22T18:04:76.123754Z"
+    "last_updated": "2020-06-22T18:04:76.123754Z",
+    "number_of_versions": 1
+  },
+  {
+    "id": "5f4e942f-d5b8-4d62-99b2-870c15a82127",
+    "name": "deployment-2",
+    "project": "project-1",
+    "description": "Deployment two",
+    "input_type": "structured",
+    "output_type": "plain",
+    "input_fields": [
+      {
+        "name": "input-field",
+        "data_type": "int"
+      }
+    ],
+    "output_fields": [],
+    "labels": {
+      "type": "deployment"
+    },
+    "creation_date": "2020-03-24T09:43:51.791253Z",
+    "last_updated": "2020-05-19T11:52:21.163270Z",
+    "number_of_versions": 2
+  },
+  {
+    "id": "bd3fae9d-aeec-4cf3-8ef0-5f9224d41904",
+    "name": "deployment-3",
+    "description": "",
+    "project": "project-1",
+    "input_type": "plain",
+    "output_type": "plain",
+    "input_fields": [],
+    "output_fields": [],
+    "creation_date": "2020-06-18T08:32:14.876451Z",
+    "last_updated": "2020-06-19T10:52:23.124784Z",
+    "number_of_versions": 1
   }
 ]
 ```
@@ -2694,11 +2912,7 @@ A list of details of the credentials in the project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -2707,17 +2921,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List credentials
-        api_response = api_instance.credentials_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->credentials_list: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+labels = 'labels_example' # str |  (optional)
+
+# List deployments in project
+api_response = api_instance.deployments_list(project_name, labels=labels)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -2725,10 +2942,11 @@ with ubiops.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
+ **labels** | **str**|  | [optional] 
 
 ### Return type
 
-[**list[CredentialsList]**](CredentialsList.md)
+[**list[DeploymentList]**](DeploymentList.md)
 
 ### Authorization
 
@@ -2736,7 +2954,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -2746,68 +2964,73 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **credentials_update**
-> CredentialsListWithConfig credentials_update(project_name, credentials_name, data)
+# **deployments_update**
+> DeploymentList deployments_update(project_name, deployment_name, data)
 
-Update credentials
+Update a deployment
 
- 
-### Description
-Update a credentials. It is not possible to update the type of a credentials. All necessary fields are validated again.
+
+### Description 
+Update a deployment. It is only possible to update the name, description and labels fields. When updating labels, the labels will replace the existing value for labels. 
 
 ### Optional Parameters 
-- `name`: New name for the credentials
-- `configuration`: A new dictionary with new values for credentials configuration. This dictionary may contain a subset of the necessary parameters for the credentials type. Only the given parameters are updated and the rest is kept at their old values.
+- `name`: New name for the deployment
+- `description`: New description for the deployment
+- `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
 
-#### Request Examples 
+#### Request Examples
 ```
 {
-  "name": "new-credentials-name"
-}
-```
-
-```
-{
-  "configuration": {
-    "username": "new_user",
-    "password": "new_secret_password",
-    "host": "new_host",
-    "port": "1234"
-  }
+  "name": "new-deployment-name"
 }
 ```
 
 ### Response Structure 
-Details of the updated credentials
-- `id`: Unique identifier for the credentials (UUID)
-- `name`: Name of the credentials
-- `project`: Project name in which the credentials is defined
-- `type`: Type of the credentials
-- `reference_count`: The number of connectors using the credentials
-- `configuration`: The dictionary which contains the fields necessary for the given type with provided values. Values are not shown in response if the parameter has the protected field True.
-- `status`: The state of the credentials. If the configuration parameters are updated, the connector is verified again. If there is a connector referencing this credentials, it is also verified again with the updated configuration.
-- `error_message`: The error message which explains why the credentials has failed verification. It is empty if the credentials is available.
-- `creation_date`: The date when the credentials was created
-- `last_updated`: The date when the credentials was last updated
+Details of the updated deployment
+- `id`: Unique identifier for the deployment (UUID)
+- `name`: Name of the deployment
+- `project`: Project name in which the deployment is defined
+- `input_type`: Type of the input of the deployment
+- `output_type`: Type of the output of the deployment
+- `input_fields`: The list of deployment input fields containing name and data_type
+- `output_fields`: The list of deployment output fields containing name and data_type
+- `description`: Description of the deployment
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the deployment was created
+- `last_updated`: The date when the deployment was last updated
+- `number_of_versions`: Number of versions that this deployment has
 
-#### Response Examples 
+#### Response Examples
 ```
-{ 
-  "id": "e07b3715-71c9-4a49-a8e5-179cf4778086",
-  "name": "postgresql-credentials",
+{
+  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
+  "name": "new-deployment-name",
   "project": "project-1",
-  "type": "postgresql",
-  "status": "pending_verification",
-  "error_message": "",
-  "reference_count": 2,
-  "configuration": {
-    "username": "new_user",
-    "password": null,
-    "host": "new_host",
-    "port": "1234"
+  "description": "New deployment description",
+  "input_type": "structured",
+  "output_type": "structured",
+  "input_fields": [
+    {
+      "name": "input-field-1",
+      "data_type": "int"
+    },
+    {
+      "name": "input-field-2",
+      "data_type": "double"
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "output-field",
+      "data_type": "double"
+    }
+  ],
+  "labels": {
+    "type": "deployment"
   },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-22T18:04:76.123754Z"
+  "creation_date": "2020-06-18T08:32:14.876451Z",
+  "last_updated": "2020-06-19T10:52:23.124784Z",
+  "number_of_versions": 2
 }
 ```
 
@@ -2816,11 +3039,7 @@ Details of the updated credentials
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -2829,19 +3048,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-credentials_name = 'credentials_name_example' # str | 
-data = ubiops.CredentialsUpdate() # CredentialsUpdate | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Update credentials
-        api_response = api_instance.credentials_update(project_name, credentials_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->credentials_update: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+data = ubiops.DeploymentUpdate() # DeploymentUpdate | 
+
+# Update a deployment
+api_response = api_instance.deployments_update(project_name, deployment_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -2849,12 +3070,12 @@ data = ubiops.CredentialsUpdate() # CredentialsUpdate |
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
- **credentials_name** | **str**|  | 
- **data** | [**CredentialsUpdate**](CredentialsUpdate.md)|  | 
+ **deployment_name** | **str**|  | 
+ **data** | [**DeploymentUpdate**](DeploymentUpdate.md)|  | 
 
 ### Return type
 
-[**CredentialsListWithConfig**](CredentialsListWithConfig.md)
+[**DeploymentList**](DeploymentList.md)
 
 ### Authorization
 
@@ -2883,27 +3104,25 @@ Get metrics for the project or a specified object. The following metrics are ava
 
 Metrics on pipeline level: 
  - `requests`: Number of requests made to the object
+ - `failed_requests`: Number of failed requests made to the object
  - `input_volume`: Volume of incoming data in bytes
  - `object_requests`: Number of requests made to objects in the pipeline
  
-Metrics on model version level: 
+Metrics on version level: 
  - `requests`: Number of requests made to the object
+ - `failed_requests`: Number of failed requests made to the object
  - `input_volume`: Volume of incoming data in bytes
  - `output_volume`: Volume of outgoing data in bytes
  - `outputs`: Number of outgoing data items 
- - `compute`: Time in seconds for a model request to complete
- - `instances`: Number of active model instances
- - `gb_seconds`: Usage of GB seconds, calculated by multiplying the model memory sizes in GB by the number of seconds the models are running
- - `active_time`: Time in seconds that the model is active
- 
-Metrics on connector level: 
- - `requests`: Number of requests made to the object
- - `volume`: Volume of incoming data in bytes
+ - `compute`: Time in seconds for a request to complete
+ - `instances`: Number of active deployment instances
+ - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running
+ - `active_time`: Time in seconds that the deployment is active
 
 ### Required Parameters 
 - `start_time`: Starting time for the metric values to be returned. It should be provided in datetime isoformat.
 - `end_time`: Ending time for the metric values to be returned. It should be provided in datetime isoformat.
-- `object_type`: The type of the object for which the metrics are requested. It can be either `model_version`, `connector` or `pipeline`.
+- `object_type`: The type of the object for which the metrics are requested. It can be either `version` or `pipeline`.
 
 ### Optional Parameters 
 - `interval`: Interval for the metric value. It can be minute, hour, day or month. The metric values will be aggregated according to this interval. The default value is hour.
@@ -2990,11 +3209,7 @@ With interval as month, start_time as 2019-11-13 12:00:00 and end_time as 2019-1
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -3003,10 +3218,12 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 metric = 'metric_example' # str | 
 start_time = 'start_time_example' # str | 
 end_time = 'end_time_example' # str | 
@@ -3014,12 +3231,12 @@ object_type = 'object_type_example' # str |
 interval = 'interval_example' # str |  (optional)
 object_id = 'object_id_example' # str |  (optional)
 
-    try:
-        # Get metrics
-        api_response = api_instance.metrics_get(project_name, metric, start_time, end_time, object_type, interval=interval, object_id=object_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->metrics_get: %s\n" % e)
+# Get metrics
+api_response = api_instance.metrics_get(project_name, metric, start_time, end_time, object_type, interval=interval, object_id=object_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -3044,2537 +3261,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_environment_variables_create**
-> EnvironmentVariableList model_environment_variables_create(project_name, model_name, data)
-
-Create model environment variable
-
-
-### Description
-Create an environment variable for the model. This variable will be inherited by all versions of this model. Variables inherited from the project can be shadowed by creating a variable with the same name.
-
-### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your model code. The variable name should contain only letters and underscores, and not start or end with an underscore.
-- `value`: The value of the variable as a string. It may be an empty string ("").
-- `secret`: If this variable contains sensitive information, set this to true to hide it from other users.
-
-#### Request Examples
-```
-{
-  "name": "model_variable_a",
-  "value": "some_value",
-  "secret": false
-}
-```
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-{
-"id": "7c28a2be-507e-4fae-981d-54e94f22dab0",
-"name": "model_variable_a",
-"value": "some_value",
-"secret": false
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
-
-    try:
-        # Create model environment variable
-        api_response = api_instance.model_environment_variables_create(project_name, model_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_environment_variables_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
  - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_environment_variables_delete**
-> model_environment_variables_delete(project_name, id, model_name)
-
-Delete model environment variable
-
-
-### Description
-Delete an environment variable of the model
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-id = 'id_example' # str | 
-model_name = 'model_name_example' # str | 
-
-    try:
-        # Delete model environment variable
-        api_instance.model_environment_variables_delete(project_name, id, model_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_environment_variables_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **id** | **str**|  | 
- **model_name** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_environment_variables_get**
-> EnvironmentVariableList model_environment_variables_get(project_name, id, model_name)
-
-Get model environment variable
-
-
-### Description
-Retrieve details of a model environment variable. This cannot be used to retrieve details of inherited variables.
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-[
-  {
-    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
-    "name": "database_schema",
-    "value": "public",
-    "secret": false
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-id = 'id_example' # str | 
-model_name = 'model_name_example' # str | 
-
-    try:
-        # Get model environment variable
-        api_response = api_instance.model_environment_variables_get(project_name, id, model_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_environment_variables_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **id** | **str**|  | 
- **model_name** | **str**|  | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_environment_variables_list**
-> list[InheritedEnvironmentVariableList] model_environment_variables_list(project_name, model_name)
-
-List model environment variables
-
-
-### Description
-List the environment variables defined for the model. Includes environment variables defined at project level.
- 
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project` or empty if the variable was defined for the model directly
-- `inheritance_name`: Name of the parent object that this variable is inherited from - will be empty if the variable was defined for the model directly
-
-#### Response Examples 
-```
-[
-  {
-    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
-    "name": "database_schema",
-    "value": "public",
-    "secret": false,
-    "inheritance_type": "",
-    "inheritance_name": ""
-  },
-  {
-    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
-    "name": "database_password",
-    "value": null,
-    "secret": true,
-    "inheritance_type": "project",
-    "inheritance_name": "project_name"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-
-    try:
-        # List model environment variables
-        api_response = api_instance.model_environment_variables_list(project_name, model_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_environment_variables_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
-
-### Return type
-
-[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_environment_variables_update**
-> EnvironmentVariableList model_environment_variables_update(project_name, id, model_name, data)
-
-Update model environment variable
-
-
-### Description
-Update an environment variable for the model. This cannot be used to update inherited variables; to change an inherited variable for a specific model you can create a variable with the same name for the model.
-
-### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your model code. The variable name should contain only letters and underscores, and not start or end with an underscore.
-- `value`: The value of the variable as a string. It may be an empty string ("").
-- `secret`: If this variable contains sensitive information, set this to true to hide it from other users. Can be updated from false to true, but not from true to false (i.e. secrets will stay secrets).
-
-#### Request Examples
-```
-{
-  "name": "model_variable_a",
-  "value": "some new value",
-  "secret": false
-}
-```
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-{
-  "id": "7c28a2be-507e-4fae-981d-54e94f22dab0",
-  "name": "model_variable_a",
-  "value": "some new value",
-  "secret": false
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-id = 'id_example' # str | 
-model_name = 'model_name_example' # str | 
-data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
-
-    try:
-        # Update model environment variable
-        api_response = api_instance.model_environment_variables_update(project_name, id, model_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_environment_variables_update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **id** | **str**|  | 
- **model_name** | **str**|  | 
- **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_requests_create**
-> ModelRequestList model_requests_create(project_name, model_name, version, data, timeout=timeout)
-
-Create model requests
-
-
-### Description 
-Request a prediction from a model. Model requests are made for a specific version of a model. It is only possible to make a model request if a model file is uploaded for that model version and the model build has succeeded (meaning that the model version is in available state).
-In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
-
-### Required Parameters
-A dictionary which contains the input fields of the model as keys
-
-### Optional Parameters
-These parameters should be given as GET parameters
-- `timeout`: Timeout for the model request in seconds. The maximum allowed value is 3600 and the default value is 300.
-
-#### Request Examples
-```
-{
-  "model-input-field-1": 5.0,
-  "model-input-field-2": "N",
-  "model-input-field-3": [0.25, 0.25, 2.1, 16.3]
-}
-```
-
-```
-{
-  "input-field-1": 5.0,
-  "blob-input-field": "f52ff875-4980-4d71-9798-a469ef8cece2"
-}
-```
-
-### Response Structure 
-Details of the created model request
-- `request_id`: Unique identifier for the model request
-- `success`: A boolean value that indicates whether the model request was successful
-- `result`: Model request result value. NULL if the request failed.
-- `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
-
-#### Response Examples
-A failed model request
-```
-{
-  "request_id": "edcf07b5-ae15-46e6-ba29-daeed53eaa61",
-  "success": false,
-  "result": None,
-  "error_message": "Asset ID not supported"
-}
-```
-
-A successful model request
-```
-{
-  "request_id": "b98a6d68-3173-409a-9e6e-a56804045a9c",
-  "success": true,
-  "result": {
-    "model-output-field-1": "2.1369",
-    "model-output-field-2": "5.5832",
-  },
-  "error_message": None
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-data = ubiops.ModelRequestCreate() # ModelRequestCreate | 
-timeout = 56 # int |  (optional)
-
-    try:
-        # Create model requests
-        api_response = api_instance.model_requests_create(project_name, model_name, version, data, timeout=timeout)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_requests_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
- **data** | [**ModelRequestCreate**](ModelRequestCreate.md)|  | 
- **timeout** | **int**|  | [optional] 
-
-### Return type
-
-[**ModelRequestList**](ModelRequestList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_version_environment_variables_create**
-> EnvironmentVariableList model_version_environment_variables_create(project_name, model_name, version, data)
-
-Create model version environment variable
-
-
-### Description
-Create an environment variable for the model version. Variables inherited from the project or model can be shadowed by creating a variable with the same name.
-
-### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your model code. The variable name should contain only letters and underscores, and not start or end with an underscore.
-- `value`: The value of the variable as a string. It may be an empty string ("").
-- `secret`: If this variable contains sensitive information, set this to true to hide it from other users.
-
-#### Request Examples
-```
-{
-  "name": "version_variable",
-  "value": "another one",
-  "secret": false
-}
-```
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-{
-  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
-  "name": "version_variable",
-  "value": "another one",
-  "secret": false
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
-
-    try:
-        # Create model version environment variable
-        api_response = api_instance.model_version_environment_variables_create(project_name, model_name, version, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_version_environment_variables_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
- **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_version_environment_variables_delete**
-> model_version_environment_variables_delete(project_name, id, model_name, version)
-
-Delete model version environment variable
-
-
-### Description
-Delete an environment variable of the model version
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-id = 'id_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-
-    try:
-        # Delete model version environment variable
-        api_instance.model_version_environment_variables_delete(project_name, id, model_name, version)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_version_environment_variables_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **id** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_version_environment_variables_get**
-> EnvironmentVariableList model_version_environment_variables_get(project_name, id, model_name, version)
-
-Get model version environment variable
-
-
-### Description
-Retrieve details of a model version environment variable. This cannot be used to retrieve details of inherited variables.
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-[
-  {
-    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
-    "name": "database_schema",
-    "value": "public",
-    "secret": false
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-id = 'id_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-
-    try:
-        # Get model version environment variable
-        api_response = api_instance.model_version_environment_variables_get(project_name, id, model_name, version)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_version_environment_variables_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **id** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_version_environment_variables_list**
-> list[InheritedEnvironmentVariableList] model_version_environment_variables_list(project_name, model_name, version)
-
-List model version environment variables
-
-
-### Description
-List the environment variables defined for the model version. Includes environment variables defined at project level and model level.
- 
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project`, `model`, or empty if the variable was defined for the model version directly
-- `inheritance_name`: Name of the parent object that this variable is inherited from - will be empty if the variable was defined for the model version directly
-
-#### Response Examples 
-```
-[
-  {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "version_specific_variable",
-    "value": "some_value",
-    "secret": false,
-    "inheritance_type": "",
-    "inheritance_name": ""
-  },
-  {
-    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
-    "name": "database_schema",
-    "value": "public",
-    "secret": false,
-    "inheritance_type": "model",
-    "inheritance_name": "model_name"
-  },
-  {
-    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
-    "name": "database_password",
-    "value": null,
-    "secret": true,
-    "inheritance_type": "project",
-    "inheritance_name": "project_name"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-
-    try:
-        # List model version environment variables
-        api_response = api_instance.model_version_environment_variables_list(project_name, model_name, version)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_version_environment_variables_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
-
-### Return type
-
-[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_version_environment_variables_update**
-> EnvironmentVariableList model_version_environment_variables_update(project_name, id, model_name, version, data)
-
-Update model version environment variable
-
-
-### Description
-Update an environment variable for the model version. This cannot be used to update inherited variables; to change an inherited variable for a specific version you can create a variable with the same name for the version.
-
-### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your model code. The variable name should contain only letters and underscores, and not start or end with an underscore.
-- `value`: The value of the variable as a string. It may be an empty string ("").
-- `secret`: If this variable contains sensitive information, set this to true to hide it from other users. Can be updated from false to true, but not from true to false (i.e. secrets will stay secrets).
-
-#### Request Examples
-```
-{
-  "name": "version_variable",
-  "value": "yet another one",
-  "secret": false
-}
-```
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-{
-  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
-  "name": "version_variable",
-  "value": "yet another one",
-  "secret": false
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-id = 'id_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
-
-    try:
-        # Update model version environment variable
-        api_response = api_instance.model_version_environment_variables_update(project_name, id, model_name, version, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_version_environment_variables_update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **id** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
- **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_versions_create**
-> ModelVersionList model_versions_create(project_name, model_name, data)
-
-Create model versions
-
-
-### Description 
-Create a version for a model
-
-### Required Parameters 
-- `version`: Name of the version of the model
-
-### Optional Parameters 
-- `language`: Language in which the model version is provided. It can be python3.5, python3.6, python3.7 or python3.8. The default value is python3.7
-- `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the model version: it should to be enough to encompass the model file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively.
-- `maximum_instances`: Upper bound of number of model versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many model requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
-- `minimum_instances`: Lower bound of number of model versions running. The default value is 0. Set this value greater than 0 to always have a always running model version.
-- `maximum_idle_time`: Maximum time in seconds a model version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the model version stays active longer. Sending requests to a running model version means that it will be already initialized and thus take a shorter timer. 
-
-- `description`: Description for the model version
-
-If the time that a request takes does not matter, keep the default values.
-
-#### Request Examples 
-```
-{
-  "version": "version-1",
-  "language": "python3.6"
-}
-```
- 
-```
-{
-  "version": "version-1",
-  "language": "python3.5",
-  "memory_allocation": 512
-}
-```
- 
-```
-{
-  "version": "version-1",
-  "maximum_instances": 4,
-  "minimum_instances": 1
-}
-```
-
-### Response Structure 
-Details of the created version
-- `id`: Unique identifier for the model (UUID)
-- `model`: Model name to which the version is associated
-- `version`: Version name
-- `language`: Language in which the model version is provided
-- `memory_allocation`: Reserved memory for the version in MB  
-- `maximum_instances`: Upper bound of number of model versions running
-- `minimum_instances`: Lower bound of number of model versions running
-- `maximum_idle_time`: Maximum time in seconds a model version stays idle before it is stopped
-- `description`: Description of the model version
-- `status`: The state of the model version. It is set to *initialised* state on creation.
-- `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
-- `creation_date`: The date when the model version was created
-- `last_updated`: The date when the model version was last updated
-- `file_last_updated`: The date when a model file was last uploaded
-
-#### Response Examples 
-```
-{
-  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-  "model": "model-1",
-  "version": "version-1",
-  "language": "python3.5",
-  "description": "",
-  "status": "initialised",
-  "error_message": "",
-  "memory_allocation": 512,
-  "maximum_instances": 5,
-  "minimum_instances": 0,
-  "maximum_idle_time": 10,
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-05-12T16:23:15.456812Z",
-  "file_last_updated": "2020-05-12T16:23:15.456812Z",
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-data = ubiops.ModelVersionCreate() # ModelVersionCreate | 
-
-    try:
-        # Create model versions
-        api_response = api_instance.model_versions_create(project_name, model_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_versions_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **data** | [**ModelVersionCreate**](ModelVersionCreate.md)|  | 
-
-### Return type
-
-[**ModelVersionList**](ModelVersionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_versions_delete**
-> model_versions_delete(project_name, model_name, version)
-
-Delete model version
-
- 
-### Description 
-Delete a model version. If the model version is referenced from a pipeline, it cannot be deleted, it must be removed from the pipeline first.
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-
-    try:
-        # Delete model version
-        api_instance.model_versions_delete(project_name, model_name, version)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_versions_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_versions_file_download**
-> ModelVersionFileUpload model_versions_file_download(project_name, model_name, version)
-
-Download model files
-
-
-### Description 
-Download the model file of a model version of a model
-
-### Response Structure 
- - `file`: Model file of the version
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-
-    try:
-        # Download model files
-        api_response = api_instance.model_versions_file_download(project_name, model_name, version)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_versions_file_download: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
-
-### Return type
-
-[**ModelVersionFileUpload**](ModelVersionFileUpload.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_versions_file_upload**
-> Success model_versions_file_upload(project_name, model_name, version, file)
-
-Upload model files
-
-
-### Description 
-Upload a file for a model version. This file should contain the model that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/model-template. The file is saved under a directory in the storage specified in the settings.
-
-### Required Parameters
-- `file`: Model file
-
-### Response Structure
-- `success`: Boolean indicating whether the model file upload succeeded or not
-
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-file = '/path/to/file' # file | 
-
-    try:
-        # Upload model files
-        api_response = api_instance.model_versions_file_upload(project_name, model_name, version, file)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_versions_file_upload: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
- **file** | **file**|  | 
-
-### Return type
-
-[**Success**](Success.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_versions_get**
-> ModelVersionList model_versions_get(project_name, model_name, version)
-
-Get model version
-
-
-### Description 
-Retrieve details of a model version of a model in a project
-
-### Response Structure 
-Details of a version
-- `id`: Unique identifier for the model (UUID)
-- `model`: Model name to which the version is associated
-- `version`: Version name
-- `language`: Language in which the model version is provided
-- `memory_allocation`: Reserved memory for the version in MB 
-- `maximum_instances`: Upper bound of number of model pods running in parallel
-- `minimum_instances`: Lower bound of number of model pods running in parallel
-- `maximum_idle_time`: Maximum time in seconds a model version stays idle before it is stopped
-- `description`: Description of the model version
-- `status`: The state of the model version
-- `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
-- `creation_date`: The date when the model version was created
-- `last_updated`: The date when the model version was last updated
-- `file_last_updated`: The date when a model file was last uploaded
-
-#### Response Examples
-```
-{
-  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-  "model": "model-1",
-  "version": "version-1",
-  "memory_allocation": 512,
-  "language": "python3.7",
-  "description": "",
-  "status": "active",
-  "error_message": "",
-  "maximum_instances": 4,
-  "minimum_instances": 1,
-  "maximum_idle_time": 10,
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-22T18:04:76.123754Z",
-  "file_last_updated": "2020-06-23T11:17:28.128652Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-
-    try:
-        # Get model version
-        api_response = api_instance.model_versions_get(project_name, model_name, version)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_versions_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
-
-### Return type
-
-[**ModelVersionList**](ModelVersionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_versions_list**
-> list[ModelVersionList] model_versions_list(project_name, model_name)
-
-List model versions
-
-
-### Description 
-List all the versions of a model in a project
-
-### Response Structure 
-A list of details of the versions
-- `id`: Unique identifier for the model (UUID)
-- `model`: Model name to which the version is associated
-- `version`: Version name
-- `language`: Language in which the model version is provided
-- `memory_allocation`: Reserved memory usage for the version in MB
-- `maximum_instances`: Upper bound of number of model versions running
-- `minimum_instances`: Lower bound of number of model versions running
-- `maximum_idle_time`: Maximum time in seconds a model version stays idle before it is stopped
-- `description`: Description of the model version
-- `status`: The state of the model version
-- `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
-- `creation_date`: The date when the model version was created
-- `last_updated`: The date when the model version was last updated
-- `file_last_updated`: The date when a model file was last uploaded
-
-#### Response Examples
-```
-[
-  {
-    "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-    "model": "model-1",
-    "version": "version-1",
-    "language": "python3.5",
-    "description": "",
-    "status": "active",
-    "error_message": "",
-    "memory_allocation": 512,
-    "maximum_instances": 4,
-    "minimum_instances": 1,
-    "maximum_idle_time": 10,
-    "creation_date": "2020-06-18T08:32:14.876451Z",
-    "last_updated": "2020-06-19T10:52:23.124784Z",
-    "file_last_updated": "2020-06-19T10:52:23.124784Z"
-  },
-  {
-    "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
-    "model": "model-1",
-    "version": "version-2",
-    "language": "python3.6",
-    "description": "",
-    "status": "active",
-    "error_message": "",
-    "memory_allocation": 256,
-    "maximum_instances": 5,
-    "minimum_instances": 0,
-    "maximum_idle_time": 10,
-    "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated": "2020-06-22T18:04:76.123754Z",
-    "file_last_updated": "2020-06-23T11:17:28.128652Z"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-
-    try:
-        # List model versions
-        api_response = api_instance.model_versions_list(project_name, model_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_versions_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
-
-### Return type
-
-[**list[ModelVersionList]**](ModelVersionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **model_versions_update**
-> ModelVersionList model_versions_update(project_name, model_name, version, data)
-
-Update model version
-
-
-### Description 
-Update a model version of a model in a project. Updating the language field will cause the model to be build again. All necessary fields are validated again.
-
-### Optional Parameters 
-- `version`: New name for the version
-- `language`: New language for the version
-- `memory_allocation`: New reserved memory for the version in MB
-- `maximum_instances`: New upper bound of number of model versions running
-- `minimum_instances`: New lower bound of number of model versions running
-- `maximum_idle_time`: New maximum time in seconds a model version stays idle before it is stopped
-- `description`: New description for the version
-
-#### Request Examples 
-```
-{
-  "version": "new-version"
-}
-```
- 
-```
-{
-  "memory_allocation": 512,
-  "maximum_instances": 4,
-  "minimum_instances": 1
-}
-```
-
-### Response Structure 
-Details of the updated version
-- `id`: Unique identifier for the model (UUID)
-- `model`: Model name to which the version is associated
-- `version`: Version name
-- `language`: Language in which the model version is provided
-- `memory_allocation`: Reserved memory for the version in MB
-- `maximum_instances`: Upper bound of number of model versions running
-- `minimum_instances`: Lower bound of number of model versions running
-- `maximum_idle_time`: Maximum time in seconds a model version stays idle before it is stopped
-- `description`: Description of the model version
-- `status`: The state of the model version
-- `error_message`: The error message which explains why the model version has failed building or deployment. It is empty if the model version is available.
-- `creation_date`: The date when the model version was created
-- `last_updated`: The date when the model version was last updated
-- `file_last_updated`: The date when a model file was last uploaded
-
-#### Response Examples 
-```
-{
-  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-  "model": "model-1",
-  "version": "version-1",
-  "language": "python3.5",
-  "description": "",
-  "status": "active",
-  "error_message": "",
-  "memory_allocation": 512,
-  "maximum_instances": 4,
-  "minimum_instances": 1,
-  "maximum_idle_time": 10,
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-23T18:04:76.123754Z",
-  "file_last_updated": "2020-06-23T11:17:28.128652Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-version = 'version_example' # str | 
-data = ubiops.ModelVersionCreate() # ModelVersionCreate | 
-
-    try:
-        # Update model version
-        api_response = api_instance.model_versions_update(project_name, model_name, version, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->model_versions_update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **version** | **str**|  | 
- **data** | [**ModelVersionCreate**](ModelVersionCreate.md)|  | 
-
-### Return type
-
-[**ModelVersionList**](ModelVersionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **models_create**
-> ModelList models_create(project_name, data)
-
-Create a model
-
-
-### Description 
-Create a model by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.
-
-Possible data types for the input and output fields are:
-- **int**: integer
-- **string**: string
-- **double**: double precision floating point
-- **bool**: boolean value (False/True)
-- **timestamp**: timestamp
-- **array_int**: an array of integers
-- **array_double**: an array of double precision floating points
-- **array_string**: an array of strings
-- **blob**: a blob field. This type of field can be used to pass blobs to the model. In model and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.
-
-### Required Parameters 
-- `name`: Name of the model. It is unique within a project.
-- `input_type`: Type of the input of the model. It can be either structured or plain.
-- `output_type`: Type of the output of the model. It can be either structured or plain.
-- `input_fields`: The list of required model input fields. It must contain the fields: name and data_type. The name of an input field is unique for a model.
-- `output_fields`: The list of required model output fields. It must contain the fields: name and data_type. The name of an output field is unique for a model.
-
-### Optional Parameters
-- `description`: Description of the model
-
-#### Request Examples
-A model with structured input and output type
-```
-{
-  "name": "model-1",
-  "input_type": "structured",
-  "output_type": "structured",
-  "input_fields": [
-    {
-      "name": "input-field-1",
-      "data_type": "int"
-    },
-    {
-      "name": "input-field-2",
-      "data_type": "double"
-    }
-  ],
-  "output_fields": [
-    {
-      "name": "output-field",
-      "data_type": "double"
-    }
-  ]
-}
-```
- 
-A model with plain input type
-```
-{
-  "name": "model-1",
-  "description": "Model one"
-  "input_type": "plain",
-  "output_type": "structured",
-  "output_fields": [
-    {
-      "name": "output-field",
-      "data_type": "double"
-    }
-  ]
-}
-```
- 
-A model with plain input and output type
-```
-{
-  "name": "model-1",
-  "input_type": "plain",
-  "output_type": "plain"
-}
-```
-
-### Response Structure 
-Details of the created model
-- `id`: Unique identifier for the model (UUID)
-- `name`: Name of the model
-- `project`: Project name in which the model is created
-- `input_type`: Type of the input of the model
-- `output_type`: Type of the output of the model
-- `input_fields`: The list of model input fields containing name and data_type
-- `output_fields`: The list of model output fields containing name and data_type
-- `description`: Description of the model
-- `creation_date`: The date when the model was created
-- `last_updated`: The date when the model was last updated
-- `number_of_versions`: Number of versions that this model has
-
-#### Response Examples 
-```
-{
-  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
-  "name": "model-1",
-  "project": "project-1",
-  "description": "",
-  "input_type": "structured",
-  "output_type": "structured",
-  "input_fields": [
-    {
-      "name": "input-field-1",
-      "data_type": "int"
-    },
-    {
-      "name": "input-field-2",
-      "data_type": "double"
-    }
-  ],
-  "output_fields": [
-    {
-      "name": "output-field",
-      "data_type": "double"
-    }
-  ],
-  "creation_date": "2020-06-18T08:32:14.876451Z",
-  "last_updated": "2020-06-18T08:32:14.876451Z",
-  "number_of_versions": 0
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-data = ubiops.ModelCreate() # ModelCreate | 
-
-    try:
-        # Create a model
-        api_response = api_instance.models_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->models_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **data** | [**ModelCreate**](ModelCreate.md)|  | 
-
-### Return type
-
-[**ModelList**](ModelList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **models_delete**
-> models_delete(project_name, model_name)
-
-Delete a model
-
-
-### Description 
-Delete a model. If any of the model versions of the model are referenced in a pipeline, the model cannot be deleted.
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-
-    try:
-        # Delete a model
-        api_instance.models_delete(project_name, model_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->models_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **models_get**
-> ModelList models_get(project_name, model_name)
-
-Get details of model
-
-
-### Description 
-Retrieve details of a single model in a project
-
-### Response Structure 
-Details of a model
-- `id`: Unique identifier for the model (UUID)
-- `name`: Name of the model
-- `project`: Project name in which the model is defined
-- `input_type`: Type of the input of the model
-- `output_type`: Type of the output of the model
-- `input_fields`: The list of model input fields containing name and data_type
-- `output_fields`: The list of model output fields containing name and data_type
-- `description`: Description of the model
-- `creation_date`: The date when the model was created
-- `last_updated`: The date when the model was last updated
-- `number_of_versions`: Number of versions that this model has
-
-#### Response Examples 
-```
-{
-  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
-  "name": "model-1",
-  "project": "project-1",
-  "description": "",
-  "input_type": "structured",
-  "output_type": "structured",
-  "input_fields": [
-    {
-      "name": "input-field-1",
-      "data_type": "int"
-    },
-    {
-      "name": "input-field-2",
-      "data_type": "double"
-    }
-  ],
-  "output_fields": [
-    {
-      "name": "output-field",
-      "data_type": "double"
-    }
-  ],
-  "creation_date": "2020-06-18T08:32:14.876451Z",
-  "last_updated": "2020-06-19T10:52:23.124784Z",
-  "number_of_versions": 2
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-
-    try:
-        # Get details of model
-        api_response = api_instance.models_get(project_name, model_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->models_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
-
-### Return type
-
-[**ModelList**](ModelList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **models_list**
-> list[ModelList] models_list(project_name)
-
-List models in project
-
-
-### Description 
-List all models in a project
-
-### Response Structure 
-A list of details of the models in the project
-- `id`: Unique identifier for the model (UUID)
-- `name`: Name of the model
-- `project`: Project name in which the model is defined
-- `input_type`: Type of the input of the model
-- `output_type`: Type of the output of the model
-- `input_fields`: The list of model input fields containing name and data_type. It is empty in case of plain input type models.
-- `output_fields`: The list of model output fields containing name and data_type. It is empty in case of plain output type models.
-- `description`: Description of the model
-- `creation_date`: The date when the model was created
-- `last_updated`: The date when the model was last updated
-- `number_of_versions`: Number of versions that this model has
-
-#### Response Examples 
-```
-[
-  {
-    "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
-    "name": "model-1",
-    "project": "project-1",
-    "description": "Temperature model",
-    "input_type": "structured",
-    "output_type": "structured",
-    "input_fields": [
-      {
-        "name": "input-field-1",
-        "data_type": "int"
-      },
-      {
-        "name": "input-field-2",
-        "data_type": "double"
-      }
-    ],
-    "output_fields": [
-      {
-        "name": "output-field",
-        "data_type": "double"
-      }
-    ],
-    "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated": "2020-06-22T18:04:76.123754Z",
-    "number_of_versions": 1
-  },
-  {
-    "id": "5f4e942f-d5b8-4d62-99b2-870c15a82127",
-    "name": "model-2",
-    "project": "project-1",
-    "description": "Model two",
-    "input_type": "structured",
-    "output_type": "plain",
-    "input_fields": [
-      {
-        "name": "input-field",
-        "data_type": "int"
-      }
-    ],
-    "output_fields": [],
-    "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_updated": "2020-05-19T11:52:21.163270Z",
-    "number_of_versions": 2
-  },
-  {
-    "id": "bd3fae9d-aeec-4cf3-8ef0-5f9224d41904",
-    "name": "model-3",
-    "description": "",
-    "project": "project-1",
-    "input_type": "plain",
-    "output_type": "plain",
-    "input_fields": [],
-    "output_fields": [],
-    "creation_date": "2020-06-18T08:32:14.876451Z",
-    "last_updated": "2020-06-19T10:52:23.124784Z",
-    "number_of_versions": 1
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-
-    try:
-        # List models in project
-        api_response = api_instance.models_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->models_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
-
-### Return type
-
-[**list[ModelList]**](ModelList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **models_update**
-> ModelList models_update(project_name, model_name, data)
-
-Update a model
-
-
-### Description 
-Update a model. It is only possible to update the name and description fields.
-
-### Optional Parameters 
-- `name`: New name for the model
-- `description`: New description for the model
-
-#### Request Examples
-```
-{
-  "name": "new-model-name"
-}
-```
-
-### Response Structure 
-Details of the updated model
-- `id`: Unique identifier for the model (UUID)
-- `name`: Name of the model
-- `project`: Project name in which the model is defined
-- `input_type`: Type of the input of the model
-- `output_type`: Type of the output of the model
-- `input_fields`: The list of model input fields containing name and data_type
-- `output_fields`: The list of model output fields containing name and data_type
-- `description`: Description of the model
-- `creation_date`: The date when the model was created
-- `last_updated`: The date when the model was last updated
-- `number_of_versions`: Number of versions that this model has
-
-#### Response Examples
-```
-{
-  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
-  "name": "new-model-name",
-  "project": "project-1",
-  "description": "New model description",
-  "input_type": "structured",
-  "output_type": "structured",
-  "input_fields": [
-    {
-      "name": "input-field-1",
-      "data_type": "int"
-    },
-    {
-      "name": "input-field-2",
-      "data_type": "double"
-    }
-  ],
-  "output_fields": [
-    {
-      "name": "output-field",
-      "data_type": "double"
-    }
-  ],
-  "creation_date": "2020-06-18T08:32:14.876451Z",
-  "last_updated": "2020-06-19T10:52:23.124784Z",
-  "number_of_versions": 2
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-model_name = 'model_name_example' # str | 
-data = ubiops.ModelUpdate() # ModelUpdate | 
-
-    try:
-        # Update a model
-        api_response = api_instance.models_update(project_name, model_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->models_update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **model_name** | **str**|  | 
- **data** | [**ModelUpdate**](ModelUpdate.md)|  | 
-
-### Return type
-
-[**ModelList**](ModelList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **organization_subscriptions_list**
-> list[OrganizationSubscriptionList] organization_subscriptions_list(organization_name)
-
-List subscriptions for an organization
-
-
-### Description
-List the history of subscriptions of an organization. The user making the request must be admin of the organization.
-
-### Response Structure
-A list of details of the subscriptions that the organization has had
-- `id`: Unique identifier for the organization (UUID) 
-
-- `subscription`: Name of the subscription 
-
-- `start_date`: Date the subscription started 
-
-- `subscription_agreement_user`: Email of the user who accepted the terms of subscription
-- `subscription_update_user`: Email of the user who updated the subscription to the current one
-
-#### Response Examples
-```
-[
-  {
-    "id": "56b26bcb-34b6-4c4d-a4aa-9d625e0aa9e2",
-    "subscription": "professional",
-    "start_date": "2020-07-08",
-    "subscription_agreement_user": "test-user@test.com",
-    "subscription_update_user": ""test-user-2@test.com"
-  },
-  {
-    "id": "3a27e5f8-b247-4866-a08c-5df136b6034c",
-    "subscription": "starter",
-    "start_date": "2020-06-01",
-    "subscription_agreement_user": "test-user@test.com",
-    "subscription_update_user": ""
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
-
-    try:
-        # List subscriptions for an organization
-        api_response = api_instance.organization_subscriptions_list(organization_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_subscriptions_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **organization_name** | **str**|  | 
-
-### Return type
-
-[**list[OrganizationSubscriptionList]**](OrganizationSubscriptionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -5598,7 +3285,7 @@ Get resource usage for the organization. This returns a list of metrics that are
 
 ### Response Structure 
  - `metric`: The metric that was measured
- - `object_type`: Type of object the metric was measured for (model version, pipeline or connector)
+ - `object_type`: Type of object the metric was measured for (version or pipeline)
  - `usage`: an array of objects each containing the following:
      - `day`: Timestamp denoting the start of the day
      - `value`: Aggregated metric value for the given unit over the given day
@@ -5607,7 +3294,7 @@ Get resource usage for the organization. This returns a list of metrics that are
 ```
 [
   {
-    "object_type": "model_version",
+    "object_type": "version",
     "metric": "gb_seconds",
     "usage": [
       {
@@ -5659,11 +3346,7 @@ Get resource usage for the organization. This returns a list of metrics that are
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -5672,18 +3355,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
 month = 'month_example' # str |  (optional)
 
-    try:
-        # Get resource usage details
-        api_response = api_instance.organization_usage_details_get(organization_name, month=month)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_usage_details_get: %s\n" % e)
+# Get resource usage details
+api_response = api_instance.organization_usage_details_get(organization_name, month=month)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -5703,7 +3388,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -5727,7 +3412,7 @@ Get resource usage for the organization. This returns a list of metrics that are
 
 ### Response Structure 
  - `metric`: The metric that was measured
- - `object_type`: Type of object the metric was measured for (model version, pipeline or connector)
+ - `object_type`: Type of object the metric was measured for (version or pipeline)
  - `usage`: an array of objects each containing the following:
      - `month`: Timestamp denoting the start of the month
      - `value`: Aggregated metric value for the given unit over the given month
@@ -5798,11 +3483,7 @@ Get resource usage for the organization. This returns a list of metrics that are
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -5811,18 +3492,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
 start_month = 'start_month_example' # str |  (optional)
 
-    try:
-        # Get resource usage
-        api_response = api_instance.organization_usage_get(organization_name, start_month=start_month)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_usage_get: %s\n" % e)
+# Get resource usage
+api_response = api_instance.organization_usage_get(organization_name, start_month=start_month)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -5842,7 +3525,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -5905,11 +3588,7 @@ Details of the added user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -5918,18 +3597,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
 data = ubiops.OrganizationUserCreate() # OrganizationUserCreate | 
 
-    try:
-        # Add a user to an organization
-        api_response = api_instance.organization_users_create(organization_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_users_create: %s\n" % e)
+# Add a user to an organization
+api_response = api_instance.organization_users_create(organization_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -5976,11 +3657,7 @@ It is not possible to delete the last admin of an organization.
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -5989,17 +3666,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
 user_id = 'user_id_example' # str | 
 
-    try:
-        # Delete a user from an organization
-        api_instance.organization_users_delete(organization_name, user_id)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_users_delete: %s\n" % e)
+# Delete a user from an organization
+api_instance.organization_users_delete(organization_name, user_id)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6019,8 +3698,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -6067,11 +3746,7 @@ Details of the user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6080,18 +3755,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
 user_id = 'user_id_example' # str | 
 
-    try:
-        # Get details of a user in an organization
-        api_response = api_instance.organization_users_get(organization_name, user_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_users_get: %s\n" % e)
+# Get details of a user in an organization
+api_response = api_instance.organization_users_get(organization_name, user_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6111,7 +3788,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6168,11 +3845,7 @@ List of details of users
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6181,17 +3854,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List the users in an organization
-        api_response = api_instance.organization_users_list(organization_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_users_list: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
+
+# List the users in an organization
+api_response = api_instance.organization_users_list(organization_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6210,7 +3885,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6270,11 +3945,7 @@ Details of the user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6283,19 +3954,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
 user_id = 'user_id_example' # str | 
 data = ubiops.OrganizationUserUpdate() # OrganizationUserUpdate | 
 
-    try:
-        # Update details of a user in an organization
-        api_response = api_instance.organization_users_update(organization_name, user_id, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organization_users_update: %s\n" % e)
+# Update details of a user in an organization
+api_response = api_instance.organization_users_update(organization_name, user_id, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6385,11 +4058,7 @@ Details of the created organization
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6398,17 +4067,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    data = ubiops.OrganizationCreate() # OrganizationCreate | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Create organizations
-        api_response = api_instance.organizations_create(data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organizations_create: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+data = ubiops.OrganizationCreate() # OrganizationCreate | 
+
+# Create organizations
+api_response = api_instance.organizations_create(data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6472,11 +4143,7 @@ Details of the organization
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6485,17 +4152,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Get details of an organization
-        api_response = api_instance.organizations_get(organization_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organizations_get: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
+
+# Get details of an organization
+api_response = api_instance.organizations_get(organization_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6514,7 +4183,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6558,11 +4227,7 @@ A list of details of the organizations
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6571,16 +4236,18 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # List organizations
-        api_response = api_instance.organizations_list()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organizations_list: %s\n" % e)
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+
+# List organizations
+api_response = api_instance.organizations_list()
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6596,7 +4263,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6621,11 +4288,9 @@ A list containing the number of
 
 - users 
 
-- models 
+- deployments 
 
 - versions 
-
-- connectors 
 
 - pipelines 
 
@@ -6636,9 +4301,8 @@ currently used by the organization.
 {
   "projects": 5,
   "users": 3,
-  "models": 30,
+  "deployments": 30,
   "versions": 47,
-  "connectors": 1,
   "pipelines": 2
 }
 ```
@@ -6648,11 +4312,7 @@ currently used by the organization.
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6661,17 +4321,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List resource usage of an organization
-        api_response = api_instance.organizations_resource_usage(organization_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organizations_resource_usage: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
+
+# List resource usage of an organization
+api_response = api_instance.organizations_resource_usage(organization_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6690,7 +4352,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6763,11 +4425,7 @@ Details of the organization
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6776,18 +4434,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    organization_name = 'organization_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str | 
 data = ubiops.OrganizationUpdate() # OrganizationUpdate | 
 
-    try:
-        # Update details of an organization
-        api_response = api_instance.organizations_update(organization_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->organizations_update: %s\n" % e)
+# Update details of an organization
+api_response = api_instance.organizations_update(organization_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6836,11 +4496,7 @@ A list of available permissions
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6849,16 +4505,18 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # List the available permissions
-        api_response = api_instance.permissions_list()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->permissions_list: %s\n" % e)
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+
+# List the available permissions
+api_response = api_instance.permissions_list()
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -6874,7 +4532,119 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **pipeline_audit_events_list**
+> list[AuditList] pipeline_audit_events_list(project_name, pipeline_name, action=action, limit=limit, offset=offset)
+
+List audit events for a pipeline
+
+
+### Description 
+List all audit events for a pipeline including objects and attachments
+
+### Optional Parameters
+The following parameters should be given as query parameters:
+- `action`: Type of action. It can be one of: create, update, delete, info.
+- `limit`: The maximum number of audit events given back, default is 50
+- `offset`: The number which forms the starting point of the audit events given back. If offset equals 2, then the first 2 events will be omitted from the list.
+
+### Response Structure 
+A list of details of the audit events for a pipeline
+- `id`: Unique identifier for the audit event (UUID)
+- `date`: The date when the action was performed
+- `action`: Type of action. It can be one of: create, update, delete, info. *info* action denotes that the action does not fall into create, update or delete categories.
+- `user`: Email of the user who performed the action
+- `event`: Description of the event
+- `object_type`: Type of the object on which the action was performed
+- `object_name`: Name of the object on which the action was performed. If the object is deleted at the time of listing audit events, this field is empty.
+
+#### Response Examples 
+```
+[
+  {
+    "id": "44f326de-0ee3-4741-b72e-69e31b3ec55f",
+    "date": "2020-10-23T12:21:12.460+00:00",
+    "action": "create",
+    "user": "user@example.com",
+    "event": "Created pipeline object deployment-1 for pipeline pipeline-1",
+    "object_type": "pipeline",
+    "object_name": "pipeline-1"
+  },
+  {
+    "id": "905cdc19-a02c-4f09-b2fb-42d92da21bda",
+    "date": "2020-10-23T12:21:37.247+00:00",
+    "action": "update",
+    "user": "user@example.com",
+    "event": "Updated pipeline object deployment-object for pipeline pipeline-1: name changed from deployment-1 to deployment-object",
+    "object_type": "pipeline",
+    "object_name": "pipeline-1"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+pipeline_name = 'pipeline_name_example' # str | 
+action = 'action_example' # str |  (optional)
+limit = 56 # int |  (optional)
+offset = 56 # int |  (optional)
+
+# List audit events for a pipeline
+api_response = api_instance.pipeline_audit_events_list(project_name, pipeline_name, action=action, limit=limit, offset=offset)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **pipeline_name** | **str**|  | 
+ **action** | **str**|  | [optional] 
+ **limit** | **int**|  | [optional] 
+ **offset** | **int**|  | [optional] 
+
+### Return type
+
+[**list[AuditList]**](AuditList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -6895,13 +4665,9 @@ Create an attachment between two pipeline objects. An attachment can only be mad
 The object where the attachment starts is called the source object. The object that is linked is called the destination object. When attaching two objects, one must also define which source object output fields map to which destination object input fields.
 All the input fields in the destination object must be provided in the mapping. In contrast, not all source object output fields need to be used in the mapping. It is also possible that one source output field may link to multiple destination input fields.
 
-A *connector* object can only be a destination object.
-
 The *pipeline_start* object can only be a source object.
 
 In case of plain type of objects, the mapping must be omitted or given as an empty list.
-
-When creating attachments for a blob connector, use the *blob* field in the mapping.
 
 ### Required Parameters 
 - `source_name`: Name of the source pipeline object
@@ -6909,23 +4675,23 @@ When creating attachments for a blob connector, use the *blob* field in the mapp
 - `mapping`: A list of dictionaries containing source_field_name and destination_field_name keys. The source and destination fields should match in data type, e.g. integer source fields can only be mapped to integer type destination fields.
 
 #### Request Examples 
-An attachment between a model version and connector
+An attachment between two versions
 ```
 {
-  "source_name": "model-1-v1",
-  "destination_name": "connector-1",
+  "source_name": "deployment-1-v1",
+  "destination_name": "deployment-2-v1",
   "mapping": [
     {
-      "source_field_name": "model-output-field-1",
-      "destination_field_name": "connector-field-1"
+      "source_field_name": "deployment-output-field-1",
+      "destination_field_name": "deployment-2-input-field-1"
     },
     {
-      "source_field_name": "model-output-field-2",
-      "destination_field_name": "connector-field-2"
+      "source_field_name": "deployment-output-field-2",
+      "destination_field_name": "deployment-2-input-field-2"
     },
     {
-      "source_field_name": "model-output-field-3",
-      "destination_field_name": "connector-field-3"
+      "source_field_name": "deployment-output-field-3",
+      "destination_field_name": "deployment-2-input-field-3"
     }
   ]
 }
@@ -6933,25 +4699,25 @@ An attachment between a model version and connector
 
 ```
 {
-  "source_name": "blob-model-v3",
-  "destination_name": "s3-connector",
+  "source_name": "blob-deployment-v3",
+  "destination_name": "blob-deployment-v4",
   "mapping": []
 }
 ```
  
-An attachment between a pipeline and model version
+An attachment between a pipeline and version
 ```
 {
   "source_name": "pipeline_start",
-  "destination_name": "model-2-v2",
+  "destination_name": "deployment-2-v2",
   "mapping": [
     {
       "source_field_name": "pipeline-input-field-1",
-      "destination_field_name": "model-input-field-1"
+      "destination_field_name": "deployment-input-field-1"
     },
     {
       "source_field_name": "pipeline-input-field-2",
-      "destination_field_name": "model-input-field-2"
+      "destination_field_name": "deployment-input-field-2"
     }
   ]
 }
@@ -6967,15 +4733,15 @@ Details of the created attachment
 ```
 {
   "source_name": "pipeline-1",
-  "destination_name": "model-2-v2",
+  "destination_name": "deployment-2-v2",
   "mapping": [
     {
       "source_field_name": "pipeline-input-field-1",
-      "destination_field_name": "model-input-field-1"
+      "destination_field_name": "deployment-input-field-1"
     },
     {
       "source_field_name": "pipeline-input-field-2",
-      "destination_field_name": "model-input-field-2"
+      "destination_field_name": "deployment-input-field-2"
     }
   ]
 }
@@ -6986,11 +4752,7 @@ Details of the created attachment
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -6999,19 +4761,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 data = ubiops.AttachmentsCreate() # AttachmentsCreate | 
 
-    try:
-        # Create object attachments
-        api_response = api_instance.pipeline_object_attachments_create(project_name, pipeline_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_object_attachments_create: %s\n" % e)
+# Create object attachments
+api_response = api_instance.pipeline_object_attachments_create(project_name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7056,11 +4820,7 @@ Delete an attachment in a pipeline. The referenced and original objects of the a
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7069,19 +4829,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 destination_name = 'destination_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 source_name = 'source_name_example' # str | 
 
-    try:
-        # Delete attachment of a source and destination object
-        api_instance.pipeline_object_attachments_delete(project_name, destination_name, pipeline_name, source_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_object_attachments_delete: %s\n" % e)
+# Delete attachment of a source and destination object
+api_instance.pipeline_object_attachments_delete(project_name, destination_name, pipeline_name, source_name)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7103,8 +4865,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7131,16 +4893,16 @@ Details of the attachment
 #### Response Examples 
 ```
 {
-  "source_name": "model-2-v2",
-  "destination_name": "model-3-v1",
+  "source_name": "deployment-2-v2",
+  "destination_name": "deployment-3-v1",
   "mapping": [
     {
-      "source_field_name": "model-2-output-field-1",
-      "destination_field_name": "model-3-input-field-1"
+      "source_field_name": "deployment-2-output-field-1",
+      "destination_field_name": "deployment-3-input-field-1"
     },
     {
-      "source_field_name": "model-2-output-field-2",
-      "destination_field_name": "model-3-input-field-2"
+      "source_field_name": "deployment-2-output-field-2",
+      "destination_field_name": "deployment-3-input-field-2"
     }
   ]
 }
@@ -7151,11 +4913,7 @@ Details of the attachment
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7164,20 +4922,22 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 destination_name = 'destination_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 source_name = 'source_name_example' # str | 
 
-    try:
-        # Get an attachment of a source and destination object
-        api_response = api_instance.pipeline_object_attachments_get(project_name, destination_name, pipeline_name, source_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_object_attachments_get: %s\n" % e)
+# Get an attachment of a source and destination object
+api_response = api_instance.pipeline_object_attachments_get(project_name, destination_name, pipeline_name, source_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7199,7 +4959,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7229,33 +4989,33 @@ A list of details of the attachments in the pipeline
 [
   {
     "source_name": "pipeline-1",
-    "destination_name": "model-2-v2",
+    "destination_name": "deployment-2-v2",
     "mapping": [
       {
         "source_field_name": "pipeline-input-field-1",
-        "destination_field_name": "model-input-field-1"
+        "destination_field_name": "deployment-input-field-1"
       },
       {
         "source_field_name": "pipeline-input-field-2",
-        "destination_field_name": "model-input-field-2"
+        "destination_field_name": "deployment-input-field-2"
       }
     ]
   },
   {
-    "source_name": "model-2-v2",
-    "destination_name": "connector-1",
+    "source_name": "deployment-2-v2",
+    "destination_name": "deployment-3-v1",
     "mapping": [
       {
-        "source_field_name": "model-output-field-1",
-        "destination_field_name": "connector-field-1"
+        "source_field_name": "deployment-output-field-1",
+        "destination_field_name": "deployment-3-input-field-1"
       },
       {
-        "source_field_name": "model-output-field-2",
-        "destination_field_name": "connector-field-2"
+        "source_field_name": "deployment-output-field-2",
+        "destination_field_name": "deployment-3-input-field-2"
       },
       {
-        "source_field_name": "model-output-field-3",
-        "destination_field_name": "connector-field-3"
+        "source_field_name": "deployment-output-field-3",
+        "destination_field_name": "deployment-3-input-field-3"
       }
     ]
   }
@@ -7267,11 +5027,7 @@ A list of details of the attachments in the pipeline
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7280,18 +5036,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 
-    try:
-        # List object attachments
-        api_response = api_instance.pipeline_object_attachments_list(project_name, pipeline_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_object_attachments_list: %s\n" % e)
+# List object attachments
+api_response = api_instance.pipeline_object_attachments_list(project_name, pipeline_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7311,7 +5069,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7340,34 +5098,16 @@ A list of details of the attachments of the given source object in the pipeline
 ```
 [
   {
-    "source_name": "model-2-v2",
-    "destination_name": "connector-1",
+    "source_name": "deployment-2-v2",
+    "destination_name": "deployment-3-v1",
     "mapping": [
       {
-        "source_field_name": "model-2-output-field-1",
-        "destination_field_name": "connector-field-1"
+        "source_field_name": "deployment-2-output-field-1",
+        "destination_field_name": "deployment-3-input-field-1"
       },
       {
-        "source_field_name": "model-2-output-field-2",
-        "destination_field_name": "connector-field-2"
-      },
-      {
-        "source_field_name": "model-2-output-field-3",
-        "destination_field_name": "connector-field-3"
-      }
-    ]
-  },
-  {
-    "source_name": "model-2-v2",
-    "destination_name": "model-3-v1",
-    "mapping": [
-      {
-        "source_field_name": "model-2-output-field-1",
-        "destination_field_name": "model-3-input-field-1"
-      },
-      {
-        "source_field_name": "model-2-output-field-2",
-        "destination_field_name": "model-3-input-field-2"
+        "source_field_name": "deployment-2-output-field-2",
+        "destination_field_name": "deployment-3-input-field-2"
       }
     ]
   }
@@ -7379,11 +5119,7 @@ A list of details of the attachments of the given source object in the pipeline
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7392,19 +5128,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 source_name = 'source_name_example' # str | 
 
-    try:
-        # List the attachments of a source object
-        api_response = api_instance.pipeline_object_attachments_source_get(project_name, pipeline_name, source_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_object_attachments_source_get: %s\n" % e)
+# List the attachments of a source object
+api_response = api_instance.pipeline_object_attachments_source_get(project_name, pipeline_name, source_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7425,7 +5163,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7450,7 +5188,7 @@ A list of variables described by the following fields:
 - `name`: Variable name
 - `value`: Variable value (will be null for secret variables)
 - `secret`: Boolean that indicates if this variable contains sensitive information
-- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project`, `model`, or `model_version`
+- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project`, `deployment`, or `version`
 - `inheritance_name`: Name of the parent object that this variable is inherited from
 
 #### Response Examples 
@@ -7461,8 +5199,8 @@ A list of variables described by the following fields:
     "name": "database_schema",
     "value": "public",
     "secret": false,
-    "inheritance_type": "model",
-    "inheritance_name": "model_name"
+    "inheritance_type": "deployment",
+    "inheritance_name": "deployment_name"
   },
   {
     "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
@@ -7480,11 +5218,7 @@ A list of variables described by the following fields:
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7493,19 +5227,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 name = 'name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 
-    try:
-        # List pipeline object environment variables
-        api_response = api_instance.pipeline_object_environment_variables_list(project_name, name, pipeline_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_object_environment_variables_list: %s\n" % e)
+# List pipeline object environment variables
+api_response = api_instance.pipeline_object_environment_variables_list(project_name, name, pipeline_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7526,7 +5262,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7543,34 +5279,20 @@ Add an object to a pipeline
 
 
 ### Description 
-Create a pipeline object, which can either be a connector or model version. The pipeline object that is added is a reference to the real object. In this way, multiple references to the same object may be added to a pipeline.
-In case of model reference_type, the reference_name refers to the model name and the version is the version of the model which will be added to the pipeline as an object.
+Create a pipeline object. The pipeline object that is added is a reference to the real object. In this way, multiple references to the same object may be added to a pipeline.
+The reference_name refers to the deployment name and the version is the version of the deployment which will be added to the pipeline as an object.
 
 ### Required Parameters 
 - `name`: Name of the pipeline object. It is unique within a pipeline
-- `reference_type`: Type of the object it will reference. It can either be a model or connector
 - `reference_name`: Name of the object it will reference
-
-### Optional Parameters 
-- `version`: Version name. If model is given in reference_type field, version field must be provided too. If the reference_type is connector, this field should be omitted in the request.
+- `version`: Version name of reference object
 
 #### Request Examples 
-An object referencing a model version
 ```
 {
-  "name": "model-1-v1",
-  "reference_type": "model",
-  "reference_name": "model-1",
+  "name": "deployment-1-v1",
+  "reference_name": "deployment-1",
   "version": "version-1"
-}
-```
- 
-An object referencing a connector
-```
-{
-  "name": "s3-connector",
-  "reference_type": "connector",
-  "reference_name": "s3-connector"
 }
 ```
 
@@ -7578,27 +5300,16 @@ An object referencing a connector
 Details of the created pipeline object
 - `id`: Unique identifier for the pipeline object (UUID)
 - `name`: Name of the pipeline object
-- `reference_type`: Type of the object it will reference
 - `reference_name`: Name of the object it will reference
-- `version`: Version name in case of model reference_type
+- `version`: Version name of reference object
 
 #### Response Examples 
 ```
 {
   "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
-  "name": "model-1-v1",
-  "reference_type": "model",
-  "reference_name": "model-1",
+  "name": "deployment-1-v1",
+  "reference_name": "deployment-1",
   "version": "version-1"
-}
-```
- 
-```
-{
-  "id": "1a4b0e28-3de1-442a-b1eb-947f22a69381",
-  "name": "s3-connector",
-  "reference_type": "connector",
-  "reference_name": "s3-connector"
 }
 ```
 
@@ -7607,11 +5318,7 @@ Details of the created pipeline object
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7620,19 +5327,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 data = ubiops.PipelineObjectCreate() # PipelineObjectCreate | 
 
-    try:
-        # Add an object to a pipeline
-        api_response = api_instance.pipeline_objects_create(project_name, pipeline_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_objects_create: %s\n" % e)
+# Add an object to a pipeline
+api_response = api_instance.pipeline_objects_create(project_name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7670,7 +5379,7 @@ Delete object from pipeline
 
   
 ### Description 
-Delete a pipeline object. Only the reference in the pipeline is deleted. The original object (model, model version and connector) still exists.
+Delete a pipeline object. Only the reference in the pipeline is deleted. The original object (deployment and version) still exists.
 If the object is attached to another object, the attachment is also deleted.
 
 
@@ -7678,11 +5387,7 @@ If the object is attached to another object, the attachment is also deleted.
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7691,18 +5396,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 name = 'name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 
-    try:
-        # Delete object from pipeline
-        api_instance.pipeline_objects_delete(project_name, name, pipeline_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_objects_delete: %s\n" % e)
+# Delete object from pipeline
+api_instance.pipeline_objects_delete(project_name, name, pipeline_name)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7723,8 +5430,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -7746,18 +5453,17 @@ Retrieve the details of a single pipeline object
 Details of the pipeline object
 - `id`: Unique identifier for the pipeline object (UUID)
 - `name`: Name of the pipeline object
-- `reference_type`: Type of the object it references
 - `reference_name`: Name of the object it references
-- `version`: Version name in case of model reference_type
+- `version`: Version name of reference object
 
 #### Response Examples 
 A dictionary containing details of the pipeline object
 ```
 {
-  "id": "1a4b0e28-3de1-442a-b1eb-947f22a69381",
-  "name": "s3-connector",
-  "reference_type": "connector",
-  "reference_name": "s3-connector"
+  "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
+  "name": "deployment-1-v1",
+  "reference_name": "deployment-1",
+  "version": "version-1"
 }
 ```
 
@@ -7766,11 +5472,7 @@ A dictionary containing details of the pipeline object
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7779,19 +5481,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 name = 'name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 
-    try:
-        # Get an object in a pipeline
-        api_response = api_instance.pipeline_objects_get(project_name, name, pipeline_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_objects_get: %s\n" % e)
+# Get an object in a pipeline
+api_response = api_instance.pipeline_objects_get(project_name, name, pipeline_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7812,7 +5516,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7829,32 +5533,30 @@ List objects in a pipeline
 
 
 ### Description 
-List all pipeline objects (connectors/models) in a pipeline
+List all pipeline objects in a pipeline
 
 ### Response Structure 
 A list of details of the pipeline objects in the pipeline
 - `id`: Unique identifier for the pipeline object (UUID)
 - `name`: Name of the pipeline object
-- `reference_type`: Type of the object it references
 - `reference_name`: Name of the object it references
-- `version`: Version name in case of model reference_type
+- `version`: Version name of reference object
 
 #### Response Examples 
-```
 A list of pipeline objects
+```
 [
   {
     "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
-    "name": "model-1-v1",
-    "reference_type": "model",
-    "reference_name": "model-1",
+    "name": "deployment-1-v1",
+    "reference_name": "deployment-1",
     "version": "version-1"
   },
   {
     "id": "1a4b0e28-3de1-442a-b1eb-947f22a69381",
-    "name": "s3-connector",
-    "reference_type": "connector",
-    "reference_name": "s3-connector"
+    "name": "deployment-2-v1",
+    "reference_name": "deployment-2",
+    "version": "v1"
   }
 ]
 ```
@@ -7864,11 +5566,7 @@ A list of pipeline objects
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7877,18 +5575,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 
-    try:
-        # List objects in a pipeline
-        api_response = api_instance.pipeline_objects_list(project_name, pipeline_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_objects_list: %s\n" % e)
+# List objects in a pipeline
+api_response = api_instance.pipeline_objects_list(project_name, pipeline_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -7908,7 +5608,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -7925,11 +5625,11 @@ Update an object in a pipeline
 
 
 ### Description 
-Update a pipeline object. It is not possible to update the reference_name and reference_type. All necessary fields are validated again.
+Update a pipeline object. It is not possible to update the reference_name. All necessary fields are validated again.
 
 ### Optional Parameters 
 - `name`: New name for the pipeline object
-- `version`: New version for the pipeline object. Since the input/output fields of different model versions are the same, the version of a model pipeline object can be changed with another version of the same model.
+- `version`: New version for the pipeline object. Since the input/output fields of different versions are the same, the version of a deployment pipeline object can be changed with another version of the same deployment.
 
 #### Request Examples 
 ```
@@ -7940,7 +5640,7 @@ Update a pipeline object. It is not possible to update the reference_name and re
  
 ```
 {
-  "name": "model-1-v2"
+  "name": "deployment-1-v2"
   "version": "version-2"
 }
 ```
@@ -7949,17 +5649,15 @@ Update a pipeline object. It is not possible to update the reference_name and re
 Details of the updated pipeline object
 - `id`: Unique identifier for the pipeline object (UUID)
 - `name`: Name of the pipeline object
-- `reference_type`: Type of the object it references
 - `reference_name`: Name of the object it references
-- `version`: Version name in case of model reference_type
+- `version`: Version name of reference object
 
 #### Response Examples 
 ```
 {
   "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
-  "name": "model-1-v2",
-  "reference_type": "model",
-  "reference_name": "model-1",
+  "name": "deployment-1-v2",
+  "reference_name": "deployment-1",
   "version": "version-2"
 }
 ```
@@ -7969,11 +5667,7 @@ Details of the updated pipeline object
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -7982,20 +5676,22 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 name = 'name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 data = ubiops.PipelineObjectUpdate() # PipelineObjectUpdate | 
 
-    try:
-        # Update an object in a pipeline
-        api_response = api_instance.pipeline_objects_update(project_name, name, pipeline_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipeline_objects_update: %s\n" % e)
+# Update an object in a pipeline
+api_response = api_instance.pipeline_objects_update(project_name, name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8027,6 +5723,142 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **pipeline_requests_create**
+> PipelineRequestList pipeline_requests_create(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
+
+Make a request to a pipeline
+
+
+### Description 
+Make a pipeline request. This method returns all the results of the deployment requests made within the pipeline.
+
+### Required Parameters 
+A dictionary which contains the input fields of the pipeline as keys
+
+### Optional Parameters
+These parameters should be given as GET parameters
+- `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600.
+- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds.  The maximum allowed value is 3600 and the default value is 300.
+Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.
+
+#### Request Examples
+```
+{
+  "pipeline-input-field-1": 5.0,
+  "pipeline-input-field-2": "N"
+}
+```
+
+### Response Structure 
+- `project`: Name of the project in which the request is made
+- `pipeline`: Name of the pipeline for which the request is made
+- `pipeline_request_id`: Unique identifier for the pipeline request
+- `deployment_requests`: A list of dictionaries containing the results of the deployment requests made for the version objects in the pipeline. The dictionaries contain the following fields:
+    - `request_id`: Unique identifier for the deployment request
+    - `pipeline_object`: Name of the object in the pipeline
+    - `success`: A boolean value that indicates whether the deployment request was successful
+    - `request_data`: Input data for the deployment request
+    - `result`: Deployment request result value. NULL if the request failed.
+    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+
+#### Response Examples
+```
+{
+  "project": "project-1",
+  "pipeline": "pipeline-1",
+  "pipeline_request_id": "286f771b-6617-4985-ab49-12ed720e62b1",
+  "deployment_requests": [
+    {
+      "request_id": "a7524614-bdb7-41e1-b4c1-653bb72c30b4",
+      "pipeline_object": "deployment-object-1",
+      "success": true,
+      "request_data": {
+        "deployment-1-input-field-1": 5,
+        "deployment-1-input-field-2": 0.4
+      },
+      "result": {
+        "deployment-1-output-field-1": 0.23,
+        "deployment-1-output-field-2": 10
+      },
+      "error_message": None 
+    },
+    {
+      "request_id": "fe322c50-58f8-4e67-b7d6-cba14273874e",
+      "pipeline_object": "deployment-object-2",
+      "success": false,
+      "request_data": {
+        "deployment-2-input-field": 10
+      },
+      "result": None,
+      "error_message": "Invalid message format" 
+    }
+  ]
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+pipeline_name = 'pipeline_name_example' # str | 
+data = ubiops.PipelineRequestCreate() # PipelineRequestCreate | 
+pipeline_timeout = 56 # int |  (optional)
+deployment_timeout = 56 # int |  (optional)
+
+# Make a request to a pipeline
+api_response = api_instance.pipeline_requests_create(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **pipeline_name** | **str**|  | 
+ **data** | [**PipelineRequestCreate**](PipelineRequestCreate.md)|  | 
+ **pipeline_timeout** | **int**|  | [optional] 
+ **deployment_timeout** | **int**|  | [optional] 
+
+### Return type
+
+[**PipelineRequestList**](PipelineRequestList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **pipelines_create**
 > PipelineList pipelines_create(project_name, data)
 
@@ -8040,11 +5872,12 @@ The input_fields represent the fields that the input data for pipeline requests 
 
 ### Required Parameters 
 - `name`: Name of the pipeline. It is unique within a project.
-- `input_type`: Type of the connector. It can be either structured or plain.
-- `input_fields`: A list of fields with name and data_type. In case of plain pipelines, the input_fields should be omitted or given as an empty list. For structured pipelines, they must be provided.
+- `input_type`: Type of the pipeline. It can be either structured or plain.
+- `input_fields`: A list of fields with name and data_type. In case of plain pipelines, the input_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
 
 ### Optional Parameters
 - `description`: Description of the pipeline
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 
 #### Request Examples 
 A structured pipeline
@@ -8082,6 +5915,7 @@ Details of the created pipeline
 - `project`: Project name in which the pipeline is created
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
 
@@ -8103,6 +5937,9 @@ Details of the created pipeline
       "data_type": "double"
     }
   ],
+  "labels": {
+    "tag": "production"
+  },
   "creation_date": "2020-03-24T09:43:51.791253Z",
   "last_updated": "2020-03-24T09:43:51.791253Z"
 }
@@ -8116,6 +5953,9 @@ Details of the created pipeline
   "description": "my description",
   "input_type": "plain",
   "input_fields": [],
+  "labels": {
+    "tag": "production"
+  },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-05-12T16:23:15.456812Z"
 }
@@ -8126,11 +5966,7 @@ Details of the created pipeline
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8139,18 +5975,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 data = ubiops.PipelineCreate() # PipelineCreate | 
 
-    try:
-        # Create pipelines
-        api_response = api_instance.pipelines_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipelines_create: %s\n" % e)
+# Create pipelines
+api_response = api_instance.pipelines_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8194,11 +6032,7 @@ Delete a pipeline. This will also delete all objects and attachments in the pipe
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8207,17 +6041,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 
-    try:
-        # Delete pipeline
-        api_instance.pipelines_delete(project_name, pipeline_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipelines_delete: %s\n" % e)
+# Delete pipeline
+api_instance.pipelines_delete(project_name, pipeline_name)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8237,8 +6073,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8264,6 +6100,7 @@ Details of the pipeline
 - `project`: Project name in which the pipeline is defined
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
 
@@ -8276,6 +6113,9 @@ Details of the pipeline
   "description": "my description",
   "input_type": "plain",
   "input_fields": [],
+  "labels": {
+    "tag": "production"
+  },
   "creation_date": "2020-03-24T09:43:51.791253Z",
   "last_updated": "2020-05-19T11:52:21.163270Z"
 }
@@ -8286,11 +6126,7 @@ Details of the pipeline
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8299,18 +6135,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 
-    try:
-        # Get pipeline
-        api_response = api_instance.pipelines_get(project_name, pipeline_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipelines_get: %s\n" % e)
+# Get pipeline
+api_response = api_instance.pipelines_get(project_name, pipeline_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8330,7 +6168,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8341,13 +6179,16 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pipelines_list**
-> list[PipelineList] pipelines_list(project_name)
+> list[PipelineList] pipelines_list(project_name, labels=labels)
 
 List pipelines
 
 
 ### Description 
-List all pipelines in a project
+Pipelines can be filtered according to the labels they have by giving labels as a query parameter. Pipelines that have at least one of the labels on which is filtered, are returned.
+
+### Optional Parameters
+- `labels`: Filter on labels of the pipeline. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.
 
 ### Response Structure 
 A list of details of the pipelines in the project
@@ -8357,6 +6198,7 @@ A list of details of the pipelines in the project
 - `description`: Description of the pipeline
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
 
@@ -8379,6 +6221,9 @@ A list of details of the pipelines in the project
         "data_type": "double"
       }
     ],
+    "labels": {
+      "tag": "production"
+    },
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z"
   },
@@ -8389,6 +6234,9 @@ A list of details of the pipelines in the project
     "description": "my description",
     "input_type": "plain",
     "input_fields": [],
+    "labels": {
+      "tag": "production"
+    },
     "creation_date": "2020-03-24T09:43:51.791253Z",
     "last_updated": "2020-05-19T11:52:21.163270Z"
   }
@@ -8400,11 +6248,7 @@ A list of details of the pipelines in the project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8413,17 +6257,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List pipelines
-        api_response = api_instance.pipelines_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipelines_list: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+labels = 'labels_example' # str |  (optional)
+
+# List pipelines
+api_response = api_instance.pipelines_list(project_name, labels=labels)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8431,6 +6278,7 @@ with ubiops.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_name** | **str**|  | 
+ **labels** | **str**|  | [optional] 
 
 ### Return type
 
@@ -8442,145 +6290,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **pipelines_request**
-> PipelineRequestList pipelines_request(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, model_timeout=model_timeout)
-
-Make a request to a pipeline
-
-
-### Description 
-Make a pipeline request. This method returns all the results of the model requests made within the pipeline.
-
-### Required Parameters 
-A dictionary which contains the input fields of the pipeline as keys
-
-### Optional Parameters
-These parameters should be given as GET parameters
-- `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600.
-- `model_timeout`: Timeout for each model request in the pipeline in seconds.  The maximum allowed value is 3600 and the default value is 300.
-Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.
-
-#### Request Examples
-```
-{
-  "pipeline-input-field-1": 5.0,
-  "pipeline-input-field-2": "N"
-}
-```
-
-### Response Structure 
-- `project`: Name of the project in which the request is made
-- `pipeline`: Name of the pipeline for which the request is made
-- `pipeline_request_id`: Unique identifier for the pipeline request
-- `model_requests`: A list of dictionaries containing the results of the model requests made for the model objects in the pipeline. The dictionaries contain the following fields:
-    - `request_id`: Unique identifier for the model request
-    - `pipeline_object`: Name of the object in the pipeline
-    - `success`: A boolean value that indicates whether the model request was successful
-    - `request_data`: Input data for the model request
-    - `result`: Model request result value. NULL if the request failed.
-    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
-
-#### Response Examples
-```
-{
-  "project": "project-1",
-  "pipeline": "pipeline-1",
-  "pipeline_request_id": "286f771b-6617-4985-ab49-12ed720e62b1",
-  "model_requests": [
-    {
-      "request_id": "a7524614-bdb7-41e1-b4c1-653bb72c30b4",
-      "pipeline_object": "model-object-1",
-      "success": true,
-      "request_data": {
-        "model-1-input-field-1": 5,
-        "model-1-input-field-2": 0.4
-      },
-      "result": {
-        "model-1-output-field-1": 0.23,
-        "model-1-output-field-2": 10
-      },
-      "error_message": None 
-    },
-    {
-      "request_id": "fe322c50-58f8-4e67-b7d6-cba14273874e",
-      "pipeline_object": "model-object-2",
-      "success": false,
-      "request_data": {
-        "model-2-input-field": 10
-      },
-      "result": None,
-      "error_message": "Invalid message format" 
-    }
-  ]
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-pipeline_name = 'pipeline_name_example' # str | 
-data = ubiops.PipelineRequestCreate() # PipelineRequestCreate | 
-pipeline_timeout = 56 # int |  (optional)
-model_timeout = 56 # int |  (optional)
-
-    try:
-        # Make a request to a pipeline
-        api_response = api_instance.pipelines_request(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, model_timeout=model_timeout)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipelines_request: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **pipeline_name** | **str**|  | 
- **data** | [**PipelineRequestCreate**](PipelineRequestCreate.md)|  | 
- **pipeline_timeout** | **int**|  | [optional] 
- **model_timeout** | **int**|  | [optional] 
-
-### Return type
-
-[**PipelineRequestList**](PipelineRequestList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json, text/plain
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -8598,16 +6308,19 @@ Update pipeline
 
     
 ### Description 
-Update a pipeline. All necessary fields are validated again.
+Update a pipeline. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. 
 
 ### Optional Parameters 
 - `name`: New name for the pipeline
 - `description`: New description for the pipeline
+- `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
 - `input_type`: New type for the pipeline. It is possible to change the type from plain to structured and vice versa.
 - `input_fields`: New input fields for the pipeline.
 
 If the type of pipeline is updated to plain, the input fields are deleted. In this case, input_fields should either be omitted or provided as en empty list.
-If the type of pipeline is updated to structured, the old fields are deleted, if there existed any. The new fields are created. If one or more old fields need to be kept, they must be provided again.
+If the type of pipeline is updated to structured, the old fields are deleted, if there existed any. The new fields are created, if any is provided. If one or more old fields need to be kept, they must be provided again.
+
+**To delete the input fields of a pipeline**, provide an empty list for input_fields field.
 
 #### Request Examples 
 ```
@@ -8618,7 +6331,10 @@ If the type of pipeline is updated to structured, the old fields are deleted, if
 
 ```
 {
-  "description": "New pipeline description"
+  "description": "New pipeline description",
+  "labels": {
+    "tag": "production"
+  }
 }
 ```
 
@@ -8644,6 +6360,13 @@ If the type of pipeline is updated to structured, the old fields are deleted, if
 }
 ```
 
+```
+{
+  "input_type": "structured",
+  "input_fields": []
+}
+```
+
 ### Response Structure 
 Details of the updated pipeline
 - `id`: Unique identifier for the pipeline (UUID)
@@ -8652,6 +6375,7 @@ Details of the updated pipeline
 - `description`: Description for the pipeline
 - `input_type`: Type of the pipeline
 - `input_fields`: A list of pipeline fields with name and data_type
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
 
@@ -8673,6 +6397,9 @@ Details of the updated pipeline
       "data_type": "array_string"
     }
   ],
+  "labels": {
+    "tag": "production"
+  },
   "creation_date": "2020-03-24T09:43:51.791253Z",
   "last_updated": "2020-05-19T11:52:21.163270Z"
 }
@@ -8683,11 +6410,7 @@ Details of the updated pipeline
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8696,19 +6419,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 pipeline_name = 'pipeline_name_example' # str | 
 data = ubiops.PipelineCreate() # PipelineCreate | 
 
-    try:
-        # Update pipeline
-        api_response = api_instance.pipelines_update(project_name, pipeline_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->pipelines_update: %s\n" % e)
+# Update pipeline
+api_response = api_instance.pipelines_update(project_name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8739,6 +6464,116 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **project_audit_events_list**
+> list[AuditList] project_audit_events_list(project_name, action=action, limit=limit, offset=offset)
+
+List audit events in a project
+
+
+### Description 
+List all audit events in a project including all objects
+
+### Optional Parameters
+The following parameters should be given as query parameters:
+- `action`: Type of action. It can be one of: create, update, delete, info.
+- `limit`: The maximum number of audit events given back, default is 50
+- `offset`: The number which forms the starting point of the audit events given back. If offset equals 2, then the first 2 events will be omitted from the list.
+
+### Response Structure 
+A list of details of the audit events in the project
+- `id`: Unique identifier for the audit event (UUID)
+- `date`: The date when the action was performed
+- `action`: Type of action. It can be one of: create, update, delete, info. *info* action denotes that the action does not fall into create, update or delete categories.
+- `user`: Email of the user who performed the action
+- `event`: Description of the event
+- `object_type`: Type of the object on which the action was performed
+- `object_name`: Name of the object on which the action was performed. If the object is deleted at the time of listing audit events, this field is empty.
+
+#### Response Examples 
+```
+[
+  {
+    "id": "54c1ea23-5773-4821-8fd7-1b577cc301bc",
+    "date": "2020-05-23T11:53:02.873+00:00",
+    "action": "create",
+    "user": "user@example.com",
+    "event": "Created project test-project",
+    "object_type": "project",
+    "object_name": "test-project"
+  },
+  {
+    "id": "764e254c-7402-4445-ac79-009d08b21caa",
+    "date": "2020-05-23T11:57:20.072+00:00",
+    "action": "create",
+    "user": "user@example.com",
+    "event": "Created deployment deployment-1",
+    "object_type": "deployment",
+    "object_name": "deployment-1"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+action = 'action_example' # str |  (optional)
+limit = 56 # int |  (optional)
+offset = 56 # int |  (optional)
+
+# List audit events in a project
+api_response = api_instance.project_audit_events_list(project_name, action=action, limit=limit, offset=offset)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **action** | **str**|  | [optional] 
+ **limit** | **int**|  | [optional] 
+ **offset** | **int**|  | [optional] 
+
+### Return type
+
+[**list[AuditList]**](AuditList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **project_environment_variables_create**
 > EnvironmentVariableList project_environment_variables_create(project_name, data)
 
@@ -8746,10 +6581,10 @@ Create project environment variable
 
 
 ### Description
-Create an environment variable for the project. This variable will be inherited by all models in this project.
+Create an environment variable for the project. This variable will be inherited by all deployments in this project.
 
 ### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your model code. The variable name should contain only letters and underscores, and not start or end with an underscore.
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
 - `value`: The value of the variable as a string. It may be an empty string ("").
 - `secret`: If this variable contains sensitive information, set this to true to hide it from other users.
 
@@ -8801,11 +6636,7 @@ A list of variables described by the following fields:
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8814,18 +6645,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
 
-    try:
-        # Create project environment variable
-        api_response = api_instance.project_environment_variables_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->project_environment_variables_create: %s\n" % e)
+# Create project environment variable
+api_response = api_instance.project_environment_variables_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8869,11 +6702,7 @@ Delete an environment variable of the project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8882,17 +6711,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 id = 'id_example' # str | 
 
-    try:
-        # Delete project environment variable
-        api_instance.project_environment_variables_delete(project_name, id)
-    except ApiException as e:
-        print("Exception when calling CoreApi->project_environment_variables_delete: %s\n" % e)
+# Delete project environment variable
+api_instance.project_environment_variables_delete(project_name, id)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8912,8 +6743,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -8955,11 +6786,7 @@ A list of variables described by the following fields:
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -8968,18 +6795,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 id = 'id_example' # str | 
 
-    try:
-        # Get project environment variable
-        api_response = api_instance.project_environment_variables_get(project_name, id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->project_environment_variables_get: %s\n" % e)
+# Get project environment variable
+api_response = api_instance.project_environment_variables_get(project_name, id)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -8999,7 +6828,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9016,7 +6845,7 @@ List project environment variables
 
 
 ### Description
-List the environment variables defined for the project. These are the variables that are inherited by all models in this project.
+List the environment variables defined for the project. These are the variables that are inherited by all deployments in this project.
  
 ### Response Structure 
 A list of variables described by the following fields:
@@ -9048,11 +6877,7 @@ A list of variables described by the following fields:
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9061,17 +6886,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List project environment variables
-        api_response = api_instance.project_environment_variables_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->project_environment_variables_list: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+
+# List project environment variables
+api_response = api_instance.project_environment_variables_list(project_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9090,7 +6917,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9110,7 +6937,7 @@ Update project environment variable
 Update an environment variable for the projects
 
 ### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your model code. The variable name should contain only letters and underscores, and not start or end with an underscore. 
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore. 
 - `value`: The value of the variable as a string. It may be an empty string. 
 - `secret`: If this variable contains sensitive information, set this to true to hide it from other users. Can be updated from false to true, but not from true to false (i.e. secrets will stay secrets). 
 
@@ -9145,11 +6972,7 @@ A list of variables described by the following fields:
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9158,19 +6981,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 id = 'id_example' # str | 
 data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
 
-    try:
-        # Update project environment variable
-        api_response = api_instance.project_environment_variables_update(project_name, id, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->project_environment_variables_update: %s\n" % e)
+# Update project environment variable
+api_response = api_instance.project_environment_variables_update(project_name, id, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9215,7 +7040,7 @@ Get resource usage for the project. This returns a list of metrics that are used
 
 ### Response Structure 
  - `metric`: The metric that was measured
- - `object_type`: Type of object the metric was measured for (model version, pipeline or connector)
+ - `object_type`: Type of object the metric was measured for (version or pipeline)
  - `usage`: an array of objects each containing the following:
      - `month`: Timestamp denoting the start of the month
      - `value`: Aggregated metric value for the given unit over the given month
@@ -9286,11 +7111,7 @@ Get resource usage for the project. This returns a list of metrics that are used
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9299,18 +7120,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 start_month = 'start_month_example' # str |  (optional)
 
-    try:
-        # Get resource usage
-        api_response = api_instance.project_usage_get(project_name, start_month=start_month)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->project_usage_get: %s\n" % e)
+# Get resource usage
+api_response = api_instance.project_usage_get(project_name, start_month=start_month)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9330,7 +7153,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9388,11 +7211,7 @@ Details of the created project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9401,17 +7220,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    data = ubiops.ProjectCreate() # ProjectCreate | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Create projects
-        api_response = api_instance.projects_create(data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_create: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+data = ubiops.ProjectCreate() # ProjectCreate | 
+
+# Create projects
+api_response = api_instance.projects_create(data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9448,18 +7269,14 @@ Delete a project
 
 ### Description 
 Delete a project. The user making the request must have appropriate permissions.
-**When project is deleted, all the models, connectors and pipelines defined in it are also deleted.**
+**When project is deleted, all the deployments and pipelines defined in it are also deleted.**
 
 
 ### Example
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9468,16 +7285,18 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Delete a project
-        api_instance.projects_delete(project_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_delete: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+
+# Delete a project
+api_instance.projects_delete(project_name)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9496,8 +7315,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -9540,11 +7359,7 @@ Details of a project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9553,17 +7368,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Get details of a project
-        api_response = api_instance.projects_get(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_get: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+
+# Get details of a project
+api_response = api_instance.projects_get(project_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9582,7 +7399,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9634,11 +7451,7 @@ A list of details of the projects
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9647,16 +7460,18 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # List projects
-        api_response = api_instance.projects_list()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_list: %s\n" % e)
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+
+# List projects
+api_response = api_instance.projects_list()
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9672,7 +7487,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -9689,29 +7504,27 @@ List logs for a project
 
 
 ### Description 
-Retrieve the logs of all objects in a project, including models, pipelines, connectors and requests. Using filters you can filter the logs on the objects and information of your choice. 
+Retrieve the logs of all objects in a project, including deployments, pipelines and requests. Using filters you can filter the logs on the objects and information of your choice. 
 
 ### Required Parameters 
 - `filters`: A dictionary containing information to filter logs on. It may contain zero or more of the following fields: 
 
-    - `model_name`: name of a model 
+    - `deployment_name`: name of a deployment 
 
-    - `model_version`: a version name. If this field is present in the request, model_name must also be given. The versions are only meaningful in combination with the models they are defined for. 
-
-    - `connector_name`: name of a connector 
+    - `version`: a version name. If this field is present in the request, deployment_name must also be given. The versions are only meaningful in combination with the deployments they are defined for. 
 
     - `pipeline_name`: name of a pipeline 
 
     - `pipeline_object_name`: name of a pipeline object. If this field is present in the request, pipeline_name must also be given. The pipeline objects are only meaningful in combination with the pipelines they are defined in. 
 
-    - `request_id`: the UUID of a model request 
+    - `request_id`: the UUID of a deployment request 
 
     - `pipeline_request_id`: the UUID of a pipeline request 
 
     - `system`: whether the log was generated by the system or user code (true / false) 
 
 
-Any combination of filters may be given in the request. For example, if only a model_name is provided, all logs for that model are returned. These logs can contain information from all the pipelines that model is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.
+Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.
 
 ### Optional Parameters 
 - `date`: Starting date for the logs. If it is not provided and the `id` parameter is not set, the most recent logs are returned. It should be provided in ISO 8601 format. The results are inclusive of the given date. 
@@ -9735,8 +7548,8 @@ If no date or id is specified, the API will use the current time as a starting p
 ```
 {
   "filters": {
-    "model_name": "model-1",
-    "model_version": "v1"
+    "deployment_name": "deployment-1",
+    "version": "v1"
   },
   "date": "2020-01-01T00:00:00.000000Z"
 }
@@ -9745,29 +7558,19 @@ If no date or id is specified, the API will use the current time as a starting p
 ```
 {
   "filters": {
-    "connector_name": "s3-connector",
     "pipeline_name": "pipeline-1"
   },
   "id": "41d7a7c5cd025e3501a00000",
   "date_range": -100
 }
 ```
- 
-```
-{
-  "filters": {
-    "connector_name": "s3-connector",
-    "pipeline_name": "pipeline-1"
-  },
-  "date_range": 100
-}
-```
 
 ```
 {
   "filters": {
-    "connector_name": "s3-connector",
-    "pipeline_name": "pipeline-1"
+    "pipeline_name": "pipeline-1",
+    "deployment_name": "deployment-1",
+    "version": "v1"
   },
   "date": "2020-01-01T00:00:00.000000Z",
   "date_range": -86400,
@@ -9784,42 +7587,40 @@ A list of log details
 - `date`: Time the log line was created
  
 The following fields will be returned on response if they are set for the log line:
-- `connector_name`:  The connector which the log is related to 
+- `deployment_name`:  The deployment which the log is related to 
 
-- `model_name`:  The model which the log is related to 
-
-- `model_version`:  The model version which the log is related to 
+- `version`:  The version which the log is related to 
 
 - `pipeline_name`:  The pipeline which the log is related to 
 
 - `pipeline_object_name`: The pipeline object which the log is related to 
 
-- `request_id`:  The model request the log is related to 
+- `request_id`:  The deployment request the log is related to 
 
 - `pipeline_request_id`:  The pipeline request the log is related to 
 
 - `system`:  Whether the log was generated by the system (true / false)
 
 #### Response Examples 
-Logs for a specific model and version
+Logs for a specific deployment and version
 ```
 [
   {
     "id": "5dcad12ba76a2c6e4331f180",
-    "model_name": "model-1",
-    "model_version": "v1",
+    "deployment_name": "deployment-1",
+    "version": "v1",
     "date": "2020-01-01T00:00:00.000000Z",
     "log": "[Info] Prediction result 0.14981"
   },
   {
     "id": "5dcad12ba76a2c6e4331f181",
-    "model_name": "model-1",
-    "model_version": "v1",
+    "deployment_name": "deployment-1",
+    "version": "v1",
     "pipeline_name": "pipeline-2",
-    "pipeline_object_name": "model-1-v1-object",
+    "pipeline_object_name": "deployment-1-v1-object",
     "pipeline_trace_id": "8bb6ed79-8606-4acf-acd2-90507130523c",
     "date": "2020-01-01T00:00:01.000000Z",
-    "log": "[Error] Model call result (failed)"
+    "log": "[Error] Deployment call result (failed)"
   }
 ]
 ```
@@ -9829,22 +7630,13 @@ Logs for a specific pipeline
 [
   {
     "id": "5dcad12ba76a2c6e4331f192",
-    "model_name": "model-2",
-    "model_version": "v2",
+    "deployment_name": "deployment-2",
+    "version": "v2",
     "pipeline_name": "pipeline-1",
-    "pipeline_object_name": "model-2-v2-object",
+    "pipeline_object_name": "deployment-2-v2-object",
     "pipeline_trace_id": "4f75b10d-6012-47ab-ae68-cc9e69f35841",
     "date": "2020-01-01T00:00:00.000000Z",
-    "log": "[Info] Model call result (success): 0.2316"
-  },
-  {
-    "id": "5dcad12ba76a2c6e4331f193",
-    "connector_name": "s3-connector",
-    "pipeline_name": "pipeline-1",
-    "pipeline_object_name": "s3-connector-object",
-    "pipeline_trace_id": "4f75b10d-6012-47ab-ae68-cc9e69f35841",
-    "date": "2020-01-01T00:00:01.000000Z",
-    "log": "Could not connect to database: connection timed out"
+    "log": "[Info] Deployment call result (success): 0.2316"
   }
 ]
 ```
@@ -9854,11 +7646,7 @@ Logs for a specific pipeline
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9867,18 +7655,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 data = ubiops.LogsCreate() # LogsCreate | 
 
-    try:
-        # List logs for a project
-        api_response = api_instance.projects_log_list(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_log_list: %s\n" % e)
+# List logs for a project
+api_response = api_instance.projects_log_list(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9919,11 +7709,9 @@ List the total number of resources used in a project
 
 ### Response Structure
 A list containing the number of
-- models 
+- deployments 
 
 - versions 
-
-- connectors 
 
 - pipelines 
 
@@ -9932,9 +7720,8 @@ currently defined in the project.
 #### Response Examples
 ```
 {
-  "models": 30,
+  "deployments": 30,
   "versions": 47,
-  "connectors": 1,
   "pipelines": 2
 }
 ```
@@ -9944,11 +7731,7 @@ currently defined in the project.
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -9957,17 +7740,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List resource usage of a project
-        api_response = api_instance.projects_resource_usage(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_resource_usage: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+
+# List resource usage of a project
+api_response = api_instance.projects_resource_usage(project_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -9986,7 +7771,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -10040,11 +7825,7 @@ Details of a project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10053,18 +7834,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 data = ubiops.ProjectUpdate() # ProjectUpdate | 
 
-    try:
-        # Update a project
-        api_response = api_instance.projects_update(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->projects_update: %s\n" % e)
+# Update a project
+api_response = api_instance.projects_update(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10094,6 +7877,576 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **request_schedules_create**
+> ScheduleList request_schedules_create(project_name, data)
+
+Create request schedules
+
+
+### Description 
+Create a new request schedule with the provided name
+
+### Required Parameters 
+- `name`: Name of the request. The name is unique per project. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
+
+- `object_type`: Type of object for which the request is made. Can be either 'deployment' or 'pipeline'. 
+
+- `object_name`: Name of deployment or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+
+### Optional Parameters
+- `version`: Name of version if type of object is 'deployment' 
+
+- `request_data`: Input data for the request schedule. For structured deployments/pipelines, it must be a dictionary. 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds. This field is not used for batch requests. 
+
+- `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'. 
+
+
+#### Request Examples 
+```
+{
+  "name": "test-request",
+  "object_type": "deployment",
+  "object_name": "test-deployment",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 300,
+  "enabled": true
+}
+```
+
+### Response Structure 
+Details of the created request schedule
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of deployment or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'deployment' 
+
+- `request_data`: Input data for the request schedule 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
+
+- `creation_date`: The date when the request schedule was created
+
+#### Response Examples 
+```
+{
+  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+  "name": "test-request",
+  "object_type": "deployment",
+  "object_name": "test-deployment",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 300,
+  "enabled": true,
+  "creation_date": "2020-09-16T08:06:34.457679Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+data = ubiops.ScheduleCreate() # ScheduleCreate | 
+
+# Create request schedules
+api_response = api_instance.request_schedules_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **data** | [**ScheduleCreate**](ScheduleCreate.md)|  | 
+
+### Return type
+
+[**ScheduleList**](ScheduleList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **request_schedules_delete**
+> request_schedules_delete(project_name, schedule_name)
+
+Delete a request schedule
+
+
+### Description 
+Delete the request schedule from the project. 
+
+If you want to temporarily disable a request schedule, update the request with `enabled` set to False.
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+schedule_name = 'schedule_name_example' # str | 
+
+# Delete a request schedule
+api_instance.request_schedules_delete(project_name, schedule_name)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **schedule_name** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **request_schedules_get**
+> ScheduleList request_schedules_get(project_name, schedule_name)
+
+Get details of a request schedule
+
+
+### Description 
+Retrieve details of a single request schedule
+
+### Response Structure 
+Details of a request schedule
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of deployment or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'deployment' 
+
+- `request_data`: Input data for the request schedule 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
+
+- `creation_date`: The date when the request schedule was created
+
+#### Response Examples 
+```
+{
+  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+  "name": "test-request",
+  "object_type": "deployment",
+  "object_name": "test-deployment",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 200,
+  "enabled": true,
+  "creation_date": "2020-09-16T08:06:34.457679Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+schedule_name = 'schedule_name_example' # str | 
+
+# Get details of a request schedule
+api_response = api_instance.request_schedules_get(project_name, schedule_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **schedule_name** | **str**|  | 
+
+### Return type
+
+[**ScheduleList**](ScheduleList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **request_schedules_list**
+> list[ScheduleList] request_schedules_list(project_name)
+
+List request schedules
+
+
+### Description 
+List the request schedules in a project. The user has to have 'requests.list' permission on either 'deployments.versions' or 'pipelines' to list the request schedules.
+
+### Response Structure 
+A list of details of all request schedules in a project
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of deployment or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'deployment' 
+
+- `request_data`: Input data for the request schedule 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
+
+- `creation_date`: The date when the request schedule was created
+
+#### Response Examples 
+```
+[
+    {
+      "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+      "name": "test-request",
+      "object_type": "deployment",
+      "object_name": "test-deployment",
+      "version": "v1",
+      "schedule": "0 * 3 * *",
+      "request_data": {
+        "input_field_1": 2345,
+        "input_field_2": 8765
+      },
+      "batch": false,
+      "timeout": 200",
+      "enabled": true,
+      "creation_date": "2020-09-16T08:06:34.457679Z"
+    }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+
+# List request schedules
+api_response = api_instance.request_schedules_list(project_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+
+### Return type
+
+[**list[ScheduleList]**](ScheduleList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **request_schedules_update**
+> ScheduleList request_schedules_update(project_name, schedule_name, data)
+
+Update a request schedule
+
+
+### Description 
+Update a request schedule in a project. Create permissions on the object are necessary for this action.
+
+### Optional Parameters
+- `name`: Name of the request. The name is unique per project. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
+
+- `schedule`: Schedule in crontab format 
+
+- `request_data`: Input data for the request schedule. For structured deployments/pipelines, it must be a dictionary. 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'. 
+
+
+#### Request Examples 
+```
+{
+  "name": "test-request",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": true,
+  "timeout": 360,
+  "enabled": false
+}
+```
+
+### Response Structure 
+Details of the updated request schedule
+- `name`: Name of the request 
+
+- `object_type`: Type of object for which the request is made 
+
+- `object_name`: Name of deployment or pipeline for which the request is made 
+ 
+- `schedule`: Schedule in crontab format 
+
+- `version`: Name of version if type of object is 'deployment' 
+
+- `request_data`: Input data for the request schedule 
+
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
+
+- `timeout`: Timeout in seconds 
+
+- `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
+
+- `creation_date`: The date when the request schedule was created
+
+#### Response Examples 
+```
+{
+  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+  "name": "test-request",
+  "object_type": "deployment",
+  "object_name": "test-deployment",
+  "version": "v1",
+  "schedule": "0 * 3 * *",
+  "request_data": {
+    "input_field_1": 2345,
+    "input_field_2": 8765
+  },
+  "batch": false,
+  "timeout": 360,
+  "enabled": true,
+  "creation_date": "2020-09-16T08:06:34.457679Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+schedule_name = 'schedule_name_example' # str | 
+data = ubiops.ScheduleUpdate() # ScheduleUpdate | 
+
+# Update a request schedule
+api_response = api_instance.request_schedules_update(project_name, schedule_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **schedule_name** | **str**|  | 
+ **data** | [**ScheduleUpdate**](ScheduleUpdate.md)|  | 
+
+### Return type
+
+[**ScheduleList**](ScheduleList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **role_assignments_create**
 > RoleAssignmentList role_assignments_create(project_name, data)
 
@@ -10101,7 +8454,7 @@ Assign a role to a user in a project
 
 
 ### Description 
-Assign a role to a user in the scope of a project. This role can be assigned on either project level or on object level, which can be a model, credentials, connector or pipeline.
+Assign a role to a user in the scope of a project. This role can be assigned on either project level or on object level, which can be a deployment or pipeline.
 The user making the request must have appropriate permissions.
 
 ### Required Parameters 
@@ -10113,26 +8466,26 @@ The user making the request must have appropriate permissions.
 ### Optional Parameters
 - `object_name`: Name of the object for which the role will be assigned 
 
-- `object_type`: Type of the object for which the role will be assigned. It can be project, model, credentials, connector or pipeline.
+- `object_type`: Type of the object for which the role will be assigned. It can be project, deployment or pipeline.
 
 **object_name and object_type must be provided together. If neither of them is provided, the role is set on project level.**
 
 #### Request Examples
-Setting the role model-admin on project level for user with id 02b77d8f-b312-47ef-990f-4685a7ab9363
+Setting the role deployment-admin on project level for user with id 02b77d8f-b312-47ef-990f-4685a7ab9363
 ```
 {
   "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-  "role": "model-admin"
+  "role": "deployment-admin"
 }
 ```
 
-Setting the role model-viewer on model-1 for user with id 02b77d8f-b312-47ef-990f-4685a7ab9363
+Setting the role deployment-viewer on deployment-1 for user with id 02b77d8f-b312-47ef-990f-4685a7ab9363
 ```
 {
   "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-  "role": "model-viewer",
-  "object_name": "model-1",
-  "object_type": "model"
+  "role": "deployment-viewer",
+  "object_name": "deployment-1",
+  "object_type": "deployment"
 }
 ```
 
@@ -10146,14 +8499,14 @@ Details of the created role assignment
 
 - `object_name`: Name of the object for which the role is assigned 
 
-- `object_type`: Type of the object for which the role is assigned. It can be project, model, credentials, connector or pipeline.
+- `object_type`: Type of the object for which the role is assigned. It can be project, deployment or pipeline.
 
 #### Response Examples
 ```
 {
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-  "role": "model-admin",
+  "role": "deployment-admin",
   "object_name": "project-1",
   "object_type": "project"
 }
@@ -10163,9 +8516,9 @@ Details of the created role assignment
 {
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-  "role": "model-viewer",
-  "object_name": "model-1",
-  "object_type": "model"
+  "role": "deployment-viewer",
+  "object_name": "deployment-1",
+  "object_type": "deployment"
 }
 ```
 
@@ -10174,11 +8527,7 @@ Details of the created role assignment
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10187,18 +8536,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 data = ubiops.RoleAssignmentCreate() # RoleAssignmentCreate | 
 
-    try:
-        # Assign a role to a user in a project
-        api_response = api_instance.role_assignments_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->role_assignments_create: %s\n" % e)
+# Assign a role to a user in a project
+api_response = api_instance.role_assignments_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10242,11 +8593,7 @@ Delete a role of a user. The user making the request must have appropriate permi
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10255,17 +8602,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 id = 'id_example' # str | 
 
-    try:
-        # Delete a role from a user with the given role assignment id
-        api_instance.role_assignments_delete(project_name, id)
-    except ApiException as e:
-        print("Exception when calling CoreApi->role_assignments_delete: %s\n" % e)
+# Delete a role from a user with the given role assignment id
+api_instance.role_assignments_delete(project_name, id)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10285,8 +8634,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10314,16 +8663,16 @@ Details of the role assignment
 
 - `object_name`: Name of the object for which the role is assigned 
 
-- `object_type`: Type of the object for which the role is assigned. It can be project, model, credentials, connector or pipeline.
+- `object_type`: Type of the object for which the role is assigned. It can be project, deployment or pipeline.
 
 #### Response Examples 
 ```
 {
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-  "role": "model-viewer",
-  "object_name": "model-1",
-  "object_type": "model"
+  "role": "deployment-viewer",
+  "object_name": "deployment-1",
+  "object_type": "deployment"
 }
 ```
 
@@ -10332,11 +8681,7 @@ Details of the role assignment
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10345,18 +8690,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 id = 'id_example' # str | 
 
-    try:
-        # Get details of a role assignment
-        api_response = api_instance.role_assignments_get(project_name, id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->role_assignments_get: %s\n" % e)
+# Get details of a role assignment
+api_response = api_instance.role_assignments_get(project_name, id)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10376,7 +8723,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -10404,7 +8751,7 @@ List the roles assigned to a user in the scope of a project.
 
 - `object_name`: Name of the object for which the role is assigned 
 
-- `object_type`: Type of the object for which the role is assigned. It can be project, model, credentials, connector or pipeline.
+- `object_type`: Type of the object for which the role is assigned. It can be project, deployment or pipeline.
 
 #### Response Examples
 ```
@@ -10412,16 +8759,16 @@ List the roles assigned to a user in the scope of a project.
   {
     "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
     "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-    "role": "model-viewer",
-    "object_name": "model-1",
-    "object_type": "model"
+    "role": "deployment-viewer",
+    "object_name": "deployment-1",
+    "object_type": "deployment"
   },
   {
     "id": "13cf9dd7-7356-4797-b453-e0cb6b416162",
     "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-    "role": "connector-admin",
-    "object_name": "connector-1",
-    "object_type": "connector"
+    "role": "pipeline-admin",
+    "object_name": "pipeline-1",
+    "object_type": "pipeline"
   }
 ]
 ```
@@ -10431,11 +8778,7 @@ List the roles assigned to a user in the scope of a project.
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10444,18 +8787,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 user_id = 'user_id_example' # str | 
 
-    try:
-        # List the roles assigned to a specific user in a project
-        api_response = api_instance.role_assignments_per_user_list(project_name, user_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->role_assignments_per_user_list: %s\n" % e)
+# List the roles assigned to a specific user in a project
+api_response = api_instance.role_assignments_per_user_list(project_name, user_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10475,7 +8820,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -10504,11 +8849,11 @@ The user making the request must have appropriate permissions.
 #### Request Examples
 ```
 {
-  "name": "custom-model-editor-role",
+  "name": "custom-deployment-editor-role",
   "permissions": [
-    "models.list",
-    "models.get",
-    "models.delete"
+    "deployments.list",
+    "deployments.get",
+    "deployments.delete"
   ]
 }
 ```
@@ -10527,12 +8872,12 @@ Details of the created role
 ```
 {
   "id": "18a4a60d-d5f0-4099-9c6e-543bf2fd5a1d",
-  "name": "custom-model-editor-role",
+  "name": "custom-deployment-editor-role",
   "default": false,
   "permissions": [
-    "models.list",
-    "models.get",
-    "models.delete"
+    "deployments.list",
+    "deployments.get",
+    "deployments.delete"
   ]
 }
 ```
@@ -10542,11 +8887,7 @@ Details of the created role
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10555,18 +8896,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 data = ubiops.RoleCreate() # RoleCreate | 
 
-    try:
-        # Create a custom role scoped in a project
-        api_response = api_instance.roles_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->roles_create: %s\n" % e)
+# Create a custom role scoped in a project
+api_response = api_instance.roles_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10611,11 +8954,7 @@ Delete a role from a project. The user making the request must have appropriate 
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10624,17 +8963,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 role_name = 'role_name_example' # str | 
 
-    try:
-        # Delete a role from a project
-        api_instance.roles_delete(project_name, role_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->roles_delete: %s\n" % e)
+# Delete a role from a project
+api_instance.roles_delete(project_name, role_name)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10654,8 +8995,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -10687,12 +9028,12 @@ Details of the role
 ```
 {
   "id": "18a4a60d-d5f0-4099-9c6e-543bf2fd5a1d",
-  "name": "custom-model-editor-role",
+  "name": "custom-deployment-editor-role",
   "default": false,
   "permissions": [
-    "models.list",
-    "models.get",
-    "models.delete"
+    "deployments.list",
+    "deployments.get",
+    "deployments.delete"
   ]
 }
 ```
@@ -10702,11 +9043,7 @@ Details of the role
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10715,18 +9052,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 role_name = 'role_name_example' # str | 
 
-    try:
-        # Get details of a role
-        api_response = api_instance.roles_get(project_name, role_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->roles_get: %s\n" % e)
+# Get details of a role
+api_response = api_instance.roles_get(project_name, role_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10746,7 +9085,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -10799,11 +9138,7 @@ List the roles available in the scope of a project. Information on which permiss
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10812,17 +9147,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List the available roles in a project
-        api_response = api_instance.roles_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->roles_list: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+
+# List the available roles in a project
+api_response = api_instance.roles_list(project_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10841,7 +9178,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -10870,10 +9207,10 @@ Update a role in a project. The user making the request must have appropriate pe
 #### Request Examples
 ```
 {
-  "name": "new-model-editor-role",
+  "name": "new-deployment-editor-role",
   "permissions": [
-    "models.list",
-    "models.get"
+    "deployments.list",
+    "deployments.get"
   ]
 }
 ```
@@ -10892,11 +9229,11 @@ Details of the updated role
 ```
 {
   "id": "18a4a60d-d5f0-4099-9c6e-543bf2fd5a1d",
-  "name": "new-model-editor-role",
+  "name": "new-deployment-editor-role",
   "default": false,
   "permissions": [
-    "models.list",
-    "models.get"
+    "deployments.list",
+    "deployments.get"
   ]
 }
 ```
@@ -10906,11 +9243,7 @@ Details of the updated role
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -10919,19 +9252,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 role_name = 'role_name_example' # str | 
 data = ubiops.RoleUpdate() # RoleUpdate | 
 
-    try:
-        # Update a role in a project
-        api_response = api_instance.roles_update(project_name, role_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->roles_update: %s\n" % e)
+# Update a role in a project
+api_response = api_instance.roles_update(project_name, role_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -10945,586 +9280,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RoleDetailList**](RoleDetailList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **scheduled_requests_create**
-> ScheduleList scheduled_requests_create(project_name, data)
-
-Create scheduled requests
-
-
-### Description 
-Create a new scheduled request with the provided name
-
-### Required Parameters 
-- `name`: Name of the request. The name is unique per project. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
-
-- `object_type`: Type of object for which the request is made. Can be either 'model' or 'pipeline'. 
-
-- `object_name`: Name of model or pipeline for which the request is made 
- 
-- `schedule`: Schedule in crontab format 
-
-
-### Optional Parameters
-- `version`: Name of version if type of object is 'model' 
-
-- `request_data`: Input data for the scheduled request. For structured models/pipelines, it must be a dictionary. 
-
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-
-- `timeout`: Timeout in seconds. This field is not used for batch requests. 
-
-- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled. Default is 'True'. 
-
-
-#### Request Examples 
-```
-{
-  "name": "test-request",
-  "object_type": "model",
-  "object_name": "test-model",
-  "version": "v1",
-  "schedule": "0 * 3 * *",
-  "request_data": {
-    "input_field_1": 2345,
-    "input_field_2": 8765
-  },
-  "batch": false,
-  "timeout": 300,
-  "enabled": true
-}
-```
-
-### Response Structure 
-Details of the created scheduled request
-- `name`: Name of the request 
-
-- `object_type`: Type of object for which the request is made 
-
-- `object_name`: Name of model or pipeline for which the request is made 
- 
-- `schedule`: Schedule in crontab format 
-
-- `version`: Name of version if type of object is 'model' 
-
-- `request_data`: Input data for the scheduled request 
-
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-
-- `timeout`: Timeout in seconds 
-
-- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
-
-- `creation_date`: The date when the scheduled request was created
-
-#### Response Examples 
-```
-{
-  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
-  "name": "test-request",
-  "object_type": "model",
-  "object_name": "test-model",
-  "version": "v1",
-  "schedule": "0 * 3 * *",
-  "request_data": {
-    "input_field_1": 2345,
-    "input_field_2": 8765
-  },
-  "batch": false,
-  "timeout": 300,
-  "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-data = ubiops.ScheduleCreate() # ScheduleCreate | 
-
-    try:
-        # Create scheduled requests
-        api_response = api_instance.scheduled_requests_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->scheduled_requests_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **data** | [**ScheduleCreate**](ScheduleCreate.md)|  | 
-
-### Return type
-
-[**ScheduleList**](ScheduleList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **scheduled_requests_delete**
-> scheduled_requests_delete(project_name, schedule_name)
-
-Delete a scheduled request
-
-
-### Description 
-Delete the scheduled request from the project. 
-
-If you want to temporarily disable a scheduled request, update the request with `enabled` set to False.
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-schedule_name = 'schedule_name_example' # str | 
-
-    try:
-        # Delete a scheduled request
-        api_instance.scheduled_requests_delete(project_name, schedule_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->scheduled_requests_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **schedule_name** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **scheduled_requests_get**
-> ScheduleList scheduled_requests_get(project_name, schedule_name)
-
-Get details of a scheduled request
-
-
-### Description 
-Retrieve details of a single scheduled request
-
-### Response Structure 
-Details of a scheduled request
-- `name`: Name of the request 
-
-- `object_type`: Type of object for which the request is made 
-
-- `object_name`: Name of model or pipeline for which the request is made 
- 
-- `schedule`: Schedule in crontab format 
-
-- `version`: Name of version if type of object is 'model' 
-
-- `request_data`: Input data for the scheduled request 
-
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-
-- `timeout`: Timeout in seconds 
-
-- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
-
-- `creation_date`: The date when the scheduled request was created
-
-#### Response Examples 
-```
-{
-  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
-  "name": "test-request",
-  "object_type": "model",
-  "object_name": "test-model",
-  "version": "v1",
-  "schedule": "0 * 3 * *",
-  "request_data": {
-    "input_field_1": 2345,
-    "input_field_2": 8765
-  },
-  "batch": false,
-  "timeout": 200,
-  "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-schedule_name = 'schedule_name_example' # str | 
-
-    try:
-        # Get details of a scheduled request
-        api_response = api_instance.scheduled_requests_get(project_name, schedule_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->scheduled_requests_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **schedule_name** | **str**|  | 
-
-### Return type
-
-[**ScheduleList**](ScheduleList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **scheduled_requests_list**
-> list[ScheduleList] scheduled_requests_list(project_name)
-
-List scheduled requests
-
-
-### Description 
-List the scheduled requests in a project. The user has to have 'requests.list' permission on either 'models.versions' or 'pipelines' to list the scheduled requests.
-
-### Response Structure 
-A list of details of all scheduled requests in a project
-- `name`: Name of the request 
-
-- `object_type`: Type of object for which the request is made 
-
-- `object_name`: Name of model or pipeline for which the request is made 
- 
-- `schedule`: Schedule in crontab format 
-
-- `version`: Name of version if type of object is 'model' 
-
-- `request_data`: Input data for the scheduled request 
-
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-
-- `timeout`: Timeout in seconds 
-
-- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
-
-- `creation_date`: The date when the scheduled request was created
-
-#### Response Examples 
-```
-[
-    {
-      "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
-      "name": "test-request",
-      "object_type": "model",
-      "object_name": "test-model",
-      "version": "v1",
-      "schedule": "0 * 3 * *",
-      "request_data": {
-        "input_field_1": 2345,
-        "input_field_2": 8765
-      },
-      "batch": false,
-      "timeout": 200",
-      "enabled": true,
-      "creation_date": "2020-09-16T08:06:34.457679Z"
-    }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-
-    try:
-        # List scheduled requests
-        api_response = api_instance.scheduled_requests_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->scheduled_requests_list: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
-
-### Return type
-
-[**list[ScheduleList]**](ScheduleList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **scheduled_requests_update**
-> ScheduleList scheduled_requests_update(project_name, schedule_name, data)
-
-Update a scheduled request
-
-
-### Description 
-Update a scheduled request in a project. Create permissions on the object are necessary for this action.
-
-### Optional Parameters
-- `name`: Name of the request. The name is unique per project. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter. 
-
-- `schedule`: Schedule in crontab format 
-
-- `request_data`: Input data for the scheduled request. For structured models/pipelines, it must be a dictionary. 
-
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-
-- `timeout`: Timeout in seconds 
-
-- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled. Default is 'True'. 
-
-
-#### Request Examples 
-```
-{
-  "name": "test-request",
-  "schedule": "0 * 3 * *",
-  "request_data": {
-    "input_field_1": 2345,
-    "input_field_2": 8765
-  },
-  "batch": true,
-  "timeout": 360,
-  "enabled": false
-}
-```
-
-### Response Structure 
-Details of the updated scheduled request
-- `name`: Name of the request 
-
-- `object_type`: Type of object for which the request is made 
-
-- `object_name`: Name of model or pipeline for which the request is made 
- 
-- `schedule`: Schedule in crontab format 
-
-- `version`: Name of version if type of object is 'model' 
-
-- `request_data`: Input data for the scheduled request 
-
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-
-- `timeout`: Timeout in seconds 
-
-- `enabled`: Boolean value indicating whether the scheduled request is enabled or disabled 
-
-- `creation_date`: The date when the scheduled request was created
-
-#### Response Examples 
-```
-{
-  "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
-  "name": "test-request",
-  "object_type": "model",
-  "object_name": "test-model",
-  "version": "v1",
-  "schedule": "0 * 3 * *",
-  "request_data": {
-    "input_field_1": 2345,
-    "input_field_2": 8765
-  },
-  "batch": false,
-  "timeout": 360,
-  "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
-schedule_name = 'schedule_name_example' # str | 
-data = ubiops.ScheduleUpdate() # ScheduleUpdate | 
-
-    try:
-        # Update a scheduled request
-        api_response = api_instance.scheduled_requests_update(project_name, schedule_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->scheduled_requests_update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_name** | **str**|  | 
- **schedule_name** | **str**|  | 
- **data** | [**ScheduleUpdate**](ScheduleUpdate.md)|  | 
-
-### Return type
-
-[**ScheduleList**](ScheduleList.md)
 
 ### Authorization
 
@@ -11566,11 +9321,7 @@ Request the API status. It can be used to determine whether the API is online. Y
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -11579,16 +9330,18 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # Service status
-        api_response = api_instance.service_status()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->service_status: %s\n" % e)
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+
+# Service status
+api_response = api_instance.service_status()
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -11604,7 +9357,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -11664,11 +9417,7 @@ Details of the created service user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -11677,18 +9426,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 data = ubiops.ServiceUserCreate() # ServiceUserCreate | 
 
-    try:
-        # Create a new service user
-        api_response = api_instance.service_users_create(project_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->service_users_create: %s\n" % e)
+# Create a new service user
+api_response = api_instance.service_users_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -11732,11 +9483,7 @@ Delete a service user from a project
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -11745,17 +9492,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 service_user_id = 'service_user_id_example' # str | 
 
-    try:
-        # Delete service user
-        api_instance.service_users_delete(project_name, service_user_id)
-    except ApiException as e:
-        print("Exception when calling CoreApi->service_users_delete: %s\n" % e)
+# Delete service user
+api_instance.service_users_delete(project_name, service_user_id)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -11775,8 +9524,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -11819,11 +9568,7 @@ Details of the service user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -11832,18 +9577,20 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 service_user_id = 'service_user_id_example' # str | 
 
-    try:
-        # Retrieve details of a service user
-        api_response = api_instance.service_users_get(project_name, service_user_id)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->service_users_get: %s\n" % e)
+# Retrieve details of a service user
+api_response = api_instance.service_users_get(project_name, service_user_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -11863,7 +9610,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -11915,11 +9662,7 @@ List of details of the service users:
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -11928,17 +9671,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # List service users
-        api_response = api_instance.service_users_list(project_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->service_users_list: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+
+# List service users
+api_response = api_instance.service_users_list(project_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -11957,7 +9702,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -11992,11 +9737,7 @@ Details of the new token for the service user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -12005,19 +9746,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 service_user_id = 'service_user_id_example' # str | 
 data = None # object | 
 
-    try:
-        # Reset the token of a service user
-        api_response = api_instance.service_users_token(project_name, service_user_id, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->service_users_token: %s\n" % e)
+# Reset the token of a service user
+api_response = api_instance.service_users_token(project_name, service_user_id, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -12094,11 +9837,7 @@ Details of the updated service user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -12107,19 +9846,21 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    project_name = 'project_name_example' # str | 
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
 service_user_id = 'service_user_id_example' # str | 
 data = ubiops.ServiceUserCreate() # ServiceUserCreate | 
 
-    try:
-        # Update service user details
-        api_response = api_instance.service_users_update(project_name, service_user_id, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->service_users_update: %s\n" % e)
+# Update service user details
+api_response = api_instance.service_users_update(project_name, service_user_id, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -12150,478 +9891,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **subscriptions_create**
-> SubscriptionDetail subscriptions_create(data)
-
-Create subscriptions
-
-
-### Description 
-Create a new subscription
-
-### Required Parameters 
-- `name`: Name of the subscription
-- `max_projects`: Maximum number of allowed projects to be created with this subscription
-- `max_users`: Maximum number of allowed users to be created with this subscription
-- `logs_retention_days`: Number of days for which the logs for each projects will be saved
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the model memory sizes in GB by the number of seconds they are running
-- `resources`: Maximum number of allowed resources (connectors, pipelines and model versions) to be created with this subscription
-- `hidden`: A boolean indication whether the subscription is public or private
-
-### Optional Parameters
-- `agreement`: Link to subscription agreement document 
-- `terms_conditions`: Link to UbiOps SaaS Terms & Conditions document 
-
-#### Request Examples 
-```
-{
-  "name": "custom-subscription",
-  "max_projects": 2,
-  "max_users": 3,
-  "logs_retention_days": 28,
-  "gb_seconds": 20000,
-  "resources": 20,
-  "hidden": True
-}
-```
-
-### Response Structure 
-Details of the created subscription
-- `id`: Unique identifier for the subscription (UUID) 
-- `name`: Name of the subscription 
-- `max_projects`: Maximum number of allowed projects to be created with this subscription 
-- `max_users`: Maximum number of allowed users to be created with this subscription 
-- `agreement`: Link to subscription agreement document 
-- `terms_conditions`: Link to UbiOps SaaS Terms & Conditions document 
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the model memory sizes in GB by the number of seconds they are running
-- `resources`: Maximum number of allowed resources (connectors, pipelines and model versions) to be created with this subscription 
-
-#### Response Examples 
-```
-{
-  "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
-  "name": "custom-subscription",
-  "max_projects": 2,
-  "max_users": 3,
-  "agreement": "",
-  "terms_conditions": "",
-  "gb_seconds": 10000,
-  "resources": 15
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    data = ubiops.SubscriptionCreate() # SubscriptionCreate | 
-
-    try:
-        # Create subscriptions
-        api_response = api_instance.subscriptions_create(data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->subscriptions_create: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | [**SubscriptionCreate**](SubscriptionCreate.md)|  | 
-
-### Return type
-
-[**SubscriptionDetail**](SubscriptionDetail.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **subscriptions_delete**
-> subscriptions_delete(subscription_name)
-
-Delete a subscription
-
-
-### Description 
-Delete a subscription. It's not possible to delete a subscription if it is used by any organization.
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    subscription_name = 'subscription_name_example' # str | 
-
-    try:
-        # Delete a subscription
-        api_instance.subscriptions_delete(subscription_name)
-    except ApiException as e:
-        print("Exception when calling CoreApi->subscriptions_delete: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscription_name** | **str**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **subscriptions_get**
-> SubscriptionDetail subscriptions_get(subscription_name)
-
-Get details of a subscription
-
-
-### Description 
-Get the details of a subscription
-
-### Response Structure 
-Details of the subscription
-- `id`: Unique identifier for the subscription (UUID) 
-- `name`: Name of the subscription 
-- `max_projects`: Maximum number of allowed projects to be created with this subscription 
-- `max_users`: Maximum number of allowed users to be created with this subscription 
-- `agreement`: Link to subscription agreement document 
-- `terms_conditions`: Link to UbiOps SaaS Terms & Conditions document 
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the model memory sizes in GB by the number of seconds they are running
-- `resources`: Maximum number of allowed resources (connectors, pipelines and model versions) to be created with this subscription 
-
-#### Response Examples 
-```
-{
-  "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
-  "name": "custom-subscription",
-  "max_projects": 2,
-  "max_users": 3,
-  "agreement": "",
-  "terms_conditions": "",
-  "gb_seconds": 10000,
-  "resources": 15
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    subscription_name = 'subscription_name_example' # str | 
-
-    try:
-        # Get details of a subscription
-        api_response = api_instance.subscriptions_get(subscription_name)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->subscriptions_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscription_name** | **str**|  | 
-
-### Return type
-
-[**SubscriptionDetail**](SubscriptionDetail.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **subscriptions_list**
-> list[SubscriptionList] subscriptions_list()
-
-List subscriptions
-
-
-### Description 
-List available subscriptions for organizations
-
-### Response Structure
-A list of details of the subscriptions
-- `id`: Unique identifier for the subscription (UUID) 
-
-- `name`: Name of the subscription 
-
-
-#### Response Examples 
-```
-[
-  {
-    "id": "f35e94e2-820d-4ad2-a2c6-9e2668e1442b",
-    "name": "free"
-  },
-  {
-    "id": "888384be-b4b8-4728-918b-079c85879a5b",
-    "name": "starter"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # List subscriptions
-        api_response = api_instance.subscriptions_list()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->subscriptions_list: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**list[SubscriptionList]**](SubscriptionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **subscriptions_update**
-> SubscriptionDetail subscriptions_update(subscription_name, data)
-
-Update details of a subscription
-
-
-### Description 
-Update a subscription
-
-### Optional Parameters 
-- `name`: New subscription name
-- `max_projects`: Maximum number of allowed projects to be created with this subscription 
-- `max_users`: Maximum number of allowed users to be created with this subscription 
-- `agreement`: Link to subscription agreement document 
-- `terms_conditions`: Link to UbiOps SaaS Terms & Conditions document 
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the model memory sizes in GB by the number of seconds they are running
-- `resources`: Maximum number of allowed resources (connectors, pipelines and model versions) to be created with this subscription 
-
-#### Request Examples
-```
-{
-  "max_projects": 4,
-  "max_users": 5
-}
-```
-
-```
-{
-  "name": "new-subscription-name"
-}
-```
-
-### Response Structure 
-Details of the subscription
-- `id`: Unique identifier for the subscription (UUID) 
-- `name`: Name of the subscription 
-- `max_projects`: Maximum number of allowed projects to be created with this subscription 
-- `max_users`: Maximum number of allowed users to be created with this subscription 
-- `agreement`: Link to subscription agreement document 
-- `terms_conditions`: Link to UbiOps SaaS Terms & Conditions document 
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the model memory sizes in GB by the number of seconds they are running
-- `resources`: Maximum number of allowed resources (connectors, pipelines and model versions) to be created with this subscription 
-
-#### Response Examples 
-```
-{
-  "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
-  "name": "new-subscription-name",
-  "max_projects": 4,
-  "max_users": 5,
-  "agreement": "",
-  "terms_conditions": "",
-  "gb_seconds": 10000,
-  "resources": 20
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-from __future__ import print_function
-import time
-import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
-configuration = ubiops.Configuration()
-# Configure API key authorization: api_key
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    subscription_name = 'subscription_name_example' # str | 
-data = ubiops.SubscriptionUpdate() # SubscriptionUpdate | 
-
-    try:
-        # Update details of a subscription
-        api_response = api_instance.subscriptions_update(subscription_name, data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->subscriptions_update: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscription_name** | **str**|  | 
- **data** | [**SubscriptionUpdate**](SubscriptionUpdate.md)|  | 
-
-### Return type
-
-[**SubscriptionDetail**](SubscriptionDetail.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **user_create**
 > UserPendingDetail user_create(data)
 
@@ -12630,8 +9899,7 @@ Create a new user
 
 ### Description 
 Create a new user with the given details - email, password, name and surname. After creation, an email is send to the email address to activate the acount.
-A user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
-
+The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
 
 ### Required Parameters
 - `email`: Email of the user. This is a unique field. 
@@ -12644,7 +9912,10 @@ A user is required to accept the terms and conditions. The password needs to be 
 ### Optional Parameters
 - `name`: Name of the user 
 
-- `surname`: Surname of the user
+- `surname`: Surname of the user 
+
+- `newsletter`: Boolean field. Pass True to subscribe to the newsletters. 
+
 
 #### Request Examples 
 ```
@@ -12653,7 +9924,8 @@ A user is required to accept the terms and conditions. The password needs to be 
   "password": "secret-password",
   "name": "User name",
   "surname": "User surname",
-  "terms_conditions": true
+  "terms_conditions": true,
+  "newsletter": false
 }
 ```
 
@@ -12661,7 +9933,9 @@ A user is required to accept the terms and conditions. The password needs to be 
 {
   "email": "test@example.com",
   "password": "secret-password",
-  "terms_conditions": true
+  "terms_conditions": true,
+  "newsletter": false
+
 }
 ```
 
@@ -12687,11 +9961,7 @@ Details of the created user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -12700,17 +9970,19 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    data = ubiops.UserPendingCreate() # UserPendingCreate | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Create a new user
-        api_response = api_instance.user_create(data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->user_create: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+data = ubiops.UserPendingCreate() # UserPendingCreate | 
+
+# Create a new user
+api_response = api_instance.user_create(data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -12753,11 +10025,7 @@ Delete the user that makes the request
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -12766,15 +10034,17 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # Delete user
-        api_instance.user_delete()
-    except ApiException as e:
-        print("Exception when calling CoreApi->user_delete: %s\n" % e)
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+
+# Delete user
+api_instance.user_delete()
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
@@ -12790,8 +10060,8 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -12800,36 +10070,74 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **user_get**
-> UserDetail user_get()
+# **version_environment_variables_copy**
+> list[InheritedEnvironmentVariableList] version_environment_variables_copy(project_name, deployment_name, version, data)
 
-Get user details
+Copy version environment variable
 
 
-### Description 
-Get the details of the user that makes the request
+### Description
+Copy existing environment variables from a source object to the version. Variables of the version with the same name as ones from the source object will be overwritten with the new value. Only the copied variables are returned.
+
+### Required Parameters
+- `source_deployment`: The name of the deployment from which the variables will be copied
+
+### Optional Parameters
+- `source_version`: The version of the object from which the variables will be copied
+
+#### Request Examples
+Copy the environment variables from a deployment
+```
+{
+  "source_deployment": "example-deployment"
+}
+```
+
+Copy the environment variables from a version
+```
+{
+  "source_deployment": "example-deployment",
+  "source_version": "v1"
+}
+```
 
 ### Response Structure 
-Details of the user
-- `id`: Unique identifier for the user (UUID) 
-
-- `email`: Email of the user 
-
-- `name`: Name of the user 
-
-- `surname`: Surname of the user 
-
-- `registration_date`: Date when the user was registered
+A list of the copied variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+- `inheritance_type`: Type of parent object that this variable is inherited from. Will be null for copied environment variables.
+- `inheritance_name`: Name of the parent object that this variable is inherited from. Will be null for copied environment variables.
 
 #### Response Examples 
 ```
-{
-  "id": "4740a13a-70ae-4b7a-a461-8231eb2c0594",
-  "email": "test@example.com",
-  "name": "User name",
-  "surname": "User surname",
-  "registration_date": "2020-01-10 10:06:25.632+00:00"
-}
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "version_specific_variable",
+    "value": "some_value",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
+    "name": "database_password",
+    "value": null,
+    "secret": true,
+    "inheritance_type": null,
+    "inheritance_name": null
+  }
+]
 ```
 
 
@@ -12837,11 +10145,7 @@ Details of the user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -12850,24 +10154,36 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    
-    try:
-        # Get user details
-        api_response = api_instance.user_get()
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->user_get: %s\n" % e)
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+data = ubiops.EnvironmentVariableCopy() # EnvironmentVariableCopy | 
+
+# Copy version environment variable
+api_response = api_instance.version_environment_variables_copy(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+ **data** | [**EnvironmentVariableCopy**](EnvironmentVariableCopy.md)|  | 
 
 ### Return type
 
-[**UserDetail**](UserDetail.md)
+[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
 
 ### Authorization
 
@@ -12875,7 +10191,266 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **version_environment_variables_create**
+> EnvironmentVariableList version_environment_variables_create(project_name, deployment_name, version, data)
+
+Create version environment variable
+
+
+### Description
+Create an environment variable for the version. Variables inherited from the project or deployment can be shadowed by creating a variable with the same name.
+
+### Required Parameters
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
+- `value`: The value of the variable as a string. It may be an empty string ("").
+- `secret`: If this variable contains sensitive information, set this to true to hide it from other users.
+
+#### Request Examples
+```
+{
+  "name": "version_variable",
+  "value": "another one",
+  "secret": false
+}
+```
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+{
+  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
+  "name": "version_variable",
+  "value": "another one",
+  "secret": false
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
+
+# Create version environment variable
+api_response = api_instance.version_environment_variables_create(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+ **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **version_environment_variables_delete**
+> version_environment_variables_delete(project_name, deployment_name, id, version)
+
+Delete version environment variable
+
+
+### Description
+Delete an environment variable of a version
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+id = 'id_example' # str | 
+version = 'version_example' # str | 
+
+# Delete version environment variable
+api_instance.version_environment_variables_delete(project_name, deployment_name, id, version)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **id** | **str**|  | 
+ **version** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **version_environment_variables_get**
+> EnvironmentVariableList version_environment_variables_get(project_name, deployment_name, id, version)
+
+Get version environment variable
+
+
+### Description
+Retrieve details of a version environment variable. This cannot be used to retrieve details of inherited variables.
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+[
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+id = 'id_example' # str | 
+version = 'version_example' # str | 
+
+# Get version environment variable
+api_response = api_instance.version_environment_variables_get(project_name, deployment_name, id, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **id** | **str**|  | 
+ **version** | **str**|  | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details
@@ -12885,76 +10460,52 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **user_update**
-> UserDetail user_update(data)
+# **version_environment_variables_list**
+> list[InheritedEnvironmentVariableList] version_environment_variables_list(project_name, deployment_name, version)
 
-Update user details
+List version environment variables
 
- 
+
 ### Description
-Update the details of the user making the request - name, surname, email and password.
-
-When updating the password, the parameter `previous_password` with the value of the previous password is also required.
-The password needs to meet the following requirements:
-- At least 8 characters long
-- At least one capital and one lowercase letter
-- At least one number
-- At least one of the following symbols: !#$%&')(*+,./:;"<=>?[@]^_`{|}~-" 
-
-### Optional Parameters
-- `email`: Email of the user 
-
-- `password`: Password of the user 
-
-    - `previous_password`: Previous password of the user (This field is only required when updating the password) 
-
-- `name`: Name of the user 
-
-- `surname`: Surname of the user
-
-#### Request Examples 
-```
-{
-  "email": "new_test@example.com"
-}
-```
-
-```
-{
-  "password": "new-secret-password",
-  "previous_password": "previous-secret-password"
-}
-```
-
-```
-{
-  "name": "New user name",
-  "surname": "New user surname"
-}
-```
-
+List the environment variables defined for the version. Includes environment variables defined at project level and deployment level.
+ 
 ### Response Structure 
-Details of the created user
-- `id`: Unique identifier for the user (UUID) 
-
-- `email`: Email of the user 
-
-- `name`: Name of the user 
-
-- `surname`: Surname of the user 
-
-- `registration_date`: Date when the user was registered
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project`, `deployment`, or null if the variable was defined for the version directly
+- `inheritance_name`: Name of the parent object that this variable is inherited from - will be null if the variable was defined for the version directly
 
 #### Response Examples 
 ```
-{
-  "id": "4740a13a-70ae-4b7a-a461-8231eb2c0594",
-  "email": "new_test@example.com",
-  "type": "user",
-  "name": "New user name",
-  "surname": "New user surname",
-  "registration_date": "2020-01-10 10:06:25.632+00:00"
-}
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "version_specific_variable",
+    "value": "some_value",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false,
+    "inheritance_type": "deployment",
+    "inheritance_name": "deployment_name"
+  },
+  {
+    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
+    "name": "database_password",
+    "value": null,
+    "secret": true,
+    "inheritance_type": "project",
+    "inheritance_name": "project_name"
+  }
+]
 ```
 
 
@@ -12962,11 +10513,7 @@ Details of the created user
 
 * Api Key Authentication (api_key):
 ```python
-from __future__ import print_function
-import time
 import ubiops
-from ubiops.rest import ApiException
-from pprint import pprint
 configuration = ubiops.Configuration()
 # Configure API key authorization: api_key
 configuration.api_key['Authorization'] = 'YOUR_API_KEY'
@@ -12975,28 +10522,879 @@ configuration.api_key_prefix['Authorization'] = ''
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
 # Enter a context with an instance of the API client
-with ubiops.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = ubiops.CoreApi(api_client)
-    data = ubiops.UserUpdate() # UserUpdate | 
+api_client = ubiops.ApiClient(configuration)
 
-    try:
-        # Update user details
-        api_response = api_instance.user_update(data)
-        pprint(api_response)
-    except ApiException as e:
-        print("Exception when calling CoreApi->user_update: %s\n" % e)
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+
+# List version environment variables
+api_response = api_instance.version_environment_variables_list(project_name, deployment_name, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**UserUpdate**](UserUpdate.md)|  | 
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
 
 ### Return type
 
-[**UserDetail**](UserDetail.md)
+[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **version_environment_variables_update**
+> EnvironmentVariableList version_environment_variables_update(project_name, deployment_name, id, version, data)
+
+Update version environment variable
+
+
+### Description
+Update an environment variable for the version. This cannot be used to update inherited variables; to change an inherited variable for a specific version you can create a variable with the same name for the version.
+
+### Required Parameters
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
+- `value`: The value of the variable as a string. It may be an empty string ("").
+- `secret`: If this variable contains sensitive information, set this to true to hide it from other users. Can be updated from false to true, but not from true to false (i.e. secrets will stay secrets).
+
+#### Request Examples
+```
+{
+  "name": "version_variable",
+  "value": "yet another one",
+  "secret": false
+}
+```
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+{
+  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
+  "name": "version_variable",
+  "value": "yet another one",
+  "secret": false
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+id = 'id_example' # str | 
+version = 'version_example' # str | 
+data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate | 
+
+# Update version environment variable
+api_response = api_instance.version_environment_variables_update(project_name, deployment_name, id, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **id** | **str**|  | 
+ **version** | **str**|  | 
+ **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md)|  | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **versions_create**
+> VersionList versions_create(project_name, deployment_name, data)
+
+Create versions
+
+
+### Description 
+Create a version for a deployment
+
+### Required Parameters 
+- `version`: Name of the version of the deployment
+
+### Optional Parameters 
+- `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7 or python3.8. The default value is python3.7
+- `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively.
+- `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
+- `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays active longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer. 
+
+- `description`: Description for the version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
+If the time that a request takes does not matter, keep the default values.
+
+#### Request Examples 
+```
+{
+  "version": "version-1",
+  "language": "python3.6"
+}
+```
+ 
+```
+{
+  "version": "version-1",
+  "language": "python3.5",
+  "memory_allocation": 512
+}
+```
+ 
+```
+{
+  "version": "version-1",
+  "maximum_instances": 4,
+  "minimum_instances": 1
+}
+```
+
+### Response Structure 
+Details of the created version
+- `id`: Unique identifier for the deployment (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `language`: Language in which the version is provided
+- `memory_allocation`: Reserved memory for the version in MB  
+- `maximum_instances`: Upper bound of number of versions running
+- `minimum_instances`: Lower bound of number of versions running
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `description`: Description of the version
+- `status`: The state of the version. It is set to *initialised* state on creation.
+- `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available.
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+- `file_last_updated`: The date when a deployment file was last uploaded
+
+#### Response Examples 
+```
+{
+  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+  "deployment": "deployment-1",
+  "version": "version-1",
+  "language": "python3.5",
+  "description": "",
+  "status": "initialised",
+  "error_message": "",
+  "memory_allocation": 512,
+  "maximum_instances": 5,
+  "minimum_instances": 0,
+  "maximum_idle_time": 10,
+  "labels": {
+    "type": "version"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-05-12T16:23:15.456812Z",
+  "file_last_updated": "2020-05-12T16:23:15.456812Z",
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+data = ubiops.VersionCreate() # VersionCreate | 
+
+# Create versions
+api_response = api_instance.versions_create(project_name, deployment_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **data** | [**VersionCreate**](VersionCreate.md)|  | 
+
+### Return type
+
+[**VersionList**](VersionList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **versions_delete**
+> versions_delete(project_name, deployment_name, version)
+
+Delete version
+
+ 
+### Description 
+Delete a deployment version. If the version is referenced from a pipeline, it cannot be deleted, it must be removed from the pipeline first.
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+
+# Delete version
+api_instance.versions_delete(project_name, deployment_name, version)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **versions_file_download**
+> file versions_file_download(project_name, deployment_name, version)
+
+Download deployment files
+
+
+### Description 
+Download the deployment file of a version of a deployment
+
+### Response Structure 
+ - `file`: Deployment file of the version
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+
+# Download deployment files
+with api_instance.versions_file_download(project_name, deployment_name, version) as response:
+    filename = response.getfilename()
+    content = response.read()
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+
+### Return type
+
+**file**
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **versions_file_upload**
+> Success versions_file_upload(project_name, deployment_name, version, file)
+
+Upload deployment files
+
+
+### Description 
+Upload a file for a deployment version. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.
+
+### Required Parameters
+- `file`: Deployment file
+
+### Response Structure
+- `success`: Boolean indicating whether the deployment file upload succeeded or not
+
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+file = '/path/to/file' # file | 
+
+# Upload deployment files
+api_response = api_instance.versions_file_upload(project_name, deployment_name, version, file)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+ **file** | **file**|  | 
+
+### Return type
+
+[**Success**](Success.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **versions_get**
+> VersionList versions_get(project_name, deployment_name, version)
+
+Get version
+
+
+### Description 
+Retrieve details of a version of a deployment in a project
+
+### Response Structure 
+Details of a version
+- `id`: Unique identifier for the version (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `language`: Language in which the version is provided
+- `memory_allocation`: Reserved memory for the version in MB 
+- `maximum_instances`: Upper bound of number of deployment pods running in parallel
+- `minimum_instances`: Lower bound of number of deployment pods running in parallel
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `description`: Description of the version
+- `status`: The state of the version
+- `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available.
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+- `file_last_updated`: The date when a deployment file was last uploaded
+
+#### Response Examples
+```
+{
+  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+  "deployment": "deployment-1",
+  "version": "version-1",
+  "memory_allocation": 512,
+  "language": "python3.7",
+  "description": "",
+  "status": "active",
+  "error_message": "",
+  "maximum_instances": 4,
+  "minimum_instances": 1,
+  "maximum_idle_time": 10,
+  "labels": {
+    "type": "version"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "file_last_updated": "2020-06-23T11:17:28.128652Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+
+# Get version
+api_response = api_instance.versions_get(project_name, deployment_name, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+
+### Return type
+
+[**VersionList**](VersionList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **versions_list**
+> list[VersionList] versions_list(project_name, deployment_name, labels=labels)
+
+List versions
+
+
+### Description 
+Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.
+
+### Optional Parameters
+- `labels`: Filter on labels of the version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.
+
+### Response Structure 
+A list of details of the versions
+- `id`: Unique identifier for the deployment (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `language`: Language in which the version is provided
+- `memory_allocation`: Reserved memory usage for the version in MB
+- `maximum_instances`: Upper bound of number of versions running
+- `minimum_instances`: Lower bound of number of versions running
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `description`: Description of the version
+- `status`: The state of the version
+- `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available.
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+- `file_last_updated`: The date when a deployment file was last uploaded
+
+#### Response Examples
+```
+[
+  {
+    "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+    "deployment": "deployment-1",
+    "version": "version-1",
+    "language": "python3.5",
+    "description": "",
+    "status": "active",
+    "error_message": "",
+    "memory_allocation": 512,
+    "maximum_instances": 4,
+    "minimum_instances": 1,
+    "maximum_idle_time": 10,
+    "labels": {
+      "type": "version"
+    },
+    "creation_date": "2020-06-18T08:32:14.876451Z",
+    "last_updated": "2020-06-19T10:52:23.124784Z",
+    "file_last_updated": "2020-06-19T10:52:23.124784Z"
+  },
+  {
+    "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
+    "deployment": "deployment-1",
+    "version": "version-2",
+    "language": "python3.6",
+    "description": "",
+    "status": "active",
+    "error_message": "",
+    "memory_allocation": 256,
+    "maximum_instances": 5,
+    "minimum_instances": 0,
+    "maximum_idle_time": 10,
+    "labels": {
+      "type": "version"
+    },
+    "creation_date": "2020-05-12T16:23:15.456812Z",
+    "last_updated": "2020-06-22T18:04:76.123754Z",
+    "file_last_updated": "2020-06-23T11:17:28.128652Z"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+labels = 'labels_example' # str |  (optional)
+
+# List versions
+api_response = api_instance.versions_list(project_name, deployment_name, labels=labels)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **labels** | **str**|  | [optional] 
+
+### Return type
+
+[**list[VersionList]**](VersionList.md)
+
+### Authorization
+
+[api_key](../README.md#api_key)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **versions_update**
+> VersionList versions_update(project_name, deployment_name, version, data)
+
+Update version
+
+
+### Description 
+Update a version of a deployment in a project. Updating the language field will cause the deployment to be build again. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. 
+
+### Optional Parameters 
+- `version`: New name for the version
+- `language`: New language for the version
+- `memory_allocation`: New reserved memory for the version in MB
+- `maximum_instances`: New upper bound of number of versions running
+- `minimum_instances`: New lower bound of number of versions running
+- `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped
+- `description`: New description for the version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
+
+#### Request Examples 
+```
+{
+  "version": "new-version"
+}
+```
+ 
+```
+{
+  "memory_allocation": 512,
+  "maximum_instances": 4,
+  "minimum_instances": 1
+}
+```
+
+### Response Structure 
+Details of the updated version
+- `id`: Unique identifier for the deployment (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `language`: Language in which the version is provided
+- `memory_allocation`: Reserved memory for the version in MB
+- `maximum_instances`: Upper bound of number of versions running
+- `minimum_instances`: Lower bound of number of versions running
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `description`: Description of the version
+- `status`: The state of the version
+- `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available.
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+- `file_last_updated`: The date when a deployment file was last uploaded
+
+#### Response Examples 
+```
+{
+  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+  "deployment": "deployment-1",
+  "version": "version-1",
+  "language": "python3.5",
+  "description": "",
+  "status": "active",
+  "error_message": "",
+  "memory_allocation": 512,
+  "maximum_instances": 4,
+  "minimum_instances": 1,
+  "maximum_idle_time": 10,
+  "labels": {
+    "type": "version"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-23T18:04:76.123754Z",
+  "file_last_updated": "2020-06-23T11:17:28.128652Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API key authorization: api_key
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+configuration.api_key_prefix['Authorization'] = ''
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str | 
+deployment_name = 'deployment_name_example' # str | 
+version = 'version_example' # str | 
+data = ubiops.VersionCreate() # VersionCreate | 
+
+# Update version
+api_response = api_instance.versions_update(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_name** | **str**|  | 
+ **deployment_name** | **str**|  | 
+ **version** | **str**|  | 
+ **data** | [**VersionCreate**](VersionCreate.md)|  | 
+
+### Return type
+
+[**VersionList**](VersionList.md)
 
 ### Authorization
 

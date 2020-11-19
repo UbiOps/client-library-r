@@ -55,7 +55,8 @@ class UsagePerDay(object):
         self._usage = None
         self.discriminator = None
 
-        self.object_type = object_type
+        if object_type is not None:
+            self.object_type = object_type
         self.metric = metric
         self.usage = usage
 
@@ -77,11 +78,6 @@ class UsagePerDay(object):
         :param object_type: The object_type of this UsagePerDay.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                object_type is not None and len(object_type) < 1):
-            raise ValueError("Invalid value for `object_type`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._object_type = object_type
 

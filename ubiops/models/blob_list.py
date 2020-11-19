@@ -34,7 +34,8 @@ class BlobList(object):
     """
     openapi_types = {
         'id': 'str',
-        'creation_date': 'datetime',
+        'creation_date': 'str',
+        'created_by': 'str',
         'filename': 'str',
         'size': 'int',
         'ttl': 'int'
@@ -43,12 +44,13 @@ class BlobList(object):
     attribute_map = {
         'id': 'id',
         'creation_date': 'creation_date',
+        'created_by': 'created_by',
         'filename': 'filename',
         'size': 'size',
         'ttl': 'ttl'
     }
 
-    def __init__(self, id=None, creation_date=None, filename=None, size=None, ttl=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, creation_date=None, created_by=None, filename=None, size=None, ttl=None, local_vars_configuration=None):  # noqa: E501
         """BlobList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -56,13 +58,18 @@ class BlobList(object):
 
         self._id = None
         self._creation_date = None
+        self._created_by = None
         self._filename = None
         self._size = None
         self._ttl = None
         self.discriminator = None
 
-        self.id = id
-        self.creation_date = creation_date
+        if id is not None:
+            self.id = id
+        if creation_date is not None:
+            self.creation_date = creation_date
+        if created_by is not None:
+            self.created_by = created_by
         self.filename = filename
         self.size = size
         self.ttl = ttl
@@ -85,8 +92,6 @@ class BlobList(object):
         :param id: The id of this BlobList.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
 
@@ -96,7 +101,7 @@ class BlobList(object):
 
 
         :return: The creation_date of this BlobList.  # noqa: E501
-        :rtype: datetime
+        :rtype: str
         """
         return self._creation_date
 
@@ -106,12 +111,31 @@ class BlobList(object):
 
 
         :param creation_date: The creation_date of this BlobList.  # noqa: E501
-        :type: datetime
+        :type: str
         """
-        if self.local_vars_configuration.client_side_validation and creation_date is None:  # noqa: E501
-            raise ValueError("Invalid value for `creation_date`, must not be `None`")  # noqa: E501
 
         self._creation_date = creation_date
+
+    @property
+    def created_by(self):
+        """Gets the created_by of this BlobList.  # noqa: E501
+
+
+        :return: The created_by of this BlobList.  # noqa: E501
+        :rtype: str
+        """
+        return self._created_by
+
+    @created_by.setter
+    def created_by(self, created_by):
+        """Sets the created_by of this BlobList.
+
+
+        :param created_by: The created_by of this BlobList.  # noqa: E501
+        :type: str
+        """
+
+        self._created_by = created_by
 
     @property
     def filename(self):

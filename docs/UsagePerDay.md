@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object_type** | **str** |  | 
+**object_type** | **str** |  | [optional] [readonly] 
 **metric** | **str** |  | 
 **usage** | [**list[UsagePerDayMetric]**](UsagePerDayMetric.md) |  | 
 

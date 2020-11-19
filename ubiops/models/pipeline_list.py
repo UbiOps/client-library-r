@@ -39,6 +39,7 @@ class PipelineList(object):
         'description': 'str',
         'input_type': 'str',
         'input_fields': 'list[PipelineInputFieldList]',
+        'labels': 'object',
         'creation_date': 'datetime',
         'last_updated': 'datetime'
     }
@@ -50,11 +51,12 @@ class PipelineList(object):
         'description': 'description',
         'input_type': 'input_type',
         'input_fields': 'input_fields',
+        'labels': 'labels',
         'creation_date': 'creation_date',
         'last_updated': 'last_updated'
     }
 
-    def __init__(self, id=None, name=None, project=None, description=None, input_type=None, input_fields=None, creation_date=None, last_updated=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, project=None, description=None, input_type=None, input_fields=None, labels=None, creation_date=None, last_updated=None, local_vars_configuration=None):  # noqa: E501
         """PipelineList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -66,6 +68,7 @@ class PipelineList(object):
         self._description = None
         self._input_type = None
         self._input_fields = None
+        self._labels = None
         self._creation_date = None
         self._last_updated = None
         self.discriminator = None
@@ -78,6 +81,7 @@ class PipelineList(object):
             self.description = description
         self.input_type = input_type
         self.input_fields = input_fields
+        self.labels = labels
         if creation_date is not None:
             self.creation_date = creation_date
         if last_updated is not None:
@@ -231,6 +235,27 @@ class PipelineList(object):
             raise ValueError("Invalid value for `input_fields`, must not be `None`")  # noqa: E501
 
         self._input_fields = input_fields
+
+    @property
+    def labels(self):
+        """Gets the labels of this PipelineList.  # noqa: E501
+
+
+        :return: The labels of this PipelineList.  # noqa: E501
+        :rtype: object
+        """
+        return self._labels
+
+    @labels.setter
+    def labels(self, labels):
+        """Sets the labels of this PipelineList.
+
+
+        :param labels: The labels of this PipelineList.  # noqa: E501
+        :type: object
+        """
+
+        self._labels = labels
 
     @property
     def creation_date(self):

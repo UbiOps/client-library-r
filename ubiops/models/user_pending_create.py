@@ -37,7 +37,8 @@ class UserPendingCreate(object):
         'password': 'str',
         'name': 'str',
         'surname': 'str',
-        'terms_conditions': 'bool'
+        'terms_conditions': 'bool',
+        'newsletter': 'bool'
     }
 
     attribute_map = {
@@ -45,10 +46,11 @@ class UserPendingCreate(object):
         'password': 'password',
         'name': 'name',
         'surname': 'surname',
-        'terms_conditions': 'terms_conditions'
+        'terms_conditions': 'terms_conditions',
+        'newsletter': 'newsletter'
     }
 
-    def __init__(self, email=None, password=None, name=None, surname=None, terms_conditions=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, email=None, password=None, name=None, surname=None, terms_conditions=None, newsletter=None, local_vars_configuration=None):  # noqa: E501
         """UserPendingCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +61,7 @@ class UserPendingCreate(object):
         self._name = None
         self._surname = None
         self._terms_conditions = None
+        self._newsletter = None
         self.discriminator = None
 
         self.email = email
@@ -66,6 +69,8 @@ class UserPendingCreate(object):
         self.name = name
         self.surname = surname
         self.terms_conditions = terms_conditions
+        if newsletter is not None:
+            self.newsletter = newsletter
 
     @property
     def email(self):
@@ -195,6 +200,27 @@ class UserPendingCreate(object):
             raise ValueError("Invalid value for `terms_conditions`, must not be `None`")  # noqa: E501
 
         self._terms_conditions = terms_conditions
+
+    @property
+    def newsletter(self):
+        """Gets the newsletter of this UserPendingCreate.  # noqa: E501
+
+
+        :return: The newsletter of this UserPendingCreate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._newsletter
+
+    @newsletter.setter
+    def newsletter(self, newsletter):
+        """Sets the newsletter of this UserPendingCreate.
+
+
+        :param newsletter: The newsletter of this UserPendingCreate.  # noqa: E501
+        :type: bool
+        """
+
+        self._newsletter = newsletter
 
     def to_dict(self):
         """Returns the model properties as a dict"""

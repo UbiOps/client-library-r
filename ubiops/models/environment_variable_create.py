@@ -107,9 +107,6 @@ class EnvironmentVariableCreate(object):
         :param value: The value of this EnvironmentVariableCreate.  # noqa: E501
         :type: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                value is not None and len(value) > 65536):
-            raise ValueError("Invalid value for `value`, length must be less than or equal to `65536`")  # noqa: E501
 
         self._value = value
 

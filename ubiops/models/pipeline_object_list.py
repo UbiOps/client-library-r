@@ -35,19 +35,17 @@ class PipelineObjectList(object):
     openapi_types = {
         'id': 'str',
         'name': 'str',
-        'reference_type': 'str',
         'reference_name': 'str',
         'version': 'str',
         'input_type': 'str',
         'output_type': 'str',
-        'input_fields': 'list[ModelInputFieldCreate]',
-        'output_fields': 'list[ModelOutputFieldCreate]'
+        'input_fields': 'list[DeploymentInputFieldCreate]',
+        'output_fields': 'list[DeploymentOutputFieldCreate]'
     }
 
     attribute_map = {
         'id': 'id',
         'name': 'name',
-        'reference_type': 'reference_type',
         'reference_name': 'reference_name',
         'version': 'version',
         'input_type': 'input_type',
@@ -56,7 +54,7 @@ class PipelineObjectList(object):
         'output_fields': 'output_fields'
     }
 
-    def __init__(self, id=None, name=None, reference_type=None, reference_name=None, version=None, input_type=None, output_type=None, input_fields=None, output_fields=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, reference_name=None, version=None, input_type=None, output_type=None, input_fields=None, output_fields=None, local_vars_configuration=None):  # noqa: E501
         """PipelineObjectList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -64,7 +62,6 @@ class PipelineObjectList(object):
 
         self._id = None
         self._name = None
-        self._reference_type = None
         self._reference_name = None
         self._version = None
         self._input_type = None
@@ -75,10 +72,8 @@ class PipelineObjectList(object):
 
         self.id = id
         self.name = name
-        self.reference_type = reference_type
         self.reference_name = reference_name
-        if version is not None:
-            self.version = version
+        self.version = version
         if input_type is not None:
             self.input_type = input_type
         if output_type is not None:
@@ -138,32 +133,6 @@ class PipelineObjectList(object):
         self._name = name
 
     @property
-    def reference_type(self):
-        """Gets the reference_type of this PipelineObjectList.  # noqa: E501
-
-
-        :return: The reference_type of this PipelineObjectList.  # noqa: E501
-        :rtype: str
-        """
-        return self._reference_type
-
-    @reference_type.setter
-    def reference_type(self, reference_type):
-        """Sets the reference_type of this PipelineObjectList.
-
-
-        :param reference_type: The reference_type of this PipelineObjectList.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and reference_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `reference_type`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                reference_type is not None and len(reference_type) < 1):
-            raise ValueError("Invalid value for `reference_type`, length must be greater than or equal to `1`")  # noqa: E501
-
-        self._reference_type = reference_type
-
-    @property
     def reference_name(self):
         """Gets the reference_name of this PipelineObjectList.  # noqa: E501
 
@@ -207,6 +176,8 @@ class PipelineObjectList(object):
         :param version: The version of this PipelineObjectList.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
+            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 version is not None and len(version) < 1):
             raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
@@ -267,7 +238,7 @@ class PipelineObjectList(object):
 
 
         :return: The input_fields of this PipelineObjectList.  # noqa: E501
-        :rtype: list[ModelInputFieldCreate]
+        :rtype: list[DeploymentInputFieldCreate]
         """
         return self._input_fields
 
@@ -277,7 +248,7 @@ class PipelineObjectList(object):
 
 
         :param input_fields: The input_fields of this PipelineObjectList.  # noqa: E501
-        :type: list[ModelInputFieldCreate]
+        :type: list[DeploymentInputFieldCreate]
         """
 
         self._input_fields = input_fields
@@ -288,7 +259,7 @@ class PipelineObjectList(object):
 
 
         :return: The output_fields of this PipelineObjectList.  # noqa: E501
-        :rtype: list[ModelOutputFieldCreate]
+        :rtype: list[DeploymentOutputFieldCreate]
         """
         return self._output_fields
 
@@ -298,7 +269,7 @@ class PipelineObjectList(object):
 
 
         :param output_fields: The output_fields of this PipelineObjectList.  # noqa: E501
-        :type: list[ModelOutputFieldCreate]
+        :type: list[DeploymentOutputFieldCreate]
         """
 
         self._output_fields = output_fields

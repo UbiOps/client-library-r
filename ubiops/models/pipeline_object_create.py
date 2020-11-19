@@ -34,35 +34,30 @@ class PipelineObjectCreate(object):
     """
     openapi_types = {
         'name': 'str',
-        'reference_type': 'str',
         'reference_name': 'str',
         'version': 'str'
     }
 
     attribute_map = {
         'name': 'name',
-        'reference_type': 'reference_type',
         'reference_name': 'reference_name',
         'version': 'version'
     }
 
-    def __init__(self, name=None, reference_type=None, reference_name=None, version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, reference_name=None, version=None, local_vars_configuration=None):  # noqa: E501
         """PipelineObjectCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
-        self._reference_type = None
         self._reference_name = None
         self._version = None
         self.discriminator = None
 
         self.name = name
-        self.reference_type = reference_type
         self.reference_name = reference_name
-        if version is not None:
-            self.version = version
+        self.version = version
 
     @property
     def name(self):
@@ -89,32 +84,6 @@ class PipelineObjectCreate(object):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
-
-    @property
-    def reference_type(self):
-        """Gets the reference_type of this PipelineObjectCreate.  # noqa: E501
-
-
-        :return: The reference_type of this PipelineObjectCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._reference_type
-
-    @reference_type.setter
-    def reference_type(self, reference_type):
-        """Sets the reference_type of this PipelineObjectCreate.
-
-
-        :param reference_type: The reference_type of this PipelineObjectCreate.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and reference_type is None:  # noqa: E501
-            raise ValueError("Invalid value for `reference_type`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                reference_type is not None and len(reference_type) < 1):
-            raise ValueError("Invalid value for `reference_type`, length must be greater than or equal to `1`")  # noqa: E501
-
-        self._reference_type = reference_type
 
     @property
     def reference_name(self):
@@ -160,6 +129,8 @@ class PipelineObjectCreate(object):
         :param version: The version of this PipelineObjectCreate.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
+            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 version is not None and len(version) < 1):
             raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501

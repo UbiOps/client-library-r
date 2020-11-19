@@ -36,17 +36,17 @@ class PipelineRequestList(object):
         'project': 'str',
         'pipeline': 'str',
         'pipeline_request_id': 'str',
-        'model_requests': 'list[PipelineRequestModelRequest]'
+        'deployment_requests': 'list[PipelineRequestDeplomentRequest]'
     }
 
     attribute_map = {
         'project': 'project',
         'pipeline': 'pipeline',
         'pipeline_request_id': 'pipeline_request_id',
-        'model_requests': 'model_requests'
+        'deployment_requests': 'deployment_requests'
     }
 
-    def __init__(self, project=None, pipeline=None, pipeline_request_id=None, model_requests=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, project=None, pipeline=None, pipeline_request_id=None, deployment_requests=None, local_vars_configuration=None):  # noqa: E501
         """PipelineRequestList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -55,13 +55,13 @@ class PipelineRequestList(object):
         self._project = None
         self._pipeline = None
         self._pipeline_request_id = None
-        self._model_requests = None
+        self._deployment_requests = None
         self.discriminator = None
 
         self.project = project
         self.pipeline = pipeline
         self.pipeline_request_id = pipeline_request_id
-        self.model_requests = model_requests
+        self.deployment_requests = deployment_requests
 
     @property
     def project(self):
@@ -139,27 +139,27 @@ class PipelineRequestList(object):
         self._pipeline_request_id = pipeline_request_id
 
     @property
-    def model_requests(self):
-        """Gets the model_requests of this PipelineRequestList.  # noqa: E501
+    def deployment_requests(self):
+        """Gets the deployment_requests of this PipelineRequestList.  # noqa: E501
 
 
-        :return: The model_requests of this PipelineRequestList.  # noqa: E501
-        :rtype: list[PipelineRequestModelRequest]
+        :return: The deployment_requests of this PipelineRequestList.  # noqa: E501
+        :rtype: list[PipelineRequestDeplomentRequest]
         """
-        return self._model_requests
+        return self._deployment_requests
 
-    @model_requests.setter
-    def model_requests(self, model_requests):
-        """Sets the model_requests of this PipelineRequestList.
+    @deployment_requests.setter
+    def deployment_requests(self, deployment_requests):
+        """Sets the deployment_requests of this PipelineRequestList.
 
 
-        :param model_requests: The model_requests of this PipelineRequestList.  # noqa: E501
-        :type: list[PipelineRequestModelRequest]
+        :param deployment_requests: The deployment_requests of this PipelineRequestList.  # noqa: E501
+        :type: list[PipelineRequestDeplomentRequest]
         """
-        if self.local_vars_configuration.client_side_validation and model_requests is None:  # noqa: E501
-            raise ValueError("Invalid value for `model_requests`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and deployment_requests is None:  # noqa: E501
+            raise ValueError("Invalid value for `deployment_requests`, must not be `None`")  # noqa: E501
 
-        self._model_requests = model_requests
+        self._deployment_requests = deployment_requests
 
     def to_dict(self):
         """Returns the model properties as a dict"""

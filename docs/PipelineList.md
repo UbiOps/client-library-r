@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **input_type** | **str** |  | 
 **input_fields** | [**list[PipelineInputFieldList]**](PipelineInputFieldList.md) |  | 
+**labels** | [**object**](.md) |  | [optional] 
 **creation_date** | **datetime** |  | [optional] 
 **last_updated** | **datetime** |  | [optional] 
 

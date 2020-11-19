@@ -3,8 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** |  | 
-**creation_date** | **datetime** |  | 
+**id** | **str** |  | [optional] [readonly] 
+**creation_date** | **str** |  | [optional] [readonly] 
+**created_by** | **str** |  | [optional] [readonly] 
 **filename** | **str** |  | 
 **size** | **int** |  | 
 **ttl** | **int** |  | 

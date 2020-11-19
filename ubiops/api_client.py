@@ -19,6 +19,7 @@ from multiprocessing.pool import ThreadPool
 import os
 import re
 import tempfile
+import types
 
 # python 2 and python 3 compatibility library
 import six
@@ -78,7 +79,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/2.1.0/python'
+        self.user_agent = 'UbiOps/python/3.0.0'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):
@@ -185,7 +186,7 @@ class ApiClient(object):
         response_data = self.request(
             method, url, query_params=query_params, headers=header_params,
             post_params=post_params, body=body,
-            _preload_content=_preload_content,
+            _preload_content=False if response_type == 'file' else _preload_content,
             _request_timeout=_request_timeout)
 
         self.last_response = response_data
@@ -197,6 +198,8 @@ class ApiClient(object):
                 return_data = self.deserialize(response_data, response_type)
             else:
                 return_data = None
+        elif response_type == 'file':
+            return_data.getfilename = types.MethodType(getfilename, return_data)
 
         if _return_http_data_only:
             return (return_data)
@@ -650,3 +653,10 @@ class ApiClient(object):
             if klass_name:
                 instance = self.__deserialize(data, klass_name)
         return instance
+
+
+def getfilename(self):
+    content_disposition = self.getheader('Content-Disposition')
+    if content_disposition:
+        filename = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition).group(1)
+        return filename

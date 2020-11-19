@@ -36,9 +36,8 @@ class Logs(object):
         'id': 'str',
         'log': 'str',
         'date': 'str',
-        'connector_name': 'str',
-        'model_name': 'str',
-        'model_version': 'str',
+        'deployment_name': 'str',
+        'version': 'str',
         'pipeline_name': 'str',
         'pipeline_object_name': 'str',
         'request_id': 'str',
@@ -50,9 +49,8 @@ class Logs(object):
         'id': 'id',
         'log': 'log',
         'date': 'date',
-        'connector_name': 'connector_name',
-        'model_name': 'model_name',
-        'model_version': 'model_version',
+        'deployment_name': 'deployment_name',
+        'version': 'version',
         'pipeline_name': 'pipeline_name',
         'pipeline_object_name': 'pipeline_object_name',
         'request_id': 'request_id',
@@ -60,7 +58,7 @@ class Logs(object):
         'system': 'system'
     }
 
-    def __init__(self, id=None, log=None, date=None, connector_name=None, model_name=None, model_version=None, pipeline_name=None, pipeline_object_name=None, request_id=None, pipeline_request_id=None, system=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, log=None, date=None, deployment_name=None, version=None, pipeline_name=None, pipeline_object_name=None, request_id=None, pipeline_request_id=None, system=None, local_vars_configuration=None):  # noqa: E501
         """Logs - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -69,9 +67,8 @@ class Logs(object):
         self._id = None
         self._log = None
         self._date = None
-        self._connector_name = None
-        self._model_name = None
-        self._model_version = None
+        self._deployment_name = None
+        self._version = None
         self._pipeline_name = None
         self._pipeline_object_name = None
         self._request_id = None
@@ -85,12 +82,10 @@ class Logs(object):
             self.log = log
         if date is not None:
             self.date = date
-        if connector_name is not None:
-            self.connector_name = connector_name
-        if model_name is not None:
-            self.model_name = model_name
-        if model_version is not None:
-            self.model_version = model_version
+        if deployment_name is not None:
+            self.deployment_name = deployment_name
+        if version is not None:
+            self.version = version
         if pipeline_name is not None:
             self.pipeline_name = pipeline_name
         if pipeline_object_name is not None:
@@ -144,9 +139,6 @@ class Logs(object):
         :param log: The log of this Logs.  # noqa: E501
         :type: str
         """
-        if (self.local_vars_configuration.client_side_validation and
-                log is not None and len(log) < 1):
-            raise ValueError("Invalid value for `log`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._log = log
 
@@ -175,76 +167,52 @@ class Logs(object):
         self._date = date
 
     @property
-    def connector_name(self):
-        """Gets the connector_name of this Logs.  # noqa: E501
+    def deployment_name(self):
+        """Gets the deployment_name of this Logs.  # noqa: E501
 
 
-        :return: The connector_name of this Logs.  # noqa: E501
+        :return: The deployment_name of this Logs.  # noqa: E501
         :rtype: str
         """
-        return self._connector_name
+        return self._deployment_name
 
-    @connector_name.setter
-    def connector_name(self, connector_name):
-        """Sets the connector_name of this Logs.
+    @deployment_name.setter
+    def deployment_name(self, deployment_name):
+        """Sets the deployment_name of this Logs.
 
 
-        :param connector_name: The connector_name of this Logs.  # noqa: E501
+        :param deployment_name: The deployment_name of this Logs.  # noqa: E501
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                connector_name is not None and len(connector_name) < 1):
-            raise ValueError("Invalid value for `connector_name`, length must be greater than or equal to `1`")  # noqa: E501
+                deployment_name is not None and len(deployment_name) < 1):
+            raise ValueError("Invalid value for `deployment_name`, length must be greater than or equal to `1`")  # noqa: E501
 
-        self._connector_name = connector_name
+        self._deployment_name = deployment_name
 
     @property
-    def model_name(self):
-        """Gets the model_name of this Logs.  # noqa: E501
+    def version(self):
+        """Gets the version of this Logs.  # noqa: E501
 
 
-        :return: The model_name of this Logs.  # noqa: E501
+        :return: The version of this Logs.  # noqa: E501
         :rtype: str
         """
-        return self._model_name
+        return self._version
 
-    @model_name.setter
-    def model_name(self, model_name):
-        """Sets the model_name of this Logs.
+    @version.setter
+    def version(self, version):
+        """Sets the version of this Logs.
 
 
-        :param model_name: The model_name of this Logs.  # noqa: E501
+        :param version: The version of this Logs.  # noqa: E501
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                model_name is not None and len(model_name) < 1):
-            raise ValueError("Invalid value for `model_name`, length must be greater than or equal to `1`")  # noqa: E501
+                version is not None and len(version) < 1):
+            raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
 
-        self._model_name = model_name
-
-    @property
-    def model_version(self):
-        """Gets the model_version of this Logs.  # noqa: E501
-
-
-        :return: The model_version of this Logs.  # noqa: E501
-        :rtype: str
-        """
-        return self._model_version
-
-    @model_version.setter
-    def model_version(self, model_version):
-        """Sets the model_version of this Logs.
-
-
-        :param model_version: The model_version of this Logs.  # noqa: E501
-        :type: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                model_version is not None and len(model_version) < 1):
-            raise ValueError("Invalid value for `model_version`, length must be greater than or equal to `1`")  # noqa: E501
-
-        self._model_version = model_version
+        self._version = version
 
     @property
     def pipeline_name(self):

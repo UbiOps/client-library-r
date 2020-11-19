@@ -36,17 +36,19 @@ class PipelineCreate(object):
         'name': 'str',
         'description': 'str',
         'input_type': 'str',
-        'input_fields': 'list[PipelineInputFieldCreate]'
+        'input_fields': 'list[PipelineInputFieldCreate]',
+        'labels': 'object'
     }
 
     attribute_map = {
         'name': 'name',
         'description': 'description',
         'input_type': 'input_type',
-        'input_fields': 'input_fields'
+        'input_fields': 'input_fields',
+        'labels': 'labels'
     }
 
-    def __init__(self, name=None, description=None, input_type=None, input_fields=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, description=None, input_type=None, input_fields=None, labels=None, local_vars_configuration=None):  # noqa: E501
         """PipelineCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -56,6 +58,7 @@ class PipelineCreate(object):
         self._description = None
         self._input_type = None
         self._input_fields = None
+        self._labels = None
         self.discriminator = None
 
         self.name = name
@@ -64,6 +67,8 @@ class PipelineCreate(object):
         self.input_type = input_type
         if input_fields is not None:
             self.input_fields = input_fields
+        if labels is not None:
+            self.labels = labels
 
     @property
     def name(self):
@@ -135,7 +140,7 @@ class PipelineCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and input_type is None:  # noqa: E501
             raise ValueError("Invalid value for `input_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["structured", "plain", "blob"]  # noqa: E501
+        allowed_values = ["structured", "plain"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and input_type not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `input_type` ({0}), must be one of {1}"  # noqa: E501
@@ -164,6 +169,27 @@ class PipelineCreate(object):
         """
 
         self._input_fields = input_fields
+
+    @property
+    def labels(self):
+        """Gets the labels of this PipelineCreate.  # noqa: E501
+
+
+        :return: The labels of this PipelineCreate.  # noqa: E501
+        :rtype: object
+        """
+        return self._labels
+
+    @labels.setter
+    def labels(self, labels):
+        """Sets the labels of this PipelineCreate.
+
+
+        :param labels: The labels of this PipelineCreate.  # noqa: E501
+        :type: object
+        """
+
+        self._labels = labels
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -80,6 +80,9 @@ class ProjectResourceUsage(object):
         :param deployments: The deployments of this ProjectResourceUsage.  # noqa: E501
         :type: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                deployments is not None and not isinstance(deployments, int)):
+            raise ValueError("Parameter `deployments` must be an integer")  # noqa: E501
 
         self._deployments = deployments
 
@@ -101,6 +104,9 @@ class ProjectResourceUsage(object):
         :param versions: The versions of this ProjectResourceUsage.  # noqa: E501
         :type: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                versions is not None and not isinstance(versions, int)):
+            raise ValueError("Parameter `versions` must be an integer")  # noqa: E501
 
         self._versions = versions
 
@@ -122,6 +128,9 @@ class ProjectResourceUsage(object):
         :param pipelines: The pipelines of this ProjectResourceUsage.  # noqa: E501
         :type: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                pipelines is not None and not isinstance(pipelines, int)):
+            raise ValueError("Parameter `pipelines` must be an integer")  # noqa: E501
 
         self._pipelines = pipelines
 

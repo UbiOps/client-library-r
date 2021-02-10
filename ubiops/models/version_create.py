@@ -40,7 +40,7 @@ class VersionCreate(object):
         'minimum_instances': 'int',
         'maximum_idle_time': 'int',
         'description': 'str',
-        'labels': 'object'
+        'labels': 'dict(str, str)'
     }
 
     attribute_map = {
@@ -83,8 +83,7 @@ class VersionCreate(object):
             self.maximum_idle_time = maximum_idle_time
         if description is not None:
             self.description = description
-        if labels is not None:
-            self.labels = labels
+        self.labels = labels
 
     @property
     def version(self):
@@ -106,6 +105,10 @@ class VersionCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
             raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and not isinstance(version, str)):
+            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 version is not None and len(version) < 1):
             raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
@@ -130,7 +133,10 @@ class VersionCreate(object):
         :param language: The language of this VersionCreate.  # noqa: E501
         :type: str
         """
-        allowed_values = ["python3.5", "python3.6", "python3.7", "python3.8"]  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                language is not None and not isinstance(language, str)):
+            raise ValueError("Parameter `language` must be a string")  # noqa: E501
+        allowed_values = ["python3.5", "python3.6", "python3.7", "python3.8", "r4.0"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and language not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `language` ({0}), must be one of {1}"  # noqa: E501
@@ -157,6 +163,10 @@ class VersionCreate(object):
         :param memory_allocation: The memory_allocation of this VersionCreate.  # noqa: E501
         :type: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                memory_allocation is not None and not isinstance(memory_allocation, int)):
+            raise ValueError("Parameter `memory_allocation` must be an integer")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 memory_allocation is not None and memory_allocation > 1048576):  # noqa: E501
             raise ValueError("Invalid value for `memory_allocation`, must be a value less than or equal to `1048576`")  # noqa: E501
@@ -185,6 +195,10 @@ class VersionCreate(object):
         :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
+                maximum_instances is not None and not isinstance(maximum_instances, int)):
+            raise ValueError("Parameter `maximum_instances` must be an integer")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 maximum_instances is not None and maximum_instances > 2147483647):  # noqa: E501
             raise ValueError("Invalid value for `maximum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -211,6 +225,10 @@ class VersionCreate(object):
         :param minimum_instances: The minimum_instances of this VersionCreate.  # noqa: E501
         :type: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                minimum_instances is not None and not isinstance(minimum_instances, int)):
+            raise ValueError("Parameter `minimum_instances` must be an integer")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 minimum_instances is not None and minimum_instances > 2147483647):  # noqa: E501
             raise ValueError("Invalid value for `minimum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
@@ -239,6 +257,10 @@ class VersionCreate(object):
         :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
+                maximum_idle_time is not None and not isinstance(maximum_idle_time, int)):
+            raise ValueError("Parameter `maximum_idle_time` must be an integer")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 maximum_idle_time is not None and maximum_idle_time > 2147483647):  # noqa: E501
             raise ValueError("Invalid value for `maximum_idle_time`, must be a value less than or equal to `2147483647`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -265,6 +287,9 @@ class VersionCreate(object):
         :param description: The description of this VersionCreate.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and not isinstance(description, str)):
+            raise ValueError("Parameter `description` must be a string")  # noqa: E501
 
         self._description = description
 
@@ -274,7 +299,7 @@ class VersionCreate(object):
 
 
         :return: The labels of this VersionCreate.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._labels
 
@@ -284,8 +309,11 @@ class VersionCreate(object):
 
 
         :param labels: The labels of this VersionCreate.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
 
         self._labels = labels
 

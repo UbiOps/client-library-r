@@ -37,6 +37,7 @@ class PipelineObjectList(object):
         'name': 'str',
         'reference_name': 'str',
         'version': 'str',
+        'language': 'str',
         'input_type': 'str',
         'output_type': 'str',
         'input_fields': 'list[DeploymentInputFieldCreate]',
@@ -48,13 +49,14 @@ class PipelineObjectList(object):
         'name': 'name',
         'reference_name': 'reference_name',
         'version': 'version',
+        'language': 'language',
         'input_type': 'input_type',
         'output_type': 'output_type',
         'input_fields': 'input_fields',
         'output_fields': 'output_fields'
     }
 
-    def __init__(self, id=None, name=None, reference_name=None, version=None, input_type=None, output_type=None, input_fields=None, output_fields=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, reference_name=None, version=None, language=None, input_type=None, output_type=None, input_fields=None, output_fields=None, local_vars_configuration=None):  # noqa: E501
         """PipelineObjectList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -64,6 +66,7 @@ class PipelineObjectList(object):
         self._name = None
         self._reference_name = None
         self._version = None
+        self._language = None
         self._input_type = None
         self._output_type = None
         self._input_fields = None
@@ -74,6 +77,8 @@ class PipelineObjectList(object):
         self.name = name
         self.reference_name = reference_name
         self.version = version
+        if language is not None:
+            self.language = language
         if input_type is not None:
             self.input_type = input_type
         if output_type is not None:
@@ -103,6 +108,9 @@ class PipelineObjectList(object):
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -126,6 +134,10 @@ class PipelineObjectList(object):
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) < 1):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
@@ -153,6 +165,10 @@ class PipelineObjectList(object):
         if self.local_vars_configuration.client_side_validation and reference_name is None:  # noqa: E501
             raise ValueError("Invalid value for `reference_name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                reference_name is not None and not isinstance(reference_name, str)):
+            raise ValueError("Parameter `reference_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 reference_name is not None and len(reference_name) < 1):
             raise ValueError("Invalid value for `reference_name`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -179,10 +195,42 @@ class PipelineObjectList(object):
         if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
             raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                version is not None and not isinstance(version, str)):
+            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 version is not None and len(version) < 1):
             raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._version = version
+
+    @property
+    def language(self):
+        """Gets the language of this PipelineObjectList.  # noqa: E501
+
+
+        :return: The language of this PipelineObjectList.  # noqa: E501
+        :rtype: str
+        """
+        return self._language
+
+    @language.setter
+    def language(self, language):
+        """Sets the language of this PipelineObjectList.
+
+
+        :param language: The language of this PipelineObjectList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                language is not None and not isinstance(language, str)):
+            raise ValueError("Parameter `language` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                language is not None and len(language) < 1):
+            raise ValueError("Invalid value for `language`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._language = language
 
     @property
     def input_type(self):
@@ -202,6 +250,10 @@ class PipelineObjectList(object):
         :param input_type: The input_type of this PipelineObjectList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                input_type is not None and not isinstance(input_type, str)):
+            raise ValueError("Parameter `input_type` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 input_type is not None and len(input_type) < 1):
             raise ValueError("Invalid value for `input_type`, length must be greater than or equal to `1`")  # noqa: E501
@@ -227,6 +279,10 @@ class PipelineObjectList(object):
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
+                output_type is not None and not isinstance(output_type, str)):
+            raise ValueError("Parameter `output_type` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 output_type is not None and len(output_type) < 1):
             raise ValueError("Invalid value for `output_type`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -250,6 +306,9 @@ class PipelineObjectList(object):
         :param input_fields: The input_fields of this PipelineObjectList.  # noqa: E501
         :type: list[DeploymentInputFieldCreate]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                input_fields is not None and not isinstance(input_fields, list)):
+            raise ValueError("Parameter `input_fields` must be a list")  # noqa: E501
 
         self._input_fields = input_fields
 
@@ -271,6 +330,9 @@ class PipelineObjectList(object):
         :param output_fields: The output_fields of this PipelineObjectList.  # noqa: E501
         :type: list[DeploymentOutputFieldCreate]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                output_fields is not None and not isinstance(output_fields, list)):
+            raise ValueError("Parameter `output_fields` must be a list")  # noqa: E501
 
         self._output_fields = output_fields
 

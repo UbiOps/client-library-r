@@ -70,6 +70,9 @@ class BlobUpload(object):
         :param file: The file of this BlobUpload.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                file is not None and not isinstance(file, str)):
+            raise ValueError("Parameter `file` must be a string")  # noqa: E501
 
         self._file = file
 

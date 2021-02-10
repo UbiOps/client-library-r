@@ -36,7 +36,7 @@ class PipelineRequestList(object):
         'project': 'str',
         'pipeline': 'str',
         'pipeline_request_id': 'str',
-        'deployment_requests': 'list[PipelineRequestDeplomentRequest]'
+        'deployment_requests': 'list[PipelineRequestDeploymentRequest]'
     }
 
     attribute_map = {
@@ -84,6 +84,10 @@ class PipelineRequestList(object):
         if self.local_vars_configuration.client_side_validation and project is None:  # noqa: E501
             raise ValueError("Invalid value for `project`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                project is not None and not isinstance(project, str)):
+            raise ValueError("Parameter `project` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 project is not None and len(project) < 1):
             raise ValueError("Invalid value for `project`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -110,6 +114,10 @@ class PipelineRequestList(object):
         if self.local_vars_configuration.client_side_validation and pipeline is None:  # noqa: E501
             raise ValueError("Invalid value for `pipeline`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                pipeline is not None and not isinstance(pipeline, str)):
+            raise ValueError("Parameter `pipeline` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 pipeline is not None and len(pipeline) < 1):
             raise ValueError("Invalid value for `pipeline`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -135,6 +143,9 @@ class PipelineRequestList(object):
         """
         if self.local_vars_configuration.client_side_validation and pipeline_request_id is None:  # noqa: E501
             raise ValueError("Invalid value for `pipeline_request_id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                pipeline_request_id is not None and not isinstance(pipeline_request_id, str)):
+            raise ValueError("Parameter `pipeline_request_id` must be a string")  # noqa: E501
 
         self._pipeline_request_id = pipeline_request_id
 
@@ -144,7 +155,7 @@ class PipelineRequestList(object):
 
 
         :return: The deployment_requests of this PipelineRequestList.  # noqa: E501
-        :rtype: list[PipelineRequestDeplomentRequest]
+        :rtype: list[PipelineRequestDeploymentRequest]
         """
         return self._deployment_requests
 
@@ -154,10 +165,13 @@ class PipelineRequestList(object):
 
 
         :param deployment_requests: The deployment_requests of this PipelineRequestList.  # noqa: E501
-        :type: list[PipelineRequestDeplomentRequest]
+        :type: list[PipelineRequestDeploymentRequest]
         """
         if self.local_vars_configuration.client_side_validation and deployment_requests is None:  # noqa: E501
             raise ValueError("Invalid value for `deployment_requests`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                deployment_requests is not None and not isinstance(deployment_requests, list)):
+            raise ValueError("Parameter `deployment_requests` must be a list")  # noqa: E501
 
         self._deployment_requests = deployment_requests
 

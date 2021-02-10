@@ -70,6 +70,9 @@ class OrganizationUserUpdate(object):
         :param admin: The admin of this OrganizationUserUpdate.  # noqa: E501
         :type: bool
         """
+        if (self.local_vars_configuration.client_side_validation and
+                admin is not None and not isinstance(admin, bool)):
+            raise ValueError("Parameter `admin` must be a boolean")  # noqa: E501
 
         self._admin = admin
 

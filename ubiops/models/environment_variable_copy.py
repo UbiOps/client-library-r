@@ -77,6 +77,10 @@ class EnvironmentVariableCopy(object):
         if self.local_vars_configuration.client_side_validation and source_deployment is None:  # noqa: E501
             raise ValueError("Invalid value for `source_deployment`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                source_deployment is not None and not isinstance(source_deployment, str)):
+            raise ValueError("Parameter `source_deployment` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 source_deployment is not None and len(source_deployment) < 1):
             raise ValueError("Invalid value for `source_deployment`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -100,6 +104,10 @@ class EnvironmentVariableCopy(object):
         :param source_version: The source_version of this EnvironmentVariableCopy.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                source_version is not None and not isinstance(source_version, str)):
+            raise ValueError("Parameter `source_version` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 source_version is not None and len(source_version) < 1):
             raise ValueError("Invalid value for `source_version`, length must be greater than or equal to `1`")  # noqa: E501

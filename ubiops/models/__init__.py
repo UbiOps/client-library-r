@@ -16,7 +16,8 @@ from __future__ import absolute_import
 # import models into model package
 from ubiops.models.attachment_fields_create import AttachmentFieldsCreate
 from ubiops.models.attachment_fields_list import AttachmentFieldsList
-from ubiops.models.attachments import Attachments
+from ubiops.models.attachment_sources_create import AttachmentSourcesCreate
+from ubiops.models.attachment_sources_list import AttachmentSourcesList
 from ubiops.models.attachments_create import AttachmentsCreate
 from ubiops.models.attachments_list import AttachmentsList
 from ubiops.models.audit_list import AuditList
@@ -31,13 +32,13 @@ from ubiops.models.batch_pipeline_request_list import BatchPipelineRequestList
 from ubiops.models.batch_pipeline_request_single_detail import BatchPipelineRequestSingleDetail
 from ubiops.models.blob_list import BlobList
 from ubiops.models.blob_upload import BlobUpload
+from ubiops.models.build_list import BuildList
 from ubiops.models.deployment_create import DeploymentCreate
 from ubiops.models.deployment_input_field_create import DeploymentInputFieldCreate
 from ubiops.models.deployment_input_field_list import DeploymentInputFieldList
 from ubiops.models.deployment_list import DeploymentList
 from ubiops.models.deployment_output_field_create import DeploymentOutputFieldCreate
 from ubiops.models.deployment_output_field_list import DeploymentOutputFieldList
-from ubiops.models.deployment_request_create import DeploymentRequestCreate
 from ubiops.models.deployment_request_list import DeploymentRequestList
 from ubiops.models.deployment_update import DeploymentUpdate
 from ubiops.models.environment_variable_copy import EnvironmentVariableCopy
@@ -62,14 +63,15 @@ from ubiops.models.pipeline_list import PipelineList
 from ubiops.models.pipeline_object_create import PipelineObjectCreate
 from ubiops.models.pipeline_object_list import PipelineObjectList
 from ubiops.models.pipeline_object_update import PipelineObjectUpdate
-from ubiops.models.pipeline_request_create import PipelineRequestCreate
-from ubiops.models.pipeline_request_deploment_request import PipelineRequestDeplomentRequest
+from ubiops.models.pipeline_request_deployment_request import PipelineRequestDeploymentRequest
 from ubiops.models.pipeline_request_list import PipelineRequestList
 from ubiops.models.project_create import ProjectCreate
 from ubiops.models.project_list import ProjectList
 from ubiops.models.project_resource_usage import ProjectResourceUsage
 from ubiops.models.project_update import ProjectUpdate
 from ubiops.models.resource_usage import ResourceUsage
+from ubiops.models.revision_create import RevisionCreate
+from ubiops.models.revision_list import RevisionList
 from ubiops.models.role_assignment_create import RoleAssignmentCreate
 from ubiops.models.role_assignment_list import RoleAssignmentList
 from ubiops.models.role_create import RoleCreate
@@ -84,7 +86,6 @@ from ubiops.models.service_user_detail import ServiceUserDetail
 from ubiops.models.service_user_list import ServiceUserList
 from ubiops.models.service_user_token_list import ServiceUserTokenList
 from ubiops.models.status import Status
-from ubiops.models.success import Success
 from ubiops.models.usage_per_day import UsagePerDay
 from ubiops.models.usage_per_day_metric import UsagePerDayMetric
 from ubiops.models.usage_per_month import UsagePerMonth
@@ -92,4 +93,6 @@ from ubiops.models.usage_per_month_metric import UsagePerMonthMetric
 from ubiops.models.user_pending_create import UserPendingCreate
 from ubiops.models.user_pending_detail import UserPendingDetail
 from ubiops.models.version_create import VersionCreate
+from ubiops.models.version_detail import VersionDetail
 from ubiops.models.version_list import VersionList
+from ubiops.models.version_update import VersionUpdate

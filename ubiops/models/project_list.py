@@ -83,6 +83,9 @@ class ProjectList(object):
         :param id: The id of this ProjectList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -106,6 +109,10 @@ class ProjectList(object):
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) > 64):
             raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
@@ -156,6 +163,10 @@ class ProjectList(object):
         """
         if self.local_vars_configuration.client_side_validation and organization_name is None:  # noqa: E501
             raise ValueError("Invalid value for `organization_name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                organization_name is not None and not isinstance(organization_name, str)):
+            raise ValueError("Parameter `organization_name` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 organization_name is not None and len(organization_name) < 1):
             raise ValueError("Invalid value for `organization_name`, length must be greater than or equal to `1`")  # noqa: E501

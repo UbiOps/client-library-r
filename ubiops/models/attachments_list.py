@@ -34,38 +34,31 @@ class AttachmentsList(object):
     """
     openapi_types = {
         'id': 'str',
-        'source_name': 'str',
         'destination_name': 'str',
-        'mapping': 'list[AttachmentFieldsList]'
+        'sources': 'list[AttachmentSourcesList]'
     }
 
     attribute_map = {
         'id': 'id',
-        'source_name': 'source_name',
         'destination_name': 'destination_name',
-        'mapping': 'mapping'
+        'sources': 'sources'
     }
 
-    def __init__(self, id=None, source_name=None, destination_name=None, mapping=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, destination_name=None, sources=None, local_vars_configuration=None):  # noqa: E501
         """AttachmentsList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
-        self._source_name = None
         self._destination_name = None
-        self._mapping = None
+        self._sources = None
         self.discriminator = None
 
-        if id is not None:
-            self.id = id
-        if source_name is not None:
-            self.source_name = source_name
-        if destination_name is not None:
-            self.destination_name = destination_name
-        if mapping is not None:
-            self.mapping = mapping
+        self.id = id
+        self.destination_name = destination_name
+        if sources is not None:
+            self.sources = sources
 
     @property
     def id(self):
@@ -85,29 +78,13 @@ class AttachmentsList(object):
         :param id: The id of this AttachmentsList.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
-
-    @property
-    def source_name(self):
-        """Gets the source_name of this AttachmentsList.  # noqa: E501
-
-
-        :return: The source_name of this AttachmentsList.  # noqa: E501
-        :rtype: str
-        """
-        return self._source_name
-
-    @source_name.setter
-    def source_name(self, source_name):
-        """Sets the source_name of this AttachmentsList.
-
-
-        :param source_name: The source_name of this AttachmentsList.  # noqa: E501
-        :type: str
-        """
-
-        self._source_name = source_name
 
     @property
     def destination_name(self):
@@ -127,29 +104,41 @@ class AttachmentsList(object):
         :param destination_name: The destination_name of this AttachmentsList.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and destination_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `destination_name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                destination_name is not None and not isinstance(destination_name, str)):
+            raise ValueError("Parameter `destination_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                destination_name is not None and len(destination_name) < 1):
+            raise ValueError("Invalid value for `destination_name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._destination_name = destination_name
 
     @property
-    def mapping(self):
-        """Gets the mapping of this AttachmentsList.  # noqa: E501
+    def sources(self):
+        """Gets the sources of this AttachmentsList.  # noqa: E501
 
 
-        :return: The mapping of this AttachmentsList.  # noqa: E501
-        :rtype: list[AttachmentFieldsList]
+        :return: The sources of this AttachmentsList.  # noqa: E501
+        :rtype: list[AttachmentSourcesList]
         """
-        return self._mapping
+        return self._sources
 
-    @mapping.setter
-    def mapping(self, mapping):
-        """Sets the mapping of this AttachmentsList.
+    @sources.setter
+    def sources(self, sources):
+        """Sets the sources of this AttachmentsList.
 
 
-        :param mapping: The mapping of this AttachmentsList.  # noqa: E501
-        :type: list[AttachmentFieldsList]
+        :param sources: The sources of this AttachmentsList.  # noqa: E501
+        :type: list[AttachmentSourcesList]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                sources is not None and not isinstance(sources, list)):
+            raise ValueError("Parameter `sources` must be a list")  # noqa: E501
 
-        self._mapping = mapping
+        self._sources = sources
 
     def to_dict(self):
         """Returns the model properties as a dict"""

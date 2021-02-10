@@ -13,7 +13,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "ubiops"
-VERSION = "3.0.0"
+VERSION = "3.1.0"
 # To install the library, run the following
 #
 # python setup.py install
@@ -33,7 +33,7 @@ setup(
     name=NAME,
     version=VERSION,
     description="UbiOps",
-    author="Dutch Analytics",
+    author="UbiOps",
     url="https://github.com/UbiOps/client-library-python.git",
     keywords=["OpenAPI", "OpenAPI-Generator", "UbiOps"],
     install_requires=REQUIRES,

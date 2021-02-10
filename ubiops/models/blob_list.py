@@ -92,6 +92,9 @@ class BlobList(object):
         :param id: The id of this BlobList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -113,6 +116,9 @@ class BlobList(object):
         :param creation_date: The creation_date of this BlobList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                creation_date is not None and not isinstance(creation_date, str)):
+            raise ValueError("Parameter `creation_date` must be a string")  # noqa: E501
 
         self._creation_date = creation_date
 
@@ -134,6 +140,9 @@ class BlobList(object):
         :param created_by: The created_by of this BlobList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                created_by is not None and not isinstance(created_by, str)):
+            raise ValueError("Parameter `created_by` must be a string")  # noqa: E501
 
         self._created_by = created_by
 
@@ -157,6 +166,10 @@ class BlobList(object):
         """
         if self.local_vars_configuration.client_side_validation and filename is None:  # noqa: E501
             raise ValueError("Invalid value for `filename`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                filename is not None and not isinstance(filename, str)):
+            raise ValueError("Parameter `filename` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 filename is not None and len(filename) < 1):
             raise ValueError("Invalid value for `filename`, length must be greater than or equal to `1`")  # noqa: E501
@@ -183,6 +196,9 @@ class BlobList(object):
         """
         if self.local_vars_configuration.client_side_validation and size is None:  # noqa: E501
             raise ValueError("Invalid value for `size`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                size is not None and not isinstance(size, int)):
+            raise ValueError("Parameter `size` must be an integer")  # noqa: E501
 
         self._size = size
 
@@ -206,6 +222,9 @@ class BlobList(object):
         """
         if self.local_vars_configuration.client_side_validation and ttl is None:  # noqa: E501
             raise ValueError("Invalid value for `ttl`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                ttl is not None and not isinstance(ttl, int)):
+            raise ValueError("Parameter `ttl` must be an integer")  # noqa: E501
 
         self._ttl = ttl
 

@@ -83,6 +83,9 @@ class ServiceUserList(object):
         :param id: The id of this ServiceUserList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -106,6 +109,10 @@ class ServiceUserList(object):
         """
         if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                email is not None and not isinstance(email, str)):
+            raise ValueError("Parameter `email` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 email is not None and len(email) > 254):
             raise ValueError("Invalid value for `email`, length must be less than or equal to `254`")  # noqa: E501
@@ -134,6 +141,10 @@ class ServiceUserList(object):
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) > 256):
             raise ValueError("Invalid value for `name`, length must be less than or equal to `256`")  # noqa: E501
 
@@ -157,6 +168,9 @@ class ServiceUserList(object):
         :param creation_date: The creation_date of this ServiceUserList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                creation_date is not None and not isinstance(creation_date, str)):
+            raise ValueError("Parameter `creation_date` must be a string")  # noqa: E501
 
         self._creation_date = creation_date
 

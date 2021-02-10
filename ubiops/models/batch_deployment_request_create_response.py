@@ -79,6 +79,9 @@ class BatchDeploymentRequestCreateResponse(object):
         """
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -102,6 +105,9 @@ class BatchDeploymentRequestCreateResponse(object):
         """
         if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                status is not None and not isinstance(status, str)):
+            raise ValueError("Parameter `status` must be a string")  # noqa: E501
         allowed_values = ["pending", "processing", "completed", "failed"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(

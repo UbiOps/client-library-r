@@ -79,6 +79,9 @@ class DeploymentRequestList(object):
         """
         if self.local_vars_configuration.client_side_validation and success is None:  # noqa: E501
             raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                success is not None and not isinstance(success, bool)):
+            raise ValueError("Parameter `success` must be a boolean")  # noqa: E501
 
         self._success = success
 
@@ -121,6 +124,9 @@ class DeploymentRequestList(object):
         :param error_message: The error_message of this DeploymentRequestList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                error_message is not None and not isinstance(error_message, str)):
+            raise ValueError("Parameter `error_message` must be a string")  # noqa: E501
 
         self._error_message = error_message
 

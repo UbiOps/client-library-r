@@ -49,7 +49,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -77,7 +77,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -124,6 +124,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `batch_deployment_requests_batch_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_deployment_requests_batch_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `batch_deployment_requests_batch_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `batch_deployment_requests_batch_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['data'], list):  # noqa: E501
+                raise ApiValueError("Parameter `data` must be a list when calling `batch_deployment_requests_batch_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -145,13 +161,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -175,7 +190,7 @@ class CoreApi(object):
     def batch_deployment_requests_batch_get(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Retrieve multiple batch deployment request results  # noqa: E501
 
-         ### Description Retrieve multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_last_updated\": \"2020-06-29T08:09:10.729+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_last_updated\": \"2020-03-25T09:37:17.765+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
+         ### Description Retrieve multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_deployment_requests_batch_get(project_name, deployment_name, version, data, async_req=True)
@@ -185,7 +200,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -203,7 +218,7 @@ class CoreApi(object):
     def batch_deployment_requests_batch_get_with_http_info(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Retrieve multiple batch deployment request results  # noqa: E501
 
-         ### Description Retrieve multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_last_updated\": \"2020-06-29T08:09:10.729+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_last_updated\": \"2020-03-25T09:37:17.765+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
+         ### Description Retrieve multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_deployment_requests_batch_get_with_http_info(project_name, deployment_name, version, data, async_req=True)
@@ -213,7 +228,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -260,6 +275,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `batch_deployment_requests_batch_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_deployment_requests_batch_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `batch_deployment_requests_batch_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `batch_deployment_requests_batch_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['data'], list):  # noqa: E501
+                raise ApiValueError("Parameter `data` must be a list when calling `batch_deployment_requests_batch_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -281,13 +312,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -321,7 +351,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param list[DeploymentRequestCreate] data: (required)
+        :param list[object] data: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -349,7 +379,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param list[DeploymentRequestCreate] data: (required)
+        :param list[object] data: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -396,6 +426,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `batch_deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `batch_deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `batch_deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['data'], list):  # noqa: E501
+                raise ApiValueError("Parameter `data` must be a list when calling `batch_deployment_requests_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -417,13 +463,15 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/plain'])  # noqa: E501
+        if isinstance(body_params, str):
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['text/plain'])  # noqa: E501
+        else:
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -532,6 +580,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `batch_deployment_requests_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_deployment_requests_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `batch_deployment_requests_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'request_id' in local_var_params
+            and local_var_params['request_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['request_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `request_id` must be a string when calling `batch_deployment_requests_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `batch_deployment_requests_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -553,6 +617,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -575,7 +640,7 @@ class CoreApi(object):
     def batch_deployment_requests_get(self, project_name, deployment_name, request_id, version, **kwargs):  # noqa: E501
         """Get batch deployment request  # noqa: E501
 
-         ### Description Get a batch request for a deployment. With this method, the result of a batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the deployment request with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` {   \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",   \"status\": \"pending\",   \"success\": false,   \"time_created\": \"2020-03-29T08:09:10.729+00:00\",   \"time_last_updated\": \"2020-03-29T08:09:10.729+00:00\",   \"request_data\": {     \"input\": 82.3   },   \"result\": null,   \"error_message\": null } ```   # noqa: E501
+         ### Description Get a batch request for a deployment. With this method, the result of a batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the deployment request with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` {   \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",   \"status\": \"pending\",   \"success\": false,   \"time_created\": \"2020-03-29T08:09:10.729+00:00\",   \"time_started\": \"2020-03-28T20:00:41.276+00:00\",   \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   \"request_data\": {     \"input\": 82.3   },   \"result\": null,   \"error_message\": null } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_deployment_requests_get(project_name, deployment_name, request_id, version, async_req=True)
@@ -603,7 +668,7 @@ class CoreApi(object):
     def batch_deployment_requests_get_with_http_info(self, project_name, deployment_name, request_id, version, **kwargs):  # noqa: E501
         """Get batch deployment request  # noqa: E501
 
-         ### Description Get a batch request for a deployment. With this method, the result of a batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the deployment request with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` {   \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",   \"status\": \"pending\",   \"success\": false,   \"time_created\": \"2020-03-29T08:09:10.729+00:00\",   \"time_last_updated\": \"2020-03-29T08:09:10.729+00:00\",   \"request_data\": {     \"input\": 82.3   },   \"result\": null,   \"error_message\": null } ```   # noqa: E501
+         ### Description Get a batch request for a deployment. With this method, the result of a batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the deployment request with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` {   \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",   \"status\": \"pending\",   \"success\": false,   \"time_created\": \"2020-03-29T08:09:10.729+00:00\",   \"time_started\": \"2020-03-28T20:00:41.276+00:00\",   \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   \"request_data\": {     \"input\": 82.3   },   \"result\": null,   \"error_message\": null } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_deployment_requests_get_with_http_info(project_name, deployment_name, request_id, version, async_req=True)
@@ -660,6 +725,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `batch_deployment_requests_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_deployment_requests_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `batch_deployment_requests_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'request_id' in local_var_params
+            and local_var_params['request_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['request_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `request_id` must be a string when calling `batch_deployment_requests_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `batch_deployment_requests_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -681,9 +762,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -707,7 +788,7 @@ class CoreApi(object):
     def batch_deployment_requests_list(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
         """List batch deployment requests  # noqa: E501
 
-         ### Description List all requests for a version  ### Optional Parameters The following parameters should be given as Query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed' - `success`: A boolean value that indicates whether the deployment request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description List all requests for a version  ### Optional Parameters The following parameters should be given as Query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed' - `success`: A boolean value that indicates whether the deployment request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_deployment_requests_list(project_name, deployment_name, version, async_req=True)
@@ -739,7 +820,7 @@ class CoreApi(object):
     def batch_deployment_requests_list_with_http_info(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
         """List batch deployment requests  # noqa: E501
 
-         ### Description List all requests for a version  ### Optional Parameters The following parameters should be given as Query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed' - `success`: A boolean value that indicates whether the deployment request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description List all requests for a version  ### Optional Parameters The following parameters should be given as Query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed' - `success`: A boolean value that indicates whether the deployment request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the deployment request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_deployment_requests_list_with_http_info(project_name, deployment_name, version, async_req=True)
@@ -796,6 +877,38 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'status' in local_var_params
+            and local_var_params['status'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['status'], str):  # noqa: E501
+                raise ApiValueError("Parameter `status` must be a string when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'success' in local_var_params
+            and local_var_params['success'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['success'], bool):  # noqa: E501
+                raise ApiValueError("Parameter `success` must be a boolean when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'limit' in local_var_params
+            and local_var_params['limit'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['limit'], int):  # noqa: E501
+                raise ApiValueError("Parameter `limit` must be an integer when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'offset' in local_var_params
+            and local_var_params['offset'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['offset'], int):  # noqa: E501
+                raise ApiValueError("Parameter `offset` must be an integer when calling `batch_deployment_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'sort' in local_var_params
+            and local_var_params['sort'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['sort'], str):  # noqa: E501
+                raise ApiValueError("Parameter `sort` must be a string when calling `batch_deployment_requests_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -825,9 +938,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -860,7 +973,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -887,7 +1000,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -930,6 +1043,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `batch_pipeline_requests_batch_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_pipeline_requests_batch_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `batch_pipeline_requests_batch_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['data'], list):  # noqa: E501
+                raise ApiValueError("Parameter `data` must be a list when calling `batch_pipeline_requests_batch_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -949,13 +1074,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -979,7 +1103,7 @@ class CoreApi(object):
     def batch_pipeline_requests_batch_get(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Retrieve multiple batch pipeline request results  # noqa: E501
 
-         ### Description Retrieve multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2521378e-263e-4e2e-85e9-a96254b36536\", \"69eca481-8576-49e8-8e20-ea56f2005bcb\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests to the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\",       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     },     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\",       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     } ] ```   # noqa: E501
+         ### Description Retrieve multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2521378e-263e-4e2e-85e9-a96254b36536\", \"69eca481-8576-49e8-8e20-ea56f2005bcb\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests to the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_started\": \"2020-03-28T20:00:41.276+00:00\",       \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     },     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_started\": \"2020-03-28T20:00:41.276+00:00\",       \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_batch_get(project_name, pipeline_name, data, async_req=True)
@@ -988,7 +1112,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1006,7 +1130,7 @@ class CoreApi(object):
     def batch_pipeline_requests_batch_get_with_http_info(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Retrieve multiple batch pipeline request results  # noqa: E501
 
-         ### Description Retrieve multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2521378e-263e-4e2e-85e9-a96254b36536\", \"69eca481-8576-49e8-8e20-ea56f2005bcb\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests to the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\",       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     },     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\",       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     } ] ```   # noqa: E501
+         ### Description Retrieve multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the batch requests  #### Request Examples  ``` [\"2521378e-263e-4e2e-85e9-a96254b36536\", \"69eca481-8576-49e8-8e20-ea56f2005bcb\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests to the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_started\": \"2020-03-28T20:00:41.276+00:00\",       \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     },     {       \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",       \"status\": \"pending\",       \"success\": false,       \"time_created\": \"2020-063-28T20:00:26.613+00:00\",       \"time_started\": \"2020-03-28T20:00:41.276+00:00\",       \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"       \"request_data\": {         \"input_field\": 23.5       },       \"deployment_requests\": [],       \"error_message\": null     } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_batch_get_with_http_info(project_name, pipeline_name, data, async_req=True)
@@ -1015,7 +1139,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param object data: (required)
+        :param list[str] data: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1058,6 +1182,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `batch_pipeline_requests_batch_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_pipeline_requests_batch_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `batch_pipeline_requests_batch_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['data'], list):  # noqa: E501
+                raise ApiValueError("Parameter `data` must be a list when calling `batch_pipeline_requests_batch_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1077,13 +1213,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -1116,7 +1251,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param list[PipelineRequestCreate] data: (required)
+        :param list[object] data: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -1143,7 +1278,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param list[PipelineRequestCreate] data: (required)
+        :param list[object] data: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -1186,6 +1321,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `batch_pipeline_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_pipeline_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `batch_pipeline_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['data'], list):  # noqa: E501
+                raise ApiValueError("Parameter `data` must be a list when calling `batch_pipeline_requests_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1205,13 +1352,15 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/plain'])  # noqa: E501
+        if isinstance(body_params, str):
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['text/plain'])  # noqa: E501
+        else:
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -1314,6 +1463,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_request_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_request_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_request_id` when calling `batch_pipeline_requests_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_pipeline_requests_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `batch_pipeline_requests_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_request_id' in local_var_params
+            and local_var_params['pipeline_request_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_request_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_request_id` must be a string when calling `batch_pipeline_requests_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1333,6 +1494,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -1355,7 +1517,7 @@ class CoreApi(object):
     def batch_pipeline_requests_get(self, project_name, pipeline_name, pipeline_request_id, **kwargs):  # noqa: E501
         """Get batch pipeline request  # noqa: E501
 
-         ### Description Get a batch request for a pipeline. With this method, the result of the batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the pipeline request with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests of the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.  - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples  ``` {   \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",   \"status\": \"pending\",   \"success\": true,   \"time_created\": \"2020-03-28T20:00:26.613+00:00\",   \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\",   \"request_data\": {     \"input_field\": 23.5   },   \"deployment_requests\": [],   \"error_message\": null,   \"created_by\": \"my.example.user@ubiops.com\" } ```   # noqa: E501
+         ### Description Get a batch request for a pipeline. With this method, the result of the batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the pipeline request with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests of the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.  - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples  ``` {   \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",   \"status\": \"pending\",   \"success\": true,   \"time_created\": \"2020-03-28T20:00:26.613+00:00\",   \"time_started\": \"2020-03-28T20:00:41.276+00:00\",   \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   \"request_data\": {     \"input_field\": 23.5   },   \"deployment_requests\": [],   \"error_message\": null,   \"created_by\": \"my.example.user@ubiops.com\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_get(project_name, pipeline_name, pipeline_request_id, async_req=True)
@@ -1382,7 +1544,7 @@ class CoreApi(object):
     def batch_pipeline_requests_get_with_http_info(self, project_name, pipeline_name, pipeline_request_id, **kwargs):  # noqa: E501
         """Get batch pipeline request  # noqa: E501
 
-         ### Description Get a batch request for a pipeline. With this method, the result of the batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the pipeline request with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests of the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.  - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples  ``` {   \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",   \"status\": \"pending\",   \"success\": true,   \"time_created\": \"2020-03-28T20:00:26.613+00:00\",   \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\",   \"request_data\": {     \"input_field\": 23.5   },   \"deployment_requests\": [],   \"error_message\": null,   \"created_by\": \"my.example.user@ubiops.com\" } ```   # noqa: E501
+         ### Description Get a batch request for a pipeline. With this method, the result of the batch request may be retrieved.  ### Response Structure  A dictionary containing the details of the pipeline request with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `deployment_requests`: A list of requests of the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.  - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples  ``` {   \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",   \"status\": \"pending\",   \"success\": true,   \"time_created\": \"2020-03-28T20:00:26.613+00:00\",   \"time_started\": \"2020-03-28T20:00:41.276+00:00\",   \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   \"request_data\": {     \"input_field\": 23.5   },   \"deployment_requests\": [],   \"error_message\": null,   \"created_by\": \"my.example.user@ubiops.com\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_get_with_http_info(project_name, pipeline_name, pipeline_request_id, async_req=True)
@@ -1434,6 +1596,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_request_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_request_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_request_id` when calling `batch_pipeline_requests_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_pipeline_requests_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `batch_pipeline_requests_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_request_id' in local_var_params
+            and local_var_params['pipeline_request_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_request_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_request_id` must be a string when calling `batch_pipeline_requests_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1453,9 +1627,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -1479,7 +1653,7 @@ class CoreApi(object):
     def batch_pipeline_requests_list(self, project_name, pipeline_name, **kwargs):  # noqa: E501
         """List batch pipeline requests  # noqa: E501
 
-         ### Description List all requests for a pipeline  ### Optional Parameters The following parameters should be given as query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'. - `success`: A boolean value that indicates whether the pipeline request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description List all requests for a pipeline  ### Optional Parameters The following parameters should be given as query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'. - `success`: A boolean value that indicates whether the pipeline request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_list(project_name, pipeline_name, async_req=True)
@@ -1510,7 +1684,7 @@ class CoreApi(object):
     def batch_pipeline_requests_list_with_http_info(self, project_name, pipeline_name, **kwargs):  # noqa: E501
         """List batch pipeline requests  # noqa: E501
 
-         ### Description List all requests for a pipeline  ### Optional Parameters The following parameters should be given as query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'. - `success`: A boolean value that indicates whether the pipeline request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_last_updated`: Server time that the request was last updated  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_last_updated\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description List all requests for a pipeline  ### Optional Parameters The following parameters should be given as query parameters:  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'. - `success`: A boolean value that indicates whether the pipeline request was successful - `limit`: The maximum number of requests given back, default is 50 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list. - `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.  ### Response Structure  A list of dictionaries containing the details of the pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `success`: A boolean value that indicates whether the pipeline request was successful  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"status\": \"completed\",     \"success\": true,     \"time_created\": \"2020-03-28T20:00:26.613+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_list_with_http_info(project_name, pipeline_name, async_req=True)
@@ -1562,6 +1736,34 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `batch_pipeline_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `batch_pipeline_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `batch_pipeline_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'status' in local_var_params
+            and local_var_params['status'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['status'], str):  # noqa: E501
+                raise ApiValueError("Parameter `status` must be a string when calling `batch_pipeline_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'success' in local_var_params
+            and local_var_params['success'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['success'], bool):  # noqa: E501
+                raise ApiValueError("Parameter `success` must be a boolean when calling `batch_pipeline_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'limit' in local_var_params
+            and local_var_params['limit'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['limit'], int):  # noqa: E501
+                raise ApiValueError("Parameter `limit` must be an integer when calling `batch_pipeline_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'offset' in local_var_params
+            and local_var_params['offset'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['offset'], int):  # noqa: E501
+                raise ApiValueError("Parameter `offset` must be an integer when calling `batch_pipeline_requests_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'sort' in local_var_params
+            and local_var_params['sort'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['sort'], str):  # noqa: E501
+                raise ApiValueError("Parameter `sort` must be a string when calling `batch_pipeline_requests_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1589,9 +1791,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -1690,6 +1892,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
                                                         local_var_params['file'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `file` when calling `blobs_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `blobs_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'blob_ttl' in local_var_params
+            and local_var_params['blob_ttl'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['blob_ttl'], int):  # noqa: E501
+                raise ApiValueError("Parameter `blob_ttl` must be an integer when calling `blobs_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1709,13 +1919,12 @@ class CoreApi(object):
             local_var_files['file'] = local_var_params['file']  # noqa: E501
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -1812,6 +2021,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('blob_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['blob_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `blob_id` when calling `blobs_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `blobs_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'blob_id' in local_var_params
+            and local_var_params['blob_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['blob_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `blob_id` must be a string when calling `blobs_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1829,6 +2046,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -1926,6 +2144,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('blob_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['blob_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `blob_id` when calling `blobs_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `blobs_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'blob_id' in local_var_params
+            and local_var_params['blob_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['blob_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `blob_id` must be a string when calling `blobs_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -1943,9 +2169,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2040,6 +2266,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `blobs_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `blobs_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'range' in local_var_params
+            and local_var_params['range'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['range'], int):  # noqa: E501
+                raise ApiValueError("Parameter `range` must be an integer when calling `blobs_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'creation_date' in local_var_params
+            and local_var_params['creation_date'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['creation_date'], str):  # noqa: E501
+                raise ApiValueError("Parameter `creation_date` must be a string when calling `blobs_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2059,9 +2297,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2075,6 +2313,290 @@ class CoreApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='list[BlobList]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def builds_get(self, project_name, build_id, deployment_name, version, **kwargs):  # noqa: E501
+        """Get build  # noqa: E501
+
+         ### Description  Retrieve details of a single build of a version  ### Response Structure  A dictionary containing details of the build - `id`: Unique identifier for the build (UUID) - `revision`: UUID of the revision to which the build is linked - `creation_date`: The date when the build was created - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'. - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful. - `trigger`: Action that triggered the build  #### Response Examples ``` {   \"id\": \"49d857fd-39ca-48db-9547-0d5d1a91b62d\",   \"revision\": \"7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6\",   \"creation_date\": \"2020-12-23T16:15:11.200+00:00\",   \"status\": \"building\",   \"error_message\": \"\",   \"trigger\": \"Deployment file upload\" } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.builds_get(project_name, build_id, deployment_name, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str build_id: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: BuildList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.builds_get_with_http_info(project_name, build_id, deployment_name, version, **kwargs)  # noqa: E501
+
+    def builds_get_with_http_info(self, project_name, build_id, deployment_name, version, **kwargs):  # noqa: E501
+        """Get build  # noqa: E501
+
+         ### Description  Retrieve details of a single build of a version  ### Response Structure  A dictionary containing details of the build - `id`: Unique identifier for the build (UUID) - `revision`: UUID of the revision to which the build is linked - `creation_date`: The date when the build was created - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'. - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful. - `trigger`: Action that triggered the build  #### Response Examples ``` {   \"id\": \"49d857fd-39ca-48db-9547-0d5d1a91b62d\",   \"revision\": \"7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6\",   \"creation_date\": \"2020-12-23T16:15:11.200+00:00\",   \"status\": \"building\",   \"error_message\": \"\",   \"trigger\": \"Deployment file upload\" } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.builds_get_with_http_info(project_name, build_id, deployment_name, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str build_id: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(BuildList, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'build_id', 'deployment_name', 'version']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method builds_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `builds_get`")  # noqa: E501
+        # verify the required parameter 'build_id' is set
+        if self.api_client.client_side_validation and ('build_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['build_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `build_id` when calling `builds_get`")  # noqa: E501
+        # verify the required parameter 'deployment_name' is set
+        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['deployment_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `deployment_name` when calling `builds_get`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
+                                                        local_var_params['version'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `version` when calling `builds_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `builds_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'build_id' in local_var_params
+            and local_var_params['build_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['build_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `build_id` must be a string when calling `builds_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `builds_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `builds_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'build_id' in local_var_params:
+            path_params['build_id'] = local_var_params['build_id']  # noqa: E501
+        if 'deployment_name' in local_var_params:
+            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
+        if 'version' in local_var_params:
+            path_params['version'] = local_var_params['version']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='BuildList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def builds_list(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
+        """List builds  # noqa: E501
+
+         ### Description  List all builds associated with a version. A build is triggered when a new deployment file is uploaded.  ### Response Structure  A list of details of the builds - `id`: Unique identifier for the build (UUID) - `revision`: UUID of the revision to which the build is linked - `creation_date`: The date when the build was created - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'. - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful. - `trigger`: Action that triggered the build  #### Response Examples ``` [   {     \"id\": \"49d857fd-39ca-48db-9547-0d5d1a91b62d\",     \"revision\": \"7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6\",     \"creation_date\": \"2020-12-23T16:15:11.200+00:00\",     \"status\": \"failed\",     \"error_message\": \"Could not find the deployment file\",     \"trigger\": \"Deployment file upload\"   },   {     \"id\": \"baf88570-d884-4bc6-9308-01068b051f5f\",     \"revision\": \"a009d7c9-67e4-4d3c-89fd-d3c8b07c7242\",     \"creation_date\": \"2020-12-23T16:35:13.088+00:00\",     \"status\": \"queued\",     \"error_message\": \"\",     \"trigger\": \"Deployment file upload\"   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.builds_list(project_name, deployment_name, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[BuildList]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.builds_list_with_http_info(project_name, deployment_name, version, **kwargs)  # noqa: E501
+
+    def builds_list_with_http_info(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
+        """List builds  # noqa: E501
+
+         ### Description  List all builds associated with a version. A build is triggered when a new deployment file is uploaded.  ### Response Structure  A list of details of the builds - `id`: Unique identifier for the build (UUID) - `revision`: UUID of the revision to which the build is linked - `creation_date`: The date when the build was created - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'. - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful. - `trigger`: Action that triggered the build  #### Response Examples ``` [   {     \"id\": \"49d857fd-39ca-48db-9547-0d5d1a91b62d\",     \"revision\": \"7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6\",     \"creation_date\": \"2020-12-23T16:15:11.200+00:00\",     \"status\": \"failed\",     \"error_message\": \"Could not find the deployment file\",     \"trigger\": \"Deployment file upload\"   },   {     \"id\": \"baf88570-d884-4bc6-9308-01068b051f5f\",     \"revision\": \"a009d7c9-67e4-4d3c-89fd-d3c8b07c7242\",     \"creation_date\": \"2020-12-23T16:35:13.088+00:00\",     \"status\": \"queued\",     \"error_message\": \"\",     \"trigger\": \"Deployment file upload\"   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.builds_list_with_http_info(project_name, deployment_name, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[BuildList], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'deployment_name', 'version']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method builds_list" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `builds_list`")  # noqa: E501
+        # verify the required parameter 'deployment_name' is set
+        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['deployment_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `deployment_name` when calling `builds_list`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
+                                                        local_var_params['version'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `version` when calling `builds_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `builds_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `builds_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `builds_list`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'deployment_name' in local_var_params:
+            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
+        if 'version' in local_var_params:
+            path_params['version'] = local_var_params['version']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[BuildList]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -2164,6 +2686,26 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['deployment_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `deployment_name` when calling `deployment_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'action' in local_var_params
+            and local_var_params['action'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['action'], str):  # noqa: E501
+                raise ApiValueError("Parameter `action` must be a string when calling `deployment_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'limit' in local_var_params
+            and local_var_params['limit'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['limit'], int):  # noqa: E501
+                raise ApiValueError("Parameter `limit` must be an integer when calling `deployment_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'offset' in local_var_params
+            and local_var_params['offset'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['offset'], int):  # noqa: E501
+                raise ApiValueError("Parameter `offset` must be an integer when calling `deployment_audit_events_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2187,9 +2729,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2292,6 +2834,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `deployment_environment_variables_copy`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_environment_variables_copy`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_environment_variables_copy`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2311,13 +2861,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2420,6 +2969,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `deployment_environment_variables_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_environment_variables_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_environment_variables_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2439,13 +2996,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2548,6 +3104,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `deployment_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `deployment_environment_variables_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2567,6 +3135,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -2668,6 +3237,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `deployment_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `deployment_environment_variables_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2687,9 +3268,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2786,6 +3367,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['deployment_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `deployment_name` when calling `deployment_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_environment_variables_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2803,9 +3392,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2914,6 +3503,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `deployment_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `deployment_environment_variables_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -2935,13 +3536,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -2975,7 +3575,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param DeploymentRequestCreate data: (required)
+        :param object data: (required)
         :param int timeout:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
@@ -3004,7 +3604,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param DeploymentRequestCreate data: (required)
+        :param object data: (required)
         :param int timeout:
         :param _return_http_data_only: response data without head status code
                                        and headers
@@ -3052,6 +3652,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `deployment_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'timeout' in local_var_params
+            and local_var_params['timeout'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['timeout'], int):  # noqa: E501
+                raise ApiValueError("Parameter `timeout` must be an integer when calling `deployment_requests_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3075,13 +3691,15 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/plain'])  # noqa: E501
+        if isinstance(body_params, str):
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['text/plain'])  # noqa: E501
+        else:
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -3178,6 +3796,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `deployments_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployments_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3195,13 +3817,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -3298,6 +3919,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['deployment_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `deployment_name` when calling `deployments_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployments_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployments_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3315,6 +3944,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -3410,6 +4040,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['deployment_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `deployment_name` when calling `deployments_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployments_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployments_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3427,9 +4065,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -3522,6 +4160,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `deployments_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployments_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'labels' in local_var_params
+            and local_var_params['labels'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['labels'], str):  # noqa: E501
+                raise ApiValueError("Parameter `labels` must be a string when calling `deployments_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3539,9 +4185,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -3644,6 +4290,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `deployments_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `deployments_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `deployments_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3663,13 +4317,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -3788,6 +4441,34 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('object_type' not in local_var_params or  # noqa: E501
                                                         local_var_params['object_type'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `object_type` when calling `metrics_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `metrics_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'metric' in local_var_params
+            and local_var_params['metric'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['metric'], str):  # noqa: E501
+                raise ApiValueError("Parameter `metric` must be a string when calling `metrics_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'start_time' in local_var_params
+            and local_var_params['start_time'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['start_time'], str):  # noqa: E501
+                raise ApiValueError("Parameter `start_time` must be a string when calling `metrics_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'end_time' in local_var_params
+            and local_var_params['end_time'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['end_time'], str):  # noqa: E501
+                raise ApiValueError("Parameter `end_time` must be a string when calling `metrics_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'object_type' in local_var_params
+            and local_var_params['object_type'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['object_type'], str):  # noqa: E501
+                raise ApiValueError("Parameter `object_type` must be a string when calling `metrics_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'interval' in local_var_params
+            and local_var_params['interval'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['interval'], str):  # noqa: E501
+                raise ApiValueError("Parameter `interval` must be a string when calling `metrics_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'object_id' in local_var_params
+            and local_var_params['object_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['object_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `object_id` must be a string when calling `metrics_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3815,9 +4496,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -3910,6 +4591,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('organization_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['organization_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `organization_name` when calling `organization_usage_details_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organization_usage_details_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'month' in local_var_params
+            and local_var_params['month'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['month'], str):  # noqa: E501
+                raise ApiValueError("Parameter `month` must be a string when calling `organization_usage_details_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -3927,9 +4616,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4022,6 +4711,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('organization_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['organization_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `organization_name` when calling `organization_usage_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organization_usage_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'start_month' in local_var_params
+            and local_var_params['start_month'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['start_month'], str):  # noqa: E501
+                raise ApiValueError("Parameter `start_month` must be a string when calling `organization_usage_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4039,9 +4736,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4138,6 +4835,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `organization_users_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organization_users_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4155,13 +4856,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4258,6 +4958,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('user_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `organization_users_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organization_users_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'user_id' in local_var_params
+            and local_var_params['user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `user_id` must be a string when calling `organization_users_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4275,6 +4983,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -4370,6 +5079,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('user_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `organization_users_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organization_users_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'user_id' in local_var_params
+            and local_var_params['user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `user_id` must be a string when calling `organization_users_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4387,9 +5104,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4480,6 +5197,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('organization_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['organization_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `organization_name` when calling `organization_users_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organization_users_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4495,9 +5216,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4600,6 +5321,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `organization_users_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organization_users_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'user_id' in local_var_params
+            and local_var_params['user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `user_id` must be a string when calling `organization_users_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4619,13 +5348,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4649,7 +5377,7 @@ class CoreApi(object):
     def organizations_create(self, data, **kwargs):  # noqa: E501
         """Create organizations  # noqa: E501
 
-         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year.  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true,   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
+         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. **Provide a null value for this field to have no end date.**  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true,   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_create(data, async_req=True)
@@ -4674,7 +5402,7 @@ class CoreApi(object):
     def organizations_create_with_http_info(self, data, **kwargs):  # noqa: E501
         """Create organizations  # noqa: E501
 
-         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year.  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true,   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
+         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. **Provide a null value for this field to have no end date.**  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true,   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_create_with_http_info(data, async_req=True)
@@ -4731,13 +5459,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4828,6 +5555,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('organization_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['organization_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `organization_name` when calling `organizations_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organizations_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -4843,9 +5574,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -4943,9 +5674,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -5036,6 +5767,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('organization_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['organization_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `organization_name` when calling `organizations_resource_usage`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organizations_resource_usage`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5051,9 +5786,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -5077,7 +5812,7 @@ class CoreApi(object):
     def organizations_update(self, organization_name, data, **kwargs):  # noqa: E501
         """Update details of an organization  # noqa: E501
 
-         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for 'subscription_end_date'.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_agreed\": true } ``` ``` {   \"subscription_end_date\": \"2020-08-30\",   \"subscription_agreed\": true } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
+         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for this field.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_agreed\": true } ``` ``` {   \"subscription_end_date\": \"2020-08-30\",   \"subscription_agreed\": true } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_update(organization_name, data, async_req=True)
@@ -5103,7 +5838,7 @@ class CoreApi(object):
     def organizations_update_with_http_info(self, organization_name, data, **kwargs):  # noqa: E501
         """Update details of an organization  # noqa: E501
 
-         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for 'subscription_end_date'.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_agreed\": true } ``` ``` {   \"subscription_end_date\": \"2020-08-30\",   \"subscription_agreed\": true } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
+         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for this field.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_agreed\": true } ``` ``` {   \"subscription_end_date\": \"2020-08-30\",   \"subscription_agreed\": true } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_update_with_http_info(organization_name, data, async_req=True)
@@ -5150,6 +5885,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `organizations_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'organization_name' in local_var_params
+            and local_var_params['organization_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['organization_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `organization_name` must be a string when calling `organizations_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5167,13 +5906,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -5271,9 +6009,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -5376,6 +6114,26 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'action' in local_var_params
+            and local_var_params['action'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['action'], str):  # noqa: E501
+                raise ApiValueError("Parameter `action` must be a string when calling `pipeline_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'limit' in local_var_params
+            and local_var_params['limit'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['limit'], int):  # noqa: E501
+                raise ApiValueError("Parameter `limit` must be an integer when calling `pipeline_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'offset' in local_var_params
+            and local_var_params['offset'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['offset'], int):  # noqa: E501
+                raise ApiValueError("Parameter `offset` must be an integer when calling `pipeline_audit_events_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5399,9 +6157,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -5425,7 +6183,7 @@ class CoreApi(object):
     def pipeline_object_attachments_create(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Create object attachments  # noqa: E501
 
-         ### Description  Create an attachment between two pipeline objects. An attachment can only be made between two objects that have already been added to the pipeline.  The object where the attachment starts is called the source object. The object that is linked is called the destination object. When attaching two objects, one must also define which source object output fields map to which destination object input fields. All the input fields in the destination object must be provided in the mapping. In contrast, not all source object output fields need to be used in the mapping. It is also possible that one source output field may link to multiple destination input fields.  The *pipeline_start* object can only be a source object.  In case of plain type of objects, the mapping must be omitted or given as an empty list.  ### Required Parameters  - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing source_field_name and destination_field_name keys. The source and destination fields should match in data type, e.g. integer source fields can only be mapped to integer type destination fields.  #### Request Examples  An attachment between two versions ``` {   \"source_name\": \"deployment-1-v1\",   \"destination_name\": \"deployment-2-v1\",   \"mapping\": [     {       \"source_field_name\": \"deployment-output-field-1\",       \"destination_field_name\": \"deployment-2-input-field-1\"     },     {       \"source_field_name\": \"deployment-output-field-2\",       \"destination_field_name\": \"deployment-2-input-field-2\"     },     {       \"source_field_name\": \"deployment-output-field-3\",       \"destination_field_name\": \"deployment-2-input-field-3\"     }   ] } ```  ``` {   \"source_name\": \"blob-deployment-v3\",   \"destination_name\": \"blob-deployment-v4\",   \"mapping\": [] } ```   An attachment between a pipeline and version ``` {   \"source_name\": \"pipeline_start\",   \"destination_name\": \"deployment-2-v2\",   \"mapping\": [     {       \"source_field_name\": \"pipeline-input-field-1\",       \"destination_field_name\": \"deployment-input-field-1\"     },     {       \"source_field_name\": \"pipeline-input-field-2\",       \"destination_field_name\": \"deployment-input-field-2\"     }   ] } ```  ### Response Structure  Details of the created attachment - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing source_field_name and destination_field_name  #### Response Examples  ``` {   \"source_name\": \"pipeline-1\",   \"destination_name\": \"deployment-2-v2\",   \"mapping\": [     {       \"source_field_name\": \"pipeline-input-field-1\",       \"destination_field_name\": \"deployment-input-field-1\"     },     {       \"source_field_name\": \"pipeline-input-field-2\",       \"destination_field_name\": \"deployment-input-field-2\"     }   ] } ```   # noqa: E501
+         ### Description  Create an attachment between pipeline objects. An attachment can only be made between objects that have already been added to the pipeline.  The objects where the attachment starts is called the source objects. The object that is linked is called the destination object. When attaching source objects to a destination object, one must also define which source object output fields map to which destination object input fields. All the input fields in the destination object must be provided in the mapping. In contrast, not all output fields of all source objects need to be used in the mapping. It is also possible that one source output field links to multiple destination input fields.  The *pipeline_start* object can only be a source object.  In case of plain type of objects, the mapping `source_field_name` and `destination_field_name` must be omitted or given as null.  ### Required Parameters  - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name). Each item in the sources list must contain source_field_name and destination_field_name keys. The source and destination fields should match in data type, e.g. integer source fields can only be mapped to integer type destination fields.  #### Request Examples  An attachment between two versions ``` {   \"destination_name\": \"deployment-2-v1\",   \"sources\": [     {       \"source_name\": \"deployment-1-v1\",       \"mapping\": [         {           \"source_field_name\": \"deployment-output-field-1\",           \"destination_field_name\": \"deployment-2-input-field-1\"         },         {           \"source_field_name\": \"deployment-output-field-2\",           \"destination_field_name\": \"deployment-2-input-field-2\"         },         {           \"source_field_name\": \"deployment-output-field-3\",           \"destination_field_name\": \"deployment-2-input-field-3\"         }       ]     },   ] } ``` An attachment between two plain input/output type versions ``` {   \"destination_name\": \"plain-deployment-v4\",   \"sources\": [     {       \"source_name\": \"plain-deployment-v3\",       \"mapping\": []     }   ] } ```   An attachment between a pipeline_start object and version ``` {   \"destination_name\": \"deployment-2-v2\",   \"sources\": [     {       \"source_name\": \"pipeline_start\",       \"mapping\": [         {           \"source_field_name\": \"pipeline-input-field-1\",           \"destination_field_name\": \"deployment-input-field-1\"         },         {           \"source_field_name\": \"pipeline-input-field-2\",           \"destination_field_name\": \"deployment-input-field-2\"         }       ]     }   ] } ```  ### Response Structure  Details of the created attachment - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` {   \"destination_name\": \"deployment-2-v2\",   \"sources\": [     {       \"source_name\": \"pipeline_start\",       \"mapping\": [         {           \"source_field_name\": \"pipeline-input-field-1\",           \"destination_field_name\": \"deployment-input-field-1\"         },         {           \"source_field_name\": \"pipeline-input-field-2\",           \"destination_field_name\": \"deployment-input-field-2\"         }       ]     }   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.pipeline_object_attachments_create(project_name, pipeline_name, data, async_req=True)
@@ -5442,7 +6200,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: Attachments
+        :return: AttachmentsList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5452,7 +6210,7 @@ class CoreApi(object):
     def pipeline_object_attachments_create_with_http_info(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Create object attachments  # noqa: E501
 
-         ### Description  Create an attachment between two pipeline objects. An attachment can only be made between two objects that have already been added to the pipeline.  The object where the attachment starts is called the source object. The object that is linked is called the destination object. When attaching two objects, one must also define which source object output fields map to which destination object input fields. All the input fields in the destination object must be provided in the mapping. In contrast, not all source object output fields need to be used in the mapping. It is also possible that one source output field may link to multiple destination input fields.  The *pipeline_start* object can only be a source object.  In case of plain type of objects, the mapping must be omitted or given as an empty list.  ### Required Parameters  - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing source_field_name and destination_field_name keys. The source and destination fields should match in data type, e.g. integer source fields can only be mapped to integer type destination fields.  #### Request Examples  An attachment between two versions ``` {   \"source_name\": \"deployment-1-v1\",   \"destination_name\": \"deployment-2-v1\",   \"mapping\": [     {       \"source_field_name\": \"deployment-output-field-1\",       \"destination_field_name\": \"deployment-2-input-field-1\"     },     {       \"source_field_name\": \"deployment-output-field-2\",       \"destination_field_name\": \"deployment-2-input-field-2\"     },     {       \"source_field_name\": \"deployment-output-field-3\",       \"destination_field_name\": \"deployment-2-input-field-3\"     }   ] } ```  ``` {   \"source_name\": \"blob-deployment-v3\",   \"destination_name\": \"blob-deployment-v4\",   \"mapping\": [] } ```   An attachment between a pipeline and version ``` {   \"source_name\": \"pipeline_start\",   \"destination_name\": \"deployment-2-v2\",   \"mapping\": [     {       \"source_field_name\": \"pipeline-input-field-1\",       \"destination_field_name\": \"deployment-input-field-1\"     },     {       \"source_field_name\": \"pipeline-input-field-2\",       \"destination_field_name\": \"deployment-input-field-2\"     }   ] } ```  ### Response Structure  Details of the created attachment - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing source_field_name and destination_field_name  #### Response Examples  ``` {   \"source_name\": \"pipeline-1\",   \"destination_name\": \"deployment-2-v2\",   \"mapping\": [     {       \"source_field_name\": \"pipeline-input-field-1\",       \"destination_field_name\": \"deployment-input-field-1\"     },     {       \"source_field_name\": \"pipeline-input-field-2\",       \"destination_field_name\": \"deployment-input-field-2\"     }   ] } ```   # noqa: E501
+         ### Description  Create an attachment between pipeline objects. An attachment can only be made between objects that have already been added to the pipeline.  The objects where the attachment starts is called the source objects. The object that is linked is called the destination object. When attaching source objects to a destination object, one must also define which source object output fields map to which destination object input fields. All the input fields in the destination object must be provided in the mapping. In contrast, not all output fields of all source objects need to be used in the mapping. It is also possible that one source output field links to multiple destination input fields.  The *pipeline_start* object can only be a source object.  In case of plain type of objects, the mapping `source_field_name` and `destination_field_name` must be omitted or given as null.  ### Required Parameters  - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name). Each item in the sources list must contain source_field_name and destination_field_name keys. The source and destination fields should match in data type, e.g. integer source fields can only be mapped to integer type destination fields.  #### Request Examples  An attachment between two versions ``` {   \"destination_name\": \"deployment-2-v1\",   \"sources\": [     {       \"source_name\": \"deployment-1-v1\",       \"mapping\": [         {           \"source_field_name\": \"deployment-output-field-1\",           \"destination_field_name\": \"deployment-2-input-field-1\"         },         {           \"source_field_name\": \"deployment-output-field-2\",           \"destination_field_name\": \"deployment-2-input-field-2\"         },         {           \"source_field_name\": \"deployment-output-field-3\",           \"destination_field_name\": \"deployment-2-input-field-3\"         }       ]     },   ] } ``` An attachment between two plain input/output type versions ``` {   \"destination_name\": \"plain-deployment-v4\",   \"sources\": [     {       \"source_name\": \"plain-deployment-v3\",       \"mapping\": []     }   ] } ```   An attachment between a pipeline_start object and version ``` {   \"destination_name\": \"deployment-2-v2\",   \"sources\": [     {       \"source_name\": \"pipeline_start\",       \"mapping\": [         {           \"source_field_name\": \"pipeline-input-field-1\",           \"destination_field_name\": \"deployment-input-field-1\"         },         {           \"source_field_name\": \"pipeline-input-field-2\",           \"destination_field_name\": \"deployment-input-field-2\"         }       ]     }   ] } ```  ### Response Structure  Details of the created attachment - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` {   \"destination_name\": \"deployment-2-v2\",   \"sources\": [     {       \"source_name\": \"pipeline_start\",       \"mapping\": [         {           \"source_field_name\": \"pipeline-input-field-1\",           \"destination_field_name\": \"deployment-input-field-1\"         },         {           \"source_field_name\": \"pipeline-input-field-2\",           \"destination_field_name\": \"deployment-input-field-2\"         }       ]     }   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.pipeline_object_attachments_create_with_http_info(project_name, pipeline_name, data, async_req=True)
@@ -5471,7 +6229,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(Attachments, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(AttachmentsList, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -5504,6 +6262,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `pipeline_object_attachments_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_object_attachments_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_object_attachments_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5523,13 +6289,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -5542,7 +6307,7 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='Attachments',  # noqa: E501
+            response_type='AttachmentsList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -5550,20 +6315,19 @@ class CoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def pipeline_object_attachments_delete(self, project_name, destination_name, pipeline_name, source_name, **kwargs):  # noqa: E501
-        """Delete attachment of a source and destination object  # noqa: E501
+    def pipeline_object_attachments_delete(self, project_name, attachment_id, pipeline_name, **kwargs):  # noqa: E501
+        """Delete attachment in a pipeline  # noqa: E501
 
          ### Description  Delete an attachment in a pipeline. The referenced and original objects of the attachment still exist in the pipeline, only the link between them is deleted.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pipeline_object_attachments_delete(project_name, destination_name, pipeline_name, source_name, async_req=True)
+        >>> thread = api.pipeline_object_attachments_delete(project_name, attachment_id, pipeline_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
-        :param str destination_name: (required)
+        :param str attachment_id: (required)
         :param str pipeline_name: (required)
-        :param str source_name: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -5576,22 +6340,21 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.pipeline_object_attachments_delete_with_http_info(project_name, destination_name, pipeline_name, source_name, **kwargs)  # noqa: E501
+        return self.pipeline_object_attachments_delete_with_http_info(project_name, attachment_id, pipeline_name, **kwargs)  # noqa: E501
 
-    def pipeline_object_attachments_delete_with_http_info(self, project_name, destination_name, pipeline_name, source_name, **kwargs):  # noqa: E501
-        """Delete attachment of a source and destination object  # noqa: E501
+    def pipeline_object_attachments_delete_with_http_info(self, project_name, attachment_id, pipeline_name, **kwargs):  # noqa: E501
+        """Delete attachment in a pipeline  # noqa: E501
 
          ### Description  Delete an attachment in a pipeline. The referenced and original objects of the attachment still exist in the pipeline, only the link between them is deleted.   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pipeline_object_attachments_delete_with_http_info(project_name, destination_name, pipeline_name, source_name, async_req=True)
+        >>> thread = api.pipeline_object_attachments_delete_with_http_info(project_name, attachment_id, pipeline_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
-        :param str destination_name: (required)
+        :param str attachment_id: (required)
         :param str pipeline_name: (required)
-        :param str source_name: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -5608,7 +6371,7 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ['project_name', 'destination_name', 'pipeline_name', 'source_name']  # noqa: E501
+        all_params = ['project_name', 'attachment_id', 'pipeline_name']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5626,30 +6389,36 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `pipeline_object_attachments_delete`")  # noqa: E501
-        # verify the required parameter 'destination_name' is set
-        if self.api_client.client_side_validation and ('destination_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['destination_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `destination_name` when calling `pipeline_object_attachments_delete`")  # noqa: E501
+        # verify the required parameter 'attachment_id' is set
+        if self.api_client.client_side_validation and ('attachment_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['attachment_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `attachment_id` when calling `pipeline_object_attachments_delete`")  # noqa: E501
         # verify the required parameter 'pipeline_name' is set
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_object_attachments_delete`")  # noqa: E501
-        # verify the required parameter 'source_name' is set
-        if self.api_client.client_side_validation and ('source_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['source_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `source_name` when calling `pipeline_object_attachments_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_object_attachments_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'attachment_id' in local_var_params
+            and local_var_params['attachment_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['attachment_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `attachment_id` must be a string when calling `pipeline_object_attachments_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_object_attachments_delete`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'project_name' in local_var_params:
             path_params['project_name'] = local_var_params['project_name']  # noqa: E501
-        if 'destination_name' in local_var_params:
-            path_params['destination_name'] = local_var_params['destination_name']  # noqa: E501
+        if 'attachment_id' in local_var_params:
+            path_params['attachment_id'] = local_var_params['attachment_id']  # noqa: E501
         if 'pipeline_name' in local_var_params:
             path_params['pipeline_name'] = local_var_params['pipeline_name']  # noqa: E501
-        if 'source_name' in local_var_params:
-            path_params['source_name'] = local_var_params['source_name']  # noqa: E501
 
         query_params = []
 
@@ -5659,11 +6428,12 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/projects/{project_name}/pipelines/{pipeline_name}/objects/{source_name}/attachments/{destination_name}', 'DELETE',
+            '/projects/{project_name}/pipelines/{pipeline_name}/attachments/{attachment_id}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -5678,20 +6448,155 @@ class CoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def pipeline_object_attachments_get(self, project_name, destination_name, pipeline_name, source_name, **kwargs):  # noqa: E501
-        """Get an attachment of a source and destination object  # noqa: E501
+    def pipeline_object_attachments_destination_get(self, project_name, destination_name, pipeline_name, **kwargs):  # noqa: E501
+        """List the attachments of a destination object  # noqa: E501
 
-         ### Description  Get the details of a single attachment between a source and destination object in a pipeline  ### Response Structure  Details of the attachment - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing the link between the source object output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` {   \"source_name\": \"deployment-2-v2\",   \"destination_name\": \"deployment-3-v1\",   \"mapping\": [     {       \"source_field_name\": \"deployment-2-output-field-1\",       \"destination_field_name\": \"deployment-3-input-field-1\"     },     {       \"source_field_name\": \"deployment-2-output-field-2\",       \"destination_field_name\": \"deployment-3-input-field-2\"     }   ] } ```   # noqa: E501
+         ### Description  List attachments of a destination object in a pipeline  ### Response Structure  A list of details of the attachments of the given destination object in the pipeline - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` [   {     \"destination_name\": \"deployment-3-v1\",     \"sources\": [       {         \"source_name\": \"deployment-2-v2\",         \"mapping\": [           {             \"source_field_name\": \"deployment-2-output-field-1\",             \"destination_field_name\": \"deployment-3-input-field-1\"           },           {             \"source_field_name\": \"deployment-2-output-field-2\",             \"destination_field_name\": \"deployment-3-input-field-2\"           }         ]       }     ]   },     {     \"destination_name\": \"deployment-3-v1\",     \"sources\": [       {         \"source_name\": \"deployment-2-v2\",         \"mapping\": [           {             \"source_field_name\": \"deployment-2-output-field-1\",             \"destination_field_name\": \"deployment-3-input-field-1\"           },           {             \"source_field_name\": \"deployment-2-output-field-2\",             \"destination_field_name\": \"deployment-3-input-field-2\"           }         ]       }     ]   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pipeline_object_attachments_get(project_name, destination_name, pipeline_name, source_name, async_req=True)
+        >>> thread = api.pipeline_object_attachments_destination_get(project_name, destination_name, pipeline_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str destination_name: (required)
         :param str pipeline_name: (required)
-        :param str source_name: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[AttachmentsList]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.pipeline_object_attachments_destination_get_with_http_info(project_name, destination_name, pipeline_name, **kwargs)  # noqa: E501
+
+    def pipeline_object_attachments_destination_get_with_http_info(self, project_name, destination_name, pipeline_name, **kwargs):  # noqa: E501
+        """List the attachments of a destination object  # noqa: E501
+
+         ### Description  List attachments of a destination object in a pipeline  ### Response Structure  A list of details of the attachments of the given destination object in the pipeline - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` [   {     \"destination_name\": \"deployment-3-v1\",     \"sources\": [       {         \"source_name\": \"deployment-2-v2\",         \"mapping\": [           {             \"source_field_name\": \"deployment-2-output-field-1\",             \"destination_field_name\": \"deployment-3-input-field-1\"           },           {             \"source_field_name\": \"deployment-2-output-field-2\",             \"destination_field_name\": \"deployment-3-input-field-2\"           }         ]       }     ]   },     {     \"destination_name\": \"deployment-3-v1\",     \"sources\": [       {         \"source_name\": \"deployment-2-v2\",         \"mapping\": [           {             \"source_field_name\": \"deployment-2-output-field-1\",             \"destination_field_name\": \"deployment-3-input-field-1\"           },           {             \"source_field_name\": \"deployment-2-output-field-2\",             \"destination_field_name\": \"deployment-3-input-field-2\"           }         ]       }     ]   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.pipeline_object_attachments_destination_get_with_http_info(project_name, destination_name, pipeline_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str destination_name: (required)
+        :param str pipeline_name: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[AttachmentsList], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'destination_name', 'pipeline_name']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method pipeline_object_attachments_destination_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `pipeline_object_attachments_destination_get`")  # noqa: E501
+        # verify the required parameter 'destination_name' is set
+        if self.api_client.client_side_validation and ('destination_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['destination_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `destination_name` when calling `pipeline_object_attachments_destination_get`")  # noqa: E501
+        # verify the required parameter 'pipeline_name' is set
+        if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['pipeline_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_object_attachments_destination_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_object_attachments_destination_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'destination_name' in local_var_params
+            and local_var_params['destination_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['destination_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `destination_name` must be a string when calling `pipeline_object_attachments_destination_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_object_attachments_destination_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'destination_name' in local_var_params:
+            path_params['destination_name'] = local_var_params['destination_name']  # noqa: E501
+        if 'pipeline_name' in local_var_params:
+            path_params['pipeline_name'] = local_var_params['pipeline_name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/pipelines/{pipeline_name}/objects/{destination_name}/attachments/', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[AttachmentsList]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def pipeline_object_attachments_get(self, project_name, attachment_id, pipeline_name, **kwargs):  # noqa: E501
+        """Get an attachment in a pipeline  # noqa: E501
+
+         ### Description  Get the details of a single attachment in a pipeline  ### Response Structure  Details of the attachment - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` {   \"destination_name\": \"deployment-3-v1\",   \"sources\": [     {       \"source_name\": \"deployment-2-v2\",       \"mapping\": [         {           \"source_field_name\": \"deployment-2-output-field-1\",           \"destination_field_name\": \"deployment-3-input-field-1\"         },         {           \"source_field_name\": \"deployment-2-output-field-2\",           \"destination_field_name\": \"deployment-3-input-field-2\"         }       ]     }   ] } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.pipeline_object_attachments_get(project_name, attachment_id, pipeline_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str attachment_id: (required)
+        :param str pipeline_name: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -5704,22 +6609,21 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.pipeline_object_attachments_get_with_http_info(project_name, destination_name, pipeline_name, source_name, **kwargs)  # noqa: E501
+        return self.pipeline_object_attachments_get_with_http_info(project_name, attachment_id, pipeline_name, **kwargs)  # noqa: E501
 
-    def pipeline_object_attachments_get_with_http_info(self, project_name, destination_name, pipeline_name, source_name, **kwargs):  # noqa: E501
-        """Get an attachment of a source and destination object  # noqa: E501
+    def pipeline_object_attachments_get_with_http_info(self, project_name, attachment_id, pipeline_name, **kwargs):  # noqa: E501
+        """Get an attachment in a pipeline  # noqa: E501
 
-         ### Description  Get the details of a single attachment between a source and destination object in a pipeline  ### Response Structure  Details of the attachment - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing the link between the source object output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` {   \"source_name\": \"deployment-2-v2\",   \"destination_name\": \"deployment-3-v1\",   \"mapping\": [     {       \"source_field_name\": \"deployment-2-output-field-1\",       \"destination_field_name\": \"deployment-3-input-field-1\"     },     {       \"source_field_name\": \"deployment-2-output-field-2\",       \"destination_field_name\": \"deployment-3-input-field-2\"     }   ] } ```   # noqa: E501
+         ### Description  Get the details of a single attachment in a pipeline  ### Response Structure  Details of the attachment - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` {   \"destination_name\": \"deployment-3-v1\",   \"sources\": [     {       \"source_name\": \"deployment-2-v2\",       \"mapping\": [         {           \"source_field_name\": \"deployment-2-output-field-1\",           \"destination_field_name\": \"deployment-3-input-field-1\"         },         {           \"source_field_name\": \"deployment-2-output-field-2\",           \"destination_field_name\": \"deployment-3-input-field-2\"         }       ]     }   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pipeline_object_attachments_get_with_http_info(project_name, destination_name, pipeline_name, source_name, async_req=True)
+        >>> thread = api.pipeline_object_attachments_get_with_http_info(project_name, attachment_id, pipeline_name, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
-        :param str destination_name: (required)
+        :param str attachment_id: (required)
         :param str pipeline_name: (required)
-        :param str source_name: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -5736,7 +6640,7 @@ class CoreApi(object):
 
         local_var_params = locals()
 
-        all_params = ['project_name', 'destination_name', 'pipeline_name', 'source_name']  # noqa: E501
+        all_params = ['project_name', 'attachment_id', 'pipeline_name']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -5754,30 +6658,36 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `pipeline_object_attachments_get`")  # noqa: E501
-        # verify the required parameter 'destination_name' is set
-        if self.api_client.client_side_validation and ('destination_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['destination_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `destination_name` when calling `pipeline_object_attachments_get`")  # noqa: E501
+        # verify the required parameter 'attachment_id' is set
+        if self.api_client.client_side_validation and ('attachment_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['attachment_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `attachment_id` when calling `pipeline_object_attachments_get`")  # noqa: E501
         # verify the required parameter 'pipeline_name' is set
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_object_attachments_get`")  # noqa: E501
-        # verify the required parameter 'source_name' is set
-        if self.api_client.client_side_validation and ('source_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['source_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `source_name` when calling `pipeline_object_attachments_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_object_attachments_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'attachment_id' in local_var_params
+            and local_var_params['attachment_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['attachment_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `attachment_id` must be a string when calling `pipeline_object_attachments_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_object_attachments_get`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'project_name' in local_var_params:
             path_params['project_name'] = local_var_params['project_name']  # noqa: E501
-        if 'destination_name' in local_var_params:
-            path_params['destination_name'] = local_var_params['destination_name']  # noqa: E501
+        if 'attachment_id' in local_var_params:
+            path_params['attachment_id'] = local_var_params['attachment_id']  # noqa: E501
         if 'pipeline_name' in local_var_params:
             path_params['pipeline_name'] = local_var_params['pipeline_name']  # noqa: E501
-        if 'source_name' in local_var_params:
-            path_params['source_name'] = local_var_params['source_name']  # noqa: E501
 
         query_params = []
 
@@ -5787,15 +6697,15 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
-            '/projects/{project_name}/pipelines/{pipeline_name}/objects/{source_name}/attachments/{destination_name}', 'GET',
+            '/projects/{project_name}/pipelines/{pipeline_name}/attachments/{attachment_id}', 'GET',
             path_params,
             query_params,
             header_params,
@@ -5813,7 +6723,7 @@ class CoreApi(object):
     def pipeline_object_attachments_list(self, project_name, pipeline_name, **kwargs):  # noqa: E501
         """List object attachments  # noqa: E501
 
-         ### Description  List all attachments in a pipeline  ### Response Structure  A list of details of the attachments in the pipeline - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing source_field_name and destination_field_name  #### Response Examples  ``` [   {     \"source_name\": \"pipeline-1\",     \"destination_name\": \"deployment-2-v2\",     \"mapping\": [       {         \"source_field_name\": \"pipeline-input-field-1\",         \"destination_field_name\": \"deployment-input-field-1\"       },       {         \"source_field_name\": \"pipeline-input-field-2\",         \"destination_field_name\": \"deployment-input-field-2\"       }     ]   },   {     \"source_name\": \"deployment-2-v2\",     \"destination_name\": \"deployment-3-v1\",     \"mapping\": [       {         \"source_field_name\": \"deployment-output-field-1\",         \"destination_field_name\": \"deployment-3-input-field-1\"       },       {         \"source_field_name\": \"deployment-output-field-2\",         \"destination_field_name\": \"deployment-3-input-field-2\"       },       {         \"source_field_name\": \"deployment-output-field-3\",         \"destination_field_name\": \"deployment-3-input-field-3\"       }     ]   } ] ```   # noqa: E501
+         ### Description  List all attachments in a pipeline  ### Response Structure  A list of details of the attachments in the pipeline - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the source object(s) and mapping of the fields. One attachment can have multiple source objects.  #### Response Examples  ``` [   {     \"destination_name\": \"deployment-2-v2\",     \"sources\": [       {         \"source_name\": \"pipeline_start\",         \"mapping\": [           {             \"source_field_name\": \"pipeline-input-field-1\",             \"destination_field_name\": \"deployment-input-field-1\"           },           {             \"source_field_name\": \"pipeline-input-field-2\",             \"destination_field_name\": \"deployment-input-field-2\"           }         ]       }     ]   },   {     \"destination_name\": \"deployment-3-v1\",     \"sources\": [       {          \"source_name\": \"deployment-2-v2\",         \"mapping\": [           {             \"source_field_name\": \"deployment-output-field-1\",             \"destination_field_name\": \"deployment-3-input-field-1\"           },           {             \"source_field_name\": \"deployment-output-field-2\",             \"destination_field_name\": \"deployment-3-input-field-2\"           },           {             \"source_field_name\": \"deployment-output-field-3\",             \"destination_field_name\": \"deployment-3-input-field-3\"           }         ]       }     ]   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.pipeline_object_attachments_list(project_name, pipeline_name, async_req=True)
@@ -5839,7 +6749,7 @@ class CoreApi(object):
     def pipeline_object_attachments_list_with_http_info(self, project_name, pipeline_name, **kwargs):  # noqa: E501
         """List object attachments  # noqa: E501
 
-         ### Description  List all attachments in a pipeline  ### Response Structure  A list of details of the attachments in the pipeline - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing source_field_name and destination_field_name  #### Response Examples  ``` [   {     \"source_name\": \"pipeline-1\",     \"destination_name\": \"deployment-2-v2\",     \"mapping\": [       {         \"source_field_name\": \"pipeline-input-field-1\",         \"destination_field_name\": \"deployment-input-field-1\"       },       {         \"source_field_name\": \"pipeline-input-field-2\",         \"destination_field_name\": \"deployment-input-field-2\"       }     ]   },   {     \"source_name\": \"deployment-2-v2\",     \"destination_name\": \"deployment-3-v1\",     \"mapping\": [       {         \"source_field_name\": \"deployment-output-field-1\",         \"destination_field_name\": \"deployment-3-input-field-1\"       },       {         \"source_field_name\": \"deployment-output-field-2\",         \"destination_field_name\": \"deployment-3-input-field-2\"       },       {         \"source_field_name\": \"deployment-output-field-3\",         \"destination_field_name\": \"deployment-3-input-field-3\"       }     ]   } ] ```   # noqa: E501
+         ### Description  List all attachments in a pipeline  ### Response Structure  A list of details of the attachments in the pipeline - `destination_name`: Name of the destination pipeline object - `sources`: A list of dictionaries containing the source object(s) and mapping of the fields. One attachment can have multiple source objects.  #### Response Examples  ``` [   {     \"destination_name\": \"deployment-2-v2\",     \"sources\": [       {         \"source_name\": \"pipeline_start\",         \"mapping\": [           {             \"source_field_name\": \"pipeline-input-field-1\",             \"destination_field_name\": \"deployment-input-field-1\"           },           {             \"source_field_name\": \"pipeline-input-field-2\",             \"destination_field_name\": \"deployment-input-field-2\"           }         ]       }     ]   },   {     \"destination_name\": \"deployment-3-v1\",     \"sources\": [       {          \"source_name\": \"deployment-2-v2\",         \"mapping\": [           {             \"source_field_name\": \"deployment-output-field-1\",             \"destination_field_name\": \"deployment-3-input-field-1\"           },           {             \"source_field_name\": \"deployment-output-field-2\",             \"destination_field_name\": \"deployment-3-input-field-2\"           },           {             \"source_field_name\": \"deployment-output-field-3\",             \"destination_field_name\": \"deployment-3-input-field-3\"           }         ]       }     ]   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.pipeline_object_attachments_list_with_http_info(project_name, pipeline_name, async_req=True)
@@ -5886,6 +6796,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_object_attachments_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_object_attachments_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_object_attachments_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -5903,139 +6821,15 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
         return self.api_client.call_api(
             '/projects/{project_name}/pipelines/{pipeline_name}/attachments', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='list[AttachmentsList]',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def pipeline_object_attachments_source_get(self, project_name, pipeline_name, source_name, **kwargs):  # noqa: E501
-        """List the attachments of a source object  # noqa: E501
-
-         ### Description  List attachments of a source object in a pipeline  ### Response Structure  A list of details of the attachments of the given source object in the pipeline - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing the link between the source object output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` [   {     \"source_name\": \"deployment-2-v2\",     \"destination_name\": \"deployment-3-v1\",     \"mapping\": [       {         \"source_field_name\": \"deployment-2-output-field-1\",         \"destination_field_name\": \"deployment-3-input-field-1\"       },       {         \"source_field_name\": \"deployment-2-output-field-2\",         \"destination_field_name\": \"deployment-3-input-field-2\"       }     ]   } ] ```   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pipeline_object_attachments_source_get(project_name, pipeline_name, source_name, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str project_name: (required)
-        :param str pipeline_name: (required)
-        :param str source_name: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: list[AttachmentsList]
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.pipeline_object_attachments_source_get_with_http_info(project_name, pipeline_name, source_name, **kwargs)  # noqa: E501
-
-    def pipeline_object_attachments_source_get_with_http_info(self, project_name, pipeline_name, source_name, **kwargs):  # noqa: E501
-        """List the attachments of a source object  # noqa: E501
-
-         ### Description  List attachments of a source object in a pipeline  ### Response Structure  A list of details of the attachments of the given source object in the pipeline - `source_name`: Name of the source pipeline object - `destination_name`: Name of the destination pipeline object - `mapping`: A list of dictionaries containing the link between the source object output field (source_field_name) and destination object input field (destination_field_name)  #### Response Examples  ``` [   {     \"source_name\": \"deployment-2-v2\",     \"destination_name\": \"deployment-3-v1\",     \"mapping\": [       {         \"source_field_name\": \"deployment-2-output-field-1\",         \"destination_field_name\": \"deployment-3-input-field-1\"       },       {         \"source_field_name\": \"deployment-2-output-field-2\",         \"destination_field_name\": \"deployment-3-input-field-2\"       }     ]   } ] ```   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.pipeline_object_attachments_source_get_with_http_info(project_name, pipeline_name, source_name, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str project_name: (required)
-        :param str pipeline_name: (required)
-        :param str source_name: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(list[AttachmentsList], status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ['project_name', 'pipeline_name', 'source_name']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method pipeline_object_attachments_source_get" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'project_name' is set
-        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['project_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `project_name` when calling `pipeline_object_attachments_source_get`")  # noqa: E501
-        # verify the required parameter 'pipeline_name' is set
-        if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['pipeline_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_object_attachments_source_get`")  # noqa: E501
-        # verify the required parameter 'source_name' is set
-        if self.api_client.client_side_validation and ('source_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['source_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `source_name` when calling `pipeline_object_attachments_source_get`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'project_name' in local_var_params:
-            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
-        if 'pipeline_name' in local_var_params:
-            path_params['pipeline_name'] = local_var_params['pipeline_name']  # noqa: E501
-        if 'source_name' in local_var_params:
-            path_params['source_name'] = local_var_params['source_name']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/projects/{project_name}/pipelines/{pipeline_name}/objects/{source_name}/attachments/', 'GET',
             path_params,
             query_params,
             header_params,
@@ -6132,6 +6926,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_object_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_object_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'name' in local_var_params
+            and local_var_params['name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `name` must be a string when calling `pipeline_object_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_object_environment_variables_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6151,9 +6957,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -6256,6 +7062,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `pipeline_objects_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_objects_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_objects_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6275,13 +7089,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -6384,6 +7197,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_objects_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_objects_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'name' in local_var_params
+            and local_var_params['name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `name` must be a string when calling `pipeline_objects_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_objects_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6403,6 +7228,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -6504,6 +7330,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_objects_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_objects_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'name' in local_var_params
+            and local_var_params['name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `name` must be a string when calling `pipeline_objects_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_objects_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6523,9 +7361,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -6622,6 +7460,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipeline_objects_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_objects_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_objects_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6639,9 +7485,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -6750,6 +7596,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `pipeline_objects_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_objects_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'name' in local_var_params
+            and local_var_params['name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `name` must be a string when calling `pipeline_objects_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_objects_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6771,13 +7629,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -6801,7 +7658,7 @@ class CoreApi(object):
     def pipeline_requests_create(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Make a request to a pipeline  # noqa: E501
 
-         ### Description  Make a pipeline request. This method returns all the results of the deployment requests made within the pipeline.  ### Required Parameters  A dictionary which contains the input fields of the pipeline as keys  ### Optional Parameters These parameters should be given as GET parameters - `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600. - `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds.  The maximum allowed value is 3600 and the default value is 300. Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.  #### Request Examples ``` {   \"pipeline-input-field-1\": 5.0,   \"pipeline-input-field-2\": \"N\" } ```  ### Response Structure  - `project`: Name of the project in which the request is made - `pipeline`: Name of the pipeline for which the request is made - `pipeline_request_id`: Unique identifier for the pipeline request - `deployment_requests`: A list of dictionaries containing the results of the deployment requests made for the version objects in the pipeline. The dictionaries contain the following fields:     - `request_id`: Unique identifier for the deployment request     - `pipeline_object`: Name of the object in the pipeline     - `success`: A boolean value that indicates whether the deployment request was successful     - `request_data`: Input data for the deployment request     - `result`: Deployment request result value. NULL if the request failed.     - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples ``` {   \"project\": \"project-1\",   \"pipeline\": \"pipeline-1\",   \"pipeline_request_id\": \"286f771b-6617-4985-ab49-12ed720e62b1\",   \"deployment_requests\": [     {       \"request_id\": \"a7524614-bdb7-41e1-b4c1-653bb72c30b4\",       \"pipeline_object\": \"deployment-object-1\",       \"success\": true,       \"request_data\": {         \"deployment-1-input-field-1\": 5,         \"deployment-1-input-field-2\": 0.4       },       \"result\": {         \"deployment-1-output-field-1\": 0.23,         \"deployment-1-output-field-2\": 10       },       \"error_message\": None      },     {       \"request_id\": \"fe322c50-58f8-4e67-b7d6-cba14273874e\",       \"pipeline_object\": \"deployment-object-2\",       \"success\": false,       \"request_data\": {         \"deployment-2-input-field\": 10       },       \"result\": None,       \"error_message\": \"Invalid message format\"      }   ] } ```   # noqa: E501
+         ### Description  Make a pipeline request. This method returns all the results of the deployment requests made within the pipeline.  ### Required Parameters  A dictionary which contains the input fields of the pipeline as keys  ### Optional Parameters These parameters should be given as GET parameters - `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600. - `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds.  The maximum allowed value is 3600 and the default value is 300. Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.  #### Request Examples ``` {   \"pipeline-input-field-1\": 5.0,   \"pipeline-input-field-2\": \"N\" } ```  ### Response Structure  - `project`: Name of the project in which the request is made - `pipeline`: Name of the pipeline for which the request is made - `pipeline_request_id`: Unique identifier for the pipeline request - `success`: A boolean value that indicates whether the pipeline request was successful - `deployment_requests`: A list of dictionaries containing the results of the deployment requests made for the version objects in the pipeline. The dictionaries contain the following fields:     - `request_id`: Unique identifier for the deployment request     - `pipeline_object`: Name of the object in the pipeline     - `success`: A boolean value that indicates whether the deployment request was successful     - `request_data`: Input data for the deployment request     - `result`: Deployment request result value. NULL if the request failed.     - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples ``` {   \"project\": \"project-1\",   \"pipeline\": \"pipeline-1\",   \"pipeline_request_id\": \"286f771b-6617-4985-ab49-12ed720e62b1\",   \"success\": false   \"deployment_requests\": [     {       \"request_id\": \"a7524614-bdb7-41e1-b4c1-653bb72c30b4\",       \"pipeline_object\": \"deployment-object-1\",       \"success\": true,       \"request_data\": {         \"deployment-1-input-field-1\": 5,         \"deployment-1-input-field-2\": 0.4       },       \"result\": {         \"deployment-1-output-field-1\": 0.23,         \"deployment-1-output-field-2\": 10       },       \"error_message\": None      },     {       \"request_id\": \"fe322c50-58f8-4e67-b7d6-cba14273874e\",       \"pipeline_object\": \"deployment-object-2\",       \"success\": false,       \"request_data\": {         \"deployment-2-input-field\": 10       },       \"result\": None,       \"error_message\": \"Invalid message format\"      }   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.pipeline_requests_create(project_name, pipeline_name, data, async_req=True)
@@ -6810,7 +7667,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param PipelineRequestCreate data: (required)
+        :param object data: (required)
         :param int pipeline_timeout:
         :param int deployment_timeout:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -6830,7 +7687,7 @@ class CoreApi(object):
     def pipeline_requests_create_with_http_info(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Make a request to a pipeline  # noqa: E501
 
-         ### Description  Make a pipeline request. This method returns all the results of the deployment requests made within the pipeline.  ### Required Parameters  A dictionary which contains the input fields of the pipeline as keys  ### Optional Parameters These parameters should be given as GET parameters - `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600. - `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds.  The maximum allowed value is 3600 and the default value is 300. Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.  #### Request Examples ``` {   \"pipeline-input-field-1\": 5.0,   \"pipeline-input-field-2\": \"N\" } ```  ### Response Structure  - `project`: Name of the project in which the request is made - `pipeline`: Name of the pipeline for which the request is made - `pipeline_request_id`: Unique identifier for the pipeline request - `deployment_requests`: A list of dictionaries containing the results of the deployment requests made for the version objects in the pipeline. The dictionaries contain the following fields:     - `request_id`: Unique identifier for the deployment request     - `pipeline_object`: Name of the object in the pipeline     - `success`: A boolean value that indicates whether the deployment request was successful     - `request_data`: Input data for the deployment request     - `result`: Deployment request result value. NULL if the request failed.     - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples ``` {   \"project\": \"project-1\",   \"pipeline\": \"pipeline-1\",   \"pipeline_request_id\": \"286f771b-6617-4985-ab49-12ed720e62b1\",   \"deployment_requests\": [     {       \"request_id\": \"a7524614-bdb7-41e1-b4c1-653bb72c30b4\",       \"pipeline_object\": \"deployment-object-1\",       \"success\": true,       \"request_data\": {         \"deployment-1-input-field-1\": 5,         \"deployment-1-input-field-2\": 0.4       },       \"result\": {         \"deployment-1-output-field-1\": 0.23,         \"deployment-1-output-field-2\": 10       },       \"error_message\": None      },     {       \"request_id\": \"fe322c50-58f8-4e67-b7d6-cba14273874e\",       \"pipeline_object\": \"deployment-object-2\",       \"success\": false,       \"request_data\": {         \"deployment-2-input-field\": 10       },       \"result\": None,       \"error_message\": \"Invalid message format\"      }   ] } ```   # noqa: E501
+         ### Description  Make a pipeline request. This method returns all the results of the deployment requests made within the pipeline.  ### Required Parameters  A dictionary which contains the input fields of the pipeline as keys  ### Optional Parameters These parameters should be given as GET parameters - `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600. - `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds.  The maximum allowed value is 3600 and the default value is 300. Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.  #### Request Examples ``` {   \"pipeline-input-field-1\": 5.0,   \"pipeline-input-field-2\": \"N\" } ```  ### Response Structure  - `project`: Name of the project in which the request is made - `pipeline`: Name of the pipeline for which the request is made - `pipeline_request_id`: Unique identifier for the pipeline request - `success`: A boolean value that indicates whether the pipeline request was successful - `deployment_requests`: A list of dictionaries containing the results of the deployment requests made for the version objects in the pipeline. The dictionaries contain the following fields:     - `request_id`: Unique identifier for the deployment request     - `pipeline_object`: Name of the object in the pipeline     - `success`: A boolean value that indicates whether the deployment request was successful     - `request_data`: Input data for the deployment request     - `result`: Deployment request result value. NULL if the request failed.     - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples ``` {   \"project\": \"project-1\",   \"pipeline\": \"pipeline-1\",   \"pipeline_request_id\": \"286f771b-6617-4985-ab49-12ed720e62b1\",   \"success\": false   \"deployment_requests\": [     {       \"request_id\": \"a7524614-bdb7-41e1-b4c1-653bb72c30b4\",       \"pipeline_object\": \"deployment-object-1\",       \"success\": true,       \"request_data\": {         \"deployment-1-input-field-1\": 5,         \"deployment-1-input-field-2\": 0.4       },       \"result\": {         \"deployment-1-output-field-1\": 0.23,         \"deployment-1-output-field-2\": 10       },       \"error_message\": None      },     {       \"request_id\": \"fe322c50-58f8-4e67-b7d6-cba14273874e\",       \"pipeline_object\": \"deployment-object-2\",       \"success\": false,       \"request_data\": {         \"deployment-2-input-field\": 10       },       \"result\": None,       \"error_message\": \"Invalid message format\"      }   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.pipeline_requests_create_with_http_info(project_name, pipeline_name, data, async_req=True)
@@ -6839,7 +7696,7 @@ class CoreApi(object):
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str pipeline_name: (required)
-        :param PipelineRequestCreate data: (required)
+        :param object data: (required)
         :param int pipeline_timeout:
         :param int deployment_timeout:
         :param _return_http_data_only: response data without head status code
@@ -6884,6 +7741,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `pipeline_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipeline_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipeline_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_timeout' in local_var_params
+            and local_var_params['pipeline_timeout'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_timeout'], int):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_timeout` must be an integer when calling `pipeline_requests_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_timeout' in local_var_params
+            and local_var_params['deployment_timeout'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_timeout'], int):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_timeout` must be an integer when calling `pipeline_requests_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -6907,13 +7780,15 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json', 'text/plain'])  # noqa: E501
+        if isinstance(body_params, str):
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['text/plain'])  # noqa: E501
+        else:
+            header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -7010,6 +7885,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `pipelines_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipelines_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7027,13 +7906,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -7130,6 +8008,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipelines_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipelines_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipelines_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7147,6 +8033,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -7242,6 +8129,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('pipeline_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['pipeline_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `pipeline_name` when calling `pipelines_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipelines_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipelines_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7259,9 +8154,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -7354,6 +8249,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `pipelines_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipelines_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'labels' in local_var_params
+            and local_var_params['labels'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['labels'], str):  # noqa: E501
+                raise ApiValueError("Parameter `labels` must be a string when calling `pipelines_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7371,9 +8274,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -7476,6 +8379,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `pipelines_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `pipelines_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'pipeline_name' in local_var_params
+            and local_var_params['pipeline_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['pipeline_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `pipeline_name` must be a string when calling `pipelines_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7495,13 +8406,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -7598,6 +8508,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `project_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `project_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'action' in local_var_params
+            and local_var_params['action'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['action'], str):  # noqa: E501
+                raise ApiValueError("Parameter `action` must be a string when calling `project_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'limit' in local_var_params
+            and local_var_params['limit'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['limit'], int):  # noqa: E501
+                raise ApiValueError("Parameter `limit` must be an integer when calling `project_audit_events_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'offset' in local_var_params
+            and local_var_params['offset'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['offset'], int):  # noqa: E501
+                raise ApiValueError("Parameter `offset` must be an integer when calling `project_audit_events_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7619,9 +8545,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -7718,6 +8644,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `project_environment_variables_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `project_environment_variables_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7735,13 +8665,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -7838,6 +8767,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `project_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `project_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `project_environment_variables_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7855,6 +8792,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -7950,6 +8888,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `project_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `project_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `project_environment_variables_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -7967,9 +8913,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8060,6 +9006,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `project_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `project_environment_variables_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8075,9 +9025,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8180,6 +9130,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `project_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `project_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `project_environment_variables_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8199,13 +9157,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8298,6 +9255,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `project_usage_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `project_usage_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'start_month' in local_var_params
+            and local_var_params['start_month'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['start_month'], str):  # noqa: E501
+                raise ApiValueError("Parameter `start_month` must be a string when calling `project_usage_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8315,9 +9280,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8423,13 +9388,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8520,6 +9484,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `projects_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `projects_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8535,6 +9503,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -8624,6 +9593,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `projects_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `projects_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8639,9 +9612,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8739,9 +9712,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8765,7 +9738,7 @@ class CoreApi(object):
     def projects_log_list(self, project_name, data, **kwargs):  # noqa: E501
         """List logs for a project  # noqa: E501
 
-         ### Description  Retrieve the logs of all objects in a project, including deployments, pipelines and requests. Using filters you can filter the logs on the objects and information of your choice.   ### Required Parameters  - `filters`: A dictionary containing information to filter logs on. It may contain zero or more of the following fields:       - `deployment_name`: name of a deployment       - `version`: a version name. If this field is present in the request, deployment_name must also be given. The versions are only meaningful in combination with the deployments they are defined for.       - `pipeline_name`: name of a pipeline       - `pipeline_object_name`: name of a pipeline object. If this field is present in the request, pipeline_name must also be given. The pipeline objects are only meaningful in combination with the pipelines they are defined in.       - `request_id`: the UUID of a deployment request       - `pipeline_request_id`: the UUID of a pipeline request       - `system`: whether the log was generated by the system or user code (true / false)    Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.  ### Optional Parameters  - `date`: Starting date for the logs. If it is not provided and the `id` parameter is not set, the most recent logs are returned. It should be provided in ISO 8601 format. The results are inclusive of the given date.   - `id`: identifier for log lines. If specified, it will act as a starting point for the interval in which to query the logs. This can be useful when making multiple queries to obtain consecutive logs      It will include the log having the log id equal to the id value in the response, regardless of whether the date_range is positive or negative. - `limit`: Limit for the logs response. If specified, it will limit the total number of logs returned from the query to the specified number. Defaults to 50, the maximum is 500.    - `date_range`: The date range parameter sets the interval of time in which to query the logs, specified in seconds. It may be a positive or a negative value.       If it is positive, logs starting from the specified date / log id (both inclusive) plus date range seconds towards the present time are returned.       Otherwise, logs starting from the specified date / log id (both inclusive) minus date range seconds towards the past are returned.        The default value is -21600 (6 hours). The maximum value is -/+ 86400 seconds (24 hours).      If no date or id is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.  #### Request Examples  ``` {   \"filters\": {     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\" } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\"   },   \"id\": \"41d7a7c5cd025e3501a00000\",   \"date_range\": -100 } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\",   \"date_range\": -86400,   \"limit\": 5 } ```  ### Response Structure  A list of log details - `id`: Unique UUID of the log line   - `log`: Log line text   - `date`: Time the log line was created   The following fields will be returned on response if they are set for the log line: - `deployment_name`:  The deployment which the log is related to   - `version`:  The version which the log is related to   - `pipeline_name`:  The pipeline which the log is related to   - `pipeline_object_name`: The pipeline object which the log is related to   - `request_id`:  The deployment request the log is related to   - `pipeline_request_id`:  The pipeline request the log is related to   - `system`:  Whether the log was generated by the system (true / false)  #### Response Examples  Logs for a specific deployment and version ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f180\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Prediction result 0.14981\"   },   {     \"id\": \"5dcad12ba76a2c6e4331f181\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"pipeline_name\": \"pipeline-2\",     \"pipeline_object_name\": \"deployment-1-v1-object\",     \"pipeline_trace_id\": \"8bb6ed79-8606-4acf-acd2-90507130523c\",     \"date\": \"2020-01-01T00:00:01.000000Z\",     \"log\": \"[Error] Deployment call result (failed)\"   } ] ```   Logs for a specific pipeline ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f192\",     \"deployment_name\": \"deployment-2\",     \"version\": \"v2\",     \"pipeline_name\": \"pipeline-1\",     \"pipeline_object_name\": \"deployment-2-v2-object\",     \"pipeline_trace_id\": \"4f75b10d-6012-47ab-ae68-cc9e69f35841\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Deployment call result (success): 0.2316\"   } ] ```   # noqa: E501
+         ### Description  Retrieve the logs of all objects in a project, including deployments, pipelines and requests. Using filters you can filter the logs on the objects and information of your choice.   ### Required Parameters  - `filters`: A dictionary containing information to filter logs on. It may contain zero or more of the following fields:       - `deployment_name`: name of a deployment       - `version`: a version name. If this field is present in the request, deployment_name must also be given. The versions are only meaningful in combination with the deployments they are defined for.       - `build_id`: the UUID of a build. It does not have to be given in combination with the version and deployment name.       - `pipeline_name`: name of a pipeline       - `pipeline_object_name`: name of a pipeline object. If this field is present in the request, pipeline_name must also be given. The pipeline objects are only meaningful in combination with the pipelines they are defined in.       - `request_id`: the UUID of a deployment request       - `pipeline_request_id`: the UUID of a pipeline request       - `system`: whether the log was generated by the system or user code (true / false)    Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.  ### Optional Parameters  - `date`: Starting date for the logs. If it is not provided and the `id` parameter is not set, the most recent logs are returned. It should be provided in ISO 8601 format. The results are inclusive of the given date.   - `id`: identifier for log lines. If specified, it will act as a starting point for the interval in which to query the logs. This can be useful when making multiple queries to obtain consecutive logs      It will include the log having the log id equal to the id value in the response, regardless of whether the date_range is positive or negative. - `limit`: Limit for the logs response. If specified, it will limit the total number of logs returned from the query to the specified number. Defaults to 50, the maximum is 500.    - `date_range`: The date range parameter sets the interval of time in which to query the logs, specified in seconds. It may be a positive or a negative value.       If it is positive, logs starting from the specified date / log id (both inclusive) plus date range seconds towards the present time are returned.       Otherwise, logs starting from the specified date / log id (both inclusive) minus date range seconds towards the past are returned.        The default value is -21600 (6 hours). The maximum value is -/+ 86400 seconds (24 hours).      If no date or id is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.  #### Request Examples  ``` {   \"filters\": {     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\" } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\"   },   \"id\": \"41d7a7c5cd025e3501a00000\",   \"date_range\": -100 } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\",   \"date_range\": -86400,   \"limit\": 5 } ```  ### Response Structure  A list of log details - `id`: Unique UUID of the log line   - `log`: Log line text   - `date`: Time the log line was created   The following fields will be returned on response if they are set for the log line: - `deployment_name`:  The deployment which the log is related to   - `version`:  The version which the log is related to   - `build_id`: The UUID of the build   - `pipeline_name`:  The pipeline which the log is related to   - `pipeline_object_name`: The pipeline object which the log is related to   - `request_id`:  The deployment request the log is related to   - `pipeline_request_id`:  The pipeline request the log is related to   - `system`:  Whether the log was generated by the system (true / false)  #### Response Examples  Logs for a specific deployment and version ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f180\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Prediction result 0.14981\"   },   {     \"id\": \"5dcad12ba76a2c6e4331f181\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"pipeline_name\": \"pipeline-2\",     \"pipeline_object_name\": \"deployment-1-v1-object\",     \"pipeline_trace_id\": \"8bb6ed79-8606-4acf-acd2-90507130523c\",     \"date\": \"2020-01-01T00:00:01.000000Z\",     \"log\": \"[Error] Deployment call result (failed)\"   } ] ```   Logs for a specific pipeline ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f192\",     \"deployment_name\": \"deployment-2\",     \"version\": \"v2\",     \"pipeline_name\": \"pipeline-1\",     \"pipeline_object_name\": \"deployment-2-v2-object\",     \"pipeline_trace_id\": \"4f75b10d-6012-47ab-ae68-cc9e69f35841\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Deployment call result (success): 0.2316\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.projects_log_list(project_name, data, async_req=True)
@@ -8791,7 +9764,7 @@ class CoreApi(object):
     def projects_log_list_with_http_info(self, project_name, data, **kwargs):  # noqa: E501
         """List logs for a project  # noqa: E501
 
-         ### Description  Retrieve the logs of all objects in a project, including deployments, pipelines and requests. Using filters you can filter the logs on the objects and information of your choice.   ### Required Parameters  - `filters`: A dictionary containing information to filter logs on. It may contain zero or more of the following fields:       - `deployment_name`: name of a deployment       - `version`: a version name. If this field is present in the request, deployment_name must also be given. The versions are only meaningful in combination with the deployments they are defined for.       - `pipeline_name`: name of a pipeline       - `pipeline_object_name`: name of a pipeline object. If this field is present in the request, pipeline_name must also be given. The pipeline objects are only meaningful in combination with the pipelines they are defined in.       - `request_id`: the UUID of a deployment request       - `pipeline_request_id`: the UUID of a pipeline request       - `system`: whether the log was generated by the system or user code (true / false)    Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.  ### Optional Parameters  - `date`: Starting date for the logs. If it is not provided and the `id` parameter is not set, the most recent logs are returned. It should be provided in ISO 8601 format. The results are inclusive of the given date.   - `id`: identifier for log lines. If specified, it will act as a starting point for the interval in which to query the logs. This can be useful when making multiple queries to obtain consecutive logs      It will include the log having the log id equal to the id value in the response, regardless of whether the date_range is positive or negative. - `limit`: Limit for the logs response. If specified, it will limit the total number of logs returned from the query to the specified number. Defaults to 50, the maximum is 500.    - `date_range`: The date range parameter sets the interval of time in which to query the logs, specified in seconds. It may be a positive or a negative value.       If it is positive, logs starting from the specified date / log id (both inclusive) plus date range seconds towards the present time are returned.       Otherwise, logs starting from the specified date / log id (both inclusive) minus date range seconds towards the past are returned.        The default value is -21600 (6 hours). The maximum value is -/+ 86400 seconds (24 hours).      If no date or id is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.  #### Request Examples  ``` {   \"filters\": {     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\" } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\"   },   \"id\": \"41d7a7c5cd025e3501a00000\",   \"date_range\": -100 } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\",   \"date_range\": -86400,   \"limit\": 5 } ```  ### Response Structure  A list of log details - `id`: Unique UUID of the log line   - `log`: Log line text   - `date`: Time the log line was created   The following fields will be returned on response if they are set for the log line: - `deployment_name`:  The deployment which the log is related to   - `version`:  The version which the log is related to   - `pipeline_name`:  The pipeline which the log is related to   - `pipeline_object_name`: The pipeline object which the log is related to   - `request_id`:  The deployment request the log is related to   - `pipeline_request_id`:  The pipeline request the log is related to   - `system`:  Whether the log was generated by the system (true / false)  #### Response Examples  Logs for a specific deployment and version ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f180\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Prediction result 0.14981\"   },   {     \"id\": \"5dcad12ba76a2c6e4331f181\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"pipeline_name\": \"pipeline-2\",     \"pipeline_object_name\": \"deployment-1-v1-object\",     \"pipeline_trace_id\": \"8bb6ed79-8606-4acf-acd2-90507130523c\",     \"date\": \"2020-01-01T00:00:01.000000Z\",     \"log\": \"[Error] Deployment call result (failed)\"   } ] ```   Logs for a specific pipeline ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f192\",     \"deployment_name\": \"deployment-2\",     \"version\": \"v2\",     \"pipeline_name\": \"pipeline-1\",     \"pipeline_object_name\": \"deployment-2-v2-object\",     \"pipeline_trace_id\": \"4f75b10d-6012-47ab-ae68-cc9e69f35841\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Deployment call result (success): 0.2316\"   } ] ```   # noqa: E501
+         ### Description  Retrieve the logs of all objects in a project, including deployments, pipelines and requests. Using filters you can filter the logs on the objects and information of your choice.   ### Required Parameters  - `filters`: A dictionary containing information to filter logs on. It may contain zero or more of the following fields:       - `deployment_name`: name of a deployment       - `version`: a version name. If this field is present in the request, deployment_name must also be given. The versions are only meaningful in combination with the deployments they are defined for.       - `build_id`: the UUID of a build. It does not have to be given in combination with the version and deployment name.       - `pipeline_name`: name of a pipeline       - `pipeline_object_name`: name of a pipeline object. If this field is present in the request, pipeline_name must also be given. The pipeline objects are only meaningful in combination with the pipelines they are defined in.       - `request_id`: the UUID of a deployment request       - `pipeline_request_id`: the UUID of a pipeline request       - `system`: whether the log was generated by the system or user code (true / false)    Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.  ### Optional Parameters  - `date`: Starting date for the logs. If it is not provided and the `id` parameter is not set, the most recent logs are returned. It should be provided in ISO 8601 format. The results are inclusive of the given date.   - `id`: identifier for log lines. If specified, it will act as a starting point for the interval in which to query the logs. This can be useful when making multiple queries to obtain consecutive logs      It will include the log having the log id equal to the id value in the response, regardless of whether the date_range is positive or negative. - `limit`: Limit for the logs response. If specified, it will limit the total number of logs returned from the query to the specified number. Defaults to 50, the maximum is 500.    - `date_range`: The date range parameter sets the interval of time in which to query the logs, specified in seconds. It may be a positive or a negative value.       If it is positive, logs starting from the specified date / log id (both inclusive) plus date range seconds towards the present time are returned.       Otherwise, logs starting from the specified date / log id (both inclusive) minus date range seconds towards the past are returned.        The default value is -21600 (6 hours). The maximum value is -/+ 86400 seconds (24 hours).      If no date or id is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.  #### Request Examples  ``` {   \"filters\": {     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\" } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\"   },   \"id\": \"41d7a7c5cd025e3501a00000\",   \"date_range\": -100 } ```  ``` {   \"filters\": {     \"pipeline_name\": \"pipeline-1\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\"   },   \"date\": \"2020-01-01T00:00:00.000000Z\",   \"date_range\": -86400,   \"limit\": 5 } ```  ### Response Structure  A list of log details - `id`: Unique UUID of the log line   - `log`: Log line text   - `date`: Time the log line was created   The following fields will be returned on response if they are set for the log line: - `deployment_name`:  The deployment which the log is related to   - `version`:  The version which the log is related to   - `build_id`: The UUID of the build   - `pipeline_name`:  The pipeline which the log is related to   - `pipeline_object_name`: The pipeline object which the log is related to   - `request_id`:  The deployment request the log is related to   - `pipeline_request_id`:  The pipeline request the log is related to   - `system`:  Whether the log was generated by the system (true / false)  #### Response Examples  Logs for a specific deployment and version ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f180\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Prediction result 0.14981\"   },   {     \"id\": \"5dcad12ba76a2c6e4331f181\",     \"deployment_name\": \"deployment-1\",     \"version\": \"v1\",     \"pipeline_name\": \"pipeline-2\",     \"pipeline_object_name\": \"deployment-1-v1-object\",     \"pipeline_trace_id\": \"8bb6ed79-8606-4acf-acd2-90507130523c\",     \"date\": \"2020-01-01T00:00:01.000000Z\",     \"log\": \"[Error] Deployment call result (failed)\"   } ] ```   Logs for a specific pipeline ``` [   {     \"id\": \"5dcad12ba76a2c6e4331f192\",     \"deployment_name\": \"deployment-2\",     \"version\": \"v2\",     \"pipeline_name\": \"pipeline-1\",     \"pipeline_object_name\": \"deployment-2-v2-object\",     \"pipeline_trace_id\": \"4f75b10d-6012-47ab-ae68-cc9e69f35841\",     \"date\": \"2020-01-01T00:00:00.000000Z\",     \"log\": \"[Info] Deployment call result (success): 0.2316\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.projects_log_list_with_http_info(project_name, data, async_req=True)
@@ -8838,6 +9811,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `projects_log_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `projects_log_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8855,13 +9832,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -8952,6 +9928,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `projects_resource_usage`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `projects_resource_usage`")  # noqa: E501
 
         collection_formats = {}
 
@@ -8967,9 +9947,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -9066,6 +10046,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `projects_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `projects_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9083,13 +10067,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -9186,6 +10169,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `request_schedules_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `request_schedules_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9203,13 +10190,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -9306,6 +10292,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('schedule_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['schedule_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `schedule_name` when calling `request_schedules_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `request_schedules_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'schedule_name' in local_var_params
+            and local_var_params['schedule_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['schedule_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `schedule_name` must be a string when calling `request_schedules_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9323,6 +10317,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -9418,6 +10413,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('schedule_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['schedule_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `schedule_name` when calling `request_schedules_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `request_schedules_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'schedule_name' in local_var_params
+            and local_var_params['schedule_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['schedule_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `schedule_name` must be a string when calling `request_schedules_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9435,9 +10438,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -9528,6 +10531,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `request_schedules_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `request_schedules_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9543,9 +10550,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -9648,6 +10655,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `request_schedules_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `request_schedules_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'schedule_name' in local_var_params
+            and local_var_params['schedule_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['schedule_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `schedule_name` must be a string when calling `request_schedules_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9667,13 +10682,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -9687,6 +10701,587 @@ class CoreApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='ScheduleList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def revisions_file_download(self, project_name, deployment_name, revision_id, version, **kwargs):  # noqa: E501
+        """Download deployment file  # noqa: E501
+
+         ### Description  Download the deployment file of a revision of a version  ### Response Structure   - `file`: Deployment file of the version   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_file_download(project_name, deployment_name, revision_id, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str revision_id: (required)
+        :param str version: (required)
+        :param _preload_content: if True, the file will be downloaded in a
+                                 folder, which can be defined by
+                                 api_client.configuration.temp_folder_path.
+                                 Default is False.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.revisions_file_download_with_http_info(project_name, deployment_name, revision_id, version, **kwargs)  # noqa: E501
+
+    def revisions_file_download_with_http_info(self, project_name, deployment_name, revision_id, version, **kwargs):  # noqa: E501
+        """Download deployment file  # noqa: E501
+
+         ### Description  Download the deployment file of a revision of a version  ### Response Structure   - `file`: Deployment file of the version   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_file_download_with_http_info(project_name, deployment_name, revision_id, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str revision_id: (required)
+        :param str version: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if True, the file will be downloaded in a
+                                 folder, which can be defined by
+                                 api_client.configuration.temp_folder_path.
+                                 Default is False.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(file, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'deployment_name', 'revision_id', 'version']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method revisions_file_download" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `revisions_file_download`")  # noqa: E501
+        # verify the required parameter 'deployment_name' is set
+        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['deployment_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `deployment_name` when calling `revisions_file_download`")  # noqa: E501
+        # verify the required parameter 'revision_id' is set
+        if self.api_client.client_side_validation and ('revision_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['revision_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `revision_id` when calling `revisions_file_download`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
+                                                        local_var_params['version'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `version` when calling `revisions_file_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `revisions_file_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `revisions_file_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'revision_id' in local_var_params
+            and local_var_params['revision_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['revision_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `revision_id` must be a string when calling `revisions_file_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `revisions_file_download`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'deployment_name' in local_var_params:
+            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
+        if 'revision_id' in local_var_params:
+            path_params['revision_id'] = local_var_params['revision_id']  # noqa: E501
+        if 'version' in local_var_params:
+            path_params['version'] = local_var_params['version']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}/download', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', False),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def revisions_file_upload(self, project_name, deployment_name, version, file, **kwargs):  # noqa: E501
+        """Upload deployment file  # noqa: E501
+
+         ### Description  Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a build. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.   ### Required Parameters - `file`: Deployment file  ### Response Structure - `success`: Boolean indicating whether the deployment file upload succeeded or not - `revision`: UUID of the created revision for the file upload - `build`: UUID of the build created for the file upload   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_file_upload(project_name, deployment_name, version, file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param file file: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: RevisionCreate
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.revisions_file_upload_with_http_info(project_name, deployment_name, version, file, **kwargs)  # noqa: E501
+
+    def revisions_file_upload_with_http_info(self, project_name, deployment_name, version, file, **kwargs):  # noqa: E501
+        """Upload deployment file  # noqa: E501
+
+         ### Description  Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a build. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.   ### Required Parameters - `file`: Deployment file  ### Response Structure - `success`: Boolean indicating whether the deployment file upload succeeded or not - `revision`: UUID of the created revision for the file upload - `build`: UUID of the build created for the file upload   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_file_upload_with_http_info(project_name, deployment_name, version, file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param file file: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(RevisionCreate, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'deployment_name', 'version', 'file']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method revisions_file_upload" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `revisions_file_upload`")  # noqa: E501
+        # verify the required parameter 'deployment_name' is set
+        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['deployment_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `deployment_name` when calling `revisions_file_upload`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
+                                                        local_var_params['version'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `version` when calling `revisions_file_upload`")  # noqa: E501
+        # verify the required parameter 'file' is set
+        if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `file` when calling `revisions_file_upload`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `revisions_file_upload`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `revisions_file_upload`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `revisions_file_upload`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'deployment_name' in local_var_params:
+            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
+        if 'version' in local_var_params:
+            path_params['version'] = local_var_params['version']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in local_var_params:
+            local_var_files['file'] = local_var_params['file']  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='RevisionCreate',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def revisions_get(self, project_name, deployment_name, revision_id, version, **kwargs):  # noqa: E501
+        """Get revision  # noqa: E501
+
+         ### Description  Retrieve details of a single revision of a version  ### Response Structure  A dictionary containing details of the build - `id`: Unique identifier for the revision (UUID) - `version`: Version to which the revision is linked - `creation_date`: The date when the revision was created - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples ``` {   \"id\": \"a009d7c9-67e4-4d3c-89fd-d3c8b07c7242\",   \"version\": \"v1\",   \"creation_date\": \"2020-12-23T16:35:13.069+00:00\",   \"created_by\": \"test@example.com\" } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_get(project_name, deployment_name, revision_id, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str revision_id: (required)
+        :param str version: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: RevisionList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.revisions_get_with_http_info(project_name, deployment_name, revision_id, version, **kwargs)  # noqa: E501
+
+    def revisions_get_with_http_info(self, project_name, deployment_name, revision_id, version, **kwargs):  # noqa: E501
+        """Get revision  # noqa: E501
+
+         ### Description  Retrieve details of a single revision of a version  ### Response Structure  A dictionary containing details of the build - `id`: Unique identifier for the revision (UUID) - `version`: Version to which the revision is linked - `creation_date`: The date when the revision was created - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples ``` {   \"id\": \"a009d7c9-67e4-4d3c-89fd-d3c8b07c7242\",   \"version\": \"v1\",   \"creation_date\": \"2020-12-23T16:35:13.069+00:00\",   \"created_by\": \"test@example.com\" } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_get_with_http_info(project_name, deployment_name, revision_id, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str revision_id: (required)
+        :param str version: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(RevisionList, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'deployment_name', 'revision_id', 'version']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method revisions_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `revisions_get`")  # noqa: E501
+        # verify the required parameter 'deployment_name' is set
+        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['deployment_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `deployment_name` when calling `revisions_get`")  # noqa: E501
+        # verify the required parameter 'revision_id' is set
+        if self.api_client.client_side_validation and ('revision_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['revision_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `revision_id` when calling `revisions_get`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
+                                                        local_var_params['version'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `version` when calling `revisions_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `revisions_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `revisions_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'revision_id' in local_var_params
+            and local_var_params['revision_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['revision_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `revision_id` must be a string when calling `revisions_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `revisions_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'deployment_name' in local_var_params:
+            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
+        if 'revision_id' in local_var_params:
+            path_params['revision_id'] = local_var_params['revision_id']  # noqa: E501
+        if 'version' in local_var_params:
+            path_params['version'] = local_var_params['version']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='RevisionList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def revisions_list(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
+        """List revisions  # noqa: E501
+
+         ### Description  List all revisions associated with a version. A new revision is created every time a new deployment file is uploaded for a version.  ### Response Structure  A list of details of the revisions - `id`: Unique identifier for the revision (UUID) - `version`: Version to which the revision is linked - `creation_date`: The date when the revision was created - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples ``` [   {     \"id\": \"7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6\",     \"version\": \"v1\",     \"creation_date\": \"2020-12-23T16:15:11.181+00:00\",     \"created_by\": \"UbiOps\"   },   {     \"id\": \"a009d7c9-67e4-4d3c-89fd-d3c8b07c7242\",     \"version\": \"v1\",     \"creation_date\": \"2020-12-23T16:35:13.069+00:00\",     \"created_by\": \"test@example.com\"   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_list(project_name, deployment_name, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[RevisionList]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.revisions_list_with_http_info(project_name, deployment_name, version, **kwargs)  # noqa: E501
+
+    def revisions_list_with_http_info(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
+        """List revisions  # noqa: E501
+
+         ### Description  List all revisions associated with a version. A new revision is created every time a new deployment file is uploaded for a version.  ### Response Structure  A list of details of the revisions - `id`: Unique identifier for the revision (UUID) - `version`: Version to which the revision is linked - `creation_date`: The date when the revision was created - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a \"UbiOps\" value.  #### Response Examples ``` [   {     \"id\": \"7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6\",     \"version\": \"v1\",     \"creation_date\": \"2020-12-23T16:15:11.181+00:00\",     \"created_by\": \"UbiOps\"   },   {     \"id\": \"a009d7c9-67e4-4d3c-89fd-d3c8b07c7242\",     \"version\": \"v1\",     \"creation_date\": \"2020-12-23T16:35:13.069+00:00\",     \"created_by\": \"test@example.com\"   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.revisions_list_with_http_info(project_name, deployment_name, version, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str deployment_name: (required)
+        :param str version: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[RevisionList], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'deployment_name', 'version']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method revisions_list" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `revisions_list`")  # noqa: E501
+        # verify the required parameter 'deployment_name' is set
+        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['deployment_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `deployment_name` when calling `revisions_list`")  # noqa: E501
+        # verify the required parameter 'version' is set
+        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
+                                                        local_var_params['version'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `version` when calling `revisions_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `revisions_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `revisions_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `revisions_list`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'deployment_name' in local_var_params:
+            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
+        if 'version' in local_var_params:
+            path_params['version'] = local_var_params['version']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[RevisionList]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -9770,6 +11365,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `role_assignments_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `role_assignments_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9787,13 +11386,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -9890,6 +11488,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `role_assignments_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `role_assignments_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `role_assignments_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -9907,6 +11513,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -10002,6 +11609,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('id' not in local_var_params or  # noqa: E501
                                                         local_var_params['id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `id` when calling `role_assignments_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `role_assignments_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `role_assignments_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10019,9 +11634,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -10118,6 +11733,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('user_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `user_id` when calling `role_assignments_per_user_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `role_assignments_per_user_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'user_id' in local_var_params
+            and local_var_params['user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `user_id` must be a string when calling `role_assignments_per_user_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10135,9 +11758,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -10234,6 +11857,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `roles_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `roles_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10251,13 +11878,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -10354,6 +11980,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('role_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['role_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `role_name` when calling `roles_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `roles_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'role_name' in local_var_params
+            and local_var_params['role_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['role_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `role_name` must be a string when calling `roles_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10371,6 +12005,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -10466,6 +12101,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('role_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['role_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `role_name` when calling `roles_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `roles_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'role_name' in local_var_params
+            and local_var_params['role_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['role_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `role_name` must be a string when calling `roles_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10483,9 +12126,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -10576,6 +12219,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `roles_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `roles_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10591,9 +12238,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -10696,6 +12343,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `roles_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `roles_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'role_name' in local_var_params
+            and local_var_params['role_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['role_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `role_name` must be a string when calling `roles_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10715,13 +12370,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -10819,9 +12473,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -10918,6 +12572,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `service_users_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `service_users_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -10935,13 +12593,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -11038,6 +12695,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('service_user_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['service_user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `service_user_id` when calling `service_users_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `service_users_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'service_user_id' in local_var_params
+            and local_var_params['service_user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['service_user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `service_user_id` must be a string when calling `service_users_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11055,6 +12720,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -11150,6 +12816,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('service_user_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['service_user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `service_user_id` when calling `service_users_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `service_users_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'service_user_id' in local_var_params
+            and local_var_params['service_user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['service_user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `service_user_id` must be a string when calling `service_users_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11167,9 +12841,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -11260,6 +12934,10 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['project_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `project_name` when calling `service_users_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `service_users_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11275,9 +12953,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -11298,19 +12976,19 @@ class CoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def service_users_token(self, project_name, service_user_id, data, **kwargs):  # noqa: E501
+    def service_users_token(self, project_name, service_user_id, **kwargs):  # noqa: E501
         """Reset the token of a service user  # noqa: E501
 
          ### Description  Reset the token of a service user. The old token will be deleted and a new one will be created for the service user. No data should be sent in the body of the request.  ### Response Structure  Details of the new token for the service user - `token`: The new API token for the service user  #### Response Examples ``` {   \"token\": \"e962d9190348af7fa8d233d75cff7385b4335f81\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.service_users_token(project_name, service_user_id, data, async_req=True)
+        >>> thread = api.service_users_token(project_name, service_user_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str service_user_id: (required)
-        :param object data: (required)
+        :param object data:
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -11323,21 +13001,21 @@ class CoreApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        return self.service_users_token_with_http_info(project_name, service_user_id, data, **kwargs)  # noqa: E501
+        return self.service_users_token_with_http_info(project_name, service_user_id, **kwargs)  # noqa: E501
 
-    def service_users_token_with_http_info(self, project_name, service_user_id, data, **kwargs):  # noqa: E501
+    def service_users_token_with_http_info(self, project_name, service_user_id, **kwargs):  # noqa: E501
         """Reset the token of a service user  # noqa: E501
 
          ### Description  Reset the token of a service user. The old token will be deleted and a new one will be created for the service user. No data should be sent in the body of the request.  ### Response Structure  Details of the new token for the service user - `token`: The new API token for the service user  #### Response Examples ``` {   \"token\": \"e962d9190348af7fa8d233d75cff7385b4335f81\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.service_users_token_with_http_info(project_name, service_user_id, data, async_req=True)
+        >>> thread = api.service_users_token_with_http_info(project_name, service_user_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool: execute request asynchronously
         :param str project_name: (required)
         :param str service_user_id: (required)
-        :param object data: (required)
+        :param object data:
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -11376,10 +13054,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('service_user_id' not in local_var_params or  # noqa: E501
                                                         local_var_params['service_user_id'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `service_user_id` when calling `service_users_token`")  # noqa: E501
-        # verify the required parameter 'data' is set
-        if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
-                                                        local_var_params['data'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `data` when calling `service_users_token`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `service_users_token`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'service_user_id' in local_var_params
+            and local_var_params['service_user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['service_user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `service_user_id` must be a string when calling `service_users_token`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11399,13 +13081,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -11508,6 +13189,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `service_users_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `service_users_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'service_user_id' in local_var_params
+            and local_var_params['service_user_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['service_user_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `service_user_id` must be a string when calling `service_users_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11527,13 +13216,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -11639,13 +13327,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -11743,6 +13430,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -11850,6 +13538,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `version_environment_variables_copy`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `version_environment_variables_copy`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `version_environment_variables_copy`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `version_environment_variables_copy`")  # noqa: E501
 
         collection_formats = {}
 
@@ -11871,13 +13571,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -11986,6 +13685,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `version_environment_variables_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `version_environment_variables_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `version_environment_variables_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `version_environment_variables_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12007,13 +13718,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -12122,6 +13832,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `version_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `version_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `version_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `version_environment_variables_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `version_environment_variables_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12143,6 +13869,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -12250,6 +13977,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `version_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `version_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `version_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `version_environment_variables_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `version_environment_variables_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12271,9 +14014,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -12376,6 +14119,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `version_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `version_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `version_environment_variables_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `version_environment_variables_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12395,9 +14150,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -12512,6 +14267,22 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `version_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `version_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `version_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'id' in local_var_params
+            and local_var_params['id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `id` must be a string when calling `version_environment_variables_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `version_environment_variables_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12535,13 +14306,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -12565,7 +14335,7 @@ class CoreApi(object):
     def versions_create(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Create versions  # noqa: E501
 
-         ### Description  Create a version for a deployment  ### Required Parameters  - `version`: Name of the version of the deployment  ### Optional Parameters  - `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7 or python3.8. The default value is python3.7 - `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively. - `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times. - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version. - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays active longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.   - `description`: Description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label  If the time that a request takes does not matter, keep the default values.  #### Request Examples  ``` {   \"version\": \"version-1\",   \"language\": \"python3.6\" } ```   ``` {   \"version\": \"version-1\",   \"language\": \"python3.5\",   \"memory_allocation\": 512 } ```   ``` {   \"version\": \"version-1\",   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the created version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory for the version in MB   - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version. It is set to *initialised* state on creation. - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"language\": \"python3.5\",   \"description\": \"\",   \"status\": \"initialised\",   \"error_message\": \"\",   \"memory_allocation\": 512,   \"maximum_instances\": 5,   \"minimum_instances\": 0,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-05-12T16:23:15.456812Z\",   \"file_last_updated\": \"2020-05-12T16:23:15.456812Z\", } ```   # noqa: E501
+         ### Description  Create a version for a deployment  ### Required Parameters  - `version`: Name of the version of the deployment  ### Optional Parameters  - `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7, python3.8 or r4.0. The default value is python3.7. - `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively. - `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times. - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version. - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.   - `description`: Description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label  If the time that a request takes does not matter, keep the default values.  #### Request Examples  ``` {   \"version\": \"version-1\",   \"language\": \"python3.8\" } ```   ``` {   \"version\": \"version-1\",   \"language\": \"r4.0\",   \"memory_allocation\": 512 } ```   ``` {   \"version\": \"version-1\",   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the created version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet. - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet. - `memory_allocation`: Reserved memory for the version in MB   - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"description\": \"\",   \"language\": \"python3.8\",   \"status\": \"unavailable\",   \"active_revision\": null,   \"latest_build\": null,   \"memory_allocation\": 512,   \"maximum_instances\": 5,   \"minimum_instances\": 0,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-05-12T16:23:15.456812Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_create(project_name, deployment_name, data, async_req=True)
@@ -12592,7 +14362,7 @@ class CoreApi(object):
     def versions_create_with_http_info(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Create versions  # noqa: E501
 
-         ### Description  Create a version for a deployment  ### Required Parameters  - `version`: Name of the version of the deployment  ### Optional Parameters  - `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7 or python3.8. The default value is python3.7 - `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively. - `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times. - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version. - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays active longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.   - `description`: Description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label  If the time that a request takes does not matter, keep the default values.  #### Request Examples  ``` {   \"version\": \"version-1\",   \"language\": \"python3.6\" } ```   ``` {   \"version\": \"version-1\",   \"language\": \"python3.5\",   \"memory_allocation\": 512 } ```   ``` {   \"version\": \"version-1\",   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the created version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory for the version in MB   - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version. It is set to *initialised* state on creation. - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"language\": \"python3.5\",   \"description\": \"\",   \"status\": \"initialised\",   \"error_message\": \"\",   \"memory_allocation\": 512,   \"maximum_instances\": 5,   \"minimum_instances\": 0,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-05-12T16:23:15.456812Z\",   \"file_last_updated\": \"2020-05-12T16:23:15.456812Z\", } ```   # noqa: E501
+         ### Description  Create a version for a deployment  ### Required Parameters  - `version`: Name of the version of the deployment  ### Optional Parameters  - `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7, python3.8 or r4.0. The default value is python3.7. - `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively. - `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times. - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version. - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.   - `description`: Description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label  If the time that a request takes does not matter, keep the default values.  #### Request Examples  ``` {   \"version\": \"version-1\",   \"language\": \"python3.8\" } ```   ``` {   \"version\": \"version-1\",   \"language\": \"r4.0\",   \"memory_allocation\": 512 } ```   ``` {   \"version\": \"version-1\",   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the created version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet. - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet. - `memory_allocation`: Reserved memory for the version in MB   - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"description\": \"\",   \"language\": \"python3.8\",   \"status\": \"unavailable\",   \"active_revision\": null,   \"latest_build\": null,   \"memory_allocation\": 512,   \"maximum_instances\": 5,   \"minimum_instances\": 0,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-05-12T16:23:15.456812Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_create_with_http_info(project_name, deployment_name, data, async_req=True)
@@ -12644,6 +14414,14 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `versions_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `versions_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `versions_create`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12663,13 +14441,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -12772,6 +14549,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `versions_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `versions_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `versions_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `versions_delete`")  # noqa: E501
 
         collection_formats = {}
 
@@ -12791,6 +14580,7 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
 
@@ -12810,272 +14600,10 @@ class CoreApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def versions_file_download(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
-        """Download deployment files  # noqa: E501
-
-         ### Description  Download the deployment file of a version of a deployment  ### Response Structure   - `file`: Deployment file of the version   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.versions_file_download(project_name, deployment_name, version, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str project_name: (required)
-        :param str deployment_name: (required)
-        :param str version: (required)
-        :param _preload_content: if True, the file will be downloaded in a
-                                 folder, which can be defined by
-                                 api_client.configuration.temp_folder_path.
-                                 Default is False.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: file
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.versions_file_download_with_http_info(project_name, deployment_name, version, **kwargs)  # noqa: E501
-
-    def versions_file_download_with_http_info(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
-        """Download deployment files  # noqa: E501
-
-         ### Description  Download the deployment file of a version of a deployment  ### Response Structure   - `file`: Deployment file of the version   # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.versions_file_download_with_http_info(project_name, deployment_name, version, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str project_name: (required)
-        :param str deployment_name: (required)
-        :param str version: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if True, the file will be downloaded in a
-                                 folder, which can be defined by
-                                 api_client.configuration.temp_folder_path.
-                                 Default is False.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(file, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ['project_name', 'deployment_name', 'version']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method versions_file_download" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'project_name' is set
-        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['project_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `project_name` when calling `versions_file_download`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['deployment_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `deployment_name` when calling `versions_file_download`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
-                                                        local_var_params['version'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `version` when calling `versions_file_download`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'project_name' in local_var_params:
-            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
-        if 'deployment_name' in local_var_params:
-            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
-        if 'version' in local_var_params:
-            path_params['version'] = local_var_params['version']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/download', 'GET',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='file',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', False),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def versions_file_upload(self, project_name, deployment_name, version, file, **kwargs):  # noqa: E501
-        """Upload deployment files  # noqa: E501
-
-         ### Description  Upload a file for a deployment version. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.  ### Required Parameters - `file`: Deployment file  ### Response Structure - `success`: Boolean indicating whether the deployment file upload succeeded or not    # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.versions_file_upload(project_name, deployment_name, version, file, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str project_name: (required)
-        :param str deployment_name: (required)
-        :param str version: (required)
-        :param file file: (required)
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: Success
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        return self.versions_file_upload_with_http_info(project_name, deployment_name, version, file, **kwargs)  # noqa: E501
-
-    def versions_file_upload_with_http_info(self, project_name, deployment_name, version, file, **kwargs):  # noqa: E501
-        """Upload deployment files  # noqa: E501
-
-         ### Description  Upload a file for a deployment version. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.  ### Required Parameters - `file`: Deployment file  ### Response Structure - `success`: Boolean indicating whether the deployment file upload succeeded or not    # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.versions_file_upload_with_http_info(project_name, deployment_name, version, file, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool: execute request asynchronously
-        :param str project_name: (required)
-        :param str deployment_name: (required)
-        :param str version: (required)
-        :param file file: (required)
-        :param _return_http_data_only: response data without head status code
-                                       and headers
-        :param _preload_content: if False, the urllib3.HTTPResponse object will
-                                 be returned without reading/decoding response
-                                 data. Default is True.
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :return: tuple(Success, status_code(int), headers(HTTPHeaderDict))
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        local_var_params = locals()
-
-        all_params = ['project_name', 'deployment_name', 'version', 'file']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        for key, val in six.iteritems(local_var_params['kwargs']):
-            if key not in all_params:
-                raise ApiTypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method versions_file_upload" % key
-                )
-            local_var_params[key] = val
-        del local_var_params['kwargs']
-        # verify the required parameter 'project_name' is set
-        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['project_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `project_name` when calling `versions_file_upload`")  # noqa: E501
-        # verify the required parameter 'deployment_name' is set
-        if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
-                                                        local_var_params['deployment_name'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `deployment_name` when calling `versions_file_upload`")  # noqa: E501
-        # verify the required parameter 'version' is set
-        if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
-                                                        local_var_params['version'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `version` when calling `versions_file_upload`")  # noqa: E501
-        # verify the required parameter 'file' is set
-        if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
-                                                        local_var_params['file'] is None):  # noqa: E501
-            raise ApiValueError("Missing the required parameter `file` when calling `versions_file_upload`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'project_name' in local_var_params:
-            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
-        if 'deployment_name' in local_var_params:
-            path_params['deployment_name'] = local_var_params['deployment_name']  # noqa: E501
-        if 'version' in local_var_params:
-            path_params['version'] = local_var_params['version']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-        if 'file' in local_var_params:
-            local_var_files['file'] = local_var_params['file']  # noqa: E501
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['api_key']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/projects/{project_name}/deployments/{deployment_name}/versions/{version}/upload', 'PUT',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='Success',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=local_var_params.get('async_req'),
-            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
-            _preload_content=local_var_params.get('_preload_content', True),
-            _request_timeout=local_var_params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
     def versions_get(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
         """Get version  # noqa: E501
 
-         ### Description  Retrieve details of a version of a deployment in a project  ### Response Structure  Details of a version - `id`: Unique identifier for the version (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory for the version in MB  - `maximum_instances`: Upper bound of number of deployment pods running in parallel - `minimum_instances`: Lower bound of number of deployment pods running in parallel - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"memory_allocation\": 512,   \"language\": \"python3.7\",   \"description\": \"\",   \"status\": \"active\",   \"error_message\": \"\",   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-22T18:04:76.123754Z\",   \"file_last_updated\": \"2020-06-23T11:17:28.128652Z\" } ```   # noqa: E501
+         ### Description  Retrieve details of a version of a deployment in a project  ### Response Structure  Details of a version - `id`: Unique identifier for the version (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None. - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None. - `memory_allocation`: Reserved memory for the version in MB  - `maximum_instances`: Upper bound of number of deployment pods running in parallel - `minimum_instances`: Lower bound of number of deployment pods running in parallel - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `last_file_upload`: The date when a deployment file was last uploaded for the version  #### Response Examples ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"description\": \"\",   \"language\": \"python3.7\",   \"status\": \"available\",   \"active_revision\": \"a74662be-c938-4104-872a-8be1b85f64ff\",   \"latest_build\": \"9f7fd6ec-53b7-41c6-949e-09efc2ee2d31\",   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-22T18:04:76.123754Z\",   \"last_file_uploaded\": \"2020-06-21T09:03:01.875391Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_get(project_name, deployment_name, version, async_req=True)
@@ -13092,7 +14620,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: VersionList
+        :return: VersionDetail
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13102,7 +14630,7 @@ class CoreApi(object):
     def versions_get_with_http_info(self, project_name, deployment_name, version, **kwargs):  # noqa: E501
         """Get version  # noqa: E501
 
-         ### Description  Retrieve details of a version of a deployment in a project  ### Response Structure  Details of a version - `id`: Unique identifier for the version (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory for the version in MB  - `maximum_instances`: Upper bound of number of deployment pods running in parallel - `minimum_instances`: Lower bound of number of deployment pods running in parallel - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"memory_allocation\": 512,   \"language\": \"python3.7\",   \"description\": \"\",   \"status\": \"active\",   \"error_message\": \"\",   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-22T18:04:76.123754Z\",   \"file_last_updated\": \"2020-06-23T11:17:28.128652Z\" } ```   # noqa: E501
+         ### Description  Retrieve details of a version of a deployment in a project  ### Response Structure  Details of a version - `id`: Unique identifier for the version (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None. - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None. - `memory_allocation`: Reserved memory for the version in MB  - `maximum_instances`: Upper bound of number of deployment pods running in parallel - `minimum_instances`: Lower bound of number of deployment pods running in parallel - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `last_file_upload`: The date when a deployment file was last uploaded for the version  #### Response Examples ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"description\": \"\",   \"language\": \"python3.7\",   \"status\": \"available\",   \"active_revision\": \"a74662be-c938-4104-872a-8be1b85f64ff\",   \"latest_build\": \"9f7fd6ec-53b7-41c6-949e-09efc2ee2d31\",   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-22T18:04:76.123754Z\",   \"last_file_uploaded\": \"2020-06-21T09:03:01.875391Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_get_with_http_info(project_name, deployment_name, version, async_req=True)
@@ -13121,7 +14649,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(VersionList, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(VersionDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13154,6 +14682,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('version' not in local_var_params or  # noqa: E501
                                                         local_var_params['version'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `version` when calling `versions_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `versions_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `versions_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `versions_get`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13173,9 +14713,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -13188,7 +14728,7 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='VersionList',  # noqa: E501
+            response_type='VersionDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -13199,7 +14739,7 @@ class CoreApi(object):
     def versions_list(self, project_name, deployment_name, **kwargs):  # noqa: E501
         """List versions  # noqa: E501
 
-         ### Description  Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.  ### Optional Parameters - `labels`: Filter on labels of the version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.  ### Response Structure  A list of details of the versions - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory usage for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples ``` [   {     \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",     \"deployment\": \"deployment-1\",     \"version\": \"version-1\",     \"language\": \"python3.5\",     \"description\": \"\",     \"status\": \"active\",     \"error_message\": \"\",     \"memory_allocation\": 512,     \"maximum_instances\": 4,     \"minimum_instances\": 1,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-06-18T08:32:14.876451Z\",     \"last_updated\": \"2020-06-19T10:52:23.124784Z\",     \"file_last_updated\": \"2020-06-19T10:52:23.124784Z\"   },   {     \"id\": \"24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6\",     \"deployment\": \"deployment-1\",     \"version\": \"version-2\",     \"language\": \"python3.6\",     \"description\": \"\",     \"status\": \"active\",     \"error_message\": \"\",     \"memory_allocation\": 256,     \"maximum_instances\": 5,     \"minimum_instances\": 0,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-05-12T16:23:15.456812Z\",     \"last_updated\": \"2020-06-22T18:04:76.123754Z\",     \"file_last_updated\": \"2020-06-23T11:17:28.128652Z\"   } ] ```   # noqa: E501
+         ### Description  Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.  ### Optional Parameters - `labels`: Filter on labels of the version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.  ### Response Structure  A list of details of the versions - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None. - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None. - `memory_allocation`: Reserved memory usage for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated  #### Response Examples ``` [   {     \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",     \"deployment\": \"deployment-1\",     \"version\": \"version-1\",     \"description\": \"\",     \"language\": \"python3.8\",     \"status\": \"available\",     \"active_revision\": \"da27ef7c-aa3f-4963-a815-6ebf1865638e\",     \"latest_build\": \"0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75\",     \"memory_allocation\": 512,     \"maximum_instances\": 4,     \"minimum_instances\": 1,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-06-18T08:32:14.876451Z\",     \"last_updated\": \"2020-06-19T10:52:23.124784Z\"   },   {     \"id\": \"24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6\",     \"deployment\": \"deployment-1\",     \"version\": \"version-2\",     \"description\": \"\",     \"language\": \"r4.0\",     \"status\": \"available\",     \"active_revision\": \"a74662be-c938-4104-872a-8be1b85f64ff\",     \"latest_build\": \"4534e479-ea2e-4161-876a-1d382191a031\",     \"memory_allocation\": 256,     \"maximum_instances\": 5,     \"minimum_instances\": 0,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-05-12T16:23:15.456812Z\",     \"last_updated\": \"2020-06-22T18:04:76.123754Z\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_list(project_name, deployment_name, async_req=True)
@@ -13226,7 +14766,7 @@ class CoreApi(object):
     def versions_list_with_http_info(self, project_name, deployment_name, **kwargs):  # noqa: E501
         """List versions  # noqa: E501
 
-         ### Description  Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.  ### Optional Parameters - `labels`: Filter on labels of the version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.  ### Response Structure  A list of details of the versions - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory usage for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples ``` [   {     \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",     \"deployment\": \"deployment-1\",     \"version\": \"version-1\",     \"language\": \"python3.5\",     \"description\": \"\",     \"status\": \"active\",     \"error_message\": \"\",     \"memory_allocation\": 512,     \"maximum_instances\": 4,     \"minimum_instances\": 1,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-06-18T08:32:14.876451Z\",     \"last_updated\": \"2020-06-19T10:52:23.124784Z\",     \"file_last_updated\": \"2020-06-19T10:52:23.124784Z\"   },   {     \"id\": \"24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6\",     \"deployment\": \"deployment-1\",     \"version\": \"version-2\",     \"language\": \"python3.6\",     \"description\": \"\",     \"status\": \"active\",     \"error_message\": \"\",     \"memory_allocation\": 256,     \"maximum_instances\": 5,     \"minimum_instances\": 0,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-05-12T16:23:15.456812Z\",     \"last_updated\": \"2020-06-22T18:04:76.123754Z\",     \"file_last_updated\": \"2020-06-23T11:17:28.128652Z\"   } ] ```   # noqa: E501
+         ### Description  Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.  ### Optional Parameters - `labels`: Filter on labels of the version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.  ### Response Structure  A list of details of the versions - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None. - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None. - `memory_allocation`: Reserved memory usage for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated  #### Response Examples ``` [   {     \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",     \"deployment\": \"deployment-1\",     \"version\": \"version-1\",     \"description\": \"\",     \"language\": \"python3.8\",     \"status\": \"available\",     \"active_revision\": \"da27ef7c-aa3f-4963-a815-6ebf1865638e\",     \"latest_build\": \"0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75\",     \"memory_allocation\": 512,     \"maximum_instances\": 4,     \"minimum_instances\": 1,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-06-18T08:32:14.876451Z\",     \"last_updated\": \"2020-06-19T10:52:23.124784Z\"   },   {     \"id\": \"24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6\",     \"deployment\": \"deployment-1\",     \"version\": \"version-2\",     \"description\": \"\",     \"language\": \"r4.0\",     \"status\": \"available\",     \"active_revision\": \"a74662be-c938-4104-872a-8be1b85f64ff\",     \"latest_build\": \"4534e479-ea2e-4161-876a-1d382191a031\",     \"memory_allocation\": 256,     \"maximum_instances\": 5,     \"minimum_instances\": 0,     \"maximum_idle_time\": 10,     \"labels\": {       \"type\": \"version\"     },     \"creation_date\": \"2020-05-12T16:23:15.456812Z\",     \"last_updated\": \"2020-06-22T18:04:76.123754Z\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_list_with_http_info(project_name, deployment_name, async_req=True)
@@ -13274,6 +14814,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('deployment_name' not in local_var_params or  # noqa: E501
                                                         local_var_params['deployment_name'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `deployment_name` when calling `versions_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `versions_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `versions_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'labels' in local_var_params
+            and local_var_params['labels'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['labels'], str):  # noqa: E501
+                raise ApiValueError("Parameter `labels` must be a string when calling `versions_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13293,9 +14845,9 @@ class CoreApi(object):
         local_var_files = {}
 
         body_params = None
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -13319,7 +14871,7 @@ class CoreApi(object):
     def versions_update(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Update version  # noqa: E501
 
-         ### Description  Update a version of a deployment in a project. Updating the language field will cause the deployment to be build again. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.   ### Optional Parameters  - `version`: New name for the version - `language`: New language for the version - `memory_allocation`: New reserved memory for the version in MB - `maximum_instances`: New upper bound of number of versions running - `minimum_instances`: New lower bound of number of versions running - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped - `description`: New description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.  #### Request Examples  ``` {   \"version\": \"new-version\" } ```   ``` {   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the updated version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"language\": \"python3.5\",   \"description\": \"\",   \"status\": \"active\",   \"error_message\": \"\",   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-23T18:04:76.123754Z\",   \"file_last_updated\": \"2020-06-23T11:17:28.128652Z\" } ```   # noqa: E501
+         ### Description  Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.   ### Optional Parameters  - `version`: New name for the version - `memory_allocation`: New reserved memory for the version in MB - `maximum_instances`: New upper bound of number of versions running - `minimum_instances`: New lower bound of number of versions running - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped - `description`: New description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.  #### Request Examples  ``` {   \"version\": \"new-version\" } ```   ``` {   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the updated version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None. - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None. - `memory_allocation`: Reserved memory for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `last_file_upload`: The date when a deployment file was last uploaded for the version  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"description\": \"\",   \"language\": \"python3.8\",   \"status\": \"available\",   \"active_revision\": \"a74662be-c938-4104-872a-8be1b85f64ff\",   \"latest_build\": \"0d07337e-96d6-4ce6-8c63-c2f07edd2ce4\",   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-23T18:04:76.123754Z\",   \"last_file_uploaded\": \"2020-06-21T09:03:01.875391Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_update(project_name, deployment_name, version, data, async_req=True)
@@ -13329,7 +14881,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param VersionCreate data: (required)
+        :param VersionUpdate data: (required)
         :param _preload_content: if False, the urllib3.HTTPResponse object will
                                  be returned without reading/decoding response
                                  data. Default is True.
@@ -13337,7 +14889,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: VersionList
+        :return: VersionDetail
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13347,7 +14899,7 @@ class CoreApi(object):
     def versions_update_with_http_info(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Update version  # noqa: E501
 
-         ### Description  Update a version of a deployment in a project. Updating the language field will cause the deployment to be build again. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.   ### Optional Parameters  - `version`: New name for the version - `language`: New language for the version - `memory_allocation`: New reserved memory for the version in MB - `maximum_instances`: New upper bound of number of versions running - `minimum_instances`: New lower bound of number of versions running - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped - `description`: New description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.  #### Request Examples  ``` {   \"version\": \"new-version\" } ```   ``` {   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the updated version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `language`: Language in which the version is provided - `memory_allocation`: Reserved memory for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `description`: Description of the version - `status`: The state of the version - `error_message`: The error message which explains why the version has failed building or deployment. It is empty if the version is available. - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `file_last_updated`: The date when a deployment file was last uploaded  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"language\": \"python3.5\",   \"description\": \"\",   \"status\": \"active\",   \"error_message\": \"\",   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-23T18:04:76.123754Z\",   \"file_last_updated\": \"2020-06-23T11:17:28.128652Z\" } ```   # noqa: E501
+         ### Description  Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.   ### Optional Parameters  - `version`: New name for the version - `memory_allocation`: New reserved memory for the version in MB - `maximum_instances`: New upper bound of number of versions running - `minimum_instances`: New lower bound of number of versions running - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped - `description`: New description for the version - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.  #### Request Examples  ``` {   \"version\": \"new-version\" } ```   ``` {   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1 } ```  ### Response Structure  Details of the updated version - `id`: Unique identifier for the deployment (UUID) - `deployment`: Deployment name to which the version is associated - `version`: Version name - `description`: Description of the version - `language`: Language in which the version is provided - `status`: The status of the version - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None. - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None. - `memory_allocation`: Reserved memory for the version in MB - `maximum_instances`: Upper bound of number of versions running - `minimum_instances`: Lower bound of number of versions running - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the version was created - `last_updated`: The date when the version was last updated - `last_file_upload`: The date when a deployment file was last uploaded for the version  #### Response Examples  ``` {   \"id\": \"4ae7d14b-4803-4e16-b96d-3b18caa4b605\",   \"deployment\": \"deployment-1\",   \"version\": \"version-1\",   \"description\": \"\",   \"language\": \"python3.8\",   \"status\": \"available\",   \"active_revision\": \"a74662be-c938-4104-872a-8be1b85f64ff\",   \"latest_build\": \"0d07337e-96d6-4ce6-8c63-c2f07edd2ce4\",   \"memory_allocation\": 512,   \"maximum_instances\": 4,   \"minimum_instances\": 1,   \"maximum_idle_time\": 10,   \"labels\": {     \"type\": \"version\"   },   \"creation_date\": \"2020-05-12T16:23:15.456812Z\",   \"last_updated\": \"2020-06-23T18:04:76.123754Z\",   \"last_file_uploaded\": \"2020-06-21T09:03:01.875391Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.versions_update_with_http_info(project_name, deployment_name, version, data, async_req=True)
@@ -13357,7 +14909,7 @@ class CoreApi(object):
         :param str project_name: (required)
         :param str deployment_name: (required)
         :param str version: (required)
-        :param VersionCreate data: (required)
+        :param VersionUpdate data: (required)
         :param _return_http_data_only: response data without head status code
                                        and headers
         :param _preload_content: if False, the urllib3.HTTPResponse object will
@@ -13367,7 +14919,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(VersionList, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(VersionDetail, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -13404,6 +14956,18 @@ class CoreApi(object):
         if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
                                                         local_var_params['data'] is None):  # noqa: E501
             raise ApiValueError("Missing the required parameter `data` when calling `versions_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `versions_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'deployment_name' in local_var_params
+            and local_var_params['deployment_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['deployment_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `deployment_name` must be a string when calling `versions_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'version' in local_var_params
+            and local_var_params['version'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['version'], str):  # noqa: E501
+                raise ApiValueError("Parameter `version` must be a string when calling `versions_update`")  # noqa: E501
 
         collection_formats = {}
 
@@ -13425,13 +14989,12 @@ class CoreApi(object):
         body_params = None
         if 'data' in local_var_params:
             body_params = local_var_params['data']
+
         # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
 
         # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['application/json'])  # noqa: E501
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['api_key']  # noqa: E501
@@ -13444,7 +15007,7 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='VersionList',  # noqa: E501
+            response_type='VersionDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

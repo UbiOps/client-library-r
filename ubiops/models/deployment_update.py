@@ -35,7 +35,7 @@ class DeploymentUpdate(object):
     openapi_types = {
         'name': 'str',
         'description': 'str',
-        'labels': 'object'
+        'labels': 'dict(str, str)'
     }
 
     attribute_map = {
@@ -58,8 +58,7 @@ class DeploymentUpdate(object):
         self.name = name
         if description is not None:
             self.description = description
-        if labels is not None:
-            self.labels = labels
+        self.labels = labels
 
     @property
     def name(self):
@@ -81,6 +80,10 @@ class DeploymentUpdate(object):
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) > 64):
             raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
@@ -108,6 +111,9 @@ class DeploymentUpdate(object):
         :param description: The description of this DeploymentUpdate.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and not isinstance(description, str)):
+            raise ValueError("Parameter `description` must be a string")  # noqa: E501
 
         self._description = description
 
@@ -117,7 +123,7 @@ class DeploymentUpdate(object):
 
 
         :return: The labels of this DeploymentUpdate.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._labels
 
@@ -127,8 +133,11 @@ class DeploymentUpdate(object):
 
 
         :param labels: The labels of this DeploymentUpdate.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
 
         self._labels = labels
 

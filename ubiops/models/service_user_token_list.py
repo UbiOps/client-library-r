@@ -72,6 +72,10 @@ class ServiceUserTokenList(object):
         if self.local_vars_configuration.client_side_validation and token is None:  # noqa: E501
             raise ValueError("Invalid value for `token`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                token is not None and not isinstance(token, str)):
+            raise ValueError("Parameter `token` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 token is not None and len(token) < 1):
             raise ValueError("Invalid value for `token`, length must be greater than or equal to `1`")  # noqa: E501
 

@@ -39,15 +39,15 @@ class VersionList(object):
         'description': 'str',
         'language': 'str',
         'status': 'str',
-        'error_message': 'str',
+        'active_revision': 'str',
+        'latest_build': 'str',
         'memory_allocation': 'int',
         'maximum_instances': 'int',
         'minimum_instances': 'int',
         'maximum_idle_time': 'int',
-        'labels': 'object',
+        'labels': 'dict(str, str)',
         'creation_date': 'datetime',
-        'last_updated': 'datetime',
-        'file_last_updated': 'datetime'
+        'last_updated': 'datetime'
     }
 
     attribute_map = {
@@ -57,18 +57,18 @@ class VersionList(object):
         'description': 'description',
         'language': 'language',
         'status': 'status',
-        'error_message': 'error_message',
+        'active_revision': 'active_revision',
+        'latest_build': 'latest_build',
         'memory_allocation': 'memory_allocation',
         'maximum_instances': 'maximum_instances',
         'minimum_instances': 'minimum_instances',
         'maximum_idle_time': 'maximum_idle_time',
         'labels': 'labels',
         'creation_date': 'creation_date',
-        'last_updated': 'last_updated',
-        'file_last_updated': 'file_last_updated'
+        'last_updated': 'last_updated'
     }
 
-    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, error_message=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, file_last_updated=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, active_revision=None, latest_build=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, local_vars_configuration=None):  # noqa: E501
         """VersionList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -80,7 +80,8 @@ class VersionList(object):
         self._description = None
         self._language = None
         self._status = None
-        self._error_message = None
+        self._active_revision = None
+        self._latest_build = None
         self._memory_allocation = None
         self._maximum_instances = None
         self._minimum_instances = None
@@ -88,7 +89,6 @@ class VersionList(object):
         self._labels = None
         self._creation_date = None
         self._last_updated = None
-        self._file_last_updated = None
         self.discriminator = None
 
         if id is not None:
@@ -98,8 +98,12 @@ class VersionList(object):
         if description is not None:
             self.description = description
         self.language = language
-        self.status = status
-        self.error_message = error_message
+        if status is not None:
+            self.status = status
+        if active_revision is not None:
+            self.active_revision = active_revision
+        if latest_build is not None:
+            self.latest_build = latest_build
         if memory_allocation is not None:
             self.memory_allocation = memory_allocation
         if maximum_instances is not None:
@@ -113,8 +117,6 @@ class VersionList(object):
             self.creation_date = creation_date
         if last_updated is not None:
             self.last_updated = last_updated
-        if file_last_updated is not None:
-            self.file_last_updated = file_last_updated
 
     @property
     def id(self):
@@ -134,6 +136,9 @@ class VersionList(object):
         :param id: The id of this VersionList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -157,6 +162,10 @@ class VersionList(object):
         """
         if self.local_vars_configuration.client_side_validation and deployment is None:  # noqa: E501
             raise ValueError("Invalid value for `deployment`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                deployment is not None and not isinstance(deployment, str)):
+            raise ValueError("Parameter `deployment` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 deployment is not None and len(deployment) < 1):
             raise ValueError("Invalid value for `deployment`, length must be greater than or equal to `1`")  # noqa: E501
@@ -183,6 +192,10 @@ class VersionList(object):
         """
         if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
             raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and not isinstance(version, str)):
+            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 version is not None and len(version) > 64):
             raise ValueError("Invalid value for `version`, length must be less than or equal to `64`")  # noqa: E501
@@ -211,6 +224,10 @@ class VersionList(object):
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
+                description is not None and not isinstance(description, str)):
+            raise ValueError("Parameter `description` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 description is not None and len(description) > 200):
             raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")  # noqa: E501
 
@@ -237,6 +254,10 @@ class VersionList(object):
         if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
             raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                language is not None and not isinstance(language, str)):
+            raise ValueError("Parameter `language` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 language is not None and len(language) < 1):
             raise ValueError("Invalid value for `language`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -260,37 +281,59 @@ class VersionList(object):
         :param status: The status of this VersionList.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
-                status is not None and len(status) < 1):
-            raise ValueError("Invalid value for `status`, length must be greater than or equal to `1`")  # noqa: E501
+                status is not None and not isinstance(status, str)):
+            raise ValueError("Parameter `status` must be a string")  # noqa: E501
 
         self._status = status
 
     @property
-    def error_message(self):
-        """Gets the error_message of this VersionList.  # noqa: E501
+    def active_revision(self):
+        """Gets the active_revision of this VersionList.  # noqa: E501
 
 
-        :return: The error_message of this VersionList.  # noqa: E501
+        :return: The active_revision of this VersionList.  # noqa: E501
         :rtype: str
         """
-        return self._error_message
+        return self._active_revision
 
-    @error_message.setter
-    def error_message(self, error_message):
-        """Sets the error_message of this VersionList.
+    @active_revision.setter
+    def active_revision(self, active_revision):
+        """Sets the active_revision of this VersionList.
 
 
-        :param error_message: The error_message of this VersionList.  # noqa: E501
+        :param active_revision: The active_revision of this VersionList.  # noqa: E501
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                error_message is not None and len(error_message) > 500):
-            raise ValueError("Invalid value for `error_message`, length must be less than or equal to `500`")  # noqa: E501
+                active_revision is not None and not isinstance(active_revision, str)):
+            raise ValueError("Parameter `active_revision` must be a string")  # noqa: E501
 
-        self._error_message = error_message
+        self._active_revision = active_revision
+
+    @property
+    def latest_build(self):
+        """Gets the latest_build of this VersionList.  # noqa: E501
+
+
+        :return: The latest_build of this VersionList.  # noqa: E501
+        :rtype: str
+        """
+        return self._latest_build
+
+    @latest_build.setter
+    def latest_build(self, latest_build):
+        """Sets the latest_build of this VersionList.
+
+
+        :param latest_build: The latest_build of this VersionList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                latest_build is not None and not isinstance(latest_build, str)):
+            raise ValueError("Parameter `latest_build` must be a string")  # noqa: E501
+
+        self._latest_build = latest_build
 
     @property
     def memory_allocation(self):
@@ -310,6 +353,10 @@ class VersionList(object):
         :param memory_allocation: The memory_allocation of this VersionList.  # noqa: E501
         :type: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                memory_allocation is not None and not isinstance(memory_allocation, int)):
+            raise ValueError("Parameter `memory_allocation` must be an integer")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 memory_allocation is not None and memory_allocation > 1048576):  # noqa: E501
             raise ValueError("Invalid value for `memory_allocation`, must be a value less than or equal to `1048576`")  # noqa: E501
@@ -338,6 +385,10 @@ class VersionList(object):
         :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
+                maximum_instances is not None and not isinstance(maximum_instances, int)):
+            raise ValueError("Parameter `maximum_instances` must be an integer")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 maximum_instances is not None and maximum_instances > 2147483647):  # noqa: E501
             raise ValueError("Invalid value for `maximum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -364,6 +415,10 @@ class VersionList(object):
         :param minimum_instances: The minimum_instances of this VersionList.  # noqa: E501
         :type: int
         """
+        if (self.local_vars_configuration.client_side_validation and
+                minimum_instances is not None and not isinstance(minimum_instances, int)):
+            raise ValueError("Parameter `minimum_instances` must be an integer")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 minimum_instances is not None and minimum_instances > 2147483647):  # noqa: E501
             raise ValueError("Invalid value for `minimum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
@@ -392,6 +447,10 @@ class VersionList(object):
         :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
+                maximum_idle_time is not None and not isinstance(maximum_idle_time, int)):
+            raise ValueError("Parameter `maximum_idle_time` must be an integer")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 maximum_idle_time is not None and maximum_idle_time > 2147483647):  # noqa: E501
             raise ValueError("Invalid value for `maximum_idle_time`, must be a value less than or equal to `2147483647`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -406,7 +465,7 @@ class VersionList(object):
 
 
         :return: The labels of this VersionList.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._labels
 
@@ -416,8 +475,11 @@ class VersionList(object):
 
 
         :param labels: The labels of this VersionList.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
 
         self._labels = labels
 
@@ -462,27 +524,6 @@ class VersionList(object):
         """
 
         self._last_updated = last_updated
-
-    @property
-    def file_last_updated(self):
-        """Gets the file_last_updated of this VersionList.  # noqa: E501
-
-
-        :return: The file_last_updated of this VersionList.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._file_last_updated
-
-    @file_last_updated.setter
-    def file_last_updated(self, file_last_updated):
-        """Sets the file_last_updated of this VersionList.
-
-
-        :param file_last_updated: The file_last_updated of this VersionList.  # noqa: E501
-        :type: datetime
-        """
-
-        self._file_last_updated = file_last_updated
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -80,6 +80,10 @@ class PipelineObjectCreate(object):
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) < 1):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -106,6 +110,10 @@ class PipelineObjectCreate(object):
         if self.local_vars_configuration.client_side_validation and reference_name is None:  # noqa: E501
             raise ValueError("Invalid value for `reference_name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                reference_name is not None and not isinstance(reference_name, str)):
+            raise ValueError("Parameter `reference_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 reference_name is not None and len(reference_name) < 1):
             raise ValueError("Invalid value for `reference_name`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -131,6 +139,10 @@ class PipelineObjectCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
             raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and not isinstance(version, str)):
+            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 version is not None and len(version) < 1):
             raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501

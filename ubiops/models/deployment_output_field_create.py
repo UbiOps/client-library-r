@@ -76,6 +76,10 @@ class DeploymentOutputFieldCreate(object):
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) > 64):
             raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -104,6 +108,9 @@ class DeploymentOutputFieldCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and data_type is None:  # noqa: E501
             raise ValueError("Invalid value for `data_type`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                data_type is not None and not isinstance(data_type, str)):
+            raise ValueError("Parameter `data_type` must be a string")  # noqa: E501
         allowed_values = ["int", "string", "double", "bool", "array_int", "array_double", "array_string", "blob"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and data_type not in allowed_values:  # noqa: E501
             raise ValueError(

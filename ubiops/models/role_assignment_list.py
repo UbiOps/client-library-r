@@ -88,6 +88,9 @@ class RoleAssignmentList(object):
         :param id: The id of this RoleAssignmentList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -111,6 +114,10 @@ class RoleAssignmentList(object):
         """
         if self.local_vars_configuration.client_side_validation and user_id is None:  # noqa: E501
             raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                user_id is not None and not isinstance(user_id, str)):
+            raise ValueError("Parameter `user_id` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 user_id is not None and len(user_id) < 1):
             raise ValueError("Invalid value for `user_id`, length must be greater than or equal to `1`")  # noqa: E501
@@ -138,6 +145,10 @@ class RoleAssignmentList(object):
         if self.local_vars_configuration.client_side_validation and role is None:  # noqa: E501
             raise ValueError("Invalid value for `role`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                role is not None and not isinstance(role, str)):
+            raise ValueError("Parameter `role` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 role is not None and len(role) < 1):
             raise ValueError("Invalid value for `role`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -161,6 +172,9 @@ class RoleAssignmentList(object):
         :param object_name: The object_name of this RoleAssignmentList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                object_name is not None and not isinstance(object_name, str)):
+            raise ValueError("Parameter `object_name` must be a string")  # noqa: E501
 
         self._object_name = object_name
 
@@ -182,6 +196,9 @@ class RoleAssignmentList(object):
         :param object_type: The object_type of this RoleAssignmentList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                object_type is not None and not isinstance(object_type, str)):
+            raise ValueError("Parameter `object_type` must be a string")  # noqa: E501
 
         self._object_type = object_type
 

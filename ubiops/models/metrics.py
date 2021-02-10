@@ -80,6 +80,9 @@ class Metrics(object):
         :param value: The value of this Metrics.  # noqa: E501
         :type: float
         """
+        if (self.local_vars_configuration.client_side_validation and
+                value is not None and not isinstance(value, float)):
+            raise ValueError("Parameter `value` must be a float")  # noqa: E501
 
         self._value = value
 

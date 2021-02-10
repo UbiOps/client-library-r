@@ -76,6 +76,10 @@ class DeploymentInputFieldList(object):
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) > 64):
             raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -104,6 +108,10 @@ class DeploymentInputFieldList(object):
         """
         if self.local_vars_configuration.client_side_validation and data_type is None:  # noqa: E501
             raise ValueError("Invalid value for `data_type`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                data_type is not None and not isinstance(data_type, str)):
+            raise ValueError("Parameter `data_type` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 data_type is not None and len(data_type) < 1):
             raise ValueError("Invalid value for `data_type`, length must be greater than or equal to `1`")  # noqa: E501

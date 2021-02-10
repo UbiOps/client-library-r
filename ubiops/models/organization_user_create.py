@@ -77,6 +77,10 @@ class OrganizationUserCreate(object):
         if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                email is not None and not isinstance(email, str)):
+            raise ValueError("Parameter `email` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 email is not None and len(email) < 1):
             raise ValueError("Invalid value for `email`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -100,6 +104,9 @@ class OrganizationUserCreate(object):
         :param admin: The admin of this OrganizationUserCreate.  # noqa: E501
         :type: bool
         """
+        if (self.local_vars_configuration.client_side_validation and
+                admin is not None and not isinstance(admin, bool)):
+            raise ValueError("Parameter `admin` must be a boolean")  # noqa: E501
 
         self._admin = admin
 

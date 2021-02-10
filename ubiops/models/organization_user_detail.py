@@ -96,6 +96,10 @@ class OrganizationUserDetail(object):
         if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 id is not None and len(id) < 1):
             raise ValueError("Invalid value for `id`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -122,6 +126,10 @@ class OrganizationUserDetail(object):
         if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                email is not None and not isinstance(email, str)):
+            raise ValueError("Parameter `email` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 email is not None and len(email) < 1):
             raise ValueError("Invalid value for `email`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -145,6 +153,9 @@ class OrganizationUserDetail(object):
         :param name: The name of this OrganizationUserDetail.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
 
         self._name = name
 
@@ -166,6 +177,9 @@ class OrganizationUserDetail(object):
         :param surname: The surname of this OrganizationUserDetail.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                surname is not None and not isinstance(surname, str)):
+            raise ValueError("Parameter `surname` must be a string")  # noqa: E501
 
         self._surname = surname
 
@@ -187,6 +201,9 @@ class OrganizationUserDetail(object):
         :param status: The status of this OrganizationUserDetail.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                status is not None and not isinstance(status, str)):
+            raise ValueError("Parameter `status` must be a string")  # noqa: E501
 
         self._status = status
 
@@ -208,6 +225,9 @@ class OrganizationUserDetail(object):
         :param admin: The admin of this OrganizationUserDetail.  # noqa: E501
         :type: bool
         """
+        if (self.local_vars_configuration.client_side_validation and
+                admin is not None and not isinstance(admin, bool)):
+            raise ValueError("Parameter `admin` must be a boolean")  # noqa: E501
 
         self._admin = admin
 

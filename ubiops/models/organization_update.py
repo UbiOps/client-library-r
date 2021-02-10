@@ -85,6 +85,10 @@ class OrganizationUpdate(object):
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) < 1):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -109,6 +113,10 @@ class OrganizationUpdate(object):
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
+                subscription is not None and not isinstance(subscription, str)):
+            raise ValueError("Parameter `subscription` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 subscription is not None and len(subscription) < 1):
             raise ValueError("Invalid value for `subscription`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -132,6 +140,9 @@ class OrganizationUpdate(object):
         :param subscription_agreed: The subscription_agreed of this OrganizationUpdate.  # noqa: E501
         :type: bool
         """
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_agreed is not None and not isinstance(subscription_agreed, bool)):
+            raise ValueError("Parameter `subscription_agreed` must be a boolean")  # noqa: E501
 
         self._subscription_agreed = subscription_agreed
 

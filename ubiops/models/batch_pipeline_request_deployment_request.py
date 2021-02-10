@@ -36,8 +36,8 @@ class BatchPipelineRequestDeploymentRequest(object):
         'id': 'str',
         'pipeline_object': 'str',
         'success': 'bool',
-        'time_created': 'datetime',
-        'time_last_updated': 'datetime',
+        'time_started': 'datetime',
+        'time_completed': 'datetime',
         'request_data': 'object',
         'result': 'object',
         'error_message': 'str'
@@ -47,14 +47,14 @@ class BatchPipelineRequestDeploymentRequest(object):
         'id': 'id',
         'pipeline_object': 'pipeline_object',
         'success': 'success',
-        'time_created': 'time_created',
-        'time_last_updated': 'time_last_updated',
+        'time_started': 'time_started',
+        'time_completed': 'time_completed',
         'request_data': 'request_data',
         'result': 'result',
         'error_message': 'error_message'
     }
 
-    def __init__(self, id=None, pipeline_object=None, success=None, time_created=None, time_last_updated=None, request_data=None, result=None, error_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, pipeline_object=None, success=None, time_started=None, time_completed=None, request_data=None, result=None, error_message=None, local_vars_configuration=None):  # noqa: E501
         """BatchPipelineRequestDeploymentRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -63,8 +63,8 @@ class BatchPipelineRequestDeploymentRequest(object):
         self._id = None
         self._pipeline_object = None
         self._success = None
-        self._time_created = None
-        self._time_last_updated = None
+        self._time_started = None
+        self._time_completed = None
         self._request_data = None
         self._result = None
         self._error_message = None
@@ -73,8 +73,8 @@ class BatchPipelineRequestDeploymentRequest(object):
         self.id = id
         self.pipeline_object = pipeline_object
         self.success = success
-        self.time_created = time_created
-        self.time_last_updated = time_last_updated
+        self.time_started = time_started
+        self.time_completed = time_completed
         self.request_data = request_data
         self.result = result
         self.error_message = error_message
@@ -97,6 +97,9 @@ class BatchPipelineRequestDeploymentRequest(object):
         :param id: The id of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -121,6 +124,10 @@ class BatchPipelineRequestDeploymentRequest(object):
         if self.local_vars_configuration.client_side_validation and pipeline_object is None:  # noqa: E501
             raise ValueError("Invalid value for `pipeline_object`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                pipeline_object is not None and not isinstance(pipeline_object, str)):
+            raise ValueError("Parameter `pipeline_object` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 pipeline_object is not None and len(pipeline_object) < 1):
             raise ValueError("Invalid value for `pipeline_object`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -144,54 +151,53 @@ class BatchPipelineRequestDeploymentRequest(object):
         :param success: The success of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
         :type: bool
         """
+        if (self.local_vars_configuration.client_side_validation and
+                success is not None and not isinstance(success, bool)):
+            raise ValueError("Parameter `success` must be a boolean")  # noqa: E501
 
         self._success = success
 
     @property
-    def time_created(self):
-        """Gets the time_created of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
+    def time_started(self):
+        """Gets the time_started of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
 
 
-        :return: The time_created of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
+        :return: The time_started of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
         :rtype: datetime
         """
-        return self._time_created
+        return self._time_started
 
-    @time_created.setter
-    def time_created(self, time_created):
-        """Sets the time_created of this BatchPipelineRequestDeploymentRequest.
+    @time_started.setter
+    def time_started(self, time_started):
+        """Sets the time_started of this BatchPipelineRequestDeploymentRequest.
 
 
-        :param time_created: The time_created of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
+        :param time_started: The time_started of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and time_created is None:  # noqa: E501
-            raise ValueError("Invalid value for `time_created`, must not be `None`")  # noqa: E501
 
-        self._time_created = time_created
+        self._time_started = time_started
 
     @property
-    def time_last_updated(self):
-        """Gets the time_last_updated of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
+    def time_completed(self):
+        """Gets the time_completed of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
 
 
-        :return: The time_last_updated of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
+        :return: The time_completed of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
         :rtype: datetime
         """
-        return self._time_last_updated
+        return self._time_completed
 
-    @time_last_updated.setter
-    def time_last_updated(self, time_last_updated):
-        """Sets the time_last_updated of this BatchPipelineRequestDeploymentRequest.
+    @time_completed.setter
+    def time_completed(self, time_completed):
+        """Sets the time_completed of this BatchPipelineRequestDeploymentRequest.
 
 
-        :param time_last_updated: The time_last_updated of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
+        :param time_completed: The time_completed of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and time_last_updated is None:  # noqa: E501
-            raise ValueError("Invalid value for `time_last_updated`, must not be `None`")  # noqa: E501
 
-        self._time_last_updated = time_last_updated
+        self._time_completed = time_completed
 
     @property
     def request_data(self):
@@ -253,6 +259,9 @@ class BatchPipelineRequestDeploymentRequest(object):
         :param error_message: The error_message of this BatchPipelineRequestDeploymentRequest.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                error_message is not None and not isinstance(error_message, str)):
+            raise ValueError("Parameter `error_message` must be a string")  # noqa: E501
 
         self._error_message = error_message
 

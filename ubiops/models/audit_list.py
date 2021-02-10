@@ -98,6 +98,9 @@ class AuditList(object):
         :param id: The id of this AuditList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -119,6 +122,9 @@ class AuditList(object):
         :param date: The date of this AuditList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                date is not None and not isinstance(date, str)):
+            raise ValueError("Parameter `date` must be a string")  # noqa: E501
 
         self._date = date
 
@@ -143,6 +149,10 @@ class AuditList(object):
         if self.local_vars_configuration.client_side_validation and action is None:  # noqa: E501
             raise ValueError("Invalid value for `action`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                action is not None and not isinstance(action, str)):
+            raise ValueError("Parameter `action` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 action is not None and len(action) < 1):
             raise ValueError("Invalid value for `action`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -166,6 +176,9 @@ class AuditList(object):
         :param user: The user of this AuditList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                user is not None and not isinstance(user, str)):
+            raise ValueError("Parameter `user` must be a string")  # noqa: E501
 
         self._user = user
 
@@ -187,6 +200,9 @@ class AuditList(object):
         :param event: The event of this AuditList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                event is not None and not isinstance(event, str)):
+            raise ValueError("Parameter `event` must be a string")  # noqa: E501
 
         self._event = event
 
@@ -210,6 +226,10 @@ class AuditList(object):
         """
         if self.local_vars_configuration.client_side_validation and object_type is None:  # noqa: E501
             raise ValueError("Invalid value for `object_type`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                object_type is not None and not isinstance(object_type, str)):
+            raise ValueError("Parameter `object_type` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 object_type is not None and len(object_type) > 64):
             raise ValueError("Invalid value for `object_type`, length must be less than or equal to `64`")  # noqa: E501
@@ -237,6 +257,9 @@ class AuditList(object):
         :param object_name: The object_name of this AuditList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                object_name is not None and not isinstance(object_name, str)):
+            raise ValueError("Parameter `object_name` must be a string")  # noqa: E501
 
         self._object_name = object_name
 

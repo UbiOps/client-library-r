@@ -39,7 +39,7 @@ class DeploymentCreate(object):
         'output_type': 'str',
         'input_fields': 'list[DeploymentInputFieldCreate]',
         'output_fields': 'list[DeploymentOutputFieldCreate]',
-        'labels': 'object'
+        'labels': 'dict(str, str)'
     }
 
     attribute_map = {
@@ -76,8 +76,7 @@ class DeploymentCreate(object):
             self.input_fields = input_fields
         if output_fields is not None:
             self.output_fields = output_fields
-        if labels is not None:
-            self.labels = labels
+        self.labels = labels
 
     @property
     def name(self):
@@ -99,6 +98,10 @@ class DeploymentCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) > 64):
             raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
@@ -126,6 +129,9 @@ class DeploymentCreate(object):
         :param description: The description of this DeploymentCreate.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and not isinstance(description, str)):
+            raise ValueError("Parameter `description` must be a string")  # noqa: E501
 
         self._description = description
 
@@ -149,6 +155,9 @@ class DeploymentCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and input_type is None:  # noqa: E501
             raise ValueError("Invalid value for `input_type`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                input_type is not None and not isinstance(input_type, str)):
+            raise ValueError("Parameter `input_type` must be a string")  # noqa: E501
         allowed_values = ["structured", "plain"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and input_type not in allowed_values:  # noqa: E501
             raise ValueError(
@@ -178,6 +187,9 @@ class DeploymentCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and output_type is None:  # noqa: E501
             raise ValueError("Invalid value for `output_type`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                output_type is not None and not isinstance(output_type, str)):
+            raise ValueError("Parameter `output_type` must be a string")  # noqa: E501
         allowed_values = ["structured", "plain"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and output_type not in allowed_values:  # noqa: E501
             raise ValueError(
@@ -205,6 +217,9 @@ class DeploymentCreate(object):
         :param input_fields: The input_fields of this DeploymentCreate.  # noqa: E501
         :type: list[DeploymentInputFieldCreate]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                input_fields is not None and not isinstance(input_fields, list)):
+            raise ValueError("Parameter `input_fields` must be a list")  # noqa: E501
 
         self._input_fields = input_fields
 
@@ -226,6 +241,9 @@ class DeploymentCreate(object):
         :param output_fields: The output_fields of this DeploymentCreate.  # noqa: E501
         :type: list[DeploymentOutputFieldCreate]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                output_fields is not None and not isinstance(output_fields, list)):
+            raise ValueError("Parameter `output_fields` must be a list")  # noqa: E501
 
         self._output_fields = output_fields
 
@@ -235,7 +253,7 @@ class DeploymentCreate(object):
 
 
         :return: The labels of this DeploymentCreate.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._labels
 
@@ -245,8 +263,11 @@ class DeploymentCreate(object):
 
 
         :param labels: The labels of this DeploymentCreate.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
 
         self._labels = labels
 

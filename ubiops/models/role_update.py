@@ -76,6 +76,10 @@ class RoleUpdate(object):
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) < 1):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -99,6 +103,9 @@ class RoleUpdate(object):
         :param permissions: The permissions of this RoleUpdate.  # noqa: E501
         :type: list[str]
         """
+        if (self.local_vars_configuration.client_side_validation and
+                permissions is not None and not isinstance(permissions, list)):
+            raise ValueError("Parameter `permissions` must be a list")  # noqa: E501
 
         self._permissions = permissions
 

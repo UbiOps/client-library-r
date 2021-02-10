@@ -52,10 +52,8 @@ class AttachmentFieldsList(object):
         self._destination_field_name = None
         self.discriminator = None
 
-        if source_field_name is not None:
-            self.source_field_name = source_field_name
-        if destination_field_name is not None:
-            self.destination_field_name = destination_field_name
+        self.source_field_name = source_field_name
+        self.destination_field_name = destination_field_name
 
     @property
     def source_field_name(self):
@@ -75,6 +73,15 @@ class AttachmentFieldsList(object):
         :param source_field_name: The source_field_name of this AttachmentFieldsList.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and source_field_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `source_field_name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                source_field_name is not None and not isinstance(source_field_name, str)):
+            raise ValueError("Parameter `source_field_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                source_field_name is not None and len(source_field_name) < 1):
+            raise ValueError("Invalid value for `source_field_name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._source_field_name = source_field_name
 
@@ -96,6 +103,15 @@ class AttachmentFieldsList(object):
         :param destination_field_name: The destination_field_name of this AttachmentFieldsList.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and destination_field_name is None:  # noqa: E501
+            raise ValueError("Invalid value for `destination_field_name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                destination_field_name is not None and not isinstance(destination_field_name, str)):
+            raise ValueError("Parameter `destination_field_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                destination_field_name is not None and len(destination_field_name) < 1):
+            raise ValueError("Invalid value for `destination_field_name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._destination_field_name = destination_field_name
 

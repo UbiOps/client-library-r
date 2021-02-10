@@ -76,6 +76,10 @@ class AttachmentFieldsCreate(object):
         if self.local_vars_configuration.client_side_validation and source_field_name is None:  # noqa: E501
             raise ValueError("Invalid value for `source_field_name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                source_field_name is not None and not isinstance(source_field_name, str)):
+            raise ValueError("Parameter `source_field_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 source_field_name is not None and len(source_field_name) < 1):
             raise ValueError("Invalid value for `source_field_name`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -101,6 +105,10 @@ class AttachmentFieldsCreate(object):
         """
         if self.local_vars_configuration.client_side_validation and destination_field_name is None:  # noqa: E501
             raise ValueError("Invalid value for `destination_field_name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                destination_field_name is not None and not isinstance(destination_field_name, str)):
+            raise ValueError("Parameter `destination_field_name` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 destination_field_name is not None and len(destination_field_name) < 1):
             raise ValueError("Invalid value for `destination_field_name`, length must be greater than or equal to `1`")  # noqa: E501

@@ -82,6 +82,10 @@ class UserPendingDetail(object):
         if self.local_vars_configuration.client_side_validation and email is None:  # noqa: E501
             raise ValueError("Invalid value for `email`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                email is not None and not isinstance(email, str)):
+            raise ValueError("Parameter `email` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 email is not None and len(email) > 254):
             raise ValueError("Invalid value for `email`, length must be less than or equal to `254`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
@@ -109,6 +113,10 @@ class UserPendingDetail(object):
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) < 1):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -132,6 +140,10 @@ class UserPendingDetail(object):
         :param surname: The surname of this UserPendingDetail.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                surname is not None and not isinstance(surname, str)):
+            raise ValueError("Parameter `surname` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 surname is not None and len(surname) < 1):
             raise ValueError("Invalid value for `surname`, length must be greater than or equal to `1`")  # noqa: E501

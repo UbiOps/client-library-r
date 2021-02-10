@@ -39,7 +39,7 @@ class PipelineList(object):
         'description': 'str',
         'input_type': 'str',
         'input_fields': 'list[PipelineInputFieldList]',
-        'labels': 'object',
+        'labels': 'dict(str, str)',
         'creation_date': 'datetime',
         'last_updated': 'datetime'
     }
@@ -105,6 +105,9 @@ class PipelineList(object):
         :param id: The id of this PipelineList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
 
@@ -128,6 +131,10 @@ class PipelineList(object):
         """
         if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
             raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                name is not None and not isinstance(name, str)):
+            raise ValueError("Parameter `name` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) > 64):
             raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
@@ -158,6 +165,10 @@ class PipelineList(object):
         if self.local_vars_configuration.client_side_validation and project is None:  # noqa: E501
             raise ValueError("Invalid value for `project`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                project is not None and not isinstance(project, str)):
+            raise ValueError("Parameter `project` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 project is not None and len(project) < 1):
             raise ValueError("Invalid value for `project`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -181,6 +192,10 @@ class PipelineList(object):
         :param description: The description of this PipelineList.  # noqa: E501
         :type: str
         """
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and not isinstance(description, str)):
+            raise ValueError("Parameter `description` must be a string")  # noqa: E501
+
         if (self.local_vars_configuration.client_side_validation and
                 description is not None and len(description) > 200):
             raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")  # noqa: E501
@@ -208,6 +223,10 @@ class PipelineList(object):
         if self.local_vars_configuration.client_side_validation and input_type is None:  # noqa: E501
             raise ValueError("Invalid value for `input_type`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                input_type is not None and not isinstance(input_type, str)):
+            raise ValueError("Parameter `input_type` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 input_type is not None and len(input_type) < 1):
             raise ValueError("Invalid value for `input_type`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -233,6 +252,9 @@ class PipelineList(object):
         """
         if self.local_vars_configuration.client_side_validation and input_fields is None:  # noqa: E501
             raise ValueError("Invalid value for `input_fields`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                input_fields is not None and not isinstance(input_fields, list)):
+            raise ValueError("Parameter `input_fields` must be a list")  # noqa: E501
 
         self._input_fields = input_fields
 
@@ -242,7 +264,7 @@ class PipelineList(object):
 
 
         :return: The labels of this PipelineList.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._labels
 
@@ -252,8 +274,11 @@ class PipelineList(object):
 
 
         :param labels: The labels of this PipelineList.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
 
         self._labels = labels
 

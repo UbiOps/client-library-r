@@ -33,58 +33,27 @@ class AttachmentsCreate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'source_name': 'str',
         'destination_name': 'str',
-        'mapping': 'list[AttachmentFieldsCreate]'
+        'sources': 'list[AttachmentSourcesCreate]'
     }
 
     attribute_map = {
-        'source_name': 'source_name',
         'destination_name': 'destination_name',
-        'mapping': 'mapping'
+        'sources': 'sources'
     }
 
-    def __init__(self, source_name=None, destination_name=None, mapping=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, destination_name=None, sources=None, local_vars_configuration=None):  # noqa: E501
         """AttachmentsCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._source_name = None
         self._destination_name = None
-        self._mapping = None
+        self._sources = None
         self.discriminator = None
 
-        self.source_name = source_name
         self.destination_name = destination_name
-        if mapping is not None:
-            self.mapping = mapping
-
-    @property
-    def source_name(self):
-        """Gets the source_name of this AttachmentsCreate.  # noqa: E501
-
-
-        :return: The source_name of this AttachmentsCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._source_name
-
-    @source_name.setter
-    def source_name(self, source_name):
-        """Sets the source_name of this AttachmentsCreate.
-
-
-        :param source_name: The source_name of this AttachmentsCreate.  # noqa: E501
-        :type: str
-        """
-        if self.local_vars_configuration.client_side_validation and source_name is None:  # noqa: E501
-            raise ValueError("Invalid value for `source_name`, must not be `None`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                source_name is not None and len(source_name) < 1):
-            raise ValueError("Invalid value for `source_name`, length must be greater than or equal to `1`")  # noqa: E501
-
-        self._source_name = source_name
+        self.sources = sources
 
     @property
     def destination_name(self):
@@ -107,31 +76,40 @@ class AttachmentsCreate(object):
         if self.local_vars_configuration.client_side_validation and destination_name is None:  # noqa: E501
             raise ValueError("Invalid value for `destination_name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
+                destination_name is not None and not isinstance(destination_name, str)):
+            raise ValueError("Parameter `destination_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
                 destination_name is not None and len(destination_name) < 1):
             raise ValueError("Invalid value for `destination_name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._destination_name = destination_name
 
     @property
-    def mapping(self):
-        """Gets the mapping of this AttachmentsCreate.  # noqa: E501
+    def sources(self):
+        """Gets the sources of this AttachmentsCreate.  # noqa: E501
 
 
-        :return: The mapping of this AttachmentsCreate.  # noqa: E501
-        :rtype: list[AttachmentFieldsCreate]
+        :return: The sources of this AttachmentsCreate.  # noqa: E501
+        :rtype: list[AttachmentSourcesCreate]
         """
-        return self._mapping
+        return self._sources
 
-    @mapping.setter
-    def mapping(self, mapping):
-        """Sets the mapping of this AttachmentsCreate.
+    @sources.setter
+    def sources(self, sources):
+        """Sets the sources of this AttachmentsCreate.
 
 
-        :param mapping: The mapping of this AttachmentsCreate.  # noqa: E501
-        :type: list[AttachmentFieldsCreate]
+        :param sources: The sources of this AttachmentsCreate.  # noqa: E501
+        :type: list[AttachmentSourcesCreate]
         """
+        if self.local_vars_configuration.client_side_validation and sources is None:  # noqa: E501
+            raise ValueError("Invalid value for `sources`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                sources is not None and not isinstance(sources, list)):
+            raise ValueError("Parameter `sources` must be a list")  # noqa: E501
 
-        self._mapping = mapping
+        self._sources = sources
 
     def to_dict(self):
         """Returns the model properties as a dict"""

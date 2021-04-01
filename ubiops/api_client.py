@@ -12,14 +12,16 @@ from __future__ import absolute_import
 
 import atexit
 import datetime
-from dateutil.parser import parse
 import json
 import mimetypes
-from multiprocessing.pool import ThreadPool
 import os
 import re
 import tempfile
 import types
+import urllib.parse
+
+from dateutil.parser import parse
+from multiprocessing.pool import ThreadPool
 
 # python 2 and python 3 compatibility library
 import six
@@ -79,7 +81,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'UbiOps/python/3.1.0'
+        self.user_agent = 'UbiOps/python/3.2.0'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):
@@ -557,8 +559,9 @@ class ApiClient(object):
 
         content_disposition = response.getheader("Content-Disposition")
         if content_disposition:
-            filename = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?',
-                                 content_disposition).group(1)
+            # Remove quotes added by the API
+            decoded_content_disposition = urllib.parse.unquote(content_disposition)
+            filename = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', decoded_content_disposition).group(1)
             path = os.path.join(os.path.dirname(path), filename)
 
         with open(path, "wb") as f:
@@ -658,5 +661,6 @@ class ApiClient(object):
 def getfilename(self):
     content_disposition = self.getheader('Content-Disposition')
     if content_disposition:
-        filename = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition).group(1)
-        return filename
+        # Remove quotes added by the API
+        decoded_content_disposition = urllib.parse.unquote(content_disposition)
+        return re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', decoded_content_disposition).group(1)

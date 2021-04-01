@@ -13,6 +13,4 @@ Name | Type | Notes
 **creation_date** | **datetime** | [optional] 
 **last_updated** | **datetime** | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 

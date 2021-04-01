@@ -4,6 +4,7 @@
 Name | Type | Notes
 ------------ | ------------- | -------------
 **id** | **str** | 
+**version** | **str** | 
 **status** | **str** | 
 **success** | **bool** | [optional] 
 **time_created** | **datetime** | 
@@ -12,7 +13,5 @@ Name | Type | Notes
 **request_data** | **str** or **dict(str, str)** | [optional] 
 **deployment_requests** | [**list[BatchPipelineRequestDeploymentRequest]**](BatchPipelineRequestDeploymentRequest.md) | 
 **error_message** | **str** | [optional] 
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

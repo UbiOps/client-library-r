@@ -37,8 +37,9 @@ class Logs(object):
         'log': 'str',
         'date': 'str',
         'deployment_name': 'str',
-        'version': 'str',
+        'deployment_version': 'str',
         'pipeline_name': 'str',
+        'pipeline_version': 'str',
         'pipeline_object_name': 'str',
         'request_id': 'str',
         'pipeline_request_id': 'str',
@@ -51,8 +52,9 @@ class Logs(object):
         'log': 'log',
         'date': 'date',
         'deployment_name': 'deployment_name',
-        'version': 'version',
+        'deployment_version': 'deployment_version',
         'pipeline_name': 'pipeline_name',
+        'pipeline_version': 'pipeline_version',
         'pipeline_object_name': 'pipeline_object_name',
         'request_id': 'request_id',
         'pipeline_request_id': 'pipeline_request_id',
@@ -60,7 +62,7 @@ class Logs(object):
         'system': 'system'
     }
 
-    def __init__(self, id=None, log=None, date=None, deployment_name=None, version=None, pipeline_name=None, pipeline_object_name=None, request_id=None, pipeline_request_id=None, build_id=None, system=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, log=None, date=None, deployment_name=None, deployment_version=None, pipeline_name=None, pipeline_version=None, pipeline_object_name=None, request_id=None, pipeline_request_id=None, build_id=None, system=None, local_vars_configuration=None):  # noqa: E501
         """Logs - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -70,8 +72,9 @@ class Logs(object):
         self._log = None
         self._date = None
         self._deployment_name = None
-        self._version = None
+        self._deployment_version = None
         self._pipeline_name = None
+        self._pipeline_version = None
         self._pipeline_object_name = None
         self._request_id = None
         self._pipeline_request_id = None
@@ -87,10 +90,12 @@ class Logs(object):
             self.date = date
         if deployment_name is not None:
             self.deployment_name = deployment_name
-        if version is not None:
-            self.version = version
+        if deployment_version is not None:
+            self.deployment_version = deployment_version
         if pipeline_name is not None:
             self.pipeline_name = pipeline_name
+        if pipeline_version is not None:
+            self.pipeline_version = pipeline_version
         if pipeline_object_name is not None:
             self.pipeline_object_name = pipeline_object_name
         if request_id is not None:
@@ -211,32 +216,32 @@ class Logs(object):
         self._deployment_name = deployment_name
 
     @property
-    def version(self):
-        """Gets the version of this Logs.  # noqa: E501
+    def deployment_version(self):
+        """Gets the deployment_version of this Logs.  # noqa: E501
 
 
-        :return: The version of this Logs.  # noqa: E501
+        :return: The deployment_version of this Logs.  # noqa: E501
         :rtype: str
         """
-        return self._version
+        return self._deployment_version
 
-    @version.setter
-    def version(self, version):
-        """Sets the version of this Logs.
+    @deployment_version.setter
+    def deployment_version(self, deployment_version):
+        """Sets the deployment_version of this Logs.
 
 
-        :param version: The version of this Logs.  # noqa: E501
+        :param deployment_version: The deployment_version of this Logs.  # noqa: E501
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                version is not None and not isinstance(version, str)):
-            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+                deployment_version is not None and not isinstance(deployment_version, str)):
+            raise ValueError("Parameter `deployment_version` must be a string")  # noqa: E501
 
         if (self.local_vars_configuration.client_side_validation and
-                version is not None and len(version) < 1):
-            raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
+                deployment_version is not None and len(deployment_version) < 1):
+            raise ValueError("Invalid value for `deployment_version`, length must be greater than or equal to `1`")  # noqa: E501
 
-        self._version = version
+        self._deployment_version = deployment_version
 
     @property
     def pipeline_name(self):
@@ -265,6 +270,34 @@ class Logs(object):
             raise ValueError("Invalid value for `pipeline_name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._pipeline_name = pipeline_name
+
+    @property
+    def pipeline_version(self):
+        """Gets the pipeline_version of this Logs.  # noqa: E501
+
+
+        :return: The pipeline_version of this Logs.  # noqa: E501
+        :rtype: str
+        """
+        return self._pipeline_version
+
+    @pipeline_version.setter
+    def pipeline_version(self, pipeline_version):
+        """Sets the pipeline_version of this Logs.
+
+
+        :param pipeline_version: The pipeline_version of this Logs.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                pipeline_version is not None and not isinstance(pipeline_version, str)):
+            raise ValueError("Parameter `pipeline_version` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                pipeline_version is not None and len(pipeline_version) < 1):
+            raise ValueError("Invalid value for `pipeline_version`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._pipeline_version = pipeline_version
 
     @property
     def pipeline_object_name(self):

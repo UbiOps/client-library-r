@@ -7,7 +7,6 @@ Name | Type | Notes
 **email** | **str** | 
 **name** | **str** | [optional] 
 **creation_date** | **str** | [optional] [readonly] 
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+**allowed_cors_origins** | **str** | [optional] [readonly] 
 
 

@@ -33,31 +33,65 @@ class DeploymentRequestList(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'version': 'str',
         'success': 'bool',
         'result': 'object',
         'error_message': 'str'
     }
 
     attribute_map = {
+        'version': 'version',
         'success': 'success',
         'result': 'result',
         'error_message': 'error_message'
     }
 
-    def __init__(self, success=None, result=None, error_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, version=None, success=None, result=None, error_message=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentRequestList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._version = None
         self._success = None
         self._result = None
         self._error_message = None
         self.discriminator = None
 
+        self.version = version
         self.success = success
         self.result = result
         self.error_message = error_message
+
+    @property
+    def version(self):
+        """Gets the version of this DeploymentRequestList.  # noqa: E501
+
+
+        :return: The version of this DeploymentRequestList.  # noqa: E501
+        :rtype: str
+        """
+        return self._version
+
+    @version.setter
+    def version(self, version):
+        """Sets the version of this DeploymentRequestList.
+
+
+        :param version: The version of this DeploymentRequestList.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
+            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and not isinstance(version, str)):
+            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and len(version) < 1):
+            raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._version = version
 
     @property
     def success(self):

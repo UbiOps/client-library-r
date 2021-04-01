@@ -33,24 +33,29 @@ class ServiceUserCreate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str'
+        'name': 'str',
+        'allowed_cors_origins': 'list[str]'
     }
 
     attribute_map = {
-        'name': 'name'
+        'name': 'name',
+        'allowed_cors_origins': 'allowed_cors_origins'
     }
 
-    def __init__(self, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, allowed_cors_origins=None, local_vars_configuration=None):  # noqa: E501
         """ServiceUserCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
+        self._allowed_cors_origins = None
         self.discriminator = None
 
         if name is not None:
             self.name = name
+        if allowed_cors_origins is not None:
+            self.allowed_cors_origins = allowed_cors_origins
 
     @property
     def name(self):
@@ -79,6 +84,30 @@ class ServiceUserCreate(object):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def allowed_cors_origins(self):
+        """Gets the allowed_cors_origins of this ServiceUserCreate.  # noqa: E501
+
+
+        :return: The allowed_cors_origins of this ServiceUserCreate.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._allowed_cors_origins
+
+    @allowed_cors_origins.setter
+    def allowed_cors_origins(self, allowed_cors_origins):
+        """Sets the allowed_cors_origins of this ServiceUserCreate.
+
+
+        :param allowed_cors_origins: The allowed_cors_origins of this ServiceUserCreate.  # noqa: E501
+        :type: list[str]
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                allowed_cors_origins is not None and not isinstance(allowed_cors_origins, list)):
+            raise ValueError("Parameter `allowed_cors_origins` must be a list")  # noqa: E501
+
+        self._allowed_cors_origins = allowed_cors_origins
 
     def to_dict(self):
         """Returns the model properties as a dict"""

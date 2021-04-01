@@ -11,6 +11,4 @@ Name | Type | Notes
 **output_fields** | [**list[DeploymentOutputFieldCreate]**](DeploymentOutputFieldCreate.md) | [optional] 
 **labels** | **dict(str, str)** | [optional] 
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
 

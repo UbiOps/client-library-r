@@ -35,6 +35,7 @@ class PipelineRequestList(object):
     openapi_types = {
         'project': 'str',
         'pipeline': 'str',
+        'version': 'str',
         'pipeline_request_id': 'str',
         'deployment_requests': 'list[PipelineRequestDeploymentRequest]'
     }
@@ -42,11 +43,12 @@ class PipelineRequestList(object):
     attribute_map = {
         'project': 'project',
         'pipeline': 'pipeline',
+        'version': 'version',
         'pipeline_request_id': 'pipeline_request_id',
         'deployment_requests': 'deployment_requests'
     }
 
-    def __init__(self, project=None, pipeline=None, pipeline_request_id=None, deployment_requests=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, project=None, pipeline=None, version=None, pipeline_request_id=None, deployment_requests=None, local_vars_configuration=None):  # noqa: E501
         """PipelineRequestList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -54,12 +56,14 @@ class PipelineRequestList(object):
 
         self._project = None
         self._pipeline = None
+        self._version = None
         self._pipeline_request_id = None
         self._deployment_requests = None
         self.discriminator = None
 
         self.project = project
         self.pipeline = pipeline
+        self.version = version
         self.pipeline_request_id = pipeline_request_id
         self.deployment_requests = deployment_requests
 
@@ -81,15 +85,9 @@ class PipelineRequestList(object):
         :param project: The project of this PipelineRequestList.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and project is None:  # noqa: E501
-            raise ValueError("Invalid value for `project`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 project is not None and not isinstance(project, str)):
             raise ValueError("Parameter `project` must be a string")  # noqa: E501
-
-        if (self.local_vars_configuration.client_side_validation and
-                project is not None and len(project) < 1):
-            raise ValueError("Invalid value for `project`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._project = project
 
@@ -122,6 +120,36 @@ class PipelineRequestList(object):
             raise ValueError("Invalid value for `pipeline`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._pipeline = pipeline
+
+    @property
+    def version(self):
+        """Gets the version of this PipelineRequestList.  # noqa: E501
+
+
+        :return: The version of this PipelineRequestList.  # noqa: E501
+        :rtype: str
+        """
+        return self._version
+
+    @version.setter
+    def version(self, version):
+        """Sets the version of this PipelineRequestList.
+
+
+        :param version: The version of this PipelineRequestList.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
+            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and not isinstance(version, str)):
+            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and len(version) < 1):
+            raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._version = version
 
     @property
     def pipeline_request_id(self):

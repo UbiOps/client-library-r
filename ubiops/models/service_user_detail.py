@@ -37,7 +37,8 @@ class ServiceUserDetail(object):
         'email': 'str',
         'token': 'str',
         'name': 'str',
-        'creation_date': 'str'
+        'creation_date': 'str',
+        'allowed_cors_origins': 'str'
     }
 
     attribute_map = {
@@ -45,10 +46,11 @@ class ServiceUserDetail(object):
         'email': 'email',
         'token': 'token',
         'name': 'name',
-        'creation_date': 'creation_date'
+        'creation_date': 'creation_date',
+        'allowed_cors_origins': 'allowed_cors_origins'
     }
 
-    def __init__(self, id=None, email=None, token=None, name=None, creation_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, email=None, token=None, name=None, creation_date=None, allowed_cors_origins=None, local_vars_configuration=None):  # noqa: E501
         """ServiceUserDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +61,7 @@ class ServiceUserDetail(object):
         self._token = None
         self._name = None
         self._creation_date = None
+        self._allowed_cors_origins = None
         self.discriminator = None
 
         if id is not None:
@@ -69,6 +72,8 @@ class ServiceUserDetail(object):
         self.name = name
         if creation_date is not None:
             self.creation_date = creation_date
+        if allowed_cors_origins is not None:
+            self.allowed_cors_origins = allowed_cors_origins
 
     @property
     def id(self):
@@ -202,6 +207,30 @@ class ServiceUserDetail(object):
             raise ValueError("Parameter `creation_date` must be a string")  # noqa: E501
 
         self._creation_date = creation_date
+
+    @property
+    def allowed_cors_origins(self):
+        """Gets the allowed_cors_origins of this ServiceUserDetail.  # noqa: E501
+
+
+        :return: The allowed_cors_origins of this ServiceUserDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._allowed_cors_origins
+
+    @allowed_cors_origins.setter
+    def allowed_cors_origins(self, allowed_cors_origins):
+        """Sets the allowed_cors_origins of this ServiceUserDetail.
+
+
+        :param allowed_cors_origins: The allowed_cors_origins of this ServiceUserDetail.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                allowed_cors_origins is not None and not isinstance(allowed_cors_origins, str)):
+            raise ValueError("Parameter `allowed_cors_origins` must be a string")  # noqa: E501
+
+        self._allowed_cors_origins = allowed_cors_origins
 
     def to_dict(self):
         """Returns the model properties as a dict"""

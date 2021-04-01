@@ -1,4 +1,4 @@
-# VersionCreate
+# DeploymentVersionCreate
 
 ## Properties
 Name | Type | Notes
@@ -11,7 +11,5 @@ Name | Type | Notes
 **maximum_idle_time** | **int** | [optional] 
 **description** | **str** | [optional] 
 **labels** | **dict(str, str)** | [optional] 
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
 

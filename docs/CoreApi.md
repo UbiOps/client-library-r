@@ -4,22 +4,35 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**batch_deployment_requests_batch_delete**](CoreApi.md#batch_deployment_requests_batch_delete) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch-delete | Delete multiple batch deployment requests
-[**batch_deployment_requests_batch_get**](CoreApi.md#batch_deployment_requests_batch_get) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch-collect | Retrieve multiple batch deployment request results
-[**batch_deployment_requests_create**](CoreApi.md#batch_deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch | Create batch deployment requests
-[**batch_deployment_requests_delete**](CoreApi.md#batch_deployment_requests_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch/{request_id} | Delete batch deployment requests
-[**batch_deployment_requests_get**](CoreApi.md#batch_deployment_requests_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch/{request_id} | Get batch deployment request
-[**batch_deployment_requests_list**](CoreApi.md#batch_deployment_requests_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch | List batch deployment requests
+[**batch_deployment_requests_batch_delete**](CoreApi.md#batch_deployment_requests_batch_delete) | **POST** /projects/{project_name}/deployments/{deployment_name}/request-batch-delete | Delete multiple batch deployment requests
+[**batch_deployment_requests_batch_get**](CoreApi.md#batch_deployment_requests_batch_get) | **POST** /projects/{project_name}/deployments/{deployment_name}/request-batch-collect | Retrieve multiple batch deployment request results
+[**batch_deployment_requests_create**](CoreApi.md#batch_deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/request-batch | Create batch deployment requests
+[**batch_deployment_requests_delete**](CoreApi.md#batch_deployment_requests_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/request-batch/{request_id} | Delete batch deployment requests
+[**batch_deployment_requests_get**](CoreApi.md#batch_deployment_requests_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/request-batch/{request_id} | Get batch deployment request
+[**batch_deployment_requests_list**](CoreApi.md#batch_deployment_requests_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/request-batch | List batch deployment requests
+[**batch_deployment_version_requests_batch_delete**](CoreApi.md#batch_deployment_version_requests_batch_delete) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch-delete | Delete multiple batch deployment version requests
+[**batch_deployment_version_requests_batch_get**](CoreApi.md#batch_deployment_version_requests_batch_get) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch-collect | Retrieve multiple batch deployment version request results
+[**batch_deployment_version_requests_create**](CoreApi.md#batch_deployment_version_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch | Create batch deployment version requests
+[**batch_deployment_version_requests_delete**](CoreApi.md#batch_deployment_version_requests_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch/{request_id} | Delete batch deployment version requests
+[**batch_deployment_version_requests_get**](CoreApi.md#batch_deployment_version_requests_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch/{request_id} | Get batch deployment version request
+[**batch_deployment_version_requests_list**](CoreApi.md#batch_deployment_version_requests_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request-batch | List batch deployment version requests
 [**batch_pipeline_requests_batch_delete**](CoreApi.md#batch_pipeline_requests_batch_delete) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request-batch-delete | Delete multiple batch pipeline requests
 [**batch_pipeline_requests_batch_get**](CoreApi.md#batch_pipeline_requests_batch_get) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request-batch-collect | Retrieve multiple batch pipeline request results
 [**batch_pipeline_requests_create**](CoreApi.md#batch_pipeline_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request-batch | Create batch pipeline requests
-[**batch_pipeline_requests_delete**](CoreApi.md#batch_pipeline_requests_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{pipeline_request_id} | Delete batch pipeline requests
-[**batch_pipeline_requests_get**](CoreApi.md#batch_pipeline_requests_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{pipeline_request_id} | Get batch pipeline request
+[**batch_pipeline_requests_delete**](CoreApi.md#batch_pipeline_requests_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{request_id} | Delete batch pipeline requests
+[**batch_pipeline_requests_get**](CoreApi.md#batch_pipeline_requests_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/request-batch/{request_id} | Get batch pipeline request
 [**batch_pipeline_requests_list**](CoreApi.md#batch_pipeline_requests_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/request-batch | List batch pipeline requests
+[**batch_pipeline_version_requests_batch_delete**](CoreApi.md#batch_pipeline_version_requests_batch_delete) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/request-batch-delete | Delete multiple batch pipeline version requests
+[**batch_pipeline_version_requests_batch_get**](CoreApi.md#batch_pipeline_version_requests_batch_get) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/request-batch-collect | Retrieve multiple batch pipeline version request results
+[**batch_pipeline_version_requests_create**](CoreApi.md#batch_pipeline_version_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/request-batch | Create batch pipeline version requests
+[**batch_pipeline_version_requests_delete**](CoreApi.md#batch_pipeline_version_requests_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/request-batch/{request_id} | Delete batch pipeline version requests
+[**batch_pipeline_version_requests_get**](CoreApi.md#batch_pipeline_version_requests_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/request-batch/{request_id} | Get batch pipeline version request
+[**batch_pipeline_version_requests_list**](CoreApi.md#batch_pipeline_version_requests_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/request-batch | List batch pipeline version requests
 [**blobs_create**](CoreApi.md#blobs_create) | **POST** /projects/{project_name}/blobs | Upload a blob
 [**blobs_delete**](CoreApi.md#blobs_delete) | **DELETE** /projects/{project_name}/blobs/{blob_id} | Delete a blob
 [**blobs_get**](CoreApi.md#blobs_get) | **GET** /projects/{project_name}/blobs/{blob_id} | Get a blob
 [**blobs_list**](CoreApi.md#blobs_list) | **GET** /projects/{project_name}/blobs | List blobs
+[**blobs_update**](CoreApi.md#blobs_update) | **PUT** /projects/{project_name}/blobs/{blob_id} | Update a blob
 [**builds_get**](CoreApi.md#builds_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id} | Get build
 [**builds_list**](CoreApi.md#builds_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds | List builds
 [**deployment_audit_events_list**](CoreApi.md#deployment_audit_events_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/audit | List audit events for a deployment
@@ -29,11 +42,23 @@ Method | HTTP request | Description
 [**deployment_environment_variables_get**](CoreApi.md#deployment_environment_variables_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/environment-variables/{id} | Get deployment environment variable
 [**deployment_environment_variables_list**](CoreApi.md#deployment_environment_variables_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/environment-variables | List deployment environment variables
 [**deployment_environment_variables_update**](CoreApi.md#deployment_environment_variables_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/environment-variables/{id} | Update deployment environment variable
-[**deployment_requests_create**](CoreApi.md#deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request | Create deployment requests
-[**deployments_create**](CoreApi.md#deployments_create) | **POST** /projects/{project_name}/deployments | Create a deployment
+[**deployment_requests_create**](CoreApi.md#deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/request | Create deployment requests
+[**deployment_version_environment_variables_copy**](CoreApi.md#deployment_version_environment_variables_copy) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/copy-environment-variables | Copy deployment version environment variable
+[**deployment_version_environment_variables_create**](CoreApi.md#deployment_version_environment_variables_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables | Create deployment version environment variable
+[**deployment_version_environment_variables_delete**](CoreApi.md#deployment_version_environment_variables_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Delete deployment version environment variable
+[**deployment_version_environment_variables_get**](CoreApi.md#deployment_version_environment_variables_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Get deployment version environment variable
+[**deployment_version_environment_variables_list**](CoreApi.md#deployment_version_environment_variables_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables | List deployment version environment variables
+[**deployment_version_environment_variables_update**](CoreApi.md#deployment_version_environment_variables_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Update deployment version environment variable
+[**deployment_version_requests_create**](CoreApi.md#deployment_version_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/request | Create deployment version requests
+[**deployment_versions_create**](CoreApi.md#deployment_versions_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions | Create deployment versions
+[**deployment_versions_delete**](CoreApi.md#deployment_versions_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Delete deployment version
+[**deployment_versions_get**](CoreApi.md#deployment_versions_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Get deployment version
+[**deployment_versions_list**](CoreApi.md#deployment_versions_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions | List deployment versions
+[**deployment_versions_update**](CoreApi.md#deployment_versions_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Update deployment version
+[**deployments_create**](CoreApi.md#deployments_create) | **POST** /projects/{project_name}/deployments | Create deployments
 [**deployments_delete**](CoreApi.md#deployments_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name} | Delete a deployment
-[**deployments_get**](CoreApi.md#deployments_get) | **GET** /projects/{project_name}/deployments/{deployment_name} | Get details of deployment
-[**deployments_list**](CoreApi.md#deployments_list) | **GET** /projects/{project_name}/deployments | List deployments in project
+[**deployments_get**](CoreApi.md#deployments_get) | **GET** /projects/{project_name}/deployments/{deployment_name} | Get details of a deployment
+[**deployments_list**](CoreApi.md#deployments_list) | **GET** /projects/{project_name}/deployments | List deployments
 [**deployments_update**](CoreApi.md#deployments_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name} | Update a deployment
 [**metrics_get**](CoreApi.md#metrics_get) | **GET** /projects/{project_name}/metrics/{metric} | Get metrics
 [**organization_usage_details_get**](CoreApi.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
@@ -50,23 +75,29 @@ Method | HTTP request | Description
 [**organizations_update**](CoreApi.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
 [**permissions_list**](CoreApi.md#permissions_list) | **GET** /permissions | List the available permissions
 [**pipeline_audit_events_list**](CoreApi.md#pipeline_audit_events_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/audit | List audit events for a pipeline
-[**pipeline_object_attachments_create**](CoreApi.md#pipeline_object_attachments_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/attachments | Create object attachments
-[**pipeline_object_attachments_delete**](CoreApi.md#pipeline_object_attachments_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/attachments/{attachment_id} | Delete attachment in a pipeline
-[**pipeline_object_attachments_destination_get**](CoreApi.md#pipeline_object_attachments_destination_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/objects/{destination_name}/attachments/ | List the attachments of a destination object
-[**pipeline_object_attachments_get**](CoreApi.md#pipeline_object_attachments_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/attachments/{attachment_id} | Get an attachment in a pipeline
-[**pipeline_object_attachments_list**](CoreApi.md#pipeline_object_attachments_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/attachments | List object attachments
-[**pipeline_object_environment_variables_list**](CoreApi.md#pipeline_object_environment_variables_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/objects/{name}/environment-variables | List pipeline object environment variables
-[**pipeline_objects_create**](CoreApi.md#pipeline_objects_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/objects | Add an object to a pipeline
-[**pipeline_objects_delete**](CoreApi.md#pipeline_objects_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/objects/{name} | Delete object from pipeline
-[**pipeline_objects_get**](CoreApi.md#pipeline_objects_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/objects/{name} | Get an object in a pipeline
-[**pipeline_objects_list**](CoreApi.md#pipeline_objects_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/objects | List objects in a pipeline
-[**pipeline_objects_update**](CoreApi.md#pipeline_objects_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name}/objects/{name} | Update an object in a pipeline
-[**pipeline_requests_create**](CoreApi.md#pipeline_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request | Make a request to a pipeline
+[**pipeline_requests_create**](CoreApi.md#pipeline_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/request | Create pipeline requests
+[**pipeline_version_object_attachments_create**](CoreApi.md#pipeline_version_object_attachments_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments | Create object attachments
+[**pipeline_version_object_attachments_delete**](CoreApi.md#pipeline_version_object_attachments_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments/{attachment_id} | Delete object attachment
+[**pipeline_version_object_attachments_destination_get**](CoreApi.md#pipeline_version_object_attachments_destination_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{destination_name}/attachments | List the attachments of a destination object
+[**pipeline_version_object_attachments_get**](CoreApi.md#pipeline_version_object_attachments_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments/{attachment_id} | Get object attachment
+[**pipeline_version_object_attachments_list**](CoreApi.md#pipeline_version_object_attachments_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments | List object attachments
+[**pipeline_version_object_environment_variables_list**](CoreApi.md#pipeline_version_object_environment_variables_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name}/environment-variables | List pipeline object environment variables
+[**pipeline_version_objects_create**](CoreApi.md#pipeline_version_objects_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects | Create pipeline object
+[**pipeline_version_objects_delete**](CoreApi.md#pipeline_version_objects_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name} | Delete pipeline object
+[**pipeline_version_objects_get**](CoreApi.md#pipeline_version_objects_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name} | Get pipeline object
+[**pipeline_version_objects_list**](CoreApi.md#pipeline_version_objects_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects | List pipeline objects
+[**pipeline_version_objects_update**](CoreApi.md#pipeline_version_objects_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name} | Update pipeline object
+[**pipeline_version_requests_create**](CoreApi.md#pipeline_version_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/request | Create pipeline version requests
+[**pipeline_versions_create**](CoreApi.md#pipeline_versions_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions | Create pipeline versions
+[**pipeline_versions_delete**](CoreApi.md#pipeline_versions_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version} | Delete pipeline version
+[**pipeline_versions_get**](CoreApi.md#pipeline_versions_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version} | Get pipeline version
+[**pipeline_versions_list**](CoreApi.md#pipeline_versions_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions | List pipeline versions
+[**pipeline_versions_update**](CoreApi.md#pipeline_versions_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version} | Update pipeline version
 [**pipelines_create**](CoreApi.md#pipelines_create) | **POST** /projects/{project_name}/pipelines | Create pipelines
-[**pipelines_delete**](CoreApi.md#pipelines_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name} | Delete pipeline
-[**pipelines_get**](CoreApi.md#pipelines_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name} | Get pipeline
+[**pipelines_delete**](CoreApi.md#pipelines_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name} | Delete a pipeline
+[**pipelines_get**](CoreApi.md#pipelines_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name} | Get details of a pipeline
 [**pipelines_list**](CoreApi.md#pipelines_list) | **GET** /projects/{project_name}/pipelines | List pipelines
-[**pipelines_update**](CoreApi.md#pipelines_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name} | Update pipeline
+[**pipelines_update**](CoreApi.md#pipelines_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name} | Update a pipeline
 [**project_audit_events_list**](CoreApi.md#project_audit_events_list) | **GET** /projects/{project_name}/audit | List audit events in a project
 [**project_environment_variables_create**](CoreApi.md#project_environment_variables_create) | **POST** /projects/{project_name}/environment-variables | Create project environment variable
 [**project_environment_variables_delete**](CoreApi.md#project_environment_variables_delete) | **DELETE** /projects/{project_name}/environment-variables/{id} | Delete project environment variable
@@ -108,27 +139,16 @@ Method | HTTP request | Description
 [**service_users_update**](CoreApi.md#service_users_update) | **PATCH** /projects/{project_name}/service-users/{service_user_id} | Update service user details
 [**user_create**](CoreApi.md#user_create) | **POST** /user | Create a new user
 [**user_delete**](CoreApi.md#user_delete) | **DELETE** /user | Delete user
-[**version_environment_variables_copy**](CoreApi.md#version_environment_variables_copy) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/copy-environment-variables | Copy version environment variable
-[**version_environment_variables_create**](CoreApi.md#version_environment_variables_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables | Create version environment variable
-[**version_environment_variables_delete**](CoreApi.md#version_environment_variables_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Delete version environment variable
-[**version_environment_variables_get**](CoreApi.md#version_environment_variables_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Get version environment variable
-[**version_environment_variables_list**](CoreApi.md#version_environment_variables_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables | List version environment variables
-[**version_environment_variables_update**](CoreApi.md#version_environment_variables_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/environment-variables/{id} | Update version environment variable
-[**versions_create**](CoreApi.md#versions_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions | Create versions
-[**versions_delete**](CoreApi.md#versions_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Delete version
-[**versions_get**](CoreApi.md#versions_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Get version
-[**versions_list**](CoreApi.md#versions_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions | List versions
-[**versions_update**](CoreApi.md#versions_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version} | Update version
 
 
 # **batch_deployment_requests_batch_delete**
-> object batch_deployment_requests_batch_delete(project_name, deployment_name, version, data)
+> object batch_deployment_requests_batch_delete(project_name, deployment_name, data)
 
 Delete multiple batch deployment requests
 
 
 ### Description
-Delete multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+Delete multiple batch deployment requests for the default version of a deployment. If one of the given batch deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
 
 ### Required Parameters 
 A list of ids for the batch requests
@@ -146,8 +166,7 @@ A list of ids for the batch requests
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -159,11 +178,10 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
 data = ['request_id_1', 'request_id_2'] # list[str] 
 
 # Delete multiple batch deployment requests
-api_response = api_instance.batch_deployment_requests_batch_delete(project_name, deployment_name, version, data)
+api_response = api_instance.batch_deployment_requests_batch_delete(project_name, deployment_name, data)
 print(api_response)
 
 # Close the connection
@@ -176,7 +194,6 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **deployment_name** | **str** | 
- **version** | **str** | 
  **data** | **list[str]** | 
 
 ### Return type
@@ -185,7 +202,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -193,20 +210,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **batch_deployment_requests_batch_get**
-> list[BatchDeploymentRequestDetail] batch_deployment_requests_batch_get(project_name, deployment_name, version, data)
+> list[BatchDeploymentRequestDetail] batch_deployment_requests_batch_get(project_name, deployment_name, data)
 
 Retrieve multiple batch deployment request results
 
 
 ### Description
-Retrieve multiple batch deployment requests. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple batch deployment requests for the default version of a deployment. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters 
 A list of ids for the batch requests
@@ -218,21 +234,23 @@ A list of ids for the batch requests
 
 ### Response Structure 
 A list of dictionaries containing the details of the retrieved deployment requests with the following fields:
- - `id`: Unique identifier for the deployment request
- - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `success`: A boolean value that indicates whether the deployment request was successful
- - `time_created`: Server time that the request was made (current time)
- - `time_started`: Server time that the processing of the request was started
- - `time_completed`: Server time that the processing of the request was completed
- - `request_data`: A dictionary containing the data that was sent when the request was created
- - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
- - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+- `id`: Unique identifier for the deployment request
+- `version`: Name of the version the request was made to.
+- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `time_created`: Server time that the request was made (current time)
+- `time_started`: Server time that the processing of the request was started
+- `time_completed`: Server time that the processing of the request was completed
+- `request_data`: A dictionary containing the data that was sent when the request was created
+- `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
+- `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
 
 #### Response Examples 
 ```
 [
   {
     "id": "2f909aeb-5c7e-4974-970d-cd0a6a073aca",
+    "version": "v1",
     "status": "pending",
     "success": false,
     "time_created": "2020-03-29T08:09:10.729+00:00",
@@ -246,6 +264,7 @@ A list of dictionaries containing the details of the retrieved deployment reques
   },
   {
     "id": "85711124-54db-4794-b83d-24492247c6e1",
+    "version": "v1",
     "status": "pending",
     "success": false,
     "time_created": "2020-06-25T09:37:17.765+00:00",
@@ -268,8 +287,7 @@ A list of dictionaries containing the details of the retrieved deployment reques
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -281,11 +299,10 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
 data = ['request_id_1', 'request_id_2'] # list[str] 
 
 # Retrieve multiple batch deployment request results
-api_response = api_instance.batch_deployment_requests_batch_get(project_name, deployment_name, version, data)
+api_response = api_instance.batch_deployment_requests_batch_get(project_name, deployment_name, data)
 print(api_response)
 
 # Close the connection
@@ -298,7 +315,6 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **deployment_name** | **str** | 
- **version** | **str** | 
  **data** | **list[str]** | 
 
 ### Return type
@@ -307,7 +323,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -315,29 +331,29 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **batch_deployment_requests_create**
-> list[BatchDeploymentRequestCreateResponse] batch_deployment_requests_create(project_name, deployment_name, version, data)
+> list[BatchDeploymentRequestCreateResponse] batch_deployment_requests_create(project_name, deployment_name, data)
 
 Create batch deployment requests
 
 
 ### Description
-Request multiple predictions from a deployment. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
+Request multiple predictions from the default version of a deployment. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods.
 In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
 
-If one of the requests is faulty, all requests are denied. The maximum number of requests per bulk call is 250.
+If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
 
 ### Required Parameters 
 In case of structured input deployment: A list of dictionaries, where each dictionary contains the input fields of the deployment as keys. It is also possible to send a single dictionary as input.
 In case of plain input deployment: A list of strings. It is also possible to send a single string as input.
 
 #### Request Examples 
+Multiple structured batch deployment requests
 ```
 [
   {
@@ -353,9 +369,17 @@ In case of plain input deployment: A list of strings. It is also possible to sen
 ]
 ```
 
+Multiple plain batch deployment requests
+```
+[
+  "plain-data-goes-here", "plain-example-data"
+]
+```
+
 ### Response Structure 
 A list of dictionaries containing the details of the created deployment requests with the following fields:
  - `id`: Unique identifier for the deployment request, which can be used to collect the result
+ - `version`: Name of the version the request was made to
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
  - `time_created`: Server time that the request was made (current time)
 
@@ -364,11 +388,13 @@ A list of dictionaries containing the details of the created deployment requests
 [
   {
     "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
     "status": "pending",
     "time_created": "2020-03-28T20:00:26.613+00:00"
   },
   {
     "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
     "status": "pending",
     "time_created": "2020-03-28T20:00:26.613+00:00"
   }
@@ -383,8 +409,7 @@ A list of dictionaries containing the details of the created deployment requests
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -396,11 +421,10 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
 data = [{'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'}] # list[str or dict()] 
 
 # Create batch deployment requests
-api_response = api_instance.batch_deployment_requests_create(project_name, deployment_name, version, data)
+api_response = api_instance.batch_deployment_requests_create(project_name, deployment_name, data)
 print(api_response)
 
 # Close the connection
@@ -413,7 +437,6 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **deployment_name** | **str** | 
- **version** | **str** | 
  **data** | **list[str or dict()]** | 
 
 ### Return type
@@ -422,7 +445,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -430,20 +453,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **batch_deployment_requests_delete**
-> batch_deployment_requests_delete(project_name, deployment_name, request_id, version)
+> batch_deployment_requests_delete(project_name, deployment_name, request_id)
 
 Delete batch deployment requests
 
 
 ### Description
-Delete a batch deployment request
+Delete a batch deployment request for the default version of a deployment
 
 
 ### Example
@@ -453,8 +475,7 @@ Delete a batch deployment request
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -467,10 +488,9 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 deployment_name = 'deployment_name_example' # str 
 request_id = 'request_id_example' # str 
-version = 'version_example' # str 
 
 # Delete batch deployment requests
-api_instance.batch_deployment_requests_delete(project_name, deployment_name, request_id, version)
+api_instance.batch_deployment_requests_delete(project_name, deployment_name, request_id)
 
 # Close the connection
 api_client.close()
@@ -483,7 +503,6 @@ Name | Type | Notes
  **project_name** | **str** | 
  **deployment_name** | **str** | 
  **request_id** | **str** | 
- **version** | **str** | 
 
 ### Return type
 
@@ -491,7 +510,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -499,37 +518,38 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **batch_deployment_requests_get**
-> BatchDeploymentRequestSingleDetail batch_deployment_requests_get(project_name, deployment_name, request_id, version)
+> BatchDeploymentRequestSingleDetail batch_deployment_requests_get(project_name, deployment_name, request_id)
 
 Get batch deployment request
 
 
 ### Description
-Get a batch request for a deployment. With this method, the result of a batch request may be retrieved.
+Get a batch request of the default version of a deployment. With this method, the result of a batch request may be retrieved.
 
 ### Response Structure 
 A dictionary containing the details of the deployment request with the following fields:
- - `id`: Unique identifier for the deployment request
- - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
- - `success`: A boolean value that indicates whether the deployment request was successful
- - `time_created`: Server time that the request was made (current time)
- - `time_started`: Server time that the processing of the request was started
- - `time_completed`: Server time that the processing of the request was completed
- - `request_data`: A dictionary containing the data that was sent when the request was created
- - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
- - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+- `id`: Unique identifier for the deployment request
+- `version`: Name of the version the request was made to
+- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `time_created`: Server time that the request was made (current time)
+- `time_started`: Server time that the processing of the request was started
+- `time_completed`: Server time that the processing of the request was completed
+- `request_data`: A dictionary containing the data that was sent when the request was created
+- `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
+- `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
 
 #### Response Examples 
 ```
 {
   "id": "2f909aeb-5c7e-4974-970d-cd0a6a073aca",
+  "version": "v1",
   "status": "pending",
   "success": false,
   "time_created": "2020-03-29T08:09:10.729+00:00",
@@ -551,8 +571,512 @@ A dictionary containing the details of the deployment request with the following
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+request_id = 'request_id_example' # str 
+
+# Get batch deployment request
+api_response = api_instance.batch_deployment_requests_get(project_name, deployment_name, request_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **request_id** | **str** | 
+
+### Return type
+
+[**BatchDeploymentRequestSingleDetail**](BatchDeploymentRequestSingleDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_deployment_requests_list**
+> list[BatchDeploymentRequestList] batch_deployment_requests_list(project_name, deployment_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
+
+List batch deployment requests
+
+
+### Description
+List all requests for the default version of a deployment
+
+### Optional Parameters
+The following parameters should be given as Query parameters: 
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `limit`: The maximum number of requests given back, default is 50
+- `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
+- `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
+
+### Response Structure 
+A list of dictionaries containing the details of the deployment requests with the following fields:
+- `id`: Unique identifier for the deployment request
+- `version`: Name of the version the request was made to
+- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `time_created`: Server time that the request was made (current time)
+- `time_started`: Server time that the processing of the request was started
+- `time_completed`: Server time that the processing of the request was completed
+
+#### Response Examples 
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
+    "status": "completed",
+    "success": true,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+status = 'status_example' # str  (optional)
+success = True # bool  (optional)
+limit = 56 # int  (optional)
+offset = 56 # int  (optional)
+sort = 'sort_example' # str  (optional)
+
+# List batch deployment requests
+api_response = api_instance.batch_deployment_requests_list(project_name, deployment_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **status** | **str** | [optional] 
+ **success** | **bool** | [optional] 
+ **limit** | **int** | [optional] 
+ **offset** | **int** | [optional] 
+ **sort** | **str** | [optional] 
+
+### Return type
+
+[**list[BatchDeploymentRequestList]**](BatchDeploymentRequestList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_deployment_version_requests_batch_delete**
+> object batch_deployment_version_requests_batch_delete(project_name, deployment_name, version, data)
+
+Delete multiple batch deployment version requests
+
+
+### Description
+Delete multiple batch deployment requests for a deployment version. If one of the given batch deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+
+### Required Parameters 
+A list of ids for the batch requests
+
+#### Request Examples 
+```
+["2f909aeb-5c7e-4974-970d-cd0a6a073aca", "85711124-54db-4794-b83d-24492247c6e1"]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+data = ['request_id_1', 'request_id_2'] # list[str] 
+
+# Delete multiple batch deployment version requests
+api_response = api_instance.batch_deployment_version_requests_batch_delete(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+ **data** | **list[str]** | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 201
+
+[[Back to top]](#)
+
+# **batch_deployment_version_requests_batch_get**
+> list[BatchDeploymentRequestDetail] batch_deployment_version_requests_batch_get(project_name, deployment_name, version, data)
+
+Retrieve multiple batch deployment version request results
+
+
+### Description
+Retrieve multiple batch deployment requests for a deployment version. If one of the given batch deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+
+### Required Parameters 
+A list of ids for the batch requests
+
+#### Request Examples 
+```
+["2f909aeb-5c7e-4974-970d-cd0a6a073aca", "85711124-54db-4794-b83d-24492247c6e1"]
+```
+
+### Response Structure 
+A list of dictionaries containing the details of the retrieved deployment requests with the following fields:
+ - `id`: Unique identifier for the deployment request
+ - `version`: Name of the version the request was made to
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the deployment request was successful
+ - `time_created`: Server time that the request was made (current time)
+ - `time_started`: Server time that the processing of the request was started
+ - `time_completed`: Server time that the processing of the request was completed
+ - `request_data`: A dictionary containing the data that was sent when the request was created
+ - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
+ - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+
+#### Response Examples 
+```
+[
+  {
+    "id": "2f909aeb-5c7e-4974-970d-cd0a6a073aca",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-03-29T08:09:10.729+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+    "request_data": {
+      "input": 82.2
+    },
+    "result": null,
+    "error_message": null
+  },
+  {
+    "id": "85711124-54db-4794-b83d-24492247c6e1",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-06-25T09:37:17.765+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+    "request_data": {
+      "input": 52.4
+    },
+    "result": null,
+    "error_message": null
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+data = ['request_id_1', 'request_id_2'] # list[str] 
+
+# Retrieve multiple batch deployment version request results
+api_response = api_instance.batch_deployment_version_requests_batch_get(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+ **data** | **list[str]** | 
+
+### Return type
+
+[**list[BatchDeploymentRequestDetail]**](BatchDeploymentRequestDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_deployment_version_requests_create**
+> list[BatchDeploymentRequestCreateResponse] batch_deployment_version_requests_create(project_name, deployment_name, version, data)
+
+Create batch deployment version requests
+
+
+### Description
+Request multiple predictions from a deployment version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
+In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
+
+If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
+
+### Required Parameters 
+In case of structured input deployment: A list of dictionaries, where each dictionary contains the input fields of the deployment as keys. It is also possible to send a single dictionary as input.
+In case of plain input deployment: A list of strings. It is also possible to send a single string as input.
+
+#### Request Examples 
+Multiple structured batch deployment requests
+```
+[
+  {
+    "input-field-1": 5.0,
+    "input-field-2": "N",
+    "input-field-3": [0.25, 0.25, 2.1, 16.3]
+  },
+  {
+    "input-field-1": 3.0,
+    "input-field-2": "S",
+    "input-field-3": [4.23, 3.27, 2.41, 12.4]
+  }
+]
+```
+
+Multiple plain batch deployment requests
+```
+[
+  "plain-data-goes-here", "plain-example-data"
+]
+```
+
+### Response Structure 
+A list of dictionaries containing the details of the created deployment requests with the following fields:
+ - `id`: Unique identifier for the deployment request, which can be used to collect the result
+ - `version`: Name of the version the request was made to
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `time_created`: Server time that the request was made (current time)
+
+#### Response Examples 
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "time_created": "2020-03-28T20:00:26.613+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
+    "status": "pending",
+    "time_created": "2020-03-28T20:00:26.613+00:00"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+data = [{'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'}] # list[str or dict()] 
+
+# Create batch deployment version requests
+api_response = api_instance.batch_deployment_version_requests_create(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+ **data** | **list[str or dict()]** | 
+
+### Return type
+
+[**list[BatchDeploymentRequestCreateResponse]**](BatchDeploymentRequestCreateResponse.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_deployment_version_requests_delete**
+> batch_deployment_version_requests_delete(project_name, deployment_name, request_id, version)
+
+Delete batch deployment version requests
+
+
+### Description
+Delete a batch deployment request for a deployment version
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -567,8 +1091,106 @@ deployment_name = 'deployment_name_example' # str
 request_id = 'request_id_example' # str 
 version = 'version_example' # str 
 
-# Get batch deployment request
-api_response = api_instance.batch_deployment_requests_get(project_name, deployment_name, request_id, version)
+# Delete batch deployment version requests
+api_instance.batch_deployment_version_requests_delete(project_name, deployment_name, request_id, version)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **request_id** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 204
+
+[[Back to top]](#)
+
+# **batch_deployment_version_requests_get**
+> BatchDeploymentRequestSingleDetail batch_deployment_version_requests_get(project_name, deployment_name, request_id, version)
+
+Get batch deployment version request
+
+
+### Description
+Get a batch request for a deployment version. With this method, the result of a batch request may be retrieved.
+
+### Response Structure 
+A dictionary containing the details of the deployment request with the following fields:
+ - `id`: Unique identifier for the deployment request
+ - `version`: Name of the version the request was made to
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the deployment request was successful
+ - `time_created`: Server time that the request was made (current time)
+ - `time_started`: Server time that the processing of the request was started
+ - `time_completed`: Server time that the processing of the request was completed
+ - `request_data`: A dictionary containing the data that was sent when the request was created
+ - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
+ - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+
+#### Response Examples 
+```
+{
+  "id": "2f909aeb-5c7e-4974-970d-cd0a6a073aca",
+  "version": "v1",
+  "status": "pending",
+  "success": false,
+  "time_created": "2020-03-29T08:09:10.729+00:00",
+  "time_started": "2020-03-28T20:00:41.276+00:00",
+  "time_completed": "2020-03-28T20:00:42.241+00:00"
+  "request_data": {
+    "input": 82.3
+  },
+  "result": null,
+  "error_message": null
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+request_id = 'request_id_example' # str 
+version = 'version_example' # str 
+
+# Get batch deployment version request
+api_response = api_instance.batch_deployment_version_requests_get(project_name, deployment_name, request_id, version)
 print(api_response)
 
 # Close the connection
@@ -590,7 +1212,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -598,20 +1220,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **batch_deployment_requests_list**
-> list[BatchDeploymentRequestList] batch_deployment_requests_list(project_name, deployment_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
+[[Back to top]](#)
 
-List batch deployment requests
+# **batch_deployment_version_requests_list**
+> list[BatchDeploymentRequestList] batch_deployment_version_requests_list(project_name, deployment_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
+
+List batch deployment version requests
 
 
 ### Description
-List all requests for a version
+List all requests for a deployment version
 
 ### Optional Parameters
 The following parameters should be given as Query parameters: 
@@ -624,6 +1245,7 @@ The following parameters should be given as Query parameters:
 ### Response Structure 
 A list of dictionaries containing the details of the deployment requests with the following fields:
  - `id`: Unique identifier for the deployment request
+ - `version`: Name of the version the request was made to
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
  - `success`: A boolean value that indicates whether the deployment request was successful
  - `time_created`: Server time that the request was made (current time)
@@ -635,6 +1257,7 @@ A list of dictionaries containing the details of the deployment requests with th
 [
   {
     "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
     "status": "pending",
     "success": false,
     "time_created": "2020-03-28T20:00:26.613+00:00",
@@ -643,6 +1266,7 @@ A list of dictionaries containing the details of the deployment requests with th
   },
   {
     "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
     "status": "completed",
     "success": true,
     "time_created": "2020-03-28T20:00:26.613+00:00",
@@ -660,8 +1284,7 @@ A list of dictionaries containing the details of the deployment requests with th
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -680,8 +1303,8 @@ limit = 56 # int  (optional)
 offset = 56 # int  (optional)
 sort = 'sort_example' # str  (optional)
 
-# List batch deployment requests
-api_response = api_instance.batch_deployment_requests_list(project_name, deployment_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
+# List batch deployment version requests
+api_response = api_instance.batch_deployment_version_requests_list(project_name, deployment_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
 print(api_response)
 
 # Close the connection
@@ -707,7 +1330,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -715,11 +1338,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **batch_pipeline_requests_batch_delete**
 > object batch_pipeline_requests_batch_delete(project_name, pipeline_name, data)
@@ -728,10 +1350,10 @@ Delete multiple batch pipeline requests
 
 
 ### Description
-Delete multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 100 pipeline requests can be deleted with this method.
+Delete multiple batch pipeline requests for the default version of a pipeline. If one of the given batch pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 100 pipeline requests can be deleted with this method.
 
 ### Required Parameters 
-A list of ids for the batch requests
+A list of ids of the batch requests
 
 #### Request Examples 
 ```
@@ -746,8 +1368,7 @@ A list of ids for the batch requests
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -783,7 +1404,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -791,11 +1412,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **batch_pipeline_requests_batch_get**
 > list[BatchPipelineRequestDetail] batch_pipeline_requests_batch_get(project_name, pipeline_name, data)
@@ -804,10 +1424,10 @@ Retrieve multiple batch pipeline request results
 
 
 ### Description
-Retrieve multiple batch pipeline requests. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
+Retrieve multiple batch pipeline requests for the default version of a pipeline. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
 
 ### Required Parameters 
-A list of ids for the batch requests
+A list of ids of the batch requests
 
 #### Request Examples 
 ```
@@ -817,6 +1437,7 @@ A list of ids for the batch requests
 ### Response Structure 
 A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
  - `id`: Unique identifier for the pipeline request
+ - `version`: Name of the pipeline version for which the request was made
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
  - `success`: A boolean value that indicates whether the pipeline request was successful
  - `time_created`: Server time that the request was made (current time)
@@ -829,32 +1450,34 @@ A list of dictionaries containing the details of the retrieved pipeline requests
 #### Response Examples 
 ```
 [
-    {
-      "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
-      "status": "pending",
-      "success": false,
-      "time_created": "2020-063-28T20:00:26.613+00:00",
-      "time_started": "2020-03-28T20:00:41.276+00:00",
-      "time_completed": "2020-03-28T20:00:42.241+00:00"
-      "request_data": {
-        "input_field": 23.5
-      },
-      "deployment_requests": [],
-      "error_message": null
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-063-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+    "request_data": {
+      "input_field": 23.5
     },
-    {
-      "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
-      "status": "pending",
-      "success": false,
-      "time_created": "2020-063-28T20:00:26.613+00:00",
-      "time_started": "2020-03-28T20:00:41.276+00:00",
-      "time_completed": "2020-03-28T20:00:42.241+00:00"
-      "request_data": {
-        "input_field": 23.5
-      },
-      "deployment_requests": [],
+    "deployment_requests": [],
+    "error_message": null
+  },
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-063-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+    "request_data": {
+      "input_field": 23.5
+    },
+    "deployment_requests": [],
       "error_message": null
-    }
+  }
 ]
 ```
 
@@ -866,8 +1489,7 @@ A list of dictionaries containing the details of the retrieved pipeline requests
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -903,7 +1525,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -911,11 +1533,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **batch_pipeline_requests_create**
 > list[BatchPipelineRequestCreateResponse] batch_pipeline_requests_create(project_name, pipeline_name, data)
@@ -924,7 +1545,7 @@ Create batch pipeline requests
 
 
 ### Description
-Request multiple predictions from a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.
+Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.
 
 The maximum number of requests that can be created per batch is 100.
 
@@ -933,6 +1554,7 @@ In case of structured input pipeline: A list of dictionaries, where each diction
 In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.
 
 #### Request Examples 
+Multiple structured batch pipeline requests
 ```
 [
   {
@@ -948,9 +1570,17 @@ In case of plain input pipeline: A list of strings. It is also possible to send 
 ]
 ```
 
+Multiple plain batch pipeline requests
+```
+[
+  "plain-data-goes-here", "plain-example-data"
+]
+```
+
 ### Response Structure 
 A list of dictionaries containing the details of the created pipeline requests with the following fields:
  - `id`: Unique identifier for the pipeline request, which can be used to collect the result
+ - `version`: Name of the pipeline version for which the request is made
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
  - `time_created`: Server time that the request was made (current time)
  
@@ -960,11 +1590,13 @@ A list of dictionaries containing the details of the created pipeline requests w
 [
   {
     "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
     "status": "pending",
     "time_created": "2020-03-28T20:00:26.613+00:00"
   },
   {
     "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
     "status": "pending",
     "time_created": "2020-03-28T20:00:26.613+00:00"
   }
@@ -979,8 +1611,7 @@ A list of dictionaries containing the details of the created pipeline requests w
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1016,7 +1647,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1024,20 +1655,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **batch_pipeline_requests_delete**
-> batch_pipeline_requests_delete(project_name, pipeline_name, pipeline_request_id)
+> batch_pipeline_requests_delete(project_name, pipeline_name, request_id)
 
 Delete batch pipeline requests
 
 
 ### Description
-Delete a batch pipeline request. This action cancels all the deployment requests in the pipeline.
+Delete a batch request for the default version of a pipeline. This action cancels all the deployment requests in the pipeline.
 
 
 ### Example
@@ -1047,8 +1677,7 @@ Delete a batch pipeline request. This action cancels all the deployment requests
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1060,10 +1689,10 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
-pipeline_request_id = 'pipeline_request_id_example' # str 
+request_id = 'request_id_example' # str 
 
 # Delete batch pipeline requests
-api_instance.batch_pipeline_requests_delete(project_name, pipeline_name, pipeline_request_id)
+api_instance.batch_pipeline_requests_delete(project_name, pipeline_name, request_id)
 
 # Close the connection
 api_client.close()
@@ -1075,7 +1704,7 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
- **pipeline_request_id** | **str** | 
+ **request_id** | **str** | 
 
 ### Return type
 
@@ -1083,7 +1712,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1091,24 +1720,24 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **batch_pipeline_requests_get**
-> BatchPipelineRequestSingleDetail batch_pipeline_requests_get(project_name, pipeline_name, pipeline_request_id)
+> BatchPipelineRequestSingleDetail batch_pipeline_requests_get(project_name, pipeline_name, request_id)
 
 Get batch pipeline request
 
 
 ### Description
-Get a batch request for a pipeline. With this method, the result of the batch request may be retrieved.
+Get a batch request for the default version of a pipeline. With this method, the result of the batch request may be retrieved.
 
 ### Response Structure 
 A dictionary containing the details of the pipeline request with the following fields:
  - `id`: Unique identifier for the pipeline request
+ - `version`: Name of the pipeline version for which the request was made
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
  - `success`: A boolean value that indicates whether the pipeline request was successful
  - `time_created`: Server time that the request was made (current time)
@@ -1123,6 +1752,7 @@ A dictionary containing the details of the pipeline request with the following f
 ```
 {
   "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+  "version": "v1",
   "status": "pending",
   "success": true,
   "time_created": "2020-03-28T20:00:26.613+00:00",
@@ -1145,8 +1775,7 @@ A dictionary containing the details of the pipeline request with the following f
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1158,10 +1787,10 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
-pipeline_request_id = 'pipeline_request_id_example' # str 
+request_id = 'request_id_example' # str 
 
 # Get batch pipeline request
-api_response = api_instance.batch_pipeline_requests_get(project_name, pipeline_name, pipeline_request_id)
+api_response = api_instance.batch_pipeline_requests_get(project_name, pipeline_name, request_id)
 print(api_response)
 
 # Close the connection
@@ -1174,7 +1803,7 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
- **pipeline_request_id** | **str** | 
+ **request_id** | **str** | 
 
 ### Return type
 
@@ -1182,7 +1811,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1190,11 +1819,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **batch_pipeline_requests_list**
 > list[BatchPipelineRequestList] batch_pipeline_requests_list(project_name, pipeline_name, status=status, success=success, limit=limit, offset=offset, sort=sort)
@@ -1203,7 +1831,7 @@ List batch pipeline requests
 
 
 ### Description
-List all requests for a pipeline
+List all requests for the default version of a pipeline
 
 ### Optional Parameters
 The following parameters should be given as query parameters: 
@@ -1216,6 +1844,7 @@ The following parameters should be given as query parameters:
 ### Response Structure 
 A list of dictionaries containing the details of the pipeline requests with the following fields:
  - `id`: Unique identifier for the pipeline request
+ - `version`: Name of the pipeline version for which the request was made
  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
  - `success`: A boolean value that indicates whether the pipeline request was successful
  - `time_created`: Server time that the request was made (current time)
@@ -1227,6 +1856,7 @@ A list of dictionaries containing the details of the pipeline requests with the 
 [
   {
     "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
     "status": "pending",
     "success": false,
     "time_created": "2020-03-28T20:00:26.613+00:00",
@@ -1235,6 +1865,7 @@ A list of dictionaries containing the details of the pipeline requests with the 
   },
   {
     "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
     "status": "completed",
     "success": true,
     "time_created": "2020-03-28T20:00:26.613+00:00",
@@ -1252,8 +1883,7 @@ A list of dictionaries containing the details of the pipeline requests with the 
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1297,7 +1927,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1305,11 +1935,619 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_pipeline_version_requests_batch_delete**
+> object batch_pipeline_version_requests_batch_delete(project_name, pipeline_name, version, data)
+
+Delete multiple batch pipeline version requests
+
+
+### Description
+Delete multiple batch requests for a pipeline version. If one of the given batch pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 100 pipeline requests can be deleted with this method.
+
+### Required Parameters 
+A list of ids of the batch requests
+
+#### Request Examples 
+```
+["2521378e-263e-4e2e-85e9-a96254b36536", "69eca481-8576-49e8-8e20-ea56f2005bcb"]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
+data = ['request_id_1', 'request_id_2'] # list[str] 
+
+# Delete multiple batch pipeline version requests
+api_response = api_instance.batch_pipeline_version_requests_batch_delete(project_name, pipeline_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **version** | **str** | 
+ **data** | **list[str]** | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 201
+
+[[Back to top]](#)
+
+# **batch_pipeline_version_requests_batch_get**
+> list[BatchPipelineRequestDetail] batch_pipeline_version_requests_batch_get(project_name, pipeline_name, version, data)
+
+Retrieve multiple batch pipeline version request results
+
+
+### Description
+Retrieve multiple batch requests for a pipeline version. If one of the given batch pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline version requests can be retrieved with this method. The pipeline version requests are NOT returned in the order they are given in.
+
+### Required Parameters 
+A list of ids of the batch requests
+
+#### Request Examples 
+```
+["2521378e-263e-4e2e-85e9-a96254b36536", "69eca481-8576-49e8-8e20-ea56f2005bcb"]
+```
+
+### Response Structure 
+A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
+ - `id`: Unique identifier for the pipeline request
+ - `version`: Name of the pipeline version for which the request was made
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline request was successful
+ - `time_created`: Server time that the request was made (current time)
+ - `time_started`: Server time that the processing of the request was started
+ - `time_completed`: Server time that the processing of the request was completed
+ - `request_data`: A dictionary containing the data that was sent when the request was created
+ - `deployment_requests`: A list of requests to the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.
+ - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+
+#### Response Examples 
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-063-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+    "request_data": {
+      "input_field": 23.5
+    },
+    "deployment_requests": [],
+    "error_message": null
+  },
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-063-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+    "request_data": {
+      "input_field": 23.5
+    },
+    "deployment_requests": [],
+      "error_message": null
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
+data = ['request_id_1', 'request_id_2'] # list[str] 
+
+# Retrieve multiple batch pipeline version request results
+api_response = api_instance.batch_pipeline_version_requests_batch_get(project_name, pipeline_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **version** | **str** | 
+ **data** | **list[str]** | 
+
+### Return type
+
+[**list[BatchPipelineRequestDetail]**](BatchPipelineRequestDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_pipeline_version_requests_create**
+> list[BatchPipelineRequestCreateResponse] batch_pipeline_version_requests_create(project_name, pipeline_name, version, data)
+
+Create batch pipeline version requests
+
+
+### Description
+Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.
+
+The maximum number of requests that can be created per batch is 100.
+
+### Required Parameters 
+In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
+In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.
+
+#### Request Examples 
+Multiple structured batch pipeline requests
+```
+[
+  {
+    "pipeline-input-field-1": 5.0,
+    "pipeline-input-field-2": "N",
+    "pipeline-input-field-3": [0.25, 0.25, 2.1, 16.3]
+  },
+  {
+    "pipeline-input-field-1": 3.0,
+    "pipeline-input-field-2": "S",
+    "pipeline-input-field-3": [4.23, 3.27, 2.41, 12.4]
+  }
+]
+```
+
+Multiple plain batch pipeline requests
+```
+[
+  "plain-data-goes-here", "plain-example-data"
+]
+```
+
+### Response Structure 
+A list of dictionaries containing the details of the created pipeline version requests with the following fields:
+ - `id`: Unique identifier for the pipeline version request, which can be used to collect the result
+ - `version`: Name of the pipeline version for which the request is made
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `time_created`: Server time that the request was made (current time)
+ 
+
+#### Response Examples 
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "time_created": "2020-03-28T20:00:26.613+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
+    "status": "pending",
+    "time_created": "2020-03-28T20:00:26.613+00:00"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
+data = [{'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'}] # list[str or dict()] 
+
+# Create batch pipeline version requests
+api_response = api_instance.batch_pipeline_version_requests_create(project_name, pipeline_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **version** | **str** | 
+ **data** | **list[str or dict()]** | 
+
+### Return type
+
+[**list[BatchPipelineRequestCreateResponse]**](BatchPipelineRequestCreateResponse.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_pipeline_version_requests_delete**
+> batch_pipeline_version_requests_delete(project_name, pipeline_name, request_id, version)
+
+Delete batch pipeline version requests
+
+
+### Description
+Delete a batch request for a pipeline version. This action cancels all the deployment requests in the pipeline.
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+request_id = 'request_id_example' # str 
+version = 'version_example' # str 
+
+# Delete batch pipeline version requests
+api_instance.batch_pipeline_version_requests_delete(project_name, pipeline_name, request_id, version)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **request_id** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 204
+
+[[Back to top]](#)
+
+# **batch_pipeline_version_requests_get**
+> BatchPipelineRequestSingleDetail batch_pipeline_version_requests_get(project_name, pipeline_name, request_id, version)
+
+Get batch pipeline version request
+
+
+### Description
+Get a batch request for a pipeline version. With this method, the result of the batch request may be retrieved.
+
+### Response Structure 
+A dictionary containing the details of the pipeline version request with the following fields:
+ - `id`: Unique identifier for the pipeline version request
+ - `version`: Name of the pipeline version for which the request was made
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline version request was successful
+ - `time_created`: Server time that the request was made (current time)
+ - `time_started`: Server time that the processing of the request was started
+ - `time_completed`: Server time that the processing of the request was completed
+ - `request_data`: A dictionary containing the data that was sent when the request was created
+ - `deployment_requests`: A list of requests of the deployments in the pipeline. This field is empty when the request is initialized and is updated when all the deployment requests in the pipeline are completed.
+ - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+ - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+
+#### Response Examples 
+```
+{
+  "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+  "version": "v1",
+  "status": "pending",
+  "success": true,
+  "time_created": "2020-03-28T20:00:26.613+00:00",
+  "time_started": "2020-03-28T20:00:41.276+00:00",
+  "time_completed": "2020-03-28T20:00:42.241+00:00"
+  "request_data": {
+    "input_field": 23.5
+  },
+  "deployment_requests": [],
+  "error_message": null,
+  "created_by": "my.example.user@ubiops.com"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+request_id = 'request_id_example' # str 
+version = 'version_example' # str 
+
+# Get batch pipeline version request
+api_response = api_instance.batch_pipeline_version_requests_get(project_name, pipeline_name, request_id, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **request_id** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+[**BatchPipelineRequestSingleDetail**](BatchPipelineRequestSingleDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **batch_pipeline_version_requests_list**
+> list[BatchPipelineRequestList] batch_pipeline_version_requests_list(project_name, pipeline_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
+
+List batch pipeline version requests
+
+
+### Description
+List all batch requests for a pipeline version
+
+### Optional Parameters
+The following parameters should be given as query parameters: 
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+- `success`: A boolean value that indicates whether the pipeline version request was successful
+- `limit`: The maximum number of requests given back, default is 50
+- `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
+- `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
+
+### Response Structure 
+A list of dictionaries containing the details of the pipeline version requests with the following fields:
+ - `id`: Unique identifier for the pipeline version request
+ - `version`: Name of the pipeline version for which the request was made
+ - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+ - `success`: A boolean value that indicates whether the pipeline version request was successful
+ - `time_created`: Server time that the request was made (current time)
+ - `time_started`: Server time that the processing of the request was started
+ - `time_completed`: Server time that the processing of the request was completed
+
+#### Response Examples 
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "version": "v1",
+    "status": "completed",
+    "success": true,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
+status = 'status_example' # str  (optional)
+success = True # bool  (optional)
+limit = 56 # int  (optional)
+offset = 56 # int  (optional)
+sort = 'sort_example' # str  (optional)
+
+# List batch pipeline version requests
+api_response = api_instance.batch_pipeline_version_requests_list(project_name, pipeline_name, version, status=status, success=success, limit=limit, offset=offset, sort=sort)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **version** | **str** | 
+ **status** | **str** | [optional] 
+ **success** | **bool** | [optional] 
+ **limit** | **int** | [optional] 
+ **offset** | **int** | [optional] 
+ **sort** | **str** | [optional] 
+
+### Return type
+
+[**list[BatchPipelineRequestList]**](BatchPipelineRequestList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **blobs_create**
 > BlobList blobs_create(project_name, file, blob_ttl=blob_ttl)
@@ -1330,6 +2568,7 @@ These parameters should be given in the header.
 The details of the uploaded blob
 - `id`: Unique identifier for the blob (UUID)
 - `creation_date`: Time the blob was created
+- `last_updated`: Time the blob was last updated
 - `filename`: Original filename of the blob
 - `size`: Size of the uploaded blob in bytes
 - `ttl`: Time to live of the blob in seconds
@@ -1339,6 +2578,7 @@ The details of the uploaded blob
 {
   "id": "b58fb853-9311-4583-9688-abed61830abc",
   "creation_date": "2020-05-18T11:26:57.904+00:00",
+  "last_updated": "2020-05-18T11:26:57.904+00:00",
   "filename": "original-filename.jpg",
   "size": 3439,
   "ttl": 259200
@@ -1353,8 +2593,7 @@ The details of the uploaded blob
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1390,7 +2629,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1398,11 +2637,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **blobs_delete**
 > blobs_delete(project_name, blob_id)
@@ -1421,8 +2659,7 @@ Delete a blob from a project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1455,7 +2692,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1463,11 +2700,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **blobs_get**
 > file blobs_get(project_name, blob_id)
@@ -1489,8 +2725,7 @@ Download a blob file in a project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1525,7 +2760,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1533,11 +2768,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **blobs_list**
 > list[BlobList] blobs_list(project_name, range=range, creation_date=creation_date)
@@ -1557,6 +2791,7 @@ These parameters should be given as GET parameters.
 A list of details of the blobs in the project
  - `id`: Unique identifier for the blob (UUID)
  - `creation_date`: Time the blob was created
+ - `last_updated`: Time the blob was last updated
  - `filename`: Original filename of the blob
  - `size`: Size of the uploaded blob in bytes
  - `ttl`: Time to live of the blob in seconds
@@ -1566,14 +2801,16 @@ A list of details of the blobs in the project
 [
   {
     "id": "ecb39626-2a14-4224-a57a-592a51567e17",
-    "creation_date": "2020-05-13T14:39:50.149+00:00",
+    "creation_date": "2020-05-18T11:26:57.904+00:00",
+    "last_updated": "2020-05-18T11:26:57.904+00:00",
     "filename": "original-filename.jpg",
     "size": 562,
     "ttl": 12338
   },
   {
     "id": "f629a052-a827-44d9-97cf-3902504edc79",
-    "creation_date": "2020-05-18T08:35:18.796+00:00",
+    "creation_date": "2020-05-18T11:26:57.904+00:00",
+    "last_updated": "2020-05-18T11:26:57.904+00:00",
     "filename": "original-filename2.jpg",
     "size": 3439,
     "ttl": 259200
@@ -1589,8 +2826,7 @@ A list of details of the blobs in the project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1626,7 +2862,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1634,11 +2870,105 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **blobs_update**
+> BlobList blobs_update(project_name, blob_id, file, blob_ttl=blob_ttl)
+
+Update a blob
+
+
+### Description 
+Overwrite a blob with given blob id
+
+The uploaded blob file can be retrieved by passing the blob_id as well. 
+
+### Optional Parameters 
+These parameters should be given in the header.
+- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 259200 seconds (or 72 hours), the minimum value is 900 seconds and the maximum value is 259200 seconds. 
+
+### Response Structure 
+The details of the uploaded blob
+- `id`: Unique identifier for the blob (UUID)
+- `creation_date`: Time the blob was created
+- `last_updated`: Time the blob was last updated
+- `filename`: Original filename of the blob
+- `size`: Size of the uploaded blob in bytes
+- `ttl`: Time to live of the blob in seconds
+
+#### Response Examples
+```
+{
+  "id": "b58fb853-9311-4583-9688-abed61830abc",
+  "creation_date": "2020-05-18T11:26:57.904+00:00",
+  "last_updated": "2020-05-18T11:26:57.904+00:00",
+  "filename": "original-filename.jpg",
+  "size": 3439,
+  "ttl": 259200
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+blob_id = 'blob_id_example' # str 
+file = '/path/to/file' # file 
+blob_ttl = 56 # int  (optional)
+
+# Update a blob
+api_response = api_instance.blobs_update(project_name, blob_id, file, blob_ttl=blob_ttl)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **blob_id** | **str** | 
+ **file** | **file** | 
+ **blob_ttl** | **int** | [optional] 
+
+### Return type
+
+[**BlobList**](BlobList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **builds_get**
 > BuildList builds_get(project_name, build_id, deployment_name, version)
@@ -1678,8 +3008,7 @@ A dictionary containing details of the build
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1717,7 +3046,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1725,11 +3054,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **builds_list**
 > list[BuildList] builds_list(project_name, deployment_name, version)
@@ -1779,8 +3107,7 @@ A list of details of the builds
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1816,7 +3143,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1824,11 +3151,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployment_audit_events_list**
 > list[AuditList] deployment_audit_events_list(project_name, deployment_name, action=action, limit=limit, offset=offset)
@@ -1887,8 +3213,7 @@ A list of details of the audit events for a deployment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -1928,7 +3253,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -1936,11 +3261,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployment_environment_variables_copy**
 > list[InheritedEnvironmentVariableList] deployment_environment_variables_copy(project_name, deployment_name, data)
@@ -1955,7 +3279,7 @@ Copy existing environment variables from a source object to the deployment. Vari
 - `source_deployment`: The name of the deployment from which the variables will be copied
 
 ### Optional Parameters
-- `source_version`: The version of the object from which the variables will be copied
+- `source_version`: The version of the deployment from which the variables will be copied
 
 #### Request Examples
 Copy the environment variables from a deployment
@@ -2020,8 +3344,7 @@ A list of the copied variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2057,7 +3380,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2065,11 +3388,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **deployment_environment_variables_create**
 > EnvironmentVariableList deployment_environment_variables_create(project_name, deployment_name, data)
@@ -2119,8 +3441,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2156,7 +3477,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2164,11 +3485,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **deployment_environment_variables_delete**
 > deployment_environment_variables_delete(project_name, deployment_name, id)
@@ -2187,8 +3507,7 @@ Delete an environment variable of the deployment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2223,7 +3542,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2231,11 +3550,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **deployment_environment_variables_get**
 > EnvironmentVariableList deployment_environment_variables_get(project_name, deployment_name, id)
@@ -2273,8 +3591,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2310,7 +3627,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2318,11 +3635,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployment_environment_variables_list**
 > list[InheritedEnvironmentVariableList] deployment_environment_variables_list(project_name, deployment_name)
@@ -2372,8 +3688,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2407,7 +3722,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2415,11 +3730,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployment_environment_variables_update**
 > EnvironmentVariableList deployment_environment_variables_update(project_name, deployment_name, id, data)
@@ -2469,8 +3783,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2508,7 +3821,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2516,30 +3829,30 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployment_requests_create**
-> DeploymentRequestList deployment_requests_create(project_name, deployment_name, version, data, timeout=timeout)
+> DeploymentRequestList deployment_requests_create(project_name, deployment_name, data, timeout=timeout)
 
 Create deployment requests
 
 
 ### Description 
-Request a prediction from a deployment. Deployment requests are made for a specific version of a deployment. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
-In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
+Request a prediction from a deployment. Deployment requests are made for the default version of a deployment.
+In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
 
 ### Required Parameters
-A dictionary which contains the input fields of the deployment as keys
+The input for the request. In case of a structured deployment, this is a dictionary which contains the input fields of the deployment as keys. In case of a plain deployment, give a string or list of strings.
 
 ### Optional Parameters
 These parameters should be given as GET parameters
 - `timeout`: Timeout for the deployment request in seconds. The maximum allowed value is 3600 and the default value is 300.
 
 #### Request Examples
+A structured deployment request
 ```
 {
   "input-field-1": 5.0,
@@ -2548,6 +3861,7 @@ These parameters should be given as GET parameters
 }
 ```
 
+A structured deployment request with a blob field
 ```
 {
   "input-field-1": 5.0,
@@ -2555,9 +3869,14 @@ These parameters should be given as GET parameters
 }
 ```
 
+A plain deployment request
+```
+"example-plain-data"
+```
+
 ### Response Structure 
 Details of the created deployment request
-- `request_id`: Unique identifier for the deployment request
+- `version`: Name of the version the request was made to
 - `success`: A boolean value that indicates whether the deployment request was successful
 - `result`: Deployment request result value. NULL if the request failed.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
@@ -2566,7 +3885,7 @@ Details of the created deployment request
 A failed deployment request
 ```
 {
-  "request_id": "edcf07b5-ae15-46e6-ba29-daeed53eaa61",
+  "version": "v1",
   "success": false,
   "result": None,
   "error_message": "Asset ID not supported"
@@ -2576,7 +3895,7 @@ A failed deployment request
 A successful deployment request
 ```
 {
-  "request_id": "b98a6d68-3173-409a-9e6e-a56804045a9c",
+  "version": "v2",
   "success": true,
   "result": {
     "output-field-1": "2.1369",
@@ -2594,8 +3913,725 @@ A successful deployment request
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+data = {'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'} # str or dict() 
+timeout = 56 # int  (optional)
+
+# Create deployment requests
+api_response = api_instance.deployment_requests_create(project_name, deployment_name, data, timeout=timeout)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **data** | **str or dict()** | 
+ **timeout** | **int** | [optional] 
+
+### Return type
+
+[**DeploymentRequestList**](DeploymentRequestList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **deployment_version_environment_variables_copy**
+> list[InheritedEnvironmentVariableList] deployment_version_environment_variables_copy(project_name, deployment_name, version, data)
+
+Copy deployment version environment variable
+
+
+### Description
+Copy existing environment variables from a source object to the deployment version. Variables of the deployment version with the same name as ones from the source object will be overwritten with the new value. Only the copied variables are returned.
+
+### Required Parameters
+- `source_deployment`: The name of the deployment from which the variables will be copied
+
+### Optional Parameters
+- `source_version`: The version of the deployment from which the variables will be copied
+
+#### Request Examples
+Copy the environment variables from a deployment
+```
+{
+  "source_deployment": "example-deployment"
+}
+```
+
+Copy the environment variables from a deployment version
+```
+{
+  "source_deployment": "example-deployment",
+  "source_version": "v1"
+}
+```
+
+### Response Structure 
+A list of the copied variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+- `inheritance_type`: Type of parent object that this variable is inherited from. Will be null for copied environment variables.
+- `inheritance_name`: Name of the parent object that this variable is inherited from. Will be null for copied environment variables.
+
+#### Response Examples 
+```
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "version_specific_variable",
+    "value": "some_value",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
+    "name": "database_password",
+    "value": null,
+    "secret": true,
+    "inheritance_type": null,
+    "inheritance_name": null
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+data = ubiops.EnvironmentVariableCopy() # EnvironmentVariableCopy 
+
+# Copy deployment version environment variable
+api_response = api_instance.deployment_version_environment_variables_copy(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+ **data** | [**EnvironmentVariableCopy**](EnvironmentVariableCopy.md) | 
+
+### Return type
+
+[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 201
+
+[[Back to top]](#)
+
+# **deployment_version_environment_variables_create**
+> EnvironmentVariableList deployment_version_environment_variables_create(project_name, deployment_name, version, data)
+
+Create deployment version environment variable
+
+
+### Description
+Create an environment variable for the deployment version. Variables inherited from the project or deployment can be shadowed by creating a variable with the same name.
+
+### Required Parameters
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
+- `value`: The value of the variable as a string. It may be an empty string ("").
+- `secret`: If this variable contains sensitive information, set this to true to hide it from other users.
+
+#### Request Examples
+```
+{
+  "name": "deployment_version_variable",
+  "value": "another one",
+  "secret": false
+}
+```
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+{
+  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
+  "name": "deployment_version_variable",
+  "value": "another one",
+  "secret": false
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate 
+
+# Create deployment version environment variable
+api_response = api_instance.deployment_version_environment_variables_create(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+ **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md) | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 201
+
+[[Back to top]](#)
+
+# **deployment_version_environment_variables_delete**
+> deployment_version_environment_variables_delete(project_name, deployment_name, id, version)
+
+Delete deployment version environment variable
+
+
+### Description
+Delete an environment variable of a deployment version
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+id = 'id_example' # str 
+version = 'version_example' # str 
+
+# Delete deployment version environment variable
+api_instance.deployment_version_environment_variables_delete(project_name, deployment_name, id, version)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **id** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 204
+
+[[Back to top]](#)
+
+# **deployment_version_environment_variables_get**
+> EnvironmentVariableList deployment_version_environment_variables_get(project_name, deployment_name, id, version)
+
+Get deployment version environment variable
+
+
+### Description
+Retrieve details of a deployment version environment variable. This cannot be used to retrieve details of inherited variables.
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+[
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+id = 'id_example' # str 
+version = 'version_example' # str 
+
+# Get deployment version environment variable
+api_response = api_instance.deployment_version_environment_variables_get(project_name, deployment_name, id, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **id** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **deployment_version_environment_variables_list**
+> list[InheritedEnvironmentVariableList] deployment_version_environment_variables_list(project_name, deployment_name, version)
+
+List deployment version environment variables
+
+
+### Description
+List the environment variables defined for the deployment version. Includes environment variables defined at project level and deployment level.
+ 
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project`, `deployment`, or null if the variable was defined for the version directly
+- `inheritance_name`: Name of the parent object that this variable is inherited from - will be null if the variable was defined for the version directly
+
+#### Response Examples 
+```
+[
+  {
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "name": "deployment_version_specific_variable",
+    "value": "some_value",
+    "secret": false,
+    "inheritance_type": null,
+    "inheritance_name": null
+  },
+  {
+    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
+    "name": "database_schema",
+    "value": "public",
+    "secret": false,
+    "inheritance_type": "deployment",
+    "inheritance_name": "deployment_name"
+  },
+  {
+    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
+    "name": "database_password",
+    "value": null,
+    "secret": true,
+    "inheritance_type": "project",
+    "inheritance_name": "project_name"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+
+# List deployment version environment variables
+api_response = api_instance.deployment_version_environment_variables_list(project_name, deployment_name, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **deployment_version_environment_variables_update**
+> EnvironmentVariableList deployment_version_environment_variables_update(project_name, deployment_name, id, version, data)
+
+Update deployment version environment variable
+
+
+### Description
+Update an environment variable for the deployment version. This cannot be used to update inherited variables; to change an inherited variable for a specific version you can create a variable with the same name for the deployment version.
+
+### Required Parameters
+- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
+- `value`: The value of the variable as a string. It may be an empty string ("").
+- `secret`: If this variable contains sensitive information, set this to true to hide it from other users. Can be updated from false to true, but not from true to false (i.e. secrets will stay secrets).
+
+#### Request Examples
+```
+{
+  "name": "deployment_version_variable",
+  "value": "yet another one",
+  "secret": false
+}
+```
+
+### Response Structure 
+A list of variables described by the following fields:
+- `id`: Unique identifier for the environment variable
+- `name`: Variable name
+- `value`: Variable value (will be null for secret variables)
+- `secret`: Boolean that indicates if this variable contains sensitive information
+
+#### Response Examples 
+```
+{
+  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
+  "name": "deployment_version_variable",
+  "value": "yet another one",
+  "secret": false
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+id = 'id_example' # str 
+version = 'version_example' # str 
+data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate 
+
+# Update deployment version environment variable
+api_response = api_instance.deployment_version_environment_variables_update(project_name, deployment_name, id, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **id** | **str** | 
+ **version** | **str** | 
+ **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md) | 
+
+### Return type
+
+[**EnvironmentVariableList**](EnvironmentVariableList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **deployment_version_requests_create**
+> DeploymentRequestList deployment_version_requests_create(project_name, deployment_name, version, data, timeout=timeout)
+
+Create deployment version requests
+
+
+### Description 
+Request a prediction from a deployment version. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
+In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
+
+### Required Parameters
+The input for the request. In case of a structured deployment, this is a dictionary which contains the input fields of the deployment as keys. In case of a plain deployment, give a string or list of strings.
+
+### Optional Parameters
+These parameters should be given as GET parameters
+- `timeout`: Timeout for the deployment request in seconds. The maximum allowed value is 3600 and the default value is 300.
+
+#### Request Examples
+A structured deployment request
+```
+{
+  "input-field-1": 5.0,
+  "input-field-2": "N",
+  "input-field-3": [0.25, 0.25, 2.1, 16.3]
+}
+```
+
+A structured deployment request with a blob field
+```
+{
+  "input-field-1": 5.0,
+  "blob-input-field": "f52ff875-4980-4d71-9798-a469ef8cece2"
+}
+```
+
+A plain deployment request
+```
+"example-plain-data"
+```
+
+### Response Structure 
+Details of the created deployment request
+- `version`: Name of the version the request was made to
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `result`: Deployment request result value. NULL if the request failed.
+- `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+
+#### Response Examples
+A failed deployment request
+```
+{
+  "version": "v1",
+  "success": false,
+  "result": None,
+  "error_message": "Asset ID not supported"
+}
+```
+
+A successful deployment request
+```
+{
+  "version": "v2",
+  "success": true,
+  "result": {
+    "output-field-1": "2.1369",
+    "output-field-2": "5.5832",
+  },
+  "error_message": None
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2611,8 +4647,8 @@ version = 'version_example' # str
 data = {'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'} # str or dict() 
 timeout = 56 # int  (optional)
 
-# Create deployment requests
-api_response = api_instance.deployment_requests_create(project_name, deployment_name, version, data, timeout=timeout)
+# Create deployment version requests
+api_response = api_instance.deployment_version_requests_create(project_name, deployment_name, version, data, timeout=timeout)
 print(api_response)
 
 # Close the connection
@@ -2635,7 +4671,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2643,16 +4679,603 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **deployment_versions_create**
+> DeploymentVersionList deployment_versions_create(project_name, deployment_name, data)
+
+Create deployment versions
+
+
+### Description 
+Create a version for a deployment. The first version of a deployment is set as default.
+
+### Required Parameters 
+- `version`: Name of the version of the deployment
+
+### Optional Parameters 
+- `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7, python3.8 or r4.0. The default value is python3.7.
+- `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively.
+- `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
+- `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer. 
+
+- `description`: Description for the version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
+If the time that a request takes does not matter, keep the default values.
+
+#### Request Examples 
+```
+{
+  "version": "version-1",
+  "language": "python3.8"
+}
+```
+ 
+```
+{
+  "version": "version-1",
+  "language": "r4.0",
+  "memory_allocation": 512
+}
+```
+ 
+```
+{
+  "version": "version-1",
+  "maximum_instances": 4,
+  "minimum_instances": 1
+}
+```
+
+### Response Structure 
+Details of the created version
+- `id`: Unique identifier for the deployment (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `description`: Description of the version
+- `language`: Language in which the version is provided
+- `status`: The status of the version
+- `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
+- `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
+- `memory_allocation`: Reserved memory for the version in MB  
+- `maximum_instances`: Upper bound of number of versions running
+- `minimum_instances`: Lower bound of number of versions running
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+
+#### Response Examples 
+```
+{
+  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+  "deployment": "deployment-1",
+  "version": "version-1",
+  "description": "",
+  "language": "python3.8",
+  "status": "unavailable",
+  "active_revision": null,
+  "latest_build": null,
+  "memory_allocation": 512,
+  "maximum_instances": 5,
+  "minimum_instances": 0,
+  "maximum_idle_time": 10,
+  "labels": {
+    "type": "version"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-05-12T16:23:15.456812Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+data = ubiops.DeploymentVersionCreate() # DeploymentVersionCreate 
+
+# Create deployment versions
+api_response = api_instance.deployment_versions_create(project_name, deployment_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **data** | [**DeploymentVersionCreate**](DeploymentVersionCreate.md) | 
+
+### Return type
+
+[**DeploymentVersionList**](DeploymentVersionList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 201
+
+[[Back to top]](#)
+
+# **deployment_versions_delete**
+> deployment_versions_delete(project_name, deployment_name, version)
+
+Delete deployment version
+
+ 
+### Description 
+Delete a deployment version. The version cannot be deleted if:
+- It is referenced in a pipeline, it must be removed from the pipeline first.
+- It is the default version of its deployment and is referenced in a request schedule.
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+
+# Delete deployment version
+api_instance.deployment_versions_delete(project_name, deployment_name, version)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 204
+
+[[Back to top]](#)
+
+# **deployment_versions_get**
+> DeploymentVersionDetail deployment_versions_get(project_name, deployment_name, version)
+
+Get deployment version
+
+
+### Description 
+Retrieve details of a version of a deployment in a project
+
+### Response Structure 
+Details of a version
+- `id`: Unique identifier for the version (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `description`: Description of the version
+- `language`: Language in which the version is provided
+- `status`: The status of the version
+- `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
+- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+- `memory_allocation`: Reserved memory for the version in MB 
+- `maximum_instances`: Upper bound of number of deployment pods running in parallel
+- `minimum_instances`: Lower bound of number of deployment pods running in parallel
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+- `last_file_upload`: The date when a deployment file was last uploaded for the version
+
+#### Response Examples
+```
+{
+  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+  "deployment": "deployment-1",
+  "version": "version-1",
+  "description": "",
+  "language": "python3.7",
+  "status": "available",
+  "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
+  "latest_build": "9f7fd6ec-53b7-41c6-949e-09efc2ee2d31",
+  "memory_allocation": 512,
+  "maximum_instances": 4,
+  "minimum_instances": 1,
+  "maximum_idle_time": 10,
+  "labels": {
+    "type": "version"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "last_file_uploaded": "2020-06-21T09:03:01.875391Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+
+# Get deployment version
+api_response = api_instance.deployment_versions_get(project_name, deployment_name, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+[**DeploymentVersionDetail**](DeploymentVersionDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **deployment_versions_list**
+> list[DeploymentVersionList] deployment_versions_list(project_name, deployment_name, labels=labels)
+
+List deployment versions
+
+
+### Description 
+Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.
+
+### Optional Parameters
+- `labels`: Filter on labels of the version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.
+
+### Response Structure 
+A list of details of the versions
+- `id`: Unique identifier for the deployment (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `description`: Description of the version
+- `language`: Language in which the version is provided
+- `status`: The status of the version
+- `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
+- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+- `memory_allocation`: Reserved memory usage for the version in MB
+- `maximum_instances`: Upper bound of number of versions running
+- `minimum_instances`: Lower bound of number of versions running
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+
+#### Response Examples
+```
+[
+  {
+    "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+    "deployment": "deployment-1",
+    "version": "version-1",
+    "description": "",
+    "language": "python3.8",
+    "status": "available",
+    "active_revision": "da27ef7c-aa3f-4963-a815-6ebf1865638e",
+    "latest_build": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
+    "memory_allocation": 512,
+    "maximum_instances": 4,
+    "minimum_instances": 1,
+    "maximum_idle_time": 10,
+    "labels": {
+      "type": "version"
+    },
+    "creation_date": "2020-06-18T08:32:14.876451Z",
+    "last_updated": "2020-06-19T10:52:23.124784Z"
+  },
+  {
+    "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
+    "deployment": "deployment-1",
+    "version": "version-2",
+    "description": "",
+    "language": "r4.0",
+    "status": "available",
+    "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
+    "latest_build": "4534e479-ea2e-4161-876a-1d382191a031",
+    "memory_allocation": 256,
+    "maximum_instances": 5,
+    "minimum_instances": 0,
+    "maximum_idle_time": 10,
+    "labels": {
+      "type": "version"
+    },
+    "creation_date": "2020-05-12T16:23:15.456812Z",
+    "last_updated": "2020-06-22T18:04:76.123754Z"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+labels = 'labels_example' # str  (optional)
+
+# List deployment versions
+api_response = api_instance.deployment_versions_list(project_name, deployment_name, labels=labels)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **labels** | **str** | [optional] 
+
+### Return type
+
+[**list[DeploymentVersionList]**](DeploymentVersionList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **deployment_versions_update**
+> DeploymentVersionDetail deployment_versions_update(project_name, deployment_name, version, data)
+
+Update deployment version
+
+
+### Description 
+Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. 
+
+### Optional Parameters 
+- `version`: New name for the version
+- `memory_allocation`: New reserved memory for the version in MB
+- `maximum_instances`: New upper bound of number of versions running
+- `minimum_instances`: New lower bound of number of versions running
+- `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped
+- `description`: New description for the version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
+
+#### Request Examples 
+```
+{
+  "version": "new-version"
+}
+```
+ 
+```
+{
+  "memory_allocation": 512,
+  "maximum_instances": 4,
+  "minimum_instances": 1
+}
+```
+
+### Response Structure 
+Details of the updated version
+- `id`: Unique identifier for the deployment (UUID)
+- `deployment`: Deployment name to which the version is associated
+- `version`: Version name
+- `description`: Description of the version
+- `language`: Language in which the version is provided
+- `status`: The status of the version
+- `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
+- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+- `memory_allocation`: Reserved memory for the version in MB
+- `maximum_instances`: Upper bound of number of versions running
+- `minimum_instances`: Lower bound of number of versions running
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the version was created
+- `last_updated`: The date when the version was last updated
+- `last_file_upload`: The date when a deployment file was last uploaded for the version
+
+#### Response Examples 
+```
+{
+  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
+  "deployment": "deployment-1",
+  "version": "version-1",
+  "description": "",
+  "language": "python3.8",
+  "status": "available",
+  "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
+  "latest_build": "0d07337e-96d6-4ce6-8c63-c2f07edd2ce4",
+  "memory_allocation": 512,
+  "maximum_instances": 4,
+  "minimum_instances": 1,
+  "maximum_idle_time": 10,
+  "labels": {
+    "type": "version"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-23T18:04:76.123754Z",
+  "last_file_uploaded": "2020-06-21T09:03:01.875391Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+deployment_name = 'deployment_name_example' # str 
+version = 'version_example' # str 
+data = ubiops.DeploymentVersionUpdate() # DeploymentVersionUpdate 
+
+# Update deployment version
+api_response = api_instance.deployment_versions_update(project_name, deployment_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **deployment_name** | **str** | 
+ **version** | **str** | 
+ **data** | [**DeploymentVersionUpdate**](DeploymentVersionUpdate.md) | 
+
+### Return type
+
+[**DeploymentVersionDetail**](DeploymentVersionDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployments_create**
 > DeploymentList deployments_create(project_name, data)
 
-Create a deployment
+Create deployments
 
 
 ### Description 
@@ -2747,7 +5370,6 @@ Details of the created deployment
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
 - `last_updated`: The date when the deployment was last updated
-- `number_of_versions`: Number of versions that this deployment has
 
 #### Response Examples 
 ```
@@ -2778,8 +5400,7 @@ Details of the created deployment
     "type": "deployment"
   },
   "creation_date": "2020-06-18T08:32:14.876451Z",
-  "last_updated": "2020-06-18T08:32:14.876451Z",
-  "number_of_versions": 0
+  "last_updated": "2020-06-18T08:32:14.876451Z"
 }
 ```
 
@@ -2791,8 +5412,7 @@ Details of the created deployment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2805,7 +5425,7 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 data = ubiops.DeploymentCreate() # DeploymentCreate 
 
-# Create a deployment
+# Create deployments
 api_response = api_instance.deployments_create(project_name, data)
 print(api_response)
 
@@ -2826,7 +5446,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2834,11 +5454,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **deployments_delete**
 > deployments_delete(project_name, deployment_name)
@@ -2857,8 +5476,7 @@ Delete a deployment. If any of the versions of the deployment are referenced in 
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2891,7 +5509,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -2899,16 +5517,15 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **deployments_get**
-> DeploymentList deployments_get(project_name, deployment_name)
+> DeploymentDetail deployments_get(project_name, deployment_name)
 
-Get details of deployment
+Get details of a deployment
 
 
 ### Description 
@@ -2927,7 +5544,7 @@ Details of a deployment
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
 - `last_updated`: The date when the deployment was last updated
-- `number_of_versions`: Number of versions that this deployment has
+- `default_version`: Default version of the deployment.  If it does not have a default version, it is not set.
 
 #### Response Examples 
 ```
@@ -2959,7 +5576,7 @@ Details of a deployment
   },
   "creation_date": "2020-06-18T08:32:14.876451Z",
   "last_updated": "2020-06-19T10:52:23.124784Z",
-  "number_of_versions": 2
+  "default_version": "v1"
 }
 ```
 
@@ -2971,8 +5588,7 @@ Details of a deployment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -2985,7 +5601,7 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 deployment_name = 'deployment_name_example' # str 
 
-# Get details of deployment
+# Get details of a deployment
 api_response = api_instance.deployments_get(project_name, deployment_name)
 print(api_response)
 
@@ -3002,11 +5618,11 @@ Name | Type | Notes
 
 ### Return type
 
-[**DeploymentList**](DeploymentList.md)
+[**DeploymentDetail**](DeploymentDetail.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3014,16 +5630,15 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployments_list**
 > list[DeploymentList] deployments_list(project_name, labels=labels)
 
-List deployments in project
+List deployments
 
 
 ### Description 
@@ -3045,7 +5660,6 @@ A list of details of the deployments in the project
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
 - `last_updated`: The date when the deployment was last updated
-- `number_of_versions`: Number of versions that this deployment has
 
 #### Response Examples 
 ```
@@ -3077,8 +5691,7 @@ A list of details of the deployments in the project
       "type": "deployment"
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated": "2020-06-22T18:04:76.123754Z",
-    "number_of_versions": 1
+    "last_updated": "2020-06-22T18:04:76.123754Z"
   },
   {
     "id": "5f4e942f-d5b8-4d62-99b2-870c15a82127",
@@ -3098,8 +5711,7 @@ A list of details of the deployments in the project
       "type": "deployment"
     },
     "creation_date": "2020-03-24T09:43:51.791253Z",
-    "last_updated": "2020-05-19T11:52:21.163270Z",
-    "number_of_versions": 2
+    "last_updated": "2020-05-19T11:52:21.163270Z"
   },
   {
     "id": "bd3fae9d-aeec-4cf3-8ef0-5f9224d41904",
@@ -3111,8 +5723,7 @@ A list of details of the deployments in the project
     "input_fields": [],
     "output_fields": [],
     "creation_date": "2020-06-18T08:32:14.876451Z",
-    "last_updated": "2020-06-19T10:52:23.124784Z",
-    "number_of_versions": 1
+    "last_updated": "2020-06-19T10:52:23.124784Z"
   }
 ]
 ```
@@ -3125,8 +5736,7 @@ A list of details of the deployments in the project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3139,7 +5749,7 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 labels = 'labels_example' # str  (optional)
 
-# List deployments in project
+# List deployments
 api_response = api_instance.deployments_list(project_name, labels=labels)
 print(api_response)
 
@@ -3160,7 +5770,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3168,14 +5778,13 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **deployments_update**
-> DeploymentList deployments_update(project_name, deployment_name, data)
+> DeploymentDetail deployments_update(project_name, deployment_name, data)
 
 Update a deployment
 
@@ -3187,6 +5796,7 @@ Update a deployment. It is only possible to update the name, description and lab
 - `name`: New name for the deployment
 - `description`: New description for the deployment
 - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
+- `default_version`: Name of a version of this deployment which will be assigned as default. Only **available** versions can be assigned as default.
 
 #### Request Examples
 ```
@@ -3208,7 +5818,7 @@ Details of the updated deployment
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
 - `last_updated`: The date when the deployment was last updated
-- `number_of_versions`: Number of versions that this deployment has
+- `default_version`: Default version of the deployment. If it does not have a default version, it is not set.
 
 #### Response Examples
 ```
@@ -3240,7 +5850,7 @@ Details of the updated deployment
   },
   "creation_date": "2020-06-18T08:32:14.876451Z",
   "last_updated": "2020-06-19T10:52:23.124784Z",
-  "number_of_versions": 2
+  "default_version": "v1"
 }
 ```
 
@@ -3252,8 +5862,7 @@ Details of the updated deployment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3285,11 +5894,11 @@ Name | Type | Notes
 
 ### Return type
 
-[**DeploymentList**](DeploymentList.md)
+[**DeploymentDetail**](DeploymentDetail.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3297,11 +5906,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **metrics_get**
 > list[Metrics] metrics_get(project_name, metric, start_time, end_time, object_type, interval=interval, object_id=object_id)
@@ -3312,13 +5920,13 @@ Get metrics
 ### Description 
 Get metrics for the project or a specified object. The following metrics are available:
 
-Metrics on pipeline level: 
+Metrics on pipeline version level: 
  - `requests`: Number of requests made to the object
  - `failed_requests`: Number of failed requests made to the object
  - `input_volume`: Volume of incoming data in bytes
- - `object_requests`: Number of requests made to objects in the pipeline
+ - `object_requests`: Number of requests made to objects in the pipeline version
  
-Metrics on version level: 
+Metrics on deployment version level: 
  - `requests`: Number of requests made to the object
  - `failed_requests`: Number of failed requests made to the object
  - `input_volume`: Volume of incoming data in bytes
@@ -3332,7 +5940,7 @@ Metrics on version level:
 ### Required Parameters 
 - `start_time`: Starting time for the metric values to be returned. It should be provided in datetime isoformat.
 - `end_time`: Ending time for the metric values to be returned. It should be provided in datetime isoformat.
-- `object_type`: The type of the object for which the metrics are requested. It can be either `version` or `pipeline`.
+- `object_type`: The type of the object for which the metrics are requested. It can be either `deployment_version` or `pipeline_version`.
 
 ### Optional Parameters 
 - `interval`: Interval for the metric value. It can be minute, hour, day or month. The metric values will be aggregated according to this interval. The default value is hour.
@@ -3422,8 +6030,7 @@ With interval as month, start_time as 2019-11-13 12:00:00 and end_time as 2019-1
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3467,7 +6074,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3475,11 +6082,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organization_usage_details_get**
 > list[UsagePerDay] organization_usage_details_get(organization_name, month=month)
@@ -3559,8 +6165,7 @@ Get resource usage for the organization. This returns a list of metrics that are
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3594,7 +6199,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3602,11 +6207,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organization_usage_get**
 > list[UsagePerMonth] organization_usage_get(organization_name, start_month=start_month)
@@ -3696,8 +6300,7 @@ Get resource usage for the organization. This returns a list of metrics that are
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3731,7 +6334,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3739,11 +6342,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organization_users_create**
 > OrganizationUserDetail organization_users_create(organization_name, data)
@@ -3801,8 +6403,7 @@ Details of the added user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3836,7 +6437,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3844,11 +6445,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **organization_users_delete**
 > organization_users_delete(organization_name, user_id)
@@ -3870,8 +6470,7 @@ It is not possible to delete the last admin of an organization.
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3904,7 +6503,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -3912,11 +6511,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **organization_users_get**
 > OrganizationUserDetail organization_users_get(organization_name, user_id)
@@ -3959,8 +6557,7 @@ Details of the user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -3994,7 +6591,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4002,11 +6599,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organization_users_list**
 > list[OrganizationUserDetail] organization_users_list(organization_name)
@@ -4058,8 +6654,7 @@ List of details of users
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4091,7 +6686,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4099,11 +6694,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organization_users_update**
 > OrganizationUserDetail organization_users_update(organization_name, user_id, data)
@@ -4158,8 +6752,7 @@ Details of the user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4195,7 +6788,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4203,11 +6796,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organizations_create**
 > OrganizationList organizations_create(data)
@@ -4271,8 +6863,7 @@ Details of the created organization
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4304,7 +6895,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4312,11 +6903,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **organizations_get**
 > OrganizationDetail organizations_get(organization_name)
@@ -4356,8 +6946,7 @@ Details of the organization
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4389,7 +6978,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4397,11 +6986,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organizations_list**
 > list[OrganizationList] organizations_list()
@@ -4440,8 +7028,7 @@ A list of details of the organizations
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4469,7 +7056,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4477,11 +7064,10 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organizations_resource_usage**
 > ResourceUsage organizations_resource_usage(organization_name)
@@ -4500,9 +7086,11 @@ A list containing the number of
 
 - deployments 
 
-- versions 
+- deployment_versions 
 
 - pipelines 
+
+- pipeline_versions 
 
 currently used by the organization.
 
@@ -4512,8 +7100,9 @@ currently used by the organization.
   "projects": 5,
   "users": 3,
   "deployments": 30,
-  "versions": 47,
-  "pipelines": 2
+  "deployment_versions": 47,
+  "pipelines": 2,
+  "pipeline_versions": 4
 }
 ```
 
@@ -4525,8 +7114,7 @@ currently used by the organization.
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4558,7 +7146,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4566,11 +7154,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **organizations_update**
 > OrganizationDetail organizations_update(organization_name, data)
@@ -4638,8 +7225,7 @@ Details of the organization
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4673,7 +7259,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4681,11 +7267,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **permissions_list**
 > list[PermissionList] permissions_list()
@@ -4709,8 +7294,7 @@ A list of available permissions
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4738,7 +7322,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4746,11 +7330,10 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **pipeline_audit_events_list**
 > list[AuditList] pipeline_audit_events_list(project_name, pipeline_name, action=action, limit=limit, offset=offset)
@@ -4785,7 +7368,7 @@ A list of details of the audit events for a pipeline
     "date": "2020-10-23T12:21:12.460+00:00",
     "action": "create",
     "user": "user@example.com",
-    "event": "Created pipeline object deployment-1 for pipeline pipeline-1",
+    "event": "Created pipeline object deployment-1 in version v1 of pipeline pipeline-1",
     "object_type": "pipeline",
     "object_name": "pipeline-1"
   },
@@ -4794,7 +7377,7 @@ A list of details of the audit events for a pipeline
     "date": "2020-10-23T12:21:37.247+00:00",
     "action": "update",
     "user": "user@example.com",
-    "event": "Updated pipeline object deployment-object for pipeline pipeline-1: name changed from deployment-1 to deployment-object",
+    "event": "Updated pipeline object deployment-object in version v1 of pipeline pipeline-1: name changed from deployment-1 to deployment-object",
     "object_type": "pipeline",
     "object_name": "pipeline-1"
   }
@@ -4809,8 +7392,7 @@ A list of details of the audit events for a pipeline
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4850,7 +7432,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -4858,20 +7440,163 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_object_attachments_create**
-> AttachmentsList pipeline_object_attachments_create(project_name, pipeline_name, data)
+[[Back to top]](#)
+
+# **pipeline_requests_create**
+> PipelineRequestList pipeline_requests_create(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
+
+Create pipeline requests
+
+
+### Description 
+Make a direct request to the default version of a pipeline. This method returns all the results of the deployment requests made within the pipeline version.
+
+### Required Parameters 
+The input for the request. In case of a structured pipeline, this is a dictionary which contains the input fields of the pipeline as keys. In case of a plain pipeline, give a string or list of strings.
+
+### Optional Parameters
+The following parameters should be given as query parameters: 
+- `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600.
+- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds. The maximum allowed value is 3600 and the default value is 300.
+Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.
+
+#### Request Examples
+A structured pipeline request
+```
+{
+  "pipeline-input-field-1": 5.0,
+  "pipeline-input-field-2": "N"
+}
+```
+
+A plain pipeline request
+```
+"example-plain-data"
+```
+
+### Response Structure 
+- `project`: Name of the project in which the request is made
+- `pipeline`: Name of the pipeline for which the request is made
+- `version`: Name of the pipeline version for which the request is made
+- `pipeline_request_id`: Unique identifier for the pipeline request
+- `success`: A boolean value that indicates whether the pipeline request was successful
+- `deployment_requests`: A list of dictionaries containing the results of the deployment requests made for the version objects in the pipeline. The dictionaries contain the following fields:
+    - `request_id`: Unique identifier for the deployment request
+    - `pipeline_object`: Name of the object in the pipeline
+    - `success`: A boolean value that indicates whether the deployment request was successful
+    - `request_data`: Input data for the deployment request
+    - `result`: Deployment request result value. NULL if the request failed.
+    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+
+#### Response Examples
+```
+{
+  "project": "project-1",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "pipeline_request_id": "286f771b-6617-4985-ab49-12ed720e62b1",
+  "success": false
+  "deployment_requests": [
+    {
+      "request_id": "a7524614-bdb7-41e1-b4c1-653bb72c30b4",
+      "pipeline_object": "deployment-object-1",
+      "success": true,
+      "request_data": {
+        "deployment-1-input-field-1": 5,
+        "deployment-1-input-field-2": 0.4
+      },
+      "result": {
+        "deployment-1-output-field-1": 0.23,
+        "deployment-1-output-field-2": 10
+      },
+      "error_message": None 
+    },
+    {
+      "request_id": "fe322c50-58f8-4e67-b7d6-cba14273874e",
+      "pipeline_object": "deployment-object-2",
+      "success": false,
+      "request_data": {
+        "deployment-2-input-field": 10
+      },
+      "result": None,
+      "error_message": "Invalid message format" 
+    }
+  ]
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+data = {'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'} # str or dict() 
+pipeline_timeout = 56 # int  (optional)
+deployment_timeout = 56 # int  (optional)
+
+# Create pipeline requests
+api_response = api_instance.pipeline_requests_create(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **data** | **str or dict()** | 
+ **pipeline_timeout** | **int** | [optional] 
+ **deployment_timeout** | **int** | [optional] 
+
+### Return type
+
+[**PipelineRequestList**](PipelineRequestList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **pipeline_version_object_attachments_create**
+> AttachmentsList pipeline_version_object_attachments_create(project_name, pipeline_name, version, data)
 
 Create object attachments
 
 
 ### Description 
-Create an attachment between pipeline objects. An attachment can only be made between objects that have already been added to the pipeline. 
+Create an attachment between objects in a pipeline version. An attachment can only be made between objects that have already been added to the pipeline version. 
 The objects where the attachment starts is called the source objects. The object that is linked is called the destination object. When attaching source objects to a destination object, one must also define which source object output fields map to which destination object input fields.
 All the input fields in the destination object must be provided in the mapping. In contrast, not all output fields of all source objects need to be used in the mapping. It is also possible that one source output field links to multiple destination input fields.
 
@@ -4880,12 +7605,12 @@ The *pipeline_start* object can only be a source object.
 In case of plain type of objects, the mapping `source_field_name` and `destination_field_name` must be omitted or given as null.
 
 ### Required Parameters 
-- `destination_name`: Name of the destination pipeline object
+- `destination_name`: Name of the destination object in the pipeline version
 - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name).
 Each item in the sources list must contain source_field_name and destination_field_name keys. The source and destination fields should match in data type, e.g. integer source fields can only be mapped to integer type destination fields.
 
 #### Request Examples 
-An attachment between two versions
+An attachment between two structured deployments
 ```
 {
   "destination_name": "deployment-2-v1",
@@ -4910,7 +7635,7 @@ An attachment between two versions
   ]
 }
 ```
-An attachment between two plain input/output type versions
+An attachment between two plain input/output type deployments
 ```
 {
   "destination_name": "plain-deployment-v4",
@@ -4923,7 +7648,7 @@ An attachment between two plain input/output type versions
 }
 ```
  
-An attachment between a pipeline_start object and version
+An attachment between a pipeline_start object and deployment
 ```
 {
   "destination_name": "deployment-2-v2",
@@ -4980,8 +7705,7 @@ Details of the created attachment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -4993,10 +7717,11 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 data = ubiops.AttachmentsCreate() # AttachmentsCreate 
 
 # Create object attachments
-api_response = api_instance.pipeline_object_attachments_create(project_name, pipeline_name, data)
+api_response = api_instance.pipeline_version_object_attachments_create(project_name, pipeline_name, version, data)
 print(api_response)
 
 # Close the connection
@@ -5009,6 +7734,7 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
  **data** | [**AttachmentsCreate**](AttachmentsCreate.md) | 
 
 ### Return type
@@ -5017,7 +7743,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5025,20 +7751,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
 
-# **pipeline_object_attachments_delete**
-> pipeline_object_attachments_delete(project_name, attachment_id, pipeline_name)
+[[Back to top]](#)
 
-Delete attachment in a pipeline
+# **pipeline_version_object_attachments_delete**
+> pipeline_version_object_attachments_delete(project_name, attachment_id, pipeline_name, version)
+
+Delete object attachment
 
 
 ### Description 
-Delete an attachment in a pipeline. The referenced and original objects of the attachment still exist in the pipeline, only the link between them is deleted.
+Delete an attachment in a pipeline version. The referenced and original objects of the attachment still exist in the pipeline version, only the link between them is deleted.
 
 
 ### Example
@@ -5048,8 +7773,7 @@ Delete an attachment in a pipeline. The referenced and original objects of the a
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5062,9 +7786,10 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 attachment_id = 'attachment_id_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
-# Delete attachment in a pipeline
-api_instance.pipeline_object_attachments_delete(project_name, attachment_id, pipeline_name)
+# Delete object attachment
+api_instance.pipeline_version_object_attachments_delete(project_name, attachment_id, pipeline_name, version)
 
 # Close the connection
 api_client.close()
@@ -5077,6 +7802,7 @@ Name | Type | Notes
  **project_name** | **str** | 
  **attachment_id** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
@@ -5084,7 +7810,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5092,24 +7818,23 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
 
-# **pipeline_object_attachments_destination_get**
-> list[AttachmentsList] pipeline_object_attachments_destination_get(project_name, destination_name, pipeline_name)
+[[Back to top]](#)
+
+# **pipeline_version_object_attachments_destination_get**
+> list[AttachmentsList] pipeline_version_object_attachments_destination_get(project_name, destination_name, pipeline_name, version)
 
 List the attachments of a destination object
 
 
 ### Description 
-List attachments of a destination object in a pipeline
+List attachments of a destination object in a pipeline version
 
 ### Response Structure 
-A list of details of the attachments of the given destination object in the pipeline
-- `destination_name`: Name of the destination pipeline object
+A list of details of the attachments of the given destination object in the pipeline version
+- `destination_name`: Name of the destination object
 - `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)
 
 #### Response Examples 
@@ -5162,8 +7887,7 @@ A list of details of the attachments of the given destination object in the pipe
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5176,9 +7900,10 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 destination_name = 'destination_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
 # List the attachments of a destination object
-api_response = api_instance.pipeline_object_attachments_destination_get(project_name, destination_name, pipeline_name)
+api_response = api_instance.pipeline_version_object_attachments_destination_get(project_name, destination_name, pipeline_name, version)
 print(api_response)
 
 # Close the connection
@@ -5192,6 +7917,7 @@ Name | Type | Notes
  **project_name** | **str** | 
  **destination_name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
@@ -5199,7 +7925,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5207,16 +7933,15 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_object_attachments_get**
-> AttachmentsList pipeline_object_attachments_get(project_name, attachment_id, pipeline_name)
+[[Back to top]](#)
 
-Get an attachment in a pipeline
+# **pipeline_version_object_attachments_get**
+> AttachmentsList pipeline_version_object_attachments_get(project_name, attachment_id, pipeline_name, version)
+
+Get object attachment
 
 
 ### Description 
@@ -5257,8 +7982,7 @@ Details of the attachment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5271,9 +7995,10 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 attachment_id = 'attachment_id_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
-# Get an attachment in a pipeline
-api_response = api_instance.pipeline_object_attachments_get(project_name, attachment_id, pipeline_name)
+# Get object attachment
+api_response = api_instance.pipeline_version_object_attachments_get(project_name, attachment_id, pipeline_name, version)
 print(api_response)
 
 # Close the connection
@@ -5287,6 +8012,7 @@ Name | Type | Notes
  **project_name** | **str** | 
  **attachment_id** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
@@ -5294,7 +8020,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5302,20 +8028,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_object_attachments_list**
-> list[AttachmentsList] pipeline_object_attachments_list(project_name, pipeline_name)
+[[Back to top]](#)
+
+# **pipeline_version_object_attachments_list**
+> list[AttachmentsList] pipeline_version_object_attachments_list(project_name, pipeline_name, version)
 
 List object attachments
 
 
 ### Description 
-List all attachments in a pipeline
+List all attachments in a pipeline version
 
 ### Response Structure 
 A list of details of the attachments in the pipeline
@@ -5376,8 +8101,7 @@ A list of details of the attachments in the pipeline
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5389,9 +8113,10 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
 # List object attachments
-api_response = api_instance.pipeline_object_attachments_list(project_name, pipeline_name)
+api_response = api_instance.pipeline_version_object_attachments_list(project_name, pipeline_name, version)
 print(api_response)
 
 # Close the connection
@@ -5404,6 +8129,7 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
@@ -5411,7 +8137,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5419,20 +8145,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_object_environment_variables_list**
-> list[InheritedEnvironmentVariableList] pipeline_object_environment_variables_list(project_name, name, pipeline_name)
+[[Back to top]](#)
+
+# **pipeline_version_object_environment_variables_list**
+> list[InheritedEnvironmentVariableList] pipeline_version_object_environment_variables_list(project_name, name, pipeline_name, version)
 
 List pipeline object environment variables
 
 
 ### Description
-List environment variables accessible to objects in the pipeline
+List environment variables accessible to objects in the pipeline version
  
 ### Response Structure 
 A list of variables described by the following fields:
@@ -5473,8 +8198,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5487,9 +8211,10 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 name = 'name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
 # List pipeline object environment variables
-api_response = api_instance.pipeline_object_environment_variables_list(project_name, name, pipeline_name)
+api_response = api_instance.pipeline_version_object_environment_variables_list(project_name, name, pipeline_name, version)
 print(api_response)
 
 # Close the connection
@@ -5503,6 +8228,7 @@ Name | Type | Notes
  **project_name** | **str** | 
  **name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
@@ -5510,7 +8236,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5518,26 +8244,25 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_objects_create**
-> PipelineObjectList pipeline_objects_create(project_name, pipeline_name, data)
+[[Back to top]](#)
 
-Add an object to a pipeline
+# **pipeline_version_objects_create**
+> PipelineVersionObjectList pipeline_version_objects_create(project_name, pipeline_name, version, data)
+
+Create pipeline object
 
 
 ### Description 
-Create a pipeline object. The pipeline object that is added is a reference to the real object. In this way, multiple references to the same object may be added to a pipeline.
-The reference_name refers to the deployment name and the version is the version of the deployment which will be added to the pipeline as an object.
+Create a pipeline object for a pipeline version. The pipeline object that is added is a reference to the real object. In this way, multiple references to the same object may be added to a pipeline version.
+The reference_name refers to the deployment name and the version is the version of the deployment which will be added to the pipeline version as an object.
 
 ### Required Parameters 
-- `name`: Name of the pipeline object. It is unique within a pipeline
+- `name`: Name of the pipeline object. It is unique within a pipeline version.
 - `reference_name`: Name of the object it will reference
-- `version`: Version name of reference object
+- `version`: Version name of reference object. Do not provide this field to refer to the default version of the reference.
 
 #### Request Examples 
 ```
@@ -5573,8 +8298,7 @@ Details of the created pipeline object
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5586,10 +8310,11 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
-data = ubiops.PipelineObjectCreate() # PipelineObjectCreate 
+version = 'version_example' # str 
+data = ubiops.PipelineVersionObjectCreate() # PipelineVersionObjectCreate 
 
-# Add an object to a pipeline
-api_response = api_instance.pipeline_objects_create(project_name, pipeline_name, data)
+# Create pipeline object
+api_response = api_instance.pipeline_version_objects_create(project_name, pipeline_name, version, data)
 print(api_response)
 
 # Close the connection
@@ -5602,15 +8327,16 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
- **data** | [**PipelineObjectCreate**](PipelineObjectCreate.md) | 
+ **version** | **str** | 
+ **data** | [**PipelineVersionObjectCreate**](PipelineVersionObjectCreate.md) | 
 
 ### Return type
 
-[**PipelineObjectList**](PipelineObjectList.md)
+[**PipelineVersionObjectList**](PipelineVersionObjectList.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5618,20 +8344,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
 
-# **pipeline_objects_delete**
-> pipeline_objects_delete(project_name, name, pipeline_name)
+[[Back to top]](#)
 
-Delete object from pipeline
+# **pipeline_version_objects_delete**
+> pipeline_version_objects_delete(project_name, name, pipeline_name, version)
+
+Delete pipeline object
 
   
 ### Description 
-Delete a pipeline object. Only the reference in the pipeline is deleted. The original object (deployment and version) still exists.
+Delete a pipeline object. Only the reference in the pipeline version is deleted. The original object (deployment and version) still exists.
 If the object is attached to another object, the attachment is also deleted.
 
 
@@ -5642,8 +8367,7 @@ If the object is attached to another object, the attachment is also deleted.
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5656,9 +8380,10 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 name = 'name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
-# Delete object from pipeline
-api_instance.pipeline_objects_delete(project_name, name, pipeline_name)
+# Delete pipeline object
+api_instance.pipeline_version_objects_delete(project_name, name, pipeline_name, version)
 
 # Close the connection
 api_client.close()
@@ -5671,6 +8396,7 @@ Name | Type | Notes
  **project_name** | **str** | 
  **name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
@@ -5678,7 +8404,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5686,16 +8412,15 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
 
-# **pipeline_objects_get**
-> PipelineObjectList pipeline_objects_get(project_name, name, pipeline_name)
+[[Back to top]](#)
 
-Get an object in a pipeline
+# **pipeline_version_objects_get**
+> PipelineVersionObjectList pipeline_version_objects_get(project_name, name, pipeline_name, version)
+
+Get pipeline object
 
 
 ### Description 
@@ -5727,8 +8452,7 @@ A dictionary containing details of the pipeline object
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5741,9 +8465,10 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 name = 'name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
-# Get an object in a pipeline
-api_response = api_instance.pipeline_objects_get(project_name, name, pipeline_name)
+# Get pipeline object
+api_response = api_instance.pipeline_version_objects_get(project_name, name, pipeline_name, version)
 print(api_response)
 
 # Close the connection
@@ -5757,14 +8482,15 @@ Name | Type | Notes
  **project_name** | **str** | 
  **name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
-[**PipelineObjectList**](PipelineObjectList.md)
+[**PipelineVersionObjectList**](PipelineVersionObjectList.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5772,23 +8498,22 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_objects_list**
-> list[PipelineObjectList] pipeline_objects_list(project_name, pipeline_name)
+[[Back to top]](#)
 
-List objects in a pipeline
+# **pipeline_version_objects_list**
+> list[PipelineVersionObjectList] pipeline_version_objects_list(project_name, pipeline_name, version)
+
+List pipeline objects
 
 
 ### Description 
-List all pipeline objects in a pipeline
+List all pipeline objects in a pipeline version
 
 ### Response Structure 
-A list of details of the pipeline objects in the pipeline
+A list of details of the pipeline objects in the pipeline version
 - `id`: Unique identifier for the pipeline object (UUID)
 - `name`: Name of the pipeline object
 - `reference_name`: Name of the object it references
@@ -5821,8 +8546,7 @@ A list of pipeline objects
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5834,9 +8558,10 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 
-# List objects in a pipeline
-api_response = api_instance.pipeline_objects_list(project_name, pipeline_name)
+# List pipeline objects
+api_response = api_instance.pipeline_version_objects_list(project_name, pipeline_name, version)
 print(api_response)
 
 # Close the connection
@@ -5849,14 +8574,15 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
 
 ### Return type
 
-[**list[PipelineObjectList]**](PipelineObjectList.md)
+[**list[PipelineVersionObjectList]**](PipelineVersionObjectList.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5864,16 +8590,15 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_objects_update**
-> PipelineObjectList pipeline_objects_update(project_name, name, pipeline_name, data)
+[[Back to top]](#)
 
-Update an object in a pipeline
+# **pipeline_version_objects_update**
+> PipelineVersionObjectList pipeline_version_objects_update(project_name, name, pipeline_name, version, data)
+
+Update pipeline object
 
 
 ### Description 
@@ -5881,7 +8606,7 @@ Update a pipeline object. It is not possible to update the reference_name. All n
 
 ### Optional Parameters 
 - `name`: New name for the pipeline object
-- `version`: New version for the pipeline object. Since the input/output fields of different versions are the same, the version of a deployment pipeline object can be changed with another version of the same deployment.
+- `version`: New version for the pipeline object. Since the input/output fields of different versions are the same, the version of a deployment pipeline object can be changed with another version of the same deployment. To use the default version of the reference deployment, provide NULL for this field.
 
 #### Request Examples 
 ```
@@ -5922,8 +8647,7 @@ Details of the updated pipeline object
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -5936,10 +8660,11 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 name = 'name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
-data = ubiops.PipelineObjectUpdate() # PipelineObjectUpdate 
+version = 'version_example' # str 
+data = ubiops.PipelineVersionObjectUpdate() # PipelineVersionObjectUpdate 
 
-# Update an object in a pipeline
-api_response = api_instance.pipeline_objects_update(project_name, name, pipeline_name, data)
+# Update pipeline object
+api_response = api_instance.pipeline_version_objects_update(project_name, name, pipeline_name, version, data)
 print(api_response)
 
 # Close the connection
@@ -5953,15 +8678,16 @@ Name | Type | Notes
  **project_name** | **str** | 
  **name** | **str** | 
  **pipeline_name** | **str** | 
- **data** | [**PipelineObjectUpdate**](PipelineObjectUpdate.md) | 
+ **version** | **str** | 
+ **data** | [**PipelineVersionObjectUpdate**](PipelineVersionObjectUpdate.md) | 
 
 ### Return type
 
-[**PipelineObjectList**](PipelineObjectList.md)
+[**PipelineVersionObjectList**](PipelineVersionObjectList.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -5969,31 +8695,31 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
 
-# **pipeline_requests_create**
-> PipelineRequestList pipeline_requests_create(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
+[[Back to top]](#)
 
-Make a request to a pipeline
+# **pipeline_version_requests_create**
+> PipelineRequestList pipeline_version_requests_create(project_name, pipeline_name, version, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
+
+Create pipeline version requests
 
 
 ### Description 
-Make a pipeline request. This method returns all the results of the deployment requests made within the pipeline.
+Make a direct request to a pipeline version. This method returns all the results of the deployment requests made within the pipeline version.
 
 ### Required Parameters 
-A dictionary which contains the input fields of the pipeline as keys
+The input for the request. In case of a structured pipeline, this is a dictionary which contains the input fields of the pipeline as keys. In case of a plain pipeline, give a string or list of strings.
 
 ### Optional Parameters
-These parameters should be given as GET parameters
+The following parameters should be given as query parameters: 
 - `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600.
-- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds.  The maximum allowed value is 3600 and the default value is 300.
+- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds. The maximum allowed value is 3600 and the default value is 300.
 Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.
 
 #### Request Examples
+A structured pipeline request
 ```
 {
   "pipeline-input-field-1": 5.0,
@@ -6001,9 +8727,15 @@ Maximum allowed value for both is 3600 seconds and the default value is 300 seco
 }
 ```
 
+A plain pipeline request
+```
+"example-plain-data"
+```
+
 ### Response Structure 
 - `project`: Name of the project in which the request is made
 - `pipeline`: Name of the pipeline for which the request is made
+- `version`: Name of the pipeline version for which the request is made
 - `pipeline_request_id`: Unique identifier for the pipeline request
 - `success`: A boolean value that indicates whether the pipeline request was successful
 - `deployment_requests`: A list of dictionaries containing the results of the deployment requests made for the version objects in the pipeline. The dictionaries contain the following fields:
@@ -6019,6 +8751,7 @@ Maximum allowed value for both is 3600 seconds and the default value is 300 seco
 {
   "project": "project-1",
   "pipeline": "pipeline-1",
+  "version": "v1",
   "pipeline_request_id": "286f771b-6617-4985-ab49-12ed720e62b1",
   "success": false
   "deployment_requests": [
@@ -6058,8 +8791,7 @@ Maximum allowed value for both is 3600 seconds and the default value is 300 seco
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6071,12 +8803,13 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
 data = {'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'} # str or dict() 
 pipeline_timeout = 56 # int  (optional)
 deployment_timeout = 56 # int  (optional)
 
-# Make a request to a pipeline
-api_response = api_instance.pipeline_requests_create(project_name, pipeline_name, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
+# Create pipeline version requests
+api_response = api_instance.pipeline_version_requests_create(project_name, pipeline_name, version, data, pipeline_timeout=pipeline_timeout, deployment_timeout=deployment_timeout)
 print(api_response)
 
 # Close the connection
@@ -6089,6 +8822,7 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
+ **version** | **str** | 
  **data** | **str or dict()** | 
  **pipeline_timeout** | **int** | [optional] 
  **deployment_timeout** | **int** | [optional] 
@@ -6099,7 +8833,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6107,11 +8841,500 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **pipeline_versions_create**
+> PipelineVersionList pipeline_versions_create(project_name, pipeline_name, data)
+
+Create pipeline versions
+
+
+### Description 
+Create a version for a pipeline. The first version of a pipeline is set as default.
+
+### Required Parameters 
+- `version`: Name of the version of the pipeline
+
+### Optional Parameters
+- `description`: Description of the pipeline version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
+#### Request Examples 
+A pipeline version
+```
+{
+  "version": "v1"
+}
+```
+
+A pipeline version with description and labels
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  }
+}
+```
+
+### Response Structure 
+Details of the created pipeline version
+- `id`: Unique identifier for the pipeline version (UUID)
+- `pipeline`: Name of the pipeline to which the version is associated
+- `version`: Name of the version of the pipeline
+- `description`: Description of the pipeline version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the pipeline version was created
+- `last_updated`: The date when the pipeline version was last updated
+
+#### Response Examples 
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+data = ubiops.PipelineVersionCreate() # PipelineVersionCreate 
+
+# Create pipeline versions
+api_response = api_instance.pipeline_versions_create(project_name, pipeline_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **data** | [**PipelineVersionCreate**](PipelineVersionCreate.md) | 
+
+### Return type
+
+[**PipelineVersionList**](PipelineVersionList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 201
+
+[[Back to top]](#)
+
+# **pipeline_versions_delete**
+> pipeline_versions_delete(project_name, pipeline_name, version)
+
+Delete pipeline version
+
+
+### Description 
+Delete a pipeline version. This will also delete all objects and attachments in the pipeline version.
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
+
+# Delete pipeline version
+api_instance.pipeline_versions_delete(project_name, pipeline_name, version)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 204
+
+[[Back to top]](#)
+
+# **pipeline_versions_get**
+> PipelineVersionList pipeline_versions_get(project_name, pipeline_name, version)
+
+Get pipeline version
+
+
+### Description 
+Get the details of a single pipeline version
+
+### Response Structure 
+Details of the pipeline version
+- `id`: Unique identifier for the pipeline version (UUID)
+- `pipeline`: Name of the pipeline to which the version is associated
+- `version`: Name of the version of the pipeline
+- `description`: Description of the pipeline version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the pipeline version was created
+- `last_updated`: The date when the pipeline version was last updated
+
+#### Response Examples 
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
+
+# Get pipeline version
+api_response = api_instance.pipeline_versions_get(project_name, pipeline_name, version)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **version** | **str** | 
+
+### Return type
+
+[**PipelineVersionList**](PipelineVersionList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **pipeline_versions_list**
+> list[PipelineVersionList] pipeline_versions_list(project_name, pipeline_name, labels=labels)
+
+List pipeline versions
+
+
+### Description 
+Pipeline versions can be filtered according to the labels they have by giving labels as a query parameter. Pipeline versions that have at least one of the labels on which is filtered, are returned.
+
+### Optional Parameters
+- `labels`: Filter on labels of the pipeline version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.
+
+### Response Structure 
+A list of details of the versions of the pipeline
+- `id`: Unique identifier for the pipeline version (UUID)
+- `pipeline`: Name of the pipeline to which the version is associated
+- `version`: Name of the version of the pipeline
+- `description`: Description of the pipeline version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the pipeline version was created
+- `last_updated`: The date when the pipeline version was last updated
+
+#### Response Examples 
+```
+[
+  {
+    "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "description": "my description",
+    "labels": {
+      "tag": "production"
+    },
+    "creation_date": "2020-05-12T16:23:15.456812Z",
+    "last_updated": "2020-06-22T18:04:76.123754Z"
+  },
+  {
+    "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "description": "my description",
+    "labels": {
+      "tag": "production"
+    },
+    "creation_date": "2020-05-12T16:23:15.456812Z",
+    "last_updated": "2020-06-22T18:04:76.123754Z"
+  }
+]
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+labels = 'labels_example' # str  (optional)
+
+# List pipeline versions
+api_response = api_instance.pipeline_versions_list(project_name, pipeline_name, labels=labels)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **labels** | **str** | [optional] 
+
+### Return type
+
+[**list[PipelineVersionList]**](PipelineVersionList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
+
+# **pipeline_versions_update**
+> PipelineVersionList pipeline_versions_update(project_name, pipeline_name, version, data)
+
+Update pipeline version
+
+
+### Description 
+Update a pipeline version. When updating labels, the labels will replace the existing value for labels. 
+
+### Optional Parameters
+- `version`: Name of the version of the pipeline
+- `description`: Description of the pipeline version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
+#### Request Examples 
+Updating a pipeline version with description and labels
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  }
+}
+```
+
+### Response Structure 
+Details of the created pipeline
+- `id`: Unique identifier for the pipeline version (UUID)
+- `pipeline`: Name of the pipeline to which the version is associated
+- `version`: Name of the version of the pipeline
+- `description`: Description of the pipeline version
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `creation_date`: The date when the pipeline version was created
+- `last_updated`: The date when the pipeline version was last updated
+
+#### Response Examples 
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z"
+}
+```
+
+
+### Example
+
+* Api Key Authentication (api_key):
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+pipeline_name = 'pipeline_name_example' # str 
+version = 'version_example' # str 
+data = ubiops.PipelineVersionUpdate() # PipelineVersionUpdate 
+
+# Update pipeline version
+api_response = api_instance.pipeline_versions_update(project_name, pipeline_name, version, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+### Parameters
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **pipeline_name** | **str** | 
+ **version** | **str** | 
+ **data** | [**PipelineVersionUpdate**](PipelineVersionUpdate.md) | 
+
+### Return type
+
+[**PipelineVersionList**](PipelineVersionList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users/)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **pipelines_create**
 > PipelineList pipelines_create(project_name, data)
@@ -6223,8 +9446,7 @@ Details of the created pipeline
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6258,7 +9480,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6266,20 +9488,19 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **pipelines_delete**
 > pipelines_delete(project_name, pipeline_name)
 
-Delete pipeline
+Delete a pipeline
 
 
 ### Description 
-Delete a pipeline. This will also delete all objects and attachments in the pipeline.
+Delete a pipeline. This will also delete all versions of the pipeline.
 
 
 ### Example
@@ -6289,8 +9510,7 @@ Delete a pipeline. This will also delete all objects and attachments in the pipe
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6303,7 +9523,7 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
 
-# Delete pipeline
+# Delete a pipeline
 api_instance.pipelines_delete(project_name, pipeline_name)
 
 # Close the connection
@@ -6323,7 +9543,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6331,16 +9551,15 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **pipelines_get**
-> PipelineList pipelines_get(project_name, pipeline_name)
+> PipelineDetail pipelines_get(project_name, pipeline_name)
 
-Get pipeline
+Get details of a pipeline
 
 
 ### Description 
@@ -6357,6 +9576,7 @@ Details of the pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
+- `default_version`: Default version of the pipeline.  If it does not have a default version, it is not set.
 
 #### Response Examples 
 ```
@@ -6371,7 +9591,8 @@ Details of the pipeline
     "tag": "production"
   },
   "creation_date": "2020-03-24T09:43:51.791253Z",
-  "last_updated": "2020-05-19T11:52:21.163270Z"
+  "last_updated": "2020-05-19T11:52:21.163270Z",
+  "default_version": "v1"
 }
 ```
 
@@ -6383,8 +9604,7 @@ Details of the pipeline
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6397,7 +9617,7 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
 
-# Get pipeline
+# Get details of a pipeline
 api_response = api_instance.pipelines_get(project_name, pipeline_name)
 print(api_response)
 
@@ -6414,11 +9634,11 @@ Name | Type | Notes
 
 ### Return type
 
-[**PipelineList**](PipelineList.md)
+[**PipelineDetail**](PipelineDetail.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6426,11 +9646,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **pipelines_list**
 > list[PipelineList] pipelines_list(project_name, labels=labels)
@@ -6505,8 +9724,7 @@ A list of details of the pipelines in the project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6540,7 +9758,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6548,16 +9766,15 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **pipelines_update**
-> PipelineList pipelines_update(project_name, pipeline_name, data)
+> PipelineDetail pipelines_update(project_name, pipeline_name, data)
 
-Update pipeline
+Update a pipeline
 
 
     
@@ -6569,7 +9786,8 @@ Update a pipeline. All necessary fields are validated again. When updating label
 - `description`: New description for the pipeline
 - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
 - `input_type`: New type for the pipeline. It is possible to change the type from plain to structured and vice versa.
-- `input_fields`: New input fields for the pipeline.
+- `input_fields`: New input fields for the pipeline
+- `default_version`: Name of a version of this pipeline which will be assigned as default
 
 If the type of pipeline is updated to plain, the input fields are deleted. In this case, input_fields should either be omitted or provided as en empty list.
 If the type of pipeline is updated to structured, the old fields are deleted, if there existed any. The new fields are created, if any is provided. If one or more old fields need to be kept, they must be provided again.
@@ -6632,6 +9850,7 @@ Details of the updated pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
+- `default_version`: Default version of the pipeline.  If it does not have a default version, it is not set.
 
 #### Response Examples 
 ```
@@ -6655,7 +9874,8 @@ Details of the updated pipeline
     "tag": "production"
   },
   "creation_date": "2020-03-24T09:43:51.791253Z",
-  "last_updated": "2020-05-19T11:52:21.163270Z"
+  "last_updated": "2020-05-19T11:52:21.163270Z",
+  "default_version": "v1"
 }
 ```
 
@@ -6667,8 +9887,7 @@ Details of the updated pipeline
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6680,9 +9899,9 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 pipeline_name = 'pipeline_name_example' # str 
-data = ubiops.PipelineCreate() # PipelineCreate 
+data = ubiops.PipelineUpdate() # PipelineUpdate 
 
-# Update pipeline
+# Update a pipeline
 api_response = api_instance.pipelines_update(project_name, pipeline_name, data)
 print(api_response)
 
@@ -6696,15 +9915,15 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **pipeline_name** | **str** | 
- **data** | [**PipelineCreate**](PipelineCreate.md) | 
+ **data** | [**PipelineUpdate**](PipelineUpdate.md) | 
 
 ### Return type
 
-[**PipelineList**](PipelineList.md)
+[**PipelineDetail**](PipelineDetail.md)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6712,11 +9931,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **project_audit_events_list**
 > list[AuditList] project_audit_events_list(project_name, action=action, limit=limit, offset=offset)
@@ -6775,8 +9993,7 @@ A list of details of the audit events in the project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6814,7 +10031,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6822,11 +10039,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **project_environment_variables_create**
 > EnvironmentVariableList project_environment_variables_create(project_name, data)
@@ -6893,8 +10109,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6928,7 +10143,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -6936,11 +10151,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **project_environment_variables_delete**
 > project_environment_variables_delete(project_name, id)
@@ -6959,8 +10173,7 @@ Delete an environment variable of the project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -6993,7 +10206,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7001,11 +10214,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **project_environment_variables_get**
 > EnvironmentVariableList project_environment_variables_get(project_name, id)
@@ -7043,8 +10255,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7078,7 +10289,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7086,11 +10297,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **project_environment_variables_list**
 > list[EnvironmentVariableList] project_environment_variables_list(project_name)
@@ -7134,8 +10344,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7167,7 +10376,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7175,11 +10384,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **project_environment_variables_update**
 > EnvironmentVariableList project_environment_variables_update(project_name, id, data)
@@ -7229,8 +10437,7 @@ A list of variables described by the following fields:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7266,7 +10473,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7274,11 +10481,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **project_usage_get**
 > list[UsagePerMonth] project_usage_get(project_name, start_month=start_month)
@@ -7303,7 +10509,7 @@ Get resource usage for the project. This returns a list of metrics that are used
 ```
 [
   {
-    "object_type": "pipeline",
+    "object_type": "pipeline_version",
     "metric": "input_volume",
     "usage": [
       {
@@ -7368,8 +10574,7 @@ Get resource usage for the project. This returns a list of metrics that are used
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7403,7 +10608,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7411,11 +10616,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **projects_create**
 > ProjectList projects_create(data)
@@ -7468,8 +10672,7 @@ Details of the created project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7501,7 +10704,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7509,11 +10712,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **projects_delete**
 > projects_delete(project_name)
@@ -7533,8 +10735,7 @@ Delete a project. The user making the request must have appropriate permissions.
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7565,7 +10766,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7573,11 +10774,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **projects_get**
 > ProjectList projects_get(project_name)
@@ -7616,8 +10816,7 @@ Details of a project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7649,7 +10848,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7657,11 +10856,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **projects_list**
 > list[ProjectList] projects_list()
@@ -7708,8 +10906,7 @@ A list of details of the projects
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7737,7 +10934,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7745,11 +10942,10 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **projects_log_list**
 > list[Logs] projects_log_list(project_name, data)
@@ -7765,13 +10961,15 @@ Retrieve the logs of all objects in a project, including deployments, pipelines 
 
     - `deployment_name`: name of a deployment 
 
-    - `version`: a version name. If this field is present in the request, deployment_name must also be given. The versions are only meaningful in combination with the deployments they are defined for. 
+    - `deployment_version`: name of a deployment version. If this field is present in the request, deployment_name must also be given. The deployment versions are only meaningful in combination with the deployments they are defined for. 
 
     - `build_id`: the UUID of a build. It does not have to be given in combination with the version and deployment name. 
 
     - `pipeline_name`: name of a pipeline 
 
-    - `pipeline_object_name`: name of a pipeline object. If this field is present in the request, pipeline_name must also be given. The pipeline objects are only meaningful in combination with the pipelines they are defined in. 
+    - `pipeline_version`: name of a pipeline version. If this field is present in the request, pipeline_name must also be given. The pipeline versions are only meaningful in combination with the pipelines they are defined for. 
+
+    - `pipeline_object_name`: name of a pipeline object. If this field is present in the request, pipeline_name and pipeline_version must also be given. The pipeline objects are only meaningful in combination with the pipeline versions they are defined in. 
 
     - `request_id`: the UUID of a deployment request 
 
@@ -7805,7 +11003,7 @@ If no date or id is specified, the API will use the current time as a starting p
 {
   "filters": {
     "deployment_name": "deployment-1",
-    "version": "v1"
+    "deployment_version": "v1"
   },
   "date": "2020-01-01T00:00:00.000000Z"
 }
@@ -7814,7 +11012,8 @@ If no date or id is specified, the API will use the current time as a starting p
 ```
 {
   "filters": {
-    "pipeline_name": "pipeline-1"
+    "pipeline_name": "pipeline-1",
+    "pipeline_version": "v1"
   },
   "id": "41d7a7c5cd025e3501a00000",
   "date_range": -100
@@ -7825,8 +11024,9 @@ If no date or id is specified, the API will use the current time as a starting p
 {
   "filters": {
     "pipeline_name": "pipeline-1",
+    "pipeline_version": "v1",
     "deployment_name": "deployment-1",
-    "version": "v1"
+    "deployment_version": "v1"
   },
   "date": "2020-01-01T00:00:00.000000Z",
   "date_range": -86400,
@@ -7845,11 +11045,13 @@ A list of log details
 The following fields will be returned on response if they are set for the log line:
 - `deployment_name`:  The deployment which the log is related to 
 
-- `version`:  The version which the log is related to 
+- `deployment_version`:  The deployment version which the log is related to 
 
 - `build_id`: The UUID of the build 
 
-- `pipeline_name`:  The pipeline which the log is related to 
+- `pipeline_name`: The pipeline which the log is related to 
+
+- `pipeline_version`: The pipeline version which the log is related to 
 
 - `pipeline_object_name`: The pipeline object which the log is related to 
 
@@ -7866,17 +11068,18 @@ Logs for a specific deployment and version
   {
     "id": "5dcad12ba76a2c6e4331f180",
     "deployment_name": "deployment-1",
-    "version": "v1",
+    "deployment_version": "v1",
     "date": "2020-01-01T00:00:00.000000Z",
     "log": "[Info] Prediction result 0.14981"
   },
   {
     "id": "5dcad12ba76a2c6e4331f181",
     "deployment_name": "deployment-1",
-    "version": "v1",
+    "deployment_version": "v1",
     "pipeline_name": "pipeline-2",
+    "pipeline_version": "v2",
     "pipeline_object_name": "deployment-1-v1-object",
-    "pipeline_trace_id": "8bb6ed79-8606-4acf-acd2-90507130523c",
+    "pipeline_request_id": "8bb6ed79-8606-4acf-acd2-90507130523c",
     "date": "2020-01-01T00:00:01.000000Z",
     "log": "[Error] Deployment call result (failed)"
   }
@@ -7889,10 +11092,11 @@ Logs for a specific pipeline
   {
     "id": "5dcad12ba76a2c6e4331f192",
     "deployment_name": "deployment-2",
-    "version": "v2",
+    "deployment_version": "v2",
     "pipeline_name": "pipeline-1",
+    "pipeline_version": "v1",
     "pipeline_object_name": "deployment-2-v2-object",
-    "pipeline_trace_id": "4f75b10d-6012-47ab-ae68-cc9e69f35841",
+    "pipeline_request_id": "4f75b10d-6012-47ab-ae68-cc9e69f35841",
     "date": "2020-01-01T00:00:00.000000Z",
     "log": "[Info] Deployment call result (success): 0.2316"
   }
@@ -7907,8 +11111,7 @@ Logs for a specific pipeline
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -7942,7 +11145,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -7950,11 +11153,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **projects_resource_usage**
 > ProjectResourceUsage projects_resource_usage(project_name)
@@ -7969,9 +11171,11 @@ List the total number of resources used in a project
 A list containing the number of
 - deployments 
 
-- versions 
+- deployment_versions 
 
 - pipelines 
+
+- pipeline_versions 
 
 currently defined in the project.
 
@@ -7979,8 +11183,9 @@ currently defined in the project.
 ```
 {
   "deployments": 30,
-  "versions": 47,
-  "pipelines": 2
+  "deployment_versions": 47,
+  "pipelines": 2,
+  "pipeline_versions": 4
 }
 ```
 
@@ -7992,8 +11197,7 @@ currently defined in the project.
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8025,7 +11229,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8033,11 +11237,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **projects_update**
 > ProjectList projects_update(project_name, data)
@@ -8086,8 +11289,7 @@ Details of a project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8121,7 +11323,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8129,11 +11331,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **request_schedules_create**
 > ScheduleList request_schedules_create(project_name, data)
@@ -8155,7 +11356,7 @@ Create a new request schedule with the provided name
 
 
 ### Optional Parameters
-- `version`: Name of version if type of object is 'deployment' 
+- `version`: Name of version for which the request schedule is made. If not provided, default version of the deployment/pipeline will be used. 
 
 - `request_data`: Input data for the request schedule. For structured deployments/pipelines, it must be a dictionary. 
 
@@ -8190,11 +11391,11 @@ Details of the created request schedule
 
 - `object_type`: Type of object for which the request is made 
 
-- `object_name`: Name of deployment or pipeline for which the request is made 
+- `object_name`: Name of deployment/pipeline for which the request schedule is made 
  
 - `schedule`: Schedule in crontab format 
 
-- `version`: Name of version if type of object is 'deployment' 
+- `version`: Name of version for which the request schedule is made 
 
 - `request_data`: Input data for the request schedule 
 
@@ -8234,8 +11435,7 @@ Details of the created request schedule
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8269,7 +11469,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8277,11 +11477,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **request_schedules_delete**
 > request_schedules_delete(project_name, schedule_name)
@@ -8302,8 +11501,7 @@ If you want to temporarily disable a request schedule, update the request with `
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8336,7 +11534,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8344,11 +11542,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **request_schedules_get**
 > ScheduleList request_schedules_get(project_name, schedule_name)
@@ -8365,11 +11562,11 @@ Details of a request schedule
 
 - `object_type`: Type of object for which the request is made 
 
-- `object_name`: Name of deployment or pipeline for which the request is made 
+- `object_name`: Name of deployment/pipeline for which the request is made 
  
 - `schedule`: Schedule in crontab format 
 
-- `version`: Name of version if type of object is 'deployment' 
+- `version`: Name of version for which the request schedule is made 
 
 - `request_data`: Input data for the request schedule 
 
@@ -8409,8 +11606,7 @@ Details of a request schedule
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8444,7 +11640,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8452,11 +11648,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **request_schedules_list**
 > list[ScheduleList] request_schedules_list(project_name)
@@ -8465,7 +11660,7 @@ List request schedules
 
 
 ### Description 
-List the request schedules in a project. The user has to have 'requests.list' permission on either 'deployments.versions' or 'pipelines' to list the request schedules.
+List the request schedules in a project. The user has to have 'requests.list' permission on either 'deployments.versions' or 'pipelines.versions' to list the request schedules.
 
 ### Response Structure 
 A list of details of all request schedules in a project
@@ -8473,11 +11668,11 @@ A list of details of all request schedules in a project
 
 - `object_type`: Type of object for which the request is made 
 
-- `object_name`: Name of deployment or pipeline for which the request is made 
+- `object_name`: Name of deployment/pipeline for which the request is made 
  
 - `schedule`: Schedule in crontab format 
 
-- `version`: Name of version if type of object is 'deployment' 
+- `version`: Name of version for which the request schedule is made  
 
 - `request_data`: Input data for the request schedule 
 
@@ -8492,22 +11687,22 @@ A list of details of all request schedules in a project
 #### Response Examples 
 ```
 [
-    {
-      "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
-      "name": "test-request",
-      "object_type": "deployment",
-      "object_name": "test-deployment",
-      "version": "v1",
-      "schedule": "0 * 3 * *",
-      "request_data": {
-        "input_field_1": 2345,
-        "input_field_2": 8765
-      },
-      "batch": false,
-      "timeout": 200",
-      "enabled": true,
-      "creation_date": "2020-09-16T08:06:34.457679Z"
-    }
+  {
+    "id": "b4a06aed-f7ab-48b3-b579-b12b62db8058",
+    "name": "test-request",
+    "object_type": "deployment",
+    "object_name": "test-deployment",
+    "version": "v1",
+    "schedule": "0 * 3 * *",
+    "request_data": {
+      "input_field_1": 2345,
+      "input_field_2": 8765
+    },
+    "batch": false,
+    "timeout": 200",
+    "enabled": true,
+    "creation_date": "2020-09-16T08:06:34.457679Z"
+  }
 ]
 ```
 
@@ -8519,8 +11714,7 @@ A list of details of all request schedules in a project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8552,7 +11746,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8560,11 +11754,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **request_schedules_update**
 > ScheduleList request_schedules_update(project_name, schedule_name, data)
@@ -8610,11 +11803,11 @@ Details of the updated request schedule
 
 - `object_type`: Type of object for which the request is made 
 
-- `object_name`: Name of deployment or pipeline for which the request is made 
+- `object_name`: Name of deployment/pipeline for which the request is made 
  
 - `schedule`: Schedule in crontab format 
 
-- `version`: Name of version if type of object is 'deployment' 
+- `version`: Name of version for which the request schedule is made 
 
 - `request_data`: Input data for the request schedule 
 
@@ -8654,8 +11847,7 @@ Details of the updated request schedule
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8691,7 +11883,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8699,11 +11891,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **revisions_file_download**
 > file revisions_file_download(project_name, deployment_name, revision_id, version)
@@ -8725,8 +11916,7 @@ Download the deployment file of a revision of a version
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8765,7 +11955,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8773,14 +11963,13 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **revisions_file_upload**
-> RevisionCreate revisions_file_upload(project_name, deployment_name, version, file)
+> RevisionCreate revisions_file_upload(project_name, deployment_name, version, file=file, source_deployment=source_deployment, source_version=source_version)
 
 Upload deployment file
 
@@ -8789,11 +11978,17 @@ Upload deployment file
 Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a build.
 This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings. 
 
-### Required Parameters
+It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a build.
+
+### Optional Parameters
 - `file`: Deployment file
+- `source_deployment`: Name of the deployment from which the deployment file will be copied
+- `source_version`: Version from which the deployment file will be copied
+
+Either **file** or **source_deployment** and **source_version** must be provided. source_deployment and source_version must be provided together.
 
 ### Response Structure
-- `success`: Boolean indicating whether the deployment file upload succeeded or not
+- `success`: Boolean indicating whether the deployment file upload/copy succeeded or not
 - `revision`: UUID of the created revision for the file upload
 - `build`: UUID of the build created for the file upload
 
@@ -8805,8 +12000,7 @@ This file should contain the deployment that will be run. It should be provided 
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8819,10 +12013,12 @@ api_instance = ubiops.CoreApi(api_client)
 project_name = 'project_name_example' # str 
 deployment_name = 'deployment_name_example' # str 
 version = 'version_example' # str 
-file = '/path/to/file' # file 
+file = '/path/to/file' # file  (optional)
+source_deployment = 'source_deployment_example' # str  (optional)
+source_version = 'source_version_example' # str  (optional)
 
 # Upload deployment file
-api_response = api_instance.revisions_file_upload(project_name, deployment_name, version, file)
+api_response = api_instance.revisions_file_upload(project_name, deployment_name, version, file=file, source_deployment=source_deployment, source_version=source_version)
 print(api_response)
 
 # Close the connection
@@ -8836,7 +12032,9 @@ Name | Type | Notes
  **project_name** | **str** | 
  **deployment_name** | **str** | 
  **version** | **str** | 
- **file** | **file** | 
+ **file** | **file** | [optional] 
+ **source_deployment** | **str** | [optional] 
+ **source_version** | **str** | [optional] 
 
 ### Return type
 
@@ -8844,7 +12042,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8852,11 +12050,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **revisions_get**
 > RevisionList revisions_get(project_name, deployment_name, revision_id, version)
@@ -8892,8 +12089,7 @@ A dictionary containing details of the build
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -8931,7 +12127,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -8939,11 +12135,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **revisions_list**
 > list[RevisionList] revisions_list(project_name, deployment_name, version)
@@ -8987,8 +12182,7 @@ A list of details of the revisions
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9024,7 +12218,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9032,11 +12226,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **role_assignments_create**
 > RoleAssignmentList role_assignments_create(project_name, data)
@@ -9121,8 +12314,7 @@ Details of the created role assignment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9156,7 +12348,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9164,11 +12356,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **role_assignments_delete**
 > role_assignments_delete(project_name, id)
@@ -9187,8 +12378,7 @@ Delete a role of a user. The user making the request must have appropriate permi
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9221,7 +12411,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9229,11 +12419,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **role_assignments_get**
 > RoleAssignmentList role_assignments_get(project_name, id)
@@ -9275,8 +12464,7 @@ Details of the role assignment
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9310,7 +12498,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9318,11 +12506,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **role_assignments_per_user_list**
 > list[RoleAssignmentList] role_assignments_per_user_list(project_name, user_id)
@@ -9372,8 +12559,7 @@ List the roles assigned to a user in the scope of a project.
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9407,7 +12593,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9415,11 +12601,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **roles_create**
 > RoleDetailList roles_create(project_name, data)
@@ -9481,8 +12666,7 @@ Details of the created role
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9516,7 +12700,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9524,11 +12708,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **roles_delete**
 > roles_delete(project_name, role_name)
@@ -9548,8 +12731,7 @@ Delete a role from a project. The user making the request must have appropriate 
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9582,7 +12764,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9590,11 +12772,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **roles_get**
 > RoleDetailList roles_get(project_name, role_name)
@@ -9637,8 +12818,7 @@ Details of the role
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9672,7 +12852,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9680,11 +12860,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **roles_list**
 > list[RoleList] roles_list(project_name)
@@ -9732,8 +12911,7 @@ List the roles available in the scope of a project. Information on which permiss
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9765,7 +12943,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9773,11 +12951,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **roles_update**
 > RoleDetailList roles_update(project_name, role_name, data)
@@ -9837,8 +13014,7 @@ Details of the updated role
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9874,7 +13050,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9882,11 +13058,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **service_status**
 > Status service_status()
@@ -9915,8 +13090,7 @@ Request the API status. It can be used to determine whether the API is online. Y
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -9944,7 +13118,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -9952,11 +13126,10 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **service_users_create**
 > ServiceUserDetail service_users_create(project_name, data)
@@ -9966,17 +13139,29 @@ Create a new service user
 
 ### Description 
 Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API. 
+In addition, allowed cors origins can be configured for the service user. The service user will be allowed to make a deployment or pipeline request from these origins. 
 
 The token is **ONLY** returned on creation and will not be accessible afterwards.
 
 ### Optional Parameters
 - `name`: Name of the service user 
 
+- `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
+
 
 #### Request Examples 
 ```
 {
   "name": "service-user-1"
+}
+```
+
+```
+{
+  "name": "service-user-1",
+  "allowed_cors_origins": [
+    "https://test.com"
+  ]
 }
 ```
 
@@ -9990,7 +13175,10 @@ Details of the created service user
 
 - `name`: Name of the service user 
 
-- `creation_date`: Date when the service user was created
+- `creation_date`: Date when the service user was created 
+
+- `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
+
 
 #### Response Examples 
 ```
@@ -9999,7 +13187,10 @@ Details of the created service user
   "email": "13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com",
   "token": "e962d9190348af7fa8d233d75cff7385b4335f81",
   "name": "service-user-1",
-  "creation_date": "2020-03-24T09:16:27.504+00:00"
+  "creation_date": "2020-03-24T09:16:27.504+00:00",
+  "allowed_cors_origins": [
+    "https://test.com"
+  ]
 }
 ```
 
@@ -10011,8 +13202,7 @@ Details of the created service user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10046,7 +13236,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10054,11 +13244,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **service_users_delete**
 > service_users_delete(project_name, service_user_id)
@@ -10077,8 +13266,7 @@ Delete a service user from a project
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10111,7 +13299,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10119,11 +13307,10 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
+
+[[Back to top]](#)
 
 # **service_users_get**
 > ServiceUserList service_users_get(project_name, service_user_id)
@@ -10142,7 +13329,10 @@ Details of the service user
 
 - `name`: Name of the service user 
 
-- `creation_date`: Date when the service user was created
+- `creation_date`: Date when the service user was created 
+
+- `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
+
 
 #### Response Examples 
 ```
@@ -10150,7 +13340,10 @@ Details of the service user
   "id": "13a9ba27-6888-4528-826e-8e1002eab13d",
   "email": "13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com",
   "name": "new-service-user-name",
-  "creation_date": "2020-03-26T12:18:43.123+00:00"
+  "creation_date": "2020-03-26T12:18:43.123+00:00",
+  "allowed_cors_origins": [
+    "https://test.com"
+  ]
 }
 ```
 
@@ -10162,8 +13355,7 @@ Details of the service user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10197,7 +13389,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10205,11 +13397,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **service_users_list**
 > list[ServiceUserList] service_users_list(project_name)
@@ -10228,7 +13419,10 @@ List of details of the service users:
 
 - `name`: Name of the service user 
 
-- `creation_date`: Date when the service user was created
+- `creation_date`: Date when the service user was created 
+
+- `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
+
 
 #### Response Examples 
 ```
@@ -10237,13 +13431,19 @@ List of details of the service users:
     "id": "537bca64-5ab6-43eb-a7ef-1638bc30b6ed",
     "email": "537bca64-5ab6-43eb-a7ef-1638bc30b6ed.project1@serviceuser.ubiops.com",
     "name": "service-user-1",
-    "creation_date": "2020-03-24T09:16:27.504+00:00"
+    "creation_date": "2020-03-24T09:16:27.504+00:00",
+    "allowed_cors_origins": [
+      "https://test.com"
+    ]
   },
   {
     "id": "13a9ba27-6888-4528-826e-8e1002eab13d",
     "email": "13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com",
     "name": "service-user-2",
-    "creation_date": "2020-03-26T12:18:43.123+00:00"
+    "creation_date": "2020-03-26T12:18:43.123+00:00",
+    "allowed_cors_origins": [
+      "https://test.com"
+    ]
   }
 ]
 ```
@@ -10256,8 +13456,7 @@ List of details of the service users:
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10289,7 +13488,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10297,11 +13496,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **service_users_token**
 > ServiceUserTokenList service_users_token(project_name, service_user_id, data=data)
@@ -10331,8 +13529,7 @@ Details of the new token for the service user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10368,7 +13565,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10376,11 +13573,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **service_users_update**
 > ServiceUserList service_users_update(project_name, service_user_id, data)
@@ -10389,10 +13585,13 @@ Update service user details
 
  
 ### Description
-Update the name of a service user
+Update the name and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value.
+Leave as an empty list to remove the previous list of allowed origins.
 
 ### Optional Parameters
 - `name`: Name of the service user 
+
+- `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
 
 
 #### Request Examples 
@@ -10400,6 +13599,15 @@ Update the name of a service user
 ```
 {
   "name": "new-service-user-name",
+}
+```
+
+```
+{
+  "name": "service-user-1",
+  "allowed_cors_origins": [
+    "https://test.com"
+  ]
 }
 ```
 
@@ -10411,7 +13619,10 @@ Details of the updated service user
 
 - `name`: Name of the service user 
 
-- `creation_date`: Date when the service user was created
+- `creation_date`: Date when the service user was created 
+
+- `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
+
 
 #### Response Examples 
 ```
@@ -10419,7 +13630,10 @@ Details of the updated service user
   "id": "13a9ba27-6888-4528-826e-8e1002eab13d",
   "email": "13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com",
   "name": "new-service-user-name",
-  "creation_date": "2020-03-26T12:18:43.123+00:00"
+  "creation_date": "2020-03-26T12:18:43.123+00:00",
+  "allowed_cors_origins": [
+    "https://test.com"
+  ]
 }
 ```
 
@@ -10431,8 +13645,7 @@ Details of the updated service user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10468,7 +13681,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10476,11 +13689,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 200
+
+[[Back to top]](#)
 
 # **user_create**
 > UserPendingDetail user_create(data)
@@ -10555,8 +13767,7 @@ Details of the created user
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10588,7 +13799,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10596,11 +13807,10 @@ Name | Type | Notes
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 201
+
+[[Back to top]](#)
 
 # **user_delete**
 > user_delete()
@@ -10619,8 +13829,7 @@ Delete the user that makes the request
 import ubiops
 configuration = ubiops.Configuration()
 # Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
 
 # Defining host is optional and default to https://api.ubiops.com/v2.1
 configuration.host = "https://api.ubiops.com/v2.1"
@@ -10647,7 +13856,7 @@ void (empty response body)
 
 ### Authorization
 
-[api_key](../README.md#api_key)
+[API token](https://ubiops.com/docs/organizations/service-users/)
 
 ### HTTP request headers
 
@@ -10655,1205 +13864,8 @@ void (empty response body)
  - **Accept**: application/json
 
 ### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+ - **Status code**: 204
 
-# **version_environment_variables_copy**
-> list[InheritedEnvironmentVariableList] version_environment_variables_copy(project_name, deployment_name, version, data)
-
-Copy version environment variable
-
-
-### Description
-Copy existing environment variables from a source object to the version. Variables of the version with the same name as ones from the source object will be overwritten with the new value. Only the copied variables are returned.
-
-### Required Parameters
-- `source_deployment`: The name of the deployment from which the variables will be copied
-
-### Optional Parameters
-- `source_version`: The version of the object from which the variables will be copied
-
-#### Request Examples
-Copy the environment variables from a deployment
-```
-{
-  "source_deployment": "example-deployment"
-}
-```
-
-Copy the environment variables from a version
-```
-{
-  "source_deployment": "example-deployment",
-  "source_version": "v1"
-}
-```
-
-### Response Structure 
-A list of the copied variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-- `inheritance_type`: Type of parent object that this variable is inherited from. Will be null for copied environment variables.
-- `inheritance_name`: Name of the parent object that this variable is inherited from. Will be null for copied environment variables.
-
-#### Response Examples 
-```
-[
-  {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "version_specific_variable",
-    "value": "some_value",
-    "secret": false,
-    "inheritance_type": null,
-    "inheritance_name": null
-  },
-  {
-    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
-    "name": "database_schema",
-    "value": "public",
-    "secret": false,
-    "inheritance_type": null,
-    "inheritance_name": null
-  },
-  {
-    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
-    "name": "database_password",
-    "value": null,
-    "secret": true,
-    "inheritance_type": null,
-    "inheritance_name": null
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
-data = ubiops.EnvironmentVariableCopy() # EnvironmentVariableCopy 
-
-# Copy version environment variable
-api_response = api_instance.version_environment_variables_copy(project_name, deployment_name, version, data)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **version** | **str** | 
- **data** | [**EnvironmentVariableCopy**](EnvironmentVariableCopy.md) | 
-
-### Return type
-
-[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **version_environment_variables_create**
-> EnvironmentVariableList version_environment_variables_create(project_name, deployment_name, version, data)
-
-Create version environment variable
-
-
-### Description
-Create an environment variable for the version. Variables inherited from the project or deployment can be shadowed by creating a variable with the same name.
-
-### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
-- `value`: The value of the variable as a string. It may be an empty string ("").
-- `secret`: If this variable contains sensitive information, set this to true to hide it from other users.
-
-#### Request Examples
-```
-{
-  "name": "version_variable",
-  "value": "another one",
-  "secret": false
-}
-```
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-{
-  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
-  "name": "version_variable",
-  "value": "another one",
-  "secret": false
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
-data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate 
-
-# Create version environment variable
-api_response = api_instance.version_environment_variables_create(project_name, deployment_name, version, data)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **version** | **str** | 
- **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md) | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **version_environment_variables_delete**
-> version_environment_variables_delete(project_name, deployment_name, id, version)
-
-Delete version environment variable
-
-
-### Description
-Delete an environment variable of a version
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-id = 'id_example' # str 
-version = 'version_example' # str 
-
-# Delete version environment variable
-api_instance.version_environment_variables_delete(project_name, deployment_name, id, version)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **id** | **str** | 
- **version** | **str** | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **version_environment_variables_get**
-> EnvironmentVariableList version_environment_variables_get(project_name, deployment_name, id, version)
-
-Get version environment variable
-
-
-### Description
-Retrieve details of a version environment variable. This cannot be used to retrieve details of inherited variables.
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-[
-  {
-    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
-    "name": "database_schema",
-    "value": "public",
-    "secret": false
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-id = 'id_example' # str 
-version = 'version_example' # str 
-
-# Get version environment variable
-api_response = api_instance.version_environment_variables_get(project_name, deployment_name, id, version)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **id** | **str** | 
- **version** | **str** | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **version_environment_variables_list**
-> list[InheritedEnvironmentVariableList] version_environment_variables_list(project_name, deployment_name, version)
-
-List version environment variables
-
-
-### Description
-List the environment variables defined for the version. Includes environment variables defined at project level and deployment level.
- 
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-- `inheritance_type`: Type of parent object that this variable is inherited from - can be `project`, `deployment`, or null if the variable was defined for the version directly
-- `inheritance_name`: Name of the parent object that this variable is inherited from - will be null if the variable was defined for the version directly
-
-#### Response Examples 
-```
-[
-  {
-    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-    "name": "version_specific_variable",
-    "value": "some_value",
-    "secret": false,
-    "inheritance_type": null,
-    "inheritance_name": null
-  },
-  {
-    "id": "4c15a27e-25ea-4be0-86c7-f4790389d061",
-    "name": "database_schema",
-    "value": "public",
-    "secret": false,
-    "inheritance_type": "deployment",
-    "inheritance_name": "deployment_name"
-  },
-  {
-    "id": "06c2c8be-507e-4fae-981d-54e94f22dab0",
-    "name": "database_password",
-    "value": null,
-    "secret": true,
-    "inheritance_type": "project",
-    "inheritance_name": "project_name"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
-
-# List version environment variables
-api_response = api_instance.version_environment_variables_list(project_name, deployment_name, version)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **version** | **str** | 
-
-### Return type
-
-[**list[InheritedEnvironmentVariableList]**](InheritedEnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **version_environment_variables_update**
-> EnvironmentVariableList version_environment_variables_update(project_name, deployment_name, id, version, data)
-
-Update version environment variable
-
-
-### Description
-Update an environment variable for the version. This cannot be used to update inherited variables; to change an inherited variable for a specific version you can create a variable with the same name for the version.
-
-### Required Parameters
-- `name`: The name of the variable. The variable will have this name when accessed from your deployment code. The variable name should contain only letters and underscores, and not start or end with an underscore.
-- `value`: The value of the variable as a string. It may be an empty string ("").
-- `secret`: If this variable contains sensitive information, set this to true to hide it from other users. Can be updated from false to true, but not from true to false (i.e. secrets will stay secrets).
-
-#### Request Examples
-```
-{
-  "name": "version_variable",
-  "value": "yet another one",
-  "secret": false
-}
-```
-
-### Response Structure 
-A list of variables described by the following fields:
-- `id`: Unique identifier for the environment variable
-- `name`: Variable name
-- `value`: Variable value (will be null for secret variables)
-- `secret`: Boolean that indicates if this variable contains sensitive information
-
-#### Response Examples 
-```
-{
-  "id": "54e94fbe-507e-4fae-981d-227c28a2dab0",
-  "name": "version_variable",
-  "value": "yet another one",
-  "secret": false
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-id = 'id_example' # str 
-version = 'version_example' # str 
-data = ubiops.EnvironmentVariableCreate() # EnvironmentVariableCreate 
-
-# Update version environment variable
-api_response = api_instance.version_environment_variables_update(project_name, deployment_name, id, version, data)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **id** | **str** | 
- **version** | **str** | 
- **data** | [**EnvironmentVariableCreate**](EnvironmentVariableCreate.md) | 
-
-### Return type
-
-[**EnvironmentVariableList**](EnvironmentVariableList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **versions_create**
-> VersionList versions_create(project_name, deployment_name, data)
-
-Create versions
-
-
-### Description 
-Create a version for a deployment
-
-### Required Parameters 
-- `version`: Name of the version of the deployment
-
-### Optional Parameters 
-- `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7, python3.8 or r4.0. The default value is python3.7.
-- `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively.
-- `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
-- `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
-- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer. 
-
-- `description`: Description for the version
-- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-
-If the time that a request takes does not matter, keep the default values.
-
-#### Request Examples 
-```
-{
-  "version": "version-1",
-  "language": "python3.8"
-}
-```
- 
-```
-{
-  "version": "version-1",
-  "language": "r4.0",
-  "memory_allocation": 512
-}
-```
- 
-```
-{
-  "version": "version-1",
-  "maximum_instances": 4,
-  "minimum_instances": 1
-}
-```
-
-### Response Structure 
-Details of the created version
-- `id`: Unique identifier for the deployment (UUID)
-- `deployment`: Deployment name to which the version is associated
-- `version`: Version name
-- `description`: Description of the version
-- `language`: Language in which the version is provided
-- `status`: The status of the version
-- `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
-- `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-- `memory_allocation`: Reserved memory for the version in MB  
-- `maximum_instances`: Upper bound of number of versions running
-- `minimum_instances`: Lower bound of number of versions running
-- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
-- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-- `creation_date`: The date when the version was created
-- `last_updated`: The date when the version was last updated
-
-#### Response Examples 
-```
-{
-  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-  "deployment": "deployment-1",
-  "version": "version-1",
-  "description": "",
-  "language": "python3.8",
-  "status": "unavailable",
-  "active_revision": null,
-  "latest_build": null,
-  "memory_allocation": 512,
-  "maximum_instances": 5,
-  "minimum_instances": 0,
-  "maximum_idle_time": 10,
-  "labels": {
-    "type": "version"
-  },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-05-12T16:23:15.456812Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-data = ubiops.VersionCreate() # VersionCreate 
-
-# Create versions
-api_response = api_instance.versions_create(project_name, deployment_name, data)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **data** | [**VersionCreate**](VersionCreate.md) | 
-
-### Return type
-
-[**VersionList**](VersionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **versions_delete**
-> versions_delete(project_name, deployment_name, version)
-
-Delete version
-
- 
-### Description 
-Delete a deployment version. If the version is referenced from a pipeline, it cannot be deleted, it must be removed from the pipeline first.
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
-
-# Delete version
-api_instance.versions_delete(project_name, deployment_name, version)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **version** | **str** | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **versions_get**
-> VersionDetail versions_get(project_name, deployment_name, version)
-
-Get version
-
-
-### Description 
-Retrieve details of a version of a deployment in a project
-
-### Response Structure 
-Details of a version
-- `id`: Unique identifier for the version (UUID)
-- `deployment`: Deployment name to which the version is associated
-- `version`: Version name
-- `description`: Description of the version
-- `language`: Language in which the version is provided
-- `status`: The status of the version
-- `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MB 
-- `maximum_instances`: Upper bound of number of deployment pods running in parallel
-- `minimum_instances`: Lower bound of number of deployment pods running in parallel
-- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
-- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-- `creation_date`: The date when the version was created
-- `last_updated`: The date when the version was last updated
-- `last_file_upload`: The date when a deployment file was last uploaded for the version
-
-#### Response Examples
-```
-{
-  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-  "deployment": "deployment-1",
-  "version": "version-1",
-  "description": "",
-  "language": "python3.7",
-  "status": "available",
-  "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
-  "latest_build": "9f7fd6ec-53b7-41c6-949e-09efc2ee2d31",
-  "memory_allocation": 512,
-  "maximum_instances": 4,
-  "minimum_instances": 1,
-  "maximum_idle_time": 10,
-  "labels": {
-    "type": "version"
-  },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-22T18:04:76.123754Z",
-  "last_file_uploaded": "2020-06-21T09:03:01.875391Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
-
-# Get version
-api_response = api_instance.versions_get(project_name, deployment_name, version)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **version** | **str** | 
-
-### Return type
-
-[**VersionDetail**](VersionDetail.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **versions_list**
-> list[VersionList] versions_list(project_name, deployment_name, labels=labels)
-
-List versions
-
-
-### Description 
-Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.
-
-### Optional Parameters
-- `labels`: Filter on labels of the version. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.
-
-### Response Structure 
-A list of details of the versions
-- `id`: Unique identifier for the deployment (UUID)
-- `deployment`: Deployment name to which the version is associated
-- `version`: Version name
-- `description`: Description of the version
-- `language`: Language in which the version is provided
-- `status`: The status of the version
-- `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory usage for the version in MB
-- `maximum_instances`: Upper bound of number of versions running
-- `minimum_instances`: Lower bound of number of versions running
-- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
-- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-- `creation_date`: The date when the version was created
-- `last_updated`: The date when the version was last updated
-
-#### Response Examples
-```
-[
-  {
-    "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-    "deployment": "deployment-1",
-    "version": "version-1",
-    "description": "",
-    "language": "python3.8",
-    "status": "available",
-    "active_revision": "da27ef7c-aa3f-4963-a815-6ebf1865638e",
-    "latest_build": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
-    "memory_allocation": 512,
-    "maximum_instances": 4,
-    "minimum_instances": 1,
-    "maximum_idle_time": 10,
-    "labels": {
-      "type": "version"
-    },
-    "creation_date": "2020-06-18T08:32:14.876451Z",
-    "last_updated": "2020-06-19T10:52:23.124784Z"
-  },
-  {
-    "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
-    "deployment": "deployment-1",
-    "version": "version-2",
-    "description": "",
-    "language": "r4.0",
-    "status": "available",
-    "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
-    "latest_build": "4534e479-ea2e-4161-876a-1d382191a031",
-    "memory_allocation": 256,
-    "maximum_instances": 5,
-    "minimum_instances": 0,
-    "maximum_idle_time": 10,
-    "labels": {
-      "type": "version"
-    },
-    "creation_date": "2020-05-12T16:23:15.456812Z",
-    "last_updated": "2020-06-22T18:04:76.123754Z"
-  }
-]
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-labels = 'labels_example' # str  (optional)
-
-# List versions
-api_response = api_instance.versions_list(project_name, deployment_name, labels=labels)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **labels** | **str** | [optional] 
-
-### Return type
-
-[**list[VersionList]**](VersionList.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **versions_update**
-> VersionDetail versions_update(project_name, deployment_name, version, data)
-
-Update version
-
-
-### Description 
-Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. 
-
-### Optional Parameters 
-- `version`: New name for the version
-- `memory_allocation`: New reserved memory for the version in MB
-- `maximum_instances`: New upper bound of number of versions running
-- `minimum_instances`: New lower bound of number of versions running
-- `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped
-- `description`: New description for the version
-- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
-
-#### Request Examples 
-```
-{
-  "version": "new-version"
-}
-```
- 
-```
-{
-  "memory_allocation": 512,
-  "maximum_instances": 4,
-  "minimum_instances": 1
-}
-```
-
-### Response Structure 
-Details of the updated version
-- `id`: Unique identifier for the deployment (UUID)
-- `deployment`: Deployment name to which the version is associated
-- `version`: Version name
-- `description`: Description of the version
-- `language`: Language in which the version is provided
-- `status`: The status of the version
-- `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MB
-- `maximum_instances`: Upper bound of number of versions running
-- `minimum_instances`: Lower bound of number of versions running
-- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
-- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-- `creation_date`: The date when the version was created
-- `last_updated`: The date when the version was last updated
-- `last_file_upload`: The date when a deployment file was last uploaded for the version
-
-#### Response Examples 
-```
-{
-  "id": "4ae7d14b-4803-4e16-b96d-3b18caa4b605",
-  "deployment": "deployment-1",
-  "version": "version-1",
-  "description": "",
-  "language": "python3.8",
-  "status": "available",
-  "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
-  "latest_build": "0d07337e-96d6-4ce6-8c63-c2f07edd2ce4",
-  "memory_allocation": 512,
-  "maximum_instances": 4,
-  "minimum_instances": 1,
-  "maximum_idle_time": 10,
-  "labels": {
-    "type": "version"
-  },
-  "creation_date": "2020-05-12T16:23:15.456812Z",
-  "last_updated": "2020-06-23T18:04:76.123754Z",
-  "last_file_uploaded": "2020-06-21T09:03:01.875391Z"
-}
-```
-
-
-### Example
-
-* Api Key Authentication (api_key):
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'YOUR_API_TOKEN'
-configuration.api_key_prefix['Authorization'] = ''
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-deployment_name = 'deployment_name_example' # str 
-version = 'version_example' # str 
-data = ubiops.VersionUpdate() # VersionUpdate 
-
-# Update version
-api_response = api_instance.versions_update(project_name, deployment_name, version, data)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-### Parameters
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **deployment_name** | **str** | 
- **version** | **str** | 
- **data** | [**VersionUpdate**](VersionUpdate.md) | 
-
-### Return type
-
-[**VersionDetail**](VersionDetail.md)
-
-### Authorization
-
-[api_key](../README.md#api_key)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** |  |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+[[Back to top]](#)
 

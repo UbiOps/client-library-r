@@ -1,4 +1,4 @@
-# VersionList
+# DeploymentVersionDetail
 
 ## Properties
 Name | Type | Notes
@@ -15,10 +15,9 @@ Name | Type | Notes
 **maximum_instances** | **int** | [optional] 
 **minimum_instances** | **int** | [optional] 
 **maximum_idle_time** | **int** | [optional] 
-**labels** | **dict(str, str)** | [optional] 
+**labels** | **str** or **dict(str, str)** | [optional] 
 **creation_date** | **datetime** | [optional] 
 **last_updated** | **datetime** | [optional] 
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+**last_file_upload** | **str** | [optional] [readonly] 
 
 

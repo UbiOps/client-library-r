@@ -1,3 +1,9 @@
+# Mkdocs
+mkdocs.yml
+docs/README.md
+docs/getting_started.md
+docs/installation_guide.md
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

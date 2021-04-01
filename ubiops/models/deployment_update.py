@@ -34,28 +34,34 @@ class DeploymentUpdate(object):
     """
     openapi_types = {
         'name': 'str',
+        'default_version': 'str',
         'description': 'str',
         'labels': 'dict(str, str)'
     }
 
     attribute_map = {
         'name': 'name',
+        'default_version': 'default_version',
         'description': 'description',
         'labels': 'labels'
     }
 
-    def __init__(self, name=None, description=None, labels=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, default_version=None, description=None, labels=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
+        self._default_version = None
         self._description = None
         self._labels = None
         self.discriminator = None
 
-        self.name = name
+        if name is not None:
+            self.name = name
+        if default_version is not None:
+            self.default_version = default_version
         if description is not None:
             self.description = description
         self.labels = labels
@@ -78,20 +84,43 @@ class DeploymentUpdate(object):
         :param name: The name of this DeploymentUpdate.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 name is not None and not isinstance(name, str)):
             raise ValueError("Parameter `name` must be a string")  # noqa: E501
 
         if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) > 64):
-            raise ValueError("Invalid value for `name`, length must be less than or equal to `64`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
                 name is not None and len(name) < 1):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def default_version(self):
+        """Gets the default_version of this DeploymentUpdate.  # noqa: E501
+
+
+        :return: The default_version of this DeploymentUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._default_version
+
+    @default_version.setter
+    def default_version(self, default_version):
+        """Sets the default_version of this DeploymentUpdate.
+
+
+        :param default_version: The default_version of this DeploymentUpdate.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                default_version is not None and not isinstance(default_version, str)):
+            raise ValueError("Parameter `default_version` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                default_version is not None and len(default_version) < 1):
+            raise ValueError("Invalid value for `default_version`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._default_version = default_version
 
     @property
     def description(self):

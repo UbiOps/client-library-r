@@ -36,19 +36,21 @@ class ResourceUsage(object):
         'projects': 'int',
         'users': 'int',
         'deployments': 'int',
-        'versions': 'int',
-        'pipelines': 'int'
+        'deployment_versions': 'int',
+        'pipelines': 'int',
+        'pipeline_versions': 'int'
     }
 
     attribute_map = {
         'projects': 'projects',
         'users': 'users',
         'deployments': 'deployments',
-        'versions': 'versions',
-        'pipelines': 'pipelines'
+        'deployment_versions': 'deployment_versions',
+        'pipelines': 'pipelines',
+        'pipeline_versions': 'pipeline_versions'
     }
 
-    def __init__(self, projects=None, users=None, deployments=None, versions=None, pipelines=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, projects=None, users=None, deployments=None, deployment_versions=None, pipelines=None, pipeline_versions=None, local_vars_configuration=None):  # noqa: E501
         """ResourceUsage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -57,8 +59,9 @@ class ResourceUsage(object):
         self._projects = None
         self._users = None
         self._deployments = None
-        self._versions = None
+        self._deployment_versions = None
         self._pipelines = None
+        self._pipeline_versions = None
         self.discriminator = None
 
         if projects is not None:
@@ -67,10 +70,12 @@ class ResourceUsage(object):
             self.users = users
         if deployments is not None:
             self.deployments = deployments
-        if versions is not None:
-            self.versions = versions
+        if deployment_versions is not None:
+            self.deployment_versions = deployment_versions
         if pipelines is not None:
             self.pipelines = pipelines
+        if pipeline_versions is not None:
+            self.pipeline_versions = pipeline_versions
 
     @property
     def projects(self):
@@ -145,28 +150,28 @@ class ResourceUsage(object):
         self._deployments = deployments
 
     @property
-    def versions(self):
-        """Gets the versions of this ResourceUsage.  # noqa: E501
+    def deployment_versions(self):
+        """Gets the deployment_versions of this ResourceUsage.  # noqa: E501
 
 
-        :return: The versions of this ResourceUsage.  # noqa: E501
+        :return: The deployment_versions of this ResourceUsage.  # noqa: E501
         :rtype: int
         """
-        return self._versions
+        return self._deployment_versions
 
-    @versions.setter
-    def versions(self, versions):
-        """Sets the versions of this ResourceUsage.
+    @deployment_versions.setter
+    def deployment_versions(self, deployment_versions):
+        """Sets the deployment_versions of this ResourceUsage.
 
 
-        :param versions: The versions of this ResourceUsage.  # noqa: E501
+        :param deployment_versions: The deployment_versions of this ResourceUsage.  # noqa: E501
         :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
-                versions is not None and not isinstance(versions, int)):
-            raise ValueError("Parameter `versions` must be an integer")  # noqa: E501
+                deployment_versions is not None and not isinstance(deployment_versions, int)):
+            raise ValueError("Parameter `deployment_versions` must be an integer")  # noqa: E501
 
-        self._versions = versions
+        self._deployment_versions = deployment_versions
 
     @property
     def pipelines(self):
@@ -191,6 +196,30 @@ class ResourceUsage(object):
             raise ValueError("Parameter `pipelines` must be an integer")  # noqa: E501
 
         self._pipelines = pipelines
+
+    @property
+    def pipeline_versions(self):
+        """Gets the pipeline_versions of this ResourceUsage.  # noqa: E501
+
+
+        :return: The pipeline_versions of this ResourceUsage.  # noqa: E501
+        :rtype: int
+        """
+        return self._pipeline_versions
+
+    @pipeline_versions.setter
+    def pipeline_versions(self, pipeline_versions):
+        """Sets the pipeline_versions of this ResourceUsage.
+
+
+        :param pipeline_versions: The pipeline_versions of this ResourceUsage.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                pipeline_versions is not None and not isinstance(pipeline_versions, int)):
+            raise ValueError("Parameter `pipeline_versions` must be an integer")  # noqa: E501
+
+        self._pipeline_versions = pipeline_versions
 
     def to_dict(self):
         """Returns the model properties as a dict"""

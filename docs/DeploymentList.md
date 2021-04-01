@@ -14,8 +14,6 @@ Name | Type | Notes
 **labels** | **dict(str, str)** | [optional] 
 **creation_date** | **datetime** | [optional] 
 **last_updated** | **datetime** | [optional] 
-**number_of_versions** | **int** | [optional] [readonly] 
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+**number_of_versions** | **int** | [optional] 
 
 

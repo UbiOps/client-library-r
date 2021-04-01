@@ -34,6 +34,7 @@ class BatchDeploymentRequestSingleDetail(object):
     """
     openapi_types = {
         'id': 'str',
+        'version': 'str',
         'status': 'str',
         'success': 'bool',
         'time_created': 'datetime',
@@ -47,6 +48,7 @@ class BatchDeploymentRequestSingleDetail(object):
 
     attribute_map = {
         'id': 'id',
+        'version': 'version',
         'status': 'status',
         'success': 'success',
         'time_created': 'time_created',
@@ -58,13 +60,14 @@ class BatchDeploymentRequestSingleDetail(object):
         'created_by': 'created_by'
     }
 
-    def __init__(self, id=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, request_data=None, result=None, error_message=None, created_by=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, request_data=None, result=None, error_message=None, created_by=None, local_vars_configuration=None):  # noqa: E501
         """BatchDeploymentRequestSingleDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._id = None
+        self._version = None
         self._status = None
         self._success = None
         self._time_created = None
@@ -77,6 +80,7 @@ class BatchDeploymentRequestSingleDetail(object):
         self.discriminator = None
 
         self.id = id
+        self.version = version
         self.status = status
         self.success = success
         self.time_created = time_created
@@ -113,6 +117,36 @@ class BatchDeploymentRequestSingleDetail(object):
             raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
         self._id = id
+
+    @property
+    def version(self):
+        """Gets the version of this BatchDeploymentRequestSingleDetail.  # noqa: E501
+
+
+        :return: The version of this BatchDeploymentRequestSingleDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._version
+
+    @version.setter
+    def version(self, version):
+        """Sets the version of this BatchDeploymentRequestSingleDetail.
+
+
+        :param version: The version of this BatchDeploymentRequestSingleDetail.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
+            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and not isinstance(version, str)):
+            raise ValueError("Parameter `version` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                version is not None and len(version) < 1):
+            raise ValueError("Invalid value for `version`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._version = version
 
     @property
     def status(self):

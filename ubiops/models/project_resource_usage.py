@@ -34,33 +34,43 @@ class ProjectResourceUsage(object):
     """
     openapi_types = {
         'deployments': 'int',
-        'versions': 'int',
-        'pipelines': 'int'
+        'deployment_versions': 'str',
+        'pipelines': 'int',
+        'pipeline_versions': 'str',
+        'versions': 'int'
     }
 
     attribute_map = {
         'deployments': 'deployments',
-        'versions': 'versions',
-        'pipelines': 'pipelines'
+        'deployment_versions': 'deployment_versions',
+        'pipelines': 'pipelines',
+        'pipeline_versions': 'pipeline_versions',
+        'versions': 'versions'
     }
 
-    def __init__(self, deployments=None, versions=None, pipelines=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, deployments=None, deployment_versions=None, pipelines=None, pipeline_versions=None, versions=None, local_vars_configuration=None):  # noqa: E501
         """ProjectResourceUsage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._deployments = None
-        self._versions = None
+        self._deployment_versions = None
         self._pipelines = None
+        self._pipeline_versions = None
+        self._versions = None
         self.discriminator = None
 
         if deployments is not None:
             self.deployments = deployments
-        if versions is not None:
-            self.versions = versions
+        if deployment_versions is not None:
+            self.deployment_versions = deployment_versions
         if pipelines is not None:
             self.pipelines = pipelines
+        if pipeline_versions is not None:
+            self.pipeline_versions = pipeline_versions
+        if versions is not None:
+            self.versions = versions
 
     @property
     def deployments(self):
@@ -87,28 +97,28 @@ class ProjectResourceUsage(object):
         self._deployments = deployments
 
     @property
-    def versions(self):
-        """Gets the versions of this ProjectResourceUsage.  # noqa: E501
+    def deployment_versions(self):
+        """Gets the deployment_versions of this ProjectResourceUsage.  # noqa: E501
 
 
-        :return: The versions of this ProjectResourceUsage.  # noqa: E501
-        :rtype: int
+        :return: The deployment_versions of this ProjectResourceUsage.  # noqa: E501
+        :rtype: str
         """
-        return self._versions
+        return self._deployment_versions
 
-    @versions.setter
-    def versions(self, versions):
-        """Sets the versions of this ProjectResourceUsage.
+    @deployment_versions.setter
+    def deployment_versions(self, deployment_versions):
+        """Sets the deployment_versions of this ProjectResourceUsage.
 
 
-        :param versions: The versions of this ProjectResourceUsage.  # noqa: E501
-        :type: int
+        :param deployment_versions: The deployment_versions of this ProjectResourceUsage.  # noqa: E501
+        :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                versions is not None and not isinstance(versions, int)):
-            raise ValueError("Parameter `versions` must be an integer")  # noqa: E501
+                deployment_versions is not None and not isinstance(deployment_versions, str)):
+            raise ValueError("Parameter `deployment_versions` must be a string")  # noqa: E501
 
-        self._versions = versions
+        self._deployment_versions = deployment_versions
 
     @property
     def pipelines(self):
@@ -133,6 +143,54 @@ class ProjectResourceUsage(object):
             raise ValueError("Parameter `pipelines` must be an integer")  # noqa: E501
 
         self._pipelines = pipelines
+
+    @property
+    def pipeline_versions(self):
+        """Gets the pipeline_versions of this ProjectResourceUsage.  # noqa: E501
+
+
+        :return: The pipeline_versions of this ProjectResourceUsage.  # noqa: E501
+        :rtype: str
+        """
+        return self._pipeline_versions
+
+    @pipeline_versions.setter
+    def pipeline_versions(self, pipeline_versions):
+        """Sets the pipeline_versions of this ProjectResourceUsage.
+
+
+        :param pipeline_versions: The pipeline_versions of this ProjectResourceUsage.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                pipeline_versions is not None and not isinstance(pipeline_versions, str)):
+            raise ValueError("Parameter `pipeline_versions` must be a string")  # noqa: E501
+
+        self._pipeline_versions = pipeline_versions
+
+    @property
+    def versions(self):
+        """Gets the versions of this ProjectResourceUsage.  # noqa: E501
+
+
+        :return: The versions of this ProjectResourceUsage.  # noqa: E501
+        :rtype: int
+        """
+        return self._versions
+
+    @versions.setter
+    def versions(self, versions):
+        """Sets the versions of this ProjectResourceUsage.
+
+
+        :param versions: The versions of this ProjectResourceUsage.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                versions is not None and not isinstance(versions, int)):
+            raise ValueError("Parameter `versions` must be an integer")  # noqa: E501
+
+        self._versions = versions
 
     def to_dict(self):
         """Returns the model properties as a dict"""

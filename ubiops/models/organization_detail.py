@@ -37,7 +37,8 @@ class OrganizationDetail(object):
         'name': 'str',
         'creation_date': 'datetime',
         'subscription': 'str',
-        'status': 'str'
+        'status': 'str',
+        'subscription_self_service': 'bool'
     }
 
     attribute_map = {
@@ -45,10 +46,11 @@ class OrganizationDetail(object):
         'name': 'name',
         'creation_date': 'creation_date',
         'subscription': 'subscription',
-        'status': 'status'
+        'status': 'status',
+        'subscription_self_service': 'subscription_self_service'
     }
 
-    def __init__(self, id=None, name=None, creation_date=None, subscription=None, status=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, creation_date=None, subscription=None, status=None, subscription_self_service=None, local_vars_configuration=None):  # noqa: E501
         """OrganizationDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +61,7 @@ class OrganizationDetail(object):
         self._creation_date = None
         self._subscription = None
         self._status = None
+        self._subscription_self_service = None
         self.discriminator = None
 
         if id is not None:
@@ -69,6 +72,8 @@ class OrganizationDetail(object):
         if subscription is not None:
             self.subscription = subscription
         self.status = status
+        if subscription_self_service is not None:
+            self.subscription_self_service = subscription_self_service
 
     @property
     def id(self):
@@ -201,6 +206,30 @@ class OrganizationDetail(object):
             raise ValueError("Invalid value for `status`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._status = status
+
+    @property
+    def subscription_self_service(self):
+        """Gets the subscription_self_service of this OrganizationDetail.  # noqa: E501
+
+
+        :return: The subscription_self_service of this OrganizationDetail.  # noqa: E501
+        :rtype: bool
+        """
+        return self._subscription_self_service
+
+    @subscription_self_service.setter
+    def subscription_self_service(self, subscription_self_service):
+        """Sets the subscription_self_service of this OrganizationDetail.
+
+
+        :param subscription_self_service: The subscription_self_service of this OrganizationDetail.  # noqa: E501
+        :type: bool
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                subscription_self_service is not None and not isinstance(subscription_self_service, bool)):
+            raise ValueError("Parameter `subscription_self_service` must be a boolean")  # noqa: E501
+
+        self._subscription_self_service = subscription_self_service
 
     def to_dict(self):
         """Returns the model properties as a dict"""

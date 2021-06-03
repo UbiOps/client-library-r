@@ -77,7 +77,8 @@ class BlobList(object):
             self.last_updated = last_updated
         self.filename = filename
         self.size = size
-        self.ttl = ttl
+        if ttl is not None:
+            self.ttl = ttl
 
     @property
     def id(self):
@@ -200,6 +201,9 @@ class BlobList(object):
             raise ValueError("Parameter `filename` must be a string")  # noqa: E501
 
         if (self.local_vars_configuration.client_side_validation and
+                filename is not None and len(filename) > 512):
+            raise ValueError("Invalid value for `filename`, length must be less than or equal to `512`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
                 filename is not None and len(filename) < 1):
             raise ValueError("Invalid value for `filename`, length must be greater than or equal to `1`")  # noqa: E501
 
@@ -229,6 +233,10 @@ class BlobList(object):
                 size is not None and not isinstance(size, int)):
             raise ValueError("Parameter `size` must be an integer")  # noqa: E501
 
+        if (self.local_vars_configuration.client_side_validation and
+                size is not None and size < 0):  # noqa: E501
+            raise ValueError("Invalid value for `size`, must be a value greater than or equal to `0`")  # noqa: E501
+
         self._size = size
 
     @property
@@ -249,8 +257,6 @@ class BlobList(object):
         :param ttl: The ttl of this BlobList.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and ttl is None:  # noqa: E501
-            raise ValueError("Invalid value for `ttl`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 ttl is not None and not isinstance(ttl, int)):
             raise ValueError("Parameter `ttl` must be an integer")  # noqa: E501

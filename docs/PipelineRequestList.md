@@ -3,10 +3,13 @@
 ## Properties
 Name | Type | Notes
 ------------ | ------------- | -------------
-**project** | **str** | [optional] 
-**pipeline** | **str** | 
+**id** | **str** | 
+**pipeline** | **str** | [optional] 
 **version** | **str** | 
-**pipeline_request_id** | **str** | 
-**deployment_requests** | [**list[PipelineRequestDeploymentRequest]**](PipelineRequestDeploymentRequest.md) | 
+**status** | **str** | 
+**success** | **bool** | [optional] 
+**time_created** | **datetime** | 
+**time_started** | **datetime** | [optional] 
+**time_completed** | **datetime** | [optional] 
 
 

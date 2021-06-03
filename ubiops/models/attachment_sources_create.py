@@ -107,6 +107,13 @@ class AttachmentSourcesCreate(object):
         if (self.local_vars_configuration.client_side_validation and
                 mapping is not None and not isinstance(mapping, list)):
             raise ValueError("Parameter `mapping` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and mapping is not None:
+            from ubiops.models.attachment_fields_create import AttachmentFieldsCreate
+
+            mapping = [
+                AttachmentFieldsCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in mapping
+            ]
 
         self._mapping = mapping
 

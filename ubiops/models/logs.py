@@ -41,7 +41,7 @@ class Logs(object):
         'pipeline_name': 'str',
         'pipeline_version': 'str',
         'pipeline_object_name': 'str',
-        'request_id': 'str',
+        'deployment_request_id': 'str',
         'pipeline_request_id': 'str',
         'build_id': 'str',
         'system': 'bool'
@@ -56,13 +56,13 @@ class Logs(object):
         'pipeline_name': 'pipeline_name',
         'pipeline_version': 'pipeline_version',
         'pipeline_object_name': 'pipeline_object_name',
-        'request_id': 'request_id',
+        'deployment_request_id': 'deployment_request_id',
         'pipeline_request_id': 'pipeline_request_id',
         'build_id': 'build_id',
         'system': 'system'
     }
 
-    def __init__(self, id=None, log=None, date=None, deployment_name=None, deployment_version=None, pipeline_name=None, pipeline_version=None, pipeline_object_name=None, request_id=None, pipeline_request_id=None, build_id=None, system=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, log=None, date=None, deployment_name=None, deployment_version=None, pipeline_name=None, pipeline_version=None, pipeline_object_name=None, deployment_request_id=None, pipeline_request_id=None, build_id=None, system=None, local_vars_configuration=None):  # noqa: E501
         """Logs - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -76,7 +76,7 @@ class Logs(object):
         self._pipeline_name = None
         self._pipeline_version = None
         self._pipeline_object_name = None
-        self._request_id = None
+        self._deployment_request_id = None
         self._pipeline_request_id = None
         self._build_id = None
         self._system = None
@@ -98,8 +98,8 @@ class Logs(object):
             self.pipeline_version = pipeline_version
         if pipeline_object_name is not None:
             self.pipeline_object_name = pipeline_object_name
-        if request_id is not None:
-            self.request_id = request_id
+        if deployment_request_id is not None:
+            self.deployment_request_id = deployment_request_id
         if pipeline_request_id is not None:
             self.pipeline_request_id = pipeline_request_id
         if build_id is not None:
@@ -328,28 +328,28 @@ class Logs(object):
         self._pipeline_object_name = pipeline_object_name
 
     @property
-    def request_id(self):
-        """Gets the request_id of this Logs.  # noqa: E501
+    def deployment_request_id(self):
+        """Gets the deployment_request_id of this Logs.  # noqa: E501
 
 
-        :return: The request_id of this Logs.  # noqa: E501
+        :return: The deployment_request_id of this Logs.  # noqa: E501
         :rtype: str
         """
-        return self._request_id
+        return self._deployment_request_id
 
-    @request_id.setter
-    def request_id(self, request_id):
-        """Sets the request_id of this Logs.
+    @deployment_request_id.setter
+    def deployment_request_id(self, deployment_request_id):
+        """Sets the deployment_request_id of this Logs.
 
 
-        :param request_id: The request_id of this Logs.  # noqa: E501
+        :param deployment_request_id: The deployment_request_id of this Logs.  # noqa: E501
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                request_id is not None and not isinstance(request_id, str)):
-            raise ValueError("Parameter `request_id` must be a string")  # noqa: E501
+                deployment_request_id is not None and not isinstance(deployment_request_id, str)):
+            raise ValueError("Parameter `deployment_request_id` must be a string")  # noqa: E501
 
-        self._request_id = request_id
+        self._deployment_request_id = deployment_request_id
 
     @property
     def pipeline_request_id(self):

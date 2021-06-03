@@ -11,7 +11,7 @@ Name | Type | Notes
 **pipeline_name** | **str** | [optional] 
 **pipeline_version** | **str** | [optional] 
 **pipeline_object_name** | **str** | [optional] 
-**request_id** | **str** | [optional] 
+**deployment_request_id** | **str** | [optional] 
 **pipeline_request_id** | **str** | [optional] 
 **build_id** | **str** | [optional] 
 **system** | **bool** | [optional] 

@@ -220,6 +220,13 @@ class DeploymentCreate(object):
         if (self.local_vars_configuration.client_side_validation and
                 input_fields is not None and not isinstance(input_fields, list)):
             raise ValueError("Parameter `input_fields` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and input_fields is not None:
+            from ubiops.models.deployment_input_field_create import DeploymentInputFieldCreate
+
+            input_fields = [
+                DeploymentInputFieldCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in input_fields
+            ]
 
         self._input_fields = input_fields
 
@@ -244,6 +251,13 @@ class DeploymentCreate(object):
         if (self.local_vars_configuration.client_side_validation and
                 output_fields is not None and not isinstance(output_fields, list)):
             raise ValueError("Parameter `output_fields` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and output_fields is not None:
+            from ubiops.models.deployment_output_field_create import DeploymentOutputFieldCreate
+
+            output_fields = [
+                DeploymentOutputFieldCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in output_fields
+            ]
 
         self._output_fields = output_fields
 

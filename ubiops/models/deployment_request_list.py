@@ -33,35 +33,101 @@ class DeploymentRequestList(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'id': 'str',
+        'deployment': 'str',
         'version': 'str',
+        'status': 'str',
         'success': 'bool',
-        'result': 'object',
-        'error_message': 'str'
+        'time_created': 'datetime',
+        'time_started': 'datetime',
+        'time_completed': 'datetime'
     }
 
     attribute_map = {
+        'id': 'id',
+        'deployment': 'deployment',
         'version': 'version',
+        'status': 'status',
         'success': 'success',
-        'result': 'result',
-        'error_message': 'error_message'
+        'time_created': 'time_created',
+        'time_started': 'time_started',
+        'time_completed': 'time_completed'
     }
 
-    def __init__(self, version=None, success=None, result=None, error_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentRequestList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._id = None
+        self._deployment = None
         self._version = None
+        self._status = None
         self._success = None
-        self._result = None
-        self._error_message = None
+        self._time_created = None
+        self._time_started = None
+        self._time_completed = None
         self.discriminator = None
 
+        self.id = id
+        self.deployment = deployment
         self.version = version
+        self.status = status
         self.success = success
-        self.result = result
-        self.error_message = error_message
+        self.time_created = time_created
+        self.time_started = time_started
+        self.time_completed = time_completed
+
+    @property
+    def id(self):
+        """Gets the id of this DeploymentRequestList.  # noqa: E501
+
+
+        :return: The id of this DeploymentRequestList.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this DeploymentRequestList.
+
+
+        :param id: The id of this DeploymentRequestList.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
+
+        self._id = id
+
+    @property
+    def deployment(self):
+        """Gets the deployment of this DeploymentRequestList.  # noqa: E501
+
+
+        :return: The deployment of this DeploymentRequestList.  # noqa: E501
+        :rtype: str
+        """
+        return self._deployment
+
+    @deployment.setter
+    def deployment(self, deployment):
+        """Sets the deployment of this DeploymentRequestList.
+
+
+        :param deployment: The deployment of this DeploymentRequestList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                deployment is not None and not isinstance(deployment, str)):
+            raise ValueError("Parameter `deployment` must be a string")  # noqa: E501
+
+        self._deployment = deployment
 
     @property
     def version(self):
@@ -94,6 +160,38 @@ class DeploymentRequestList(object):
         self._version = version
 
     @property
+    def status(self):
+        """Gets the status of this DeploymentRequestList.  # noqa: E501
+
+
+        :return: The status of this DeploymentRequestList.  # noqa: E501
+        :rtype: str
+        """
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        """Sets the status of this DeploymentRequestList.
+
+
+        :param status: The status of this DeploymentRequestList.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                status is not None and not isinstance(status, str)):
+            raise ValueError("Parameter `status` must be a string")  # noqa: E501
+        allowed_values = ["pending", "processing", "completed", "failed"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
+
+        self._status = status
+
+    @property
     def success(self):
         """Gets the success of this DeploymentRequestList.  # noqa: E501
 
@@ -111,8 +209,6 @@ class DeploymentRequestList(object):
         :param success: The success of this DeploymentRequestList.  # noqa: E501
         :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and success is None:  # noqa: E501
-            raise ValueError("Invalid value for `success`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 success is not None and not isinstance(success, bool)):
             raise ValueError("Parameter `success` must be a boolean")  # noqa: E501
@@ -120,49 +216,69 @@ class DeploymentRequestList(object):
         self._success = success
 
     @property
-    def result(self):
-        """Gets the result of this DeploymentRequestList.  # noqa: E501
+    def time_created(self):
+        """Gets the time_created of this DeploymentRequestList.  # noqa: E501
 
 
-        :return: The result of this DeploymentRequestList.  # noqa: E501
-        :rtype: object
+        :return: The time_created of this DeploymentRequestList.  # noqa: E501
+        :rtype: datetime
         """
-        return self._result
+        return self._time_created
 
-    @result.setter
-    def result(self, result):
-        """Sets the result of this DeploymentRequestList.
+    @time_created.setter
+    def time_created(self, time_created):
+        """Sets the time_created of this DeploymentRequestList.
 
 
-        :param result: The result of this DeploymentRequestList.  # noqa: E501
-        :type: object
+        :param time_created: The time_created of this DeploymentRequestList.  # noqa: E501
+        :type: datetime
         """
+        if self.local_vars_configuration.client_side_validation and time_created is None:  # noqa: E501
+            raise ValueError("Invalid value for `time_created`, must not be `None`")  # noqa: E501
 
-        self._result = result
+        self._time_created = time_created
 
     @property
-    def error_message(self):
-        """Gets the error_message of this DeploymentRequestList.  # noqa: E501
+    def time_started(self):
+        """Gets the time_started of this DeploymentRequestList.  # noqa: E501
 
 
-        :return: The error_message of this DeploymentRequestList.  # noqa: E501
-        :rtype: str
+        :return: The time_started of this DeploymentRequestList.  # noqa: E501
+        :rtype: datetime
         """
-        return self._error_message
+        return self._time_started
 
-    @error_message.setter
-    def error_message(self, error_message):
-        """Sets the error_message of this DeploymentRequestList.
+    @time_started.setter
+    def time_started(self, time_started):
+        """Sets the time_started of this DeploymentRequestList.
 
 
-        :param error_message: The error_message of this DeploymentRequestList.  # noqa: E501
-        :type: str
+        :param time_started: The time_started of this DeploymentRequestList.  # noqa: E501
+        :type: datetime
         """
-        if (self.local_vars_configuration.client_side_validation and
-                error_message is not None and not isinstance(error_message, str)):
-            raise ValueError("Parameter `error_message` must be a string")  # noqa: E501
 
-        self._error_message = error_message
+        self._time_started = time_started
+
+    @property
+    def time_completed(self):
+        """Gets the time_completed of this DeploymentRequestList.  # noqa: E501
+
+
+        :return: The time_completed of this DeploymentRequestList.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._time_completed
+
+    @time_completed.setter
+    def time_completed(self, time_completed):
+        """Sets the time_completed of this DeploymentRequestList.
+
+
+        :param time_completed: The time_completed of this DeploymentRequestList.  # noqa: E501
+        :type: datetime
+        """
+
+        self._time_completed = time_completed
 
     def to_dict(self):
         """Returns the model properties as a dict"""

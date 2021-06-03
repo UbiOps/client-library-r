@@ -39,7 +39,9 @@ class PipelineVersionList(object):
         'description': 'str',
         'labels': 'object',
         'creation_date': 'datetime',
-        'last_updated': 'datetime'
+        'last_updated': 'datetime',
+        'request_retention_time': 'int',
+        'request_retention_mode': 'str'
     }
 
     attribute_map = {
@@ -49,10 +51,12 @@ class PipelineVersionList(object):
         'description': 'description',
         'labels': 'labels',
         'creation_date': 'creation_date',
-        'last_updated': 'last_updated'
+        'last_updated': 'last_updated',
+        'request_retention_time': 'request_retention_time',
+        'request_retention_mode': 'request_retention_mode'
     }
 
-    def __init__(self, id=None, version=None, pipeline=None, description=None, labels=None, creation_date=None, last_updated=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, version=None, pipeline=None, description=None, labels=None, creation_date=None, last_updated=None, request_retention_time=None, request_retention_mode=None, local_vars_configuration=None):  # noqa: E501
         """PipelineVersionList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -65,6 +69,8 @@ class PipelineVersionList(object):
         self._labels = None
         self._creation_date = None
         self._last_updated = None
+        self._request_retention_time = None
+        self._request_retention_mode = None
         self.discriminator = None
 
         if id is not None:
@@ -78,6 +84,9 @@ class PipelineVersionList(object):
             self.creation_date = creation_date
         if last_updated is not None:
             self.last_updated = last_updated
+        if request_retention_time is not None:
+            self.request_retention_time = request_retention_time
+        self.request_retention_mode = request_retention_mode
 
     @property
     def id(self):
@@ -256,6 +265,67 @@ class PipelineVersionList(object):
         """
 
         self._last_updated = last_updated
+
+    @property
+    def request_retention_time(self):
+        """Gets the request_retention_time of this PipelineVersionList.  # noqa: E501
+
+
+        :return: The request_retention_time of this PipelineVersionList.  # noqa: E501
+        :rtype: int
+        """
+        return self._request_retention_time
+
+    @request_retention_time.setter
+    def request_retention_time(self, request_retention_time):
+        """Sets the request_retention_time of this PipelineVersionList.
+
+
+        :param request_retention_time: The request_retention_time of this PipelineVersionList.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and not isinstance(request_retention_time, int)):
+            raise ValueError("Parameter `request_retention_time` must be an integer")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and request_retention_time > 2.4192E+6):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value less than or equal to `2.4192E+6`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and request_retention_time < 3.6E+3):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value greater than or equal to `3.6E+3`")  # noqa: E501
+
+        self._request_retention_time = request_retention_time
+
+    @property
+    def request_retention_mode(self):
+        """Gets the request_retention_mode of this PipelineVersionList.  # noqa: E501
+
+
+        :return: The request_retention_mode of this PipelineVersionList.  # noqa: E501
+        :rtype: str
+        """
+        return self._request_retention_mode
+
+    @request_retention_mode.setter
+    def request_retention_mode(self, request_retention_mode):
+        """Sets the request_retention_mode of this PipelineVersionList.
+
+
+        :param request_retention_mode: The request_retention_mode of this PipelineVersionList.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and request_retention_mode is None:  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_mode`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_mode is not None and not isinstance(request_retention_mode, str)):
+            raise ValueError("Parameter `request_retention_mode` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_mode is not None and len(request_retention_mode) < 1):
+            raise ValueError("Invalid value for `request_retention_mode`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._request_retention_mode = request_retention_mode
 
     def to_dict(self):
         """Returns the model properties as a dict"""

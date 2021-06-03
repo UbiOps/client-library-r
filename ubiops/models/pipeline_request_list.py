@@ -33,63 +33,77 @@ class PipelineRequestList(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'project': 'str',
+        'id': 'str',
         'pipeline': 'str',
         'version': 'str',
-        'pipeline_request_id': 'str',
-        'deployment_requests': 'list[PipelineRequestDeploymentRequest]'
+        'status': 'str',
+        'success': 'bool',
+        'time_created': 'datetime',
+        'time_started': 'datetime',
+        'time_completed': 'datetime'
     }
 
     attribute_map = {
-        'project': 'project',
+        'id': 'id',
         'pipeline': 'pipeline',
         'version': 'version',
-        'pipeline_request_id': 'pipeline_request_id',
-        'deployment_requests': 'deployment_requests'
+        'status': 'status',
+        'success': 'success',
+        'time_created': 'time_created',
+        'time_started': 'time_started',
+        'time_completed': 'time_completed'
     }
 
-    def __init__(self, project=None, pipeline=None, version=None, pipeline_request_id=None, deployment_requests=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, pipeline=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, local_vars_configuration=None):  # noqa: E501
         """PipelineRequestList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._project = None
+        self._id = None
         self._pipeline = None
         self._version = None
-        self._pipeline_request_id = None
-        self._deployment_requests = None
+        self._status = None
+        self._success = None
+        self._time_created = None
+        self._time_started = None
+        self._time_completed = None
         self.discriminator = None
 
-        self.project = project
+        self.id = id
         self.pipeline = pipeline
         self.version = version
-        self.pipeline_request_id = pipeline_request_id
-        self.deployment_requests = deployment_requests
+        self.status = status
+        self.success = success
+        self.time_created = time_created
+        self.time_started = time_started
+        self.time_completed = time_completed
 
     @property
-    def project(self):
-        """Gets the project of this PipelineRequestList.  # noqa: E501
+    def id(self):
+        """Gets the id of this PipelineRequestList.  # noqa: E501
 
 
-        :return: The project of this PipelineRequestList.  # noqa: E501
+        :return: The id of this PipelineRequestList.  # noqa: E501
         :rtype: str
         """
-        return self._project
+        return self._id
 
-    @project.setter
-    def project(self, project):
-        """Sets the project of this PipelineRequestList.
+    @id.setter
+    def id(self, id):
+        """Sets the id of this PipelineRequestList.
 
 
-        :param project: The project of this PipelineRequestList.  # noqa: E501
+        :param id: The id of this PipelineRequestList.  # noqa: E501
         :type: str
         """
+        if self.local_vars_configuration.client_side_validation and id is None:  # noqa: E501
+            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
-                project is not None and not isinstance(project, str)):
-            raise ValueError("Parameter `project` must be a string")  # noqa: E501
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
 
-        self._project = project
+        self._id = id
 
     @property
     def pipeline(self):
@@ -109,15 +123,9 @@ class PipelineRequestList(object):
         :param pipeline: The pipeline of this PipelineRequestList.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and pipeline is None:  # noqa: E501
-            raise ValueError("Invalid value for `pipeline`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 pipeline is not None and not isinstance(pipeline, str)):
             raise ValueError("Parameter `pipeline` must be a string")  # noqa: E501
-
-        if (self.local_vars_configuration.client_side_validation and
-                pipeline is not None and len(pipeline) < 1):
-            raise ValueError("Invalid value for `pipeline`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._pipeline = pipeline
 
@@ -152,56 +160,125 @@ class PipelineRequestList(object):
         self._version = version
 
     @property
-    def pipeline_request_id(self):
-        """Gets the pipeline_request_id of this PipelineRequestList.  # noqa: E501
+    def status(self):
+        """Gets the status of this PipelineRequestList.  # noqa: E501
 
 
-        :return: The pipeline_request_id of this PipelineRequestList.  # noqa: E501
+        :return: The status of this PipelineRequestList.  # noqa: E501
         :rtype: str
         """
-        return self._pipeline_request_id
+        return self._status
 
-    @pipeline_request_id.setter
-    def pipeline_request_id(self, pipeline_request_id):
-        """Sets the pipeline_request_id of this PipelineRequestList.
+    @status.setter
+    def status(self, status):
+        """Sets the status of this PipelineRequestList.
 
 
-        :param pipeline_request_id: The pipeline_request_id of this PipelineRequestList.  # noqa: E501
+        :param status: The status of this PipelineRequestList.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and pipeline_request_id is None:  # noqa: E501
-            raise ValueError("Invalid value for `pipeline_request_id`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
-                pipeline_request_id is not None and not isinstance(pipeline_request_id, str)):
-            raise ValueError("Parameter `pipeline_request_id` must be a string")  # noqa: E501
+                status is not None and not isinstance(status, str)):
+            raise ValueError("Parameter `status` must be a string")  # noqa: E501
+        allowed_values = ["pending", "processing", "completed", "failed"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
+                .format(status, allowed_values)
+            )
 
-        self._pipeline_request_id = pipeline_request_id
+        self._status = status
 
     @property
-    def deployment_requests(self):
-        """Gets the deployment_requests of this PipelineRequestList.  # noqa: E501
+    def success(self):
+        """Gets the success of this PipelineRequestList.  # noqa: E501
 
 
-        :return: The deployment_requests of this PipelineRequestList.  # noqa: E501
-        :rtype: list[PipelineRequestDeploymentRequest]
+        :return: The success of this PipelineRequestList.  # noqa: E501
+        :rtype: bool
         """
-        return self._deployment_requests
+        return self._success
 
-    @deployment_requests.setter
-    def deployment_requests(self, deployment_requests):
-        """Sets the deployment_requests of this PipelineRequestList.
+    @success.setter
+    def success(self, success):
+        """Sets the success of this PipelineRequestList.
 
 
-        :param deployment_requests: The deployment_requests of this PipelineRequestList.  # noqa: E501
-        :type: list[PipelineRequestDeploymentRequest]
+        :param success: The success of this PipelineRequestList.  # noqa: E501
+        :type: bool
         """
-        if self.local_vars_configuration.client_side_validation and deployment_requests is None:  # noqa: E501
-            raise ValueError("Invalid value for `deployment_requests`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
-                deployment_requests is not None and not isinstance(deployment_requests, list)):
-            raise ValueError("Parameter `deployment_requests` must be a list")  # noqa: E501
+                success is not None and not isinstance(success, bool)):
+            raise ValueError("Parameter `success` must be a boolean")  # noqa: E501
 
-        self._deployment_requests = deployment_requests
+        self._success = success
+
+    @property
+    def time_created(self):
+        """Gets the time_created of this PipelineRequestList.  # noqa: E501
+
+
+        :return: The time_created of this PipelineRequestList.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._time_created
+
+    @time_created.setter
+    def time_created(self, time_created):
+        """Sets the time_created of this PipelineRequestList.
+
+
+        :param time_created: The time_created of this PipelineRequestList.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and time_created is None:  # noqa: E501
+            raise ValueError("Invalid value for `time_created`, must not be `None`")  # noqa: E501
+
+        self._time_created = time_created
+
+    @property
+    def time_started(self):
+        """Gets the time_started of this PipelineRequestList.  # noqa: E501
+
+
+        :return: The time_started of this PipelineRequestList.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._time_started
+
+    @time_started.setter
+    def time_started(self, time_started):
+        """Sets the time_started of this PipelineRequestList.
+
+
+        :param time_started: The time_started of this PipelineRequestList.  # noqa: E501
+        :type: datetime
+        """
+
+        self._time_started = time_started
+
+    @property
+    def time_completed(self):
+        """Gets the time_completed of this PipelineRequestList.  # noqa: E501
+
+
+        :return: The time_completed of this PipelineRequestList.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._time_completed
+
+    @time_completed.setter
+    def time_completed(self, time_completed):
+        """Sets the time_completed of this PipelineRequestList.
+
+
+        :param time_completed: The time_completed of this PipelineRequestList.  # noqa: E501
+        :type: datetime
+        """
+
+        self._time_completed = time_completed
 
     def to_dict(self):
         """Returns the model properties as a dict"""

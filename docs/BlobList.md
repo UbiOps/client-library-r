@@ -9,6 +9,6 @@ Name | Type | Notes
 **last_updated** | **str** | [optional] [readonly] 
 **filename** | **str** | 
 **size** | **int** | 
-**ttl** | **int** | 
+**ttl** | **int** | [optional] [readonly] 
 
 

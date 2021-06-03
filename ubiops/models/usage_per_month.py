@@ -142,6 +142,13 @@ class UsagePerMonth(object):
         if (self.local_vars_configuration.client_side_validation and
                 usage is not None and not isinstance(usage, list)):
             raise ValueError("Parameter `usage` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and usage is not None:
+            from ubiops.models.usage_per_month_metric import UsagePerMonthMetric
+
+            usage = [
+                UsagePerMonthMetric(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in usage
+            ]
 
         self._usage = usage
 

@@ -1,9 +1,10 @@
-# BatchDeploymentRequestSingleDetail
+# DeploymentRequestSingleDetail
 
 ## Properties
 Name | Type | Notes
 ------------ | ------------- | -------------
 **id** | **str** | 
+**deployment** | **str** | [optional] 
 **version** | **str** | 
 **status** | **str** | 
 **success** | **bool** | [optional] 

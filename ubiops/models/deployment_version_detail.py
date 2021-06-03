@@ -48,7 +48,9 @@ class DeploymentVersionDetail(object):
         'labels': 'object',
         'creation_date': 'datetime',
         'last_updated': 'datetime',
-        'last_file_upload': 'str'
+        'last_file_upload': 'datetime',
+        'request_retention_time': 'int',
+        'request_retention_mode': 'str'
     }
 
     attribute_map = {
@@ -67,10 +69,12 @@ class DeploymentVersionDetail(object):
         'labels': 'labels',
         'creation_date': 'creation_date',
         'last_updated': 'last_updated',
-        'last_file_upload': 'last_file_upload'
+        'last_file_upload': 'last_file_upload',
+        'request_retention_time': 'request_retention_time',
+        'request_retention_mode': 'request_retention_mode'
     }
 
-    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, active_revision=None, latest_build=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, last_file_upload=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, active_revision=None, latest_build=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, last_file_upload=None, request_retention_time=None, request_retention_mode=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentVersionDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -92,6 +96,8 @@ class DeploymentVersionDetail(object):
         self._creation_date = None
         self._last_updated = None
         self._last_file_upload = None
+        self._request_retention_time = None
+        self._request_retention_mode = None
         self.discriminator = None
 
         if id is not None:
@@ -122,6 +128,9 @@ class DeploymentVersionDetail(object):
             self.last_updated = last_updated
         if last_file_upload is not None:
             self.last_file_upload = last_file_upload
+        if request_retention_time is not None:
+            self.request_retention_time = request_retention_time
+        self.request_retention_mode = request_retention_mode
 
     @property
     def id(self):
@@ -393,13 +402,6 @@ class DeploymentVersionDetail(object):
                 maximum_instances is not None and not isinstance(maximum_instances, int)):
             raise ValueError("Parameter `maximum_instances` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_instances is not None and maximum_instances > 2147483647):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_instances is not None and maximum_instances < -2147483648):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_instances`, must be a value greater than or equal to `-2147483648`")  # noqa: E501
-
         self._maximum_instances = maximum_instances
 
     @property
@@ -424,13 +426,6 @@ class DeploymentVersionDetail(object):
                 minimum_instances is not None and not isinstance(minimum_instances, int)):
             raise ValueError("Parameter `minimum_instances` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                minimum_instances is not None and minimum_instances > 2147483647):  # noqa: E501
-            raise ValueError("Invalid value for `minimum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                minimum_instances is not None and minimum_instances < -2147483648):  # noqa: E501
-            raise ValueError("Invalid value for `minimum_instances`, must be a value greater than or equal to `-2147483648`")  # noqa: E501
-
         self._minimum_instances = minimum_instances
 
     @property
@@ -454,13 +449,6 @@ class DeploymentVersionDetail(object):
         if (self.local_vars_configuration.client_side_validation and
                 maximum_idle_time is not None and not isinstance(maximum_idle_time, int)):
             raise ValueError("Parameter `maximum_idle_time` must be an integer")  # noqa: E501
-
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_idle_time is not None and maximum_idle_time > 2147483647):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_idle_time`, must be a value less than or equal to `2147483647`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_idle_time is not None and maximum_idle_time < -2147483648):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_idle_time`, must be a value greater than or equal to `-2147483648`")  # noqa: E501
 
         self._maximum_idle_time = maximum_idle_time
 
@@ -533,7 +521,7 @@ class DeploymentVersionDetail(object):
 
 
         :return: The last_file_upload of this DeploymentVersionDetail.  # noqa: E501
-        :rtype: str
+        :rtype: datetime
         """
         return self._last_file_upload
 
@@ -543,13 +531,71 @@ class DeploymentVersionDetail(object):
 
 
         :param last_file_upload: The last_file_upload of this DeploymentVersionDetail.  # noqa: E501
-        :type: str
+        :type: datetime
         """
-        if (self.local_vars_configuration.client_side_validation and
-                last_file_upload is not None and not isinstance(last_file_upload, str)):
-            raise ValueError("Parameter `last_file_upload` must be a string")  # noqa: E501
 
         self._last_file_upload = last_file_upload
+
+    @property
+    def request_retention_time(self):
+        """Gets the request_retention_time of this DeploymentVersionDetail.  # noqa: E501
+
+
+        :return: The request_retention_time of this DeploymentVersionDetail.  # noqa: E501
+        :rtype: int
+        """
+        return self._request_retention_time
+
+    @request_retention_time.setter
+    def request_retention_time(self, request_retention_time):
+        """Sets the request_retention_time of this DeploymentVersionDetail.
+
+
+        :param request_retention_time: The request_retention_time of this DeploymentVersionDetail.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and not isinstance(request_retention_time, int)):
+            raise ValueError("Parameter `request_retention_time` must be an integer")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and request_retention_time > 2.4192E+6):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value less than or equal to `2.4192E+6`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and request_retention_time < 3.6E+3):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value greater than or equal to `3.6E+3`")  # noqa: E501
+
+        self._request_retention_time = request_retention_time
+
+    @property
+    def request_retention_mode(self):
+        """Gets the request_retention_mode of this DeploymentVersionDetail.  # noqa: E501
+
+
+        :return: The request_retention_mode of this DeploymentVersionDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._request_retention_mode
+
+    @request_retention_mode.setter
+    def request_retention_mode(self, request_retention_mode):
+        """Sets the request_retention_mode of this DeploymentVersionDetail.
+
+
+        :param request_retention_mode: The request_retention_mode of this DeploymentVersionDetail.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and request_retention_mode is None:  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_mode`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_mode is not None and not isinstance(request_retention_mode, str)):
+            raise ValueError("Parameter `request_retention_mode` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_mode is not None and len(request_retention_mode) < 1):
+            raise ValueError("Invalid value for `request_retention_mode`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._request_retention_mode = request_retention_mode
 
     def to_dict(self):
         """Returns the model properties as a dict"""

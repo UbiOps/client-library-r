@@ -61,7 +61,8 @@ class LogsCreate(object):
         self._limit = None
         self.discriminator = None
 
-        self.filters = filters
+        if filters is not None:
+            self.filters = filters
         if date_range is not None:
             self.date_range = date_range
         if date is not None:
@@ -89,8 +90,6 @@ class LogsCreate(object):
         :param filters: The filters of this LogsCreate.  # noqa: E501
         :type: dict(str, str)
         """
-        if self.local_vars_configuration.client_side_validation and filters is None:  # noqa: E501
-            raise ValueError("Invalid value for `filters`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 filters is not None and not isinstance(filters, dict)):
             raise ValueError("Parameter `filters` must be a dictionary")  # noqa: E501

@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "3.2.0"
+__version__ = "3.3.0"
 
 # import apis into sdk package
 from ubiops.api.core_api import CoreApi
@@ -35,15 +35,6 @@ from ubiops.models.attachment_sources_list import AttachmentSourcesList
 from ubiops.models.attachments_create import AttachmentsCreate
 from ubiops.models.attachments_list import AttachmentsList
 from ubiops.models.audit_list import AuditList
-from ubiops.models.batch_deployment_request_create_response import BatchDeploymentRequestCreateResponse
-from ubiops.models.batch_deployment_request_detail import BatchDeploymentRequestDetail
-from ubiops.models.batch_deployment_request_list import BatchDeploymentRequestList
-from ubiops.models.batch_deployment_request_single_detail import BatchDeploymentRequestSingleDetail
-from ubiops.models.batch_pipeline_request_create_response import BatchPipelineRequestCreateResponse
-from ubiops.models.batch_pipeline_request_deployment_request import BatchPipelineRequestDeploymentRequest
-from ubiops.models.batch_pipeline_request_detail import BatchPipelineRequestDetail
-from ubiops.models.batch_pipeline_request_list import BatchPipelineRequestList
-from ubiops.models.batch_pipeline_request_single_detail import BatchPipelineRequestSingleDetail
 from ubiops.models.blob_list import BlobList
 from ubiops.models.build_list import BuildList
 from ubiops.models.deployment_create import DeploymentCreate
@@ -53,12 +44,17 @@ from ubiops.models.deployment_input_field_list import DeploymentInputFieldList
 from ubiops.models.deployment_list import DeploymentList
 from ubiops.models.deployment_output_field_create import DeploymentOutputFieldCreate
 from ubiops.models.deployment_output_field_list import DeploymentOutputFieldList
+from ubiops.models.deployment_request_batch_create_response import DeploymentRequestBatchCreateResponse
+from ubiops.models.deployment_request_create_response import DeploymentRequestCreateResponse
+from ubiops.models.deployment_request_detail import DeploymentRequestDetail
 from ubiops.models.deployment_request_list import DeploymentRequestList
+from ubiops.models.deployment_request_single_detail import DeploymentRequestSingleDetail
 from ubiops.models.deployment_update import DeploymentUpdate
 from ubiops.models.deployment_version_create import DeploymentVersionCreate
 from ubiops.models.deployment_version_detail import DeploymentVersionDetail
 from ubiops.models.deployment_version_list import DeploymentVersionList
 from ubiops.models.deployment_version_update import DeploymentVersionUpdate
+from ubiops.models.direct_pipeline_request_deployment_request import DirectPipelineRequestDeploymentRequest
 from ubiops.models.environment_variable_copy import EnvironmentVariableCopy
 from ubiops.models.environment_variable_create import EnvironmentVariableCreate
 from ubiops.models.environment_variable_list import EnvironmentVariableList
@@ -79,8 +75,14 @@ from ubiops.models.pipeline_detail import PipelineDetail
 from ubiops.models.pipeline_input_field_create import PipelineInputFieldCreate
 from ubiops.models.pipeline_input_field_list import PipelineInputFieldList
 from ubiops.models.pipeline_list import PipelineList
+from ubiops.models.pipeline_output_field_create import PipelineOutputFieldCreate
+from ubiops.models.pipeline_output_field_list import PipelineOutputFieldList
+from ubiops.models.pipeline_request_batch_create_response import PipelineRequestBatchCreateResponse
+from ubiops.models.pipeline_request_create_response import PipelineRequestCreateResponse
 from ubiops.models.pipeline_request_deployment_request import PipelineRequestDeploymentRequest
+from ubiops.models.pipeline_request_detail import PipelineRequestDetail
 from ubiops.models.pipeline_request_list import PipelineRequestList
+from ubiops.models.pipeline_request_single_detail import PipelineRequestSingleDetail
 from ubiops.models.pipeline_update import PipelineUpdate
 from ubiops.models.pipeline_version_create import PipelineVersionCreate
 from ubiops.models.pipeline_version_list import PipelineVersionList

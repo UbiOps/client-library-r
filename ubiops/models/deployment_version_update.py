@@ -39,7 +39,9 @@ class DeploymentVersionUpdate(object):
         'minimum_instances': 'int',
         'maximum_idle_time': 'int',
         'description': 'str',
-        'labels': 'object'
+        'labels': 'object',
+        'request_retention_time': 'int',
+        'request_retention_mode': 'str'
     }
 
     attribute_map = {
@@ -49,10 +51,12 @@ class DeploymentVersionUpdate(object):
         'minimum_instances': 'minimum_instances',
         'maximum_idle_time': 'maximum_idle_time',
         'description': 'description',
-        'labels': 'labels'
+        'labels': 'labels',
+        'request_retention_time': 'request_retention_time',
+        'request_retention_mode': 'request_retention_mode'
     }
 
-    def __init__(self, version=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, version=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, request_retention_time=None, request_retention_mode=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentVersionUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -65,6 +69,8 @@ class DeploymentVersionUpdate(object):
         self._maximum_idle_time = None
         self._description = None
         self._labels = None
+        self._request_retention_time = None
+        self._request_retention_mode = None
         self.discriminator = None
 
         if version is not None:
@@ -81,6 +87,10 @@ class DeploymentVersionUpdate(object):
             self.description = description
         if labels is not None:
             self.labels = labels
+        if request_retention_time is not None:
+            self.request_retention_time = request_retention_time
+        if request_retention_mode is not None:
+            self.request_retention_mode = request_retention_mode
 
     @property
     def version(self):
@@ -163,13 +173,6 @@ class DeploymentVersionUpdate(object):
                 maximum_instances is not None and not isinstance(maximum_instances, int)):
             raise ValueError("Parameter `maximum_instances` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_instances is not None and maximum_instances > 2147483647):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_instances is not None and maximum_instances < -2147483648):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_instances`, must be a value greater than or equal to `-2147483648`")  # noqa: E501
-
         self._maximum_instances = maximum_instances
 
     @property
@@ -194,13 +197,6 @@ class DeploymentVersionUpdate(object):
                 minimum_instances is not None and not isinstance(minimum_instances, int)):
             raise ValueError("Parameter `minimum_instances` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                minimum_instances is not None and minimum_instances > 2147483647):  # noqa: E501
-            raise ValueError("Invalid value for `minimum_instances`, must be a value less than or equal to `2147483647`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                minimum_instances is not None and minimum_instances < -2147483648):  # noqa: E501
-            raise ValueError("Invalid value for `minimum_instances`, must be a value greater than or equal to `-2147483648`")  # noqa: E501
-
         self._minimum_instances = minimum_instances
 
     @property
@@ -224,13 +220,6 @@ class DeploymentVersionUpdate(object):
         if (self.local_vars_configuration.client_side_validation and
                 maximum_idle_time is not None and not isinstance(maximum_idle_time, int)):
             raise ValueError("Parameter `maximum_idle_time` must be an integer")  # noqa: E501
-
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_idle_time is not None and maximum_idle_time > 2147483647):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_idle_time`, must be a value less than or equal to `2147483647`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                maximum_idle_time is not None and maximum_idle_time < -2147483648):  # noqa: E501
-            raise ValueError("Invalid value for `maximum_idle_time`, must be a value greater than or equal to `-2147483648`")  # noqa: E501
 
         self._maximum_idle_time = maximum_idle_time
 
@@ -278,6 +267,67 @@ class DeploymentVersionUpdate(object):
         """
 
         self._labels = labels
+
+    @property
+    def request_retention_time(self):
+        """Gets the request_retention_time of this DeploymentVersionUpdate.  # noqa: E501
+
+
+        :return: The request_retention_time of this DeploymentVersionUpdate.  # noqa: E501
+        :rtype: int
+        """
+        return self._request_retention_time
+
+    @request_retention_time.setter
+    def request_retention_time(self, request_retention_time):
+        """Sets the request_retention_time of this DeploymentVersionUpdate.
+
+
+        :param request_retention_time: The request_retention_time of this DeploymentVersionUpdate.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and not isinstance(request_retention_time, int)):
+            raise ValueError("Parameter `request_retention_time` must be an integer")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and request_retention_time > 2.4192E+6):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value less than or equal to `2.4192E+6`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_time is not None and request_retention_time < 3.6E+3):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value greater than or equal to `3.6E+3`")  # noqa: E501
+
+        self._request_retention_time = request_retention_time
+
+    @property
+    def request_retention_mode(self):
+        """Gets the request_retention_mode of this DeploymentVersionUpdate.  # noqa: E501
+
+
+        :return: The request_retention_mode of this DeploymentVersionUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._request_retention_mode
+
+    @request_retention_mode.setter
+    def request_retention_mode(self, request_retention_mode):
+        """Sets the request_retention_mode of this DeploymentVersionUpdate.
+
+
+        :param request_retention_mode: The request_retention_mode of this DeploymentVersionUpdate.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                request_retention_mode is not None and not isinstance(request_retention_mode, str)):
+            raise ValueError("Parameter `request_retention_mode` must be a string")  # noqa: E501
+        allowed_values = ["none", "metadata", "full"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and request_retention_mode not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `request_retention_mode` ({0}), must be one of {1}"  # noqa: E501
+                .format(request_retention_mode, allowed_values)
+            )
+
+        self._request_retention_mode = request_retention_mode
 
     def to_dict(self):
         """Returns the model properties as a dict"""

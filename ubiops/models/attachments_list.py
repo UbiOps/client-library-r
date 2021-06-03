@@ -137,6 +137,13 @@ class AttachmentsList(object):
         if (self.local_vars_configuration.client_side_validation and
                 sources is not None and not isinstance(sources, list)):
             raise ValueError("Parameter `sources` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and sources is not None:
+            from ubiops.models.attachment_sources_list import AttachmentSourcesList
+
+            sources = [
+                AttachmentSourcesList(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in sources
+            ]
 
         self._sources = sources
 

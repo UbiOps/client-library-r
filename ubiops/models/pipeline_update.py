@@ -37,6 +37,8 @@ class PipelineUpdate(object):
         'description': 'str',
         'input_type': 'str',
         'input_fields': 'list[PipelineInputFieldCreate]',
+        'output_type': 'str',
+        'output_fields': 'list[PipelineOutputFieldCreate]',
         'labels': 'object',
         'default_version': 'str'
     }
@@ -46,11 +48,13 @@ class PipelineUpdate(object):
         'description': 'description',
         'input_type': 'input_type',
         'input_fields': 'input_fields',
+        'output_type': 'output_type',
+        'output_fields': 'output_fields',
         'labels': 'labels',
         'default_version': 'default_version'
     }
 
-    def __init__(self, name=None, description=None, input_type=None, input_fields=None, labels=None, default_version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, description=None, input_type=None, input_fields=None, output_type=None, output_fields=None, labels=None, default_version=None, local_vars_configuration=None):  # noqa: E501
         """PipelineUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,6 +64,8 @@ class PipelineUpdate(object):
         self._description = None
         self._input_type = None
         self._input_fields = None
+        self._output_type = None
+        self._output_fields = None
         self._labels = None
         self._default_version = None
         self.discriminator = None
@@ -72,6 +78,10 @@ class PipelineUpdate(object):
             self.input_type = input_type
         if input_fields is not None:
             self.input_fields = input_fields
+        if output_type is not None:
+            self.output_type = output_type
+        if output_fields is not None:
+            self.output_fields = output_fields
         if labels is not None:
             self.labels = labels
         if default_version is not None:
@@ -180,8 +190,76 @@ class PipelineUpdate(object):
         if (self.local_vars_configuration.client_side_validation and
                 input_fields is not None and not isinstance(input_fields, list)):
             raise ValueError("Parameter `input_fields` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and input_fields is not None:
+            from ubiops.models.pipeline_input_field_create import PipelineInputFieldCreate
+
+            input_fields = [
+                PipelineInputFieldCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in input_fields
+            ]
 
         self._input_fields = input_fields
+
+    @property
+    def output_type(self):
+        """Gets the output_type of this PipelineUpdate.  # noqa: E501
+
+
+        :return: The output_type of this PipelineUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._output_type
+
+    @output_type.setter
+    def output_type(self, output_type):
+        """Sets the output_type of this PipelineUpdate.
+
+
+        :param output_type: The output_type of this PipelineUpdate.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                output_type is not None and not isinstance(output_type, str)):
+            raise ValueError("Parameter `output_type` must be a string")  # noqa: E501
+        allowed_values = ["structured", "plain"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and output_type not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `output_type` ({0}), must be one of {1}"  # noqa: E501
+                .format(output_type, allowed_values)
+            )
+
+        self._output_type = output_type
+
+    @property
+    def output_fields(self):
+        """Gets the output_fields of this PipelineUpdate.  # noqa: E501
+
+
+        :return: The output_fields of this PipelineUpdate.  # noqa: E501
+        :rtype: list[PipelineOutputFieldCreate]
+        """
+        return self._output_fields
+
+    @output_fields.setter
+    def output_fields(self, output_fields):
+        """Sets the output_fields of this PipelineUpdate.
+
+
+        :param output_fields: The output_fields of this PipelineUpdate.  # noqa: E501
+        :type: list[PipelineOutputFieldCreate]
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                output_fields is not None and not isinstance(output_fields, list)):
+            raise ValueError("Parameter `output_fields` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and output_fields is not None:
+            from ubiops.models.pipeline_output_field_create import PipelineOutputFieldCreate
+
+            output_fields = [
+                PipelineOutputFieldCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in output_fields
+            ]
+
+        self._output_fields = output_fields
 
     @property
     def labels(self):

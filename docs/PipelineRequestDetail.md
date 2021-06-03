@@ -1,9 +1,10 @@
-# BatchDeploymentRequestDetail
+# PipelineRequestDetail
 
 ## Properties
 Name | Type | Notes
 ------------ | ------------- | -------------
 **id** | **str** | 
+**pipeline** | **str** | [optional] 
 **version** | **str** | 
 **status** | **str** | 
 **success** | **bool** | [optional] 
@@ -12,6 +13,7 @@ Name | Type | Notes
 **time_completed** | **datetime** | [optional] 
 **request_data** | **str** or **dict(str, str)** | [optional] 
 **result** | **str** or **dict(str, str)** | [optional] 
+**deployment_requests** | [**list[PipelineRequestDeploymentRequest]**](PipelineRequestDeploymentRequest.md) | 
 **error_message** | **str** | [optional] 
 
 

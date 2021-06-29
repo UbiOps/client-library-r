@@ -15,7 +15,7 @@ pip install ubiops
 
 ## Usage
 To use the library, one has to authenticate to the UbiOps API with an API token.
-Please, visit https://ubiops.com/docs/organizations/service-users/ for more information.
+Please, visit https://ubiops.com/docs/organizations/service-users for more information.
 
 ```python
 import ubiops

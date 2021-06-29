@@ -256,7 +256,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -377,7 +377,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -496,7 +496,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -616,7 +616,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -700,7 +700,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -753,7 +753,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -812,7 +812,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -907,7 +907,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -993,7 +993,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1074,7 +1074,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1163,7 +1163,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1266,7 +1266,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1389,7 +1389,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1480,7 +1480,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1535,7 +1535,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1612,7 +1612,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1700,7 +1700,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1793,7 +1793,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1858,7 +1858,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -1975,7 +1975,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2108,7 +2108,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2163,7 +2163,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2256,7 +2256,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2371,7 +2371,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2496,7 +2496,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2589,7 +2589,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2646,7 +2646,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2725,7 +2725,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2823,7 +2823,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2918,7 +2918,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -2985,7 +2985,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3104,7 +3104,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3239,7 +3239,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3296,7 +3296,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3391,7 +3391,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3508,7 +3508,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3660,7 +3660,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3717,7 +3717,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3825,7 +3825,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -3958,7 +3958,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4097,7 +4097,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4281,7 +4281,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4334,7 +4334,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4439,7 +4439,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4580,7 +4580,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4702,7 +4702,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4878,7 +4878,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -4996,7 +4996,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5124,7 +5124,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5219,7 +5219,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5275,7 +5275,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5354,7 +5354,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5440,7 +5440,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5534,7 +5534,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5636,7 +5636,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5722,7 +5722,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5791,7 +5791,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5873,7 +5873,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -5981,7 +5981,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6034,7 +6034,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6137,7 +6137,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6202,7 +6202,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6340,7 +6340,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6471,7 +6471,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6526,7 +6526,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6630,7 +6630,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6742,7 +6742,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6928,7 +6928,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -6985,7 +6985,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7092,7 +7092,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7179,7 +7179,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7306,7 +7306,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7398,7 +7398,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7492,7 +7492,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7552,7 +7552,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7630,7 +7630,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7714,7 +7714,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7814,7 +7814,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -7881,7 +7881,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8021,7 +8021,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8155,7 +8155,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8212,7 +8212,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8318,7 +8318,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8432,7 +8432,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8552,7 +8552,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8607,7 +8607,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8697,7 +8697,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8806,7 +8806,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -8918,7 +8918,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9101,7 +9101,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9154,7 +9154,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9245,7 +9245,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9373,7 +9373,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9568,7 +9568,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9669,7 +9669,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9777,7 +9777,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9830,7 +9830,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9905,7 +9905,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -9985,7 +9985,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10076,7 +10076,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10204,7 +10204,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10295,7 +10295,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10347,7 +10347,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10421,7 +10421,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10499,7 +10499,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10708,7 +10708,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10784,7 +10784,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -10872,7 +10872,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11011,7 +11011,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11066,7 +11066,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11164,7 +11164,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11262,7 +11262,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11392,7 +11392,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11455,7 +11455,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11534,7 +11534,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11611,7 +11611,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11694,7 +11694,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11820,7 +11820,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11873,7 +11873,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -11952,7 +11952,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12039,7 +12039,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12139,7 +12139,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12193,7 +12193,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12273,7 +12273,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12355,7 +12355,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12455,7 +12455,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12515,7 +12515,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12626,7 +12626,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12679,7 +12679,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12760,7 +12760,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12850,7 +12850,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -12919,7 +12919,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -13028,7 +13028,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -13140,7 +13140,7 @@ Name | Type | Notes
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 
@@ -13187,7 +13187,7 @@ void (empty response body)
 
 ### Authorization
 
-[API token](https://ubiops.com/docs/organizations/service-users/)
+[API token](https://ubiops.com/docs/organizations/service-users)
 
 [[Back to top]](#)
 

@@ -24,7 +24,8 @@ Response from the API
   - `email`: Email of the service user  
   - `name`: Name of the service user 
   - `creation_date`: Date when the service user was created 
-  - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
+  - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
+  - `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type
 }
 \description{
 Retrieve details of a service user

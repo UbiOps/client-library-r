@@ -4,13 +4,15 @@
 \alias{organization_usage_details_get}
 \title{Get resource usage details}
 \usage{
-organization_usage_details_get(organization.name, month = NULL,
-  preload_content = TRUE, ...)
+organization_usage_details_get(organization.name, start.date = NULL,
+  end.date = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{organization.name}{character}
 
-\item{month}{(optional) character}
+\item{start.date}{(optional) character}
+
+\item{end.date}{(optional) character}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -36,13 +38,13 @@ Get resource usage for the organization. This returns a list of metrics that are
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::organization_usage_details_get(
    organization.name,
-   month = NULL
+   start.date = NULL, end.date = NULL
 )
 
 # Or provide directly
 result <- ubiops::organization_usage_details_get(
    organization.name,
-   month = NULL, 
+   start.date = NULL, end.date = NULL, 
    UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

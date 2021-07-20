@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 # **organization_usage_details_get**
-> organization_usage_details_get(organization.name, month=NULL)
+> organization_usage_details_get(organization.name, start.date=NULL, end.date=NULL)
 
 Get resource usage details
 
@@ -28,7 +28,10 @@ Get resource usage for the organization. This returns a list of metrics that are
 
 ### Optional Parameters
 
-- `month`: date indicating the month to fetch usage data for, formatted `YYYY-MM`. If omitted defaults to the current month
+- `start_date`: date indicating the start date to fetch usage data from, formatted `YYYY-MM-DD`. If omitted results are
+generated for current subscription period.
+- `end_date`: date indicating the end date to fetch usage data until, formatted `YYYY-MM-DD`. If omitted results are
+generated for current subscription period.
 
 ### Response Structure
 
@@ -96,13 +99,13 @@ Get resource usage for the organization. This returns a list of metrics that are
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::organization_usage_details_get(
   organization.name,
-  month = NULL
+  start.date = NULL, end.date = NULL
 )
 
 # Or provide directly
 result <- ubiops::organization_usage_details_get(
   organization.name,
-  month = NULL, 
+  start.date = NULL, end.date = NULL, 
   UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -116,23 +119,28 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **organization_usage_get**
-> organization_usage_get(organization.name, start.month=NULL)
+> organization_usage_get(organization.name, start.date=NULL, end.date=NULL)
 
 Get resource usage
 
 ## Description
-Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per month.
+Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per
+subscription iteration.
 
 ### Optional Parameters
 
-- `start_month`: date indicating the start month to fetch usage data from, formatted `YYYY-MM`. If omitted results are generated from one year ago.
+- `start_date`: date indicating the start date to fetch usage data from, formatted `YYYY-MM-DD`. If omitted results are
+generated for current subscription period.
+- `end_date`: date indicating the end date to fetch usage data until, formatted `YYYY-MM-DD`. If omitted results are
+generated for current subscription period.
 
 ### Response Structure
 
 - `metric`: The metric that was measured
 - `object_type`: Type of object the metric was measured for (version or pipeline)
 - `usage`: an array of objects each containing the following:
-     - `month`: Timestamp denoting the start of the month
+     - `start_date`: Timestamp denoting the start of the active subscription period or provided date
+     - `end_date`: Timestamp denoting the end of the active subscription period or provided date
      - `value`: Aggregated metric value for the given unit over the given month
 
 ## Response Examples
@@ -144,51 +152,63 @@ Get resource usage for the organization. This returns a list of metrics that are
     "metric": "input_volume",
     "usage": [
       {
-        "month": "2019-08-01T00:00:00Z",
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
         "value": 1840
       },
       {
-        "month": "2019-09-01T00:00:00Z",
+        "start_date": "2019-09-01T00:00:00Z",
+        "end_date": "2019-10-01T00:00:00Z",
         "value": 400
       },
       {
-        "month": "2019-10-01T00:00:00Z",
+        "start_date": "2019-10-01T00:00:00Z",
+        "end_date": "2019-11-01T00:00:00Z",
         "value": 1204
       },
       {
-        "month": "2019-11-01T00:00:00Z",
+        "start_date": "2019-11-01T00:00:00Z",
+        "end_date": "2019-12-01T00:00:00Z",
         "value": 1598
       },
       {
-        "month": "2019-12-01T00:00:00Z",
+        "start_date": "2019-12-01T00:00:00Z",
+        "end_date": "2020-01-01T00:00:00Z",
         "value": 824
       },
       {
-        "month": "2020-01-01T00:00:00Z",
+        "start_date": "2020-01-01T00:00:00Z",
+        "end_date": "2020-02-01T00:00:00Z",
         "value": 2036
       },
       {
-        "month": "2020-02-01T00:00:00Z",
+        "start_date": "2020-02-01T00:00:00Z",
+        "end_date": "2020-03-01T00:00:00Z",
         "value": 1438
       },
       {
-        "month": "2020-03-01T00:00:00Z",
+        "start_date": "2020-03-01T00:00:00Z",
+        "end_date": "2020-04-01T00:00:00Z",
         "value": 932
       },
       {
-        "month": "2020-04-01T00:00:00Z",
+        "start_date": "2020-04-01T00:00:00Z",
+        "end_date": "2020-05-01T00:00:00Z",
         "value": 528
       },
       {
-        "month": "2020-05-01T00:00:00Z",
+        "start_date": "2020-05-01T00:00:00Z",
+        "end_date": "2020-06-01T00:00:00Z",
         "value": 1484
       },
       {
-        "month": "2020-06-01T00:00:00Z",
+        "start_date": "2020-06-01T00:00:00Z",
+        "end_date": "2020-07-01T00:00:00Z",
         "value": 1942
       },
       {
-        "month": "2020-07-01T00:00:00Z",
+        "start_date": "2020-07-01T00:00:00Z",
+        "end_date": "2020-08-01T00:00:00Z",
         "value": 1332
       }
     ]
@@ -203,13 +223,13 @@ Get resource usage for the organization. This returns a list of metrics that are
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::organization_usage_get(
   organization.name,
-  start.month = NULL
+  start.date = NULL, end.date = NULL
 )
 
 # Or provide directly
 result <- ubiops::organization_usage_get(
   organization.name,
-  start.month = NULL, 
+  start.date = NULL, end.date = NULL, 
   UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

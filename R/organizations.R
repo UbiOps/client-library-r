@@ -11,7 +11,8 @@
 #' @title Get resource usage details
 #' @description Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per day.
 #' @param organization.name  character
-#' @param month (optional) character
+#' @param start.date (optional) character
+#' @param end.date (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -30,13 +31,13 @@
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::organization_usage_details_get(
 #'    organization.name,
-#'    month = NULL
+#'    start.date = NULL, end.date = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::organization_usage_details_get(
 #'    organization.name,
-#'    month = NULL, 
+#'    start.date = NULL, end.date = NULL, 
 #'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -47,13 +48,14 @@
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-organization_usage_details_get <- function(organization.name, month=NULL,  preload_content=TRUE, ...){
+organization_usage_details_get <- function(organization.name, start.date=NULL, end.date=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`organization.name`)) {
     stop("Missing required parameter `organization.name`.")
   }
-  query_params['month'] <- month
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
   
   url_path <- "/organizations/{organization_name}/usage/details"
   if (!missing(`organization.name`)) {
@@ -76,9 +78,10 @@ organization_usage_details_get <- function(organization.name, month=NULL,  prelo
 
 
 #' @title Get resource usage
-#' @description Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per month.
+#' @description Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per subscription iteration.
 #' @param organization.name  character
-#' @param start.month (optional) character
+#' @param start.date (optional) character
+#' @param end.date (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -89,7 +92,8 @@ organization_usage_details_get <- function(organization.name, month=NULL,  prelo
 #'  - `metric`: The metric that was measured
 #'    - `object_type`: Type of object the metric was measured for (version or pipeline)
 #'    - `usage`: an array of objects each containing the following:
-#'        - `month`: Timestamp denoting the start of the month
+#'        - `start_date`: Timestamp denoting the start of the active subscription period or provided date
+#'        - `end_date`: Timestamp denoting the end of the active subscription period or provided date
 #'        - `value`: Aggregated metric value for the given unit over the given month
 #' @examples
 #' \dontrun{
@@ -97,13 +101,13 @@ organization_usage_details_get <- function(organization.name, month=NULL,  prelo
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::organization_usage_get(
 #'    organization.name,
-#'    start.month = NULL
+#'    start.date = NULL, end.date = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::organization_usage_get(
 #'    organization.name,
-#'    start.month = NULL, 
+#'    start.date = NULL, end.date = NULL, 
 #'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -114,13 +118,14 @@ organization_usage_details_get <- function(organization.name, month=NULL,  prelo
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-organization_usage_get <- function(organization.name, start.month=NULL,  preload_content=TRUE, ...){
+organization_usage_get <- function(organization.name, start.date=NULL, end.date=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`organization.name`)) {
     stop("Missing required parameter `organization.name`.")
   }
-  query_params['start_month'] <- start.month
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
   
   url_path <- "/organizations/{organization_name}/usage"
   if (!missing(`organization.name`)) {

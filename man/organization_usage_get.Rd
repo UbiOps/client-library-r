@@ -4,13 +4,15 @@
 \alias{organization_usage_get}
 \title{Get resource usage}
 \usage{
-organization_usage_get(organization.name, start.month = NULL,
-  preload_content = TRUE, ...)
+organization_usage_get(organization.name, start.date = NULL,
+  end.date = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{organization.name}{character}
 
-\item{start.month}{(optional) character}
+\item{start.date}{(optional) character}
+
+\item{end.date}{(optional) character}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -24,11 +26,12 @@ Response from the API
  - `metric`: The metric that was measured
    - `object_type`: Type of object the metric was measured for (version or pipeline)
    - `usage`: an array of objects each containing the following:
-       - `month`: Timestamp denoting the start of the month
+       - `start_date`: Timestamp denoting the start of the active subscription period or provided date
+       - `end_date`: Timestamp denoting the end of the active subscription period or provided date
        - `value`: Aggregated metric value for the given unit over the given month
 }
 \description{
-Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per month.
+Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per subscription iteration.
 }
 \examples{
 \dontrun{
@@ -36,13 +39,13 @@ Get resource usage for the organization. This returns a list of metrics that are
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::organization_usage_get(
    organization.name,
-   start.month = NULL
+   start.date = NULL, end.date = NULL
 )
 
 # Or provide directly
 result <- ubiops::organization_usage_get(
    organization.name,
-   start.month = NULL, 
+   start.date = NULL, end.date = NULL, 
    UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

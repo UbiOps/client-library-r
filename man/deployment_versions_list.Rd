@@ -31,7 +31,7 @@ Response from the API
   - `status`: The status of the version
   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-  - `memory_allocation`: Reserved memory usage for the version in MB
+  - `memory_allocation`: Reserved memory usage for the version in MiB
   - `maximum_instances`: Upper bound of number of versions running
   - `minimum_instances`: Lower bound of number of versions running
   - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -43,6 +43,7 @@ Response from the API
       - *none* - the requests will not be stored
       - *metadata* - only the metadata of the requests will be stored
       - *full* - both the metadata and input/output of the requests will be stored
+  - `deployment_mode`: the type of the deployment version
 }
 \description{
 Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.

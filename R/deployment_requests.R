@@ -12,6 +12,7 @@
 #' @description Request multiple predictions from the default version of a deployment. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. In case of a **blob** field, the uuid of a previously uploaded blob must be provided.  If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
 #' @param deployment.name  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
+#' @param timeout (optional) integer
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -24,7 +25,7 @@
 #'    - `id`: Unique identifier for the deployment request, which can be used to collect the result
 #'    - `deployment`: Name of the deployment the request was made to
 #'    - `version`: Name of the version the request was made to
-#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 #'    - `time_created`: Server time that the request was made (current time)
 #' @examples
 #' \dontrun{
@@ -34,12 +35,14 @@
 #' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::batch_deployment_requests_create(
-#'    deployment.name, data
+#'    deployment.name, data,
+#'    timeout = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::batch_deployment_requests_create(
 #'    deployment.name, data,
+#'    timeout = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -50,7 +53,7 @@
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-batch_deployment_requests_create <- function(deployment.name, data,  preload_content=TRUE, ...){
+batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -59,6 +62,7 @@ batch_deployment_requests_create <- function(deployment.name, data,  preload_con
   if (missing(`data`)) {
     stop("Missing required parameter `data`.")
   }
+  query_params['timeout'] <- timeout
   
   if (typeof(data) == "character") {
     content_type <- httr::content_type("text/plain")
@@ -93,6 +97,7 @@ batch_deployment_requests_create <- function(deployment.name, data,  preload_con
 #' @param deployment.name  character
 #' @param version  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
+#' @param timeout (optional) integer
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -105,7 +110,7 @@ batch_deployment_requests_create <- function(deployment.name, data,  preload_con
 #'    - `id`: Unique identifier for the deployment request, which can be used to collect the result
 #'    - `deployment`: Name of the deployment the request was made to
 #'    - `version`: Name of the version the request was made to
-#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 #'    - `time_created`: Server time that the request was made (current time)
 #' @examples
 #' \dontrun{
@@ -115,12 +120,14 @@ batch_deployment_requests_create <- function(deployment.name, data,  preload_con
 #' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::batch_deployment_version_requests_create(
-#'    deployment.name, version, data
+#'    deployment.name, version, data,
+#'    timeout = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::batch_deployment_version_requests_create(
 #'    deployment.name, version, data,
+#'    timeout = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -131,7 +138,7 @@ batch_deployment_requests_create <- function(deployment.name, data,  preload_con
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-batch_deployment_version_requests_create <- function(deployment.name, version, data,  preload_content=TRUE, ...){
+batch_deployment_version_requests_create <- function(deployment.name, version, data, timeout=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -143,6 +150,7 @@ batch_deployment_version_requests_create <- function(deployment.name, version, d
   if (missing(`data`)) {
     stop("Missing required parameter `data`.")
   }
+  query_params['timeout'] <- timeout
   
   if (typeof(data) == "character") {
     content_type <- httr::content_type("text/plain")
@@ -259,7 +267,7 @@ deployment_requests_batch_delete <- function(deployment.name, data,  preload_con
 #'   - `id`: Unique identifier for the deployment request
 #'   - `deployment`: Name of the deployment the request was made to
 #'   - `version`: Name of the version the request was made to
-#'   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'   - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 #'   - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 #'   - `time_created`: Server time that the request was made (current time)
 #'   - `time_started`: Server time that the processing of the request was started
@@ -323,7 +331,7 @@ deployment_requests_batch_get <- function(deployment.name, data,  preload_conten
 }
 
 
-#' @title Create a deployment request
+#' @title Create a direct deployment request
 #' @description Request a prediction from a deployment. Deployment requests are made for the default version of a deployment. In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
 #' @param deployment.name  character
 #' @param data  list(key = "value") - Example: list(input_field_1 = "input_value_1", input_field_2 = "input_value_2")
@@ -466,6 +474,7 @@ deployment_requests_delete <- function(deployment.name, request.id,  ...){
 #' @description Get a request of the default version of a deployment. With this method, the result of a request may be retrieved.
 #' @param deployment.name  character
 #' @param request.id  character
+#' @param metadata.only (optional) character ("true"|"false")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -478,7 +487,7 @@ deployment_requests_delete <- function(deployment.name, request.id,  ...){
 #'   - `id`: Unique identifier for the deployment request
 #'   - `deployment`: Name of the deployment the request was made to
 #'   - `version`: Name of the version the request was made to
-#'   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'   - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 #'   - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 #'   - `time_created`: Server time that the request was made (current time)
 #'   - `time_started`: Server time that the processing of the request was started
@@ -493,12 +502,14 @@ deployment_requests_delete <- function(deployment.name, request.id,  ...){
 #' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::deployment_requests_get(
-#'    deployment.name, request.id
+#'    deployment.name, request.id,
+#'    metadata.only = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::deployment_requests_get(
 #'    deployment.name, request.id,
+#'    metadata.only = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -509,7 +520,7 @@ deployment_requests_delete <- function(deployment.name, request.id,  ...){
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-deployment_requests_get <- function(deployment.name, request.id,  preload_content=TRUE, ...){
+deployment_requests_get <- function(deployment.name, request.id, metadata.only=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -518,6 +529,7 @@ deployment_requests_get <- function(deployment.name, request.id,  preload_conten
   if (missing(`request.id`)) {
     stop("Missing required parameter `request.id`.")
   }
+  query_params['metadata_only'] <- metadata.only
   
   url_path <- "/projects/{project_name}/deployments/{deployment_name}/requests/{request_id}"
   if (!missing(`deployment.name`)) {
@@ -546,11 +558,14 @@ deployment_requests_get <- function(deployment.name, request.id,  preload_conten
 #' @description List all requests for the default version of a deployment
 #' @param deployment.name  character
 #' @param status (optional) character
-#' @param success (optional) character
+#' @param success (optional) character ("true"|"false")
 #' @param limit (optional) integer
 #' @param offset (optional) integer
 #' @param sort (optional) character
-#' @param pipeline (optional) character
+#' @param pipeline (optional) character ("true"|"false")
+#' @param start.date (optional) character
+#' @param end.date (optional) character
+#' @param search.id (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -563,7 +578,7 @@ deployment_requests_get <- function(deployment.name, request.id,  preload_conten
 #'   - `id`: Unique identifier for the deployment request
 #'   - `deployment`: Name of the deployment the request was made to
 #'   - `version`: Name of the version the request was made to
-#'   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'   - `status`: Status of the request
 #'   - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 #'   - `time_created`: Server time that the request was made (current time)
 #'   - `time_started`: Server time that the processing of the request was started
@@ -575,13 +590,13 @@ deployment_requests_get <- function(deployment.name, request.id,  preload_conten
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::deployment_requests_list(
 #'    deployment.name,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::deployment_requests_list(
 #'    deployment.name,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, 
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -592,7 +607,7 @@ deployment_requests_get <- function(deployment.name, request.id,  preload_conten
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-deployment_requests_list <- function(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL,  preload_content=TRUE, ...){
+deployment_requests_list <- function(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -604,6 +619,9 @@ deployment_requests_list <- function(deployment.name, status=NULL, success=NULL,
   query_params['offset'] <- offset
   query_params['sort'] <- sort
   query_params['pipeline'] <- pipeline
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
+  query_params['search_id'] <- search.id
   
   url_path <- "/projects/{project_name}/deployments/{deployment_name}/requests"
   if (!missing(`deployment.name`)) {
@@ -611,6 +629,83 @@ deployment_requests_list <- function(deployment.name, status=NULL, success=NULL,
   }
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Update a deployment request
+#' @description Update a deployment request for the default version of a deployment. It is possible to **cancel** a request by giving `cancelled` in the status field.
+#' @param deployment.name  character
+#' @param request.id  character
+#' @param data  named list of: [ status ]
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#' @examples
+#' \dontrun{
+#' data <- list(
+#'  status = "status"  # one of: [cancelled] 
+#' )
+#'
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::deployment_requests_update(
+#'    deployment.name, request.id, data
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::deployment_requests_update(
+#'    deployment.name, request.id, data,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+deployment_requests_update <- function(deployment.name, request.id, data,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`deployment.name`)) {
+    stop("Missing required parameter `deployment.name`.")
+  }
+  if (missing(`request.id`)) {
+    stop("Missing required parameter `request.id`.")
+  }
+  if (missing(`data`)) {
+    stop("Missing required parameter `data`.")
+  }
+  
+  body <- rjson::toJSON(data)
+  
+  url_path <- "/projects/{project_name}/deployments/{deployment_name}/requests/{request_id}"
+  if (!missing(`deployment.name`)) {
+    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`request.id`)) {
+    url_path <- gsub("\\{request_id\\}", utils::URLencode(as.character(`request.id`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "PATCH", body, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),
@@ -717,7 +812,7 @@ deployment_version_requests_batch_delete <- function(deployment.name, version, d
 #'    - `id`: Unique identifier for the deployment request
 #'    - `deployment`: Name of the deployment the request was made to
 #'    - `version`: Name of the version the request was made to
-#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'    - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 #'    - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 #'    - `time_created`: Server time that the request was made (current time)
 #'    - `time_started`: Server time that the processing of the request was started
@@ -787,7 +882,7 @@ deployment_version_requests_batch_get <- function(deployment.name, version, data
 }
 
 
-#' @title Create a deployment version request
+#' @title Create a direct deployment version request
 #' @description Request a prediction from a deployment version. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state). In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
 #' @param deployment.name  character
 #' @param version  character
@@ -945,6 +1040,7 @@ deployment_version_requests_delete <- function(deployment.name, request.id, vers
 #' @param deployment.name  character
 #' @param request.id  character
 #' @param version  character
+#' @param metadata.only (optional) character ("true"|"false")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -957,7 +1053,7 @@ deployment_version_requests_delete <- function(deployment.name, request.id, vers
 #'    - `id`: Unique identifier for the deployment request
 #'    - `deployment`: Name of the deployment the request was made to
 #'    - `version`: Name of the version the request was made to
-#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'    - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 #'    - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 #'    - `time_created`: Server time that the request was made (current time)
 #'    - `time_started`: Server time that the processing of the request was started
@@ -972,12 +1068,14 @@ deployment_version_requests_delete <- function(deployment.name, request.id, vers
 #' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::deployment_version_requests_get(
-#'    deployment.name, request.id, version
+#'    deployment.name, request.id, version,
+#'    metadata.only = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::deployment_version_requests_get(
 #'    deployment.name, request.id, version,
+#'    metadata.only = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -988,7 +1086,7 @@ deployment_version_requests_delete <- function(deployment.name, request.id, vers
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-deployment_version_requests_get <- function(deployment.name, request.id, version,  preload_content=TRUE, ...){
+deployment_version_requests_get <- function(deployment.name, request.id, version, metadata.only=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -1000,6 +1098,7 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
   if (missing(`version`)) {
     stop("Missing required parameter `version`.")
   }
+  query_params['metadata_only'] <- metadata.only
   
   url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/{request_id}"
   if (!missing(`deployment.name`)) {
@@ -1032,11 +1131,14 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
 #' @param deployment.name  character
 #' @param version  character
 #' @param status (optional) character
-#' @param success (optional) character
+#' @param success (optional) character ("true"|"false")
 #' @param limit (optional) integer
 #' @param offset (optional) integer
 #' @param sort (optional) character
-#' @param pipeline (optional) character
+#' @param pipeline (optional) character ("true"|"false")
+#' @param start.date (optional) character
+#' @param end.date (optional) character
+#' @param search.id (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1049,7 +1151,7 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
 #'    - `id`: Unique identifier for the deployment request
 #'    - `deployment`: Name of the deployment the request was made to
 #'    - `version`: Name of the version the request was made to
-#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'    - `status`: Status of the request
 #'    - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 #'    - `time_created`: Server time that the request was made (current time)
 #'    - `time_started`: Server time that the processing of the request was started
@@ -1061,13 +1163,13 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::deployment_version_requests_list(
 #'    deployment.name, version,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::deployment_version_requests_list(
 #'    deployment.name, version,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, 
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -1078,7 +1180,7 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-deployment_version_requests_list <- function(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL,  preload_content=TRUE, ...){
+deployment_version_requests_list <- function(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -1093,6 +1195,9 @@ deployment_version_requests_list <- function(deployment.name, version, status=NU
   query_params['offset'] <- offset
   query_params['sort'] <- sort
   query_params['pipeline'] <- pipeline
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
+  query_params['search_id'] <- search.id
   
   url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests"
   if (!missing(`deployment.name`)) {
@@ -1103,6 +1208,90 @@ deployment_version_requests_list <- function(deployment.name, version, status=NU
   }
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Update a deployment version request
+#' @description Update a deployment request for a deployment version. It is possible to **cancel** a request by giving `cancelled` in the status field.
+#' @param deployment.name  character
+#' @param request.id  character
+#' @param version  character
+#' @param data  named list of: [ status ]
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#' @examples
+#' \dontrun{
+#' data <- list(
+#'  status = "status"  # one of: [cancelled] 
+#' )
+#'
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::deployment_version_requests_update(
+#'    deployment.name, request.id, version, data
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::deployment_version_requests_update(
+#'    deployment.name, request.id, version, data,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+deployment_version_requests_update <- function(deployment.name, request.id, version, data,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`deployment.name`)) {
+    stop("Missing required parameter `deployment.name`.")
+  }
+  if (missing(`request.id`)) {
+    stop("Missing required parameter `request.id`.")
+  }
+  if (missing(`version`)) {
+    stop("Missing required parameter `version`.")
+  }
+  if (missing(`data`)) {
+    stop("Missing required parameter `data`.")
+  }
+  
+  body <- rjson::toJSON(data)
+  
+  url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/{request_id}"
+  if (!missing(`deployment.name`)) {
+    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`request.id`)) {
+    url_path <- gsub("\\{request_id\\}", utils::URLencode(as.character(`request.id`), reserved = TRUE), url_path)
+  }
+  if (!missing(`version`)) {
+    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "PATCH", body, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),

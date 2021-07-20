@@ -10,7 +10,7 @@
 
 #' @title Create request schedules
 #' @description Create a new request schedule with the provided name
-#' @param data  named list of: [ name, object_type, object_name, version (optional), schedule, request_data (optional), batch (optional), timeout (optional), enabled (optional) ]
+#' @param data  named list of: [ name, object_type, object_name, version (optional), schedule, request_data (optional), timeout (optional), enabled (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -27,8 +27,8 @@
 #'   - `schedule`: Schedule in crontab format 
 #'   - `version`: Name of version for which the request schedule is made 
 #'   - `request_data`: Input data for the request schedule 
-#'   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-#'   - `timeout`: Timeout in seconds 
+#'   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false). For pipeline schedules, this variable is true by default. For deployment schedules, the deployment mode is used to determine its value. It is false for express mode and true for batch mode. 
+#'   - `timeout`: Timeout of the request in seconds 
 #'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
 #'   - `creation_date`: The date when the request schedule was created
 #' @examples
@@ -40,7 +40,6 @@
 #'  version = "version",  # (optional)
 #'  schedule = "schedule",
 #'  request_data = list(key = "value"),  # (optional)
-#'  batch = FALSE,  # (optional)
 #'  timeout = 0,  # (optional)
 #'  enabled = FALSE  # (optional)
 #' )
@@ -158,7 +157,7 @@ request_schedules_delete <- function(schedule.name,  ...){
 #'   - `version`: Name of version for which the request schedule is made 
 #'   - `request_data`: Input data for the request schedule 
 #'   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-#'   - `timeout`: Timeout in seconds 
+#'   - `timeout`: Timeout of the request in seconds 
 #'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
 #'   - `creation_date`: The date when the request schedule was created
 #' @examples
@@ -229,7 +228,7 @@ request_schedules_get <- function(schedule.name,  preload_content=TRUE, ...){
 #'   - `version`: Name of version for which the request schedule is made  
 #'   - `request_data`: Input data for the request schedule 
 #'   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-#'   - `timeout`: Timeout in seconds 
+#'   - `timeout`: Timeout of the request in seconds 
 #'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
 #'   - `creation_date`: The date when the request schedule was created
 #' @examples
@@ -278,7 +277,7 @@ request_schedules_list <- function( preload_content=TRUE, ...){
 #' @title Update a request schedule
 #' @description Update a request schedule in a project. Create permissions on the object are necessary for this action.
 #' @param schedule.name  character
-#' @param data  named list of: [ name (optional), schedule (optional), request_data (optional), batch (optional), timeout (optional), enabled (optional) ]
+#' @param data  named list of: [ name (optional), schedule (optional), request_data (optional), timeout (optional), enabled (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -296,7 +295,7 @@ request_schedules_list <- function( preload_content=TRUE, ...){
 #'   - `version`: Name of version for which the request schedule is made 
 #'   - `request_data`: Input data for the request schedule 
 #'   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-#'   - `timeout`: Timeout in seconds 
+#'   - `timeout`: Timeout of the request in seconds 
 #'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
 #'   - `creation_date`: The date when the request schedule was created
 #' @examples
@@ -305,7 +304,6 @@ request_schedules_list <- function( preload_content=TRUE, ...){
 #'  name = "name",  # (optional)
 #'  schedule = "schedule",  # (optional)
 #'  request_data = list(key = "value"),  # (optional)
-#'  batch = FALSE,  # (optional)
 #'  timeout = 0,  # (optional)
 #'  enabled = FALSE  # (optional)
 #' )

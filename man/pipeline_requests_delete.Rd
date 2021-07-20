@@ -21,7 +21,7 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 Response from the API
 }
 \description{
-Delete a request for the default version of a pipeline. This action cancels all the deployment requests in the pipeline.
+Delete a request for the default version of a pipeline. This action deletes all the deployment requests in the pipeline.
 }
 \examples{
 \dontrun{

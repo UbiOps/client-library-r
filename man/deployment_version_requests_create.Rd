@@ -2,7 +2,7 @@
 % Please edit documentation in R/deployment_requests.R
 \name{deployment_version_requests_create}
 \alias{deployment_version_requests_create}
-\title{Create a deployment version request}
+\title{Create a direct deployment version request}
 \usage{
 deployment_version_requests_create(deployment.name, version, data,
   timeout = NULL, preload_content = TRUE, ...)

@@ -8,20 +8,22 @@ Method | HTTP request | Description
 [**batch_deployment_version_requests_create**](deployment_requests.md#batch_deployment_version_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/batch | Create a batch deployment version request
 [**deployment_requests_batch_delete**](deployment_requests.md#deployment_requests_batch_delete) | **POST** /projects/{project_name}/deployments/{deployment_name}/requests/delete | Delete multiple deployment requests
 [**deployment_requests_batch_get**](deployment_requests.md#deployment_requests_batch_get) | **POST** /projects/{project_name}/deployments/{deployment_name}/requests/collect | Retrieve multiple deployment requests
-[**deployment_requests_create**](deployment_requests.md#deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/requests | Create a deployment request
+[**deployment_requests_create**](deployment_requests.md#deployment_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/requests | Create a direct deployment request
 [**deployment_requests_delete**](deployment_requests.md#deployment_requests_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/requests/{request_id} | Delete a deployment request
 [**deployment_requests_get**](deployment_requests.md#deployment_requests_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/requests/{request_id} | Get a deployment request
 [**deployment_requests_list**](deployment_requests.md#deployment_requests_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/requests | List deployment requests
+[**deployment_requests_update**](deployment_requests.md#deployment_requests_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/requests/{request_id} | Update a deployment request
 [**deployment_version_requests_batch_delete**](deployment_requests.md#deployment_version_requests_batch_delete) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/delete | Delete multiple deployment version requests
 [**deployment_version_requests_batch_get**](deployment_requests.md#deployment_version_requests_batch_get) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/collect | Retrieve multiple deployment version requests
-[**deployment_version_requests_create**](deployment_requests.md#deployment_version_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests | Create a deployment version request
+[**deployment_version_requests_create**](deployment_requests.md#deployment_version_requests_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests | Create a direct deployment version request
 [**deployment_version_requests_delete**](deployment_requests.md#deployment_version_requests_delete) | **DELETE** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/{request_id} | Delete a deployment version request
 [**deployment_version_requests_get**](deployment_requests.md#deployment_version_requests_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/{request_id} | Get a deployment version request
 [**deployment_version_requests_list**](deployment_requests.md#deployment_version_requests_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests | List deployment version requests
+[**deployment_version_requests_update**](deployment_requests.md#deployment_version_requests_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/requests/{request_id} | Update a deployment version request
 
 
 # **batch_deployment_requests_create**
-> batch_deployment_requests_create(deployment.name, data)
+> batch_deployment_requests_create(deployment.name, data, timeout=NULL)
 
 Create a batch deployment request
 
@@ -35,6 +37,11 @@ If one of the requests is faulty, all requests are denied. The maximum number of
 In case of structured input deployment: A list of dictionaries, where each dictionary contains the input fields of the deployment as keys. It is also possible to send a single dictionary as input.
 In case of plain input deployment: A list of strings. It is also possible to send a single string as input.
 
+### Optional Parameters
+These parameters should be given as query parameters
+
+- `timeout`: Timeout for the batch deployment request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
+
 ## Request Examples
 Multiple structured batch deployment requests
 
@@ -67,7 +74,7 @@ A list of dictionaries containing the details of the created deployment requests
 - `id`: Unique identifier for the deployment request, which can be used to collect the result
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `time_created`: Server time that the request was made (current time)
 
 ## Response Examples
@@ -99,12 +106,14 @@ data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_deployment_requests_create(
-  deployment.name, data
+  deployment.name, data,
+  timeout = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_deployment_requests_create(
   deployment.name, data,
+  timeout = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -118,7 +127,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **batch_deployment_version_requests_create**
-> batch_deployment_version_requests_create(deployment.name, version, data)
+> batch_deployment_version_requests_create(deployment.name, version, data, timeout=NULL)
 
 Create a batch deployment version request
 
@@ -131,6 +140,11 @@ If one of the requests is faulty, all requests are denied. The maximum number of
 ### Required Parameters
 In case of structured input deployment: A list of dictionaries, where each dictionary contains the input fields of the deployment as keys. It is also possible to send a single dictionary as input.
 In case of plain input deployment: A list of strings. It is also possible to send a single string as input.
+
+### Optional Parameters
+These parameters should be given as query parameters
+
+- `timeout`: Timeout for the batch deployment request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
 
 ## Request Examples
 Multiple structured batch deployment requests
@@ -164,7 +178,7 @@ A list of dictionaries containing the details of the created deployment requests
 - `id`: Unique identifier for the deployment request, which can be used to collect the result
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `time_created`: Server time that the request was made (current time)
 
 ## Response Examples
@@ -196,12 +210,14 @@ data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_deployment_version_requests_create(
-  deployment.name, version, data
+  deployment.name, version, data,
+  timeout = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_deployment_version_requests_create(
   deployment.name, version, data,
+  timeout = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -280,7 +296,7 @@ A list of dictionaries containing the details of the retrieved deployment reques
 - `id`: Unique identifier for the deployment request
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -355,7 +371,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # **deployment_requests_create**
 > deployment_requests_create(deployment.name, data, timeout=NULL)
 
-Create a deployment request
+Create a direct deployment request
 
 ## Description
 Request a prediction from a deployment. Deployment requests are made for the default version of a deployment.
@@ -365,9 +381,9 @@ In case of a **blob** type field, the uuid of a previously uploaded blob must be
 The input for the request. In case of a structured deployment, this is a dictionary which contains the input fields of the deployment as keys. In case of a plain deployment, give a string or list of strings.
 
 ### Optional Parameters
-These parameters should be given as GET parameters
+These parameters should be given as query parameters
 
-- `timeout`: Timeout for the deployment request in seconds. The maximum allowed value is 3600 and the default value is 300.
+- `timeout`: Timeout for the deployment request in seconds. The maximum allowed value is 3600 (1 hour) and the default value is 300 (5 minutes).
 
 ## Request Examples
 A structured deployment request
@@ -491,12 +507,17 @@ ubiops::deployment_requests_delete(
 ```
 
 # **deployment_requests_get**
-> deployment_requests_get(deployment.name, request.id)
+> deployment_requests_get(deployment.name, request.id, metadata.only=NULL)
 
 Get a deployment request
 
 ## Description
 Get a request of the default version of a deployment. With this method, the result of a request may be retrieved.
+
+### Optional Parameters
+The following parameters should be given as query parameters:
+
+- `metadata_only`: A boolean value that indicates whether the response should include the request data and result. The default value is False.
 
 ### Response Structure
 A dictionary containing the details of the deployment request with the following fields:
@@ -504,7 +525,7 @@ A dictionary containing the details of the deployment request with the following
 - `id`: Unique identifier for the deployment request
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -541,12 +562,14 @@ A dictionary containing the details of the deployment request with the following
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_requests_get(
-  deployment.name, request.id
+  deployment.name, request.id,
+  metadata.only = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_requests_get(
   deployment.name, request.id,
+  metadata.only = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -560,7 +583,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **deployment_requests_list**
-> deployment_requests_list(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL)
+> deployment_requests_list(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List deployment requests
 
@@ -568,14 +591,19 @@ List deployment requests
 List all requests for the default version of a deployment
 
 ### Optional Parameters
-The following parameters should be given as Query parameters:
+The following parameters should be given as query parameters:
 
-- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `success`: A boolean value that indicates whether the deployment request was successful
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
-- `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
 - `pipeline`: A boolean value that indicates whether the deployment request was part of a pipeline request
+- `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
+
+If no start or end date is provided, the most recent requests are returned.
 
 ### Response Structure
 A list of dictionaries containing the details of the deployment requests with the following fields:
@@ -583,7 +611,7 @@ A list of dictionaries containing the details of the deployment requests with th
 - `id`: Unique identifier for the deployment request
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request
 - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -623,13 +651,62 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_requests_list(
   deployment.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_requests_list(
   deployment.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **deployment_requests_update**
+> deployment_requests_update(deployment.name, request.id, data)
+
+Update a deployment request
+
+## Description
+Update a deployment request for the default version of a deployment. It is possible to **cancel** a request by giving `cancelled` in the status field.
+
+### Required Parameters
+
+- `status`: Status that the request will be updated to. It can only be `cancelled`.
+
+## Request Examples
+
+
+```
+{
+"status": "cancelled"
+}
+```
+
+### Example
+```R
+data <- list(
+  status = "status"  # one of: [cancelled] 
+)
+
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::deployment_requests_update(
+  deployment.name, request.id, data
+)
+
+# Or provide directly
+result <- ubiops::deployment_requests_update(
+  deployment.name, request.id, data,
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -708,7 +785,7 @@ A list of dictionaries containing the details of the retrieved deployment reques
 - `id`: Unique identifier for the deployment request
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -783,7 +860,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # **deployment_version_requests_create**
 > deployment_version_requests_create(deployment.name, version, data, timeout=NULL)
 
-Create a deployment version request
+Create a direct deployment version request
 
 ## Description
 Request a prediction from a deployment version. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
@@ -793,9 +870,9 @@ In case of a **blob** type field, the uuid of a previously uploaded blob must be
 The input for the request. In case of a structured deployment, this is a dictionary which contains the input fields of the deployment as keys. In case of a plain deployment, give a string or list of strings.
 
 ### Optional Parameters
-These parameters should be given as GET parameters
+These parameters should be given as query parameters
 
-- `timeout`: Timeout for the deployment request in seconds. The maximum allowed value is 3600 and the default value is 300.
+- `timeout`: Timeout for the deployment request in seconds. The maximum allowed value is 3600 (1 hour) and the default value is 300 (5 minutes).
 
 ## Request Examples
 A structured deployment request
@@ -919,12 +996,17 @@ ubiops::deployment_version_requests_delete(
 ```
 
 # **deployment_version_requests_get**
-> deployment_version_requests_get(deployment.name, request.id, version)
+> deployment_version_requests_get(deployment.name, request.id, version, metadata.only=NULL)
 
 Get a deployment version request
 
 ## Description
 Get a request for a deployment version. With this method, the result of a request may be retrieved.
+
+### Optional Parameters
+The following parameters should be given as query parameters:
+
+- `metadata_only`: A boolean value that indicates whether the response should include the request data and result. The default value is False.
 
 ### Response Structure
 A dictionary containing the details of the deployment request with the following fields:
@@ -932,7 +1014,7 @@ A dictionary containing the details of the deployment request with the following
 - `id`: Unique identifier for the deployment request
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -969,12 +1051,14 @@ A dictionary containing the details of the deployment request with the following
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_version_requests_get(
-  deployment.name, request.id, version
+  deployment.name, request.id, version,
+  metadata.only = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_version_requests_get(
   deployment.name, request.id, version,
+  metadata.only = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -988,7 +1072,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **deployment_version_requests_list**
-> deployment_version_requests_list(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL)
+> deployment_version_requests_list(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List deployment version requests
 
@@ -996,14 +1080,19 @@ List deployment version requests
 List all requests for a deployment version
 
 ### Optional Parameters
-The following parameters should be given as Query parameters:
+The following parameters should be given as query parameters:
 
-- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
 - `success`: A boolean value that indicates whether the deployment request was successful
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
-- `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
 - `pipeline`: A boolean value that indicates whether the deployment request was part of a pipeline request
+- `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
+
+If no start or end date is provided, the most recent requests are returned.
 
 ### Response Structure
 A list of dictionaries containing the details of the deployment requests with the following fields:
@@ -1011,7 +1100,7 @@ A list of dictionaries containing the details of the deployment requests with th
 - `id`: Unique identifier for the deployment request
 - `deployment`: Name of the deployment the request was made to
 - `version`: Name of the version the request was made to
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request
 - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -1051,13 +1140,62 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_version_requests_list(
   deployment.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_version_requests_list(
   deployment.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **deployment_version_requests_update**
+> deployment_version_requests_update(deployment.name, request.id, version, data)
+
+Update a deployment version request
+
+## Description
+Update a deployment request for a deployment version. It is possible to **cancel** a request by giving `cancelled` in the status field.
+
+### Required Parameters
+
+- `status`: Status that the request will be updated to. It can only be `cancelled`.
+
+## Request Examples
+
+
+```
+{
+"status": "cancelled"
+}
+```
+
+### Example
+```R
+data <- list(
+  status = "status"  # one of: [cancelled] 
+)
+
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::deployment_version_requests_update(
+  deployment.name, request.id, version, data
+)
+
+# Or provide directly
+result <- ubiops::deployment_version_requests_update(
+  deployment.name, request.id, version, data,
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

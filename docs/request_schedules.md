@@ -35,10 +35,7 @@ Create a new request schedule with the provided name
 
 - `request_data`: Input data for the request schedule. For structured deployments/pipelines, it must be a dictionary.
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
-- `timeout`: Timeout in seconds. This field is not used for batch requests.
-
+- `timeout`: Timeout of the request in seconds. The maximum and default values depend on the object (deployment or pipeline) and the type of request (batch or direct).
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'.
 
 ## Request Examples
@@ -54,7 +51,6 @@ Create a new request schedule with the provided name
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": false,
   "timeout": 300,
   "enabled": true
 }
@@ -75,9 +71,9 @@ Details of the created request schedule
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
+- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false). For pipeline schedules, this variable is true by default. For deployment schedules, the deployment mode is used to determine its value. It is false for express mode and true for batch mode.
 
-- `timeout`: Timeout in seconds
+- `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
 
@@ -113,7 +109,6 @@ data <- list(
   version = "version",  # (optional)
   schedule = "schedule",
   request_data = list(key = "value"),  # (optional)
-  batch = FALSE,  # (optional)
   timeout = 0,  # (optional)
   enabled = FALSE  # (optional)
 )
@@ -194,7 +189,7 @@ Details of a request schedule
 
 - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
 
-- `timeout`: Timeout in seconds
+- `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
 
@@ -270,7 +265,7 @@ A list of details of all request schedules in a project
 
 - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
 
-- `timeout`: Timeout in seconds
+- `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
 
@@ -339,9 +334,7 @@ Update a request schedule in a project. Create permissions on the object are nec
 
 - `request_data`: Input data for the request schedule. For structured deployments/pipelines, it must be a dictionary.
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
-- `timeout`: Timeout in seconds
+- `timeout`: Timeout of the request in seconds. The maximum and default values depend on the object (deployment or pipeline) and the type of request (batch or direct).
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'.
 
@@ -355,7 +348,6 @@ Update a request schedule in a project. Create permissions on the object are nec
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": true,
   "timeout": 360,
   "enabled": false
 }
@@ -378,7 +370,7 @@ Details of the updated request schedule
 
 - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
 
-- `timeout`: Timeout in seconds
+- `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
 
@@ -411,7 +403,6 @@ data <- list(
   name = "name",  # (optional)
   schedule = "schedule",  # (optional)
   request_data = list(key = "value"),  # (optional)
-  batch = FALSE,  # (optional)
   timeout = 0,  # (optional)
   enabled = FALSE  # (optional)
 )

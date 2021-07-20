@@ -5,7 +5,7 @@
 \title{Create a batch deployment version request}
 \usage{
 batch_deployment_version_requests_create(deployment.name, version, data,
-  preload_content = TRUE, ...)
+  timeout = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{deployment.name}{character}
@@ -13,6 +13,8 @@ batch_deployment_version_requests_create(deployment.name, version, data,
 \item{version}{character}
 
 \item{data}{list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )}
+
+\item{timeout}{(optional) integer}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -28,7 +30,7 @@ Response from the API
    - `id`: Unique identifier for the deployment request, which can be used to collect the result
    - `deployment`: Name of the deployment the request was made to
    - `version`: Name of the version the request was made to
-   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
    - `time_created`: Server time that the request was made (current time)
 }
 \description{
@@ -42,12 +44,14 @@ data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_deployment_version_requests_create(
-   deployment.name, version, data
+   deployment.name, version, data,
+   timeout = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_deployment_version_requests_create(
    deployment.name, version, data,
+   timeout = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

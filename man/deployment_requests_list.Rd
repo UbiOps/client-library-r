@@ -6,14 +6,15 @@
 \usage{
 deployment_requests_list(deployment.name, status = NULL,
   success = NULL, limit = NULL, offset = NULL, sort = NULL,
-  pipeline = NULL, preload_content = TRUE, ...)
+  pipeline = NULL, start.date = NULL, end.date = NULL,
+  search.id = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{deployment.name}{character}
 
 \item{status}{(optional) character}
 
-\item{success}{(optional) character}
+\item{success}{(optional) character ("true"|"false")}
 
 \item{limit}{(optional) integer}
 
@@ -21,7 +22,13 @@ deployment_requests_list(deployment.name, status = NULL,
 
 \item{sort}{(optional) character}
 
-\item{pipeline}{(optional) character}
+\item{pipeline}{(optional) character ("true"|"false")}
+
+\item{start.date}{(optional) character}
+
+\item{end.date}{(optional) character}
+
+\item{search.id}{(optional) character}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -37,7 +44,7 @@ Response from the API
   - `id`: Unique identifier for the deployment request
   - `deployment`: Name of the deployment the request was made to
   - `version`: Name of the version the request was made to
-  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+  - `status`: Status of the request
   - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
   - `time_created`: Server time that the request was made (current time)
   - `time_started`: Server time that the processing of the request was started
@@ -53,13 +60,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_requests_list(
    deployment.name,
-   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_requests_list(
    deployment.name,
-   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, 
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

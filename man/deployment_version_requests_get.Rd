@@ -5,7 +5,7 @@
 \title{Get a deployment version request}
 \usage{
 deployment_version_requests_get(deployment.name, request.id, version,
-  preload_content = TRUE, ...)
+  metadata.only = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{deployment.name}{character}
@@ -13,6 +13,8 @@ deployment_version_requests_get(deployment.name, request.id, version,
 \item{request.id}{character}
 
 \item{version}{character}
+
+\item{metadata.only}{(optional) character ("true"|"false")}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -28,7 +30,7 @@ Response from the API
    - `id`: Unique identifier for the deployment request
    - `deployment`: Name of the deployment the request was made to
    - `version`: Name of the version the request was made to
-   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+   - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
    - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
    - `time_created`: Server time that the request was made (current time)
    - `time_started`: Server time that the processing of the request was started
@@ -47,12 +49,14 @@ Get a request for a deployment version. With this method, the result of a reques
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_version_requests_get(
-   deployment.name, request.id, version
+   deployment.name, request.id, version,
+   metadata.only = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_version_requests_get(
    deployment.name, request.id, version,
+   metadata.only = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

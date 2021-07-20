@@ -72,7 +72,7 @@ call_api <- function(url_path, http_method, body = NULL, query_params = NULL, co
     header.params <- get_authorization_headers(get_setting("UBIOPS_API_TOKEN", UBIOPS_API_TOKEN))
     header.defaults <- get_default_headers(get_setting("UBIOPS_DEFAULT_HEADERS", UBIOPS_DEFAULT_HEADERS))
     timeout <- get_http_timeout(get_setting("UBIOPS_TIMEOUT", UBIOPS_TIMEOUT, default = NA))
-    user_agent <- "UbiOps/r/0.1.0"
+    user_agent <- "UbiOps/r/0.2.0"
 
     if (project.name != "") {
         url_path <- gsub("\\{project_name\\}", utils::URLencode(as.character(project.name), reserved = TRUE), url_path)

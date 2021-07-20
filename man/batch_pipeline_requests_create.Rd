@@ -4,13 +4,15 @@
 \alias{batch_pipeline_requests_create}
 \title{Create a batch pipeline request}
 \usage{
-batch_pipeline_requests_create(pipeline.name, data,
+batch_pipeline_requests_create(pipeline.name, data, timeout = NULL,
   preload_content = TRUE, ...)
 }
 \arguments{
 \item{pipeline.name}{character}
 
 \item{data}{list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )}
+
+\item{timeout}{(optional) integer}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -40,12 +42,14 @@ data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_pipeline_requests_create(
-   pipeline.name, data
+   pipeline.name, data,
+   timeout = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_pipeline_requests_create(
    pipeline.name, data,
+   timeout = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

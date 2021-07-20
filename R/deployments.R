@@ -1148,7 +1148,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' @title Create deployment versions
 #' @description Create a version for a deployment. The first version of a deployment is set as default.
 #' @param deployment.name  character
-#' @param data  named list of: [ version, language (optional), memory_allocation (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), request_retention_time (optional), request_retention_mode (optional) ]
+#' @param data  named list of: [ version, language (optional), memory_allocation (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), request_retention_time (optional), request_retention_mode (optional), deployment_mode (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1166,7 +1166,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `status`: The status of the version
 #'   - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 #'   - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-#'   - `memory_allocation`: Reserved memory for the version in MB  
+#'   - `memory_allocation`: Reserved memory for the version in MiB  
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
 #'   - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1175,11 +1175,12 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `last_updated`: The date when the version was last updated
 #'   - `request_retention_time`: Number of seconds to store requests to the version
 #'   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
+#'   - `deployment_mode`: the type of the deployment version
 #' @examples
 #' \dontrun{
 #' data <- list(
 #'  version = "version",
-#'  language = 'python3.7',  # one of: [python3.5, python3.6, python3.7, python3.8, r4.0]  (optional)
+#'  language = 'python3.7',  # one of: [python3.6, python3.7, python3.8, r4.0]  (optional)
 #'  memory_allocation = 0,  # [min: 256; max: 1048576] (optional)
 #'  maximum_instances = 0,  # (optional)
 #'  minimum_instances = 0,  # (optional)
@@ -1187,7 +1188,8 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'  description = "description",  # (optional)
 #'  labels = list(key = "value"),  # (optional)
 #'  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
-#'  request_retention_mode = 'full'  # one of: [none, metadata, full]  (optional)
+#'  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+#'  deployment_mode = 'express'  # one of: [express, batch]  (optional)
 #' )
 #'
 #' # Use environment variables
@@ -1317,7 +1319,7 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-#'   - `memory_allocation`: Reserved memory for the version in MB 
+#'   - `memory_allocation`: Reserved memory for the version in MiB 
 #'   - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 #'   - `minimum_instances`: Lower bound of number of deployment pods running in parallel
 #'   - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1329,7 +1331,8 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
 #'       - *none* - the requests will not be stored
 #'       - *metadata* - only the metadata of the requests will be stored
-#'       - *full* - both the metadata and input/output of the requests will be stored
+#'       - *full* - both the metadata and input/output of the requests will be stored 
+#'   - `deployment_mode`: the type of the deployment version
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1406,7 +1409,7 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-#'   - `memory_allocation`: Reserved memory usage for the version in MB
+#'   - `memory_allocation`: Reserved memory usage for the version in MiB
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
 #'   - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1418,6 +1421,7 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'       - *none* - the requests will not be stored
 #'       - *metadata* - only the metadata of the requests will be stored
 #'       - *full* - both the metadata and input/output of the requests will be stored
+#'   - `deployment_mode`: the type of the deployment version
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1492,7 +1496,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-#'   - `memory_allocation`: Reserved memory for the version in MB
+#'   - `memory_allocation`: Reserved memory for the version in MiB
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
 #'   - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1502,6 +1506,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `last_file_upload`: The date when a deployment file was last uploaded for the version
 #'   - `request_retention_time`: Number of seconds to store requests to the version
 #'   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
+#'   - `deployment_mode`: the type of the deployment version
 #' @examples
 #' \dontrun{
 #' data <- list(

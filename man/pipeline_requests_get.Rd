@@ -4,13 +4,15 @@
 \alias{pipeline_requests_get}
 \title{Get a pipeline request}
 \usage{
-pipeline_requests_get(pipeline.name, request.id, preload_content = TRUE,
-  ...)
+pipeline_requests_get(pipeline.name, request.id, metadata.only = NULL,
+  preload_content = TRUE, ...)
 }
 \arguments{
 \item{pipeline.name}{character}
 
 \item{request.id}{character}
+
+\item{metadata.only}{(optional) character ("true"|"false")}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -26,7 +28,7 @@ Response from the API
    - `id`: Unique identifier for the pipeline request
    - `pipeline`: Name of the pipeline for which the request is made
    - `version`: Name of the pipeline version for which the request was made
-   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
    - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
    - `time_created`: Server time that the request was made (current time)
    - `time_started`: Server time that the processing of the request was started
@@ -46,12 +48,14 @@ Get a request for the default version of a pipeline. With this method, the resul
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_requests_get(
-   pipeline.name, request.id
+   pipeline.name, request.id,
+   metadata.only = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_requests_get(
    pipeline.name, request.id,
+   metadata.only = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

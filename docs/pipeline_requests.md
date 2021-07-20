@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 
 # **batch_pipeline_requests_create**
-> batch_pipeline_requests_create(pipeline.name, data)
+> batch_pipeline_requests_create(pipeline.name, data, timeout=NULL)
 
 Create a batch pipeline request
 
@@ -33,6 +33,12 @@ The maximum number of requests that can be created per batch is 100.
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
 In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.
+
+### Optional Parameters
+These parameters should be given as query parameters
+
+- `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
+The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
 
 ## Request Examples
 Multiple structured batch pipeline requests
@@ -69,7 +75,6 @@ A list of dictionaries containing the details of the created pipeline requests w
 - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
 - `time_created`: Server time that the request was made (current time)
 
-
 ## Response Examples
 
 ```
@@ -99,12 +104,14 @@ data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_pipeline_requests_create(
-  pipeline.name, data
+  pipeline.name, data,
+  timeout = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_pipeline_requests_create(
   pipeline.name, data,
+  timeout = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -118,7 +125,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **batch_pipeline_version_requests_create**
-> batch_pipeline_version_requests_create(pipeline.name, version, data)
+> batch_pipeline_version_requests_create(pipeline.name, version, data, timeout=NULL)
 
 Create a batch pipeline version request
 
@@ -130,6 +137,12 @@ The maximum number of requests that can be created per batch is 100.
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
 In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.
+
+### Optional Parameters
+These parameters should be given as query parameters
+
+- `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
+The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
 
 ## Request Examples
 Multiple structured batch pipeline requests
@@ -195,12 +208,14 @@ data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_pipeline_version_requests_create(
-  pipeline.name, version, data
+  pipeline.name, version, data,
+  timeout = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_pipeline_version_requests_create(
   pipeline.name, version, data,
+  timeout = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -279,7 +294,7 @@ A list of dictionaries containing the details of the retrieved pipeline requests
 - `id`: Unique identifier for the pipeline request
 - `pipeline`: Name of the pipeline for which the request is made
 - `version`: Name of the pipeline version for which the request was made
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
 - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -386,9 +401,8 @@ The input for the request. In case of a structured pipeline, this is a dictionar
 ### Optional Parameters
 The following parameters should be given as query parameters:
 
-- `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600.
-- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds. The maximum allowed value is 3600 and the default value is 300.
-Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.
+- `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 (2 hours) and the default value is 3600 (1 hour).
+- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds. The maximum allowed value is 3600 (1 hour) and the default value is 300  (5 minutes).
 
 ## Request Examples
 A structured pipeline request
@@ -485,7 +499,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete a pipeline request
 
 ## Description
-Delete a request for the default version of a pipeline. This action cancels all the deployment requests in the pipeline.
+Delete a request for the default version of a pipeline. This action deletes all the deployment requests in the pipeline.
 
 ### Example
 ```R
@@ -507,12 +521,17 @@ ubiops::pipeline_requests_delete(
 ```
 
 # **pipeline_requests_get**
-> pipeline_requests_get(pipeline.name, request.id)
+> pipeline_requests_get(pipeline.name, request.id, metadata.only=NULL)
 
 Get a pipeline request
 
 ## Description
 Get a request for the default version of a pipeline. With this method, the result of the request may be retrieved.
+
+### Optional Parameters
+The following parameters should be given as query parameters:
+
+- `metadata_only`: A boolean value that indicates whether the response should include the request data and result. The default value is False.
 
 ### Response Structure
 A dictionary containing the details of the pipeline request with the following fields:
@@ -520,7 +539,7 @@ A dictionary containing the details of the pipeline request with the following f
 - `id`: Unique identifier for the pipeline request
 - `pipeline`: Name of the pipeline for which the request is made
 - `version`: Name of the pipeline version for which the request was made
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
 - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -568,12 +587,14 @@ A dictionary containing the details of the pipeline request with the following f
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_requests_get(
-  pipeline.name, request.id
+  pipeline.name, request.id,
+  metadata.only = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_requests_get(
   pipeline.name, request.id,
+  metadata.only = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -587,7 +608,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **pipeline_requests_list**
-> pipeline_requests_list(pipeline.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL)
+> pipeline_requests_list(pipeline.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List pipeline requests
 
@@ -601,7 +622,12 @@ The following parameters should be given as query parameters:
 - `success`: A boolean value that indicates whether the pipeline request was successful
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
-- `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
+
+If no start or end date is provided, the most recent requests are returned.
 
 ### Response Structure
 A list of dictionaries containing the details of the pipeline requests with the following fields:
@@ -609,7 +635,7 @@ A list of dictionaries containing the details of the pipeline requests with the 
 - `id`: Unique identifier for the pipeline request
 - `pipeline`: Name of the pipeline for which the request is made
 - `version`: Name of the pipeline version for which the request was made
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request
 - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -649,13 +675,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_requests_list(
   pipeline.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_requests_list(
   pipeline.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -734,7 +760,7 @@ A list of dictionaries containing the details of the retrieved pipeline requests
 - `id`: Unique identifier for the pipeline request
 - `pipeline`: Name of the pipeline for which the request is made
 - `version`: Name of the pipeline version for which the request was made
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
 - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -841,9 +867,8 @@ The input for the request. In case of a structured pipeline, this is a dictionar
 ### Optional Parameters
 The following parameters should be given as query parameters:
 
-- `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 and the default value is 3600.
-- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds. The maximum allowed value is 3600 and the default value is 300.
-Maximum allowed value for both is 3600 seconds and the default value is 300 seconds.
+- `pipeline_timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 7200 (2 hours) and the default value is 3600 (1 hour).
+- `deployment_timeout`: Timeout for each deployment request in the pipeline in seconds. The maximum allowed value is 3600 (1 hour) and the default value is 300 (5 minutes).
 
 ## Request Examples
 A structured pipeline request
@@ -941,7 +966,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete a pipeline version request
 
 ## Description
-Delete a request for a pipeline version. This action cancels all the deployment requests in the pipeline.
+Delete a request for a pipeline version. This action deletes all the deployment requests in the pipeline.
 
 ### Example
 ```R
@@ -963,12 +988,17 @@ ubiops::pipeline_version_requests_delete(
 ```
 
 # **pipeline_version_requests_get**
-> pipeline_version_requests_get(pipeline.name, request.id, version)
+> pipeline_version_requests_get(pipeline.name, request.id, version, metadata.only=NULL)
 
 Get a pipeline version request
 
 ## Description
 Get a request for a pipeline version. With this method, the result of a request may be retrieved.
+
+### Optional Parameters
+The following parameters should be given as query parameters:
+
+- `metadata_only`: A boolean value that indicates whether the response should include the request data and result. The default value is False.
 
 ### Response Structure
 A dictionary containing the details of the pipeline version request with the following fields:
@@ -976,7 +1006,7 @@ A dictionary containing the details of the pipeline version request with the fol
 - `id`: Unique identifier for the pipeline version request
 - `pipeline`: Name of the pipeline for which the request is made
 - `version`: Name of the pipeline version for which the request was made
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
 - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -1024,12 +1054,14 @@ A dictionary containing the details of the pipeline version request with the fol
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_version_requests_get(
-  pipeline.name, request.id, version
+  pipeline.name, request.id, version,
+  metadata.only = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_version_requests_get(
   pipeline.name, request.id, version,
+  metadata.only = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -1043,7 +1075,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **pipeline_version_requests_list**
-> pipeline_version_requests_list(pipeline.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL)
+> pipeline_version_requests_list(pipeline.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List pipeline version requests
 
@@ -1057,7 +1089,12 @@ The following parameters should be given as query parameters:
 - `success`: A boolean value that indicates whether the pipeline version request was successful
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
-- `sort`: Direction of sorting, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
+
+If no start or end date is provided, the most recent requests are returned.
 
 ### Response Structure
 A list of dictionaries containing the details of the pipeline version requests with the following fields:
@@ -1065,7 +1102,7 @@ A list of dictionaries containing the details of the pipeline version requests w
 - `id`: Unique identifier for the pipeline version request
 - `pipeline`: Name of the pipeline for which the request is made
 - `version`: Name of the pipeline version for which the request was made
-- `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+- `status`: Status of the request
 - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
 - `time_created`: Server time that the request was made (current time)
 - `time_started`: Server time that the processing of the request was started
@@ -1105,13 +1142,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_version_requests_list(
   pipeline.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_version_requests_list(
   pipeline.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

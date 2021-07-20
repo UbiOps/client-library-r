@@ -28,7 +28,7 @@ Response from the API
    - `id`: Unique identifier for the deployment request
    - `deployment`: Name of the deployment the request was made to
    - `version`: Name of the version the request was made to
-   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+   - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
    - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.
    - `time_created`: Server time that the request was made (current time)
    - `time_started`: Server time that the processing of the request was started

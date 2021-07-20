@@ -10,7 +10,7 @@ request_schedules_update(schedule.name, data, preload_content = TRUE,
 \arguments{
 \item{schedule.name}{character}
 
-\item{data}{named list of: [ name (optional), schedule (optional), request_data (optional), batch (optional), timeout (optional), enabled (optional) ]}
+\item{data}{named list of: [ name (optional), schedule (optional), request_data (optional), timeout (optional), enabled (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -31,7 +31,7 @@ Response from the API
   - `version`: Name of version for which the request schedule is made 
   - `request_data`: Input data for the request schedule 
   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
-  - `timeout`: Timeout in seconds 
+  - `timeout`: Timeout of the request in seconds 
   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
   - `creation_date`: The date when the request schedule was created
 }
@@ -44,7 +44,6 @@ data <- list(
  name = "name",  # (optional)
  schedule = "schedule",  # (optional)
  request_data = list(key = "value"),  # (optional)
- batch = FALSE,  # (optional)
  timeout = 0,  # (optional)
  enabled = FALSE  # (optional)
 )

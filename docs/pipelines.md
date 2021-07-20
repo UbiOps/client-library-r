@@ -1679,10 +1679,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 
 Update a pipeline
 
-
-   
-
-#### Description
+## Description
 Update a pipeline. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.
 
 ### Optional Parameters

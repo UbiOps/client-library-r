@@ -28,7 +28,7 @@ Response from the API
    - `id`: Unique identifier for the pipeline request
    - `pipeline`: Name of the pipeline for which the request is made
    - `version`: Name of the pipeline version for which the request was made
-   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
    - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
    - `time_created`: Server time that the request was made (current time)
    - `time_started`: Server time that the processing of the request was started

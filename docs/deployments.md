@@ -1046,8 +1046,8 @@ Create a version for a deployment. The first version of a deployment is set as d
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. It can be python3.5, python3.6, python3.7, python3.8 or r4.0. The default value is python3.7.
-- `memory_allocation`: Reserved memory for the version in MB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 32768 respectively.
+- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8 or r4.0. The default value is python3.7.
+- `memory_allocation`: Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
@@ -1059,6 +1059,9 @@ Create a version for a deployment. The first version of a deployment is set as d
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `deployment_mode`: the type of the deployment version. It can be one of the following:
+    - *express* - Direct requests can be made to the deployment version.
+    - *batch* - Batch requests can be made to the deployment version.
 
 If the time that a request takes does not matter, keep the default values.
 
@@ -1100,7 +1103,7 @@ Details of the created version
 - `status`: The status of the version
 - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-- `memory_allocation`: Reserved memory for the version in MB 
+- `memory_allocation`: Reserved memory for the version in MiB 
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1109,6 +1112,7 @@ Details of the created version
 - `last_updated`: The date when the version was last updated
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
+- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1132,7 +1136,8 @@ Details of the created version
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-05-12T16:23:15.456812Z",
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "deployment_mode": "express"
 }
 ```
 
@@ -1140,7 +1145,7 @@ Details of the created version
 ```R
 data <- list(
   version = "version",
-  language = 'python3.7',  # one of: [python3.5, python3.6, python3.7, python3.8, r4.0]  (optional)
+  language = 'python3.7',  # one of: [python3.6, python3.7, python3.8, r4.0]  (optional)
   memory_allocation = 0,  # [min: 256; max: 1048576] (optional)
   maximum_instances = 0,  # (optional)
   minimum_instances = 0,  # (optional)
@@ -1148,7 +1153,8 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
-  request_retention_mode = 'full'  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+  deployment_mode = 'express'  # one of: [express, batch]  (optional)
 )
 
 # Use environment variables
@@ -1221,7 +1227,7 @@ Details of a version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MB
+- `memory_allocation`: Reserved memory for the version in MiB
 - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 - `minimum_instances`: Lower bound of number of deployment pods running in parallel
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1234,6 +1240,7 @@ Details of a version
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1258,7 +1265,8 @@ Details of a version
   "last_updated": "2020-06-22T18:04:76.123754Z",
   "last_file_uploaded": "2020-06-21T09:03:01.875391Z",
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "deployment_mode": "express"
 }
 ```
 
@@ -1309,7 +1317,7 @@ A list of details of the versions
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory usage for the version in MB
+- `memory_allocation`: Reserved memory usage for the version in MiB
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1321,6 +1329,7 @@ A list of details of the versions
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1345,7 +1354,8 @@ A list of details of the versions
     "creation_date": "2020-06-18T08:32:14.876451Z",
     "last_updated": "2020-06-19T10:52:23.124784Z",
     "request_retention_time": 604800,
-    "request_retention_mode": "full"
+    "request_retention_mode": "full",
+    "deployment_mode": "express"
   },
   {
     "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
@@ -1366,7 +1376,8 @@ A list of details of the versions
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z",
     "request_retention_time": 86400,
-    "request_retention_mode": "metadata"
+    "request_retention_mode": "metadata",
+    "deployment_mode": "batch"
   }
 ]
 ```
@@ -1408,7 +1419,7 @@ Update a version of a deployment in a project. All necessary fields are validate
 ### Optional Parameters
 
 - `version`: New name for the version
-- `memory_allocation`: New reserved memory for the version in MB
+- `memory_allocation`: New reserved memory for the version in MiB
 - `maximum_instances`: New upper bound of number of versions running
 - `minimum_instances`: New lower bound of number of versions running
 - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped
@@ -1448,7 +1459,7 @@ Details of the updated version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MB
+- `memory_allocation`: Reserved memory for the version in MiB
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1458,6 +1469,7 @@ Details of the updated version
 - `last_file_upload`: The date when a deployment file was last uploaded for the version
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
+- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1482,7 +1494,8 @@ Details of the updated version
   "last_updated": "2020-06-23T18:04:76.123754Z",
   "last_file_uploaded": "2020-06-21T09:03:01.875391Z",
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "deployment_mode": "express"
 }
 ```
 

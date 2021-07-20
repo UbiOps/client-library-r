@@ -42,7 +42,8 @@ class DeploymentVersionCreate(object):
         'description': 'str',
         'labels': 'dict(str, str)',
         'request_retention_time': 'int',
-        'request_retention_mode': 'str'
+        'request_retention_mode': 'str',
+        'deployment_mode': 'str'
     }
 
     attribute_map = {
@@ -55,10 +56,11 @@ class DeploymentVersionCreate(object):
         'description': 'description',
         'labels': 'labels',
         'request_retention_time': 'request_retention_time',
-        'request_retention_mode': 'request_retention_mode'
+        'request_retention_mode': 'request_retention_mode',
+        'deployment_mode': 'deployment_mode'
     }
 
-    def __init__(self, version=None, language='python3.7', memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, request_retention_time=None, request_retention_mode='full', local_vars_configuration=None):  # noqa: E501
+    def __init__(self, version=None, language='python3.7', memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, request_retention_time=None, request_retention_mode='full', deployment_mode='express', local_vars_configuration=None):  # noqa: E501
         """DeploymentVersionCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -74,6 +76,7 @@ class DeploymentVersionCreate(object):
         self._labels = None
         self._request_retention_time = None
         self._request_retention_mode = None
+        self._deployment_mode = None
         self.discriminator = None
 
         self.version = version
@@ -94,6 +97,8 @@ class DeploymentVersionCreate(object):
             self.request_retention_time = request_retention_time
         if request_retention_mode is not None:
             self.request_retention_mode = request_retention_mode
+        if deployment_mode is not None:
+            self.deployment_mode = deployment_mode
 
     @property
     def version(self):
@@ -146,7 +151,7 @@ class DeploymentVersionCreate(object):
         if (self.local_vars_configuration.client_side_validation and
                 language is not None and not isinstance(language, str)):
             raise ValueError("Parameter `language` must be a string")  # noqa: E501
-        allowed_values = ["python3.5", "python3.6", "python3.7", "python3.8", "r4.0"]  # noqa: E501
+        allowed_values = ["python3.6", "python3.7", "python3.8", "r4.0"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and language not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `language` ({0}), must be one of {1}"  # noqa: E501
@@ -366,6 +371,36 @@ class DeploymentVersionCreate(object):
             )
 
         self._request_retention_mode = request_retention_mode
+
+    @property
+    def deployment_mode(self):
+        """Gets the deployment_mode of this DeploymentVersionCreate.  # noqa: E501
+
+
+        :return: The deployment_mode of this DeploymentVersionCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._deployment_mode
+
+    @deployment_mode.setter
+    def deployment_mode(self, deployment_mode):
+        """Sets the deployment_mode of this DeploymentVersionCreate.
+
+
+        :param deployment_mode: The deployment_mode of this DeploymentVersionCreate.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                deployment_mode is not None and not isinstance(deployment_mode, str)):
+            raise ValueError("Parameter `deployment_mode` must be a string")  # noqa: E501
+        allowed_values = ["express", "batch"]  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and deployment_mode not in allowed_values:  # noqa: E501
+            raise ValueError(
+                "Invalid value for `deployment_mode` ({0}), must be one of {1}"  # noqa: E501
+                .format(deployment_mode, allowed_values)
+            )
+
+        self._deployment_mode = deployment_mode
 
     def to_dict(self):
         """Returns the model properties as a dict"""

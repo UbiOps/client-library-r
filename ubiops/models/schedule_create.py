@@ -39,7 +39,6 @@ class ScheduleCreate(object):
         'version': 'str',
         'schedule': 'str',
         'request_data': 'object',
-        'batch': 'bool',
         'timeout': 'int',
         'enabled': 'bool'
     }
@@ -51,12 +50,11 @@ class ScheduleCreate(object):
         'version': 'version',
         'schedule': 'schedule',
         'request_data': 'request_data',
-        'batch': 'batch',
         'timeout': 'timeout',
         'enabled': 'enabled'
     }
 
-    def __init__(self, name=None, object_type=None, object_name=None, version=None, schedule=None, request_data=None, batch=None, timeout=None, enabled=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, object_type=None, object_name=None, version=None, schedule=None, request_data=None, timeout=None, enabled=None, local_vars_configuration=None):  # noqa: E501
         """ScheduleCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -68,7 +66,6 @@ class ScheduleCreate(object):
         self._version = None
         self._schedule = None
         self._request_data = None
-        self._batch = None
         self._timeout = None
         self._enabled = None
         self.discriminator = None
@@ -80,8 +77,6 @@ class ScheduleCreate(object):
             self.version = version
         self.schedule = schedule
         self.request_data = request_data
-        if batch is not None:
-            self.batch = batch
         if timeout is not None:
             self.timeout = timeout
         if enabled is not None:
@@ -255,30 +250,6 @@ class ScheduleCreate(object):
         """
 
         self._request_data = request_data
-
-    @property
-    def batch(self):
-        """Gets the batch of this ScheduleCreate.  # noqa: E501
-
-
-        :return: The batch of this ScheduleCreate.  # noqa: E501
-        :rtype: bool
-        """
-        return self._batch
-
-    @batch.setter
-    def batch(self, batch):
-        """Sets the batch of this ScheduleCreate.
-
-
-        :param batch: The batch of this ScheduleCreate.  # noqa: E501
-        :type: bool
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                batch is not None and not isinstance(batch, bool)):
-            raise ValueError("Parameter `batch` must be a boolean")  # noqa: E501
-
-        self._batch = batch
 
     @property
     def timeout(self):

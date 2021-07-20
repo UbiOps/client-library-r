@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Notes
 ------------ | ------------- | -------------
-**month** | **datetime** | 
+**start_date** | **datetime** | 
+**end_date** | **datetime** | 
 **value** | **float** | 
 
 

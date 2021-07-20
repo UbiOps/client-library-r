@@ -21,5 +21,6 @@ Name | Type | Notes
 **last_file_upload** | **datetime** | [optional] [readonly] 
 **request_retention_time** | **int** | [optional] 
 **request_retention_mode** | **str** | 
+**deployment_mode** | **str** | 
 
 

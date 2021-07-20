@@ -9,7 +9,6 @@ Name | Type | Notes
 **version** | **str** | [optional] 
 **schedule** | **str** | 
 **request_data** | **str** or **dict(str, str)** | [optional] 
-**batch** | **bool** | [optional] 
 **timeout** | **int** | [optional] 
 **enabled** | **bool** | [optional] 
 

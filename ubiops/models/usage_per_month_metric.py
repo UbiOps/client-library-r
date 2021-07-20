@@ -33,50 +33,77 @@ class UsagePerMonthMetric(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'month': 'datetime',
+        'start_date': 'datetime',
+        'end_date': 'datetime',
         'value': 'float'
     }
 
     attribute_map = {
-        'month': 'month',
+        'start_date': 'start_date',
+        'end_date': 'end_date',
         'value': 'value'
     }
 
-    def __init__(self, month=None, value=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, start_date=None, end_date=None, value=None, local_vars_configuration=None):  # noqa: E501
         """UsagePerMonthMetric - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
-        self._month = None
+        self._start_date = None
+        self._end_date = None
         self._value = None
         self.discriminator = None
 
-        self.month = month
+        self.start_date = start_date
+        self.end_date = end_date
         self.value = value
 
     @property
-    def month(self):
-        """Gets the month of this UsagePerMonthMetric.  # noqa: E501
+    def start_date(self):
+        """Gets the start_date of this UsagePerMonthMetric.  # noqa: E501
 
 
-        :return: The month of this UsagePerMonthMetric.  # noqa: E501
+        :return: The start_date of this UsagePerMonthMetric.  # noqa: E501
         :rtype: datetime
         """
-        return self._month
+        return self._start_date
 
-    @month.setter
-    def month(self, month):
-        """Sets the month of this UsagePerMonthMetric.
+    @start_date.setter
+    def start_date(self, start_date):
+        """Sets the start_date of this UsagePerMonthMetric.
 
 
-        :param month: The month of this UsagePerMonthMetric.  # noqa: E501
+        :param start_date: The start_date of this UsagePerMonthMetric.  # noqa: E501
         :type: datetime
         """
-        if self.local_vars_configuration.client_side_validation and month is None:  # noqa: E501
-            raise ValueError("Invalid value for `month`, must not be `None`")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and start_date is None:  # noqa: E501
+            raise ValueError("Invalid value for `start_date`, must not be `None`")  # noqa: E501
 
-        self._month = month
+        self._start_date = start_date
+
+    @property
+    def end_date(self):
+        """Gets the end_date of this UsagePerMonthMetric.  # noqa: E501
+
+
+        :return: The end_date of this UsagePerMonthMetric.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._end_date
+
+    @end_date.setter
+    def end_date(self, end_date):
+        """Sets the end_date of this UsagePerMonthMetric.
+
+
+        :param end_date: The end_date of this UsagePerMonthMetric.  # noqa: E501
+        :type: datetime
+        """
+        if self.local_vars_configuration.client_side_validation and end_date is None:  # noqa: E501
+            raise ValueError("Invalid value for `end_date`, must not be `None`")  # noqa: E501
+
+        self._end_date = end_date
 
     @property
     def value(self):

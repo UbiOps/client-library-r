@@ -50,7 +50,8 @@ class DeploymentVersionDetail(object):
         'last_updated': 'datetime',
         'last_file_upload': 'datetime',
         'request_retention_time': 'int',
-        'request_retention_mode': 'str'
+        'request_retention_mode': 'str',
+        'deployment_mode': 'str'
     }
 
     attribute_map = {
@@ -71,10 +72,11 @@ class DeploymentVersionDetail(object):
         'last_updated': 'last_updated',
         'last_file_upload': 'last_file_upload',
         'request_retention_time': 'request_retention_time',
-        'request_retention_mode': 'request_retention_mode'
+        'request_retention_mode': 'request_retention_mode',
+        'deployment_mode': 'deployment_mode'
     }
 
-    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, active_revision=None, latest_build=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, last_file_upload=None, request_retention_time=None, request_retention_mode=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, active_revision=None, latest_build=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, last_file_upload=None, request_retention_time=None, request_retention_mode=None, deployment_mode=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentVersionDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -98,6 +100,7 @@ class DeploymentVersionDetail(object):
         self._last_file_upload = None
         self._request_retention_time = None
         self._request_retention_mode = None
+        self._deployment_mode = None
         self.discriminator = None
 
         if id is not None:
@@ -131,6 +134,7 @@ class DeploymentVersionDetail(object):
         if request_retention_time is not None:
             self.request_retention_time = request_retention_time
         self.request_retention_mode = request_retention_mode
+        self.deployment_mode = deployment_mode
 
     @property
     def id(self):
@@ -596,6 +600,36 @@ class DeploymentVersionDetail(object):
             raise ValueError("Invalid value for `request_retention_mode`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._request_retention_mode = request_retention_mode
+
+    @property
+    def deployment_mode(self):
+        """Gets the deployment_mode of this DeploymentVersionDetail.  # noqa: E501
+
+
+        :return: The deployment_mode of this DeploymentVersionDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._deployment_mode
+
+    @deployment_mode.setter
+    def deployment_mode(self, deployment_mode):
+        """Sets the deployment_mode of this DeploymentVersionDetail.
+
+
+        :param deployment_mode: The deployment_mode of this DeploymentVersionDetail.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and deployment_mode is None:  # noqa: E501
+            raise ValueError("Invalid value for `deployment_mode`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                deployment_mode is not None and not isinstance(deployment_mode, str)):
+            raise ValueError("Parameter `deployment_mode` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                deployment_mode is not None and len(deployment_mode) < 1):
+            raise ValueError("Invalid value for `deployment_mode`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._deployment_mode = deployment_mode
 
     def to_dict(self):
         """Returns the model properties as a dict"""

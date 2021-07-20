@@ -10,6 +10,7 @@
 """
 
 
+import json
 import six
 
 
@@ -97,14 +98,34 @@ class ApiException(OpenApiException):
 
     def __str__(self):
         """Custom error messages for exception"""
-        error_message = "({0})\n"\
-                        "Reason: {1}\n".format(self.status, self.reason)
-        if self.headers:
-            error_message += "HTTP response headers: {0}\n".format(
-                self.headers)
+        error_message = "{0} ({1})\n".format(self.reason, self.status)
 
         if self.body:
-            error_message += "HTTP response body: {0}\n".format(self.body)
+            body_message = ""
+
+            try:
+                body_content = json.loads(self.body)
+
+                if isinstance(body_content, dict) and 'error' in body_content:
+                    body_message = "Error: {0}\n".format(body_content['error'])
+
+                elif isinstance(body_content, dict) and 'error_message' in body_content:
+                    body_message = "Error: {0}\n".format(body_content['error_message'])
+
+            except (ValueError, TypeError, KeyError):
+                pass
+
+            if body_message:
+                error_message += body_message
+            else:
+                if self.headers:
+                    error_message += "HTTP response headers: {0}\n".format(
+                        self.headers)
+                error_message += "HTTP response body: {0}\n".format(self.body)
+
+        elif self.headers:
+            error_message += "HTTP response headers: {0}\n".format(
+                self.headers)
 
         return error_message
 

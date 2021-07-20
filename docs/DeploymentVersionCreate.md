@@ -13,5 +13,6 @@ Name | Type | Notes
 **labels** | **dict(str, str)** | [optional] 
 **request_retention_time** | **int** | [optional] 
 **request_retention_mode** | **str** | [optional] [default to 'full']
+**deployment_mode** | **str** | [optional] [default to 'express']
 
 

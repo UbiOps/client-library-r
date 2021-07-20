@@ -1,4 +1,4 @@
-# DeploymentRequestSingleDetail
+# DeploymentRequestBatchDetail
 
 ## Properties
 Name | Type | Notes
@@ -14,6 +14,5 @@ Name | Type | Notes
 **error_message** | **str** | [optional] 
 **request_data** | **str** or **dict(str, str)** | [optional] 
 **result** | **str** or **dict(str, str)** | [optional] 
-**created_by** | **str** | [optional] [readonly] 
 
 

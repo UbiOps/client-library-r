@@ -41,9 +41,9 @@ class DeploymentRequestSingleDetail(object):
         'time_created': 'datetime',
         'time_started': 'datetime',
         'time_completed': 'datetime',
+        'error_message': 'str',
         'request_data': 'object',
         'result': 'object',
-        'error_message': 'str',
         'created_by': 'str'
     }
 
@@ -56,13 +56,13 @@ class DeploymentRequestSingleDetail(object):
         'time_created': 'time_created',
         'time_started': 'time_started',
         'time_completed': 'time_completed',
+        'error_message': 'error_message',
         'request_data': 'request_data',
         'result': 'result',
-        'error_message': 'error_message',
         'created_by': 'created_by'
     }
 
-    def __init__(self, id=None, deployment=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, request_data=None, result=None, error_message=None, created_by=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, error_message=None, request_data=None, result=None, created_by=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentRequestSingleDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -76,9 +76,9 @@ class DeploymentRequestSingleDetail(object):
         self._time_created = None
         self._time_started = None
         self._time_completed = None
+        self._error_message = None
         self._request_data = None
         self._result = None
-        self._error_message = None
         self._created_by = None
         self.discriminator = None
 
@@ -90,9 +90,9 @@ class DeploymentRequestSingleDetail(object):
         self.time_created = time_created
         self.time_started = time_started
         self.time_completed = time_completed
+        self.error_message = error_message
         self.request_data = request_data
         self.result = result
-        self.error_message = error_message
         if created_by is not None:
             self.created_by = created_by
 
@@ -199,7 +199,7 @@ class DeploymentRequestSingleDetail(object):
         if (self.local_vars_configuration.client_side_validation and
                 status is not None and not isinstance(status, str)):
             raise ValueError("Parameter `status` must be a string")  # noqa: E501
-        allowed_values = ["pending", "processing", "completed", "failed"]  # noqa: E501
+        allowed_values = ["pending", "processing", "completed", "failed", "cancelled_pending", "cancelled"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
@@ -298,6 +298,30 @@ class DeploymentRequestSingleDetail(object):
         self._time_completed = time_completed
 
     @property
+    def error_message(self):
+        """Gets the error_message of this DeploymentRequestSingleDetail.  # noqa: E501
+
+
+        :return: The error_message of this DeploymentRequestSingleDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._error_message
+
+    @error_message.setter
+    def error_message(self, error_message):
+        """Sets the error_message of this DeploymentRequestSingleDetail.
+
+
+        :param error_message: The error_message of this DeploymentRequestSingleDetail.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                error_message is not None and not isinstance(error_message, str)):
+            raise ValueError("Parameter `error_message` must be a string")  # noqa: E501
+
+        self._error_message = error_message
+
+    @property
     def request_data(self):
         """Gets the request_data of this DeploymentRequestSingleDetail.  # noqa: E501
 
@@ -338,30 +362,6 @@ class DeploymentRequestSingleDetail(object):
         """
 
         self._result = result
-
-    @property
-    def error_message(self):
-        """Gets the error_message of this DeploymentRequestSingleDetail.  # noqa: E501
-
-
-        :return: The error_message of this DeploymentRequestSingleDetail.  # noqa: E501
-        :rtype: str
-        """
-        return self._error_message
-
-    @error_message.setter
-    def error_message(self, error_message):
-        """Sets the error_message of this DeploymentRequestSingleDetail.
-
-
-        :param error_message: The error_message of this DeploymentRequestSingleDetail.  # noqa: E501
-        :type: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                error_message is not None and not isinstance(error_message, str)):
-            raise ValueError("Parameter `error_message` must be a string")  # noqa: E501
-
-        self._error_message = error_message
 
     @property
     def created_by(self):

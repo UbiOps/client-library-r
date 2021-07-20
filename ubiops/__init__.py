@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "3.3.0"
+__version__ = "3.4.0"
 
 # import apis into sdk package
 from ubiops.api.core_api import CoreApi
@@ -44,11 +44,13 @@ from ubiops.models.deployment_input_field_list import DeploymentInputFieldList
 from ubiops.models.deployment_list import DeploymentList
 from ubiops.models.deployment_output_field_create import DeploymentOutputFieldCreate
 from ubiops.models.deployment_output_field_list import DeploymentOutputFieldList
+from ubiops.models.deployment_request_base_detail import DeploymentRequestBaseDetail
 from ubiops.models.deployment_request_batch_create_response import DeploymentRequestBatchCreateResponse
+from ubiops.models.deployment_request_batch_detail import DeploymentRequestBatchDetail
 from ubiops.models.deployment_request_create_response import DeploymentRequestCreateResponse
-from ubiops.models.deployment_request_detail import DeploymentRequestDetail
 from ubiops.models.deployment_request_list import DeploymentRequestList
 from ubiops.models.deployment_request_single_detail import DeploymentRequestSingleDetail
+from ubiops.models.deployment_request_update import DeploymentRequestUpdate
 from ubiops.models.deployment_update import DeploymentUpdate
 from ubiops.models.deployment_version_create import DeploymentVersionCreate
 from ubiops.models.deployment_version_detail import DeploymentVersionDetail
@@ -110,6 +112,7 @@ from ubiops.models.schedule_update import ScheduleUpdate
 from ubiops.models.service_user_create import ServiceUserCreate
 from ubiops.models.service_user_detail import ServiceUserDetail
 from ubiops.models.service_user_list import ServiceUserList
+from ubiops.models.service_user_token_detail import ServiceUserTokenDetail
 from ubiops.models.service_user_token_list import ServiceUserTokenList
 from ubiops.models.status import Status
 from ubiops.models.usage_per_day import UsagePerDay

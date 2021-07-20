@@ -198,7 +198,7 @@ class PipelineRequestDetail(object):
         if (self.local_vars_configuration.client_side_validation and
                 status is not None and not isinstance(status, str)):
             raise ValueError("Parameter `status` must be a string")  # noqa: E501
-        allowed_values = ["pending", "processing", "completed", "failed"]  # noqa: E501
+        allowed_values = ["pending", "processing", "completed", "failed", "cancelled_pending", "cancelled"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501

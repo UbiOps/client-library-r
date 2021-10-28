@@ -151,8 +151,6 @@ class DeploymentRequestBaseDetail(object):
         :param version: The version of this DeploymentRequestBaseDetail.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
-            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 version is not None and not isinstance(version, str)):
             raise ValueError("Parameter `version` must be a string")  # noqa: E501

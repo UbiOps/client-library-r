@@ -52,6 +52,17 @@ Method | HTTP request | Description
 [**deployments_get**](CoreApi.md#deployments_get) | **GET** /projects/{project_name}/deployments/{deployment_name} | Get details of a deployment
 [**deployments_list**](CoreApi.md#deployments_list) | **GET** /projects/{project_name}/deployments | List deployments
 [**deployments_update**](CoreApi.md#deployments_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name} | Update a deployment
+[**exports_create**](CoreApi.md#exports_create) | **POST** /projects/{project_name}/exports | Create an export
+[**exports_delete**](CoreApi.md#exports_delete) | **DELETE** /projects/{project_name}/exports/{export_id} | Delete an export
+[**exports_download**](CoreApi.md#exports_download) | **GET** /projects/{project_name}/exports/{export_id}/download | Download an export
+[**exports_get**](CoreApi.md#exports_get) | **GET** /projects/{project_name}/exports/{export_id} | Get an export
+[**exports_list**](CoreApi.md#exports_list) | **GET** /projects/{project_name}/exports | List exports
+[**imports_create**](CoreApi.md#imports_create) | **POST** /projects/{project_name}/imports | Create an import
+[**imports_delete**](CoreApi.md#imports_delete) | **DELETE** /projects/{project_name}/imports/{import_id} | Delete an import
+[**imports_download**](CoreApi.md#imports_download) | **GET** /projects/{project_name}/imports/{import_id}/download | Download an import
+[**imports_get**](CoreApi.md#imports_get) | **GET** /projects/{project_name}/imports/{import_id} | Get an import
+[**imports_list**](CoreApi.md#imports_list) | **GET** /projects/{project_name}/imports | List imports
+[**imports_update**](CoreApi.md#imports_update) | **PATCH** /projects/{project_name}/imports/{import_id} | Confirm an import
 [**metrics_get**](CoreApi.md#metrics_get) | **GET** /projects/{project_name}/metrics/{metric} | Get metrics
 [**organization_usage_details_get**](CoreApi.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
 [**organization_usage_get**](CoreApi.md#organization_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
@@ -405,7 +416,7 @@ Create a batch pipeline request
 ## Description
 Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.
 
-The maximum number of requests that can be created per batch is 100.
+The maximum number of requests that can be created per batch is 250.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -531,7 +542,7 @@ Create a batch pipeline version request
 ## Description
 Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.
 
-The maximum number of requests that can be created per batch is 100.
+The maximum number of requests that can be created per batch is 250.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -1834,7 +1845,7 @@ Name | Type | Notes
 Delete multiple deployment requests
 
 ## Description
-Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -1899,7 +1910,7 @@ Name | Type | Notes
 Retrieve multiple deployment requests
 
 ## Description
-Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests
@@ -3048,7 +3059,7 @@ Name | Type | Notes
 Delete multiple deployment version requests
 
 ## Description
-Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -3115,7 +3126,7 @@ Name | Type | Notes
 Retrieve multiple deployment version requests
 
 ## Description
-Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests
@@ -4813,7 +4824,7 @@ Name | Type | Notes
 Update a deployment
 
 ## Description
-Update a deployment. It is only possible to update the name, description and labels fields. When updating labels, the labels will replace the existing value for labels.
+Update a deployment
 
 ### Optional Parameters
 
@@ -4821,6 +4832,10 @@ Update a deployment. It is only possible to update the name, description and lab
 - `description`: New description for the deployment
 - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
 - `default_version`: Name of a version of this deployment which will be assigned as default. Only **available** versions can be assigned as default.
+- `input_fields`: New input fields for the deployment
+- `output_fields`: New output fields for the deployment
+
+Input and output fields can be updated (name or data type), added or removed. For deployments that are attached in a pipeline, fields must be updated one at a time so that the updates can be performed while preserving the mapping.
 
 ## Request Examples
 
@@ -4922,6 +4937,971 @@ Name | Type | Notes
 ### Return type
 
 [**DeploymentDetail**](DeploymentDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **exports_create**
+> ExportList exports_create(project_name, data)
+
+Create an export
+
+## Description
+Create an export by selecting the objects in the export
+
+### Optional Parameters
+
+- `deployments`: Dictionary containing the deployments to export
+- `pipelines`: Dictionary containing the pipelines to export
+- `environment_variables`: Dictionary containing the project-level environment variables to export
+
+## Request Examples
+
+
+```
+{
+  "deployments": {
+    "deployment-1": {
+      "versions": {
+        "version-1": {
+          "environment_variables": {
+            "VERSION_ENV_VAR_NAME_1": {
+              "include_value": true
+            },
+            "VERSION_ENV_VAR_NAME_2": {
+              "include_value": false
+            }
+          }
+        },
+        "version-2": {}
+      },
+      "environment_variables": {
+        "DEPLOYMENT_ENV_VAR_NAME_1": {
+          "include_value": false
+        }
+      }
+    },
+    "deployment-2": {
+      "versions": {}
+    }
+  },
+  "pipelines": {
+    "pipeline-1": {
+      "versions": {
+        "version-1": {},
+        "version-2": {}
+      }
+    },
+    "pipeline-2": {
+      "versions": {}
+    }
+  },
+  "environment_variables": {
+    "PROJECT_ENV_VAR_NAME_1": {
+      "include_value": false
+    }
+  }
+}
+```
+
+### Response Structure
+Details of the created export
+
+- `id`: Unique identifier for the export (UUID)
+- `status`: Status of the export
+- `error_message`: The error message in case of a failure
+- `creation_date`: The date when the export was created
+- `size`: Size of the export in bytes
+
+## Response Examples
+
+```
+{
+  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
+  "status": "pending",
+  "error_message": "",
+  "creation_date": "2020-06-18T08:32:14.876451Z",
+  "size": null
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+data = ubiops.ExportCreate() # ExportCreate 
+
+# Create an export
+api_response = api_instance.exports_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **data** | [**ExportCreate**](ExportCreate.md) | 
+
+### Return type
+
+[**ExportList**](ExportList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **exports_delete**
+> exports_delete(project_name, export_id)
+
+Delete an export
+
+## Description
+Delete an export from a project
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+export_id = 'export_id_example' # str 
+
+# Delete an export
+api_instance.exports_delete(project_name, export_id)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **export_id** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **exports_download**
+> file exports_download(project_name, export_id)
+
+Download an export
+
+## Description
+Download an export in a project
+
+### Response Structure
+
+- `file`: Zip file
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+export_id = 'export_id_example' # str 
+
+# Download an export
+with api_instance.exports_download(project_name, export_id) as response:
+    filename = response.getfilename()
+    content = response.read()
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **export_id** | **str** | 
+
+### Return type
+
+**file**
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **exports_get**
+> ExportDetail exports_get(project_name, export_id)
+
+Get an export
+
+## Description
+Get the details of an export in a project
+
+### Response Structure
+
+- `id`: Unique identifier for the export (UUID)
+- `status`: Status of the export
+- `error_message`: The error message in case of a failure
+- `creation_date`: The date when the export was created
+- `size`: Size of the export in bytes
+- `deployments`: Dictionary of the deployments in the export
+- `pipelines`: Dictionary of the pipelines in the export
+- `environment_variables`: Dictionary of the environment variables in the export
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+export_id = 'export_id_example' # str 
+
+# Get an export
+api_response = api_instance.exports_get(project_name, export_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **export_id** | **str** | 
+
+### Return type
+
+[**ExportDetail**](ExportDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **exports_list**
+> list[ExportList] exports_list(project_name, status=status)
+
+List exports
+
+## Description
+List all exports in a project
+
+### Optional Parameters
+The following parameter should be given as query parameter:
+
+- `status`: Status of the export. Can be 'pending', 'processing', 'completed' and 'failed'.
+
+### Response Structure
+A list of details of the exports in the project
+
+- `id`: Unique identifier for the export (UUID)
+- `creation_date`: Time the export was created
+- `status`: The status of the export
+- `error_message`: The error message in case of a failure
+- `size`: Size of the export in bytes
+
+## Response Examples
+
+```
+[
+  {
+    "id": "ecb39626-2a14-4224-a57a-592a51567e17",
+    "creation_date": "2020-05-18T11:26:57.904+00:00",
+    "status": "pending",
+    "error_message": "",
+    "size": null
+  },
+  {
+    "id": "f629a052-a827-44d9-97cf-3902504edc79",
+    "creation_date": "2020-05-18T11:26:57.904+00:00",
+    "status": "completed",
+    "error_message": "",
+    "size": 86400
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+status = 'status_example' # str  (optional)
+
+# List exports
+api_response = api_instance.exports_list(project_name, status=status)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **status** | **str** | [optional] 
+
+### Return type
+
+[**list[ExportList]**](ExportList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **imports_create**
+> ImportList imports_create(project_name, file, skip_confirmation=skip_confirmation)
+
+Create an import
+
+## Description
+Create an import by uploading a zip file
+
+### Optional Parameters
+
+- `skip_confirmation`: Whether to skip the confirmation step, default to False
+
+### Response Structure
+Details of the created import
+
+- `id`: Unique identifier for the import (UUID)
+- `status`: Status of the import
+- `error_message`: The error message in case of a failure
+- `creation_date`: The date when the import was created
+- `size`: Size of the import in bytes
+
+## Response Examples
+
+```
+{
+  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
+  "status": "pending",
+  "error_message": "",
+  "creation_date": "2020-06-18T08:32:14.876451Z",
+  "size": 28391
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+file = '/path/to/file' # file 
+skip_confirmation = True # bool  (optional)
+
+# Create an import
+api_response = api_instance.imports_create(project_name, file, skip_confirmation=skip_confirmation)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **file** | **file** | 
+ **skip_confirmation** | **bool** | [optional] 
+
+### Return type
+
+[**ImportList**](ImportList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **imports_delete**
+> imports_delete(project_name, import_id)
+
+Delete an import
+
+## Description
+Delete an import from a project
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+import_id = 'import_id_example' # str 
+
+# Delete an import
+api_instance.imports_delete(project_name, import_id)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **import_id** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **imports_download**
+> file imports_download(project_name, import_id)
+
+Download an import
+
+## Description
+Download an import in a project
+
+### Response Structure
+
+- `file`: Zip file
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+import_id = 'import_id_example' # str 
+
+# Download an import
+with api_instance.imports_download(project_name, import_id) as response:
+    filename = response.getfilename()
+    content = response.read()
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **import_id** | **str** | 
+
+### Return type
+
+**file**
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **imports_get**
+> ImportDetail imports_get(project_name, import_id)
+
+Get an import
+
+## Description
+Get the details of an import in a project
+
+### Response Structure
+
+- `id`: Unique identifier for the import (UUID)
+- `status`: Status of the import
+- `error_message`: The error message in case of a failure
+- `creation_date`: The date when the import was created
+- `size`: Size of the import in bytes
+- `deployments`: Dictionary of the deployments in the import
+- `pipelines`: Dictionary of the pipelines in the import
+- `environment_variables`: Dictionary of the environment variables in the import
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+import_id = 'import_id_example' # str 
+
+# Get an import
+api_response = api_instance.imports_get(project_name, import_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **import_id** | **str** | 
+
+### Return type
+
+[**ImportDetail**](ImportDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **imports_list**
+> list[ImportList] imports_list(project_name, status=status)
+
+List imports
+
+## Description
+List all imports in a project
+
+### Optional Parameters
+The following parameter should be given as query parameter:
+
+- `status`: Status of the import. Can be 'pending', 'scanning', 'confirmation', 'confirmation_pending', 'processing', 'completed' and 'failed'.
+
+### Response Structure
+A list of details of the imports in the project
+
+- `id`: Unique identifier for the import (UUID)
+- `creation_date`: Time the import was created
+- `status`: The status of the import
+- `error_message`: The error message in case of a failure
+- `size`: Size of the import in bytes
+
+## Response Examples
+
+```
+[
+  {
+    "id": "ecb39626-2a14-4224-a57a-592a51567e17",
+    "creation_date": "2020-05-18T11:26:57.904+00:00",
+    "status": "pending",
+    "error_message": "",
+    "size": 126832
+  },
+  {
+    "id": "f629a052-a827-44d9-97cf-3902504edc79",
+    "creation_date": "2020-05-18T11:26:57.904+00:00",
+    "status": "pending",
+    "error_message": "",
+    "size": 86400
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+status = 'status_example' # str  (optional)
+
+# List imports
+api_response = api_instance.imports_list(project_name, status=status)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **status** | **str** | [optional] 
+
+### Return type
+
+[**list[ImportList]**](ImportList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **imports_update**
+> ImportDetail imports_update(project_name, import_id, data)
+
+Confirm an import
+
+## Description
+Confirm (and update) an import by selecting the objects in the import
+
+### Optional Parameters
+
+- `deployments`: Dictionary containing the deployments to create
+- `pipelines`: Dictionary containing the pipelines to create
+- `environment_variables`: Dictionary containing the project-level environment variables to create
+
+## Request Examples
+
+
+```
+"deployments": {
+  "deployment-1: {
+    "description": "",
+    "labels": {
+      "my-label": "my-value"
+    },
+    "default_version": "v1",
+    "versions": {
+      "v1": {
+        "zip": "deployments/deployment_deployment-1/versions/deployment_deployment-1_version_v1.zip",
+        "description": "",
+        "labels": {},
+        "language": "python3.7",
+        "deployment_mode": "express",
+        "maximum_idle_time": 300,
+        "maximum_instances": 5,
+        "memory_allocation": 256,
+        "minimum_instances": 0,
+        "environment_variables": {
+          "VERSION_ENV_VAR_1": {
+            "value": "my-secret-value",
+            "secret": true
+          },
+          "VERSION_ENV_VAR_2": {
+            "value": "test2"
+          }
+        },
+        "request_retention_mode": "full",
+        "request_retention_time": 604800
+      }
+    },
+    "input_type": "structured",
+    "output_type": "structured",
+    "input_fields": [
+      {
+        "name": "input",
+        "data_type": "double"
+      }
+    ],
+    "output_fields": [
+      {
+        "name": "output",
+        "data_type": "double"
+      }
+    ],
+    "environment_variables": {
+      "DEPLOYMENT_ENV_VAR_1": {
+        "value": "my-secret-value",
+        "secret": true
+      },
+      "DEPLOYMENT_ENV_VAR_2": {
+        "value": "test"
+      }
+    }
+  }
+},
+"pipelines": {
+  "pipeline-1: {
+    "description": "",
+    "labels": {
+      "test": "label"
+    },
+    "default_version": "v1",
+    "versions": {
+      "v1": {
+        "description": "",
+        "labels": {},
+        "objects": [
+          {
+            "name": "obj-1",
+            "reference_name": "deployment-1",
+            "reference_version": "v1"
+          }
+        ],
+        "attachments": [
+          {
+            "sources": [
+              {
+                "mapping": [
+                  {
+                    "source_field_name": "input",
+                    "destination_field_name": "input"
+                  }
+                ],
+                "source_name": "pipeline_start"
+              }
+            ],
+            "destination_name": "obj-1"
+          },
+          {
+            "sources": [
+              {
+                "mapping": [
+                  {
+                    "source_field_name": "output",
+                    "destination_field_name": "output"
+                  }
+                ],
+                "source_name": "obj-1"
+              }
+            ],
+            "destination_name": "pipeline_end"
+          }
+        ],
+        "request_retention_mode": "full",
+        "request_retention_time": 604800
+      }
+    },
+    "input_type": "structured",
+    "output_type": "structured",
+    "input_fields": [
+      {
+        "name": "input",
+        "data_type": "double"
+      }
+    ],
+    "output_fields": [
+      {
+        "name": "output",
+        "data_type": "double"
+      }
+    ]
+  }
+},
+"environment_variables": {
+  "PROJECT_ENV_VAR_1": {
+    "value": "value1",
+    "secret": true
+  },
+  "PROJECT_ENV_VAR_2": {
+    "value": "value2"
+  }
+}
+```
+
+### Response Structure
+Details of the updated import
+
+- `id`: Unique identifier for the import (UUID)
+- `status`: Status of the import
+- `error_message`: The error message in case of a failure
+- `creation_date`: The date when the import was created
+- `size`: Size of the import in bytes
+
+## Response Examples
+
+```
+{
+  "id": "903ccd12-81d1-46e1-9ac9-b9d70af118de",
+  "status": "pending",
+  "error_message": "",
+  "creation_date": "2020-06-18T08:32:14.876451Z",
+  "size": null
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+import_id = 'import_id_example' # str 
+data = ubiops.ImportUpdate() # ImportUpdate 
+
+# Confirm an import
+api_response = api_instance.imports_update(project_name, import_id, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **import_id** | **str** | 
+ **data** | [**ImportUpdate**](ImportUpdate.md) | 
+
+### Return type
+
+[**ImportDetail**](ImportDetail.md)
 
 ### Authorization
 
@@ -5797,11 +6777,11 @@ Create a new organization. When a user creates an organization, s/he will automa
 - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
 
 - `subscription`: Name of the subscription for the organization
-- `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted
 
 ### Optional Parameters
 
-- `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. **Provide a null value for this field to have no end date.**
+- `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year.
+If you are going to use a subscription other than the free subscription, you should provide the end date.
 
 ## Request Examples
 
@@ -5809,7 +6789,7 @@ Create a new organization. When a user creates an organization, s/he will automa
 {
   "name": "test-organization",
   "subscription": "professional",
-  "subscription_agreed": true
+  "subscription_end_date": "2021-03-25"
 }
 ```
 
@@ -5818,7 +6798,6 @@ Create a new organization. When a user creates an organization, s/he will automa
 {
   "name": "test-organization",
   "subscription": "professional",
-  "subscription_agreed": true,
   "subscription_end_date": "2021-03-25"
 }
 ```
@@ -6136,8 +7115,7 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 
 - `name`: New organization name
 - `subscription`: New subscription
-- `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription
-- `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for this field.
+- `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If you are going to update the subscription plan of the organization to a subscription other than free, you have to provide the end date.
 
 ## Request Examples
 
@@ -6152,14 +7130,13 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 ```
 {
   "subscription": "professional",
-  "subscription_agreed": true
+  "subscription_end_date": "2020-08-30"
 }
 ```
 
 ```
 {
-  "subscription_end_date": "2020-08-30",
-  "subscription_agreed": true
+  "subscription_end_date": "2020-08-30"
 }
 ```
 
@@ -12954,7 +13931,7 @@ void (empty response body)
 [[Back to top]](#)
 
 # **service_users_get**
-> ServiceUserDetail service_users_get(project_name, service_user_id)
+> ServiceUserList service_users_get(project_name, service_user_id)
 
 Retrieve details of a service user
 
@@ -12974,8 +13951,6 @@ Details of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
-- `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type
-
 ## Response Examples
 
 ```
@@ -12986,27 +13961,7 @@ Details of the service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ],
-  'permissions': {
-    'project': [
-      {
-        'object_id': "e6255727-c24c-4d63-ab7f-2d8889a15f4d"
-        'permissions': []
-      }
-    ],
-    'deployment': [
-      {
-        'object_id': "ad38bbd6-7e65-4752-9bbf-05b870b24394",
-        'permissions': []
-      }
-    ],
-    'pipeline': [
-      {
-        'object_id': "daa36196-1003-4054-92c9-c6dee1a5e1ba",
-        'permissions': []
-      }
-    ]
-  }
+  ]
 }
 ```
 
@@ -13048,7 +14003,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**ServiceUserDetail**](ServiceUserDetail.md)
+[**ServiceUserList**](ServiceUserList.md)
 
 ### Authorization
 
@@ -13216,7 +14171,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **service_users_update**
-> ServiceUserDetail service_users_update(project_name, service_user_id, data)
+> ServiceUserList service_users_update(project_name, service_user_id, data)
 
 Update service user details
 
@@ -13262,8 +14217,6 @@ Details of the updated service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
-- `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type
-
 ## Response Examples
 
 ```
@@ -13274,27 +14227,7 @@ Details of the updated service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ],
-  'permissions': {
-    'project': [
-      {
-        'object_id': "e6255727-c24c-4d63-ab7f-2d8889a15f4d"
-        'permissions': []
-      }
-    ],
-    'deployment': [
-      {
-        'object_id': "ad38bbd6-7e65-4752-9bbf-05b870b24394",
-        'permissions': []
-      }
-    ],
-    'pipeline': [
-      {
-        'object_id': "daa36196-1003-4054-92c9-c6dee1a5e1ba",
-        'permissions': []
-      }
-    ]
-  }
+  ]
 }
 ```
 
@@ -13338,7 +14271,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**ServiceUserDetail**](ServiceUserDetail.md)
+[**ServiceUserList**](ServiceUserList.md)
 
 ### Authorization
 

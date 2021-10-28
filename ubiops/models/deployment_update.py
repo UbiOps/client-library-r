@@ -36,6 +36,8 @@ class DeploymentUpdate(object):
         'name': 'str',
         'default_version': 'str',
         'description': 'str',
+        'input_fields': 'list[DeploymentInputFieldCreate]',
+        'output_fields': 'list[DeploymentOutputFieldCreate]',
         'labels': 'dict(str, str)'
     }
 
@@ -43,10 +45,12 @@ class DeploymentUpdate(object):
         'name': 'name',
         'default_version': 'default_version',
         'description': 'description',
+        'input_fields': 'input_fields',
+        'output_fields': 'output_fields',
         'labels': 'labels'
     }
 
-    def __init__(self, name=None, default_version=None, description=None, labels=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, default_version=None, description=None, input_fields=None, output_fields=None, labels=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -55,6 +59,8 @@ class DeploymentUpdate(object):
         self._name = None
         self._default_version = None
         self._description = None
+        self._input_fields = None
+        self._output_fields = None
         self._labels = None
         self.discriminator = None
 
@@ -64,6 +70,10 @@ class DeploymentUpdate(object):
             self.default_version = default_version
         if description is not None:
             self.description = description
+        if input_fields is not None:
+            self.input_fields = input_fields
+        if output_fields is not None:
+            self.output_fields = output_fields
         self.labels = labels
 
     @property
@@ -145,6 +155,68 @@ class DeploymentUpdate(object):
             raise ValueError("Parameter `description` must be a string")  # noqa: E501
 
         self._description = description
+
+    @property
+    def input_fields(self):
+        """Gets the input_fields of this DeploymentUpdate.  # noqa: E501
+
+
+        :return: The input_fields of this DeploymentUpdate.  # noqa: E501
+        :rtype: list[DeploymentInputFieldCreate]
+        """
+        return self._input_fields
+
+    @input_fields.setter
+    def input_fields(self, input_fields):
+        """Sets the input_fields of this DeploymentUpdate.
+
+
+        :param input_fields: The input_fields of this DeploymentUpdate.  # noqa: E501
+        :type: list[DeploymentInputFieldCreate]
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                input_fields is not None and not isinstance(input_fields, list)):
+            raise ValueError("Parameter `input_fields` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and input_fields is not None:
+            from ubiops.models.deployment_input_field_create import DeploymentInputFieldCreate
+
+            input_fields = [
+                DeploymentInputFieldCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in input_fields
+            ]
+
+        self._input_fields = input_fields
+
+    @property
+    def output_fields(self):
+        """Gets the output_fields of this DeploymentUpdate.  # noqa: E501
+
+
+        :return: The output_fields of this DeploymentUpdate.  # noqa: E501
+        :rtype: list[DeploymentOutputFieldCreate]
+        """
+        return self._output_fields
+
+    @output_fields.setter
+    def output_fields(self, output_fields):
+        """Sets the output_fields of this DeploymentUpdate.
+
+
+        :param output_fields: The output_fields of this DeploymentUpdate.  # noqa: E501
+        :type: list[DeploymentOutputFieldCreate]
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                output_fields is not None and not isinstance(output_fields, list)):
+            raise ValueError("Parameter `output_fields` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and output_fields is not None:
+            from ubiops.models.deployment_output_field_create import DeploymentOutputFieldCreate
+
+            output_fields = [
+                DeploymentOutputFieldCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in output_fields
+            ]
+
+        self._output_fields = output_fields
 
     @property
     def labels(self):

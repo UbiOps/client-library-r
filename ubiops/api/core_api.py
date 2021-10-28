@@ -351,7 +351,7 @@ class CoreApi(object):
     def batch_pipeline_requests_create(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Create a batch pipeline request  # noqa: E501
 
-         ### Description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 100.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 250.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_create(project_name, pipeline_name, data, async_req=True)
@@ -379,7 +379,7 @@ class CoreApi(object):
     def batch_pipeline_requests_create_with_http_info(self, project_name, pipeline_name, data, **kwargs):  # noqa: E501
         """Create a batch pipeline request  # noqa: E501
 
-         ### Description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 100.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 250.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline requests with the following fields:  - `id`: Unique identifier for the pipeline request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_requests_create_with_http_info(project_name, pipeline_name, data, async_req=True)
@@ -501,7 +501,7 @@ class CoreApi(object):
     def batch_pipeline_version_requests_create(self, project_name, pipeline_name, version, data, **kwargs):  # noqa: E501
         """Create a batch pipeline version request  # noqa: E501
 
-         ### Description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 100.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline version requests with the following fields:  - `id`: Unique identifier for the pipeline version request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 250.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline version requests with the following fields:  - `id`: Unique identifier for the pipeline version request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_version_requests_create(project_name, pipeline_name, version, data, async_req=True)
@@ -530,7 +530,7 @@ class CoreApi(object):
     def batch_pipeline_version_requests_create_with_http_info(self, project_name, pipeline_name, version, data, **kwargs):  # noqa: E501
         """Create a batch pipeline version request  # noqa: E501
 
-         ### Description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 100.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline version requests with the following fields:  - `id`: Unique identifier for the pipeline version request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
+         ### Description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 250.  ### Required Parameters  In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input. In case of plain input pipeline: A list of strings. It is also possible to send a single string as input.  ### Optional Parameters These parameters should be given as query parameters - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours). The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.  #### Request Examples  Multiple structured batch pipeline requests ``` [   {     \"pipeline-input-field-1\": 5.0,     \"pipeline-input-field-2\": \"N\",     \"pipeline-input-field-3\": [0.25, 0.25, 2.1, 16.3]   },   {     \"pipeline-input-field-1\": 3.0,     \"pipeline-input-field-2\": \"S\",     \"pipeline-input-field-3\": [4.23, 3.27, 2.41, 12.4]   } ] ```  Multiple plain batch pipeline requests ``` [   \"plain-data-goes-here\", \"plain-example-data\" ] ```  ### Response Structure  A list of dictionaries containing the details of the created pipeline version requests with the following fields:  - `id`: Unique identifier for the pipeline version request, which can be used to collect the result  - `pipeline`: Name of the pipeline for which the request is made  - `version`: Name of the pipeline version for which the request is made  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.  - `time_created`: Server time that the request was made (current time)  #### Response Examples  ``` [   {     \"id\": \"69eca481-8576-49e8-8e20-ea56f2005bcb\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   },   {     \"id\": \"2521378e-263e-4e2e-85e9-a96254b36536\",     \"pipeline\": \"pipeline-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"time_created\": \"2020-03-28T20:00:26.613+00:00\"   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.batch_pipeline_version_requests_create_with_http_info(project_name, pipeline_name, version, data, async_req=True)
@@ -2572,7 +2572,7 @@ class CoreApi(object):
     def deployment_requests_batch_delete(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Delete multiple deployment requests  # noqa: E501
 
-         ### Description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
+         ### Description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_requests_batch_delete(project_name, deployment_name, data, async_req=True)
@@ -2599,7 +2599,7 @@ class CoreApi(object):
     def deployment_requests_batch_delete_with_http_info(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Delete multiple deployment requests  # noqa: E501
 
-         ### Description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
+         ### Description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_requests_batch_delete_with_http_info(project_name, deployment_name, data, async_req=True)
@@ -2711,7 +2711,7 @@ class CoreApi(object):
     def deployment_requests_batch_get(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Retrieve multiple deployment requests  # noqa: E501
 
-         ### Description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields: - `id`: Unique identifier for the deployment request - `deployment`: Name of the deployment the request was made to - `version`: Name of the version the request was made to - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'. - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished. - `time_created`: Server time that the request was made (current time) - `time_started`: Server time that the processing of the request was started - `time_completed`: Server time that the processing of the request was completed - `request_data`: A dictionary containing the data that was sent when the request was created - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'. - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
+         ### Description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields: - `id`: Unique identifier for the deployment request - `deployment`: Name of the deployment the request was made to - `version`: Name of the version the request was made to - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'. - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished. - `time_created`: Server time that the request was made (current time) - `time_started`: Server time that the processing of the request was started - `time_completed`: Server time that the processing of the request was completed - `request_data`: A dictionary containing the data that was sent when the request was created - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'. - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_requests_batch_get(project_name, deployment_name, data, async_req=True)
@@ -2738,7 +2738,7 @@ class CoreApi(object):
     def deployment_requests_batch_get_with_http_info(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Retrieve multiple deployment requests  # noqa: E501
 
-         ### Description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields: - `id`: Unique identifier for the deployment request - `deployment`: Name of the deployment the request was made to - `version`: Name of the version the request was made to - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'. - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished. - `time_created`: Server time that the request was made (current time) - `time_started`: Server time that the processing of the request was started - `time_completed`: Server time that the processing of the request was completed - `request_data`: A dictionary containing the data that was sent when the request was created - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'. - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
+         ### Description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields: - `id`: Unique identifier for the deployment request - `deployment`: Name of the deployment the request was made to - `version`: Name of the version the request was made to - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'. - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished. - `time_created`: Server time that the request was made (current time) - `time_started`: Server time that the processing of the request was started - `time_completed`: Server time that the processing of the request was completed - `request_data`: A dictionary containing the data that was sent when the request was created - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'. - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_requests_batch_get_with_http_info(project_name, deployment_name, data, async_req=True)
@@ -4522,7 +4522,7 @@ class CoreApi(object):
     def deployment_version_requests_batch_delete(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Delete multiple deployment version requests  # noqa: E501
 
-         ### Description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
+         ### Description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_version_requests_batch_delete(project_name, deployment_name, version, data, async_req=True)
@@ -4550,7 +4550,7 @@ class CoreApi(object):
     def deployment_version_requests_batch_delete_with_http_info(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Delete multiple deployment version requests  # noqa: E501
 
-         ### Description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
+         ### Description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_version_requests_batch_delete_with_http_info(project_name, deployment_name, version, data, async_req=True)
@@ -4673,7 +4673,7 @@ class CoreApi(object):
     def deployment_version_requests_batch_get(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Retrieve multiple deployment version requests  # noqa: E501
 
-         ### Description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `deployment`: Name of the deployment the request was made to  - `version`: Name of the version the request was made to  - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.  - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
+         ### Description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `deployment`: Name of the deployment the request was made to  - `version`: Name of the version the request was made to  - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.  - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_version_requests_batch_get(project_name, deployment_name, version, data, async_req=True)
@@ -4701,7 +4701,7 @@ class CoreApi(object):
     def deployment_version_requests_batch_get_with_http_info(self, project_name, deployment_name, version, data, **kwargs):  # noqa: E501
         """Retrieve multiple deployment version requests  # noqa: E501
 
-         ### Description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `deployment`: Name of the deployment the request was made to  - `version`: Name of the version the request was made to  - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.  - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
+         ### Description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.  ### Required Parameters  A list of ids for the requests  #### Request Examples  ``` [\"2f909aeb-5c7e-4974-970d-cd0a6a073aca\", \"85711124-54db-4794-b83d-24492247c6e1\"] ```  ### Response Structure  A list of dictionaries containing the details of the retrieved deployment requests with the following fields:  - `id`: Unique identifier for the deployment request  - `deployment`: Name of the deployment the request was made to  - `version`: Name of the version the request was made to  - `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.  - `success`: A boolean value that indicates whether the deployment request was successful. NULL if the request is not yet finished.  - `time_created`: Server time that the request was made (current time)  - `time_started`: Server time that the processing of the request was started  - `time_completed`: Server time that the processing of the request was completed  - `request_data`: A dictionary containing the data that was sent when the request was created  - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.   #### Response Examples  ``` [   {     \"id\": \"2f909aeb-5c7e-4974-970d-cd0a6a073aca\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-03-29T08:09:10.729+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 82.2     },     \"result\": null,     \"error_message\": null   },   {     \"id\": \"85711124-54db-4794-b83d-24492247c6e1\",     \"deployment\": \"deployment-1\",     \"version\": \"v1\",     \"status\": \"pending\",     \"success\": false,     \"time_created\": \"2020-06-25T09:37:17.765+00:00\",     \"time_started\": \"2020-03-28T20:00:41.276+00:00\",     \"time_completed\": \"2020-03-28T20:00:42.241+00:00\",     \"request_data\": {       \"input\": 52.4     },     \"result\": null,     \"error_message\": null   } ] ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployment_version_requests_batch_get_with_http_info(project_name, deployment_name, version, data, async_req=True)
@@ -6845,7 +6845,7 @@ class CoreApi(object):
     def deployments_update(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Update a deployment  # noqa: E501
 
-         ### Description  Update a deployment. It is only possible to update the name, description and labels fields. When updating labels, the labels will replace the existing value for labels.   ### Optional Parameters  - `name`: New name for the deployment - `description`: New description for the deployment - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels. - `default_version`: Name of a version of this deployment which will be assigned as default. Only **available** versions can be assigned as default.  #### Request Examples ``` {   \"name\": \"new-deployment-name\" } ```  ### Response Structure  Details of the updated deployment - `id`: Unique identifier for the deployment (UUID) - `name`: Name of the deployment - `project`: Project name in which the deployment is defined - `input_type`: Type of the input of the deployment - `output_type`: Type of the output of the deployment - `input_fields`: The list of deployment input fields containing name and data_type - `output_fields`: The list of deployment output fields containing name and data_type - `description`: Description of the deployment - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the deployment was created - `last_updated`: The date when the deployment was last updated - `default_version`: Default version of the deployment. If it does not have a default version, it is not set.  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"name\": \"new-deployment-name\",   \"project\": \"project-1\",   \"description\": \"New deployment description\",   \"input_type\": \"structured\",   \"output_type\": \"structured\",   \"input_fields\": [     {       \"name\": \"input-field-1\",       \"data_type\": \"int\"     },     {       \"name\": \"input-field-2\",       \"data_type\": \"double\"     }   ],   \"output_fields\": [     {       \"name\": \"output-field\",       \"data_type\": \"double\"     }   ],   \"labels\": {     \"type\": \"deployment\"   },   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"last_updated\": \"2020-06-19T10:52:23.124784Z\",   \"default_version\": \"v1\" } ```   # noqa: E501
+         ### Description  Update a deployment  ### Optional Parameters  - `name`: New name for the deployment - `description`: New description for the deployment - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels. - `default_version`: Name of a version of this deployment which will be assigned as default. Only **available** versions can be assigned as default. - `input_fields`: New input fields for the deployment - `output_fields`: New output fields for the deployment  Input and output fields can be updated (name or data type), added or removed. For deployments that are attached in a pipeline, fields must be updated one at a time so that the updates can be performed while preserving the mapping.  #### Request Examples ``` {   \"name\": \"new-deployment-name\" } ```  ### Response Structure  Details of the updated deployment - `id`: Unique identifier for the deployment (UUID) - `name`: Name of the deployment - `project`: Project name in which the deployment is defined - `input_type`: Type of the input of the deployment - `output_type`: Type of the output of the deployment - `input_fields`: The list of deployment input fields containing name and data_type - `output_fields`: The list of deployment output fields containing name and data_type - `description`: Description of the deployment - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the deployment was created - `last_updated`: The date when the deployment was last updated - `default_version`: Default version of the deployment. If it does not have a default version, it is not set.  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"name\": \"new-deployment-name\",   \"project\": \"project-1\",   \"description\": \"New deployment description\",   \"input_type\": \"structured\",   \"output_type\": \"structured\",   \"input_fields\": [     {       \"name\": \"input-field-1\",       \"data_type\": \"int\"     },     {       \"name\": \"input-field-2\",       \"data_type\": \"double\"     }   ],   \"output_fields\": [     {       \"name\": \"output-field\",       \"data_type\": \"double\"     }   ],   \"labels\": {     \"type\": \"deployment\"   },   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"last_updated\": \"2020-06-19T10:52:23.124784Z\",   \"default_version\": \"v1\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployments_update(project_name, deployment_name, data, async_req=True)
@@ -6872,7 +6872,7 @@ class CoreApi(object):
     def deployments_update_with_http_info(self, project_name, deployment_name, data, **kwargs):  # noqa: E501
         """Update a deployment  # noqa: E501
 
-         ### Description  Update a deployment. It is only possible to update the name, description and labels fields. When updating labels, the labels will replace the existing value for labels.   ### Optional Parameters  - `name`: New name for the deployment - `description`: New description for the deployment - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels. - `default_version`: Name of a version of this deployment which will be assigned as default. Only **available** versions can be assigned as default.  #### Request Examples ``` {   \"name\": \"new-deployment-name\" } ```  ### Response Structure  Details of the updated deployment - `id`: Unique identifier for the deployment (UUID) - `name`: Name of the deployment - `project`: Project name in which the deployment is defined - `input_type`: Type of the input of the deployment - `output_type`: Type of the output of the deployment - `input_fields`: The list of deployment input fields containing name and data_type - `output_fields`: The list of deployment output fields containing name and data_type - `description`: Description of the deployment - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the deployment was created - `last_updated`: The date when the deployment was last updated - `default_version`: Default version of the deployment. If it does not have a default version, it is not set.  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"name\": \"new-deployment-name\",   \"project\": \"project-1\",   \"description\": \"New deployment description\",   \"input_type\": \"structured\",   \"output_type\": \"structured\",   \"input_fields\": [     {       \"name\": \"input-field-1\",       \"data_type\": \"int\"     },     {       \"name\": \"input-field-2\",       \"data_type\": \"double\"     }   ],   \"output_fields\": [     {       \"name\": \"output-field\",       \"data_type\": \"double\"     }   ],   \"labels\": {     \"type\": \"deployment\"   },   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"last_updated\": \"2020-06-19T10:52:23.124784Z\",   \"default_version\": \"v1\" } ```   # noqa: E501
+         ### Description  Update a deployment  ### Optional Parameters  - `name`: New name for the deployment - `description`: New description for the deployment - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels. - `default_version`: Name of a version of this deployment which will be assigned as default. Only **available** versions can be assigned as default. - `input_fields`: New input fields for the deployment - `output_fields`: New output fields for the deployment  Input and output fields can be updated (name or data type), added or removed. For deployments that are attached in a pipeline, fields must be updated one at a time so that the updates can be performed while preserving the mapping.  #### Request Examples ``` {   \"name\": \"new-deployment-name\" } ```  ### Response Structure  Details of the updated deployment - `id`: Unique identifier for the deployment (UUID) - `name`: Name of the deployment - `project`: Project name in which the deployment is defined - `input_type`: Type of the input of the deployment - `output_type`: Type of the output of the deployment - `input_fields`: The list of deployment input fields containing name and data_type - `output_fields`: The list of deployment output fields containing name and data_type - `description`: Description of the deployment - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label - `creation_date`: The date when the deployment was created - `last_updated`: The date when the deployment was last updated - `default_version`: Default version of the deployment. If it does not have a default version, it is not set.  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"name\": \"new-deployment-name\",   \"project\": \"project-1\",   \"description\": \"New deployment description\",   \"input_type\": \"structured\",   \"output_type\": \"structured\",   \"input_fields\": [     {       \"name\": \"input-field-1\",       \"data_type\": \"int\"     },     {       \"name\": \"input-field-2\",       \"data_type\": \"double\"     }   ],   \"output_fields\": [     {       \"name\": \"output-field\",       \"data_type\": \"double\"     }   ],   \"labels\": {     \"type\": \"deployment\"   },   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"last_updated\": \"2020-06-19T10:52:23.124784Z\",   \"default_version\": \"v1\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.deployments_update_with_http_info(project_name, deployment_name, data, async_req=True)
@@ -6976,6 +6976,1389 @@ class CoreApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='DeploymentDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def exports_create(self, project_name, data, **kwargs):  # noqa: E501
+        """Create an export  # noqa: E501
+
+         ### Description Create an export by selecting the objects in the export  ### Optional Parameters - `deployments`: Dictionary containing the deployments to export - `pipelines`: Dictionary containing the pipelines to export - `environment_variables`: Dictionary containing the project-level environment variables to export  #### Request Examples  ``` {   \"deployments\": {     \"deployment-1\": {       \"versions\": {         \"version-1\": {           \"environment_variables\": {             \"VERSION_ENV_VAR_NAME_1\": {               \"include_value\": true             },             \"VERSION_ENV_VAR_NAME_2\": {               \"include_value\": false             }           }         },         \"version-2\": {}       },       \"environment_variables\": {         \"DEPLOYMENT_ENV_VAR_NAME_1\": {           \"include_value\": false         }       }     },     \"deployment-2\": {       \"versions\": {}     }   },   \"pipelines\": {     \"pipeline-1\": {       \"versions\": {         \"version-1\": {},         \"version-2\": {}       }     },     \"pipeline-2\": {       \"versions\": {}     }   },   \"environment_variables\": {     \"PROJECT_ENV_VAR_NAME_1\": {       \"include_value\": false     }   } } ```  ### Response Structure Details of the created export - `id`: Unique identifier for the export (UUID) - `status`: Status of the export - `error_message`: The error message in case of a failure - `creation_date`: The date when the export was created - `size`: Size of the export in bytes  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"status\": \"pending\",   \"error_message\": \"\",   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"size\": null } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_create(project_name, data, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param ExportCreate data: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ExportList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.exports_create_with_http_info(project_name, data, **kwargs)  # noqa: E501
+
+    def exports_create_with_http_info(self, project_name, data, **kwargs):  # noqa: E501
+        """Create an export  # noqa: E501
+
+         ### Description Create an export by selecting the objects in the export  ### Optional Parameters - `deployments`: Dictionary containing the deployments to export - `pipelines`: Dictionary containing the pipelines to export - `environment_variables`: Dictionary containing the project-level environment variables to export  #### Request Examples  ``` {   \"deployments\": {     \"deployment-1\": {       \"versions\": {         \"version-1\": {           \"environment_variables\": {             \"VERSION_ENV_VAR_NAME_1\": {               \"include_value\": true             },             \"VERSION_ENV_VAR_NAME_2\": {               \"include_value\": false             }           }         },         \"version-2\": {}       },       \"environment_variables\": {         \"DEPLOYMENT_ENV_VAR_NAME_1\": {           \"include_value\": false         }       }     },     \"deployment-2\": {       \"versions\": {}     }   },   \"pipelines\": {     \"pipeline-1\": {       \"versions\": {         \"version-1\": {},         \"version-2\": {}       }     },     \"pipeline-2\": {       \"versions\": {}     }   },   \"environment_variables\": {     \"PROJECT_ENV_VAR_NAME_1\": {       \"include_value\": false     }   } } ```  ### Response Structure Details of the created export - `id`: Unique identifier for the export (UUID) - `status`: Status of the export - `error_message`: The error message in case of a failure - `creation_date`: The date when the export was created - `size`: Size of the export in bytes  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"status\": \"pending\",   \"error_message\": \"\",   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"size\": null } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_create_with_http_info(project_name, data, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param ExportCreate data: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ExportList, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'data']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method exports_create" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `exports_create`")  # noqa: E501
+        # verify the required parameter 'data' is set
+        if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data` when calling `exports_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `exports_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if isinstance(local_var_params['data'], dict):  # noqa: E501
+                from ubiops.models.export_create import ExportCreate
+
+                local_var_params['data'] = ExportCreate(**local_var_params['data'])  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'data' in local_var_params:
+            body_params = local_var_params['data']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/exports', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ExportList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def exports_delete(self, project_name, export_id, **kwargs):  # noqa: E501
+        """Delete an export  # noqa: E501
+
+         ### Description Delete an export from a project   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_delete(project_name, export_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str export_id: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.exports_delete_with_http_info(project_name, export_id, **kwargs)  # noqa: E501
+
+    def exports_delete_with_http_info(self, project_name, export_id, **kwargs):  # noqa: E501
+        """Delete an export  # noqa: E501
+
+         ### Description Delete an export from a project   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_delete_with_http_info(project_name, export_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str export_id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'export_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method exports_delete" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `exports_delete`")  # noqa: E501
+        # verify the required parameter 'export_id' is set
+        if self.api_client.client_side_validation and ('export_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['export_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `export_id` when calling `exports_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `exports_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'export_id' in local_var_params
+            and local_var_params['export_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['export_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `export_id` must be a string when calling `exports_delete`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'export_id' in local_var_params:
+            path_params['export_id'] = local_var_params['export_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/exports/{export_id}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def exports_download(self, project_name, export_id, **kwargs):  # noqa: E501
+        """Download an export  # noqa: E501
+
+         ### Description Download an export in a project  ### Response Structure - `file`: Zip file   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_download(project_name, export_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str export_id: (required)
+        :param _preload_content: if True, the file will be downloaded in a
+                                 folder, which can be defined by
+                                 api_client.configuration.temp_folder_path.
+                                 Default is False.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.exports_download_with_http_info(project_name, export_id, **kwargs)  # noqa: E501
+
+    def exports_download_with_http_info(self, project_name, export_id, **kwargs):  # noqa: E501
+        """Download an export  # noqa: E501
+
+         ### Description Download an export in a project  ### Response Structure - `file`: Zip file   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_download_with_http_info(project_name, export_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str export_id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if True, the file will be downloaded in a
+                                 folder, which can be defined by
+                                 api_client.configuration.temp_folder_path.
+                                 Default is False.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(file, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'export_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method exports_download" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `exports_download`")  # noqa: E501
+        # verify the required parameter 'export_id' is set
+        if self.api_client.client_side_validation and ('export_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['export_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `export_id` when calling `exports_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `exports_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'export_id' in local_var_params
+            and local_var_params['export_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['export_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `export_id` must be a string when calling `exports_download`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'export_id' in local_var_params:
+            path_params['export_id'] = local_var_params['export_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/exports/{export_id}/download', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', False),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def exports_get(self, project_name, export_id, **kwargs):  # noqa: E501
+        """Get an export  # noqa: E501
+
+         ### Description Get the details of an export in a project  ### Response Structure - `id`: Unique identifier for the export (UUID) - `status`: Status of the export - `error_message`: The error message in case of a failure - `creation_date`: The date when the export was created - `size`: Size of the export in bytes - `deployments`: Dictionary of the deployments in the export - `pipelines`: Dictionary of the pipelines in the export - `environment_variables`: Dictionary of the environment variables in the export   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_get(project_name, export_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str export_id: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ExportDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.exports_get_with_http_info(project_name, export_id, **kwargs)  # noqa: E501
+
+    def exports_get_with_http_info(self, project_name, export_id, **kwargs):  # noqa: E501
+        """Get an export  # noqa: E501
+
+         ### Description Get the details of an export in a project  ### Response Structure - `id`: Unique identifier for the export (UUID) - `status`: Status of the export - `error_message`: The error message in case of a failure - `creation_date`: The date when the export was created - `size`: Size of the export in bytes - `deployments`: Dictionary of the deployments in the export - `pipelines`: Dictionary of the pipelines in the export - `environment_variables`: Dictionary of the environment variables in the export   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_get_with_http_info(project_name, export_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str export_id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ExportDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'export_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method exports_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `exports_get`")  # noqa: E501
+        # verify the required parameter 'export_id' is set
+        if self.api_client.client_side_validation and ('export_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['export_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `export_id` when calling `exports_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `exports_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'export_id' in local_var_params
+            and local_var_params['export_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['export_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `export_id` must be a string when calling `exports_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'export_id' in local_var_params:
+            path_params['export_id'] = local_var_params['export_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/exports/{export_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ExportDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def exports_list(self, project_name, **kwargs):  # noqa: E501
+        """List exports  # noqa: E501
+
+         ### Description List all exports in a project  ### Optional Parameters The following parameter should be given as query parameter: - `status`: Status of the export. Can be 'pending', 'processing', 'completed' and 'failed'.  ### Response Structure A list of details of the exports in the project  - `id`: Unique identifier for the export (UUID)  - `creation_date`: Time the export was created  - `status`: The status of the export  - `error_message`: The error message in case of a failure  - `size`: Size of the export in bytes  #### Response Examples ``` [   {     \"id\": \"ecb39626-2a14-4224-a57a-592a51567e17\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"pending\",     \"error_message\": \"\",     \"size\": null   },   {     \"id\": \"f629a052-a827-44d9-97cf-3902504edc79\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"completed\",     \"error_message\": \"\",     \"size\": 86400   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_list(project_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str status:
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[ExportList]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.exports_list_with_http_info(project_name, **kwargs)  # noqa: E501
+
+    def exports_list_with_http_info(self, project_name, **kwargs):  # noqa: E501
+        """List exports  # noqa: E501
+
+         ### Description List all exports in a project  ### Optional Parameters The following parameter should be given as query parameter: - `status`: Status of the export. Can be 'pending', 'processing', 'completed' and 'failed'.  ### Response Structure A list of details of the exports in the project  - `id`: Unique identifier for the export (UUID)  - `creation_date`: Time the export was created  - `status`: The status of the export  - `error_message`: The error message in case of a failure  - `size`: Size of the export in bytes  #### Response Examples ``` [   {     \"id\": \"ecb39626-2a14-4224-a57a-592a51567e17\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"pending\",     \"error_message\": \"\",     \"size\": null   },   {     \"id\": \"f629a052-a827-44d9-97cf-3902504edc79\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"completed\",     \"error_message\": \"\",     \"size\": 86400   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.exports_list_with_http_info(project_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str status:
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[ExportList], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'status']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method exports_list" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `exports_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `exports_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'status' in local_var_params
+            and local_var_params['status'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['status'], str):  # noqa: E501
+                raise ApiValueError("Parameter `status` must be a string when calling `exports_list`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+
+        query_params = []
+        if 'status' in local_var_params and local_var_params['status'] is not None:  # noqa: E501
+            query_params.append(('status', local_var_params['status']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/exports', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[ExportList]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def imports_create(self, project_name, file, **kwargs):  # noqa: E501
+        """Create an import  # noqa: E501
+
+         ### Description Create an import by uploading a zip file  ### Optional Parameters - `skip_confirmation`: Whether to skip the confirmation step, default to False  ### Response Structure Details of the created import - `id`: Unique identifier for the import (UUID) - `status`: Status of the import - `error_message`: The error message in case of a failure - `creation_date`: The date when the import was created - `size`: Size of the import in bytes  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"status\": \"pending\",   \"error_message\": \"\",   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"size\": 28391 } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_create(project_name, file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param file file: (required)
+        :param bool skip_confirmation:
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ImportList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.imports_create_with_http_info(project_name, file, **kwargs)  # noqa: E501
+
+    def imports_create_with_http_info(self, project_name, file, **kwargs):  # noqa: E501
+        """Create an import  # noqa: E501
+
+         ### Description Create an import by uploading a zip file  ### Optional Parameters - `skip_confirmation`: Whether to skip the confirmation step, default to False  ### Response Structure Details of the created import - `id`: Unique identifier for the import (UUID) - `status`: Status of the import - `error_message`: The error message in case of a failure - `creation_date`: The date when the import was created - `size`: Size of the import in bytes  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"status\": \"pending\",   \"error_message\": \"\",   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"size\": 28391 } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_create_with_http_info(project_name, file, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param file file: (required)
+        :param bool skip_confirmation:
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ImportList, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'file', 'skip_confirmation']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method imports_create" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `imports_create`")  # noqa: E501
+        # verify the required parameter 'file' is set
+        if self.api_client.client_side_validation and ('file' not in local_var_params or  # noqa: E501
+                                                        local_var_params['file'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `file` when calling `imports_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `imports_create`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'skip_confirmation' in local_var_params
+            and local_var_params['skip_confirmation'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['skip_confirmation'], bool):  # noqa: E501
+                raise ApiValueError("Parameter `skip_confirmation` must be a boolean when calling `imports_create`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'file' in local_var_params:
+            local_var_files['file'] = local_var_params['file']  # noqa: E501
+        if 'skip_confirmation' in local_var_params:
+            form_params.append(('skip_confirmation', local_var_params['skip_confirmation']))  # noqa: E501
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['multipart/form-data'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/imports', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ImportList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def imports_delete(self, project_name, import_id, **kwargs):  # noqa: E501
+        """Delete an import  # noqa: E501
+
+         ### Description Delete an import from a project   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_delete(project_name, import_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.imports_delete_with_http_info(project_name, import_id, **kwargs)  # noqa: E501
+
+    def imports_delete_with_http_info(self, project_name, import_id, **kwargs):  # noqa: E501
+        """Delete an import  # noqa: E501
+
+         ### Description Delete an import from a project   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_delete_with_http_info(project_name, import_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'import_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method imports_delete" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `imports_delete`")  # noqa: E501
+        # verify the required parameter 'import_id' is set
+        if self.api_client.client_side_validation and ('import_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['import_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `import_id` when calling `imports_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `imports_delete`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'import_id' in local_var_params
+            and local_var_params['import_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['import_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `import_id` must be a string when calling `imports_delete`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'import_id' in local_var_params:
+            path_params['import_id'] = local_var_params['import_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/imports/{import_id}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def imports_download(self, project_name, import_id, **kwargs):  # noqa: E501
+        """Download an import  # noqa: E501
+
+         ### Description Download an import in a project  ### Response Structure - `file`: Zip file   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_download(project_name, import_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param _preload_content: if True, the file will be downloaded in a
+                                 folder, which can be defined by
+                                 api_client.configuration.temp_folder_path.
+                                 Default is False.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.imports_download_with_http_info(project_name, import_id, **kwargs)  # noqa: E501
+
+    def imports_download_with_http_info(self, project_name, import_id, **kwargs):  # noqa: E501
+        """Download an import  # noqa: E501
+
+         ### Description Download an import in a project  ### Response Structure - `file`: Zip file   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_download_with_http_info(project_name, import_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if True, the file will be downloaded in a
+                                 folder, which can be defined by
+                                 api_client.configuration.temp_folder_path.
+                                 Default is False.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(file, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'import_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method imports_download" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `imports_download`")  # noqa: E501
+        # verify the required parameter 'import_id' is set
+        if self.api_client.client_side_validation and ('import_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['import_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `import_id` when calling `imports_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `imports_download`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'import_id' in local_var_params
+            and local_var_params['import_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['import_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `import_id` must be a string when calling `imports_download`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'import_id' in local_var_params:
+            path_params['import_id'] = local_var_params['import_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/imports/{import_id}/download', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', False),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def imports_get(self, project_name, import_id, **kwargs):  # noqa: E501
+        """Get an import  # noqa: E501
+
+         ### Description Get the details of an import in a project  ### Response Structure - `id`: Unique identifier for the import (UUID) - `status`: Status of the import - `error_message`: The error message in case of a failure - `creation_date`: The date when the import was created - `size`: Size of the import in bytes - `deployments`: Dictionary of the deployments in the import - `pipelines`: Dictionary of the pipelines in the import - `environment_variables`: Dictionary of the environment variables in the import   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_get(project_name, import_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ImportDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.imports_get_with_http_info(project_name, import_id, **kwargs)  # noqa: E501
+
+    def imports_get_with_http_info(self, project_name, import_id, **kwargs):  # noqa: E501
+        """Get an import  # noqa: E501
+
+         ### Description Get the details of an import in a project  ### Response Structure - `id`: Unique identifier for the import (UUID) - `status`: Status of the import - `error_message`: The error message in case of a failure - `creation_date`: The date when the import was created - `size`: Size of the import in bytes - `deployments`: Dictionary of the deployments in the import - `pipelines`: Dictionary of the pipelines in the import - `environment_variables`: Dictionary of the environment variables in the import   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_get_with_http_info(project_name, import_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ImportDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'import_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method imports_get" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `imports_get`")  # noqa: E501
+        # verify the required parameter 'import_id' is set
+        if self.api_client.client_side_validation and ('import_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['import_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `import_id` when calling `imports_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `imports_get`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'import_id' in local_var_params
+            and local_var_params['import_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['import_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `import_id` must be a string when calling `imports_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'import_id' in local_var_params:
+            path_params['import_id'] = local_var_params['import_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/imports/{import_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ImportDetail',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def imports_list(self, project_name, **kwargs):  # noqa: E501
+        """List imports  # noqa: E501
+
+         ### Description List all imports in a project  ### Optional Parameters The following parameter should be given as query parameter: - `status`: Status of the import. Can be 'pending', 'scanning', 'confirmation', 'confirmation_pending', 'processing', 'completed' and 'failed'.  ### Response Structure A list of details of the imports in the project  - `id`: Unique identifier for the import (UUID)  - `creation_date`: Time the import was created  - `status`: The status of the import  - `error_message`: The error message in case of a failure  - `size`: Size of the import in bytes  #### Response Examples ``` [   {     \"id\": \"ecb39626-2a14-4224-a57a-592a51567e17\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"pending\",     \"error_message\": \"\",     \"size\": 126832   },   {     \"id\": \"f629a052-a827-44d9-97cf-3902504edc79\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"pending\",     \"error_message\": \"\",     \"size\": 86400   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_list(project_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str status:
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: list[ImportList]
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.imports_list_with_http_info(project_name, **kwargs)  # noqa: E501
+
+    def imports_list_with_http_info(self, project_name, **kwargs):  # noqa: E501
+        """List imports  # noqa: E501
+
+         ### Description List all imports in a project  ### Optional Parameters The following parameter should be given as query parameter: - `status`: Status of the import. Can be 'pending', 'scanning', 'confirmation', 'confirmation_pending', 'processing', 'completed' and 'failed'.  ### Response Structure A list of details of the imports in the project  - `id`: Unique identifier for the import (UUID)  - `creation_date`: Time the import was created  - `status`: The status of the import  - `error_message`: The error message in case of a failure  - `size`: Size of the import in bytes  #### Response Examples ``` [   {     \"id\": \"ecb39626-2a14-4224-a57a-592a51567e17\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"pending\",     \"error_message\": \"\",     \"size\": 126832   },   {     \"id\": \"f629a052-a827-44d9-97cf-3902504edc79\",     \"creation_date\": \"2020-05-18T11:26:57.904+00:00\",     \"status\": \"pending\",     \"error_message\": \"\",     \"size\": 86400   } ] ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_list_with_http_info(project_name, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str status:
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(list[ImportList], status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'status']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method imports_list" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `imports_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `imports_list`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'status' in local_var_params
+            and local_var_params['status'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['status'], str):  # noqa: E501
+                raise ApiValueError("Parameter `status` must be a string when calling `imports_list`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+
+        query_params = []
+        if 'status' in local_var_params and local_var_params['status'] is not None:  # noqa: E501
+            query_params.append(('status', local_var_params['status']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/imports', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='list[ImportList]',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def imports_update(self, project_name, import_id, data, **kwargs):  # noqa: E501
+        """Confirm an import  # noqa: E501
+
+         ### Description Confirm (and update) an import by selecting the objects in the import  ### Optional Parameters - `deployments`: Dictionary containing the deployments to create - `pipelines`: Dictionary containing the pipelines to create - `environment_variables`: Dictionary containing the project-level environment variables to create  #### Request Examples  ``` \"deployments\": {   \"deployment-1: {     \"description\": \"\",     \"labels\": {       \"my-label\": \"my-value\"     },     \"default_version\": \"v1\",     \"versions\": {       \"v1\": {         \"zip\": \"deployments/deployment_deployment-1/versions/deployment_deployment-1_version_v1.zip\",         \"description\": \"\",         \"labels\": {},         \"language\": \"python3.7\",         \"deployment_mode\": \"express\",         \"maximum_idle_time\": 300,         \"maximum_instances\": 5,         \"memory_allocation\": 256,         \"minimum_instances\": 0,         \"environment_variables\": {           \"VERSION_ENV_VAR_1\": {             \"value\": \"my-secret-value\",             \"secret\": true           },           \"VERSION_ENV_VAR_2\": {             \"value\": \"test2\"           }         },         \"request_retention_mode\": \"full\",         \"request_retention_time\": 604800       }     },     \"input_type\": \"structured\",     \"output_type\": \"structured\",     \"input_fields\": [       {         \"name\": \"input\",         \"data_type\": \"double\"       }     ],     \"output_fields\": [       {         \"name\": \"output\",         \"data_type\": \"double\"       }     ],     \"environment_variables\": {       \"DEPLOYMENT_ENV_VAR_1\": {         \"value\": \"my-secret-value\",         \"secret\": true       },       \"DEPLOYMENT_ENV_VAR_2\": {         \"value\": \"test\"       }     }   } }, \"pipelines\": {   \"pipeline-1: {     \"description\": \"\",     \"labels\": {       \"test\": \"label\"     },     \"default_version\": \"v1\",     \"versions\": {       \"v1\": {         \"description\": \"\",         \"labels\": {},         \"objects\": [           {             \"name\": \"obj-1\",             \"reference_name\": \"deployment-1\",             \"reference_version\": \"v1\"           }         ],         \"attachments\": [           {             \"sources\": [               {                 \"mapping\": [                   {                     \"source_field_name\": \"input\",                     \"destination_field_name\": \"input\"                   }                 ],                 \"source_name\": \"pipeline_start\"               }             ],             \"destination_name\": \"obj-1\"           },           {             \"sources\": [               {                 \"mapping\": [                   {                     \"source_field_name\": \"output\",                     \"destination_field_name\": \"output\"                   }                 ],                 \"source_name\": \"obj-1\"               }             ],             \"destination_name\": \"pipeline_end\"           }         ],         \"request_retention_mode\": \"full\",         \"request_retention_time\": 604800       }     },     \"input_type\": \"structured\",     \"output_type\": \"structured\",     \"input_fields\": [       {         \"name\": \"input\",         \"data_type\": \"double\"       }     ],     \"output_fields\": [       {         \"name\": \"output\",         \"data_type\": \"double\"       }     ]   } }, \"environment_variables\": {   \"PROJECT_ENV_VAR_1\": {     \"value\": \"value1\",     \"secret\": true   },   \"PROJECT_ENV_VAR_2\": {     \"value\": \"value2\"   } } ```  ### Response Structure Details of the updated import - `id`: Unique identifier for the import (UUID) - `status`: Status of the import - `error_message`: The error message in case of a failure - `creation_date`: The date when the import was created - `size`: Size of the import in bytes  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"status\": \"pending\",   \"error_message\": \"\",   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"size\": null } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_update(project_name, import_id, data, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param ImportUpdate data: (required)
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: ImportDetail
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        return self.imports_update_with_http_info(project_name, import_id, data, **kwargs)  # noqa: E501
+
+    def imports_update_with_http_info(self, project_name, import_id, data, **kwargs):  # noqa: E501
+        """Confirm an import  # noqa: E501
+
+         ### Description Confirm (and update) an import by selecting the objects in the import  ### Optional Parameters - `deployments`: Dictionary containing the deployments to create - `pipelines`: Dictionary containing the pipelines to create - `environment_variables`: Dictionary containing the project-level environment variables to create  #### Request Examples  ``` \"deployments\": {   \"deployment-1: {     \"description\": \"\",     \"labels\": {       \"my-label\": \"my-value\"     },     \"default_version\": \"v1\",     \"versions\": {       \"v1\": {         \"zip\": \"deployments/deployment_deployment-1/versions/deployment_deployment-1_version_v1.zip\",         \"description\": \"\",         \"labels\": {},         \"language\": \"python3.7\",         \"deployment_mode\": \"express\",         \"maximum_idle_time\": 300,         \"maximum_instances\": 5,         \"memory_allocation\": 256,         \"minimum_instances\": 0,         \"environment_variables\": {           \"VERSION_ENV_VAR_1\": {             \"value\": \"my-secret-value\",             \"secret\": true           },           \"VERSION_ENV_VAR_2\": {             \"value\": \"test2\"           }         },         \"request_retention_mode\": \"full\",         \"request_retention_time\": 604800       }     },     \"input_type\": \"structured\",     \"output_type\": \"structured\",     \"input_fields\": [       {         \"name\": \"input\",         \"data_type\": \"double\"       }     ],     \"output_fields\": [       {         \"name\": \"output\",         \"data_type\": \"double\"       }     ],     \"environment_variables\": {       \"DEPLOYMENT_ENV_VAR_1\": {         \"value\": \"my-secret-value\",         \"secret\": true       },       \"DEPLOYMENT_ENV_VAR_2\": {         \"value\": \"test\"       }     }   } }, \"pipelines\": {   \"pipeline-1: {     \"description\": \"\",     \"labels\": {       \"test\": \"label\"     },     \"default_version\": \"v1\",     \"versions\": {       \"v1\": {         \"description\": \"\",         \"labels\": {},         \"objects\": [           {             \"name\": \"obj-1\",             \"reference_name\": \"deployment-1\",             \"reference_version\": \"v1\"           }         ],         \"attachments\": [           {             \"sources\": [               {                 \"mapping\": [                   {                     \"source_field_name\": \"input\",                     \"destination_field_name\": \"input\"                   }                 ],                 \"source_name\": \"pipeline_start\"               }             ],             \"destination_name\": \"obj-1\"           },           {             \"sources\": [               {                 \"mapping\": [                   {                     \"source_field_name\": \"output\",                     \"destination_field_name\": \"output\"                   }                 ],                 \"source_name\": \"obj-1\"               }             ],             \"destination_name\": \"pipeline_end\"           }         ],         \"request_retention_mode\": \"full\",         \"request_retention_time\": 604800       }     },     \"input_type\": \"structured\",     \"output_type\": \"structured\",     \"input_fields\": [       {         \"name\": \"input\",         \"data_type\": \"double\"       }     ],     \"output_fields\": [       {         \"name\": \"output\",         \"data_type\": \"double\"       }     ]   } }, \"environment_variables\": {   \"PROJECT_ENV_VAR_1\": {     \"value\": \"value1\",     \"secret\": true   },   \"PROJECT_ENV_VAR_2\": {     \"value\": \"value2\"   } } ```  ### Response Structure Details of the updated import - `id`: Unique identifier for the import (UUID) - `status`: Status of the import - `error_message`: The error message in case of a failure - `creation_date`: The date when the import was created - `size`: Size of the import in bytes  #### Response Examples ``` {   \"id\": \"903ccd12-81d1-46e1-9ac9-b9d70af118de\",   \"status\": \"pending\",   \"error_message\": \"\",   \"creation_date\": \"2020-06-18T08:32:14.876451Z\",   \"size\": null } ```   # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.imports_update_with_http_info(project_name, import_id, data, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool: execute request asynchronously
+        :param str project_name: (required)
+        :param str import_id: (required)
+        :param ImportUpdate data: (required)
+        :param _return_http_data_only: response data without head status code
+                                       and headers
+        :param _preload_content: if False, the urllib3.HTTPResponse object will
+                                 be returned without reading/decoding response
+                                 data. Default is True.
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :return: tuple(ImportDetail, status_code(int), headers(HTTPHeaderDict))
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['project_name', 'import_id', 'data']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise ApiTypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method imports_update" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'project_name' is set
+        if self.api_client.client_side_validation and ('project_name' not in local_var_params or  # noqa: E501
+                                                        local_var_params['project_name'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `project_name` when calling `imports_update`")  # noqa: E501
+        # verify the required parameter 'import_id' is set
+        if self.api_client.client_side_validation and ('import_id' not in local_var_params or  # noqa: E501
+                                                        local_var_params['import_id'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `import_id` when calling `imports_update`")  # noqa: E501
+        # verify the required parameter 'data' is set
+        if self.api_client.client_side_validation and ('data' not in local_var_params or  # noqa: E501
+                                                        local_var_params['data'] is None):  # noqa: E501
+            raise ApiValueError("Missing the required parameter `data` when calling `imports_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'project_name' in local_var_params
+            and local_var_params['project_name'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['project_name'], str):  # noqa: E501
+                raise ApiValueError("Parameter `project_name` must be a string when calling `imports_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'import_id' in local_var_params
+            and local_var_params['import_id'] is not None):  # noqa: E501
+            if not isinstance(local_var_params['import_id'], str):  # noqa: E501
+                raise ApiValueError("Parameter `import_id` must be a string when calling `imports_update`")  # noqa: E501
+        if (self.api_client.client_side_validation and 'data' in local_var_params
+            and local_var_params['data'] is not None):  # noqa: E501
+            if isinstance(local_var_params['data'], dict):  # noqa: E501
+                from ubiops.models.import_update import ImportUpdate
+
+                local_var_params['data'] = ImportUpdate(**local_var_params['data'])  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'project_name' in local_var_params:
+            path_params['project_name'] = local_var_params['project_name']  # noqa: E501
+        if 'import_id' in local_var_params:
+            path_params['import_id'] = local_var_params['import_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'data' in local_var_params:
+            body_params = local_var_params['data']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['api_key']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/projects/{project_name}/imports/{import_id}', 'PATCH',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ImportDetail',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -8045,7 +9428,7 @@ class CoreApi(object):
     def organizations_create(self, data, **kwargs):  # noqa: E501
         """Create organizations  # noqa: E501
 
-         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. **Provide a null value for this field to have no end date.**  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true,   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
+         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. If you are going to use a subscription other than the free subscription, you should provide the end date.  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_end_date\": \"2021-03-25\" } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_create(data, async_req=True)
@@ -8070,7 +9453,7 @@ class CoreApi(object):
     def organizations_create_with_http_info(self, data, **kwargs):  # noqa: E501
         """Create organizations  # noqa: E501
 
-         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. **Provide a null value for this field to have no end date.**  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_agreed\": true,   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
+         ### Description  Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.  ### Required Parameters  - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.   - `subscription`: Name of the subscription for the organization  ### Optional Parameters  - `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. If you are going to use a subscription other than the free subscription, you should provide the end date.  #### Request Examples  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_end_date\": \"2021-03-25\" } ```  ``` {   \"name\": \"test-organization\",   \"subscription\": \"professional\",   \"subscription_end_date\": \"2021-03-25\" } ```  ### Response Structure  Details of the created organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Date and time the organization was created    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_create_with_http_info(data, async_req=True)
@@ -8486,7 +9869,7 @@ class CoreApi(object):
     def organizations_update(self, organization_name, data, **kwargs):  # noqa: E501
         """Update details of an organization  # noqa: E501
 
-         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for this field.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_agreed\": true } ``` ``` {   \"subscription_end_date\": \"2020-08-30\",   \"subscription_agreed\": true } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
+         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If you are going to update the subscription plan of the organization to a subscription other than free, you have to provide the end date.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_end_date\": \"2020-08-30\" } ``` ``` {   \"subscription_end_date\": \"2020-08-30\" } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_update(organization_name, data, async_req=True)
@@ -8512,7 +9895,7 @@ class CoreApi(object):
     def organizations_update_with_http_info(self, organization_name, data, **kwargs):  # noqa: E501
         """Update details of an organization  # noqa: E501
 
-         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for this field.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_agreed\": true } ``` ``` {   \"subscription_end_date\": \"2020-08-30\",   \"subscription_agreed\": true } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
+         ### Description  Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.  ### Optional Parameters  - `name`: New organization name - `subscription`: New subscription - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If you are going to update the subscription plan of the organization to a subscription other than free, you have to provide the end date.  #### Request Examples   ``` {   \"name\": \"new-organization-name\" } ``` ``` {   \"subscription\": \"professional\",   \"subscription_end_date\": \"2020-08-30\" } ``` ``` {   \"subscription_end_date\": \"2020-08-30\" } ```  ### Response Structure  Details of the organization - `id`: Unique identifier for the organization (UUID)   - `name`: Name of the organization   - `creation_date`: Time the organization was created   - `subscription`: Name of the subscription    #### Response Examples  ``` {   \"id\": \"abe2e406-fae5-4bcf-a3bc-956d756e4ecb\",   \"name\": \"test-organization\",   \"creation_date\": \"2020-03-25T15:43:46.101877Z\",   \"subscription\": \"free\" } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.organizations_update_with_http_info(organization_name, data, async_req=True)
@@ -18072,7 +19455,7 @@ class CoreApi(object):
     def service_users_get(self, project_name, service_user_id, **kwargs):  # noqa: E501
         """Retrieve details of a service user  # noqa: E501
 
-         ### Description  Retrieve details of a service user  ### Response Structure  Details of the service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from   - `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type  #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ],   'permissions': {     'project': [       {         'object_id': \"e6255727-c24c-4d63-ab7f-2d8889a15f4d\"         'permissions': []       }     ],     'deployment': [       {         'object_id': \"ad38bbd6-7e65-4752-9bbf-05b870b24394\",         'permissions': []       }     ],     'pipeline': [       {         'object_id': \"daa36196-1003-4054-92c9-c6dee1a5e1ba\",         'permissions': []       }     ]   } } ```   # noqa: E501
+         ### Description  Retrieve details of a service user  ### Response Structure  Details of the service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.service_users_get(project_name, service_user_id, async_req=True)
@@ -18088,7 +19471,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ServiceUserDetail
+        :return: ServiceUserList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -18098,7 +19481,7 @@ class CoreApi(object):
     def service_users_get_with_http_info(self, project_name, service_user_id, **kwargs):  # noqa: E501
         """Retrieve details of a service user  # noqa: E501
 
-         ### Description  Retrieve details of a service user  ### Response Structure  Details of the service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from   - `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type  #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ],   'permissions': {     'project': [       {         'object_id': \"e6255727-c24c-4d63-ab7f-2d8889a15f4d\"         'permissions': []       }     ],     'deployment': [       {         'object_id': \"ad38bbd6-7e65-4752-9bbf-05b870b24394\",         'permissions': []       }     ],     'pipeline': [       {         'object_id': \"daa36196-1003-4054-92c9-c6dee1a5e1ba\",         'permissions': []       }     ]   } } ```   # noqa: E501
+         ### Description  Retrieve details of a service user  ### Response Structure  Details of the service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.service_users_get_with_http_info(project_name, service_user_id, async_req=True)
@@ -18116,7 +19499,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ServiceUserDetail, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(ServiceUserList, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -18185,7 +19568,7 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ServiceUserDetail',  # noqa: E501
+            response_type='ServiceUserList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -18439,7 +19822,7 @@ class CoreApi(object):
     def service_users_update(self, project_name, service_user_id, data, **kwargs):  # noqa: E501
         """Update service user details  # noqa: E501
 
-          ### Description Update the name and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value. Leave as an empty list to remove the previous list of allowed origins.  ### Optional Parameters - `name`: Name of the service user   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Request Examples   ``` {   \"name\": \"new-service-user-name\", } ```  ``` {   \"name\": \"service-user-1\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```  ### Response Structure  Details of the updated service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from   - `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type  #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ],   'permissions': {     'project': [       {         'object_id': \"e6255727-c24c-4d63-ab7f-2d8889a15f4d\"         'permissions': []       }     ],     'deployment': [       {         'object_id': \"ad38bbd6-7e65-4752-9bbf-05b870b24394\",         'permissions': []       }     ],     'pipeline': [       {         'object_id': \"daa36196-1003-4054-92c9-c6dee1a5e1ba\",         'permissions': []       }     ]   } } ```   # noqa: E501
+         ### Description Update the name and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value. Leave as an empty list to remove the previous list of allowed origins.  ### Optional Parameters - `name`: Name of the service user   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Request Examples   ``` {   \"name\": \"new-service-user-name\", } ```  ``` {   \"name\": \"service-user-1\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```  ### Response Structure  Details of the updated service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.service_users_update(project_name, service_user_id, data, async_req=True)
@@ -18456,7 +19839,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: ServiceUserDetail
+        :return: ServiceUserList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -18466,7 +19849,7 @@ class CoreApi(object):
     def service_users_update_with_http_info(self, project_name, service_user_id, data, **kwargs):  # noqa: E501
         """Update service user details  # noqa: E501
 
-          ### Description Update the name and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value. Leave as an empty list to remove the previous list of allowed origins.  ### Optional Parameters - `name`: Name of the service user   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Request Examples   ``` {   \"name\": \"new-service-user-name\", } ```  ``` {   \"name\": \"service-user-1\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```  ### Response Structure  Details of the updated service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from   - `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type  #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ],   'permissions': {     'project': [       {         'object_id': \"e6255727-c24c-4d63-ab7f-2d8889a15f4d\"         'permissions': []       }     ],     'deployment': [       {         'object_id': \"ad38bbd6-7e65-4752-9bbf-05b870b24394\",         'permissions': []       }     ],     'pipeline': [       {         'object_id': \"daa36196-1003-4054-92c9-c6dee1a5e1ba\",         'permissions': []       }     ]   } } ```   # noqa: E501
+         ### Description Update the name and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value. Leave as an empty list to remove the previous list of allowed origins.  ### Optional Parameters - `name`: Name of the service user   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Request Examples   ``` {   \"name\": \"new-service-user-name\", } ```  ``` {   \"name\": \"service-user-1\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```  ### Response Structure  Details of the updated service user - `id`: Unique identifier for the service user (UUID)   - `email`: Email of the service user    - `name`: Name of the service user   - `creation_date`: Date when the service user was created   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from    #### Response Examples  ``` {   \"id\": \"13a9ba27-6888-4528-826e-8e1002eab13d\",   \"email\": \"13a9ba27-6888-4528-826e-8e1002eab13d.project1@serviceuser.ubiops.com\",   \"name\": \"new-service-user-name\",   \"creation_date\": \"2020-03-26T12:18:43.123+00:00\",   \"allowed_cors_origins\": [     \"https://test.com\"   ] } ```   # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.service_users_update_with_http_info(project_name, service_user_id, data, async_req=True)
@@ -18485,7 +19868,7 @@ class CoreApi(object):
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
                                  (connection, read) timeouts.
-        :return: tuple(ServiceUserDetail, status_code(int), headers(HTTPHeaderDict))
+        :return: tuple(ServiceUserList, status_code(int), headers(HTTPHeaderDict))
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -18569,7 +19952,7 @@ class CoreApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='ServiceUserDetail',  # noqa: E501
+            response_type='ServiceUserList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

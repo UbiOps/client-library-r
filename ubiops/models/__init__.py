@@ -46,6 +46,12 @@ from ubiops.models.direct_pipeline_request_deployment_request import DirectPipel
 from ubiops.models.environment_variable_copy import EnvironmentVariableCopy
 from ubiops.models.environment_variable_create import EnvironmentVariableCreate
 from ubiops.models.environment_variable_list import EnvironmentVariableList
+from ubiops.models.export_create import ExportCreate
+from ubiops.models.export_detail import ExportDetail
+from ubiops.models.export_list import ExportList
+from ubiops.models.import_detail import ImportDetail
+from ubiops.models.import_list import ImportList
+from ubiops.models.import_update import ImportUpdate
 from ubiops.models.inherited_environment_variable_list import InheritedEnvironmentVariableList
 from ubiops.models.logs import Logs
 from ubiops.models.logs_create import LogsCreate
@@ -84,7 +90,6 @@ from ubiops.models.project_resource_usage import ProjectResourceUsage
 from ubiops.models.project_update import ProjectUpdate
 from ubiops.models.resource_usage import ResourceUsage
 from ubiops.models.revision_create import RevisionCreate
-from ubiops.models.revision_file_download import RevisionFileDownload
 from ubiops.models.revision_list import RevisionList
 from ubiops.models.role_assignment_create import RoleAssignmentCreate
 from ubiops.models.role_assignment_list import RoleAssignmentList
@@ -96,7 +101,6 @@ from ubiops.models.schedule_create import ScheduleCreate
 from ubiops.models.schedule_list import ScheduleList
 from ubiops.models.schedule_update import ScheduleUpdate
 from ubiops.models.service_user_create import ServiceUserCreate
-from ubiops.models.service_user_detail import ServiceUserDetail
 from ubiops.models.service_user_list import ServiceUserList
 from ubiops.models.service_user_token_detail import ServiceUserTokenDetail
 from ubiops.models.service_user_token_list import ServiceUserTokenList

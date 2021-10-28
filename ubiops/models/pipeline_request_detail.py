@@ -163,8 +163,6 @@ class PipelineRequestDetail(object):
         :param version: The version of this PipelineRequestDetail.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and version is None:  # noqa: E501
-            raise ValueError("Invalid value for `version`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 version is not None and not isinstance(version, str)):
             raise ValueError("Parameter `version` must be a string")  # noqa: E501
@@ -356,8 +354,6 @@ class PipelineRequestDetail(object):
         :param deployment_requests: The deployment_requests of this PipelineRequestDetail.  # noqa: E501
         :type: list[PipelineRequestDeploymentRequest]
         """
-        if self.local_vars_configuration.client_side_validation and deployment_requests is None:  # noqa: E501
-            raise ValueError("Invalid value for `deployment_requests`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 deployment_requests is not None and not isinstance(deployment_requests, list)):
             raise ValueError("Parameter `deployment_requests` must be a list")  # noqa: E501

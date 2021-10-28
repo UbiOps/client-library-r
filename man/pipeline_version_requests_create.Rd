@@ -4,9 +4,15 @@
 \alias{pipeline_version_requests_create}
 \title{Create a pipeline version request}
 \usage{
-pipeline_version_requests_create(pipeline.name, version, data,
-  pipeline.timeout = NULL, deployment.timeout = NULL,
-  preload_content = TRUE, ...)
+pipeline_version_requests_create(
+  pipeline.name,
+  version,
+  data,
+  pipeline.timeout = NULL,
+  deployment.timeout = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

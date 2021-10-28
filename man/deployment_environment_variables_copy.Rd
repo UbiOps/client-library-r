@@ -4,8 +4,12 @@
 \alias{deployment_environment_variables_copy}
 \title{Copy deployment environment variable}
 \usage{
-deployment_environment_variables_copy(deployment.name, data,
-  preload_content = TRUE, ...)
+deployment_environment_variables_copy(
+  deployment.name,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

@@ -4,8 +4,13 @@
 \alias{deployment_requests_create}
 \title{Create a direct deployment request}
 \usage{
-deployment_requests_create(deployment.name, data, timeout = NULL,
-  preload_content = TRUE, ...)
+deployment_requests_create(
+  deployment.name,
+  data,
+  timeout = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

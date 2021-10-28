@@ -4,8 +4,14 @@
 \alias{batch_deployment_version_requests_create}
 \title{Create a batch deployment version request}
 \usage{
-batch_deployment_version_requests_create(deployment.name, version, data,
-  timeout = NULL, preload_content = TRUE, ...)
+batch_deployment_version_requests_create(
+  deployment.name,
+  version,
+  data,
+  timeout = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

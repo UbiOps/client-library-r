@@ -184,7 +184,7 @@ batch_deployment_version_requests_create <- function(deployment.name, version, d
 
 
 #' @title Delete multiple deployment requests
-#' @description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+#' @description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
 #' @param deployment.name  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -252,7 +252,7 @@ deployment_requests_batch_delete <- function(deployment.name, data,  preload_con
 
 
 #' @title Retrieve multiple deployment requests
-#' @description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+#' @description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 #' @param deployment.name  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -721,7 +721,7 @@ deployment_requests_update <- function(deployment.name, request.id, data,  prelo
 
 
 #' @title Delete multiple deployment version requests
-#' @description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+#' @description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
 #' @param deployment.name  character
 #' @param version  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
@@ -796,7 +796,7 @@ deployment_version_requests_batch_delete <- function(deployment.name, version, d
 
 
 #' @title Retrieve multiple deployment version requests
-#' @description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+#' @description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 #' @param deployment.name  character
 #' @param version  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")

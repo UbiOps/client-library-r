@@ -4,8 +4,13 @@
 \alias{pipeline_version_requests_batch_get}
 \title{Retrieve multiple pipeline version requests}
 \usage{
-pipeline_version_requests_batch_get(pipeline.name, version, data,
-  preload_content = TRUE, ...)
+pipeline_version_requests_batch_get(
+  pipeline.name,
+  version,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

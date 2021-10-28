@@ -4,8 +4,13 @@
 \alias{revisions_get}
 \title{Get revision}
 \usage{
-revisions_get(deployment.name, revision.id, version,
-  preload_content = TRUE, ...)
+revisions_get(
+  deployment.name,
+  revision.id,
+  version,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

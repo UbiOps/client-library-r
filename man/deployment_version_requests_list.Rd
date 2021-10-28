@@ -4,10 +4,21 @@
 \alias{deployment_version_requests_list}
 \title{List deployment version requests}
 \usage{
-deployment_version_requests_list(deployment.name, version, status = NULL,
-  success = NULL, limit = NULL, offset = NULL, sort = NULL,
-  pipeline = NULL, start.date = NULL, end.date = NULL,
-  search.id = NULL, preload_content = TRUE, ...)
+deployment_version_requests_list(
+  deployment.name,
+  version,
+  status = NULL,
+  success = NULL,
+  limit = NULL,
+  offset = NULL,
+  sort = NULL,
+  pipeline = NULL,
+  start.date = NULL,
+  end.date = NULL,
+  search.id = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

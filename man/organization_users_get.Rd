@@ -4,8 +4,7 @@
 \alias{organization_users_get}
 \title{Get details of a user in an organization}
 \usage{
-organization_users_get(organization.name, user.id,
-  preload_content = TRUE, ...)
+organization_users_get(organization.name, user.id, preload_content = TRUE, ...)
 }
 \arguments{
 \item{organization.name}{character}

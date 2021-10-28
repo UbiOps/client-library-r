@@ -4,8 +4,13 @@
 \alias{deployment_version_environment_variables_copy}
 \title{Copy deployment version environment variable}
 \usage{
-deployment_version_environment_variables_copy(deployment.name, version,
-  data, preload_content = TRUE, ...)
+deployment_version_environment_variables_copy(
+  deployment.name,
+  version,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

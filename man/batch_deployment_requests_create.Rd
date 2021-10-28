@@ -4,8 +4,13 @@
 \alias{batch_deployment_requests_create}
 \title{Create a batch deployment request}
 \usage{
-batch_deployment_requests_create(deployment.name, data, timeout = NULL,
-  preload_content = TRUE, ...)
+batch_deployment_requests_create(
+  deployment.name,
+  data,
+  timeout = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

@@ -4,8 +4,12 @@
 \alias{deployment_versions_list}
 \title{List deployment versions}
 \usage{
-deployment_versions_list(deployment.name, labels = NULL,
-  preload_content = TRUE, ...)
+deployment_versions_list(
+  deployment.name,
+  labels = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

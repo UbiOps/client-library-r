@@ -4,8 +4,13 @@
 \alias{pipeline_version_objects_create}
 \title{Create pipeline object}
 \usage{
-pipeline_version_objects_create(pipeline.name, version, data,
-  preload_content = TRUE, ...)
+pipeline_version_objects_create(
+  pipeline.name,
+  version,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

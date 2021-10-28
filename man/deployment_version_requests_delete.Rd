@@ -4,8 +4,7 @@
 \alias{deployment_version_requests_delete}
 \title{Delete a deployment version request}
 \usage{
-deployment_version_requests_delete(deployment.name, request.id, version,
-  ...)
+deployment_version_requests_delete(deployment.name, request.id, version, ...)
 }
 \arguments{
 \item{deployment.name}{character}

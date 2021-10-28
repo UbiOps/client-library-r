@@ -28,7 +28,7 @@ Create a batch pipeline request
 ## Description
 Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.
 
-The maximum number of requests that can be created per batch is 100.
+The maximum number of requests that can be created per batch is 250.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -132,7 +132,7 @@ Create a batch pipeline version request
 ## Description
 Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.
 
-The maximum number of requests that can be created per batch is 100.
+The maximum number of requests that can be created per batch is 250.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.

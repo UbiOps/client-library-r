@@ -4,10 +4,20 @@
 \alias{deployment_requests_list}
 \title{List deployment requests}
 \usage{
-deployment_requests_list(deployment.name, status = NULL,
-  success = NULL, limit = NULL, offset = NULL, sort = NULL,
-  pipeline = NULL, start.date = NULL, end.date = NULL,
-  search.id = NULL, preload_content = TRUE, ...)
+deployment_requests_list(
+  deployment.name,
+  status = NULL,
+  success = NULL,
+  limit = NULL,
+  offset = NULL,
+  sort = NULL,
+  pipeline = NULL,
+  start.date = NULL,
+  end.date = NULL,
+  search.id = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

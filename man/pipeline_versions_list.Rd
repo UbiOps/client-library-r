@@ -4,8 +4,12 @@
 \alias{pipeline_versions_list}
 \title{List pipeline versions}
 \usage{
-pipeline_versions_list(pipeline.name, labels = NULL,
-  preload_content = TRUE, ...)
+pipeline_versions_list(
+  pipeline.name,
+  labels = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

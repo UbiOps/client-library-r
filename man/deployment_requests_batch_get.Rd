@@ -4,8 +4,12 @@
 \alias{deployment_requests_batch_get}
 \title{Retrieve multiple deployment requests}
 \usage{
-deployment_requests_batch_get(deployment.name, data,
-  preload_content = TRUE, ...)
+deployment_requests_batch_get(
+  deployment.name,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}
@@ -36,7 +40,7 @@ Response from the API
   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 }
 \description{
-Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 }
 \examples{
 \dontrun{

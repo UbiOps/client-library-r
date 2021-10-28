@@ -4,8 +4,7 @@
 \alias{pipeline_requests_batch_get}
 \title{Retrieve multiple pipeline requests}
 \usage{
-pipeline_requests_batch_get(pipeline.name, data, preload_content = TRUE,
-  ...)
+pipeline_requests_batch_get(pipeline.name, data, preload_content = TRUE, ...)
 }
 \arguments{
 \item{pipeline.name}{character}

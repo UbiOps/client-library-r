@@ -154,8 +154,6 @@ Details of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
-- `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type
-
 ## Response Examples
 
 ```
@@ -166,27 +164,7 @@ Details of the service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ],
-  'permissions': {
-    'project': [
-      {
-        'object_id': "e6255727-c24c-4d63-ab7f-2d8889a15f4d"
-        'permissions': []
-      }
-    ],
-    'deployment': [
-      {
-        'object_id': "ad38bbd6-7e65-4752-9bbf-05b870b24394",
-        'permissions': []
-      }
-    ],
-    'pipeline': [
-      {
-        'object_id': "daa36196-1003-4054-92c9-c6dee1a5e1ba",
-        'permissions': []
-      }
-    ]
-  }
+  ]
 }
 ```
 
@@ -378,8 +356,6 @@ Details of the updated service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
-- `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type
-
 ## Response Examples
 
 ```
@@ -390,27 +366,7 @@ Details of the updated service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ],
-  'permissions': {
-    'project': [
-      {
-        'object_id': "e6255727-c24c-4d63-ab7f-2d8889a15f4d"
-        'permissions': []
-      }
-    ],
-    'deployment': [
-      {
-        'object_id': "ad38bbd6-7e65-4752-9bbf-05b870b24394",
-        'permissions': []
-      }
-    ],
-    'pipeline': [
-      {
-        'object_id': "daa36196-1003-4054-92c9-c6dee1a5e1ba",
-        'permissions': []
-      }
-    ]
-  }
+  ]
 }
 ```
 

@@ -4,8 +4,12 @@
 \alias{deployment_environment_variables_create}
 \title{Create deployment environment variable}
 \usage{
-deployment_environment_variables_create(deployment.name, data,
-  preload_content = TRUE, ...)
+deployment_environment_variables_create(
+  deployment.name,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

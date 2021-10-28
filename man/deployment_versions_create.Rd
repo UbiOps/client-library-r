@@ -4,8 +4,7 @@
 \alias{deployment_versions_create}
 \title{Create deployment versions}
 \usage{
-deployment_versions_create(deployment.name, data, preload_content = TRUE,
-  ...)
+deployment_versions_create(deployment.name, data, preload_content = TRUE, ...)
 }
 \arguments{
 \item{deployment.name}{character}

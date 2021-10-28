@@ -4,8 +4,7 @@
 \alias{pipeline_versions_get}
 \title{Get pipeline version}
 \usage{
-pipeline_versions_get(pipeline.name, version, preload_content = TRUE,
-  ...)
+pipeline_versions_get(pipeline.name, version, preload_content = TRUE, ...)
 }
 \arguments{
 \item{pipeline.name}{character}

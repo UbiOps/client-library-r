@@ -4,10 +4,20 @@
 \alias{call_api}
 \title{Call API}
 \usage{
-call_api(url_path, http_method, body = NULL, query_params = NULL,
-  content_type = NULL, encode = NULL, UBIOPS_API_TOKEN = NULL,
-  UBIOPS_API_URL = NULL, UBIOPS_PROJECT = NULL,
-  UBIOPS_TIMEOUT = NULL, UBIOPS_DEFAULT_HEADERS = NULL, ...)
+call_api(
+  url_path,
+  http_method,
+  body = NULL,
+  query_params = NULL,
+  content_type = NULL,
+  encode = NULL,
+  UBIOPS_API_TOKEN = NULL,
+  UBIOPS_API_URL = NULL,
+  UBIOPS_PROJECT = NULL,
+  UBIOPS_TIMEOUT = NULL,
+  UBIOPS_DEFAULT_HEADERS = NULL,
+  ...
+)
 }
 \arguments{
 \item{url_path}{API endpoint to call, e.g., "status"}

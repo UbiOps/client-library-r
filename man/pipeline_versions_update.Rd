@@ -4,8 +4,13 @@
 \alias{pipeline_versions_update}
 \title{Update pipeline version}
 \usage{
-pipeline_versions_update(pipeline.name, version, data,
-  preload_content = TRUE, ...)
+pipeline_versions_update(
+  pipeline.name,
+  version,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

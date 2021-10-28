@@ -555,11 +555,11 @@ Create a new organization. When a user creates an organization, s/he will automa
 - `name`: Name of the organization. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
 
 - `subscription`: Name of the subscription for the organization
-- `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted
 
 ### Optional Parameters
 
-- `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year. **Provide a null value for this field to have no end date.**
+- `subscription_end_date`: End date of the subscription. The subscription will be cancelled on this date. A 'free' subscription cannot have a custom end_date as this subscription is always valid for a year.
+If you are going to use a subscription other than the free subscription, you should provide the end date.
 
 ## Request Examples
 
@@ -567,7 +567,7 @@ Create a new organization. When a user creates an organization, s/he will automa
 {
   "name": "test-organization",
   "subscription": "professional",
-  "subscription_agreed": true
+  "subscription_end_date": "2021-03-25"
 }
 ```
 
@@ -576,7 +576,6 @@ Create a new organization. When a user creates an organization, s/he will automa
 {
   "name": "test-organization",
   "subscription": "professional",
-  "subscription_agreed": true,
   "subscription_end_date": "2021-03-25"
 }
 ```
@@ -605,7 +604,6 @@ Details of the created organization
 data <- list(
   name = "name",
   subscription = "subscription",
-  subscription_agreed = FALSE,
   subscription_end_date = subscription_end_date  # (optional)
 )
 
@@ -818,8 +816,7 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 
 - `name`: New organization name
 - `subscription`: New subscription
-- `subscription_agreed`: A boolean field indicating whether the Services Agreement and Terms & Conditions are accepted upon upgrading the subscription
-- `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If the subscription_end_date was previously set, but should be removed, give a null value for this field.
+- `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If you are going to update the subscription plan of the organization to a subscription other than free, you have to provide the end date.
 
 ## Request Examples
 
@@ -834,14 +831,13 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 ```
 {
   "subscription": "professional",
-  "subscription_agreed": true
+  "subscription_end_date": "2020-08-30"
 }
 ```
 
 ```
 {
-  "subscription_end_date": "2020-08-30",
-  "subscription_agreed": true
+  "subscription_end_date": "2020-08-30"
 }
 ```
 
@@ -872,7 +868,6 @@ Details of the organization
 data <- list(
   name = "name",  # (optional)
   subscription = "subscription",  # (optional)
-  subscription_agreed = FALSE,  # (optional)
   subscription_end_date = subscription_end_date  # (optional)
 )
 

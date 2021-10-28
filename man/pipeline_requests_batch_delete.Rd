@@ -4,8 +4,12 @@
 \alias{pipeline_requests_batch_delete}
 \title{Delete multiple pipeline requests}
 \usage{
-pipeline_requests_batch_delete(pipeline.name, data,
-  preload_content = TRUE, ...)
+pipeline_requests_batch_delete(
+  pipeline.name,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

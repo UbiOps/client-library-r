@@ -142,8 +142,7 @@ service_users_delete <- function(service.user.id,  ...){
 #'   - `email`: Email of the service user  
 #'   - `name`: Name of the service user 
 #'   - `creation_date`: Date when the service user was created 
-#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
-#'   - `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type
+#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -339,8 +338,7 @@ service_users_token <- function(service.user.id, data=NULL,  preload_content=TRU
 #'   - `email`: Email of the service user  
 #'   - `name`: Name of the service user 
 #'   - `creation_date`: Date when the service user was created 
-#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
-#'   - `permissions`: Dictionary containing all permissions from roles assigned to this service user based on object type
+#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 #' @examples
 #' \dontrun{
 #' data <- list(

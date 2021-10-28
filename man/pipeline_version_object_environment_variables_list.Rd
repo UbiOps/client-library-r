@@ -4,8 +4,13 @@
 \alias{pipeline_version_object_environment_variables_list}
 \title{List pipeline object environment variables}
 \usage{
-pipeline_version_object_environment_variables_list(name, pipeline.name,
-  version, preload_content = TRUE, ...)
+pipeline_version_object_environment_variables_list(
+  name,
+  pipeline.name,
+  version,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{name}{character}

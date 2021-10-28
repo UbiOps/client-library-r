@@ -4,8 +4,13 @@
 \alias{pipeline_version_object_attachments_get}
 \title{Get object attachment}
 \usage{
-pipeline_version_object_attachments_get(attachment.id, pipeline.name,
-  version, preload_content = TRUE, ...)
+pipeline_version_object_attachments_get(
+  attachment.id,
+  pipeline.name,
+  version,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{attachment.id}{character}

@@ -4,8 +4,7 @@
 \alias{blobs_update}
 \title{Update a blob}
 \usage{
-blobs_update(blob.id, file, blob.ttl = NULL, preload_content = TRUE,
-  ...)
+blobs_update(blob.id, file, blob.ttl = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{blob.id}{character}

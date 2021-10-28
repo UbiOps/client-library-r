@@ -4,10 +4,20 @@
 \alias{pipeline_version_requests_list}
 \title{List pipeline version requests}
 \usage{
-pipeline_version_requests_list(pipeline.name, version, status = NULL,
-  success = NULL, limit = NULL, offset = NULL, sort = NULL,
-  start.date = NULL, end.date = NULL, search.id = NULL,
-  preload_content = TRUE, ...)
+pipeline_version_requests_list(
+  pipeline.name,
+  version,
+  status = NULL,
+  success = NULL,
+  limit = NULL,
+  offset = NULL,
+  sort = NULL,
+  start.date = NULL,
+  end.date = NULL,
+  search.id = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

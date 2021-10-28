@@ -4,8 +4,13 @@
 \alias{revisions_file_download}
 \title{Download deployment file}
 \usage{
-revisions_file_download(deployment.name, revision.id, version,
-  preload_content = FALSE, ...)
+revisions_file_download(
+  deployment.name,
+  revision.id,
+  version,
+  preload_content = FALSE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

@@ -4,8 +4,7 @@
 \alias{organizations_resource_usage}
 \title{List resource usage of an organization}
 \usage{
-organizations_resource_usage(organization.name, preload_content = TRUE,
-  ...)
+organizations_resource_usage(organization.name, preload_content = TRUE, ...)
 }
 \arguments{
 \item{organization.name}{character}

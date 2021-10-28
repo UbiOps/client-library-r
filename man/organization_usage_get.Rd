@@ -4,8 +4,13 @@
 \alias{organization_usage_get}
 \title{Get resource usage}
 \usage{
-organization_usage_get(organization.name, start.date = NULL,
-  end.date = NULL, preload_content = TRUE, ...)
+organization_usage_get(
+  organization.name,
+  start.date = NULL,
+  end.date = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{organization.name}{character}

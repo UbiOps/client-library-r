@@ -4,8 +4,16 @@
 \alias{metrics_get}
 \title{Get metrics}
 \usage{
-metrics_get(metric, start.time, end.time, object.type, interval = NULL,
-  object.id = NULL, preload_content = TRUE, ...)
+metrics_get(
+  metric,
+  start.time,
+  end.time,
+  object.type,
+  interval = NULL,
+  object.id = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{metric}{character}

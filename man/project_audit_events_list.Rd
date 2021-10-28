@@ -4,8 +4,13 @@
 \alias{project_audit_events_list}
 \title{List audit events in a project}
 \usage{
-project_audit_events_list(action = NULL, limit = NULL, offset = NULL,
-  preload_content = TRUE, ...)
+project_audit_events_list(
+  action = NULL,
+  limit = NULL,
+  offset = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{action}{(optional) character}

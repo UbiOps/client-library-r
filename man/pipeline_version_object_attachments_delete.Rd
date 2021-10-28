@@ -4,8 +4,12 @@
 \alias{pipeline_version_object_attachments_delete}
 \title{Delete object attachment}
 \usage{
-pipeline_version_object_attachments_delete(attachment.id, pipeline.name,
-  version, ...)
+pipeline_version_object_attachments_delete(
+  attachment.id,
+  pipeline.name,
+  version,
+  ...
+)
 }
 \arguments{
 \item{attachment.id}{character}

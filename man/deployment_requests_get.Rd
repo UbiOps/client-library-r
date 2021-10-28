@@ -4,8 +4,13 @@
 \alias{deployment_requests_get}
 \title{Get a deployment request}
 \usage{
-deployment_requests_get(deployment.name, request.id,
-  metadata.only = NULL, preload_content = TRUE, ...)
+deployment_requests_get(
+  deployment.name,
+  request.id,
+  metadata.only = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

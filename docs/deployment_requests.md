@@ -236,7 +236,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete multiple deployment requests
 
 ## Description
-Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -279,7 +279,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Retrieve multiple deployment requests
 
 ## Description
-Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests
@@ -725,7 +725,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete multiple deployment version requests
 
 ## Description
-Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
+Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -768,7 +768,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Retrieve multiple deployment version requests
 
 ## Description
-Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests

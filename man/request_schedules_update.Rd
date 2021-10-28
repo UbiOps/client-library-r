@@ -4,8 +4,7 @@
 \alias{request_schedules_update}
 \title{Update a request schedule}
 \usage{
-request_schedules_update(schedule.name, data, preload_content = TRUE,
-  ...)
+request_schedules_update(schedule.name, data, preload_content = TRUE, ...)
 }
 \arguments{
 \item{schedule.name}{character}

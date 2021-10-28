@@ -4,8 +4,12 @@
 \alias{deployment_environment_variables_get}
 \title{Get deployment environment variable}
 \usage{
-deployment_environment_variables_get(deployment.name, id,
-  preload_content = TRUE, ...)
+deployment_environment_variables_get(
+  deployment.name,
+  id,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

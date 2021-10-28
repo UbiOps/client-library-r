@@ -4,8 +4,14 @@
 \alias{deployment_version_requests_get}
 \title{Get a deployment version request}
 \usage{
-deployment_version_requests_get(deployment.name, request.id, version,
-  metadata.only = NULL, preload_content = TRUE, ...)
+deployment_version_requests_get(
+  deployment.name,
+  request.id,
+  version,
+  metadata.only = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

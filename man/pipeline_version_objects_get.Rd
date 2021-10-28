@@ -4,8 +4,13 @@
 \alias{pipeline_version_objects_get}
 \title{Get pipeline object}
 \usage{
-pipeline_version_objects_get(name, pipeline.name, version,
-  preload_content = TRUE, ...)
+pipeline_version_objects_get(
+  name,
+  pipeline.name,
+  version,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{name}{character}

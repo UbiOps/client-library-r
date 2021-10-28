@@ -7,7 +7,7 @@
 organizations_create(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ name, subscription, subscription_agreed, subscription_end_date (optional) ]}
+\item{data}{named list of: [ name, subscription, subscription_end_date (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -31,7 +31,6 @@ Create a new organization. When a user creates an organization, s/he will automa
 data <- list(
  name = "name",
  subscription = "subscription",
- subscription_agreed = FALSE,
  subscription_end_date = subscription_end_date  # (optional)
 )
 

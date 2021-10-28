@@ -4,8 +4,7 @@
 \alias{pipeline_versions_create}
 \title{Create pipeline versions}
 \usage{
-pipeline_versions_create(pipeline.name, data, preload_content = TRUE,
-  ...)
+pipeline_versions_create(pipeline.name, data, preload_content = TRUE, ...)
 }
 \arguments{
 \item{pipeline.name}{character}

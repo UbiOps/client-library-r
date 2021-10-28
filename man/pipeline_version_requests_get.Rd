@@ -4,8 +4,14 @@
 \alias{pipeline_version_requests_get}
 \title{Get a pipeline version request}
 \usage{
-pipeline_version_requests_get(pipeline.name, request.id, version,
-  metadata.only = NULL, preload_content = TRUE, ...)
+pipeline_version_requests_get(
+  pipeline.name,
+  request.id,
+  version,
+  metadata.only = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

@@ -1954,7 +1954,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Update a deployment
 
 ## Description
-Update a deployment. It is only possible to update the name, description and labels fields. When updating labels, the labels will replace the existing value for labels.
+Update a deployment
 
 ### Optional Parameters
 
@@ -1962,6 +1962,10 @@ Update a deployment. It is only possible to update the name, description and lab
 - `description`: New description for the deployment
 - `labels`: New dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
 - `default_version`: Name of a version of this deployment which will be assigned as default. Only **available** versions can be assigned as default.
+- `input_fields`: New input fields for the deployment
+- `output_fields`: New output fields for the deployment
+
+Input and output fields can be updated (name or data type), added or removed. For deployments that are attached in a pipeline, fields must be updated one at a time so that the updates can be performed while preserving the mapping.
 
 ## Request Examples
 
@@ -2028,6 +2032,18 @@ data <- list(
   name = "name",  # (optional)
   default_version = "default_version",  # (optional)
   description = "description",  # (optional)
+  input_fields = list(  # (optional)
+    list(
+      name = "name",
+      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+    )
+  ),
+  output_fields = list(  # (optional)
+    list(
+      name = "name",
+      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+    )
+  ),
   labels = list(key = "value")  # (optional)
 )
 

@@ -492,7 +492,7 @@ organization_users_update <- function(organization.name, user.id, data,  preload
 
 #' @title Create organizations
 #' @description Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.
-#' @param data  named list of: [ name, subscription, subscription_agreed, subscription_end_date (optional) ]
+#' @param data  named list of: [ name, subscription, subscription_end_date (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -509,7 +509,6 @@ organization_users_update <- function(organization.name, user.id, data,  preload
 #' data <- list(
 #'  name = "name",
 #'  subscription = "subscription",
-#'  subscription_agreed = FALSE,
 #'  subscription_end_date = subscription_end_date  # (optional)
 #' )
 #'
@@ -743,7 +742,7 @@ organizations_resource_usage <- function(organization.name,  preload_content=TRU
 #' @title Update details of an organization
 #' @description Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.
 #' @param organization.name  character
-#' @param data  named list of: [ name (optional), subscription (optional), subscription_agreed (optional), subscription_end_date (optional) ]
+#' @param data  named list of: [ name (optional), subscription (optional), subscription_end_date (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -761,7 +760,6 @@ organizations_resource_usage <- function(organization.name,  preload_content=TRU
 #' data <- list(
 #'  name = "name",  # (optional)
 #'  subscription = "subscription",  # (optional)
-#'  subscription_agreed = FALSE,  # (optional)
 #'  subscription_end_date = subscription_end_date  # (optional)
 #' )
 #'

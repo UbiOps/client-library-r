@@ -4,8 +4,14 @@
 \alias{pipeline_requests_create}
 \title{Create a pipeline request}
 \usage{
-pipeline_requests_create(pipeline.name, data, pipeline.timeout = NULL,
-  deployment.timeout = NULL, preload_content = TRUE, ...)
+pipeline_requests_create(
+  pipeline.name,
+  data,
+  pipeline.timeout = NULL,
+  deployment.timeout = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

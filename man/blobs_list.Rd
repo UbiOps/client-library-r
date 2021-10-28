@@ -4,8 +4,7 @@
 \alias{blobs_list}
 \title{List blobs}
 \usage{
-blobs_list(range = NULL, creation.date = NULL,
-  preload_content = TRUE, ...)
+blobs_list(range = NULL, creation.date = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{range}{(optional) integer}

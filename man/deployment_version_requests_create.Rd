@@ -4,8 +4,14 @@
 \alias{deployment_version_requests_create}
 \title{Create a direct deployment version request}
 \usage{
-deployment_version_requests_create(deployment.name, version, data,
-  timeout = NULL, preload_content = TRUE, ...)
+deployment_version_requests_create(
+  deployment.name,
+  version,
+  data,
+  timeout = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

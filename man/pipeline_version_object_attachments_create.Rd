@@ -4,8 +4,13 @@
 \alias{pipeline_version_object_attachments_create}
 \title{Create object attachments}
 \usage{
-pipeline_version_object_attachments_create(pipeline.name, version, data,
-  preload_content = TRUE, ...)
+pipeline_version_object_attachments_create(
+  pipeline.name,
+  version,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

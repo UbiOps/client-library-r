@@ -4,8 +4,7 @@
 \alias{deployment_versions_get}
 \title{Get deployment version}
 \usage{
-deployment_versions_get(deployment.name, version, preload_content = TRUE,
-  ...)
+deployment_versions_get(deployment.name, version, preload_content = TRUE, ...)
 }
 \arguments{
 \item{deployment.name}{character}

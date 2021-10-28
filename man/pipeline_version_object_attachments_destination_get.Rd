@@ -4,8 +4,13 @@
 \alias{pipeline_version_object_attachments_destination_get}
 \title{List the attachments of a destination object}
 \usage{
-pipeline_version_object_attachments_destination_get(destination.name,
-  pipeline.name, version, preload_content = TRUE, ...)
+pipeline_version_object_attachments_destination_get(
+  destination.name,
+  pipeline.name,
+  version,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{destination.name}{character}

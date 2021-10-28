@@ -1860,9 +1860,9 @@ deployments_list <- function(labels=NULL,  preload_content=TRUE, ...){
 
 
 #' @title Update a deployment
-#' @description Update a deployment. It is only possible to update the name, description and labels fields. When updating labels, the labels will replace the existing value for labels.
+#' @description Update a deployment
 #' @param deployment.name  character
-#' @param data  named list of: [ name (optional), default_version (optional), description (optional), labels (optional) ]
+#' @param data  named list of: [ name (optional), default_version (optional), description (optional), input_fields (optional), output_fields (optional), labels (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1890,6 +1890,18 @@ deployments_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  name = "name",  # (optional)
 #'  default_version = "default_version",  # (optional)
 #'  description = "description",  # (optional)
+#'  input_fields = list(  # (optional)
+#'    list(
+#'      name = "name",
+#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'    )
+#'  ),
+#'  output_fields = list(  # (optional)
+#'    list(
+#'      name = "name",
+#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'    )
+#'  ),
 #'  labels = list(key = "value")  # (optional)
 #' )
 #'

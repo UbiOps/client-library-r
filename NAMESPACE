@@ -62,6 +62,19 @@ export(revisions_file_upload)
 export(revisions_get)
 export(revisions_list)
 
+# ImportsAndExports
+export(exports_create)
+export(exports_delete)
+export(exports_download)
+export(exports_get)
+export(exports_list)
+export(imports_create)
+export(imports_delete)
+export(imports_download)
+export(imports_get)
+export(imports_list)
+export(imports_update)
+
 # Organizations
 export(organization_usage_details_get)
 export(organization_usage_get)

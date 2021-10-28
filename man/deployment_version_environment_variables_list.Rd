@@ -4,8 +4,12 @@
 \alias{deployment_version_environment_variables_list}
 \title{List deployment version environment variables}
 \usage{
-deployment_version_environment_variables_list(deployment.name, version,
-  preload_content = TRUE, ...)
+deployment_version_environment_variables_list(
+  deployment.name,
+  version,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

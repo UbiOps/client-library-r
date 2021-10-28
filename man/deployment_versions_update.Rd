@@ -4,8 +4,13 @@
 \alias{deployment_versions_update}
 \title{Update deployment version}
 \usage{
-deployment_versions_update(deployment.name, version, data,
-  preload_content = TRUE, ...)
+deployment_versions_update(
+  deployment.name,
+  version,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

@@ -4,8 +4,14 @@
 \alias{deployment_audit_events_list}
 \title{List audit events for a deployment}
 \usage{
-deployment_audit_events_list(deployment.name, action = NULL,
-  limit = NULL, offset = NULL, preload_content = TRUE, ...)
+deployment_audit_events_list(
+  deployment.name,
+  action = NULL,
+  limit = NULL,
+  offset = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

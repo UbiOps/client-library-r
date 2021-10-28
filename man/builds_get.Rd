@@ -4,8 +4,7 @@
 \alias{builds_get}
 \title{Get build}
 \usage{
-builds_get(build.id, deployment.name, version, preload_content = TRUE,
-  ...)
+builds_get(build.id, deployment.name, version, preload_content = TRUE, ...)
 }
 \arguments{
 \item{build.id}{character}

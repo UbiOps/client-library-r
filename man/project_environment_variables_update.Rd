@@ -4,8 +4,7 @@
 \alias{project_environment_variables_update}
 \title{Update project environment variable}
 \usage{
-project_environment_variables_update(id, data, preload_content = TRUE,
-  ...)
+project_environment_variables_update(id, data, preload_content = TRUE, ...)
 }
 \arguments{
 \item{id}{character}

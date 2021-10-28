@@ -4,8 +4,12 @@
 \alias{deployment_version_environment_variables_delete}
 \title{Delete deployment version environment variable}
 \usage{
-deployment_version_environment_variables_delete(deployment.name, id,
-  version, ...)
+deployment_version_environment_variables_delete(
+  deployment.name,
+  id,
+  version,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

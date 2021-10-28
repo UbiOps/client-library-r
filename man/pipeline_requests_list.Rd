@@ -4,9 +4,19 @@
 \alias{pipeline_requests_list}
 \title{List pipeline requests}
 \usage{
-pipeline_requests_list(pipeline.name, status = NULL, success = NULL,
-  limit = NULL, offset = NULL, sort = NULL, start.date = NULL,
-  end.date = NULL, search.id = NULL, preload_content = TRUE, ...)
+pipeline_requests_list(
+  pipeline.name,
+  status = NULL,
+  success = NULL,
+  limit = NULL,
+  offset = NULL,
+  sort = NULL,
+  start.date = NULL,
+  end.date = NULL,
+  search.id = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

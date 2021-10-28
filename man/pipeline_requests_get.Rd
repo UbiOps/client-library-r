@@ -4,8 +4,13 @@
 \alias{pipeline_requests_get}
 \title{Get a pipeline request}
 \usage{
-pipeline_requests_get(pipeline.name, request.id, metadata.only = NULL,
-  preload_content = TRUE, ...)
+pipeline_requests_get(
+  pipeline.name,
+  request.id,
+  metadata.only = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

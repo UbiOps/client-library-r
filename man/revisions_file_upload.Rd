@@ -4,9 +4,15 @@
 \alias{revisions_file_upload}
 \title{Upload deployment file}
 \usage{
-revisions_file_upload(deployment.name, version, file = NULL,
-  source.deployment = NULL, source.version = NULL,
-  preload_content = TRUE, ...)
+revisions_file_upload(
+  deployment.name,
+  version,
+  file = NULL,
+  source.deployment = NULL,
+  source.version = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

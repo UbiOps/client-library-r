@@ -4,8 +4,13 @@
 \alias{organization_users_update}
 \title{Update details of a user in an organization}
 \usage{
-organization_users_update(organization.name, user.id, data,
-  preload_content = TRUE, ...)
+organization_users_update(
+  organization.name,
+  user.id,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{organization.name}{character}

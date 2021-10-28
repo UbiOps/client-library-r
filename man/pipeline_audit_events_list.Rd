@@ -4,8 +4,14 @@
 \alias{pipeline_audit_events_list}
 \title{List audit events for a pipeline}
 \usage{
-pipeline_audit_events_list(pipeline.name, action = NULL, limit = NULL,
-  offset = NULL, preload_content = TRUE, ...)
+pipeline_audit_events_list(
+  pipeline.name,
+  action = NULL,
+  limit = NULL,
+  offset = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{pipeline.name}{character}

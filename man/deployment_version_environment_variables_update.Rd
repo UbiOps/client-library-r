@@ -4,8 +4,14 @@
 \alias{deployment_version_environment_variables_update}
 \title{Update deployment version environment variable}
 \usage{
-deployment_version_environment_variables_update(deployment.name, id,
-  version, data, preload_content = TRUE, ...)
+deployment_version_environment_variables_update(
+  deployment.name,
+  id,
+  version,
+  data,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{deployment.name}{character}

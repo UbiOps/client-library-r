@@ -4,8 +4,7 @@
 \alias{service_users_token}
 \title{Reset the token of a service user}
 \usage{
-service_users_token(service.user.id, data = NULL,
-  preload_content = TRUE, ...)
+service_users_token(service.user.id, data = NULL, preload_content = TRUE, ...)
 }
 \arguments{
 \item{service.user.id}{character}

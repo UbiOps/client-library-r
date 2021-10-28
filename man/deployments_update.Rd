@@ -9,7 +9,7 @@ deployments_update(deployment.name, data, preload_content = TRUE, ...)
 \arguments{
 \item{deployment.name}{character}
 
-\item{data}{named list of: [ name (optional), default_version (optional), description (optional), labels (optional) ]}
+\item{data}{named list of: [ name (optional), default_version (optional), description (optional), input_fields (optional), output_fields (optional), labels (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -36,7 +36,7 @@ Response from the API
   - `default_version`: Default version of the deployment. If it does not have a default version, it is not set.
 }
 \description{
-Update a deployment. It is only possible to update the name, description and labels fields. When updating labels, the labels will replace the existing value for labels.
+Update a deployment
 }
 \examples{
 \dontrun{
@@ -44,6 +44,18 @@ data <- list(
  name = "name",  # (optional)
  default_version = "default_version",  # (optional)
  description = "description",  # (optional)
+ input_fields = list(  # (optional)
+   list(
+     name = "name",
+     data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+   )
+ ),
+ output_fields = list(  # (optional)
+   list(
+     name = "name",
+     data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+   )
+ ),
  labels = list(key = "value")  # (optional)
 )
 

@@ -4,8 +4,7 @@
 \alias{organization_users_create}
 \title{Add a user to an organization}
 \usage{
-organization_users_create(organization.name, data,
-  preload_content = TRUE, ...)
+organization_users_create(organization.name, data, preload_content = TRUE, ...)
 }
 \arguments{
 \item{organization.name}{character}

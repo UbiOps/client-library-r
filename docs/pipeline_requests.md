@@ -21,14 +21,14 @@ Method | HTTP request | Description
 
 
 # **batch_pipeline_requests_create**
-> batch_pipeline_requests_create(pipeline.name, data, timeout=NULL)
+> batch_pipeline_requests_create(pipeline.name, data, timeout=NULL, notification.group=NULL)
 
 Create a batch pipeline request
 
 ## Description
 Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.
 
-The maximum number of requests that can be created per batch is 250.
+The maximum number of requests that can be created per batch is 100.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -39,6 +39,7 @@ These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
 The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch pipeline requests
@@ -105,13 +106,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_pipeline_requests_create(
   pipeline.name, data,
-  timeout = NULL
+  timeout = NULL, notification.group = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_pipeline_requests_create(
   pipeline.name, data,
-  timeout = NULL, 
+  timeout = NULL, notification.group = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -125,14 +126,14 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **batch_pipeline_version_requests_create**
-> batch_pipeline_version_requests_create(pipeline.name, version, data, timeout=NULL)
+> batch_pipeline_version_requests_create(pipeline.name, version, data, timeout=NULL, notification.group=NULL)
 
 Create a batch pipeline version request
 
 ## Description
 Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.
 
-The maximum number of requests that can be created per batch is 250.
+The maximum number of requests that can be created per batch is 100.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -143,6 +144,7 @@ These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
 The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch pipeline requests
@@ -209,13 +211,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_pipeline_version_requests_create(
   pipeline.name, version, data,
-  timeout = NULL
+  timeout = NULL, notification.group = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_pipeline_version_requests_create(
   pipeline.name, version, data,
-  timeout = NULL, 
+  timeout = NULL, notification.group = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -549,6 +551,7 @@ A dictionary containing the details of the pipeline request with the following f
 - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -577,7 +580,8 @@ A dictionary containing the details of the pipeline request with the following f
     "output_field": 23.5
   },
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 
@@ -1016,6 +1020,7 @@ A dictionary containing the details of the pipeline version request with the fol
 - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -1044,7 +1049,8 @@ A dictionary containing the details of the pipeline version request with the fol
     "output_field": 23.5
   },
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 

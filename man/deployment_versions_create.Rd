@@ -9,7 +9,7 @@ deployment_versions_create(deployment.name, data, preload_content = TRUE, ...)
 \arguments{
 \item{deployment.name}{character}
 
-\item{data}{named list of: [ version, language (optional), memory_allocation (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), request_retention_time (optional), request_retention_mode (optional), deployment_mode (optional) ]}
+\item{data}{named list of: [ version, language (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), deployment_mode (optional), default_notification_group (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -30,34 +30,40 @@ Response from the API
   - `status`: The status of the version
   - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
   - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-  - `memory_allocation`: Reserved memory for the version in MiB  
+  - `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+  - `instance_type`: The reserved instance type for the version
   - `maximum_instances`: Upper bound of number of versions running
   - `minimum_instances`: Lower bound of number of versions running
   - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
   - `creation_date`: The date when the version was created
   - `last_updated`: The date when the version was last updated
+  - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+  - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
   - `request_retention_time`: Number of seconds to store requests to the version
   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
   - `deployment_mode`: the type of the deployment version
 }
 \description{
-Create a version for a deployment. The first version of a deployment is set as default.
+Create a version for a deployment. The first version of a deployment is set as default. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
 }
 \examples{
 \dontrun{
 data <- list(
  version = "version",
- language = 'python3.7',  # one of: [python3.6, python3.7, python3.8, r4.0]  (optional)
- memory_allocation = 0,  # [min: 256; max: 1048576] (optional)
+ language = 'python3.7',  # (optional)
+ memory_allocation = 0,  # (optional)
+ instance_type = "instance_type",  # (optional)
  maximum_instances = 0,  # (optional)
  minimum_instances = 0,  # (optional)
  maximum_idle_time = 0,  # (optional)
  description = "description",  # (optional)
  labels = list(key = "value"),  # (optional)
+ monitoring = "monitoring",  # (optional)
  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
- deployment_mode = 'express'  # one of: [express, batch]  (optional)
+ deployment_mode = 'express',  # one of: [express, batch]  (optional)
+ default_notification_group = "default_notification_group"  # (optional)
 )
 
 # Use environment variables

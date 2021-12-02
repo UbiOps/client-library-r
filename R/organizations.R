@@ -8,6 +8,71 @@
 # Organizations operations
 
 
+#' @title List instance types
+#' @description Get list of available deployment instance types for an organization
+#' @param organization.name  character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  Details of the instance type
+#'   - `id`: Unique identifier for the instance type (UUID) 
+#'   - `name`: Name of the deployment instance type 
+#'   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi) 
+#'   - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU) 
+#'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type 
+#'   - `gpu_enabled`: Boolean indicating if the gpu resource is enabled for this instance type
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::instance_types_list(
+#'    organization.name
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::instance_types_list(
+#'    organization.name,
+#'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+instance_types_list <- function(organization.name,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`organization.name`)) {
+    stop("Missing required parameter `organization.name`.")
+  }
+  
+  url_path <- "/organizations/{organization_name}/instance-types"
+  if (!missing(`organization.name`)) {
+    url_path <- gsub("\\{organization_name\\}", utils::URLencode(as.character(`organization.name`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title Get resource usage details
 #' @description Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per day.
 #' @param organization.name  character

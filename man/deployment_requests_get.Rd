@@ -42,6 +42,7 @@ Response from the API
   - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
   - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+  - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 }
 \description{
 Get a request of the default version of a deployment. With this method, the result of a request may be retrieved.

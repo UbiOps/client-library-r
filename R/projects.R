@@ -9,7 +9,7 @@
 
 
 #' @title Get metrics
-#' @description Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline   Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running  - `active_time`: Time in seconds that the deployment is active
+#' @description Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline  Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running  - `gpu_seconds`: Usage of GPU in seconds, calculated by multiplying the deployment GPUs by the number of seconds the deployments are running  - `active_time`: Time in seconds that the deployment is active
 #' @param metric  character
 #' @param start.time  character
 #' @param end.time  character
@@ -540,6 +540,248 @@ project_usage_get <- function(start.month=NULL,  preload_content=TRUE, ...){
 }
 
 
+#' @title Add user to a project
+#' @description Add a user to a project. The user making the request must be admin of the organization. The user can later be assigned roles in the project, such as project-admin, project-viewer etc.
+#' @param data  named list of: [ user_id ]
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  Details of the added user
+#'   - `id`: Unique identifier for the user (UUID) 
+#'   - `email`: Email of the user 
+#'   - `name`: Name of the user 
+#'   - `surname`: Surname of the user
+#' @examples
+#' \dontrun{
+#' data <- list(
+#'  user_id = "user_id"
+#' )
+#'
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::project_users_create(
+#'    data
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::project_users_create(
+#'    data,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+project_users_create <- function(data,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`data`)) {
+    stop("Missing required parameter `data`.")
+  }
+  
+  body <- rjson::toJSON(data)
+  
+  url_path <- "/projects/{project_name}/users"
+
+  api.response <- call_api(url_path, "POST", body, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Delete user from a project
+#' @description Delete a user from a project. The user making the request must be admin of the organization.  **When a user is deleted from a project, all his roles defined in the scope of the project are also deleted.**
+#' @param user.id  character
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' ubiops::project_users_delete(
+#'    user.id
+#' )
+#' 
+#' # Or provide directly
+#' ubiops::project_users_delete(
+#'    user.id,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+project_users_delete <- function(user.id,  ...){
+  query_params <- list()
+
+  if (missing(`user.id`)) {
+    stop("Missing required parameter `user.id`.")
+  }
+  
+  url_path <- "/projects/{project_name}/users/{user_id}"
+  if (!missing(`user.id`)) {
+    url_path <- gsub("\\{user_id\\}", utils::URLencode(as.character(`user.id`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "DELETE", NULL, query_params, ...)
+  return(invisible(NULL))
+}
+
+
+#' @title Get user in a project
+#' @description Get the details of a user in a project. The user making the request must also be a project user.
+#' @param user.id  character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  Details of the user
+#'   - `id`: Unique identifier for the user (UUID) 
+#'   - `email`: Email of the user 
+#'   - `name`: Name of the user 
+#'   - `surname`: Surname of the user
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::project_users_get(
+#'    user.id
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::project_users_get(
+#'    user.id,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+project_users_get <- function(user.id,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`user.id`)) {
+    stop("Missing required parameter `user.id`.")
+  }
+  
+  url_path <- "/projects/{project_name}/users/{user_id}"
+  if (!missing(`user.id`)) {
+    url_path <- gsub("\\{user_id\\}", utils::URLencode(as.character(`user.id`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title List users in a project
+#' @description List users and their details in a project. The user making the request must also be a project user.
+#' @param user.type (optional) character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  List of users
+#'   - `id`: Unique identifier for the user (UUID) 
+#'   - `email`: Email of the user 
+#'   - `name`: Name of the user 
+#'   - `surname`: Surname of the user
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::project_users_list(
+#'    
+#'    user.type = NULL
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::project_users_list(
+#'    
+#'    user.type = NULL, 
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+project_users_list <- function(user.type=NULL,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  query_params['user_type'] <- user.type
+  
+  url_path <- "/projects/{project_name}/users"
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title Create projects
 #' @description Create a new project with the provided name. **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
 #' @param data  named list of: [ name, organization_name ]
@@ -773,7 +1015,6 @@ projects_list <- function( preload_content=TRUE, ...){
 #'   - `id`: Unique UUID of the log line 
 #'   - `log`: Log line text 
 #'   - `date`: Time the log line was created
-#'    
 #'   The following fields will be returned on response if they are set for the log line:
 #'   - `deployment_name`:  The deployment which the log is related to 
 #'   - `deployment_version`:  The deployment version which the log is related to 

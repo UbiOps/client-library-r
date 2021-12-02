@@ -327,8 +327,10 @@ exports_list <- function(status=NULL,  preload_content=TRUE, ...){
 
 
 #' @title Create an import
-#' @description Create an import by uploading a zip file
-#' @param file  file path - Example: file.path("path", "to", "file")
+#' @description Create an import by uploading a zip file, providing a link to an import file or by giving an export id. Only one of the fields `file`, `import_link` or `export_id` may be given at a time.  When providing a link to an import file, make sure it is publicly downloadable.
+#' @param file (optional) file path - Example: file.path("path", "to", "file")
+#' @param import.link (optional) character
+#' @param export.id (optional) character
 #' @param skip.confirmation (optional) character ("true"|"false")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -346,20 +348,18 @@ exports_list <- function(status=NULL,  preload_content=TRUE, ...){
 #'   - `size`: Size of the import in bytes
 #' @examples
 #' \dontrun{
-#' file <- file.path("path", "to", "file")
-#'
 #' # Use environment variables
 #' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::imports_create(
-#'    file,
-#'    skip.confirmation = NULL
+#'    
+#'    file = NULL, import.link = NULL, export.id = NULL, skip.confirmation = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::imports_create(
-#'    file,
-#'    skip.confirmation = NULL, 
+#'    
+#'    file = NULL, import.link = NULL, export.id = NULL, skip.confirmation = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -370,14 +370,13 @@ exports_list <- function(status=NULL,  preload_content=TRUE, ...){
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-imports_create <- function(file, skip.confirmation=NULL,  preload_content=TRUE, ...){
+imports_create <- function(file=NULL, import.link=NULL, export.id=NULL, skip.confirmation=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
-  if (missing(`file`)) {
-    stop("Missing required parameter `file`.")
-  }
   body <- list(
     "file" = if (!is.null(`file`)) httr::upload_file(file) else NULL,
+    "import_link" = import.link,
+    "export_id" = export.id,
     "skip_confirmation" = skip.confirmation
   )
   

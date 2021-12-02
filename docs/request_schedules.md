@@ -38,6 +38,10 @@ Create a new request schedule with the provided name
 - `timeout`: Timeout of the request in seconds. The maximum and default values depend on the object (deployment or pipeline) and the type of request (batch or direct).
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'.
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Request Examples
 
 ```
@@ -52,7 +56,11 @@ Create a new request schedule with the provided name
     "input_field_2": 8765
   },
   "timeout": 300,
-  "enabled": true
+  "enabled": true,
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 
@@ -79,6 +87,10 @@ Details of the created request schedule
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -96,7 +108,11 @@ Details of the created request schedule
   "batch": false,
   "timeout": 300,
   "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
+  "creation_date": "2020-09-16T08:06:34.457679Z",
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 
@@ -110,7 +126,9 @@ data <- list(
   schedule = "schedule",
   request_data = list(key = "value"),  # (optional)
   timeout = 0,  # (optional)
-  enabled = FALSE  # (optional)
+  enabled = FALSE,  # (optional)
+  description = "description",  # (optional)
+  labels = list(key = "value")  # (optional)
 )
 
 # Use environment variables
@@ -195,6 +213,10 @@ Details of a request schedule
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -212,7 +234,11 @@ Details of a request schedule
   "batch": false,
   "timeout": 200,
   "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
+  "creation_date": "2020-09-16T08:06:34.457679Z",
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 
@@ -271,6 +297,10 @@ A list of details of all request schedules in a project
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -289,7 +319,11 @@ A list of details of all request schedules in a project
     "batch": false,
     "timeout": 200",
     "enabled": true,
-    "creation_date": "2020-09-16T08:06:34.457679Z"
+    "creation_date": "2020-09-16T08:06:34.457679Z",
+    "description": "Daily request schedule",
+    "labels": {
+      "type": "daily"
+    }
   }
 ]
 ```
@@ -338,6 +372,10 @@ Update a request schedule in a project. Create permissions on the object are nec
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'.
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Request Examples
 
 ```
@@ -376,6 +414,10 @@ Details of the updated request schedule
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -393,7 +435,11 @@ Details of the updated request schedule
   "batch": false,
   "timeout": 360,
   "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
+  "creation_date": "2020-09-16T08:06:34.457679Z",
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 
@@ -404,7 +450,9 @@ data <- list(
   schedule = "schedule",  # (optional)
   request_data = list(key = "value"),  # (optional)
   timeout = 0,  # (optional)
-  enabled = FALSE  # (optional)
+  enabled = FALSE,  # (optional)
+  description = "description",  # (optional)
+  labels = list(key = "value")  # (optional)
 )
 
 # Use environment variables

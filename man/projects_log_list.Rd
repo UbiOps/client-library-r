@@ -23,7 +23,6 @@ Response from the API
   - `id`: Unique UUID of the log line 
   - `log`: Log line text 
   - `date`: Time the log line was created
-   
   The following fields will be returned on response if they are set for the log line:
   - `deployment_name`:  The deployment which the log is related to 
   - `deployment_version`:  The deployment version which the log is related to 

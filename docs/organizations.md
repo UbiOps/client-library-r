@@ -4,6 +4,7 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**instance_types_list**](organizations.md#instance_types_list) | **GET** /organizations/{organization_name}/instance-types | List instance types
 [**organization_usage_details_get**](organizations.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
 [**organization_usage_get**](organizations.md#organization_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 [**organization_users_create**](organizations.md#organization_users_create) | **POST** /organizations/{organization_name}/users | Add a user to an organization
@@ -17,6 +18,67 @@ Method | HTTP request | Description
 [**organizations_resource_usage**](organizations.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | List resource usage of an organization
 [**organizations_update**](organizations.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
 
+
+# **instance_types_list**
+> instance_types_list(organization.name)
+
+List instance types
+
+## Description
+Get list of available deployment instance types for an organization
+
+### Response Structure
+Details of the instance type
+
+- `id`: Unique identifier for the instance type (UUID)
+
+- `name`: Name of the deployment instance type
+
+- `memory_allocation`: Integer indicating memory allocation for this instance type (Mi)
+
+- `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU)
+
+- `gpu_allocation`: Integer indicating number of GPU cores for this instance type
+
+- `gpu_enabled`: Boolean indicating if the gpu resource is enabled for this instance type
+
+## Response Examples
+
+```
+[
+  {
+    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
+    "name": "512mb",
+    "memory_allocation": 512,
+    "cpu_allocation": 125,
+    "gpu_allocation": 0,
+    "gpu_enabled": false
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::instance_types_list(
+  organization.name
+)
+
+# Or provide directly
+result <- ubiops::instance_types_list(
+  organization.name,
+  UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
 
 # **organization_usage_details_get**
 > organization_usage_details_get(organization.name, start.date=NULL, end.date=NULL)

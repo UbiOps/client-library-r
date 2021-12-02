@@ -23,14 +23,15 @@ Response from the API
   - `name`: Name of the request 
   - `object_type`: Type of object for which the request is made 
   - `object_name`: Name of deployment/pipeline for which the request is made 
-   
   - `schedule`: Schedule in crontab format 
   - `version`: Name of version for which the request schedule is made 
   - `request_data`: Input data for the request schedule 
   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
   - `timeout`: Timeout of the request in seconds 
   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
-  - `creation_date`: The date when the request schedule was created
+  - `creation_date`: The date when the request schedule was created 
+  - `description`: Description of the request schedule 
+  - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 }
 \description{
 Retrieve details of a single request schedule

@@ -46,6 +46,7 @@ Response from the API
    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+   - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 }
 \description{
 Get a request for a pipeline version. With this method, the result of a request may be retrieved.

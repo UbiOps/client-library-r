@@ -4,10 +4,21 @@
 \alias{imports_create}
 \title{Create an import}
 \usage{
-imports_create(file, skip.confirmation = NULL, preload_content = TRUE, ...)
+imports_create(
+  file = NULL,
+  import.link = NULL,
+  export.id = NULL,
+  skip.confirmation = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
-\item{file}{file path - Example: file.path("path", "to", "file")}
+\item{file}{(optional) file path - Example: file.path("path", "to", "file")}
+
+\item{import.link}{(optional) character}
+
+\item{export.id}{(optional) character}
 
 \item{skip.confirmation}{(optional) character ("true"|"false")}
 
@@ -29,24 +40,22 @@ Response from the API
   - `size`: Size of the import in bytes
 }
 \description{
-Create an import by uploading a zip file
+Create an import by uploading a zip file, providing a link to an import file or by giving an export id. Only one of the fields `file`, `import_link` or `export_id` may be given at a time.  When providing a link to an import file, make sure it is publicly downloadable.
 }
 \examples{
 \dontrun{
-file <- file.path("path", "to", "file")
-
 # Use environment variables
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::imports_create(
-   file,
-   skip.confirmation = NULL
+   
+   file = NULL, import.link = NULL, export.id = NULL, skip.confirmation = NULL
 )
 
 # Or provide directly
 result <- ubiops::imports_create(
-   file,
-   skip.confirmation = NULL, 
+   
+   file = NULL, import.link = NULL, export.id = NULL, skip.confirmation = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

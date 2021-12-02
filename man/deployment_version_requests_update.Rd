@@ -20,7 +20,7 @@ deployment_version_requests_update(
 
 \item{version}{character}
 
-\item{data}{named list of: [ status ]}
+\item{data}{named list of: [ status (optional), notification_group (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -39,7 +39,8 @@ Update a deployment request for a deployment version. It is possible to **cancel
 \examples{
 \dontrun{
 data <- list(
- status = "status"  # one of: [cancelled] 
+ status = "status",  # one of: [cancelled]  (optional)
+ notification_group = "notification_group"  # (optional)
 )
 
 # Use environment variables

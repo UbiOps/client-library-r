@@ -30,7 +30,8 @@ Response from the API
   - `status`: The status of the version
   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-  - `memory_allocation`: Reserved memory for the version in MiB 
+  - `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+  - `instance_type`: The reserved instance type for the version
   - `maximum_instances`: Upper bound of number of deployment pods running in parallel
   - `minimum_instances`: Lower bound of number of deployment pods running in parallel
   - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -38,6 +39,8 @@ Response from the API
   - `creation_date`: The date when the version was created
   - `last_updated`: The date when the version was last updated
   - `last_file_upload`: The date when a deployment file was last uploaded for the version
+  - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+  - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
   - `request_retention_time`: Number of seconds to store requests to the version
   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
       - *none* - the requests will not be stored

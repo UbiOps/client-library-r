@@ -497,7 +497,6 @@ List deployment environment variables
 ## Description
 List the environment variables defined for the deployment. Includes environment variables defined at project level.
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -893,7 +892,6 @@ List deployment version environment variables
 ## Description
 List the environment variables defined for the deployment version. Includes environment variables defined at project level and deployment level.
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -1039,6 +1037,8 @@ Create deployment versions
 
 ## Description
 Create a version for a deployment. The first version of a deployment is set as default.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
 
 ### Required Parameters
 
@@ -1046,14 +1046,17 @@ Create a version for a deployment. The first version of a deployment is set as d
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8 or r4.0. The default value is python3.7.
-- `memory_allocation`: Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
+- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9 or r4.0. The default value is python3.7.
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
+- `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
 
 - `description`: Description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1079,7 +1082,7 @@ If the time that a request takes does not matter, keep the default values.
 {
   "version": "version-1",
   "language": "r4.0",
-  "memory_allocation": 512
+  "instance_type": "512mb"
 }
 ```
 
@@ -1088,7 +1091,8 @@ If the time that a request takes does not matter, keep the default values.
 {
   "version": "version-1",
   "maximum_instances": 4,
-  "minimum_instances": 1
+  "minimum_instances": 1,
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -1103,13 +1107,16 @@ Details of the created version
 - `status`: The status of the version
 - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-- `memory_allocation`: Reserved memory for the version in MiB 
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `deployment_mode`: the type of the deployment version
@@ -1127,6 +1134,7 @@ Details of the created version
   "active_revision": null,
   "latest_build": null,
   "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 5,
   "minimum_instances": 0,
   "maximum_idle_time": 10,
@@ -1135,6 +1143,8 @@ Details of the created version
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-05-12T16:23:15.456812Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "deployment_mode": "express"
@@ -1145,16 +1155,19 @@ Details of the created version
 ```R
 data <- list(
   version = "version",
-  language = 'python3.7',  # one of: [python3.6, python3.7, python3.8, r4.0]  (optional)
-  memory_allocation = 0,  # [min: 256; max: 1048576] (optional)
+  language = 'python3.7',  # (optional)
+  memory_allocation = 0,  # (optional)
+  instance_type = "instance_type",  # (optional)
   maximum_instances = 0,  # (optional)
   minimum_instances = 0,  # (optional)
   maximum_idle_time = 0,  # (optional)
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
+  monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
   request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
-  deployment_mode = 'express'  # one of: [express, batch]  (optional)
+  deployment_mode = 'express',  # one of: [express, batch]  (optional)
+  default_notification_group = "default_notification_group"  # (optional)
 )
 
 # Use environment variables
@@ -1227,7 +1240,8 @@ Details of a version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MiB
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 - `minimum_instances`: Lower bound of number of deployment pods running in parallel
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1235,6 +1249,8 @@ Details of a version
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
 - `last_file_upload`: The date when a deployment file was last uploaded for the version
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1255,6 +1271,7 @@ Details of a version
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "9f7fd6ec-53b7-41c6-949e-09efc2ee2d31",
   "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
   "maximum_idle_time": 10,
@@ -1264,6 +1281,8 @@ Details of a version
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
   "last_file_uploaded": "2020-06-21T09:03:01.875391Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "deployment_mode": "express"
@@ -1317,13 +1336,16 @@ A list of details of the versions
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory usage for the version in MiB
+- `memory_allocation`: (deprecated) Reserved memory usage for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1345,6 +1367,7 @@ A list of details of the versions
     "active_revision": "da27ef7c-aa3f-4963-a815-6ebf1865638e",
     "latest_build": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
     "memory_allocation": 512,
+    "instance_type": "512mb",
     "maximum_instances": 4,
     "minimum_instances": 1,
     "maximum_idle_time": 10,
@@ -1353,6 +1376,8 @@ A list of details of the versions
     },
     "creation_date": "2020-06-18T08:32:14.876451Z",
     "last_updated": "2020-06-19T10:52:23.124784Z",
+    "monitoring": "notification-group-1",
+    "default_notification_group": null,
     "request_retention_time": 604800,
     "request_retention_mode": "full",
     "deployment_mode": "express"
@@ -1367,6 +1392,7 @@ A list of details of the versions
     "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
     "latest_build": "4534e479-ea2e-4161-876a-1d382191a031",
     "memory_allocation": 256,
+    "instance_type": "256mb",
     "maximum_instances": 5,
     "minimum_instances": 0,
     "maximum_idle_time": 10,
@@ -1375,6 +1401,8 @@ A list of details of the versions
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z",
+    "monitoring": "notification-group-2",
+    "default_notification_group": "notification-group-2",
     "request_retention_time": 86400,
     "request_retention_mode": "metadata",
     "deployment_mode": "batch"
@@ -1415,16 +1443,21 @@ Update deployment version
 
 ## Description
 Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
 
 ### Optional Parameters
 
 - `version`: New name for the version
-- `memory_allocation`: New reserved memory for the version in MiB
+- `memory_allocation`: (deprecated) New reserved memory for the version in MiB
+- `instance_type`: New instance type for the version
 - `maximum_instances`: New upper bound of number of versions running
 - `minimum_instances`: New lower bound of number of versions running
 - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped
 - `description`: New description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1442,9 +1475,10 @@ Update a version of a deployment in a project. All necessary fields are validate
 
 ```
 {
-  "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 4,
-  "minimum_instances": 1
+  "minimum_instances": 1,
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -1459,7 +1493,8 @@ Details of the updated version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MiB
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -1467,6 +1502,8 @@ Details of the updated version
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
 - `last_file_upload`: The date when a deployment file was last uploaded for the version
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `deployment_mode`: the type of the deployment version
@@ -1484,6 +1521,7 @@ Details of the updated version
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "0d07337e-96d6-4ce6-8c63-c2f07edd2ce4",
   "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
   "maximum_idle_time": 10,
@@ -1493,6 +1531,8 @@ Details of the updated version
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-23T18:04:76.123754Z",
   "last_file_uploaded": "2020-06-21T09:03:01.875391Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "deployment_mode": "express"
@@ -1503,14 +1543,17 @@ Details of the updated version
 ```R
 data <- list(
   version = "version",  # (optional)
-  memory_allocation = 0,  # [min: 256; max: 1048576] (optional)
+  memory_allocation = 0,  # (optional)
+  instance_type = "instance_type",  # (optional)
   maximum_instances = 0,  # (optional)
   minimum_instances = 0,  # (optional)
   maximum_idle_time = 0,  # (optional)
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
+  monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
-  request_retention_mode = "request_retention_mode"  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
+  default_notification_group = "default_notification_group"  # (optional)
 )
 
 # Use environment variables

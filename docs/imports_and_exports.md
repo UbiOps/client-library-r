@@ -317,12 +317,21 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **imports_create**
-> imports_create(file, skip.confirmation=NULL)
+> imports_create(file=NULL, import.link=NULL, export.id=NULL, skip.confirmation=NULL)
 
 Create an import
 
 ## Description
-Create an import by uploading a zip file
+Create an import by uploading a zip file, providing a link to an import file or by giving an export id.
+Only one of the fields `file`, `import_link` or `export_id` may be given at a time.
+When providing a link to an import file, make sure it is publicly downloadable.
+
+### Required Parameters
+Only one of the following fields should be given:
+
+- `file`: A zip file
+- `import_link`: url to a publicly downloadable zip file
+- `export_id`: UUID of a previously created export in the same project
 
 ### Optional Parameters
 
@@ -351,20 +360,18 @@ Details of the created import
 
 ### Example
 ```R
-file <- file.path("path", "to", "file")
-
 # Use environment variables
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::imports_create(
-  file,
-  skip.confirmation = NULL
+  
+  file = NULL, import.link = NULL, export.id = NULL, skip.confirmation = NULL
 )
 
 # Or provide directly
 result <- ubiops::imports_create(
-  file,
-  skip.confirmation = NULL, 
+  
+  file = NULL, import.link = NULL, export.id = NULL, skip.confirmation = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -580,137 +587,139 @@ Confirm (and update) an import by selecting the objects in the import
 
 
 ```
-"deployments": {
-  "deployment-1: {
-    "description": "",
-    "labels": {
-      "my-label": "my-value"
-    },
-    "default_version": "v1",
-    "versions": {
-      "v1": {
-        "zip": "deployments/deployment_deployment-1/versions/deployment_deployment-1_version_v1.zip",
-        "description": "",
-        "labels": {},
-        "language": "python3.7",
-        "deployment_mode": "express",
-        "maximum_idle_time": 300,
-        "maximum_instances": 5,
-        "memory_allocation": 256,
-        "minimum_instances": 0,
-        "environment_variables": {
-          "VERSION_ENV_VAR_1": {
-            "value": "my-secret-value",
-            "secret": true
-          },
-          "VERSION_ENV_VAR_2": {
-            "value": "test2"
-          }
-        },
-        "request_retention_mode": "full",
-        "request_retention_time": 604800
-      }
-    },
-    "input_type": "structured",
-    "output_type": "structured",
-    "input_fields": [
-      {
-        "name": "input",
-        "data_type": "double"
-      }
-    ],
-    "output_fields": [
-      {
-        "name": "output",
-        "data_type": "double"
-      }
-    ],
-    "environment_variables": {
-      "DEPLOYMENT_ENV_VAR_1": {
-        "value": "my-secret-value",
-        "secret": true
+{
+    "deployments": {
+    "deployment-1: {
+      "description": "",
+      "labels": {
+        "my-label": "my-value"
       },
-      "DEPLOYMENT_ENV_VAR_2": {
-        "value": "test"
+      "default_version": "v1",
+      "versions": {
+        "v1": {
+          "zip": "deployments/deployment_deployment-1/versions/deployment_deployment-1_version_v1.zip",
+          "description": "",
+          "labels": {},
+          "language": "python3.7",
+          "deployment_mode": "express",
+          "maximum_idle_time": 300,
+          "maximum_instances": 5,
+          "memory_allocation": 256,
+          "minimum_instances": 0,
+          "environment_variables": {
+            "VERSION_ENV_VAR_1": {
+              "value": "my-secret-value",
+              "secret": true
+            },
+            "VERSION_ENV_VAR_2": {
+              "value": "test2"
+            }
+          },
+          "request_retention_mode": "full",
+          "request_retention_time": 604800
+        }
+      },
+      "input_type": "structured",
+      "output_type": "structured",
+      "input_fields": [
+        {
+          "name": "input",
+          "data_type": "double"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "output",
+          "data_type": "double"
+        }
+      ],
+      "environment_variables": {
+        "DEPLOYMENT_ENV_VAR_1": {
+          "value": "my-secret-value",
+          "secret": true
+        },
+        "DEPLOYMENT_ENV_VAR_2": {
+          "value": "test"
+        }
       }
     }
-  }
-},
-"pipelines": {
-  "pipeline-1: {
-    "description": "",
-    "labels": {
-      "test": "label"
-    },
-    "default_version": "v1",
-    "versions": {
-      "v1": {
-        "description": "",
-        "labels": {},
-        "objects": [
-          {
-            "name": "obj-1",
-            "reference_name": "deployment-1",
-            "reference_version": "v1"
-          }
-        ],
-        "attachments": [
-          {
-            "sources": [
-              {
-                "mapping": [
-                  {
-                    "source_field_name": "input",
-                    "destination_field_name": "input"
-                  }
-                ],
-                "source_name": "pipeline_start"
-              }
-            ],
-            "destination_name": "obj-1"
-          },
-          {
-            "sources": [
-              {
-                "mapping": [
-                  {
-                    "source_field_name": "output",
-                    "destination_field_name": "output"
-                  }
-                ],
-                "source_name": "obj-1"
-              }
-            ],
-            "destination_name": "pipeline_end"
-          }
-        ],
-        "request_retention_mode": "full",
-        "request_retention_time": 604800
-      }
-    },
-    "input_type": "structured",
-    "output_type": "structured",
-    "input_fields": [
-      {
-        "name": "input",
-        "data_type": "double"
-      }
-    ],
-    "output_fields": [
-      {
-        "name": "output",
-        "data_type": "double"
-      }
-    ]
-  }
-},
-"environment_variables": {
-  "PROJECT_ENV_VAR_1": {
-    "value": "value1",
-    "secret": true
   },
-  "PROJECT_ENV_VAR_2": {
-    "value": "value2"
+  "pipelines": {
+    "pipeline-1: {
+      "description": "",
+      "labels": {
+        "test": "label"
+      },
+      "default_version": "v1",
+      "versions": {
+        "v1": {
+          "description": "",
+          "labels": {},
+          "objects": [
+            {
+              "name": "obj-1",
+              "reference_name": "deployment-1",
+              "reference_version": "v1"
+            }
+          ],
+          "attachments": [
+            {
+              "sources": [
+                {
+                  "mapping": [
+                    {
+                      "source_field_name": "input",
+                      "destination_field_name": "input"
+                    }
+                  ],
+                  "source_name": "pipeline_start"
+                }
+              ],
+              "destination_name": "obj-1"
+            },
+            {
+              "sources": [
+                {
+                  "mapping": [
+                    {
+                      "source_field_name": "output",
+                      "destination_field_name": "output"
+                    }
+                  ],
+                  "source_name": "obj-1"
+                }
+              ],
+              "destination_name": "pipeline_end"
+            }
+          ],
+          "request_retention_mode": "full",
+          "request_retention_time": 604800
+        }
+      },
+      "input_type": "structured",
+      "output_type": "structured",
+      "input_fields": [
+        {
+          "name": "input",
+          "data_type": "double"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "output",
+          "data_type": "double"
+        }
+      ]
+    }
+  },
+  "environment_variables": {
+    "PROJECT_ENV_VAR_1": {
+      "value": "value1",
+      "secret": true
+    },
+    "PROJECT_ENV_VAR_2": {
+      "value": "value2"
+    }
   }
 }
 ```

@@ -560,7 +560,6 @@ List pipeline object environment variables
 ## Description
 List environment variables accessible to objects in the pipeline version
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -697,9 +696,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 
 Delete pipeline object
 
- 
-
-#### Description
+## Description
 Delete a pipeline object. Only the reference in the pipeline version is deleted. The original object (deployment and version) still exists.
 If the object is attached to another object, the attachment is also deleted.
 
@@ -918,6 +915,8 @@ Create pipeline versions
 
 ## Description
 Create a version for a pipeline. The first version of a pipeline is set as default.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
 
 ### Required Parameters
 
@@ -927,6 +926,8 @@ Create a version for a pipeline. The first version of a pipeline is set as defau
 
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -948,7 +949,8 @@ Create a version for a pipeline. The first version of a pipeline is set as defau
   "description": "my description",
   "labels": {
     "type": "production"
-  }
+  },
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -962,6 +964,8 @@ Details of the created pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 
@@ -978,6 +982,8 @@ Details of the created pipeline version
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full"
 }
@@ -989,8 +995,10 @@ data <- list(
   version = "version",
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
+  monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
-  request_retention_mode = 'full'  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+  default_notification_group = "default_notification_group"  # (optional)
 )
 
 # Use environment variables
@@ -1060,6 +1068,8 @@ Details of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1079,6 +1089,8 @@ Details of the pipeline version
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full"
 }
@@ -1130,6 +1142,8 @@ A list of details of the versions of the pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1150,6 +1164,8 @@ A list of details of the versions of the pipeline
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z",
+    "monitoring": "notification-group-1",
+    "default_notification_group": null,
     "request_retention_time": 604800,
     "request_retention_mode": "full"
   },
@@ -1163,6 +1179,8 @@ A list of details of the versions of the pipeline
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z",
+    "monitoring": "notification-group-2",
+    "default_notification_group": "notification-group-2",
     "request_retention_time": 86400,
     "request_retention_mode": "metadata"
   }
@@ -1202,12 +1220,16 @@ Update pipeline version
 
 ## Description
 Update a pipeline version. When updating labels, the labels will replace the existing value for labels.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
 
 ### Optional Parameters
 
 - `version`: Name of the version of the pipeline
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1222,7 +1244,8 @@ Update a pipeline version. When updating labels, the labels will replace the exi
   "description": "my description",
   "labels": {
     "type": "production"
-  }
+  },
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -1236,6 +1259,8 @@ Details of the created pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 
@@ -1252,6 +1277,8 @@ Details of the created pipeline
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full"
 }
@@ -1263,8 +1290,10 @@ data <- list(
   version = "version",  # (optional)
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
+  monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
-  request_retention_mode = "request_retention_mode"  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
+  default_notification_group = "default_notification_group"  # (optional)
 )
 
 # Use environment variables

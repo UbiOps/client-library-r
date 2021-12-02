@@ -9,10 +9,11 @@
 
 
 #' @title Create a batch pipeline request
-#' @description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 250.
+#' @description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 100.
 #' @param pipeline.name  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
 #' @param timeout (optional) integer
+#' @param notification.group (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -36,13 +37,13 @@
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::batch_pipeline_requests_create(
 #'    pipeline.name, data,
-#'    timeout = NULL
+#'    timeout = NULL, notification.group = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::batch_pipeline_requests_create(
 #'    pipeline.name, data,
-#'    timeout = NULL, 
+#'    timeout = NULL, notification.group = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -53,7 +54,7 @@
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL,  preload_content=TRUE, ...){
+batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL, notification.group=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`pipeline.name`)) {
@@ -63,6 +64,7 @@ batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL,  p
     stop("Missing required parameter `data`.")
   }
   query_params['timeout'] <- timeout
+  query_params['notification_group'] <- notification.group
   
   if (typeof(data) == "character") {
     content_type <- httr::content_type("text/plain")
@@ -93,11 +95,12 @@ batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL,  p
 
 
 #' @title Create a batch pipeline version request
-#' @description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 250.
+#' @description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 100.
 #' @param pipeline.name  character
 #' @param version  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
 #' @param timeout (optional) integer
+#' @param notification.group (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -121,13 +124,13 @@ batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL,  p
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::batch_pipeline_version_requests_create(
 #'    pipeline.name, version, data,
-#'    timeout = NULL
+#'    timeout = NULL, notification.group = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::batch_pipeline_version_requests_create(
 #'    pipeline.name, version, data,
-#'    timeout = NULL, 
+#'    timeout = NULL, notification.group = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -138,7 +141,7 @@ batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL,  p
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-batch_pipeline_version_requests_create <- function(pipeline.name, version, data, timeout=NULL,  preload_content=TRUE, ...){
+batch_pipeline_version_requests_create <- function(pipeline.name, version, data, timeout=NULL, notification.group=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`pipeline.name`)) {
@@ -151,6 +154,7 @@ batch_pipeline_version_requests_create <- function(pipeline.name, version, data,
     stop("Missing required parameter `data`.")
   }
   query_params['timeout'] <- timeout
+  query_params['notification_group'] <- notification.group
   
   if (typeof(data) == "character") {
     content_type <- httr::content_type("text/plain")
@@ -506,6 +510,7 @@ pipeline_requests_delete <- function(pipeline.name, request.id,  ...){
 #'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 #'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #'    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+#'    - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1003,6 +1008,7 @@ pipeline_version_requests_delete <- function(pipeline.name, request.id, version,
 #'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 #'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #'    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+#'    - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 #' @examples
 #' \dontrun{
 #' # Use environment variables

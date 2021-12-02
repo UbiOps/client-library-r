@@ -12,6 +12,10 @@ Method | HTTP request | Description
 [**project_environment_variables_list**](projects.md#project_environment_variables_list) | **GET** /projects/{project_name}/environment-variables | List project environment variables
 [**project_environment_variables_update**](projects.md#project_environment_variables_update) | **PATCH** /projects/{project_name}/environment-variables/{id} | Update project environment variable
 [**project_usage_get**](projects.md#project_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
+[**project_users_create**](projects.md#project_users_create) | **POST** /projects/{project_name}/users | Add user to a project
+[**project_users_delete**](projects.md#project_users_delete) | **DELETE** /projects/{project_name}/users/{user_id} | Delete user from a project
+[**project_users_get**](projects.md#project_users_get) | **GET** /projects/{project_name}/users/{user_id} | Get user in a project
+[**project_users_list**](projects.md#project_users_list) | **GET** /projects/{project_name}/users | List users in a project
 [**projects_create**](projects.md#projects_create) | **POST** /projects | Create projects
 [**projects_delete**](projects.md#projects_delete) | **DELETE** /projects/{project_name} | Delete a project
 [**projects_get**](projects.md#projects_get) | **GET** /projects/{project_name} | Get details of a project
@@ -47,6 +51,7 @@ Metrics on deployment version level:
 - `memory_peak`: Peak memory used during a request
 - `instances`: Number of active deployment instances
 - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running
+- `gpu_seconds`: Usage of GPU in seconds, calculated by multiplying the deployment GPUs by the number of seconds the deployments are running
 - `active_time`: Time in seconds that the deployment is active
 
 ### Required Parameters
@@ -423,7 +428,6 @@ List project environment variables
 ## Description
 List the environment variables defined for the project. These are the variables that are inherited by all deployments in this project.
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -656,6 +660,223 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
+# **project_users_create**
+> project_users_create(data)
+
+Add user to a project
+
+## Description
+Add a user to a project. The user making the request must be admin of the organization. The user can later be assigned roles in the project, such as project-admin, project-viewer etc.
+
+### Required Parameters
+
+- `user_id`: UUID of the user
+
+## Request Examples
+
+```
+{
+  "user_id": "bd3e25a3-f77a-4cb5-92df-a7e614106e95"
+}
+```
+
+### Response Structure
+Details of the added user
+
+- `id`: Unique identifier for the user (UUID)
+
+- `email`: Email of the user
+
+- `name`: Name of the user
+
+- `surname`: Surname of the user
+
+## Response Examples
+
+```
+{
+  "id": "332d7432-2742-4177-99a9-139e91e0110c",
+  "email": "test@example.com",
+  "name": "user",
+  "surname": "name"
+}
+```
+
+### Example
+```R
+data <- list(
+  user_id = "user_id"
+)
+
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::project_users_create(
+  data
+)
+
+# Or provide directly
+result <- ubiops::project_users_create(
+  data,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **project_users_delete**
+> project_users_delete(user.id)
+
+Delete user from a project
+
+## Description
+Delete a user from a project. The user making the request must be admin of the organization.
+
+**When a user is deleted from a project, all his roles defined in the scope of the project are also deleted.**
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+ubiops::project_users_delete(
+  user.id
+)
+
+# Or provide directly
+ubiops::project_users_delete(
+  user.id,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **project_users_get**
+> project_users_get(user.id)
+
+Get user in a project
+
+## Description
+Get the details of a user in a project. The user making the request must also be a project user.
+
+### Response Structure
+Details of the user
+
+- `id`: Unique identifier for the user (UUID)
+
+- `email`: Email of the user
+
+- `name`: Name of the user
+
+- `surname`: Surname of the user
+
+## Response Examples
+
+```
+{
+  "id": "332d7432-2742-4177-99a9-139e91e0110c",
+  "email": "test@example.com",
+  "name": "user",
+  "surname": "name"
+}
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::project_users_get(
+  user.id
+)
+
+# Or provide directly
+result <- ubiops::project_users_get(
+  user.id,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **project_users_list**
+> project_users_list(user.type=NULL)
+
+List users in a project
+
+## Description
+List users and their details in a project. The user making the request must also be a project user.
+
+### Response Structure
+List of users
+
+- `id`: Unique identifier for the user (UUID)
+
+- `email`: Email of the user
+
+- `name`: Name of the user
+
+- `surname`: Surname of the user
+
+## Response Examples
+
+```
+[
+  {
+    "id": "54977bc3-2c3b-4d8f-97c7-aff89a95bf21",
+    "email": "user@example.com",
+    "name": "user",
+    "surname": "name"
+  },
+  {
+    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
+    "email": "user2@example.com",
+    "name": "user",
+    "surname": "name"
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::project_users_list(
+  
+  user.type = NULL
+)
+
+# Or provide directly
+result <- ubiops::project_users_list(
+  
+  user.type = NULL, 
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
 # **projects_create**
 > projects_create(data)
 
@@ -670,7 +891,6 @@ Create a new project with the provided name.
 - `name`: Name of the project. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
 
 - `organization_name`: Name of the organization in which the project is going to be created
-
 
 ## Request Examples
 
@@ -903,6 +1123,7 @@ Retrieve the logs of all objects in a project, including deployments, pipelines 
 
 
 Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.
+Either `date` or `id` should be provided, as they both refer to a starting point of the logs. If no `date` or `id` is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.
 
 - `date`: Starting date for the logs. If it is not provided and the `id` parameter is not set, the most recent logs are returned. It should be provided in ISO 8601 format. The results are inclusive of the given date.
 
@@ -918,8 +1139,6 @@ Any combination of filters may be given in the request. For example, if only a d
     Otherwise, logs starting from the specified date / log id (both inclusive) minus date range seconds towards the past are returned.
 
     The default value is -21600 (6 hours). The maximum value is -/+ 86400 seconds (24 hours).
-   
-If no date or id is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.
 
 ## Request Examples
 

@@ -9,7 +9,7 @@ request_schedules_update(schedule.name, data, preload_content = TRUE, ...)
 \arguments{
 \item{schedule.name}{character}
 
-\item{data}{named list of: [ name (optional), schedule (optional), request_data (optional), timeout (optional), enabled (optional) ]}
+\item{data}{named list of: [ name (optional), schedule (optional), request_data (optional), timeout (optional), enabled (optional), description (optional), labels (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -25,14 +25,15 @@ Response from the API
   - `name`: Name of the request 
   - `object_type`: Type of object for which the request is made 
   - `object_name`: Name of deployment/pipeline for which the request is made 
-   
   - `schedule`: Schedule in crontab format 
   - `version`: Name of version for which the request schedule is made 
   - `request_data`: Input data for the request schedule 
   - `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false) 
   - `timeout`: Timeout of the request in seconds 
   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
-  - `creation_date`: The date when the request schedule was created
+  - `creation_date`: The date when the request schedule was created 
+  - `description`: Description of the request schedule 
+  - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 }
 \description{
 Update a request schedule in a project. Create permissions on the object are necessary for this action.
@@ -44,7 +45,9 @@ data <- list(
  schedule = "schedule",  # (optional)
  request_data = list(key = "value"),  # (optional)
  timeout = 0,  # (optional)
- enabled = FALSE  # (optional)
+ enabled = FALSE,  # (optional)
+ description = "description",  # (optional)
+ labels = list(key = "value")  # (optional)
 )
 
 # Use environment variables

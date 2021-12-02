@@ -17,7 +17,7 @@ pipeline_versions_update(
 
 \item{version}{character}
 
-\item{data}{named list of: [ version (optional), description (optional), labels (optional), request_retention_time (optional), request_retention_mode (optional) ]}
+\item{data}{named list of: [ version (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -37,11 +37,13 @@ Response from the API
   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
   - `creation_date`: The date when the pipeline version was created
   - `last_updated`: The date when the pipeline version was last updated
+  - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+  - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
   - `request_retention_time`: Number of seconds to store requests to the pipeline version
   - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 }
 \description{
-Update a pipeline version. When updating labels, the labels will replace the existing value for labels.
+Update a pipeline version. When updating labels, the labels will replace the existing value for labels.  Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
 }
 \examples{
 \dontrun{
@@ -49,8 +51,10 @@ data <- list(
  version = "version",  # (optional)
  description = "description",  # (optional)
  labels = list(key = "value"),  # (optional)
+ monitoring = "monitoring",  # (optional)
  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
- request_retention_mode = "request_retention_mode"  # one of: [none, metadata, full]  (optional)
+ request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
+ default_notification_group = "default_notification_group"  # (optional)
 )
 
 # Use environment variables

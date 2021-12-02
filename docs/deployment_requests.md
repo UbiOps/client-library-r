@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 
 # **batch_deployment_requests_create**
-> batch_deployment_requests_create(deployment.name, data, timeout=NULL)
+> batch_deployment_requests_create(deployment.name, data, timeout=NULL, notification.group=NULL)
 
 Create a batch deployment request
 
@@ -41,6 +41,7 @@ In case of plain input deployment: A list of strings. It is also possible to sen
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the batch deployment request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch deployment requests
@@ -107,13 +108,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_deployment_requests_create(
   deployment.name, data,
-  timeout = NULL
+  timeout = NULL, notification.group = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_deployment_requests_create(
   deployment.name, data,
-  timeout = NULL, 
+  timeout = NULL, notification.group = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -127,7 +128,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **batch_deployment_version_requests_create**
-> batch_deployment_version_requests_create(deployment.name, version, data, timeout=NULL)
+> batch_deployment_version_requests_create(deployment.name, version, data, timeout=NULL, notification.group=NULL)
 
 Create a batch deployment version request
 
@@ -145,6 +146,7 @@ In case of plain input deployment: A list of strings. It is also possible to sen
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the batch deployment request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch deployment requests
@@ -211,13 +213,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_deployment_version_requests_create(
   deployment.name, version, data,
-  timeout = NULL
+  timeout = NULL, notification.group = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_deployment_version_requests_create(
   deployment.name, version, data,
-  timeout = NULL, 
+  timeout = NULL, notification.group = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -236,7 +238,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete multiple deployment requests
 
 ## Description
-Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
+Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -279,7 +281,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Retrieve multiple deployment requests
 
 ## Description
-Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests
@@ -534,6 +536,7 @@ A dictionary containing the details of the deployment request with the following
 - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -552,7 +555,8 @@ A dictionary containing the details of the deployment request with the following
   },
   "result": null,
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 
@@ -694,7 +698,8 @@ Update a deployment request for the default version of a deployment. It is possi
 ### Example
 ```R
 data <- list(
-  status = "status"  # one of: [cancelled] 
+  status = "status",  # one of: [cancelled]  (optional)
+  notification_group = "notification_group"  # (optional)
 )
 
 # Use environment variables
@@ -725,7 +730,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete multiple deployment version requests
 
 ## Description
-Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
+Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -768,7 +773,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Retrieve multiple deployment version requests
 
 ## Description
-Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests
@@ -1023,6 +1028,7 @@ A dictionary containing the details of the deployment request with the following
 - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -1041,7 +1047,8 @@ A dictionary containing the details of the deployment request with the following
   },
   "result": null,
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 
@@ -1183,7 +1190,8 @@ Update a deployment request for a deployment version. It is possible to **cancel
 ### Example
 ```R
 data <- list(
-  status = "status"  # one of: [cancelled] 
+  status = "status",  # one of: [cancelled]  (optional)
+  notification_group = "notification_group"  # (optional)
 )
 
 # Use environment variables

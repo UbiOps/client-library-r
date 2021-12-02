@@ -9,6 +9,7 @@ batch_deployment_version_requests_create(
   version,
   data,
   timeout = NULL,
+  notification.group = NULL,
   preload_content = TRUE,
   ...
 )
@@ -21,6 +22,8 @@ batch_deployment_version_requests_create(
 \item{data}{list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )}
 
 \item{timeout}{(optional) integer}
+
+\item{notification.group}{(optional) character}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -51,13 +54,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::batch_deployment_version_requests_create(
    deployment.name, version, data,
-   timeout = NULL
+   timeout = NULL, notification.group = NULL
 )
 
 # Or provide directly
 result <- ubiops::batch_deployment_version_requests_create(
    deployment.name, version, data,
-   timeout = NULL, 
+   timeout = NULL, notification.group = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

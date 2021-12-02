@@ -13,6 +13,7 @@
 #' @param deployment.name  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
 #' @param timeout (optional) integer
+#' @param notification.group (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -36,13 +37,13 @@
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::batch_deployment_requests_create(
 #'    deployment.name, data,
-#'    timeout = NULL
+#'    timeout = NULL, notification.group = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::batch_deployment_requests_create(
 #'    deployment.name, data,
-#'    timeout = NULL, 
+#'    timeout = NULL, notification.group = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -53,7 +54,7 @@
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL,  preload_content=TRUE, ...){
+batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL, notification.group=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -63,6 +64,7 @@ batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL
     stop("Missing required parameter `data`.")
   }
   query_params['timeout'] <- timeout
+  query_params['notification_group'] <- notification.group
   
   if (typeof(data) == "character") {
     content_type <- httr::content_type("text/plain")
@@ -98,6 +100,7 @@ batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL
 #' @param version  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
 #' @param timeout (optional) integer
+#' @param notification.group (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -121,13 +124,13 @@ batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::batch_deployment_version_requests_create(
 #'    deployment.name, version, data,
-#'    timeout = NULL
+#'    timeout = NULL, notification.group = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::batch_deployment_version_requests_create(
 #'    deployment.name, version, data,
-#'    timeout = NULL, 
+#'    timeout = NULL, notification.group = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -138,7 +141,7 @@ batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-batch_deployment_version_requests_create <- function(deployment.name, version, data, timeout=NULL,  preload_content=TRUE, ...){
+batch_deployment_version_requests_create <- function(deployment.name, version, data, timeout=NULL, notification.group=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -151,6 +154,7 @@ batch_deployment_version_requests_create <- function(deployment.name, version, d
     stop("Missing required parameter `data`.")
   }
   query_params['timeout'] <- timeout
+  query_params['notification_group'] <- notification.group
   
   if (typeof(data) == "character") {
     content_type <- httr::content_type("text/plain")
@@ -184,7 +188,7 @@ batch_deployment_version_requests_create <- function(deployment.name, version, d
 
 
 #' @title Delete multiple deployment requests
-#' @description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
+#' @description Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
 #' @param deployment.name  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -252,7 +256,7 @@ deployment_requests_batch_delete <- function(deployment.name, data,  preload_con
 
 
 #' @title Retrieve multiple deployment requests
-#' @description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+#' @description Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 #' @param deployment.name  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -496,6 +500,7 @@ deployment_requests_delete <- function(deployment.name, request.id,  ...){
 #'   - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
 #'   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #'   - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+#'   - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -647,7 +652,7 @@ deployment_requests_list <- function(deployment.name, status=NULL, success=NULL,
 #' @description Update a deployment request for the default version of a deployment. It is possible to **cancel** a request by giving `cancelled` in the status field.
 #' @param deployment.name  character
 #' @param request.id  character
-#' @param data  named list of: [ status ]
+#' @param data  named list of: [ status (optional), notification_group (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -659,7 +664,8 @@ deployment_requests_list <- function(deployment.name, status=NULL, success=NULL,
 #' @examples
 #' \dontrun{
 #' data <- list(
-#'  status = "status"  # one of: [cancelled] 
+#'  status = "status",  # one of: [cancelled]  (optional)
+#'  notification_group = "notification_group"  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -721,7 +727,7 @@ deployment_requests_update <- function(deployment.name, request.id, data,  prelo
 
 
 #' @title Delete multiple deployment version requests
-#' @description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
+#' @description Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
 #' @param deployment.name  character
 #' @param version  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
@@ -796,7 +802,7 @@ deployment_version_requests_batch_delete <- function(deployment.name, version, d
 
 
 #' @title Retrieve multiple deployment version requests
-#' @description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+#' @description Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 #' @param deployment.name  character
 #' @param version  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
@@ -1062,6 +1068,7 @@ deployment_version_requests_delete <- function(deployment.name, request.id, vers
 #'    - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
 #'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #'    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+#'    - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1227,7 +1234,7 @@ deployment_version_requests_list <- function(deployment.name, version, status=NU
 #' @param deployment.name  character
 #' @param request.id  character
 #' @param version  character
-#' @param data  named list of: [ status ]
+#' @param data  named list of: [ status (optional), notification_group (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1239,7 +1246,8 @@ deployment_version_requests_list <- function(deployment.name, version, status=NU
 #' @examples
 #' \dontrun{
 #' data <- list(
-#'  status = "status"  # one of: [cancelled] 
+#'  status = "status",  # one of: [cancelled]  (optional)
+#'  notification_group = "notification_group"  # (optional)
 #' )
 #'
 #' # Use environment variables

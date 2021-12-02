@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "3.5.0"
+__version__ = "3.6.0"
 
 # import apis into sdk package
 from ubiops.api.core_api import CoreApi
@@ -41,16 +41,17 @@ from ubiops.models.deployment_create import DeploymentCreate
 from ubiops.models.deployment_detail import DeploymentDetail
 from ubiops.models.deployment_input_field_create import DeploymentInputFieldCreate
 from ubiops.models.deployment_input_field_list import DeploymentInputFieldList
+from ubiops.models.deployment_instance_type import DeploymentInstanceType
 from ubiops.models.deployment_list import DeploymentList
 from ubiops.models.deployment_output_field_create import DeploymentOutputFieldCreate
 from ubiops.models.deployment_output_field_list import DeploymentOutputFieldList
-from ubiops.models.deployment_request_base_detail import DeploymentRequestBaseDetail
 from ubiops.models.deployment_request_batch_create_response import DeploymentRequestBatchCreateResponse
 from ubiops.models.deployment_request_batch_detail import DeploymentRequestBatchDetail
 from ubiops.models.deployment_request_create_response import DeploymentRequestCreateResponse
 from ubiops.models.deployment_request_list import DeploymentRequestList
 from ubiops.models.deployment_request_single_detail import DeploymentRequestSingleDetail
 from ubiops.models.deployment_request_update import DeploymentRequestUpdate
+from ubiops.models.deployment_request_update_response import DeploymentRequestUpdateResponse
 from ubiops.models.deployment_update import DeploymentUpdate
 from ubiops.models.deployment_version_create import DeploymentVersionCreate
 from ubiops.models.deployment_version_detail import DeploymentVersionDetail
@@ -70,6 +71,10 @@ from ubiops.models.inherited_environment_variable_list import InheritedEnvironme
 from ubiops.models.logs import Logs
 from ubiops.models.logs_create import LogsCreate
 from ubiops.models.metrics import Metrics
+from ubiops.models.notification_group_contact import NotificationGroupContact
+from ubiops.models.notification_group_create import NotificationGroupCreate
+from ubiops.models.notification_group_list import NotificationGroupList
+from ubiops.models.notification_group_update import NotificationGroupUpdate
 from ubiops.models.organization_create import OrganizationCreate
 from ubiops.models.organization_detail import OrganizationDetail
 from ubiops.models.organization_list import OrganizationList
@@ -102,6 +107,8 @@ from ubiops.models.project_create import ProjectCreate
 from ubiops.models.project_list import ProjectList
 from ubiops.models.project_resource_usage import ProjectResourceUsage
 from ubiops.models.project_update import ProjectUpdate
+from ubiops.models.project_user_create import ProjectUserCreate
+from ubiops.models.project_user_list import ProjectUserList
 from ubiops.models.resource_usage import ResourceUsage
 from ubiops.models.revision_create import RevisionCreate
 from ubiops.models.revision_list import RevisionList

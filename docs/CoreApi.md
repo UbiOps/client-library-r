@@ -63,7 +63,13 @@ Method | HTTP request | Description
 [**imports_get**](CoreApi.md#imports_get) | **GET** /projects/{project_name}/imports/{import_id} | Get an import
 [**imports_list**](CoreApi.md#imports_list) | **GET** /projects/{project_name}/imports | List imports
 [**imports_update**](CoreApi.md#imports_update) | **PATCH** /projects/{project_name}/imports/{import_id} | Confirm an import
+[**instance_types_list**](CoreApi.md#instance_types_list) | **GET** /organizations/{organization_name}/instance-types | List instance types
 [**metrics_get**](CoreApi.md#metrics_get) | **GET** /projects/{project_name}/metrics/{metric} | Get metrics
+[**notification_groups_create**](CoreApi.md#notification_groups_create) | **POST** /projects/{project_name}/monitoring/notification-groups | Create notification groups
+[**notification_groups_delete**](CoreApi.md#notification_groups_delete) | **DELETE** /projects/{project_name}/monitoring/notification-groups/{notification_group_name} | Delete notification group
+[**notification_groups_get**](CoreApi.md#notification_groups_get) | **GET** /projects/{project_name}/monitoring/notification-groups/{notification_group_name} | Get notification group
+[**notification_groups_list**](CoreApi.md#notification_groups_list) | **GET** /projects/{project_name}/monitoring/notification-groups | List notification groups
+[**notification_groups_update**](CoreApi.md#notification_groups_update) | **PATCH** /projects/{project_name}/monitoring/notification-groups/{notification_group_name} | Update notification group
 [**organization_usage_details_get**](CoreApi.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
 [**organization_usage_get**](CoreApi.md#organization_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 [**organization_users_create**](CoreApi.md#organization_users_create) | **POST** /organizations/{organization_name}/users | Add a user to an organization
@@ -118,6 +124,10 @@ Method | HTTP request | Description
 [**project_environment_variables_list**](CoreApi.md#project_environment_variables_list) | **GET** /projects/{project_name}/environment-variables | List project environment variables
 [**project_environment_variables_update**](CoreApi.md#project_environment_variables_update) | **PATCH** /projects/{project_name}/environment-variables/{id} | Update project environment variable
 [**project_usage_get**](CoreApi.md#project_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
+[**project_users_create**](CoreApi.md#project_users_create) | **POST** /projects/{project_name}/users | Add user to a project
+[**project_users_delete**](CoreApi.md#project_users_delete) | **DELETE** /projects/{project_name}/users/{user_id} | Delete user from a project
+[**project_users_get**](CoreApi.md#project_users_get) | **GET** /projects/{project_name}/users/{user_id} | Get user in a project
+[**project_users_list**](CoreApi.md#project_users_list) | **GET** /projects/{project_name}/users | List users in a project
 [**projects_create**](CoreApi.md#projects_create) | **POST** /projects | Create projects
 [**projects_delete**](CoreApi.md#projects_delete) | **DELETE** /projects/{project_name} | Delete a project
 [**projects_get**](CoreApi.md#projects_get) | **GET** /projects/{project_name} | Get details of a project
@@ -155,7 +165,7 @@ Method | HTTP request | Description
 
 
 # **batch_deployment_requests_create**
-> list[DeploymentRequestBatchCreateResponse] batch_deployment_requests_create(project_name, deployment_name, data, timeout=timeout)
+> list[DeploymentRequestBatchCreateResponse] batch_deployment_requests_create(project_name, deployment_name, data, timeout=timeout, notification_group=notification_group)
 
 Create a batch deployment request
 
@@ -173,6 +183,7 @@ In case of plain input deployment: A list of strings. It is also possible to sen
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the batch deployment request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch deployment requests
@@ -250,9 +261,10 @@ project_name = 'project_name_example' # str
 deployment_name = 'deployment_name_example' # str 
 data = [{'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'}] # list[str or dict()] 
 timeout = 56 # int  (optional)
+notification_group = 'notification_group_example' # str  (optional)
 
 # Create a batch deployment request
-api_response = api_instance.batch_deployment_requests_create(project_name, deployment_name, data, timeout=timeout)
+api_response = api_instance.batch_deployment_requests_create(project_name, deployment_name, data, timeout=timeout, notification_group=notification_group)
 print(api_response)
 
 # Close the connection
@@ -269,6 +281,7 @@ Name | Type | Notes
  **deployment_name** | **str** | 
  **data** | **list[str or dict()]** | 
  **timeout** | **int** | [optional] 
+ **notification_group** | **str** | [optional] 
 
 ### Return type
 
@@ -281,7 +294,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **batch_deployment_version_requests_create**
-> list[DeploymentRequestBatchCreateResponse] batch_deployment_version_requests_create(project_name, deployment_name, version, data, timeout=timeout)
+> list[DeploymentRequestBatchCreateResponse] batch_deployment_version_requests_create(project_name, deployment_name, version, data, timeout=timeout, notification_group=notification_group)
 
 Create a batch deployment version request
 
@@ -299,6 +312,7 @@ In case of plain input deployment: A list of strings. It is also possible to sen
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the batch deployment request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch deployment requests
@@ -377,9 +391,10 @@ deployment_name = 'deployment_name_example' # str
 version = 'version_example' # str 
 data = [{'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'}] # list[str or dict()] 
 timeout = 56 # int  (optional)
+notification_group = 'notification_group_example' # str  (optional)
 
 # Create a batch deployment version request
-api_response = api_instance.batch_deployment_version_requests_create(project_name, deployment_name, version, data, timeout=timeout)
+api_response = api_instance.batch_deployment_version_requests_create(project_name, deployment_name, version, data, timeout=timeout, notification_group=notification_group)
 print(api_response)
 
 # Close the connection
@@ -397,6 +412,7 @@ Name | Type | Notes
  **version** | **str** | 
  **data** | **list[str or dict()]** | 
  **timeout** | **int** | [optional] 
+ **notification_group** | **str** | [optional] 
 
 ### Return type
 
@@ -409,14 +425,14 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **batch_pipeline_requests_create**
-> list[PipelineRequestBatchCreateResponse] batch_pipeline_requests_create(project_name, pipeline_name, data, timeout=timeout)
+> list[PipelineRequestBatchCreateResponse] batch_pipeline_requests_create(project_name, pipeline_name, data, timeout=timeout, notification_group=notification_group)
 
 Create a batch pipeline request
 
 ## Description
 Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.
 
-The maximum number of requests that can be created per batch is 250.
+The maximum number of requests that can be created per batch is 100.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -427,6 +443,7 @@ These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
 The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch pipeline requests
@@ -504,9 +521,10 @@ project_name = 'project_name_example' # str
 pipeline_name = 'pipeline_name_example' # str 
 data = [{'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'}] # list[str or dict()] 
 timeout = 56 # int  (optional)
+notification_group = 'notification_group_example' # str  (optional)
 
 # Create a batch pipeline request
-api_response = api_instance.batch_pipeline_requests_create(project_name, pipeline_name, data, timeout=timeout)
+api_response = api_instance.batch_pipeline_requests_create(project_name, pipeline_name, data, timeout=timeout, notification_group=notification_group)
 print(api_response)
 
 # Close the connection
@@ -523,6 +541,7 @@ Name | Type | Notes
  **pipeline_name** | **str** | 
  **data** | **list[str or dict()]** | 
  **timeout** | **int** | [optional] 
+ **notification_group** | **str** | [optional] 
 
 ### Return type
 
@@ -535,14 +554,14 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **batch_pipeline_version_requests_create**
-> list[PipelineRequestBatchCreateResponse] batch_pipeline_version_requests_create(project_name, pipeline_name, version, data, timeout=timeout)
+> list[PipelineRequestBatchCreateResponse] batch_pipeline_version_requests_create(project_name, pipeline_name, version, data, timeout=timeout, notification_group=notification_group)
 
 Create a batch pipeline version request
 
 ## Description
 Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.
 
-The maximum number of requests that can be created per batch is 250.
+The maximum number of requests that can be created per batch is 100.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -553,6 +572,7 @@ These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
 The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
 Multiple structured batch pipeline requests
@@ -631,9 +651,10 @@ pipeline_name = 'pipeline_name_example' # str
 version = 'version_example' # str 
 data = [{'input-field-1': 'input-value-1', 'input-field-2': 'input-value-2'}] # list[str or dict()] 
 timeout = 56 # int  (optional)
+notification_group = 'notification_group_example' # str  (optional)
 
 # Create a batch pipeline version request
-api_response = api_instance.batch_pipeline_version_requests_create(project_name, pipeline_name, version, data, timeout=timeout)
+api_response = api_instance.batch_pipeline_version_requests_create(project_name, pipeline_name, version, data, timeout=timeout, notification_group=notification_group)
 print(api_response)
 
 # Close the connection
@@ -651,6 +672,7 @@ Name | Type | Notes
  **version** | **str** | 
  **data** | **list[str or dict()]** | 
  **timeout** | **int** | [optional] 
+ **notification_group** | **str** | [optional] 
 
 ### Return type
 
@@ -1666,7 +1688,6 @@ List deployment environment variables
 ## Description
 List the environment variables defined for the deployment. Includes environment variables defined at project level.
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -1845,7 +1866,7 @@ Name | Type | Notes
 Delete multiple deployment requests
 
 ## Description
-Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
+Delete multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -1910,7 +1931,7 @@ Name | Type | Notes
 Retrieve multiple deployment requests
 
 ## Description
-Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for the default version of a deployment. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests
@@ -2237,6 +2258,7 @@ A dictionary containing the details of the deployment request with the following
 - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -2255,7 +2277,8 @@ A dictionary containing the details of the deployment request with the following
   },
   "result": null,
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 
@@ -2436,7 +2459,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **deployment_requests_update**
-> DeploymentRequestBaseDetail deployment_requests_update(project_name, deployment_name, request_id, data)
+> DeploymentRequestUpdateResponse deployment_requests_update(project_name, deployment_name, request_id, data)
 
 Update a deployment request
 
@@ -2498,7 +2521,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**DeploymentRequestBaseDetail**](DeploymentRequestBaseDetail.md)
+[**DeploymentRequestUpdateResponse**](DeploymentRequestUpdateResponse.md)
 
 ### Authorization
 
@@ -2868,7 +2891,6 @@ List deployment version environment variables
 ## Description
 List the environment variables defined for the deployment version. Includes environment variables defined at project level and deployment level.
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -3059,7 +3081,7 @@ Name | Type | Notes
 Delete multiple deployment version requests
 
 ## Description
-Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 500 deployment requests can be deleted with this method.
+Delete multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is deleted. A maximum of 250 deployment requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids for the requests
@@ -3126,7 +3148,7 @@ Name | Type | Notes
 Retrieve multiple deployment version requests
 
 ## Description
-Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 500 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
+Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids for the requests
@@ -3459,6 +3481,7 @@ A dictionary containing the details of the deployment request with the following
 - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -3477,7 +3500,8 @@ A dictionary containing the details of the deployment request with the following
   },
   "result": null,
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 
@@ -3662,7 +3686,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **deployment_version_requests_update**
-> DeploymentRequestBaseDetail deployment_version_requests_update(project_name, deployment_name, request_id, version, data)
+> DeploymentRequestUpdateResponse deployment_version_requests_update(project_name, deployment_name, request_id, version, data)
 
 Update a deployment version request
 
@@ -3726,7 +3750,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**DeploymentRequestBaseDetail**](DeploymentRequestBaseDetail.md)
+[**DeploymentRequestUpdateResponse**](DeploymentRequestUpdateResponse.md)
 
 ### Authorization
 
@@ -3741,6 +3765,8 @@ Create deployment versions
 
 ## Description
 Create a version for a deployment. The first version of a deployment is set as default.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
 
 ### Required Parameters
 
@@ -3748,14 +3774,17 @@ Create a version for a deployment. The first version of a deployment is set as d
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8 or r4.0. The default value is python3.7.
-- `memory_allocation`: Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should to be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
+- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9 or r4.0. The default value is python3.7.
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
+- `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
 
 - `description`: Description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -3781,7 +3810,7 @@ If the time that a request takes does not matter, keep the default values.
 {
   "version": "version-1",
   "language": "r4.0",
-  "memory_allocation": 512
+  "instance_type": "512mb"
 }
 ```
 
@@ -3790,7 +3819,8 @@ If the time that a request takes does not matter, keep the default values.
 {
   "version": "version-1",
   "maximum_instances": 4,
-  "minimum_instances": 1
+  "minimum_instances": 1,
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -3805,13 +3835,16 @@ Details of the created version
 - `status`: The status of the version
 - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-- `memory_allocation`: Reserved memory for the version in MiB 
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `deployment_mode`: the type of the deployment version
@@ -3829,6 +3862,7 @@ Details of the created version
   "active_revision": null,
   "latest_build": null,
   "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 5,
   "minimum_instances": 0,
   "maximum_idle_time": 10,
@@ -3837,6 +3871,8 @@ Details of the created version
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-05-12T16:23:15.456812Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "deployment_mode": "express"
@@ -3967,7 +4003,8 @@ Details of a version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MiB
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 - `minimum_instances`: Lower bound of number of deployment pods running in parallel
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -3975,6 +4012,8 @@ Details of a version
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
 - `last_file_upload`: The date when a deployment file was last uploaded for the version
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -3995,6 +4034,7 @@ Details of a version
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "9f7fd6ec-53b7-41c6-949e-09efc2ee2d31",
   "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
   "maximum_idle_time": 10,
@@ -4004,6 +4044,8 @@ Details of a version
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
   "last_file_uploaded": "2020-06-21T09:03:01.875391Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "deployment_mode": "express"
@@ -4081,13 +4123,16 @@ A list of details of the versions
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory usage for the version in MiB
+- `memory_allocation`: (deprecated) Reserved memory usage for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -4109,6 +4154,7 @@ A list of details of the versions
     "active_revision": "da27ef7c-aa3f-4963-a815-6ebf1865638e",
     "latest_build": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
     "memory_allocation": 512,
+    "instance_type": "512mb",
     "maximum_instances": 4,
     "minimum_instances": 1,
     "maximum_idle_time": 10,
@@ -4117,6 +4163,8 @@ A list of details of the versions
     },
     "creation_date": "2020-06-18T08:32:14.876451Z",
     "last_updated": "2020-06-19T10:52:23.124784Z",
+    "monitoring": "notification-group-1",
+    "default_notification_group": null,
     "request_retention_time": 604800,
     "request_retention_mode": "full",
     "deployment_mode": "express"
@@ -4131,6 +4179,7 @@ A list of details of the versions
     "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
     "latest_build": "4534e479-ea2e-4161-876a-1d382191a031",
     "memory_allocation": 256,
+    "instance_type": "256mb",
     "maximum_instances": 5,
     "minimum_instances": 0,
     "maximum_idle_time": 10,
@@ -4139,6 +4188,8 @@ A list of details of the versions
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z",
+    "monitoring": "notification-group-2",
+    "default_notification_group": "notification-group-2",
     "request_retention_time": 86400,
     "request_retention_mode": "metadata",
     "deployment_mode": "batch"
@@ -4201,16 +4252,21 @@ Update deployment version
 
 ## Description
 Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
 
 ### Optional Parameters
 
 - `version`: New name for the version
-- `memory_allocation`: New reserved memory for the version in MiB
+- `memory_allocation`: (deprecated) New reserved memory for the version in MiB
+- `instance_type`: New instance type for the version
 - `maximum_instances`: New upper bound of number of versions running
 - `minimum_instances`: New lower bound of number of versions running
 - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped
 - `description`: New description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -4228,9 +4284,10 @@ Update a version of a deployment in a project. All necessary fields are validate
 
 ```
 {
-  "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 4,
-  "minimum_instances": 1
+  "minimum_instances": 1,
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -4245,7 +4302,8 @@ Details of the updated version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: Reserved memory for the version in MiB
+- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
+- `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped
@@ -4253,6 +4311,8 @@ Details of the updated version
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
 - `last_file_upload`: The date when a deployment file was last uploaded for the version
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `deployment_mode`: the type of the deployment version
@@ -4270,6 +4330,7 @@ Details of the updated version
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "0d07337e-96d6-4ce6-8c63-c2f07edd2ce4",
   "memory_allocation": 512,
+  "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
   "maximum_idle_time": 10,
@@ -4279,6 +4340,8 @@ Details of the updated version
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-23T18:04:76.123754Z",
   "last_file_uploaded": "2020-06-21T09:03:01.875391Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "deployment_mode": "express"
@@ -5341,12 +5404,21 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **imports_create**
-> ImportList imports_create(project_name, file, skip_confirmation=skip_confirmation)
+> ImportList imports_create(project_name, file=file, import_link=import_link, export_id=export_id, skip_confirmation=skip_confirmation)
 
 Create an import
 
 ## Description
-Create an import by uploading a zip file
+Create an import by uploading a zip file, providing a link to an import file or by giving an export id.
+Only one of the fields `file`, `import_link` or `export_id` may be given at a time.
+When providing a link to an import file, make sure it is publicly downloadable.
+
+### Required Parameters
+Only one of the following fields should be given:
+
+- `file`: A zip file
+- `import_link`: url to a publicly downloadable zip file
+- `export_id`: UUID of a previously created export in the same project
 
 ### Optional Parameters
 
@@ -5390,11 +5462,13 @@ api_client = ubiops.ApiClient(configuration)
 api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
-file = '/path/to/file' # file 
+file = '/path/to/file' # file  (optional)
+import_link = 'import_link_example' # str  (optional)
+export_id = 'export_id_example' # str  (optional)
 skip_confirmation = True # bool  (optional)
 
 # Create an import
-api_response = api_instance.imports_create(project_name, file, skip_confirmation=skip_confirmation)
+api_response = api_instance.imports_create(project_name, file=file, import_link=import_link, export_id=export_id, skip_confirmation=skip_confirmation)
 print(api_response)
 
 # Close the connection
@@ -5408,7 +5482,9 @@ api_client.close()
 Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
- **file** | **file** | 
+ **file** | **file** | [optional] 
+ **import_link** | **str** | [optional] 
+ **export_id** | [**str**](str.md) | [optional] 
  **skip_confirmation** | **bool** | [optional] 
 
 ### Return type
@@ -5705,137 +5781,139 @@ Confirm (and update) an import by selecting the objects in the import
 
 
 ```
-"deployments": {
-  "deployment-1: {
-    "description": "",
-    "labels": {
-      "my-label": "my-value"
-    },
-    "default_version": "v1",
-    "versions": {
-      "v1": {
-        "zip": "deployments/deployment_deployment-1/versions/deployment_deployment-1_version_v1.zip",
-        "description": "",
-        "labels": {},
-        "language": "python3.7",
-        "deployment_mode": "express",
-        "maximum_idle_time": 300,
-        "maximum_instances": 5,
-        "memory_allocation": 256,
-        "minimum_instances": 0,
-        "environment_variables": {
-          "VERSION_ENV_VAR_1": {
-            "value": "my-secret-value",
-            "secret": true
-          },
-          "VERSION_ENV_VAR_2": {
-            "value": "test2"
-          }
-        },
-        "request_retention_mode": "full",
-        "request_retention_time": 604800
-      }
-    },
-    "input_type": "structured",
-    "output_type": "structured",
-    "input_fields": [
-      {
-        "name": "input",
-        "data_type": "double"
-      }
-    ],
-    "output_fields": [
-      {
-        "name": "output",
-        "data_type": "double"
-      }
-    ],
-    "environment_variables": {
-      "DEPLOYMENT_ENV_VAR_1": {
-        "value": "my-secret-value",
-        "secret": true
+{
+    "deployments": {
+    "deployment-1: {
+      "description": "",
+      "labels": {
+        "my-label": "my-value"
       },
-      "DEPLOYMENT_ENV_VAR_2": {
-        "value": "test"
+      "default_version": "v1",
+      "versions": {
+        "v1": {
+          "zip": "deployments/deployment_deployment-1/versions/deployment_deployment-1_version_v1.zip",
+          "description": "",
+          "labels": {},
+          "language": "python3.7",
+          "deployment_mode": "express",
+          "maximum_idle_time": 300,
+          "maximum_instances": 5,
+          "memory_allocation": 256,
+          "minimum_instances": 0,
+          "environment_variables": {
+            "VERSION_ENV_VAR_1": {
+              "value": "my-secret-value",
+              "secret": true
+            },
+            "VERSION_ENV_VAR_2": {
+              "value": "test2"
+            }
+          },
+          "request_retention_mode": "full",
+          "request_retention_time": 604800
+        }
+      },
+      "input_type": "structured",
+      "output_type": "structured",
+      "input_fields": [
+        {
+          "name": "input",
+          "data_type": "double"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "output",
+          "data_type": "double"
+        }
+      ],
+      "environment_variables": {
+        "DEPLOYMENT_ENV_VAR_1": {
+          "value": "my-secret-value",
+          "secret": true
+        },
+        "DEPLOYMENT_ENV_VAR_2": {
+          "value": "test"
+        }
       }
     }
-  }
-},
-"pipelines": {
-  "pipeline-1: {
-    "description": "",
-    "labels": {
-      "test": "label"
-    },
-    "default_version": "v1",
-    "versions": {
-      "v1": {
-        "description": "",
-        "labels": {},
-        "objects": [
-          {
-            "name": "obj-1",
-            "reference_name": "deployment-1",
-            "reference_version": "v1"
-          }
-        ],
-        "attachments": [
-          {
-            "sources": [
-              {
-                "mapping": [
-                  {
-                    "source_field_name": "input",
-                    "destination_field_name": "input"
-                  }
-                ],
-                "source_name": "pipeline_start"
-              }
-            ],
-            "destination_name": "obj-1"
-          },
-          {
-            "sources": [
-              {
-                "mapping": [
-                  {
-                    "source_field_name": "output",
-                    "destination_field_name": "output"
-                  }
-                ],
-                "source_name": "obj-1"
-              }
-            ],
-            "destination_name": "pipeline_end"
-          }
-        ],
-        "request_retention_mode": "full",
-        "request_retention_time": 604800
-      }
-    },
-    "input_type": "structured",
-    "output_type": "structured",
-    "input_fields": [
-      {
-        "name": "input",
-        "data_type": "double"
-      }
-    ],
-    "output_fields": [
-      {
-        "name": "output",
-        "data_type": "double"
-      }
-    ]
-  }
-},
-"environment_variables": {
-  "PROJECT_ENV_VAR_1": {
-    "value": "value1",
-    "secret": true
   },
-  "PROJECT_ENV_VAR_2": {
-    "value": "value2"
+  "pipelines": {
+    "pipeline-1: {
+      "description": "",
+      "labels": {
+        "test": "label"
+      },
+      "default_version": "v1",
+      "versions": {
+        "v1": {
+          "description": "",
+          "labels": {},
+          "objects": [
+            {
+              "name": "obj-1",
+              "reference_name": "deployment-1",
+              "reference_version": "v1"
+            }
+          ],
+          "attachments": [
+            {
+              "sources": [
+                {
+                  "mapping": [
+                    {
+                      "source_field_name": "input",
+                      "destination_field_name": "input"
+                    }
+                  ],
+                  "source_name": "pipeline_start"
+                }
+              ],
+              "destination_name": "obj-1"
+            },
+            {
+              "sources": [
+                {
+                  "mapping": [
+                    {
+                      "source_field_name": "output",
+                      "destination_field_name": "output"
+                    }
+                  ],
+                  "source_name": "obj-1"
+                }
+              ],
+              "destination_name": "pipeline_end"
+            }
+          ],
+          "request_retention_mode": "full",
+          "request_retention_time": 604800
+        }
+      },
+      "input_type": "structured",
+      "output_type": "structured",
+      "input_fields": [
+        {
+          "name": "input",
+          "data_type": "double"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "output",
+          "data_type": "double"
+        }
+      ]
+    }
+  },
+  "environment_variables": {
+    "PROJECT_ENV_VAR_1": {
+      "value": "value1",
+      "secret": true
+    },
+    "PROJECT_ENV_VAR_2": {
+      "value": "value2"
+    }
   }
 }
 ```
@@ -5909,6 +5987,88 @@ Name | Type | Notes
 
 [[Back to top]](#)
 
+# **instance_types_list**
+> list[DeploymentInstanceType] instance_types_list(organization_name)
+
+List instance types
+
+## Description
+Get list of available deployment instance types for an organization
+
+### Response Structure
+Details of the instance type
+
+- `id`: Unique identifier for the instance type (UUID)
+
+- `name`: Name of the deployment instance type
+
+- `memory_allocation`: Integer indicating memory allocation for this instance type (Mi)
+
+- `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU)
+
+- `gpu_allocation`: Integer indicating number of GPU cores for this instance type
+
+- `gpu_enabled`: Boolean indicating if the gpu resource is enabled for this instance type
+
+## Response Examples
+
+```
+[
+  {
+    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
+    "name": "512mb",
+    "memory_allocation": 512,
+    "cpu_allocation": 125,
+    "gpu_allocation": 0,
+    "gpu_enabled": false
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str 
+
+# List instance types
+api_response = api_instance.instance_types_list(organization_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **organization_name** | **str** | 
+
+### Return type
+
+[**list[DeploymentInstanceType]**](DeploymentInstanceType.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
 # **metrics_get**
 > list[Metrics] metrics_get(project_name, metric, start_time, end_time, object_type, interval=interval, object_id=object_id)
 
@@ -5935,6 +6095,7 @@ Metrics on deployment version level:
 - `memory_peak`: Peak memory used during a request
 - `instances`: Number of active deployment instances
 - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running
+- `gpu_seconds`: Usage of GPU in seconds, calculated by multiplying the deployment GPUs by the number of seconds the deployments are running
 - `active_time`: Time in seconds that the deployment is active
 
 ### Required Parameters
@@ -6077,6 +6238,456 @@ Name | Type | Notes
 ### Return type
 
 [**list[Metrics]**](Metrics.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **notification_groups_create**
+> NotificationGroupList notification_groups_create(project_name, data)
+
+Create notification groups
+
+## Description
+Create a notification group by defining a name and a list of contacts
+
+### Required Parameters
+
+- `name`: Name of the notification group. It is unique within a project.
+
+### Optional Parameters
+
+- `contacts`: A list of dictionaries containing the following keys:
+  - `type`: Type of the contact. It can be `email`.
+  - `configuration`: A custom dictionary that contains required information for the type. For `email` type, it should contain the key `email_address`.
+
+## Request Examples
+
+```
+{
+  "name": "notification-group-1",
+  "contacts": [
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user@ubiops.com"
+      }
+    },
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user.2@ubiops.com"
+      }
+    }
+  ]
+}
+```
+
+### Response Structure
+Details of the created notification group
+
+- `id`: Unique identifier for the notification group (UUID)
+- `name`: Name of the notification group
+- `contacts`: A list of contacts in the notification group
+
+## Response Examples
+
+```
+{
+  "id": "dc083d2a-74aa-4c49-8806-8adbeadca8a8",
+  "name": "notification-group-1",
+  "contacts": [
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user@ubiops.com"
+      }
+    },
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user.2@ubiops.com"
+      }
+    }
+  ]
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+data = ubiops.NotificationGroupCreate() # NotificationGroupCreate 
+
+# Create notification groups
+api_response = api_instance.notification_groups_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **data** | [**NotificationGroupCreate**](NotificationGroupCreate.md) | 
+
+### Return type
+
+[**NotificationGroupList**](NotificationGroupList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **notification_groups_delete**
+> notification_groups_delete(project_name, notification_group_name)
+
+Delete notification group
+
+## Description
+Delete a notification group
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+notification_group_name = 'notification_group_name_example' # str 
+
+# Delete notification group
+api_instance.notification_groups_delete(project_name, notification_group_name)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **notification_group_name** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **notification_groups_get**
+> NotificationGroupList notification_groups_get(project_name, notification_group_name)
+
+Get notification group
+
+## Description
+Retrieve details of a single notification group in a project
+
+### Response Structure
+Details of a notification group
+
+- `id`: Unique identifier for the notification group (UUID)
+- `name`: Name of the notification group
+- `contacts`: A list of contacts in the notification group
+
+## Response Examples
+
+```
+{
+  "id": "dc083d2a-74aa-4c49-8806-8adbeadca8a8",
+  "name": "notification-group-1",
+  "contacts": [
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user@ubiops.com"
+      }
+    },
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user.2@ubiops.com"
+      }
+    }
+  ]
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+notification_group_name = 'notification_group_name_example' # str 
+
+# Get notification group
+api_response = api_instance.notification_groups_get(project_name, notification_group_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **notification_group_name** | **str** | 
+
+### Return type
+
+[**NotificationGroupList**](NotificationGroupList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **notification_groups_list**
+> list[NotificationGroupList] notification_groups_list(project_name)
+
+List notification groups
+
+## Description
+List the notification groups in a project
+
+### Response Structure
+A list of details of the notification groups in the project
+
+- `id`: Unique identifier for the notification group (UUID)
+- `name`: Name of the notification group
+- `contacts`: A list of contacts in the notification group
+
+## Response Examples
+
+```
+[
+  {
+    "id": "dc083d2a-74aa-4c49-8806-8adbeadca8a8",
+    "name": "notification-group-1",
+    "contacts": [
+      {
+        "type": "email",
+        "configuration": {
+          "email_address": "my.example.user@ubiops.com"
+        }
+      },
+      {
+        "type": "email",
+        "configuration": {
+          "email_address": "my.example.user.2@ubiops.com"
+        }
+      }
+    ],
+  },
+  {
+    "id": "7193ca09-d28b-4fce-a15a-11e0bc9f7f6f",
+    "name": "notification-group-2",
+     "contacts": [
+      {
+        "type": "email",
+        "configuration": {
+          "email_address": "my.example.user.3@ubiops.com"
+        }
+      }
+    ]
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+
+# List notification groups
+api_response = api_instance.notification_groups_list(project_name)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+
+### Return type
+
+[**list[NotificationGroupList]**](NotificationGroupList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **notification_groups_update**
+> NotificationGroupList notification_groups_update(project_name, notification_group_name, data)
+
+Update notification group
+
+## Description
+Update a notification group
+
+### Optional Parameters
+
+- `name`: New name for the deployment
+- `contacts`: A list of dictionaries containing the following keys:
+- `type`: Type of the contact. It can be `email`.
+- `configuration`: A custom dictionary that contains required information for the type. For `email` type, it should contain the key `email_address`.
+
+## Request Examples
+
+```
+{
+  "name": "new-notification-group-name"
+}
+```
+
+### Response Structure
+Details of the updated notification group
+
+- `id`: Unique identifier for the notification group (UUID)
+- `name`: Name of the notification group
+- `contacts`: A list of contacts in the notification group
+
+## Response Examples
+
+```
+{
+  "id": "dc083d2a-74aa-4c49-8806-8adbeadca8a8",
+  "name": "new-notification-group-name",
+  "contacts": [
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user@ubiops.com"
+      }
+    },
+    {
+      "type": "email",
+      "configuration": {
+        "email_address": "my.example.user.2@ubiops.com"
+      }
+    }
+  ]
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+notification_group_name = 'notification_group_name_example' # str 
+data = ubiops.NotificationGroupUpdate() # NotificationGroupUpdate 
+
+# Update notification group
+api_response = api_instance.notification_groups_update(project_name, notification_group_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **notification_group_name** | **str** | 
+ **data** | [**NotificationGroupUpdate**](NotificationGroupUpdate.md) | 
+
+### Return type
+
+[**NotificationGroupList**](NotificationGroupList.md)
 
 ### Authorization
 
@@ -7781,6 +8392,7 @@ A dictionary containing the details of the pipeline request with the following f
 - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -7809,7 +8421,8 @@ A dictionary containing the details of the pipeline request with the following f
     "output_field": 23.5
   },
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 
@@ -8558,7 +9171,6 @@ List pipeline object environment variables
 ## Description
 List environment variables accessible to objects in the pipeline version
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -8741,9 +9353,7 @@ Name | Type | Notes
 
 Delete pipeline object
 
- 
-
-#### Description
+## Description
 Delete a pipeline object. Only the reference in the pipeline version is deleted. The original object (deployment and version) still exists.
 If the object is attached to another object, the attachment is also deleted.
 
@@ -9484,6 +10094,7 @@ A dictionary containing the details of the pipeline version request with the fol
 - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+- `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Response Examples
 
@@ -9512,7 +10123,8 @@ A dictionary containing the details of the pipeline version request with the fol
     "output_field": 23.5
   },
   "error_message": null,
-  "created_by": "my.example.user@ubiops.com"
+  "created_by": "my.example.user@ubiops.com",
+  "notification_group": "notification-group-1"
 }
 ```
 
@@ -9700,6 +10312,8 @@ Create pipeline versions
 
 ## Description
 Create a version for a pipeline. The first version of a pipeline is set as default.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
 
 ### Required Parameters
 
@@ -9709,6 +10323,8 @@ Create a version for a pipeline. The first version of a pipeline is set as defau
 
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -9730,7 +10346,8 @@ Create a version for a pipeline. The first version of a pipeline is set as defau
   "description": "my description",
   "labels": {
     "type": "production"
-  }
+  },
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -9744,6 +10361,8 @@ Details of the created pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 
@@ -9760,6 +10379,8 @@ Details of the created pipeline version
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full"
 }
@@ -9886,6 +10507,8 @@ Details of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -9905,6 +10528,8 @@ Details of the pipeline version
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full"
 }
@@ -9980,6 +10605,8 @@ A list of details of the versions of the pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -10000,6 +10627,8 @@ A list of details of the versions of the pipeline
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z",
+    "monitoring": "notification-group-1",
+    "default_notification_group": null,
     "request_retention_time": 604800,
     "request_retention_mode": "full"
   },
@@ -10013,6 +10642,8 @@ A list of details of the versions of the pipeline
     },
     "creation_date": "2020-05-12T16:23:15.456812Z",
     "last_updated": "2020-06-22T18:04:76.123754Z",
+    "monitoring": "notification-group-2",
+    "default_notification_group": "notification-group-2",
     "request_retention_time": 86400,
     "request_retention_mode": "metadata"
   }
@@ -10074,12 +10705,16 @@ Update pipeline version
 
 ## Description
 Update a pipeline version. When updating labels, the labels will replace the existing value for labels.
+Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
 
 ### Optional Parameters
 
 - `version`: Name of the version of the pipeline
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -10094,7 +10729,8 @@ Update a pipeline version. When updating labels, the labels will replace the exi
   "description": "my description",
   "labels": {
     "type": "production"
-  }
+  },
+  "monitoring": "notification-group-1"
 }
 ```
 
@@ -10108,6 +10744,8 @@ Details of the created pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
+- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
+- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 
@@ -10124,6 +10762,8 @@ Details of the created pipeline
   },
   "creation_date": "2020-05-12T16:23:15.456812Z",
   "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": "notification-group-1",
+  "default_notification_group": null,
   "request_retention_time": 604800,
   "request_retention_mode": "full"
 }
@@ -11171,7 +11811,6 @@ List project environment variables
 ## Description
 List the environment variables defined for the project. These are the variables that are inherited by all deployments in this project.
 
-
 ### Response Structure
 A list of variables described by the following fields:
 
@@ -11462,6 +12101,309 @@ Name | Type | Notes
 
 [[Back to top]](#)
 
+# **project_users_create**
+> ProjectUserList project_users_create(project_name, data)
+
+Add user to a project
+
+## Description
+Add a user to a project. The user making the request must be admin of the organization. The user can later be assigned roles in the project, such as project-admin, project-viewer etc.
+
+### Required Parameters
+
+- `user_id`: UUID of the user
+
+## Request Examples
+
+```
+{
+  "user_id": "bd3e25a3-f77a-4cb5-92df-a7e614106e95"
+}
+```
+
+### Response Structure
+Details of the added user
+
+- `id`: Unique identifier for the user (UUID)
+
+- `email`: Email of the user
+
+- `name`: Name of the user
+
+- `surname`: Surname of the user
+
+## Response Examples
+
+```
+{
+  "id": "332d7432-2742-4177-99a9-139e91e0110c",
+  "email": "test@example.com",
+  "name": "user",
+  "surname": "name"
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+data = ubiops.ProjectUserCreate() # ProjectUserCreate 
+
+# Add user to a project
+api_response = api_instance.project_users_create(project_name, data)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **data** | [**ProjectUserCreate**](ProjectUserCreate.md) | 
+
+### Return type
+
+[**ProjectUserList**](ProjectUserList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **project_users_delete**
+> project_users_delete(project_name, user_id)
+
+Delete user from a project
+
+## Description
+Delete a user from a project. The user making the request must be admin of the organization.
+
+**When a user is deleted from a project, all his roles defined in the scope of the project are also deleted.**
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+user_id = 'user_id_example' # str 
+
+# Delete user from a project
+api_instance.project_users_delete(project_name, user_id)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **user_id** | **str** | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **project_users_get**
+> ProjectUserList project_users_get(project_name, user_id)
+
+Get user in a project
+
+## Description
+Get the details of a user in a project. The user making the request must also be a project user.
+
+### Response Structure
+Details of the user
+
+- `id`: Unique identifier for the user (UUID)
+
+- `email`: Email of the user
+
+- `name`: Name of the user
+
+- `surname`: Surname of the user
+
+## Response Examples
+
+```
+{
+  "id": "332d7432-2742-4177-99a9-139e91e0110c",
+  "email": "test@example.com",
+  "name": "user",
+  "surname": "name"
+}
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+user_id = 'user_id_example' # str 
+
+# Get user in a project
+api_response = api_instance.project_users_get(project_name, user_id)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **user_id** | **str** | 
+
+### Return type
+
+[**ProjectUserList**](ProjectUserList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **project_users_list**
+> list[ProjectUserList] project_users_list(project_name, user_type=user_type)
+
+List users in a project
+
+## Description
+List users and their details in a project. The user making the request must also be a project user.
+
+### Response Structure
+List of users
+
+- `id`: Unique identifier for the user (UUID)
+
+- `email`: Email of the user
+
+- `name`: Name of the user
+
+- `surname`: Surname of the user
+
+## Response Examples
+
+```
+[
+  {
+    "id": "54977bc3-2c3b-4d8f-97c7-aff89a95bf21",
+    "email": "user@example.com",
+    "name": "user",
+    "surname": "name"
+  },
+  {
+    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
+    "email": "user2@example.com",
+    "name": "user",
+    "surname": "name"
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+user_type = 'user_type_example' # str  (optional)
+
+# List users in a project
+api_response = api_instance.project_users_list(project_name, user_type=user_type)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **user_type** | **str** | [optional] 
+
+### Return type
+
+[**list[ProjectUserList]**](ProjectUserList.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
 # **projects_create**
 > ProjectList projects_create(data)
 
@@ -11476,7 +12418,6 @@ Create a new project with the provided name.
 - `name`: Name of the project. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
 
 - `organization_name`: Name of the organization in which the project is going to be created
-
 
 ## Request Examples
 
@@ -11789,6 +12730,7 @@ Retrieve the logs of all objects in a project, including deployments, pipelines 
 
 
 Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.
+Either `date` or `id` should be provided, as they both refer to a starting point of the logs. If no `date` or `id` is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.
 
 - `date`: Starting date for the logs. If it is not provided and the `id` parameter is not set, the most recent logs are returned. It should be provided in ISO 8601 format. The results are inclusive of the given date.
 
@@ -11804,8 +12746,6 @@ Any combination of filters may be given in the request. For example, if only a d
     Otherwise, logs starting from the specified date / log id (both inclusive) minus date range seconds towards the past are returned.
 
     The default value is -21600 (6 hours). The maximum value is -/+ 86400 seconds (24 hours).
-   
-If no date or id is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.
 
 ## Request Examples
 
@@ -12157,6 +13097,10 @@ Create a new request schedule with the provided name
 - `timeout`: Timeout of the request in seconds. The maximum and default values depend on the object (deployment or pipeline) and the type of request (batch or direct).
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'.
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Request Examples
 
 ```
@@ -12171,7 +13115,11 @@ Create a new request schedule with the provided name
     "input_field_2": 8765
   },
   "timeout": 300,
-  "enabled": true
+  "enabled": true,
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 
@@ -12198,6 +13146,10 @@ Details of the created request schedule
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -12215,7 +13167,11 @@ Details of the created request schedule
   "batch": false,
   "timeout": 300,
   "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
+  "creation_date": "2020-09-16T08:06:34.457679Z",
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 
@@ -12351,6 +13307,10 @@ Details of a request schedule
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -12368,7 +13328,11 @@ Details of a request schedule
   "batch": false,
   "timeout": 200,
   "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
+  "creation_date": "2020-09-16T08:06:34.457679Z",
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 
@@ -12449,6 +13413,10 @@ A list of details of all request schedules in a project
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -12467,7 +13435,11 @@ A list of details of all request schedules in a project
     "batch": false,
     "timeout": 200",
     "enabled": true,
-    "creation_date": "2020-09-16T08:06:34.457679Z"
+    "creation_date": "2020-09-16T08:06:34.457679Z",
+    "description": "Daily request schedule",
+    "labels": {
+      "type": "daily"
+    }
   }
 ]
 ```
@@ -12536,6 +13508,10 @@ Update a request schedule in a project. Create permissions on the object are nec
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled. Default is 'True'.
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Request Examples
 
 ```
@@ -12574,6 +13550,10 @@ Details of the updated request schedule
 
 - `creation_date`: The date when the request schedule was created
 
+- `description`: Description of the request schedule
+
+- `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
+
 ## Response Examples
 
 ```
@@ -12591,7 +13571,11 @@ Details of the updated request schedule
   "batch": false,
   "timeout": 360,
   "enabled": true,
-  "creation_date": "2020-09-16T08:06:34.457679Z"
+  "creation_date": "2020-09-16T08:06:34.457679Z",
+  "description": "Daily request schedule",
+  "labels": {
+    "type": "daily"
+  }
 }
 ```
 

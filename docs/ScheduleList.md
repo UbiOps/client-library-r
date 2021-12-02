@@ -14,5 +14,7 @@ Name | Type | Notes
 **timeout** | **int** | [optional] [readonly] 
 **enabled** | **bool** | 
 **creation_date** | **datetime** | [optional] 
+**description** | **str** | [optional] 
+**labels** | **dict(str, str)** | [optional] 
 
 

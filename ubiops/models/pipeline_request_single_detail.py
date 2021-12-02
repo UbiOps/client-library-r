@@ -45,7 +45,8 @@ class PipelineRequestSingleDetail(object):
         'result': 'object',
         'deployment_requests': 'list[PipelineRequestDeploymentRequest]',
         'error_message': 'str',
-        'created_by': 'str'
+        'created_by': 'str',
+        'notification_group': 'str'
     }
 
     attribute_map = {
@@ -61,10 +62,11 @@ class PipelineRequestSingleDetail(object):
         'result': 'result',
         'deployment_requests': 'deployment_requests',
         'error_message': 'error_message',
-        'created_by': 'created_by'
+        'created_by': 'created_by',
+        'notification_group': 'notification_group'
     }
 
-    def __init__(self, id=None, pipeline=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, request_data=None, result=None, deployment_requests=None, error_message=None, created_by=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, pipeline=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, request_data=None, result=None, deployment_requests=None, error_message=None, created_by=None, notification_group=None, local_vars_configuration=None):  # noqa: E501
         """PipelineRequestSingleDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -83,6 +85,7 @@ class PipelineRequestSingleDetail(object):
         self._deployment_requests = None
         self._error_message = None
         self._created_by = None
+        self._notification_group = None
         self.discriminator = None
 
         self.id = id
@@ -99,6 +102,7 @@ class PipelineRequestSingleDetail(object):
         self.error_message = error_message
         if created_by is not None:
             self.created_by = created_by
+        self.notification_group = notification_group
 
     @property
     def id(self):
@@ -419,6 +423,30 @@ class PipelineRequestSingleDetail(object):
             raise ValueError("Parameter `created_by` must be a string")  # noqa: E501
 
         self._created_by = created_by
+
+    @property
+    def notification_group(self):
+        """Gets the notification_group of this PipelineRequestSingleDetail.  # noqa: E501
+
+
+        :return: The notification_group of this PipelineRequestSingleDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._notification_group
+
+    @notification_group.setter
+    def notification_group(self, notification_group):
+        """Sets the notification_group of this PipelineRequestSingleDetail.
+
+
+        :param notification_group: The notification_group of this PipelineRequestSingleDetail.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                notification_group is not None and not isinstance(notification_group, str)):
+            raise ValueError("Parameter `notification_group` must be a string")  # noqa: E501
+
+        self._notification_group = notification_group
 
     def to_dict(self):
         """Returns the model properties as a dict"""

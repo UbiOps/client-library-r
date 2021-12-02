@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Notes
 ------------ | ------------- | -------------
-**status** | **str** | 
+**status** | **str** | [optional] 
+**notification_group** | **str** | [optional] 
 
 

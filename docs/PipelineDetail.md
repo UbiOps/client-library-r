@@ -11,7 +11,7 @@ Name | Type | Notes
 **input_fields** | [**list[PipelineInputFieldList]**](PipelineInputFieldList.md) | 
 **output_type** | **str** | 
 **output_fields** | [**list[PipelineOutputFieldList]**](PipelineOutputFieldList.md) | 
-**labels** | **str** or **dict(str, str)** | [optional] 
+**labels** | **dict(str, str)** | [optional] 
 **creation_date** | **datetime** | [optional] 
 **last_updated** | **datetime** | [optional] 
 **default_version** | **str** | [optional] [readonly] 

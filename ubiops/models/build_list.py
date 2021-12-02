@@ -69,7 +69,8 @@ class BuildList(object):
         self.revision = revision
         if creation_date is not None:
             self.creation_date = creation_date
-        self.status = status
+        if status is not None:
+            self.status = status
         self.error_message = error_message
         if trigger is not None:
             self.trigger = trigger
@@ -163,15 +164,9 @@ class BuildList(object):
         :param status: The status of this BuildList.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 status is not None and not isinstance(status, str)):
             raise ValueError("Parameter `status` must be a string")  # noqa: E501
-
-        if (self.local_vars_configuration.client_side_validation and
-                status is not None and len(status) < 1):
-            raise ValueError("Invalid value for `status`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._status = status
 

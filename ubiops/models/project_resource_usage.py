@@ -34,10 +34,10 @@ class ProjectResourceUsage(object):
     """
     openapi_types = {
         'deployments': 'int',
-        'deployment_versions': 'str',
+        'deployment_versions': 'int',
         'pipelines': 'int',
-        'pipeline_versions': 'str',
-        'versions': 'int'
+        'pipeline_versions': 'int',
+        'gpus': 'int'
     }
 
     attribute_map = {
@@ -45,10 +45,10 @@ class ProjectResourceUsage(object):
         'deployment_versions': 'deployment_versions',
         'pipelines': 'pipelines',
         'pipeline_versions': 'pipeline_versions',
-        'versions': 'versions'
+        'gpus': 'gpus'
     }
 
-    def __init__(self, deployments=None, deployment_versions=None, pipelines=None, pipeline_versions=None, versions=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, deployments=None, deployment_versions=None, pipelines=None, pipeline_versions=None, gpus=None, local_vars_configuration=None):  # noqa: E501
         """ProjectResourceUsage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -58,7 +58,7 @@ class ProjectResourceUsage(object):
         self._deployment_versions = None
         self._pipelines = None
         self._pipeline_versions = None
-        self._versions = None
+        self._gpus = None
         self.discriminator = None
 
         if deployments is not None:
@@ -69,8 +69,8 @@ class ProjectResourceUsage(object):
             self.pipelines = pipelines
         if pipeline_versions is not None:
             self.pipeline_versions = pipeline_versions
-        if versions is not None:
-            self.versions = versions
+        if gpus is not None:
+            self.gpus = gpus
 
     @property
     def deployments(self):
@@ -102,7 +102,7 @@ class ProjectResourceUsage(object):
 
 
         :return: The deployment_versions of this ProjectResourceUsage.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._deployment_versions
 
@@ -112,11 +112,11 @@ class ProjectResourceUsage(object):
 
 
         :param deployment_versions: The deployment_versions of this ProjectResourceUsage.  # noqa: E501
-        :type: str
+        :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
-                deployment_versions is not None and not isinstance(deployment_versions, str)):
-            raise ValueError("Parameter `deployment_versions` must be a string")  # noqa: E501
+                deployment_versions is not None and not isinstance(deployment_versions, int)):
+            raise ValueError("Parameter `deployment_versions` must be an integer")  # noqa: E501
 
         self._deployment_versions = deployment_versions
 
@@ -150,7 +150,7 @@ class ProjectResourceUsage(object):
 
 
         :return: The pipeline_versions of this ProjectResourceUsage.  # noqa: E501
-        :rtype: str
+        :rtype: int
         """
         return self._pipeline_versions
 
@@ -160,37 +160,37 @@ class ProjectResourceUsage(object):
 
 
         :param pipeline_versions: The pipeline_versions of this ProjectResourceUsage.  # noqa: E501
-        :type: str
+        :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
-                pipeline_versions is not None and not isinstance(pipeline_versions, str)):
-            raise ValueError("Parameter `pipeline_versions` must be a string")  # noqa: E501
+                pipeline_versions is not None and not isinstance(pipeline_versions, int)):
+            raise ValueError("Parameter `pipeline_versions` must be an integer")  # noqa: E501
 
         self._pipeline_versions = pipeline_versions
 
     @property
-    def versions(self):
-        """Gets the versions of this ProjectResourceUsage.  # noqa: E501
+    def gpus(self):
+        """Gets the gpus of this ProjectResourceUsage.  # noqa: E501
 
 
-        :return: The versions of this ProjectResourceUsage.  # noqa: E501
+        :return: The gpus of this ProjectResourceUsage.  # noqa: E501
         :rtype: int
         """
-        return self._versions
+        return self._gpus
 
-    @versions.setter
-    def versions(self, versions):
-        """Sets the versions of this ProjectResourceUsage.
+    @gpus.setter
+    def gpus(self, gpus):
+        """Sets the gpus of this ProjectResourceUsage.
 
 
-        :param versions: The versions of this ProjectResourceUsage.  # noqa: E501
+        :param gpus: The gpus of this ProjectResourceUsage.  # noqa: E501
         :type: int
         """
         if (self.local_vars_configuration.client_side_validation and
-                versions is not None and not isinstance(versions, int)):
-            raise ValueError("Parameter `versions` must be an integer")  # noqa: E501
+                gpus is not None and not isinstance(gpus, int)):
+            raise ValueError("Parameter `gpus` must be an integer")  # noqa: E501
 
-        self._versions = versions
+        self._gpus = gpus
 
     def to_dict(self):
         """Returns the model properties as a dict"""

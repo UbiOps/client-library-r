@@ -42,6 +42,7 @@ class DeploymentVersionList(object):
         'active_revision': 'str',
         'latest_build': 'str',
         'memory_allocation': 'int',
+        'instance_type': 'str',
         'maximum_instances': 'int',
         'minimum_instances': 'int',
         'maximum_idle_time': 'int',
@@ -50,7 +51,9 @@ class DeploymentVersionList(object):
         'last_updated': 'datetime',
         'request_retention_time': 'int',
         'request_retention_mode': 'str',
-        'deployment_mode': 'str'
+        'deployment_mode': 'str',
+        'monitoring': 'str',
+        'default_notification_group': 'str'
     }
 
     attribute_map = {
@@ -63,6 +66,7 @@ class DeploymentVersionList(object):
         'active_revision': 'active_revision',
         'latest_build': 'latest_build',
         'memory_allocation': 'memory_allocation',
+        'instance_type': 'instance_type',
         'maximum_instances': 'maximum_instances',
         'minimum_instances': 'minimum_instances',
         'maximum_idle_time': 'maximum_idle_time',
@@ -71,10 +75,12 @@ class DeploymentVersionList(object):
         'last_updated': 'last_updated',
         'request_retention_time': 'request_retention_time',
         'request_retention_mode': 'request_retention_mode',
-        'deployment_mode': 'deployment_mode'
+        'deployment_mode': 'deployment_mode',
+        'monitoring': 'monitoring',
+        'default_notification_group': 'default_notification_group'
     }
 
-    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, active_revision=None, latest_build=None, memory_allocation=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, request_retention_time=None, request_retention_mode=None, deployment_mode=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, description=None, language=None, status=None, active_revision=None, latest_build=None, memory_allocation=None, instance_type=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, labels=None, creation_date=None, last_updated=None, request_retention_time=None, request_retention_mode=None, deployment_mode=None, monitoring=None, default_notification_group=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentVersionList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -89,6 +95,7 @@ class DeploymentVersionList(object):
         self._active_revision = None
         self._latest_build = None
         self._memory_allocation = None
+        self._instance_type = None
         self._maximum_instances = None
         self._minimum_instances = None
         self._maximum_idle_time = None
@@ -98,6 +105,8 @@ class DeploymentVersionList(object):
         self._request_retention_time = None
         self._request_retention_mode = None
         self._deployment_mode = None
+        self._monitoring = None
+        self._default_notification_group = None
         self.discriminator = None
 
         if id is not None:
@@ -106,7 +115,8 @@ class DeploymentVersionList(object):
         self.version = version
         if description is not None:
             self.description = description
-        self.language = language
+        if language is not None:
+            self.language = language
         if status is not None:
             self.status = status
         if active_revision is not None:
@@ -115,6 +125,7 @@ class DeploymentVersionList(object):
             self.latest_build = latest_build
         if memory_allocation is not None:
             self.memory_allocation = memory_allocation
+        self.instance_type = instance_type
         if maximum_instances is not None:
             self.maximum_instances = maximum_instances
         if minimum_instances is not None:
@@ -130,6 +141,10 @@ class DeploymentVersionList(object):
             self.request_retention_time = request_retention_time
         self.request_retention_mode = request_retention_mode
         self.deployment_mode = deployment_mode
+        if monitoring is not None:
+            self.monitoring = monitoring
+        if default_notification_group is not None:
+            self.default_notification_group = default_notification_group
 
     @property
     def id(self):
@@ -264,12 +279,13 @@ class DeploymentVersionList(object):
         :param language: The language of this DeploymentVersionList.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and language is None:  # noqa: E501
-            raise ValueError("Invalid value for `language`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 language is not None and not isinstance(language, str)):
             raise ValueError("Parameter `language` must be a string")  # noqa: E501
 
+        if (self.local_vars_configuration.client_side_validation and
+                language is not None and len(language) > 30):
+            raise ValueError("Invalid value for `language`, length must be less than or equal to `30`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 language is not None and len(language) < 1):
             raise ValueError("Invalid value for `language`, length must be greater than or equal to `1`")  # noqa: E501
@@ -370,14 +386,37 @@ class DeploymentVersionList(object):
                 memory_allocation is not None and not isinstance(memory_allocation, int)):
             raise ValueError("Parameter `memory_allocation` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                memory_allocation is not None and memory_allocation > 1048576):  # noqa: E501
-            raise ValueError("Invalid value for `memory_allocation`, must be a value less than or equal to `1048576`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                memory_allocation is not None and memory_allocation < 256):  # noqa: E501
-            raise ValueError("Invalid value for `memory_allocation`, must be a value greater than or equal to `256`")  # noqa: E501
-
         self._memory_allocation = memory_allocation
+
+    @property
+    def instance_type(self):
+        """Gets the instance_type of this DeploymentVersionList.  # noqa: E501
+
+
+        :return: The instance_type of this DeploymentVersionList.  # noqa: E501
+        :rtype: str
+        """
+        return self._instance_type
+
+    @instance_type.setter
+    def instance_type(self, instance_type):
+        """Sets the instance_type of this DeploymentVersionList.
+
+
+        :param instance_type: The instance_type of this DeploymentVersionList.  # noqa: E501
+        :type: str
+        """
+        if self.local_vars_configuration.client_side_validation and instance_type is None:  # noqa: E501
+            raise ValueError("Invalid value for `instance_type`, must not be `None`")  # noqa: E501
+        if (self.local_vars_configuration.client_side_validation and
+                instance_type is not None and not isinstance(instance_type, str)):
+            raise ValueError("Parameter `instance_type` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                instance_type is not None and len(instance_type) < 1):
+            raise ValueError("Invalid value for `instance_type`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._instance_type = instance_type
 
     @property
     def maximum_instances(self):
@@ -607,6 +646,54 @@ class DeploymentVersionList(object):
             raise ValueError("Invalid value for `deployment_mode`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._deployment_mode = deployment_mode
+
+    @property
+    def monitoring(self):
+        """Gets the monitoring of this DeploymentVersionList.  # noqa: E501
+
+
+        :return: The monitoring of this DeploymentVersionList.  # noqa: E501
+        :rtype: str
+        """
+        return self._monitoring
+
+    @monitoring.setter
+    def monitoring(self, monitoring):
+        """Sets the monitoring of this DeploymentVersionList.
+
+
+        :param monitoring: The monitoring of this DeploymentVersionList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                monitoring is not None and not isinstance(monitoring, str)):
+            raise ValueError("Parameter `monitoring` must be a string")  # noqa: E501
+
+        self._monitoring = monitoring
+
+    @property
+    def default_notification_group(self):
+        """Gets the default_notification_group of this DeploymentVersionList.  # noqa: E501
+
+
+        :return: The default_notification_group of this DeploymentVersionList.  # noqa: E501
+        :rtype: str
+        """
+        return self._default_notification_group
+
+    @default_notification_group.setter
+    def default_notification_group(self, default_notification_group):
+        """Sets the default_notification_group of this DeploymentVersionList.
+
+
+        :param default_notification_group: The default_notification_group of this DeploymentVersionList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                default_notification_group is not None and not isinstance(default_notification_group, str)):
+            raise ValueError("Parameter `default_notification_group` must be a string")  # noqa: E501
+
+        self._default_notification_group = default_notification_group
 
     def to_dict(self):
         """Returns the model properties as a dict"""

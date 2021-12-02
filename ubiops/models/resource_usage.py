@@ -38,7 +38,8 @@ class ResourceUsage(object):
         'deployments': 'int',
         'deployment_versions': 'int',
         'pipelines': 'int',
-        'pipeline_versions': 'int'
+        'pipeline_versions': 'int',
+        'gpus': 'int'
     }
 
     attribute_map = {
@@ -47,10 +48,11 @@ class ResourceUsage(object):
         'deployments': 'deployments',
         'deployment_versions': 'deployment_versions',
         'pipelines': 'pipelines',
-        'pipeline_versions': 'pipeline_versions'
+        'pipeline_versions': 'pipeline_versions',
+        'gpus': 'gpus'
     }
 
-    def __init__(self, projects=None, users=None, deployments=None, deployment_versions=None, pipelines=None, pipeline_versions=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, projects=None, users=None, deployments=None, deployment_versions=None, pipelines=None, pipeline_versions=None, gpus=None, local_vars_configuration=None):  # noqa: E501
         """ResourceUsage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -62,6 +64,7 @@ class ResourceUsage(object):
         self._deployment_versions = None
         self._pipelines = None
         self._pipeline_versions = None
+        self._gpus = None
         self.discriminator = None
 
         if projects is not None:
@@ -76,6 +79,8 @@ class ResourceUsage(object):
             self.pipelines = pipelines
         if pipeline_versions is not None:
             self.pipeline_versions = pipeline_versions
+        if gpus is not None:
+            self.gpus = gpus
 
     @property
     def projects(self):
@@ -220,6 +225,30 @@ class ResourceUsage(object):
             raise ValueError("Parameter `pipeline_versions` must be an integer")  # noqa: E501
 
         self._pipeline_versions = pipeline_versions
+
+    @property
+    def gpus(self):
+        """Gets the gpus of this ResourceUsage.  # noqa: E501
+
+
+        :return: The gpus of this ResourceUsage.  # noqa: E501
+        :rtype: int
+        """
+        return self._gpus
+
+    @gpus.setter
+    def gpus(self, gpus):
+        """Sets the gpus of this ResourceUsage.
+
+
+        :param gpus: The gpus of this ResourceUsage.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                gpus is not None and not isinstance(gpus, int)):
+            raise ValueError("Parameter `gpus` must be an integer")  # noqa: E501
+
+        self._gpus = gpus
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -8,5 +8,7 @@ Name | Type | Notes
 **request_data** | **str** or **dict(str, str)** | [optional] 
 **timeout** | **int** | [optional] 
 **enabled** | **bool** | [optional] 
+**description** | **str** | [optional] 
+**labels** | **dict(str, str)** | [optional] 
 
 

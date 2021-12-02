@@ -33,23 +33,28 @@ class DeploymentRequestUpdate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'status': 'str'
+        'status': 'str',
+        'notification_group': 'str'
     }
 
     attribute_map = {
-        'status': 'status'
+        'status': 'status',
+        'notification_group': 'notification_group'
     }
 
-    def __init__(self, status=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, status=None, notification_group=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentRequestUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._status = None
+        self._notification_group = None
         self.discriminator = None
 
-        self.status = status
+        if status is not None:
+            self.status = status
+        self.notification_group = notification_group
 
     @property
     def status(self):
@@ -69,8 +74,6 @@ class DeploymentRequestUpdate(object):
         :param status: The status of this DeploymentRequestUpdate.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and status is None:  # noqa: E501
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 status is not None and not isinstance(status, str)):
             raise ValueError("Parameter `status` must be a string")  # noqa: E501
@@ -82,6 +85,34 @@ class DeploymentRequestUpdate(object):
             )
 
         self._status = status
+
+    @property
+    def notification_group(self):
+        """Gets the notification_group of this DeploymentRequestUpdate.  # noqa: E501
+
+
+        :return: The notification_group of this DeploymentRequestUpdate.  # noqa: E501
+        :rtype: str
+        """
+        return self._notification_group
+
+    @notification_group.setter
+    def notification_group(self, notification_group):
+        """Sets the notification_group of this DeploymentRequestUpdate.
+
+
+        :param notification_group: The notification_group of this DeploymentRequestUpdate.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                notification_group is not None and not isinstance(notification_group, str)):
+            raise ValueError("Parameter `notification_group` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                notification_group is not None and len(notification_group) < 1):
+            raise ValueError("Invalid value for `notification_group`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._notification_group = notification_group
 
     def to_dict(self):
         """Returns the model properties as a dict"""

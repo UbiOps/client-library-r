@@ -41,7 +41,7 @@ class DeploymentDetail(object):
         'output_type': 'str',
         'input_fields': 'list[DeploymentInputFieldList]',
         'output_fields': 'list[DeploymentOutputFieldList]',
-        'labels': 'object',
+        'labels': 'dict(str, str)',
         'creation_date': 'datetime',
         'last_updated': 'datetime',
         'default_version': 'str'
@@ -345,7 +345,7 @@ class DeploymentDetail(object):
 
 
         :return: The labels of this DeploymentDetail.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._labels
 
@@ -355,8 +355,11 @@ class DeploymentDetail(object):
 
 
         :param labels: The labels of this DeploymentDetail.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
 
         self._labels = labels
 

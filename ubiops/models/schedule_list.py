@@ -43,7 +43,9 @@ class ScheduleList(object):
         'batch': 'bool',
         'timeout': 'int',
         'enabled': 'bool',
-        'creation_date': 'datetime'
+        'creation_date': 'datetime',
+        'description': 'str',
+        'labels': 'dict(str, str)'
     }
 
     attribute_map = {
@@ -57,10 +59,12 @@ class ScheduleList(object):
         'batch': 'batch',
         'timeout': 'timeout',
         'enabled': 'enabled',
-        'creation_date': 'creation_date'
+        'creation_date': 'creation_date',
+        'description': 'description',
+        'labels': 'labels'
     }
 
-    def __init__(self, id=None, name=None, object_type=None, object_name=None, version=None, schedule=None, request_data=None, batch=None, timeout=None, enabled=None, creation_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, object_type=None, object_name=None, version=None, schedule=None, request_data=None, batch=None, timeout=None, enabled=None, creation_date=None, description=None, labels=None, local_vars_configuration=None):  # noqa: E501
         """ScheduleList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -77,6 +81,8 @@ class ScheduleList(object):
         self._timeout = None
         self._enabled = None
         self._creation_date = None
+        self._description = None
+        self._labels = None
         self.discriminator = None
 
         if id is not None:
@@ -98,6 +104,9 @@ class ScheduleList(object):
         self.enabled = enabled
         if creation_date is not None:
             self.creation_date = creation_date
+        if description is not None:
+            self.description = description
+        self.labels = labels
 
     @property
     def id(self):
@@ -364,6 +373,58 @@ class ScheduleList(object):
         """
 
         self._creation_date = creation_date
+
+    @property
+    def description(self):
+        """Gets the description of this ScheduleList.  # noqa: E501
+
+
+        :return: The description of this ScheduleList.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this ScheduleList.
+
+
+        :param description: The description of this ScheduleList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and not isinstance(description, str)):
+            raise ValueError("Parameter `description` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                description is not None and len(description) > 200):
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")  # noqa: E501
+
+        self._description = description
+
+    @property
+    def labels(self):
+        """Gets the labels of this ScheduleList.  # noqa: E501
+
+
+        :return: The labels of this ScheduleList.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._labels
+
+    @labels.setter
+    def labels(self, labels):
+        """Sets the labels of this ScheduleList.
+
+
+        :param labels: The labels of this ScheduleList.  # noqa: E501
+        :type: dict(str, str)
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
+
+        self._labels = labels
 
     def to_dict(self):
         """Returns the model properties as a dict"""

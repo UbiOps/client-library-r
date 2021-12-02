@@ -35,20 +35,24 @@ class PipelineVersionCreate(object):
     openapi_types = {
         'version': 'str',
         'description': 'str',
-        'labels': 'object',
+        'labels': 'dict(str, str)',
+        'monitoring': 'str',
         'request_retention_time': 'int',
-        'request_retention_mode': 'str'
+        'request_retention_mode': 'str',
+        'default_notification_group': 'str'
     }
 
     attribute_map = {
         'version': 'version',
         'description': 'description',
         'labels': 'labels',
+        'monitoring': 'monitoring',
         'request_retention_time': 'request_retention_time',
-        'request_retention_mode': 'request_retention_mode'
+        'request_retention_mode': 'request_retention_mode',
+        'default_notification_group': 'default_notification_group'
     }
 
-    def __init__(self, version=None, description=None, labels=None, request_retention_time=None, request_retention_mode='full', local_vars_configuration=None):  # noqa: E501
+    def __init__(self, version=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode='full', default_notification_group=None, local_vars_configuration=None):  # noqa: E501
         """PipelineVersionCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -57,19 +61,22 @@ class PipelineVersionCreate(object):
         self._version = None
         self._description = None
         self._labels = None
+        self._monitoring = None
         self._request_retention_time = None
         self._request_retention_mode = None
+        self._default_notification_group = None
         self.discriminator = None
 
         self.version = version
         if description is not None:
             self.description = description
-        if labels is not None:
-            self.labels = labels
+        self.labels = labels
+        self.monitoring = monitoring
         if request_retention_time is not None:
             self.request_retention_time = request_retention_time
         if request_retention_mode is not None:
             self.request_retention_mode = request_retention_mode
+        self.default_notification_group = default_notification_group
 
     @property
     def version(self):
@@ -131,7 +138,7 @@ class PipelineVersionCreate(object):
 
 
         :return: The labels of this PipelineVersionCreate.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, str)
         """
         return self._labels
 
@@ -141,10 +148,41 @@ class PipelineVersionCreate(object):
 
 
         :param labels: The labels of this PipelineVersionCreate.  # noqa: E501
-        :type: object
+        :type: dict(str, str)
         """
+        if (self.local_vars_configuration.client_side_validation and
+                labels is not None and not isinstance(labels, dict)):
+            raise ValueError("Parameter `labels` must be a dictionary")  # noqa: E501
 
         self._labels = labels
+
+    @property
+    def monitoring(self):
+        """Gets the monitoring of this PipelineVersionCreate.  # noqa: E501
+
+
+        :return: The monitoring of this PipelineVersionCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._monitoring
+
+    @monitoring.setter
+    def monitoring(self, monitoring):
+        """Sets the monitoring of this PipelineVersionCreate.
+
+
+        :param monitoring: The monitoring of this PipelineVersionCreate.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                monitoring is not None and not isinstance(monitoring, str)):
+            raise ValueError("Parameter `monitoring` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                monitoring is not None and len(monitoring) < 1):
+            raise ValueError("Invalid value for `monitoring`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._monitoring = monitoring
 
     @property
     def request_retention_time(self):
@@ -206,6 +244,34 @@ class PipelineVersionCreate(object):
             )
 
         self._request_retention_mode = request_retention_mode
+
+    @property
+    def default_notification_group(self):
+        """Gets the default_notification_group of this PipelineVersionCreate.  # noqa: E501
+
+
+        :return: The default_notification_group of this PipelineVersionCreate.  # noqa: E501
+        :rtype: str
+        """
+        return self._default_notification_group
+
+    @default_notification_group.setter
+    def default_notification_group(self, default_notification_group):
+        """Sets the default_notification_group of this PipelineVersionCreate.
+
+
+        :param default_notification_group: The default_notification_group of this PipelineVersionCreate.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                default_notification_group is not None and not isinstance(default_notification_group, str)):
+            raise ValueError("Parameter `default_notification_group` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                default_notification_group is not None and len(default_notification_group) < 1):
+            raise ValueError("Invalid value for `default_notification_group`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._default_notification_group = default_notification_group
 
     def to_dict(self):
         """Returns the model properties as a dict"""

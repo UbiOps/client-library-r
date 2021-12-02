@@ -44,7 +44,8 @@ class DeploymentRequestSingleDetail(object):
         'error_message': 'str',
         'request_data': 'object',
         'result': 'object',
-        'created_by': 'str'
+        'created_by': 'str',
+        'notification_group': 'str'
     }
 
     attribute_map = {
@@ -59,10 +60,11 @@ class DeploymentRequestSingleDetail(object):
         'error_message': 'error_message',
         'request_data': 'request_data',
         'result': 'result',
-        'created_by': 'created_by'
+        'created_by': 'created_by',
+        'notification_group': 'notification_group'
     }
 
-    def __init__(self, id=None, deployment=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, error_message=None, request_data=None, result=None, created_by=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, error_message=None, request_data=None, result=None, created_by=None, notification_group=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentRequestSingleDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -80,6 +82,7 @@ class DeploymentRequestSingleDetail(object):
         self._request_data = None
         self._result = None
         self._created_by = None
+        self._notification_group = None
         self.discriminator = None
 
         self.id = id
@@ -95,6 +98,7 @@ class DeploymentRequestSingleDetail(object):
         self.result = result
         if created_by is not None:
             self.created_by = created_by
+        self.notification_group = notification_group
 
     @property
     def id(self):
@@ -384,6 +388,30 @@ class DeploymentRequestSingleDetail(object):
             raise ValueError("Parameter `created_by` must be a string")  # noqa: E501
 
         self._created_by = created_by
+
+    @property
+    def notification_group(self):
+        """Gets the notification_group of this DeploymentRequestSingleDetail.  # noqa: E501
+
+
+        :return: The notification_group of this DeploymentRequestSingleDetail.  # noqa: E501
+        :rtype: str
+        """
+        return self._notification_group
+
+    @notification_group.setter
+    def notification_group(self, notification_group):
+        """Sets the notification_group of this DeploymentRequestSingleDetail.
+
+
+        :param notification_group: The notification_group of this DeploymentRequestSingleDetail.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                notification_group is not None and not isinstance(notification_group, str)):
+            raise ValueError("Parameter `notification_group` must be a string")  # noqa: E501
+
+        self._notification_group = notification_group
 
     def to_dict(self):
         """Returns the model properties as a dict"""

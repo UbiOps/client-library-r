@@ -11,7 +11,7 @@ Name | Type | Notes
 **output_type** | **str** | 
 **input_fields** | [**list[DeploymentInputFieldList]**](DeploymentInputFieldList.md) | [optional] [readonly] 
 **output_fields** | [**list[DeploymentOutputFieldList]**](DeploymentOutputFieldList.md) | [optional] [readonly] 
-**labels** | **str** or **dict(str, str)** | [optional] 
+**labels** | **dict(str, str)** | [optional] 
 **creation_date** | **datetime** | [optional] 
 **last_updated** | **datetime** | [optional] 
 **default_version** | **str** | [optional] [readonly] 

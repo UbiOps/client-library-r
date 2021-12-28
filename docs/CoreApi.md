@@ -5484,7 +5484,7 @@ Name | Type | Notes
  **project_name** | **str** | 
  **file** | **file** | [optional] 
  **import_link** | **str** | [optional] 
- **export_id** | [**str**](str.md) | [optional] 
+ **export_id** | **str** | [optional] 
  **skip_confirmation** | **bool** | [optional] 
 
 ### Return type

@@ -126,7 +126,8 @@ class DeploymentVersionDetail(object):
             self.active_revision = active_revision
         if latest_build is not None:
             self.latest_build = latest_build
-        self.memory_allocation = memory_allocation
+        if memory_allocation is not None:
+            self.memory_allocation = memory_allocation
         self.instance_type = instance_type
         if maximum_instances is not None:
             self.maximum_instances = maximum_instances
@@ -386,8 +387,6 @@ class DeploymentVersionDetail(object):
         :param memory_allocation: The memory_allocation of this DeploymentVersionDetail.  # noqa: E501
         :type: int
         """
-        if self.local_vars_configuration.client_side_validation and memory_allocation is None:  # noqa: E501
-            raise ValueError("Invalid value for `memory_allocation`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 memory_allocation is not None and not isinstance(memory_allocation, int)):
             raise ValueError("Parameter `memory_allocation` must be an integer")  # noqa: E501

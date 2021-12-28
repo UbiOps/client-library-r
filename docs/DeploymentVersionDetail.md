@@ -11,7 +11,7 @@ Name | Type | Notes
 **status** | **str** | [optional] [readonly] 
 **active_revision** | **str** | [optional] [readonly] 
 **latest_build** | **str** | [optional] [readonly] 
-**memory_allocation** | **int** | 
+**memory_allocation** | **int** | [optional] 
 **instance_type** | **str** | 
 **maximum_instances** | **int** | [optional] 
 **minimum_instances** | **int** | [optional] 

@@ -4,7 +4,7 @@
 Name | Type | Notes
 ------------ | ------------- | -------------
 **value** | **float** | [optional] 
-**start_time** | **datetime** | [optional] 
-**end_time** | **datetime** | [optional] 
+**start_date** | **datetime** | [optional] 
+**end_date** | **datetime** | [optional] 
 
 

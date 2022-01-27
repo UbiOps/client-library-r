@@ -34,15 +34,17 @@ class PipelineInputFieldCreate(object):
     """
     openapi_types = {
         'name': 'str',
-        'data_type': 'str'
+        'data_type': 'str',
+        'widget': 'PipelineInputFieldWidgetCreate'
     }
 
     attribute_map = {
         'name': 'name',
-        'data_type': 'data_type'
+        'data_type': 'data_type',
+        'widget': 'widget'
     }
 
-    def __init__(self, name=None, data_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, data_type=None, widget=None, local_vars_configuration=None):  # noqa: E501
         """PipelineInputFieldCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -50,10 +52,13 @@ class PipelineInputFieldCreate(object):
 
         self._name = None
         self._data_type = None
+        self._widget = None
         self.discriminator = None
 
         self.name = name
         self.data_type = data_type
+        if widget is not None:
+            self.widget = widget
 
     @property
     def name(self):
@@ -119,6 +124,33 @@ class PipelineInputFieldCreate(object):
             )
 
         self._data_type = data_type
+
+    @property
+    def widget(self):
+        """Gets the widget of this PipelineInputFieldCreate.  # noqa: E501
+
+
+        :return: The widget of this PipelineInputFieldCreate.  # noqa: E501
+        :rtype: PipelineInputFieldWidgetCreate
+        """
+        return self._widget
+
+    @widget.setter
+    def widget(self, widget):
+        """Sets the widget of this PipelineInputFieldCreate.
+
+
+        :param widget: The widget of this PipelineInputFieldCreate.  # noqa: E501
+        :type: PipelineInputFieldWidgetCreate
+        """
+
+        if self.local_vars_configuration.client_side_validation and widget is not None:
+            if isinstance(widget, dict):  # noqa: E501
+                from ubiops.models.pipeline_input_field_widget_create import PipelineInputFieldWidgetCreate
+
+                widget = PipelineInputFieldWidgetCreate(**widget)  # noqa: E501
+
+        self._widget = widget
 
     def to_dict(self):
         """Returns the model properties as a dict"""

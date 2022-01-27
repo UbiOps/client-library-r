@@ -15,7 +15,7 @@ Name | Type | Notes
 **result** | **str** or **dict(str, str)** | [optional] 
 **deployment_requests** | [**list[PipelineRequestDeploymentRequest]**](PipelineRequestDeploymentRequest.md) | 
 **error_message** | **str** | [optional] 
-**created_by** | **str** | [optional] [readonly] 
 **notification_group** | **str** | [optional] 
+**origin** | **dict(str, str)** | [optional] [readonly] 
 
 

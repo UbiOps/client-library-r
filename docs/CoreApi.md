@@ -70,8 +70,6 @@ Method | HTTP request | Description
 [**notification_groups_get**](CoreApi.md#notification_groups_get) | **GET** /projects/{project_name}/monitoring/notification-groups/{notification_group_name} | Get notification group
 [**notification_groups_list**](CoreApi.md#notification_groups_list) | **GET** /projects/{project_name}/monitoring/notification-groups | List notification groups
 [**notification_groups_update**](CoreApi.md#notification_groups_update) | **PATCH** /projects/{project_name}/monitoring/notification-groups/{notification_group_name} | Update notification group
-[**organization_usage_details_get**](CoreApi.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
-[**organization_usage_get**](CoreApi.md#organization_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 [**organization_users_create**](CoreApi.md#organization_users_create) | **POST** /organizations/{organization_name}/users | Add a user to an organization
 [**organization_users_delete**](CoreApi.md#organization_users_delete) | **DELETE** /organizations/{organization_name}/users/{user_id} | Delete a user from an organization
 [**organization_users_get**](CoreApi.md#organization_users_get) | **GET** /organizations/{organization_name}/users/{user_id} | Get details of a user in an organization
@@ -82,6 +80,7 @@ Method | HTTP request | Description
 [**organizations_list**](CoreApi.md#organizations_list) | **GET** /organizations | List organizations
 [**organizations_resource_usage**](CoreApi.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | List resource usage of an organization
 [**organizations_update**](CoreApi.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
+[**organizations_usage_get**](CoreApi.md#organizations_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 [**permissions_list**](CoreApi.md#permissions_list) | **GET** /permissions | List the available permissions
 [**pipeline_audit_events_list**](CoreApi.md#pipeline_audit_events_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/audit | List audit events for a pipeline
 [**pipeline_requests_batch_delete**](CoreApi.md#pipeline_requests_batch_delete) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/requests/delete | Delete multiple pipeline requests
@@ -123,7 +122,6 @@ Method | HTTP request | Description
 [**project_environment_variables_get**](CoreApi.md#project_environment_variables_get) | **GET** /projects/{project_name}/environment-variables/{id} | Get project environment variable
 [**project_environment_variables_list**](CoreApi.md#project_environment_variables_list) | **GET** /projects/{project_name}/environment-variables | List project environment variables
 [**project_environment_variables_update**](CoreApi.md#project_environment_variables_update) | **PATCH** /projects/{project_name}/environment-variables/{id} | Update project environment variable
-[**project_usage_get**](CoreApi.md#project_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
 [**project_users_create**](CoreApi.md#project_users_create) | **POST** /projects/{project_name}/users | Add user to a project
 [**project_users_delete**](CoreApi.md#project_users_delete) | **DELETE** /projects/{project_name}/users/{user_id} | Delete user from a project
 [**project_users_get**](CoreApi.md#project_users_get) | **GET** /projects/{project_name}/users/{user_id} | Get user in a project
@@ -135,6 +133,7 @@ Method | HTTP request | Description
 [**projects_log_list**](CoreApi.md#projects_log_list) | **POST** /projects/{project_name}/logs | List logs for a project
 [**projects_resource_usage**](CoreApi.md#projects_resource_usage) | **GET** /projects/{project_name}/resources | List resource usage of a project
 [**projects_update**](CoreApi.md#projects_update) | **PATCH** /projects/{project_name} | Update a project
+[**projects_usage_get**](CoreApi.md#projects_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
 [**request_schedules_create**](CoreApi.md#request_schedules_create) | **POST** /projects/{project_name}/schedules | Create request schedules
 [**request_schedules_delete**](CoreApi.md#request_schedules_delete) | **DELETE** /projects/{project_name}/schedules/{schedule_name} | Delete a request schedule
 [**request_schedules_get**](CoreApi.md#request_schedules_get) | **GET** /projects/{project_name}/schedules/{schedule_name} | Get details of a request schedule
@@ -695,7 +694,7 @@ Upload a blob to a project. The uploaded blob file can be retrieved by passing t
 ### Optional Parameters
 These parameters should be given in the header.
 
-- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (or 24 hours), the minimum value is 900 seconds and the maximum value is 31536000 seconds.
+- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (1 day).
 
 ### Response Structure
 The details of the uploaded blob
@@ -710,14 +709,14 @@ The details of the uploaded blob
 ## Response Examples
 
 ```
-{
+{{
   "id": "b58fb853-9311-4583-9688-abed61830abc",
   "creation_date": "2020-05-18T11:26:57.904+00:00",
   "last_updated": "2020-05-18T11:26:57.904+00:00",
   "filename": "original-filename.jpg",
   "size": 3439,
   "ttl": 86400
-}
+}}
 ```
 
 ### Example
@@ -986,7 +985,7 @@ Overwrite a blob with given blob id. The uploaded blob file can be retrieved by 
 ### Optional Parameters
 These parameters should be given in the header.
 
-- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (or 24 hours), the minimum value is 900 seconds and the maximum value is 31536000 seconds.
+- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (1 day).
 
 ### Response Structure
 The details of the uploaded blob
@@ -1001,14 +1000,14 @@ The details of the uploaded blob
 ## Response Examples
 
 ```
-{
+{{
   "id": "b58fb853-9311-4583-9688-abed61830abc",
   "creation_date": "2020-05-18T11:26:57.904+00:00",
   "last_updated": "2020-05-18T11:26:57.904+00:00",
   "filename": "original-filename.jpg",
   "size": 3439,
   "ttl": 86400
-}
+}}
 ```
 
 ### Example
@@ -2259,6 +2258,10 @@ A dictionary containing the details of the deployment request with the following
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+- `origin`: A dictionary containing the information on where the request originated from. It contains:
+   - the deployment (and version) names if the request is directly made to the deployment
+   - the pipeline (and version) names if the request is part of a pipeline request
+   - the request schedule name if the request is created via a request schedule
 
 ## Response Examples
 
@@ -2278,7 +2281,11 @@ A dictionary containing the details of the deployment request with the following
   "result": null,
   "error_message": null,
   "created_by": "my.example.user@ubiops.com",
-  "notification_group": "notification-group-1"
+  "notification_group": "notification-group-1",
+  "origin": {
+    "deployment": "deployment-1",
+    "deployment_version": "v1"
+  }
 }
 ```
 
@@ -3777,7 +3784,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9 or r4.0. The default value is python3.7.
 - `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
-- `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
+- `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
 
@@ -4399,7 +4406,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **deployments_create**
-> DeploymentList deployments_create(project_name, data)
+> DeploymentCreateResponse deployments_create(project_name, data)
 
 Create deployments
 
@@ -4417,13 +4424,28 @@ Possible data types for the input and output fields are:
 - **array_string**: an array of strings
 - **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.
 
+Possible widgets for the input fields are:
+- **textbox**: textbox
+- **numberbox**: numberbox
+- **slider**: slider
+- **dropdown**: dropdown
+- **switch**: switch
+- **button**: upload button
+- **drawer**: drawer
+- **image_preview**: image upload with preview
+
+Possible widgets for the output fields are:
+- **textbox**: textbox
+- **button**: download button
+- **image_preview**: image preview
+
 ### Required Parameters
 
 - `name`: Name of the deployment. It is unique within a project.
 - `input_type`: Type of the input of the deployment. It can be either structured or plain.
 - `output_type`: Type of the output of the deployment. It can be either structured or plain.
-- `input_fields`: The list of required deployment input fields. It must contain the fields: name and data_type. The name of an input field is unique for a deployment.
-- `output_fields`: The list of required deployment output fields. It must contain the fields: name and data_type. The name of an output field is unique for a deployment.
+- `input_fields`: The list of required deployment input fields. It must contain the fields: name and data_type, and it may contain the field: widget. The name of an input field is unique for a deployment.
+- `output_fields`: The list of required deployment output fields. It must contain the fields: name and data_type, and it may contain the field: widget. The name of an output field is unique for a deployment.
 
 ### Optional Parameters
 
@@ -4487,6 +4509,43 @@ A deployment with plain input and output type
 }
 ```
 
+A deployment with structured input and output type and field widgets
+```
+{
+  "name": "deployment-1",
+  "input_type": "structured",
+  "output_type": "structured",
+  "input_fields": [
+    {
+      "name": "input-field-1",
+      "data_type": "int",
+      "widget": {
+        "type": "slider",
+        "configuration": {"min": 0, "max": 10, "default": 4, "step": 2}
+      }
+    },
+    {
+      "name": "input-field-2",
+      "data_type": "double",
+      "widget": {
+        "type": "numberbox",
+        "configuration": {"min": 0, "max": 1, "default": 0.5, "step": 0.1}
+      }
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "output-field",
+      "data_type": "double",
+      "widget": {
+        "type": "textbox",
+        "configuration": {}
+      }
+    }
+  ]
+}
+```
+
 ### Response Structure
 Details of the created deployment
 
@@ -4515,17 +4574,20 @@ Details of the created deployment
   "input_fields": [
     {
       "name": "input-field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "input-field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_fields": [
     {
       "name": "output-field",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -4574,7 +4636,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**DeploymentList**](DeploymentList.md)
+[**DeploymentCreateResponse**](DeploymentCreateResponse.md)
 
 ### Authorization
 
@@ -4651,8 +4713,8 @@ Details of a deployment
 - `project`: Project name in which the deployment is defined
 - `input_type`: Type of the input of the deployment
 - `output_type`: Type of the output of the deployment
-- `input_fields`: The list of deployment input fields containing name and data_type
-- `output_fields`: The list of deployment output fields containing name and data_type
+- `input_fields`: The list of deployment input fields containing name, data_type and widget
+- `output_fields`: The list of deployment output fields containing name, data_type and widget
 - `description`: Description of the deployment
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
@@ -4672,17 +4734,20 @@ Details of a deployment
   "input_fields": [
     {
       "name": "input-field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "input-field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_fields": [
     {
       "name": "output-field",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -4898,7 +4963,7 @@ Update a deployment
 - `input_fields`: New input fields for the deployment
 - `output_fields`: New output fields for the deployment
 
-Input and output fields can be updated (name or data type), added or removed. For deployments that are attached in a pipeline, fields must be updated one at a time so that the updates can be performed while preserving the mapping.
+Input and output fields can be updated (name, data type or widget), added or removed. For deployments that are attached in a pipeline or contain any input/output widgets, fields must be updated one at a time so that the updates can be performed while preserving the mapping/widgets.
 
 ## Request Examples
 
@@ -4916,8 +4981,8 @@ Details of the updated deployment
 - `project`: Project name in which the deployment is defined
 - `input_type`: Type of the input of the deployment
 - `output_type`: Type of the output of the deployment
-- `input_fields`: The list of deployment input fields containing name and data_type
-- `output_fields`: The list of deployment output fields containing name and data_type
+- `input_fields`: The list of deployment input fields containing name, data_type and (optional) widget
+- `output_fields`: The list of deployment output fields containing name, data_type and (optional) widget
 - `description`: Description of the deployment
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
@@ -4937,17 +5002,20 @@ Details of the updated deployment
   "input_fields": [
     {
       "name": "input-field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "input-field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_fields": [
     {
       "name": "output-field",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -6070,7 +6138,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **metrics_get**
-> list[Metrics] metrics_get(project_name, metric, start_time, end_time, object_type, interval=interval, object_id=object_id)
+> list[Metrics] metrics_get(project_name, metric, start_date, end_date, object_type, interval=interval, object_id=object_id)
 
 Get metrics
 
@@ -6100,8 +6168,8 @@ Metrics on deployment version level:
 
 ### Required Parameters
 
-- `start_time`: Starting time for the metric values to be returned. It should be provided in datetime isoformat.
-- `end_time`: Ending time for the metric values to be returned. It should be provided in datetime isoformat.
+- `start_date`: Starting date for the metric values to be returned. It should be provided in datetime isoformat.
+- `end_date`: Ending date for the metric values to be returned. It should be provided in datetime isoformat.
 - `object_type`: The type of the object for which the metrics are requested. It can be either `deployment_version` or `pipeline_version`.
 
 ### Optional Parameters
@@ -6111,79 +6179,79 @@ Metrics on deployment version level:
 
 ### Response Structure
 
-- `start_time`: Timestamp denoting the start of the period over which the metric was measured
-- `end_time`: Timestamp denoting the end of the period over which the metric was measured
+- `start_date`: Timestamp denoting the start of the period over which the metric was measured
+- `end_date`: Timestamp denoting the end of the period over which the metric was measured
 - `value`: Aggregated metric value for the given interval
 
 ## Response Examples
-With interval as minute, start_time as 2019-11-13 12:00:00 and end_time as 2019-11-13 12:03:00
+With interval as minute, start_date as 2019-11-13 12:00:00 and end_date as 2019-11-13 12:03:00
 
 ```
 [
   {
-    "start_time": "2019-11-13T12:00:00+00:00",
-    "end_time": "2019-11-13T12:01:00+00:00",
+    "start_date": "2019-11-13T12:00:00+00:00",
+    "end_date": "2019-11-13T12:01:00+00:00",
     "value": 100
   },
   {
-    "start_time": "2019-11-13T12:01:00+00:00",
-    "end_time": "2019-11-13T12:02:00+00:00",
+    "start_date": "2019-11-13T12:01:00+00:00",
+    "end_date": "2019-11-13T12:02:00+00:00",
     "value": 134
   },
   {
-    "start_time": "2019-11-13T12:02:00+00:00",
-    "end_time": "2019-11-13T12:03:00+00:00",
+    "start_date": "2019-11-13T12:02:00+00:00",
+    "end_date": "2019-11-13T12:03:00+00:00",
     "value": 112
   }
 ]
 
 ```
 
-With interval as hour, start_time as 2019-11-13 12:00:00 and end_time as 2019-11-13 14:00:00
+With interval as hour, start_date as 2019-11-13 12:00:00 and end_date as 2019-11-13 14:00:00
 
 ```
 [
   {
-   "start_time": "2019-11-13T12:00:00+00:00",
-   "end_time": "2019-11-13T13:00:00+00:00",
+   "start_date": "2019-11-13T12:00:00+00:00",
+   "end_date": "2019-11-13T13:00:00+00:00",
    "value": 92
   },
   {
-    "start_time": "2019-11-13T13:00:00+00:00",
-    "end_time": "2019-11-13T14:00:00+00:00",
+    "start_date": "2019-11-13T13:00:00+00:00",
+    "end_date": "2019-11-13T14:00:00+00:00",
     "value": 120
   },
   {
-    "start_time": "2019-11-13T14:00:00+00:00",
-    "end_time": "2019-11-13T15:00:00+00:00",
+    "start_date": "2019-11-13T14:00:00+00:00",
+    "end_date": "2019-11-13T15:00:00+00:00",
     "value": 0
   }
 ]
 ```
 
-With interval as day, start_time as 2019-11-13 12:00:00 and end_time as 2019-11-14 12:00:00
+With interval as day, start_date as 2019-11-13 12:00:00 and end_date as 2019-11-14 12:00:00
 
 ```
 [
   {
-   "start_time": "2019-11-13T00:00:00+00:00",
-   "end_time": "2019-11-14T00:00:00+00:00",
+   "start_date": "2019-11-13T00:00:00+00:00",
+   "end_date": "2019-11-14T00:00:00+00:00",
    "value": 528
   },
   {
-    "start_time": "2019-11-14T00:00:00+00:00",
-    "end_time": "2019-11-15T00:00:00+00:00",
+    "start_date": "2019-11-14T00:00:00+00:00",
+    "end_date": "2019-11-15T00:00:00+00:00",
     "value": 342
   }
 ]
 ```
 
-With interval as month, start_time as 2019-11-13 12:00:00 and end_time as 2019-12-13 12:00:00
+With interval as month, start_date as 2019-11-13 12:00:00 and end_date as 2019-12-13 12:00:00
 ```
 [
   {
-   "start_time": "2019-11-01T00:00:00+00:00",
-   "end_time": "2019-12-01T00:00:00+00:00",
+   "start_date": "2019-11-01T00:00:00+00:00",
+   "end_date": "2019-12-01T00:00:00+00:00",
    "value": 1983
   }
 ]
@@ -6207,14 +6275,14 @@ api_instance = ubiops.CoreApi(api_client)
 
 project_name = 'project_name_example' # str 
 metric = 'metric_example' # str 
-start_time = 'start_time_example' # str 
-end_time = 'end_time_example' # str 
+start_date = 'start_date_example' # str 
+end_date = 'end_date_example' # str 
 object_type = 'object_type_example' # str 
 interval = 'interval_example' # str  (optional)
 object_id = 'object_id_example' # str  (optional)
 
 # Get metrics
-api_response = api_instance.metrics_get(project_name, metric, start_time, end_time, object_type, interval=interval, object_id=object_id)
+api_response = api_instance.metrics_get(project_name, metric, start_date, end_date, object_type, interval=interval, object_id=object_id)
 print(api_response)
 
 # Close the connection
@@ -6229,8 +6297,8 @@ Name | Type | Notes
 ------------- | ------------- | -------------
  **project_name** | **str** | 
  **metric** | **str** | 
- **start_time** | **str** | 
- **end_time** | **str** | 
+ **start_date** | **str** | 
+ **end_date** | **str** | 
  **object_type** | **str** | 
  **interval** | **str** | [optional] 
  **object_id** | **str** | [optional] 
@@ -6688,276 +6756,6 @@ Name | Type | Notes
 ### Return type
 
 [**NotificationGroupList**](NotificationGroupList.md)
-
-### Authorization
-
-[API token](https://ubiops.com/docs/organizations/service-users)
-
-[[Back to top]](#)
-
-# **organization_usage_details_get**
-> list[UsagePerDay] organization_usage_details_get(organization_name, start_date=start_date, end_date=end_date)
-
-Get resource usage details
-
-## Description
-Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per day.
-
-### Optional Parameters
-
-- `start_date`: date indicating the start date to fetch usage data from, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-- `end_date`: date indicating the end date to fetch usage data until, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-
-### Response Structure
-
-- `metric`: The metric that was measured
-- `object_type`: Type of object the metric was measured for (version or pipeline)
-- `usage`: an array of objects each containing the following:
-     - `day`: Timestamp denoting the start of the day
-     - `value`: Aggregated metric value for the given unit over the given day
-
-## Response Examples
-
-```
-[
-  {
-    "object_type": "version",
-    "metric": "gb_seconds",
-    "usage": [
-      {
-        "day": "2020-07-29T00:00:00Z",
-        "value": 4200
-      },
-      {
-        "day": "2020-07-28T00:00:00Z",
-        "value": 840
-      },
-      {
-        "day": "2020-07-30T00:00:00Z",
-        "value": 960
-      }
-    ]
-  },
-  {
-    "object_type": "pipeline",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "day": "2020-07-28T00:00:00Z",
-        "value": 1098
-      },
-      {
-        "day": "2020-07-06T00:00:00Z",
-        "value": 18
-      },
-      {
-        "day": "2020-07-16T00:00:00Z",
-        "value": 9
-      },
-      {
-        "day": "2020-07-15T00:00:00Z",
-        "value": 117
-      },
-      {
-        "day": "2020-07-08T00:00:00Z",
-        "value": 90
-      }
-    ]
-  }
-]
-
-```
-
-### Example
-
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-organization_name = 'organization_name_example' # str 
-start_date = 'start_date_example' # str  (optional)
-end_date = 'end_date_example' # str  (optional)
-
-# Get resource usage details
-api_response = api_instance.organization_usage_details_get(organization_name, start_date=start_date, end_date=end_date)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-
-### Parameters
-
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **organization_name** | **str** | 
- **start_date** | **str** | [optional] 
- **end_date** | **str** | [optional] 
-
-### Return type
-
-[**list[UsagePerDay]**](UsagePerDay.md)
-
-### Authorization
-
-[API token](https://ubiops.com/docs/organizations/service-users)
-
-[[Back to top]](#)
-
-# **organization_usage_get**
-> list[UsagePerMonth] organization_usage_get(organization_name, start_date=start_date, end_date=end_date)
-
-Get resource usage
-
-## Description
-Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per
-subscription iteration.
-
-### Optional Parameters
-
-- `start_date`: date indicating the start date to fetch usage data from, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-- `end_date`: date indicating the end date to fetch usage data until, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-
-### Response Structure
-
-- `metric`: The metric that was measured
-- `object_type`: Type of object the metric was measured for (version or pipeline)
-- `usage`: an array of objects each containing the following:
-     - `start_date`: Timestamp denoting the start of the active subscription period or provided date
-     - `end_date`: Timestamp denoting the end of the active subscription period or provided date
-     - `value`: Aggregated metric value for the given unit over the given month
-
-## Response Examples
-
-```
-[
-  {
-    "object_type": "pipeline",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "start_date": "2019-08-01T00:00:00Z",
-        "end_date": "2019-09-01T00:00:00Z",
-        "value": 1840
-      },
-      {
-        "start_date": "2019-09-01T00:00:00Z",
-        "end_date": "2019-10-01T00:00:00Z",
-        "value": 400
-      },
-      {
-        "start_date": "2019-10-01T00:00:00Z",
-        "end_date": "2019-11-01T00:00:00Z",
-        "value": 1204
-      },
-      {
-        "start_date": "2019-11-01T00:00:00Z",
-        "end_date": "2019-12-01T00:00:00Z",
-        "value": 1598
-      },
-      {
-        "start_date": "2019-12-01T00:00:00Z",
-        "end_date": "2020-01-01T00:00:00Z",
-        "value": 824
-      },
-      {
-        "start_date": "2020-01-01T00:00:00Z",
-        "end_date": "2020-02-01T00:00:00Z",
-        "value": 2036
-      },
-      {
-        "start_date": "2020-02-01T00:00:00Z",
-        "end_date": "2020-03-01T00:00:00Z",
-        "value": 1438
-      },
-      {
-        "start_date": "2020-03-01T00:00:00Z",
-        "end_date": "2020-04-01T00:00:00Z",
-        "value": 932
-      },
-      {
-        "start_date": "2020-04-01T00:00:00Z",
-        "end_date": "2020-05-01T00:00:00Z",
-        "value": 528
-      },
-      {
-        "start_date": "2020-05-01T00:00:00Z",
-        "end_date": "2020-06-01T00:00:00Z",
-        "value": 1484
-      },
-      {
-        "start_date": "2020-06-01T00:00:00Z",
-        "end_date": "2020-07-01T00:00:00Z",
-        "value": 1942
-      },
-      {
-        "start_date": "2020-07-01T00:00:00Z",
-        "end_date": "2020-08-01T00:00:00Z",
-        "value": 1332
-      }
-    ]
-  }
-]
-
-```
-
-### Example
-
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-organization_name = 'organization_name_example' # str 
-start_date = 'start_date_example' # str  (optional)
-end_date = 'end_date_example' # str  (optional)
-
-# Get resource usage
-api_response = api_instance.organization_usage_get(organization_name, start_date=start_date, end_date=end_date)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-
-### Parameters
-
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **organization_name** | **str** | 
- **start_date** | **str** | [optional] 
- **end_date** | **str** | [optional] 
-
-### Return type
-
-[**list[UsagePerMonth]**](UsagePerMonth.md)
 
 ### Authorization
 
@@ -7493,7 +7291,7 @@ Details of the organization
 
 - `creation_date`: Time the organization was created
 
-- `subscription`: Dictionary with details of the active subscription
+- `subscription`: Name of the subscription of the organization
 
 - `subscription_self_service`: Boolean indicating if the organization subscription is self service
 
@@ -7504,16 +7302,7 @@ Details of the organization
   "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
   "name": "test-organization",
   "creation_date": "2020-03-25T15:43:46.101877Z",
-  "subscription": {
-    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
-    "name": "custom-subscription",
-    "max_projects": 2,
-    "max_users": 3,
-    "agreement": "",
-    "terms_conditions": "",
-    "gb_seconds": 10000,
-    "deployment_versions": 15
-  },
+  "subscription": "free",
   "subscription_self_service": true
 }
 ```
@@ -7727,6 +7516,7 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 - `name`: New organization name
 - `subscription`: New subscription
 - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If you are going to update the subscription plan of the organization to a subscription other than free, you have to provide the end date.
+- `subscription_start_date`: Start date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will start from the provided date. If you are going to update the subscription of the organization or schedule a subscription for a time in future, you have to provide the start date.
 
 ## Request Examples
 
@@ -7741,13 +7531,15 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 ```
 {
   "subscription": "professional",
-  "subscription_end_date": "2020-08-30"
+  "subscription_end_date": "2020-08-30",
+  "subscription_start_date": "2020-07-30"
 }
 ```
 
 ```
 {
-  "subscription_end_date": "2020-08-30"
+  "subscription_end_date": "2020-08-30",
+  "subscription_start_date": "2020-07-30"
 }
 ```
 
@@ -7812,6 +7604,145 @@ Name | Type | Notes
 ### Return type
 
 [**OrganizationDetail**](OrganizationDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **organizations_usage_get**
+> list[Usage] organizations_usage_get(organization_name, start_date=start_date, end_date=end_date, interval=interval)
+
+Get resource usage
+
+## Description
+Get resource usage for the organization. It contains **the details of each metric aggregated per month.**
+
+### Optional Parameters
+
+- `start_date`: date indicating the start date to fetch usage data from. If omitted, results are generated for current subscription period.
+- `end_date`: date indicating the end date to fetch usage data until. If omitted, results are generated for current subscription period.
+- `interval`: interval for which the usage data is fetched. It can be 'day' or 'month'. It defaults to 'month'.
+
+If no **start_date** or **end_date** is given, the current subscription period is used, e.g. if the usage details are requested on 01-12-2020 and the subscription started on 20-11-2020, the results will contain data from 20-11-2020 to 20-12-2020.
+When **start_date** and **end_date** are given, this month period is used, e.g. if 12-11-2020 is given as start date and 12-12-2020 as end date, the results will contain data from 12-11-2020 to 12-12-2020.
+
+### Response Structure
+
+- `metric`: Metric name
+- `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
+- `usage`: an array of objects each containing the following:
+  - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
+  - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+  - `value`: Aggregated metric value for the given unit over the given month
+
+## Response Examples
+2019-08-01 as start date and 2019-09-01 as end date
+
+```
+[
+  {
+    "object_type": "deployment_version",
+    "metric": "gb_seconds",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1484124
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1204
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1598
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1840
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 400
+      } 
+    ]
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+organization_name = 'organization_name_example' # str 
+start_date = str(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')) # datetime  (optional)
+end_date = str(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')) # datetime  (optional)
+interval = 'month' # str  (optional) (default to 'month')
+
+# Get resource usage
+api_response = api_instance.organizations_usage_get(organization_name, start_date=start_date, end_date=end_date, interval=interval)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **organization_name** | **str** | 
+ **start_date** | **datetime** | [optional] 
+ **end_date** | **datetime** | [optional] 
+ **interval** | **str** | [optional] [default to &#39;month&#39;]
+
+### Return type
+
+[**list[Usage]**](Usage.md)
 
 ### Authorization
 
@@ -8393,6 +8324,9 @@ A dictionary containing the details of the pipeline request with the following f
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+- `origin`: A dictionary containing the information on where the request originated from. It contains:
+   - the pipeline (and version) names if the request is directly made to the pipeline
+   - the request schedule name if the request is created via a request schedule
 
 ## Response Examples
 
@@ -8422,7 +8356,11 @@ A dictionary containing the details of the pipeline request with the following f
   },
   "error_message": null,
   "created_by": "my.example.user@ubiops.com",
-  "notification_group": "notification-group-1"
+  "notification_group": "notification-group-1",
+  "origin": {
+    "pipeline": "pipeline-1",
+    "pipeline"_version": "v1"
+  }
 }
 ```
 
@@ -10306,7 +10244,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **pipeline_versions_create**
-> PipelineVersionList pipeline_versions_create(project_name, pipeline_name, data)
+> PipelineVersionDetail pipeline_versions_create(project_name, pipeline_name, data)
 
 Create pipeline versions
 
@@ -10330,6 +10268,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Request Examples
 
@@ -10347,7 +10287,47 @@ Provide the parameter 'default_notification_group' as the name of a notification
   "labels": {
     "type": "production"
   },
-  "monitoring": "notification-group-1"
+  "monitoring": "notification-group-1",
+  "request_retention_time": 604800,
+  "request_retention_mode": "full"
+}
+```
+
+A pipeline version with objects and attachments
+
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  },
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -10365,6 +10345,8 @@ Details of the created pipeline version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Response Examples
 
@@ -10382,7 +10364,50 @@ Details of the created pipeline version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "objects": [],
+  "attachments": []
+}
+```
+
+
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -10426,7 +10451,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**PipelineVersionList**](PipelineVersionList.md)
+[**PipelineVersionDetail**](PipelineVersionDetail.md)
 
 ### Authorization
 
@@ -10490,7 +10515,7 @@ void (empty response body)
 [[Back to top]](#)
 
 # **pipeline_versions_get**
-> PipelineVersionList pipeline_versions_get(project_name, pipeline_name, version)
+> PipelineVersionDetail pipeline_versions_get(project_name, pipeline_name, version)
 
 Get pipeline version
 
@@ -10514,6 +10539,8 @@ Details of the pipeline version
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Response Examples
 
@@ -10531,7 +10558,50 @@ Details of the pipeline version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "objects": [],
+  "attachments": []
+}
+```
+
+
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -10575,7 +10645,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**PipelineVersionList**](PipelineVersionList.md)
+[**PipelineVersionDetail**](PipelineVersionDetail.md)
 
 ### Authorization
 
@@ -10699,7 +10769,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **pipeline_versions_update**
-> PipelineVersionList pipeline_versions_update(project_name, pipeline_name, version, data)
+> PipelineVersionDetail pipeline_versions_update(project_name, pipeline_name, version, data)
 
 Update pipeline version
 
@@ -10707,6 +10777,8 @@ Update pipeline version
 Update a pipeline version. When updating labels, the labels will replace the existing value for labels.
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
 Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
+
+**Attention:** *In case either the `objects` or `attachments` parameter is null or an empty list, all of the objects or attachments of the pipeline will be removed.*
 
 ### Optional Parameters
 
@@ -10720,6 +10792,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Request Examples
 
@@ -10731,6 +10805,59 @@ Provide the parameter 'default_notification_group' as the name of a notification
     "type": "production"
   },
   "monitoring": "notification-group-1"
+}
+```
+
+Updating a pipeline version with new objects and attachments
+
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  },
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Updating a pipeline version by removing objects and attachments
+
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  },
+  "monitoring": ["test@example.com"],
+  "objects": null,
+  "attachments": null
 }
 ```
 
@@ -10748,6 +10875,8 @@ Details of the created pipeline
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Response Examples
 
@@ -10765,7 +10894,50 @@ Details of the created pipeline
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "objects": [],
+  "attachments": []
+}
+```
+
+
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -10811,7 +10983,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**PipelineVersionList**](PipelineVersionList.md)
+[**PipelineVersionDetail**](PipelineVersionDetail.md)
 
 ### Authorization
 
@@ -10820,7 +10992,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **pipelines_create**
-> PipelineList pipelines_create(project_name, data)
+> PipelineCreateResponse pipelines_create(project_name, data)
 
 Create pipelines
 
@@ -10833,9 +11005,9 @@ The input_fields represent the fields that the input data for pipeline requests 
 
 - `name`: Name of the pipeline. It is unique within a project.
 - `input_type`: Type of the pipeline input. It can be either structured or plain.
-- `input_fields`: A list of input fields with name and data_type. In case of plain pipelines, the input_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
+- `input_fields`: A list of input fields with name, data_type and (optional) widget. In case of plain pipelines, the input_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
 - `output_type`: Type of the pipeline output. It can be either structured or plain.
-- `output_fields`: A list of output fields with name and data_type. In case of plain pipelines, the output_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
+- `output_fields`: A list of output fields with name, data_type and (optional) widget. In case of plain pipelines, the output_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
 
 ### Optional Parameters
 
@@ -10884,6 +11056,52 @@ A plain pipeline
 }
 ```
 
+A structured pipeline with input/output field widgets
+
+```
+{
+  "name": "pipeline-1",
+  "input_type": "structured",
+  "output_type": "structured",
+  "input_fields": [
+    {
+      "name": "field-1",
+      "data_type": "int",
+      "widget": {
+        "type": "slider",
+        "configuration": {"min": 0, "max": 10, "default": 4, "step": 2}
+      }
+    },
+    {
+      "name": "field-2",
+      "data_type": "double",
+      "widget": {
+        "type": "numberbox",
+        "configuration": {"min": 0, "max": 1, "default": 0.5, "step": 0.1}
+      }
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "field-1",
+      "data_type": "double",
+      "widget": {
+        "type": "textbox",
+        "configuration": {}
+      }
+    },
+    {
+      "name": "field-2",
+      "data_type": "double",
+      "widget": {
+        "type": "textbox",
+        "configuration": {}
+      }
+    }
+  ]
+}
+```
+
 ### Response Structure
 Details of the created pipeline
 
@@ -10892,9 +11110,9 @@ Details of the created pipeline
 - `description`: Description of the pipeline
 - `project`: Project name in which the pipeline is created
 - `input_type`: Type of the pipeline input
-- `input_fields`: A list of pipeline input fields with name and data_type
+- `input_fields`: A list of pipeline input fields with name, data_type and widget
 - `output_type`: Type of the pipeline output
-- `output_fields`: A list of pipeline output fields with name and data_type
+- `output_fields`: A list of pipeline output fields with name, data_type and widget
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
@@ -10911,22 +11129,26 @@ Details of the created pipeline
   "input_fields": [
     {
       "name": "field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_type": "structured",
   "output_fields": [
     {
       "name": "field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -10994,7 +11216,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**PipelineList**](PipelineList.md)
+[**PipelineCreateResponse**](PipelineCreateResponse.md)
 
 ### Authorization
 
@@ -11071,9 +11293,9 @@ Details of the pipeline
 - `description` Description of the pipeline
 - `project`: Project name in which the pipeline is defined
 - `input_type`: Type of the pipeline input
-- `input_fields`: A list of pipeline input fields with name and data_type
+- `input_fields`: A list of pipeline input fields with name, data_type and widget
 - `output_type`: Type of the pipeline output
-- `output_fields`: A list of pipeline output fields with name and data_type
+- `output_fields`: A list of pipeline output fields with name, data_type and widget
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
@@ -11330,11 +11552,13 @@ The same goes for updating the pipeline output.
   "input_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ]
 }
@@ -11353,11 +11577,13 @@ The same goes for updating the pipeline output.
   "output_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ]
 }
@@ -11371,9 +11597,9 @@ Details of the updated pipeline
 - `project`: Project name in which the pipeline is defined
 - `description`: Description for the pipeline
 - `input_type`: Type of the pipeline input
-- `input_fields`: A list of pipeline input fields with name and data_type
+- `input_fields`: A list of pipeline input fields with name, data_type and widget
 - `output_type`: Type of the pipeline output
-- `output_fields`: A list of pipeline output fields with name and data_type
+- `output_fields`: A list of pipeline output fields with name, data_type and widget
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
@@ -11391,22 +11617,26 @@ Details of the updated pipeline
   "input_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ],
   "output_type": "structured",
   "output_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ],
   "labels": {
@@ -11973,134 +12203,6 @@ Name | Type | Notes
 
 [[Back to top]](#)
 
-# **project_usage_get**
-> list[UsagePerMonth] project_usage_get(project_name, start_month=start_month)
-
-Get resource usage
-
-## Description
-Get resource usage for the project. This returns a list of metrics that are used for billing, aggregated per month.
-
-### Optional Parameters
-
-- `start_month`: date indicating the start month to fetch usage data from, formatted `YYYY-MM`. If omitted results are generated from one year ago.
-
-### Response Structure
-
-- `metric`: The metric that was measured
-- `object_type`: Type of object the metric was measured for (version or pipeline)
-- `usage`: an array of objects each containing the following:
-     - `month`: Timestamp denoting the start of the month
-     - `value`: Aggregated metric value for the given unit over the given month
-
-## Response Examples
-
-```
-[
-  {
-    "object_type": "pipeline_version",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "month": "2019-08-01T00:00:00Z",
-        "value": 1840
-      },
-      {
-        "month": "2019-09-01T00:00:00Z",
-        "value": 400
-      },
-      {
-        "month": "2019-10-01T00:00:00Z",
-        "value": 1204
-      },
-      {
-        "month": "2019-11-01T00:00:00Z",
-        "value": 1598
-      },
-      {
-        "month": "2019-12-01T00:00:00Z",
-        "value": 824
-      },
-      {
-        "month": "2020-01-01T00:00:00Z",
-        "value": 2036
-      },
-      {
-        "month": "2020-02-01T00:00:00Z",
-        "value": 1438
-      },
-      {
-        "month": "2020-03-01T00:00:00Z",
-        "value": 932
-      },
-      {
-        "month": "2020-04-01T00:00:00Z",
-        "value": 528
-      },
-      {
-        "month": "2020-05-01T00:00:00Z",
-        "value": 1484
-      },
-      {
-        "month": "2020-06-01T00:00:00Z",
-        "value": 1942
-      },
-      {
-        "month": "2020-07-01T00:00:00Z",
-        "value": 1332
-      }
-    ]
-  }
-]
-
-```
-
-### Example
-
-```python
-import ubiops
-configuration = ubiops.Configuration()
-# Configure API token authorization
-configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
-
-# Defining host is optional and default to https://api.ubiops.com/v2.1
-configuration.host = "https://api.ubiops.com/v2.1"
-# Enter a context with an instance of the API client
-api_client = ubiops.ApiClient(configuration)
-
-# Create an instance of the API class
-api_instance = ubiops.CoreApi(api_client)
-
-project_name = 'project_name_example' # str 
-start_month = 'start_month_example' # str  (optional)
-
-# Get resource usage
-api_response = api_instance.project_usage_get(project_name, start_month=start_month)
-print(api_response)
-
-# Close the connection
-api_client.close()
-```
-
-
-### Parameters
-
-
-Name | Type | Notes
-------------- | ------------- | -------------
- **project_name** | **str** | 
- **start_month** | **str** | [optional] 
-
-### Return type
-
-[**list[UsagePerMonth]**](UsagePerMonth.md)
-
-### Authorization
-
-[API token](https://ubiops.com/docs/organizations/service-users)
-
-[[Back to top]](#)
-
 # **project_users_create**
 > ProjectUserList project_users_create(project_name, data)
 
@@ -12405,7 +12507,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **projects_create**
-> ProjectList projects_create(data)
+> ProjectDetail projects_create(data)
 
 Create projects
 
@@ -12416,8 +12518,12 @@ Create a new project with the provided name.
 ### Required Parameters
 
 - `name`: Name of the project. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
-
 - `organization_name`: Name of the organization in which the project is going to be created
+
+### Optional Parameters
+
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project. It defaults to False.
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running. It defaults to null, meaning that there are no limits.
 
 ## Request Examples
 
@@ -12432,12 +12538,13 @@ Create a new project with the provided name.
 Details of the created project
 
 - `id`: Unique identifier for the project (UUID)
-
 - `name`: Name of the project
-
 - `creation_date`: Time the project was created
-
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
 
@@ -12446,7 +12553,11 @@ Details of the created project
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "name": "project-1",
   "creation_date": "2018-10-26",
-  "organization_name": "organization-1"
+  "advanced_permissions": false,
+  "organization_name": "organization-1",
+  "gb_seconds": null,
+  "suspended": false,
+  "suspended_reason": null
 }
 ```
 
@@ -12486,7 +12597,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**ProjectList**](ProjectList.md)
+[**ProjectDetail**](ProjectDetail.md)
 
 ### Authorization
 
@@ -12547,7 +12658,7 @@ void (empty response body)
 [[Back to top]](#)
 
 # **projects_get**
-> ProjectList projects_get(project_name)
+> ProjectDetail projects_get(project_name)
 
 Get details of a project
 
@@ -12558,12 +12669,13 @@ Get the details of a single project. The user making the request must have appro
 Details of a project
 
 - `id`: Unique identifier for the project (UUID)
-
 - `name`: Name of the project
-
 - `creation_date`: Time the project was created
-
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
 
@@ -12572,7 +12684,11 @@ Details of a project
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "name": "project-1",
   "creation_date": "2018-10-26",
-  "organization_name": "organization-1"
+  "advanced_permissions": false,
+  "organization_name": "organization-1",
+  "gb_seconds": 10000,
+  "suspended": false,
+  "suspended_reason": null
 }
 ```
 
@@ -12612,7 +12728,7 @@ Name | Type | Notes
 
 ### Return type
 
-[**ProjectList**](ProjectList.md)
+[**ProjectDetail**](ProjectDetail.md)
 
 ### Authorization
 
@@ -12637,6 +12753,8 @@ A list of details of the projects
 
 - `creation_date`: Time the project was created
 
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
+
 - `organization_name`: Name of the organization in which the project is created
 
 ## Response Examples
@@ -12647,12 +12765,14 @@ A list of details of the projects
     "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
     "name": "project-1",
     "creation_date": "2018-10-26",
+    "advanced_permissions": false,
     "organization_name": "organization-1"
   },
   {
     "id": "e6a85cd7-94cc-44cf-9fa0-4b462d5a71ab",
     "name": "project-2",
     "creation_date": "2019-06-20",
+    "advanced_permissions": false,
     "organization_name": "organization-2"
   }
 ]
@@ -12983,7 +13103,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **projects_update**
-> ProjectList projects_update(project_name, data)
+> ProjectDetail projects_update(project_name, data)
 
 Update a project
 
@@ -12993,6 +13113,9 @@ Update the name of a single project. The user making the request must have appro
 ### Optional Parameters
 
 - `name`: New project name
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspend`: A boolean to suspend and activate projects. If the project is already suspended by UbiOps, it is not possible to suspend/activate the project.
 
 ## Request Examples
 
@@ -13006,12 +13129,13 @@ Update the name of a single project. The user making the request must have appro
 Details of a project
 
 - `id`: Unique identifier for the project (UUID)
-
 - `name`: Name of the project
-
 - `creation_date`: Time the project was created
-
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
 
@@ -13020,7 +13144,11 @@ Details of a project
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "name": "project-1",
   "creation_date": "2018-10-26",
-  "organization_name": "organization-1"
+  "advanced_permissions": false,
+  "organization_name": "organization-1",
+  "gb_seconds": 10000,
+  "suspended": false,
+  "suspended_reason": null
 }
 ```
 
@@ -13062,7 +13190,146 @@ Name | Type | Notes
 
 ### Return type
 
-[**ProjectList**](ProjectList.md)
+[**ProjectDetail**](ProjectDetail.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
+# **projects_usage_get**
+> list[Usage] projects_usage_get(project_name, start_date=start_date, end_date=end_date, interval=interval)
+
+Get resource usage
+
+## Description
+Get resource usage for the project. It contains **the details of each metric aggregated per month.**
+
+### Optional Parameters
+
+- `start_date`: date indicating the start date to fetch usage data from. If omitted, results are generated for current subscription period.
+- `end_date`: date indicating the end date to fetch usage data until. If omitted, results are generated for current subscription period.
+- `interval`: interval for which the usage data is fetched. It can be 'day' or 'month'. It defaults to 'month'.
+
+If no **start_date** or **end_date** is given, the current subscription period is used, e.g. if the usage details are requested on 01-12-2020 and the subscription started on 20-11-2020, the results will contain data from 20-11-2020 to 20-12-2020.
+When **start_date** and **end_date** are given, this month period is used, e.g. if 12-11-2020 is given as start date and 12-12-2020 as end date, the results will contain data from 12-11-2020 to 12-12-2020.
+
+### Response Structure
+
+- `metric`: Metric name
+- `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
+- `usage`: an array of objects each containing the following:
+  - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
+  - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+  - `value`: Aggregated metric value for the given unit over the given month
+
+## Response Examples
+2019-08-01 as start date and 2019-09-01 as end date
+
+```
+[
+  {
+    "object_type": "deployment_version",
+    "metric": "gb_seconds",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 13543
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 136
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 468
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 125
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 135
+      } 
+    ]
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+start_date = str(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')) # datetime  (optional)
+end_date = str(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')) # datetime  (optional)
+interval = 'month' # str  (optional) (default to 'month')
+
+# Get resource usage
+api_response = api_instance.projects_usage_get(project_name, start_date=start_date, end_date=end_date, interval=interval)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **start_date** | **datetime** | [optional] 
+ **end_date** | **datetime** | [optional] 
+ **interval** | **str** | [optional] [default to &#39;month&#39;]
+
+### Return type
+
+[**list[Usage]**](Usage.md)
 
 ### Authorization
 
@@ -13691,7 +13958,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **revisions_file_upload**
-> RevisionCreate revisions_file_upload(project_name, deployment_name, version, file=file, source_deployment=source_deployment, source_version=source_version)
+> RevisionCreate revisions_file_upload(project_name, deployment_name, version, file=file, source_deployment=source_deployment, source_version=source_version, template_deployment_id=template_deployment_id)
 
 Upload deployment file
 
@@ -13706,6 +13973,7 @@ It is **also possible** to provide a source version from which the deployment fi
 - `file`: Deployment file
 - `source_deployment`: Name of the deployment from which the deployment file will be copied
 - `source_version`: Version from which the deployment file will be copied
+- `template_deployment_id`: UUID of a template deployment which will be used as the source of the deployment file
 
 Either **file** or **source_deployment** and **source_version** must be provided. source_deployment and source_version must be provided together.
 
@@ -13737,9 +14005,10 @@ version = 'version_example' # str
 file = '/path/to/file' # file  (optional)
 source_deployment = 'source_deployment_example' # str  (optional)
 source_version = 'source_version_example' # str  (optional)
+template_deployment_id = 'template_deployment_id_example' # str  (optional)
 
 # Upload deployment file
-api_response = api_instance.revisions_file_upload(project_name, deployment_name, version, file=file, source_deployment=source_deployment, source_version=source_version)
+api_response = api_instance.revisions_file_upload(project_name, deployment_name, version, file=file, source_deployment=source_deployment, source_version=source_version, template_deployment_id=template_deployment_id)
 print(api_response)
 
 # Close the connection
@@ -13758,6 +14027,7 @@ Name | Type | Notes
  **file** | **file** | [optional] 
  **source_deployment** | **str** | [optional] 
  **source_version** | **str** | [optional] 
+ **template_deployment_id** | **str** | [optional] 
 
 ### Return type
 
@@ -14756,7 +15026,7 @@ This endpoint does not need any parameter.
 Create a new service user
 
 ## Description
-Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API.
+Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API. It is possible to set an expiry date for this token.
 In addition, allowed cors origins can be configured for the service user. The service user will be allowed to make a deployment or pipeline request from these origins.
 
 The token is **ONLY** returned on creation and will not be accessible afterwards.
@@ -14766,6 +15036,8 @@ The token is **ONLY** returned on creation and will not be accessible afterwards
 - `name`: Name of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
+
+- `expiry_date`: Date when the service user account expires (UTC). If null is passed, the account will never expire.
 
 ## Request Examples
 
@@ -14785,6 +15057,14 @@ The token is **ONLY** returned on creation and will not be accessible afterwards
 }
 ```
 
+
+```
+{
+  "name": "service-user-1",
+  "expiry_date": "2020-01-01T00:00:00.000Z"
+}
+```
+
 ### Response Structure
 Details of the created service user
 
@@ -14800,6 +15080,8 @@ Details of the created service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -14811,7 +15093,8 @@ Details of the created service user
   "creation_date": "2020-03-24T09:16:27.504+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ]
+  ],
+  "expiry_date": "2021-03-24T00:00:00.000+00:00"
 }
 ```
 
@@ -14935,6 +15218,8 @@ Details of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -14945,7 +15230,8 @@ Details of the service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ]
+  ],
+  "expiry_date": null
 }
 ```
 
@@ -15016,6 +15302,8 @@ List of details of the service users:
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -15027,7 +15315,8 @@ List of details of the service users:
     "creation_date": "2020-03-24T09:16:27.504+00:00",
     "allowed_cors_origins": [
       "https://test.com"
-    ]
+    ],
+    "expiry_date": "2021-03-24T00:00:00.000+00:00"
   },
   {
     "id": "13a9ba27-6888-4528-826e-8e1002eab13d",
@@ -15036,7 +15325,8 @@ List of details of the service users:
     "creation_date": "2020-03-26T12:18:43.123+00:00",
     "allowed_cors_origins": [
       "https://test.com"
-    ]
+    ],
+    "expiry_date": null
   }
 ]
 ```
@@ -15092,6 +15382,8 @@ Reset the token of a service user
 
 ## Description
 Reset the token of a service user. The old token will be deleted and a new one will be created for the service user. No data should be sent in the body of the request.
+
+It is not possible to reset the token of a service user whose expiry date has been reached.
 
 ### Response Structure
 Details of the new token for the service user
@@ -15160,14 +15452,18 @@ Name | Type | Notes
 Update service user details
 
 ## Description
-Update the name and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value.
+Update the name, expiry date and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value.
 Leave as an empty list to remove the previous list of allowed origins.
+
+It is not possible to update a service user whose expiry date has been reached.
 
 ### Optional Parameters
 
 - `name`: Name of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
+
+- `expiry_date`: Date when the service user account will expire (UTC). If null is passed, the account will never expire.
 
 ## Request Examples
 
@@ -15188,6 +15484,13 @@ Leave as an empty list to remove the previous list of allowed origins.
 }
 ```
 
+
+```
+{
+  "expiry_date": "2020-01-01T00:00:00.000Z"
+}
+```
+
 ### Response Structure
 Details of the updated service user
 
@@ -15201,6 +15504,8 @@ Details of the updated service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -15211,7 +15516,8 @@ Details of the updated service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ]
+  ],
+  "expiry_date": null
 }
 ```
 

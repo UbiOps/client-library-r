@@ -9,8 +9,8 @@ Name | Type | Notes
 **description** | **str** | [optional] 
 **input_type** | **str** | 
 **output_type** | **str** | 
-**input_fields** | [**list[DeploymentInputFieldList]**](DeploymentInputFieldList.md) | [optional] [readonly] 
-**output_fields** | [**list[DeploymentOutputFieldList]**](DeploymentOutputFieldList.md) | [optional] [readonly] 
+**input_fields** | [**list[DeploymentInputFieldDetail]**](DeploymentInputFieldDetail.md) | [optional] [readonly] 
+**output_fields** | [**list[DeploymentOutputFieldDetail]**](DeploymentOutputFieldDetail.md) | [optional] [readonly] 
 **labels** | **dict(str, str)** | [optional] 
 **creation_date** | **datetime** | [optional] 
 **last_updated** | **datetime** | [optional] 

@@ -1,9 +1,10 @@
-# UsagePerDayMetric
+# UsageMetric
 
 ## Properties
 Name | Type | Notes
 ------------ | ------------- | -------------
-**day** | **datetime** | 
+**start_date** | **datetime** | 
+**end_date** | **datetime** | 
 **value** | **float** | 
 
 

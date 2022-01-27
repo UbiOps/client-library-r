@@ -33,23 +33,38 @@ class ProjectUpdate(object):
                             and the value is json key in definition.
     """
     openapi_types = {
-        'name': 'str'
+        'name': 'str',
+        'advanced_permissions': 'bool',
+        'gb_seconds': 'int',
+        'suspend': 'bool'
     }
 
     attribute_map = {
-        'name': 'name'
+        'name': 'name',
+        'advanced_permissions': 'advanced_permissions',
+        'gb_seconds': 'gb_seconds',
+        'suspend': 'suspend'
     }
 
-    def __init__(self, name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, advanced_permissions=None, gb_seconds=None, suspend=None, local_vars_configuration=None):  # noqa: E501
         """ProjectUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
+        self._advanced_permissions = None
+        self._gb_seconds = None
+        self._suspend = None
         self.discriminator = None
 
-        self.name = name
+        if name is not None:
+            self.name = name
+        if advanced_permissions is not None:
+            self.advanced_permissions = advanced_permissions
+        self.gb_seconds = gb_seconds
+        if suspend is not None:
+            self.suspend = suspend
 
     @property
     def name(self):
@@ -69,8 +84,6 @@ class ProjectUpdate(object):
         :param name: The name of this ProjectUpdate.  # noqa: E501
         :type: str
         """
-        if self.local_vars_configuration.client_side_validation and name is None:  # noqa: E501
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 name is not None and not isinstance(name, str)):
             raise ValueError("Parameter `name` must be a string")  # noqa: E501
@@ -80,6 +93,78 @@ class ProjectUpdate(object):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def advanced_permissions(self):
+        """Gets the advanced_permissions of this ProjectUpdate.  # noqa: E501
+
+
+        :return: The advanced_permissions of this ProjectUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._advanced_permissions
+
+    @advanced_permissions.setter
+    def advanced_permissions(self, advanced_permissions):
+        """Sets the advanced_permissions of this ProjectUpdate.
+
+
+        :param advanced_permissions: The advanced_permissions of this ProjectUpdate.  # noqa: E501
+        :type: bool
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                advanced_permissions is not None and not isinstance(advanced_permissions, bool)):
+            raise ValueError("Parameter `advanced_permissions` must be a boolean")  # noqa: E501
+
+        self._advanced_permissions = advanced_permissions
+
+    @property
+    def gb_seconds(self):
+        """Gets the gb_seconds of this ProjectUpdate.  # noqa: E501
+
+
+        :return: The gb_seconds of this ProjectUpdate.  # noqa: E501
+        :rtype: int
+        """
+        return self._gb_seconds
+
+    @gb_seconds.setter
+    def gb_seconds(self, gb_seconds):
+        """Sets the gb_seconds of this ProjectUpdate.
+
+
+        :param gb_seconds: The gb_seconds of this ProjectUpdate.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                gb_seconds is not None and not isinstance(gb_seconds, int)):
+            raise ValueError("Parameter `gb_seconds` must be an integer")  # noqa: E501
+
+        self._gb_seconds = gb_seconds
+
+    @property
+    def suspend(self):
+        """Gets the suspend of this ProjectUpdate.  # noqa: E501
+
+
+        :return: The suspend of this ProjectUpdate.  # noqa: E501
+        :rtype: bool
+        """
+        return self._suspend
+
+    @suspend.setter
+    def suspend(self, suspend):
+        """Sets the suspend of this ProjectUpdate.
+
+
+        :param suspend: The suspend of this ProjectUpdate.  # noqa: E501
+        :type: bool
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                suspend is not None and not isinstance(suspend, bool)):
+            raise ValueError("Parameter `suspend` must be a boolean")  # noqa: E501
+
+        self._suspend = suspend
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -35,16 +35,18 @@ class OrganizationUpdate(object):
     openapi_types = {
         'name': 'str',
         'subscription': 'str',
-        'subscription_end_date': 'date'
+        'subscription_end_date': 'date',
+        'subscription_start_date': 'date'
     }
 
     attribute_map = {
         'name': 'name',
         'subscription': 'subscription',
-        'subscription_end_date': 'subscription_end_date'
+        'subscription_end_date': 'subscription_end_date',
+        'subscription_start_date': 'subscription_start_date'
     }
 
-    def __init__(self, name=None, subscription=None, subscription_end_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, subscription=None, subscription_end_date=None, subscription_start_date=None, local_vars_configuration=None):  # noqa: E501
         """OrganizationUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -53,6 +55,7 @@ class OrganizationUpdate(object):
         self._name = None
         self._subscription = None
         self._subscription_end_date = None
+        self._subscription_start_date = None
         self.discriminator = None
 
         if name is not None:
@@ -60,6 +63,7 @@ class OrganizationUpdate(object):
         if subscription is not None:
             self.subscription = subscription
         self.subscription_end_date = subscription_end_date
+        self.subscription_start_date = subscription_start_date
 
     @property
     def name(self):
@@ -137,6 +141,27 @@ class OrganizationUpdate(object):
         """
 
         self._subscription_end_date = subscription_end_date
+
+    @property
+    def subscription_start_date(self):
+        """Gets the subscription_start_date of this OrganizationUpdate.  # noqa: E501
+
+
+        :return: The subscription_start_date of this OrganizationUpdate.  # noqa: E501
+        :rtype: date
+        """
+        return self._subscription_start_date
+
+    @subscription_start_date.setter
+    def subscription_start_date(self, subscription_start_date):
+        """Sets the subscription_start_date of this OrganizationUpdate.
+
+
+        :param subscription_start_date: The subscription_start_date of this OrganizationUpdate.  # noqa: E501
+        :type: date
+        """
+
+        self._subscription_start_date = subscription_start_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""

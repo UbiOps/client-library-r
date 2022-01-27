@@ -136,10 +136,6 @@ class DeploymentInstanceType(object):
                 memory_allocation is not None and not isinstance(memory_allocation, int)):
             raise ValueError("Parameter `memory_allocation` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                memory_allocation is not None and memory_allocation > 1048576):  # noqa: E501
-            raise ValueError("Invalid value for `memory_allocation`, must be a value less than or equal to `1048576`")  # noqa: E501
-
         self._memory_allocation = memory_allocation
 
     @property

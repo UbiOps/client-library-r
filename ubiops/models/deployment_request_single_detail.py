@@ -44,8 +44,8 @@ class DeploymentRequestSingleDetail(object):
         'error_message': 'str',
         'request_data': 'object',
         'result': 'object',
-        'created_by': 'str',
-        'notification_group': 'str'
+        'notification_group': 'str',
+        'origin': 'dict(str, str)'
     }
 
     attribute_map = {
@@ -60,11 +60,11 @@ class DeploymentRequestSingleDetail(object):
         'error_message': 'error_message',
         'request_data': 'request_data',
         'result': 'result',
-        'created_by': 'created_by',
-        'notification_group': 'notification_group'
+        'notification_group': 'notification_group',
+        'origin': 'origin'
     }
 
-    def __init__(self, id=None, deployment=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, error_message=None, request_data=None, result=None, created_by=None, notification_group=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, deployment=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, error_message=None, request_data=None, result=None, notification_group=None, origin=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentRequestSingleDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -81,8 +81,8 @@ class DeploymentRequestSingleDetail(object):
         self._error_message = None
         self._request_data = None
         self._result = None
-        self._created_by = None
         self._notification_group = None
+        self._origin = None
         self.discriminator = None
 
         self.id = id
@@ -96,9 +96,8 @@ class DeploymentRequestSingleDetail(object):
         self.error_message = error_message
         self.request_data = request_data
         self.result = result
-        if created_by is not None:
-            self.created_by = created_by
         self.notification_group = notification_group
+        self.origin = origin
 
     @property
     def id(self):
@@ -366,30 +365,6 @@ class DeploymentRequestSingleDetail(object):
         self._result = result
 
     @property
-    def created_by(self):
-        """Gets the created_by of this DeploymentRequestSingleDetail.  # noqa: E501
-
-
-        :return: The created_by of this DeploymentRequestSingleDetail.  # noqa: E501
-        :rtype: str
-        """
-        return self._created_by
-
-    @created_by.setter
-    def created_by(self, created_by):
-        """Sets the created_by of this DeploymentRequestSingleDetail.
-
-
-        :param created_by: The created_by of this DeploymentRequestSingleDetail.  # noqa: E501
-        :type: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                created_by is not None and not isinstance(created_by, str)):
-            raise ValueError("Parameter `created_by` must be a string")  # noqa: E501
-
-        self._created_by = created_by
-
-    @property
     def notification_group(self):
         """Gets the notification_group of this DeploymentRequestSingleDetail.  # noqa: E501
 
@@ -412,6 +387,30 @@ class DeploymentRequestSingleDetail(object):
             raise ValueError("Parameter `notification_group` must be a string")  # noqa: E501
 
         self._notification_group = notification_group
+
+    @property
+    def origin(self):
+        """Gets the origin of this DeploymentRequestSingleDetail.  # noqa: E501
+
+
+        :return: The origin of this DeploymentRequestSingleDetail.  # noqa: E501
+        :rtype: dict(str, str)
+        """
+        return self._origin
+
+    @origin.setter
+    def origin(self, origin):
+        """Sets the origin of this DeploymentRequestSingleDetail.
+
+
+        :param origin: The origin of this DeploymentRequestSingleDetail.  # noqa: E501
+        :type: dict(str, str)
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                origin is not None and not isinstance(origin, dict)):
+            raise ValueError("Parameter `origin` must be a dictionary")  # noqa: E501
+
+        self._origin = origin
 
     def to_dict(self):
         """Returns the model properties as a dict"""

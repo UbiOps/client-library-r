@@ -34,33 +34,33 @@ class Metrics(object):
     """
     openapi_types = {
         'value': 'float',
-        'start_time': 'datetime',
-        'end_time': 'datetime'
+        'start_date': 'datetime',
+        'end_date': 'datetime'
     }
 
     attribute_map = {
         'value': 'value',
-        'start_time': 'start_time',
-        'end_time': 'end_time'
+        'start_date': 'start_date',
+        'end_date': 'end_date'
     }
 
-    def __init__(self, value=None, start_time=None, end_time=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, value=None, start_date=None, end_date=None, local_vars_configuration=None):  # noqa: E501
         """Metrics - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._value = None
-        self._start_time = None
-        self._end_time = None
+        self._start_date = None
+        self._end_date = None
         self.discriminator = None
 
         if value is not None:
             self.value = value
-        if start_time is not None:
-            self.start_time = start_time
-        if end_time is not None:
-            self.end_time = end_time
+        if start_date is not None:
+            self.start_date = start_date
+        if end_date is not None:
+            self.end_date = end_date
 
     @property
     def value(self):
@@ -87,46 +87,46 @@ class Metrics(object):
         self._value = value
 
     @property
-    def start_time(self):
-        """Gets the start_time of this Metrics.  # noqa: E501
+    def start_date(self):
+        """Gets the start_date of this Metrics.  # noqa: E501
 
 
-        :return: The start_time of this Metrics.  # noqa: E501
+        :return: The start_date of this Metrics.  # noqa: E501
         :rtype: datetime
         """
-        return self._start_time
+        return self._start_date
 
-    @start_time.setter
-    def start_time(self, start_time):
-        """Sets the start_time of this Metrics.
+    @start_date.setter
+    def start_date(self, start_date):
+        """Sets the start_date of this Metrics.
 
 
-        :param start_time: The start_time of this Metrics.  # noqa: E501
+        :param start_date: The start_date of this Metrics.  # noqa: E501
         :type: datetime
         """
 
-        self._start_time = start_time
+        self._start_date = start_date
 
     @property
-    def end_time(self):
-        """Gets the end_time of this Metrics.  # noqa: E501
+    def end_date(self):
+        """Gets the end_date of this Metrics.  # noqa: E501
 
 
-        :return: The end_time of this Metrics.  # noqa: E501
+        :return: The end_date of this Metrics.  # noqa: E501
         :rtype: datetime
         """
-        return self._end_time
+        return self._end_date
 
-    @end_time.setter
-    def end_time(self, end_time):
-        """Sets the end_time of this Metrics.
+    @end_date.setter
+    def end_date(self, end_date):
+        """Sets the end_date of this Metrics.
 
 
-        :param end_time: The end_time of this Metrics.  # noqa: E501
+        :param end_date: The end_date of this Metrics.  # noqa: E501
         :type: datetime
         """
 
-        self._end_time = end_time
+        self._end_date = end_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""

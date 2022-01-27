@@ -34,15 +34,17 @@ class ServiceUserCreate(object):
     """
     openapi_types = {
         'name': 'str',
-        'allowed_cors_origins': 'list[str]'
+        'allowed_cors_origins': 'list[str]',
+        'expiry_date': 'datetime'
     }
 
     attribute_map = {
         'name': 'name',
-        'allowed_cors_origins': 'allowed_cors_origins'
+        'allowed_cors_origins': 'allowed_cors_origins',
+        'expiry_date': 'expiry_date'
     }
 
-    def __init__(self, name=None, allowed_cors_origins=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, allowed_cors_origins=None, expiry_date=None, local_vars_configuration=None):  # noqa: E501
         """ServiceUserCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -50,12 +52,14 @@ class ServiceUserCreate(object):
 
         self._name = None
         self._allowed_cors_origins = None
+        self._expiry_date = None
         self.discriminator = None
 
         if name is not None:
             self.name = name
         if allowed_cors_origins is not None:
             self.allowed_cors_origins = allowed_cors_origins
+        self.expiry_date = expiry_date
 
     @property
     def name(self):
@@ -108,6 +112,27 @@ class ServiceUserCreate(object):
             raise ValueError("Parameter `allowed_cors_origins` must be a list")  # noqa: E501
 
         self._allowed_cors_origins = allowed_cors_origins
+
+    @property
+    def expiry_date(self):
+        """Gets the expiry_date of this ServiceUserCreate.  # noqa: E501
+
+
+        :return: The expiry_date of this ServiceUserCreate.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._expiry_date
+
+    @expiry_date.setter
+    def expiry_date(self, expiry_date):
+        """Sets the expiry_date of this ServiceUserCreate.
+
+
+        :param expiry_date: The expiry_date of this ServiceUserCreate.  # noqa: E501
+        :type: datetime
+        """
+
+        self._expiry_date = expiry_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""

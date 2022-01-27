@@ -39,7 +39,9 @@ class PipelineVersionUpdate(object):
         'monitoring': 'str',
         'request_retention_time': 'int',
         'request_retention_mode': 'str',
-        'default_notification_group': 'str'
+        'default_notification_group': 'str',
+        'objects': 'list[PipelineVersionObjectCreate]',
+        'attachments': 'list[AttachmentsCreate]'
     }
 
     attribute_map = {
@@ -49,10 +51,12 @@ class PipelineVersionUpdate(object):
         'monitoring': 'monitoring',
         'request_retention_time': 'request_retention_time',
         'request_retention_mode': 'request_retention_mode',
-        'default_notification_group': 'default_notification_group'
+        'default_notification_group': 'default_notification_group',
+        'objects': 'objects',
+        'attachments': 'attachments'
     }
 
-    def __init__(self, version=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode=None, default_notification_group=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, version=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode=None, default_notification_group=None, objects=None, attachments=None, local_vars_configuration=None):  # noqa: E501
         """PipelineVersionUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -65,6 +69,8 @@ class PipelineVersionUpdate(object):
         self._request_retention_time = None
         self._request_retention_mode = None
         self._default_notification_group = None
+        self._objects = None
+        self._attachments = None
         self.discriminator = None
 
         if version is not None:
@@ -78,6 +84,10 @@ class PipelineVersionUpdate(object):
         if request_retention_mode is not None:
             self.request_retention_mode = request_retention_mode
         self.default_notification_group = default_notification_group
+        if objects is not None:
+            self.objects = objects
+        if attachments is not None:
+            self.attachments = attachments
 
     @property
     def version(self):
@@ -206,11 +216,8 @@ class PipelineVersionUpdate(object):
             raise ValueError("Parameter `request_retention_time` must be an integer")  # noqa: E501
 
         if (self.local_vars_configuration.client_side_validation and
-                request_retention_time is not None and request_retention_time > 2.4192E+6):  # noqa: E501
-            raise ValueError("Invalid value for `request_retention_time`, must be a value less than or equal to `2.4192E+6`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                request_retention_time is not None and request_retention_time < 3.6E+3):  # noqa: E501
-            raise ValueError("Invalid value for `request_retention_time`, must be a value greater than or equal to `3.6E+3`")  # noqa: E501
+                request_retention_time is not None and request_retention_time < 0):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._request_retention_time = request_retention_time
 
@@ -271,6 +278,68 @@ class PipelineVersionUpdate(object):
             raise ValueError("Invalid value for `default_notification_group`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._default_notification_group = default_notification_group
+
+    @property
+    def objects(self):
+        """Gets the objects of this PipelineVersionUpdate.  # noqa: E501
+
+
+        :return: The objects of this PipelineVersionUpdate.  # noqa: E501
+        :rtype: list[PipelineVersionObjectCreate]
+        """
+        return self._objects
+
+    @objects.setter
+    def objects(self, objects):
+        """Sets the objects of this PipelineVersionUpdate.
+
+
+        :param objects: The objects of this PipelineVersionUpdate.  # noqa: E501
+        :type: list[PipelineVersionObjectCreate]
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                objects is not None and not isinstance(objects, list)):
+            raise ValueError("Parameter `objects` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and objects is not None:
+            from ubiops.models.pipeline_version_object_create import PipelineVersionObjectCreate
+
+            objects = [
+                PipelineVersionObjectCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in objects
+            ]
+
+        self._objects = objects
+
+    @property
+    def attachments(self):
+        """Gets the attachments of this PipelineVersionUpdate.  # noqa: E501
+
+
+        :return: The attachments of this PipelineVersionUpdate.  # noqa: E501
+        :rtype: list[AttachmentsCreate]
+        """
+        return self._attachments
+
+    @attachments.setter
+    def attachments(self, attachments):
+        """Sets the attachments of this PipelineVersionUpdate.
+
+
+        :param attachments: The attachments of this PipelineVersionUpdate.  # noqa: E501
+        :type: list[AttachmentsCreate]
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                attachments is not None and not isinstance(attachments, list)):
+            raise ValueError("Parameter `attachments` must be a list")  # noqa: E501
+        if self.local_vars_configuration.client_side_validation and attachments is not None:
+            from ubiops.models.attachments_create import AttachmentsCreate
+
+            attachments = [
+                AttachmentsCreate(**item) if isinstance(item, dict) else item  # noqa: E501
+                for item in attachments
+            ]
+
+        self._attachments = attachments
 
     def to_dict(self):
         """Returns the model properties as a dict"""

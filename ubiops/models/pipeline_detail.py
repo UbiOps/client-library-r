@@ -38,9 +38,9 @@ class PipelineDetail(object):
         'project': 'str',
         'description': 'str',
         'input_type': 'str',
-        'input_fields': 'list[PipelineInputFieldList]',
+        'input_fields': 'list[PipelineInputFieldDetail]',
         'output_type': 'str',
-        'output_fields': 'list[PipelineOutputFieldList]',
+        'output_fields': 'list[PipelineOutputFieldDetail]',
         'labels': 'dict(str, str)',
         'creation_date': 'datetime',
         'last_updated': 'datetime',
@@ -89,9 +89,11 @@ class PipelineDetail(object):
         if description is not None:
             self.description = description
         self.input_type = input_type
-        self.input_fields = input_fields
+        if input_fields is not None:
+            self.input_fields = input_fields
         self.output_type = output_type
-        self.output_fields = output_fields
+        if output_fields is not None:
+            self.output_fields = output_fields
         self.labels = labels
         if creation_date is not None:
             self.creation_date = creation_date
@@ -251,7 +253,7 @@ class PipelineDetail(object):
 
 
         :return: The input_fields of this PipelineDetail.  # noqa: E501
-        :rtype: list[PipelineInputFieldList]
+        :rtype: list[PipelineInputFieldDetail]
         """
         return self._input_fields
 
@@ -261,18 +263,16 @@ class PipelineDetail(object):
 
 
         :param input_fields: The input_fields of this PipelineDetail.  # noqa: E501
-        :type: list[PipelineInputFieldList]
+        :type: list[PipelineInputFieldDetail]
         """
-        if self.local_vars_configuration.client_side_validation and input_fields is None:  # noqa: E501
-            raise ValueError("Invalid value for `input_fields`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 input_fields is not None and not isinstance(input_fields, list)):
             raise ValueError("Parameter `input_fields` must be a list")  # noqa: E501
         if self.local_vars_configuration.client_side_validation and input_fields is not None:
-            from ubiops.models.pipeline_input_field_list import PipelineInputFieldList
+            from ubiops.models.pipeline_input_field_detail import PipelineInputFieldDetail
 
             input_fields = [
-                PipelineInputFieldList(**item) if isinstance(item, dict) else item  # noqa: E501
+                PipelineInputFieldDetail(**item) if isinstance(item, dict) else item  # noqa: E501
                 for item in input_fields
             ]
 
@@ -314,7 +314,7 @@ class PipelineDetail(object):
 
 
         :return: The output_fields of this PipelineDetail.  # noqa: E501
-        :rtype: list[PipelineOutputFieldList]
+        :rtype: list[PipelineOutputFieldDetail]
         """
         return self._output_fields
 
@@ -324,18 +324,16 @@ class PipelineDetail(object):
 
 
         :param output_fields: The output_fields of this PipelineDetail.  # noqa: E501
-        :type: list[PipelineOutputFieldList]
+        :type: list[PipelineOutputFieldDetail]
         """
-        if self.local_vars_configuration.client_side_validation and output_fields is None:  # noqa: E501
-            raise ValueError("Invalid value for `output_fields`, must not be `None`")  # noqa: E501
         if (self.local_vars_configuration.client_side_validation and
                 output_fields is not None and not isinstance(output_fields, list)):
             raise ValueError("Parameter `output_fields` must be a list")  # noqa: E501
         if self.local_vars_configuration.client_side_validation and output_fields is not None:
-            from ubiops.models.pipeline_output_field_list import PipelineOutputFieldList
+            from ubiops.models.pipeline_output_field_detail import PipelineOutputFieldDetail
 
             output_fields = [
-                PipelineOutputFieldList(**item) if isinstance(item, dict) else item  # noqa: E501
+                PipelineOutputFieldDetail(**item) if isinstance(item, dict) else item  # noqa: E501
                 for item in output_fields
             ]
 

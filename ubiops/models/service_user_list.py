@@ -37,7 +37,8 @@ class ServiceUserList(object):
         'email': 'str',
         'name': 'str',
         'creation_date': 'str',
-        'allowed_cors_origins': 'str'
+        'allowed_cors_origins': 'str',
+        'expiry_date': 'str'
     }
 
     attribute_map = {
@@ -45,10 +46,11 @@ class ServiceUserList(object):
         'email': 'email',
         'name': 'name',
         'creation_date': 'creation_date',
-        'allowed_cors_origins': 'allowed_cors_origins'
+        'allowed_cors_origins': 'allowed_cors_origins',
+        'expiry_date': 'expiry_date'
     }
 
-    def __init__(self, id=None, email=None, name=None, creation_date=None, allowed_cors_origins=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, email=None, name=None, creation_date=None, allowed_cors_origins=None, expiry_date=None, local_vars_configuration=None):  # noqa: E501
         """ServiceUserList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -59,6 +61,7 @@ class ServiceUserList(object):
         self._name = None
         self._creation_date = None
         self._allowed_cors_origins = None
+        self._expiry_date = None
         self.discriminator = None
 
         if id is not None:
@@ -69,6 +72,8 @@ class ServiceUserList(object):
             self.creation_date = creation_date
         if allowed_cors_origins is not None:
             self.allowed_cors_origins = allowed_cors_origins
+        if expiry_date is not None:
+            self.expiry_date = expiry_date
 
     @property
     def id(self):
@@ -202,6 +207,30 @@ class ServiceUserList(object):
             raise ValueError("Parameter `allowed_cors_origins` must be a string")  # noqa: E501
 
         self._allowed_cors_origins = allowed_cors_origins
+
+    @property
+    def expiry_date(self):
+        """Gets the expiry_date of this ServiceUserList.  # noqa: E501
+
+
+        :return: The expiry_date of this ServiceUserList.  # noqa: E501
+        :rtype: str
+        """
+        return self._expiry_date
+
+    @expiry_date.setter
+    def expiry_date(self, expiry_date):
+        """Sets the expiry_date of this ServiceUserList.
+
+
+        :param expiry_date: The expiry_date of this ServiceUserList.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                expiry_date is not None and not isinstance(expiry_date, str)):
+            raise ValueError("Parameter `expiry_date` must be a string")  # noqa: E501
+
+        self._expiry_date = expiry_date
 
     def to_dict(self):
         """Returns the model properties as a dict"""

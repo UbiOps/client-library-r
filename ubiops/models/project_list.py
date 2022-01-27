@@ -36,6 +36,8 @@ class ProjectList(object):
         'id': 'str',
         'name': 'str',
         'creation_date': 'date',
+        'advanced_permissions': 'bool',
+        'gb_seconds': 'int',
         'organization_name': 'str'
     }
 
@@ -43,10 +45,12 @@ class ProjectList(object):
         'id': 'id',
         'name': 'name',
         'creation_date': 'creation_date',
+        'advanced_permissions': 'advanced_permissions',
+        'gb_seconds': 'gb_seconds',
         'organization_name': 'organization_name'
     }
 
-    def __init__(self, id=None, name=None, creation_date=None, organization_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, creation_date=None, advanced_permissions=None, gb_seconds=None, organization_name=None, local_vars_configuration=None):  # noqa: E501
         """ProjectList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -55,6 +59,8 @@ class ProjectList(object):
         self._id = None
         self._name = None
         self._creation_date = None
+        self._advanced_permissions = None
+        self._gb_seconds = None
         self._organization_name = None
         self.discriminator = None
 
@@ -63,6 +69,9 @@ class ProjectList(object):
         self.name = name
         if creation_date is not None:
             self.creation_date = creation_date
+        if advanced_permissions is not None:
+            self.advanced_permissions = advanced_permissions
+        self.gb_seconds = gb_seconds
         self.organization_name = organization_name
 
     @property
@@ -142,6 +151,54 @@ class ProjectList(object):
         """
 
         self._creation_date = creation_date
+
+    @property
+    def advanced_permissions(self):
+        """Gets the advanced_permissions of this ProjectList.  # noqa: E501
+
+
+        :return: The advanced_permissions of this ProjectList.  # noqa: E501
+        :rtype: bool
+        """
+        return self._advanced_permissions
+
+    @advanced_permissions.setter
+    def advanced_permissions(self, advanced_permissions):
+        """Sets the advanced_permissions of this ProjectList.
+
+
+        :param advanced_permissions: The advanced_permissions of this ProjectList.  # noqa: E501
+        :type: bool
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                advanced_permissions is not None and not isinstance(advanced_permissions, bool)):
+            raise ValueError("Parameter `advanced_permissions` must be a boolean")  # noqa: E501
+
+        self._advanced_permissions = advanced_permissions
+
+    @property
+    def gb_seconds(self):
+        """Gets the gb_seconds of this ProjectList.  # noqa: E501
+
+
+        :return: The gb_seconds of this ProjectList.  # noqa: E501
+        :rtype: int
+        """
+        return self._gb_seconds
+
+    @gb_seconds.setter
+    def gb_seconds(self, gb_seconds):
+        """Sets the gb_seconds of this ProjectList.
+
+
+        :param gb_seconds: The gb_seconds of this ProjectList.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                gb_seconds is not None and not isinstance(gb_seconds, int)):
+            raise ValueError("Parameter `gb_seconds` must be an integer")  # noqa: E501
+
+        self._gb_seconds = gb_seconds
 
     @property
     def organization_name(self):

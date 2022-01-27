@@ -579,11 +579,8 @@ class DeploymentVersionList(object):
             raise ValueError("Parameter `request_retention_time` must be an integer")  # noqa: E501
 
         if (self.local_vars_configuration.client_side_validation and
-                request_retention_time is not None and request_retention_time > 2.4192E+6):  # noqa: E501
-            raise ValueError("Invalid value for `request_retention_time`, must be a value less than or equal to `2.4192E+6`")  # noqa: E501
-        if (self.local_vars_configuration.client_side_validation and
-                request_retention_time is not None and request_retention_time < 3.6E+3):  # noqa: E501
-            raise ValueError("Invalid value for `request_retention_time`, must be a value greater than or equal to `3.6E+3`")  # noqa: E501
+                request_retention_time is not None and request_retention_time < 0):  # noqa: E501
+            raise ValueError("Invalid value for `request_retention_time`, must be a value greater than or equal to `0`")  # noqa: E501
 
         self._request_retention_time = request_retention_time
 

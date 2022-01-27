@@ -11,8 +11,8 @@
 #' @title Get metrics
 #' @description Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline  Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running  - `gpu_seconds`: Usage of GPU in seconds, calculated by multiplying the deployment GPUs by the number of seconds the deployments are running  - `active_time`: Time in seconds that the deployment is active
 #' @param metric  character
-#' @param start.time  character
-#' @param end.time  character
+#' @param start.date  character
+#' @param end.date  character
 #' @param object.type  character
 #' @param interval (optional) character
 #' @param object.id (optional) character
@@ -24,8 +24,8 @@
 #'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
-#'  - `start_time`: Timestamp denoting the start of the period over which the metric was measured
-#'   - `end_time`: Timestamp denoting the end of the period over which the metric was measured
+#'  - `start_date`: Timestamp denoting the start of the period over which the metric was measured
+#'   - `end_date`: Timestamp denoting the end of the period over which the metric was measured
 #'   - `value`: Aggregated metric value for the given interval
 #' @examples
 #' \dontrun{
@@ -33,13 +33,13 @@
 #' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::metrics_get(
-#'    metric, start.time, end.time, object.type,
+#'    metric, start.date, end.date, object.type,
 #'    interval = NULL, object.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::metrics_get(
-#'    metric, start.time, end.time, object.type,
+#'    metric, start.date, end.date, object.type,
 #'    interval = NULL, object.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
@@ -51,24 +51,24 @@
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-metrics_get <- function(metric, start.time, end.time, object.type, interval=NULL, object.id=NULL,  preload_content=TRUE, ...){
+metrics_get <- function(metric, start.date, end.date, object.type, interval=NULL, object.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`metric`)) {
     stop("Missing required parameter `metric`.")
   }
-  if (missing(`start.time`)) {
-    stop("Missing required parameter `start.time`.")
+  if (missing(`start.date`)) {
+    stop("Missing required parameter `start.date`.")
   }
-  if (missing(`end.time`)) {
-    stop("Missing required parameter `end.time`.")
+  if (missing(`end.date`)) {
+    stop("Missing required parameter `end.date`.")
   }
   if (missing(`object.type`)) {
     stop("Missing required parameter `object.type`.")
   }
   query_params['interval'] <- interval
-  query_params['start_time'] <- start.time
-  query_params['end_time'] <- end.time
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
   query_params['object_type'] <- object.type
   query_params['object_id'] <- object.id
   
@@ -478,68 +478,6 @@ project_environment_variables_update <- function(id, data,  preload_content=TRUE
 }
 
 
-#' @title Get resource usage
-#' @description Get resource usage for the project. This returns a list of metrics that are used for billing, aggregated per month.
-#' @param start.month (optional) character
-#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
-#' @param ...
-#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
-#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
-#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
-#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
-#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
-#' @return Response from the API
-#'  - `metric`: The metric that was measured
-#'    - `object_type`: Type of object the metric was measured for (version or pipeline)
-#'    - `usage`: an array of objects each containing the following:
-#'        - `month`: Timestamp denoting the start of the month
-#'        - `value`: Aggregated metric value for the given unit over the given month
-#' @examples
-#' \dontrun{
-#' # Use environment variables
-#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-#' result <- ubiops::project_usage_get(
-#'    
-#'    start.month = NULL
-#' )
-#' 
-#' # Or provide directly
-#' result <- ubiops::project_usage_get(
-#'    
-#'    start.month = NULL, 
-#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-#' )
-#' 
-#' print(result)
-#' 
-#' # The default API url is https://api.ubiops.com/v2.1
-#' # Want to use a different API url?
-#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
-#' }
-#' @export
-project_usage_get <- function(start.month=NULL,  preload_content=TRUE, ...){
-  query_params <- list()
-
-  query_params['start_month'] <- start.month
-  
-  url_path <- "/projects/{project_name}/usage"
-
-  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
-  if (preload_content) {
-    deserializedRespObj <- tryCatch(
-      deserialize(api.response),
-      error = function(e){
-        stop("Failed to deserialize response")
-      }
-    )
-
-  } else {
-    ApiResponse$new(api.response)
-  }
-}
-
-
 #' @title Add user to a project
 #' @description Add a user to a project. The user making the request must be admin of the organization. The user can later be assigned roles in the project, such as project-admin, project-viewer etc.
 #' @param data  named list of: [ user_id ]
@@ -784,7 +722,7 @@ project_users_list <- function(user.type=NULL,  preload_content=TRUE, ...){
 
 #' @title Create projects
 #' @description Create a new project with the provided name. **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
-#' @param data  named list of: [ name, organization_name ]
+#' @param data  named list of: [ name, organization_name, advanced_permissions (optional), gb_seconds (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -793,15 +731,21 @@ project_users_list <- function(user.type=NULL,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the created project
-#'   - `id`: Unique identifier for the project (UUID) 
-#'   - `name`: Name of the project 
-#'   - `creation_date`: Time the project was created 
+#'   - `id`: Unique identifier for the project (UUID)
+#'   - `name`: Name of the project
+#'   - `creation_date`: Time the project was created
+#'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 #'   - `organization_name`: Name of the organization in which the project is created
+#'   - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+#'   - `suspended_reason`: Description explaining why the project is suspended
 #' @examples
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  organization_name = "organization_name"
+#'  organization_name = "organization_name",
+#'  advanced_permissions = FALSE,  # (optional)
+#'  gb_seconds = 0  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -899,10 +843,14 @@ projects_delete <- function( ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of a project
-#'   - `id`: Unique identifier for the project (UUID) 
-#'   - `name`: Name of the project 
-#'   - `creation_date`: Time the project was created 
+#'   - `id`: Unique identifier for the project (UUID)
+#'   - `name`: Name of the project
+#'   - `creation_date`: Time the project was created
+#'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 #'   - `organization_name`: Name of the organization in which the project is created
+#'   - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+#'   - `suspended_reason`: Description explaining why the project is suspended
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -959,6 +907,7 @@ projects_get <- function( preload_content=TRUE, ...){
 #'   - `id`: Unique identifier for the project (UUID) 
 #'   - `name`: Name of the project 
 #'   - `creation_date`: Time the project was created 
+#'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project 
 #'   - `organization_name`: Name of the organization in which the project is created
 #' @examples
 #' \dontrun{
@@ -1144,7 +1093,7 @@ projects_resource_usage <- function( preload_content=TRUE, ...){
 
 #' @title Update a project
 #' @description Update the name of a single project. The user making the request must have appropriate permissions.
-#' @param data  named list of: [ name ]
+#' @param data  named list of: [ name (optional), advanced_permissions (optional), gb_seconds (optional), suspend (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1154,14 +1103,21 @@ projects_resource_usage <- function( preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of a project
-#'   - `id`: Unique identifier for the project (UUID) 
-#'   - `name`: Name of the project 
-#'   - `creation_date`: Time the project was created 
+#'   - `id`: Unique identifier for the project (UUID)
+#'   - `name`: Name of the project
+#'   - `creation_date`: Time the project was created
+#'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 #'   - `organization_name`: Name of the organization in which the project is created
+#'   - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+#'   - `suspended_reason`: Description explaining why the project is suspended
 #' @examples
 #' \dontrun{
 #' data <- list(
-#'  name = "name"
+#'  name = "name",  # (optional)
+#'  advanced_permissions = FALSE,  # (optional)
+#'  gb_seconds = 0,  # (optional)
+#'  suspend = FALSE  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -1196,6 +1152,73 @@ projects_update <- function(data,  preload_content=TRUE, ...){
   url_path <- "/projects/{project_name}"
 
   api.response <- call_api(url_path, "PATCH", body, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Get resource usage
+#' @description Get resource usage for the project. It contains **the details of each metric aggregated per month.**
+#' @param start.date (optional) character
+#' @param end.date (optional) character
+#' @param interval (optional) character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  - `metric`: Metric name
+#'   - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
+#'   - `usage`: an array of objects each containing the following:
+#'     - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
+#'     - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+#'     - `value`: Aggregated metric value for the given unit over the given month
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::projects_usage_get(
+#'    
+#'    start.date = NULL, end.date = NULL, interval = 'month'
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::projects_usage_get(
+#'    
+#'    start.date = NULL, end.date = NULL, interval = 'month', 
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+projects_usage_get <- function(start.date=NULL, end.date=NULL, interval='month',  preload_content=TRUE, ...){
+  query_params <- list()
+
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
+  query_params['interval'] <- interval
+  
+  url_path <- "/projects/{project_name}/usage"
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),

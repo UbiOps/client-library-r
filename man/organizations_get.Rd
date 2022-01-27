@@ -22,7 +22,7 @@ Response from the API
   - `id`: Unique identifier for the organization (UUID) 
   - `name`: Name of the organization 
   - `creation_date`: Time the organization was created 
-  - `subscription`: Dictionary with details of the active subscription 
+  - `subscription`: Name of the subscription of the organization 
   - `subscription_self_service`: Boolean indicating if the organization subscription is self service
 }
 \description{

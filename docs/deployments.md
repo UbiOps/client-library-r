@@ -1049,7 +1049,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9 or r4.0. The default value is python3.7.
 - `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
-- `maximum_instances`: Upper bound of number of versions running. The default value is 5, the maximum value is 20. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
+- `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
 - `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
 
@@ -1164,7 +1164,7 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
+  request_retention_time = 0, (optional)
   request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
   deployment_mode = 'express',  # one of: [express, batch]  (optional)
   default_notification_group = "default_notification_group"  # (optional)
@@ -1551,7 +1551,7 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
+  request_retention_time = 0, (optional)
   request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
   default_notification_group = "default_notification_group"  # (optional)
 )
@@ -1597,13 +1597,28 @@ Possible data types for the input and output fields are:
 - **array_string**: an array of strings
 - **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.
 
+Possible widgets for the input fields are:
+- **textbox**: textbox
+- **numberbox**: numberbox
+- **slider**: slider
+- **dropdown**: dropdown
+- **switch**: switch
+- **button**: upload button
+- **drawer**: drawer
+- **image_preview**: image upload with preview
+
+Possible widgets for the output fields are:
+- **textbox**: textbox
+- **button**: download button
+- **image_preview**: image preview
+
 ### Required Parameters
 
 - `name`: Name of the deployment. It is unique within a project.
 - `input_type`: Type of the input of the deployment. It can be either structured or plain.
 - `output_type`: Type of the output of the deployment. It can be either structured or plain.
-- `input_fields`: The list of required deployment input fields. It must contain the fields: name and data_type. The name of an input field is unique for a deployment.
-- `output_fields`: The list of required deployment output fields. It must contain the fields: name and data_type. The name of an output field is unique for a deployment.
+- `input_fields`: The list of required deployment input fields. It must contain the fields: name and data_type, and it may contain the field: widget. The name of an input field is unique for a deployment.
+- `output_fields`: The list of required deployment output fields. It must contain the fields: name and data_type, and it may contain the field: widget. The name of an output field is unique for a deployment.
 
 ### Optional Parameters
 
@@ -1667,6 +1682,43 @@ A deployment with plain input and output type
 }
 ```
 
+A deployment with structured input and output type and field widgets
+```
+{
+  "name": "deployment-1",
+  "input_type": "structured",
+  "output_type": "structured",
+  "input_fields": [
+    {
+      "name": "input-field-1",
+      "data_type": "int",
+      "widget": {
+        "type": "slider",
+        "configuration": {"min": 0, "max": 10, "default": 4, "step": 2}
+      }
+    },
+    {
+      "name": "input-field-2",
+      "data_type": "double",
+      "widget": {
+        "type": "numberbox",
+        "configuration": {"min": 0, "max": 1, "default": 0.5, "step": 0.1}
+      }
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "output-field",
+      "data_type": "double",
+      "widget": {
+        "type": "textbox",
+        "configuration": {}
+      }
+    }
+  ]
+}
+```
+
 ### Response Structure
 Details of the created deployment
 
@@ -1695,17 +1747,20 @@ Details of the created deployment
   "input_fields": [
     {
       "name": "input-field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "input-field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_fields": [
     {
       "name": "output-field",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -1726,13 +1781,15 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   labels = list(key = "value")  # (optional)
@@ -1803,8 +1860,8 @@ Details of a deployment
 - `project`: Project name in which the deployment is defined
 - `input_type`: Type of the input of the deployment
 - `output_type`: Type of the output of the deployment
-- `input_fields`: The list of deployment input fields containing name and data_type
-- `output_fields`: The list of deployment output fields containing name and data_type
+- `input_fields`: The list of deployment input fields containing name, data_type and widget
+- `output_fields`: The list of deployment output fields containing name, data_type and widget
 - `description`: Description of the deployment
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
@@ -1824,17 +1881,20 @@ Details of a deployment
   "input_fields": [
     {
       "name": "input-field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "input-field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_fields": [
     {
       "name": "output-field",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -2008,7 +2068,7 @@ Update a deployment
 - `input_fields`: New input fields for the deployment
 - `output_fields`: New output fields for the deployment
 
-Input and output fields can be updated (name or data type), added or removed. For deployments that are attached in a pipeline, fields must be updated one at a time so that the updates can be performed while preserving the mapping.
+Input and output fields can be updated (name, data type or widget), added or removed. For deployments that are attached in a pipeline or contain any input/output widgets, fields must be updated one at a time so that the updates can be performed while preserving the mapping/widgets.
 
 ## Request Examples
 
@@ -2026,8 +2086,8 @@ Details of the updated deployment
 - `project`: Project name in which the deployment is defined
 - `input_type`: Type of the input of the deployment
 - `output_type`: Type of the output of the deployment
-- `input_fields`: The list of deployment input fields containing name and data_type
-- `output_fields`: The list of deployment output fields containing name and data_type
+- `input_fields`: The list of deployment input fields containing name, data_type and (optional) widget
+- `output_fields`: The list of deployment output fields containing name, data_type and (optional) widget
 - `description`: Description of the deployment
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the deployment was created
@@ -2047,17 +2107,20 @@ Details of the updated deployment
   "input_fields": [
     {
       "name": "input-field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "input-field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_fields": [
     {
       "name": "output-field",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -2078,13 +2141,15 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   labels = list(key = "value")  # (optional)
@@ -2159,7 +2224,7 @@ output_path <- ubiops::revisions_file_download(
 ```
 
 # **revisions_file_upload**
-> revisions_file_upload(deployment.name, version, file=NULL, source.deployment=NULL, source.version=NULL)
+> revisions_file_upload(deployment.name, version, file=NULL, source.deployment=NULL, source.version=NULL, template.deployment.id=NULL)
 
 Upload deployment file
 
@@ -2174,6 +2239,7 @@ It is **also possible** to provide a source version from which the deployment fi
 - `file`: Deployment file
 - `source_deployment`: Name of the deployment from which the deployment file will be copied
 - `source_version`: Version from which the deployment file will be copied
+- `template_deployment_id`: UUID of a template deployment which will be used as the source of the deployment file
 
 Either **file** or **source_deployment** and **source_version** must be provided. source_deployment and source_version must be provided together.
 
@@ -2190,13 +2256,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::revisions_file_upload(
   deployment.name, version,
-  file = NULL, source.deployment = NULL, source.version = NULL
+  file = NULL, source.deployment = NULL, source.version = NULL, template.deployment.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::revisions_file_upload(
   deployment.name, version,
-  file = NULL, source.deployment = NULL, source.version = NULL, 
+  file = NULL, source.deployment = NULL, source.version = NULL, template.deployment.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

@@ -22,7 +22,7 @@ Upload a blob to a project. The uploaded blob file can be retrieved by passing t
 ### Optional Parameters
 These parameters should be given in the header.
 
-- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (or 24 hours), the minimum value is 900 seconds and the maximum value is 31536000 seconds.
+- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (1 day).
 
 ### Response Structure
 The details of the uploaded blob
@@ -37,14 +37,14 @@ The details of the uploaded blob
 ## Response Examples
 
 ```
-{
+{{
   "id": "b58fb853-9311-4583-9688-abed61830abc",
   "creation_date": "2020-05-18T11:26:57.904+00:00",
   "last_updated": "2020-05-18T11:26:57.904+00:00",
   "filename": "original-filename.jpg",
   "size": 3439,
   "ttl": 86400
-}
+}}
 ```
 
 ### Example
@@ -232,7 +232,7 @@ Overwrite a blob with given blob id. The uploaded blob file can be retrieved by 
 ### Optional Parameters
 These parameters should be given in the header.
 
-- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (or 24 hours), the minimum value is 900 seconds and the maximum value is 31536000 seconds.
+- `blob-ttl`: The Blob-TTL parameter designates the time to live of the blob in seconds. The default value is 86400 seconds (1 day).
 
 ### Response Structure
 The details of the uploaded blob
@@ -247,14 +247,14 @@ The details of the uploaded blob
 ## Response Examples
 
 ```
-{
+{{
   "id": "b58fb853-9311-4583-9688-abed61830abc",
   "creation_date": "2020-05-18T11:26:57.904+00:00",
   "last_updated": "2020-05-18T11:26:57.904+00:00",
   "filename": "original-filename.jpg",
   "size": 3439,
   "ttl": 86400
-}
+}}
 ```
 
 ### Example

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 Create a new service user
 
 ## Description
-Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API.
+Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API. It is possible to set an expiry date for this token.
 In addition, allowed cors origins can be configured for the service user. The service user will be allowed to make a deployment or pipeline request from these origins.
 
 The token is **ONLY** returned on creation and will not be accessible afterwards.
@@ -28,6 +28,8 @@ The token is **ONLY** returned on creation and will not be accessible afterwards
 - `name`: Name of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
+
+- `expiry_date`: Date when the service user account expires (UTC). If null is passed, the account will never expire.
 
 ## Request Examples
 
@@ -47,6 +49,14 @@ The token is **ONLY** returned on creation and will not be accessible afterwards
 }
 ```
 
+
+```
+{
+  "name": "service-user-1",
+  "expiry_date": "2020-01-01T00:00:00.000Z"
+}
+```
+
 ### Response Structure
 Details of the created service user
 
@@ -62,6 +72,8 @@ Details of the created service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -73,7 +85,8 @@ Details of the created service user
   "creation_date": "2020-03-24T09:16:27.504+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ]
+  ],
+  "expiry_date": "2021-03-24T00:00:00.000+00:00"
 }
 ```
 
@@ -81,7 +94,8 @@ Details of the created service user
 ```R
 data <- list(
   name = "name",  # (optional)
-  allowed_cors_origins = list("value-1", "value-2")  # (optional)
+  allowed_cors_origins = list("value-1", "value-2")  # (optional),
+  expiry_date = expiry_date  # (optional)
 )
 
 # Use environment variables
@@ -154,6 +168,8 @@ Details of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -164,7 +180,8 @@ Details of the service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ]
+  ],
+  "expiry_date": null
 }
 ```
 
@@ -213,6 +230,8 @@ List of details of the service users:
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -224,7 +243,8 @@ List of details of the service users:
     "creation_date": "2020-03-24T09:16:27.504+00:00",
     "allowed_cors_origins": [
       "https://test.com"
-    ]
+    ],
+    "expiry_date": "2021-03-24T00:00:00.000+00:00"
   },
   {
     "id": "13a9ba27-6888-4528-826e-8e1002eab13d",
@@ -233,7 +253,8 @@ List of details of the service users:
     "creation_date": "2020-03-26T12:18:43.123+00:00",
     "allowed_cors_origins": [
       "https://test.com"
-    ]
+    ],
+    "expiry_date": null
   }
 ]
 ```
@@ -269,6 +290,8 @@ Reset the token of a service user
 
 ## Description
 Reset the token of a service user. The old token will be deleted and a new one will be created for the service user. No data should be sent in the body of the request.
+
+It is not possible to reset the token of a service user whose expiry date has been reached.
 
 ### Response Structure
 Details of the new token for the service user
@@ -315,14 +338,18 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Update service user details
 
 ## Description
-Update the name and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value.
+Update the name, expiry date and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value.
 Leave as an empty list to remove the previous list of allowed origins.
+
+It is not possible to update a service user whose expiry date has been reached.
 
 ### Optional Parameters
 
 - `name`: Name of the service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
+
+- `expiry_date`: Date when the service user account will expire (UTC). If null is passed, the account will never expire.
 
 ## Request Examples
 
@@ -343,6 +370,13 @@ Leave as an empty list to remove the previous list of allowed origins.
 }
 ```
 
+
+```
+{
+  "expiry_date": "2020-01-01T00:00:00.000Z"
+}
+```
+
 ### Response Structure
 Details of the updated service user
 
@@ -356,6 +390,8 @@ Details of the updated service user
 
 - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from
 
+- `expiry_date`: Date when the service user account will expire (UTC)
+
 ## Response Examples
 
 ```
@@ -366,7 +402,8 @@ Details of the updated service user
   "creation_date": "2020-03-26T12:18:43.123+00:00",
   "allowed_cors_origins": [
     "https://test.com"
-  ]
+  ],
+  "expiry_date": null
 }
 ```
 
@@ -374,7 +411,8 @@ Details of the updated service user
 ```R
 data <- list(
   name = "name",  # (optional)
-  allowed_cors_origins = list("value-1", "value-2")  # (optional)
+  allowed_cors_origins = list("value-1", "value-2")  # (optional),
+  expiry_date = expiry_date  # (optional)
 )
 
 # Use environment variables

@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**project_environment_variables_get**](projects.md#project_environment_variables_get) | **GET** /projects/{project_name}/environment-variables/{id} | Get project environment variable
 [**project_environment_variables_list**](projects.md#project_environment_variables_list) | **GET** /projects/{project_name}/environment-variables | List project environment variables
 [**project_environment_variables_update**](projects.md#project_environment_variables_update) | **PATCH** /projects/{project_name}/environment-variables/{id} | Update project environment variable
-[**project_usage_get**](projects.md#project_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
 [**project_users_create**](projects.md#project_users_create) | **POST** /projects/{project_name}/users | Add user to a project
 [**project_users_delete**](projects.md#project_users_delete) | **DELETE** /projects/{project_name}/users/{user_id} | Delete user from a project
 [**project_users_get**](projects.md#project_users_get) | **GET** /projects/{project_name}/users/{user_id} | Get user in a project
@@ -23,10 +22,11 @@ Method | HTTP request | Description
 [**projects_log_list**](projects.md#projects_log_list) | **POST** /projects/{project_name}/logs | List logs for a project
 [**projects_resource_usage**](projects.md#projects_resource_usage) | **GET** /projects/{project_name}/resources | List resource usage of a project
 [**projects_update**](projects.md#projects_update) | **PATCH** /projects/{project_name} | Update a project
+[**projects_usage_get**](projects.md#projects_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
 
 
 # **metrics_get**
-> metrics_get(metric, start.time, end.time, object.type, interval=NULL, object.id=NULL)
+> metrics_get(metric, start.date, end.date, object.type, interval=NULL, object.id=NULL)
 
 Get metrics
 
@@ -56,8 +56,8 @@ Metrics on deployment version level:
 
 ### Required Parameters
 
-- `start_time`: Starting time for the metric values to be returned. It should be provided in datetime isoformat.
-- `end_time`: Ending time for the metric values to be returned. It should be provided in datetime isoformat.
+- `start_date`: Starting date for the metric values to be returned. It should be provided in datetime isoformat.
+- `end_date`: Ending date for the metric values to be returned. It should be provided in datetime isoformat.
 - `object_type`: The type of the object for which the metrics are requested. It can be either `deployment_version` or `pipeline_version`.
 
 ### Optional Parameters
@@ -67,79 +67,79 @@ Metrics on deployment version level:
 
 ### Response Structure
 
-- `start_time`: Timestamp denoting the start of the period over which the metric was measured
-- `end_time`: Timestamp denoting the end of the period over which the metric was measured
+- `start_date`: Timestamp denoting the start of the period over which the metric was measured
+- `end_date`: Timestamp denoting the end of the period over which the metric was measured
 - `value`: Aggregated metric value for the given interval
 
 ## Response Examples
-With interval as minute, start_time as 2019-11-13 12:00:00 and end_time as 2019-11-13 12:03:00
+With interval as minute, start_date as 2019-11-13 12:00:00 and end_date as 2019-11-13 12:03:00
 
 ```
 [
   {
-    "start_time": "2019-11-13T12:00:00+00:00",
-    "end_time": "2019-11-13T12:01:00+00:00",
+    "start_date": "2019-11-13T12:00:00+00:00",
+    "end_date": "2019-11-13T12:01:00+00:00",
     "value": 100
   },
   {
-    "start_time": "2019-11-13T12:01:00+00:00",
-    "end_time": "2019-11-13T12:02:00+00:00",
+    "start_date": "2019-11-13T12:01:00+00:00",
+    "end_date": "2019-11-13T12:02:00+00:00",
     "value": 134
   },
   {
-    "start_time": "2019-11-13T12:02:00+00:00",
-    "end_time": "2019-11-13T12:03:00+00:00",
+    "start_date": "2019-11-13T12:02:00+00:00",
+    "end_date": "2019-11-13T12:03:00+00:00",
     "value": 112
   }
 ]
 
 ```
 
-With interval as hour, start_time as 2019-11-13 12:00:00 and end_time as 2019-11-13 14:00:00
+With interval as hour, start_date as 2019-11-13 12:00:00 and end_date as 2019-11-13 14:00:00
 
 ```
 [
   {
-   "start_time": "2019-11-13T12:00:00+00:00",
-   "end_time": "2019-11-13T13:00:00+00:00",
+   "start_date": "2019-11-13T12:00:00+00:00",
+   "end_date": "2019-11-13T13:00:00+00:00",
    "value": 92
   },
   {
-    "start_time": "2019-11-13T13:00:00+00:00",
-    "end_time": "2019-11-13T14:00:00+00:00",
+    "start_date": "2019-11-13T13:00:00+00:00",
+    "end_date": "2019-11-13T14:00:00+00:00",
     "value": 120
   },
   {
-    "start_time": "2019-11-13T14:00:00+00:00",
-    "end_time": "2019-11-13T15:00:00+00:00",
+    "start_date": "2019-11-13T14:00:00+00:00",
+    "end_date": "2019-11-13T15:00:00+00:00",
     "value": 0
   }
 ]
 ```
 
-With interval as day, start_time as 2019-11-13 12:00:00 and end_time as 2019-11-14 12:00:00
+With interval as day, start_date as 2019-11-13 12:00:00 and end_date as 2019-11-14 12:00:00
 
 ```
 [
   {
-   "start_time": "2019-11-13T00:00:00+00:00",
-   "end_time": "2019-11-14T00:00:00+00:00",
+   "start_date": "2019-11-13T00:00:00+00:00",
+   "end_date": "2019-11-14T00:00:00+00:00",
    "value": 528
   },
   {
-    "start_time": "2019-11-14T00:00:00+00:00",
-    "end_time": "2019-11-15T00:00:00+00:00",
+    "start_date": "2019-11-14T00:00:00+00:00",
+    "end_date": "2019-11-15T00:00:00+00:00",
     "value": 342
   }
 ]
 ```
 
-With interval as month, start_time as 2019-11-13 12:00:00 and end_time as 2019-12-13 12:00:00
+With interval as month, start_date as 2019-11-13 12:00:00 and end_date as 2019-12-13 12:00:00
 ```
 [
   {
-   "start_time": "2019-11-01T00:00:00+00:00",
-   "end_time": "2019-12-01T00:00:00+00:00",
+   "start_date": "2019-11-01T00:00:00+00:00",
+   "end_date": "2019-12-01T00:00:00+00:00",
    "value": 1983
   }
 ]
@@ -151,13 +151,13 @@ With interval as month, start_time as 2019-11-13 12:00:00 and end_time as 2019-1
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::metrics_get(
-  metric, start.time, end.time, object.type,
+  metric, start.date, end.date, object.type,
   interval = NULL, object.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::metrics_get(
-  metric, start.time, end.time, object.type,
+  metric, start.date, end.date, object.type,
   interval = NULL, object.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
@@ -552,114 +552,6 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
-# **project_usage_get**
-> project_usage_get(start.month=NULL)
-
-Get resource usage
-
-## Description
-Get resource usage for the project. This returns a list of metrics that are used for billing, aggregated per month.
-
-### Optional Parameters
-
-- `start_month`: date indicating the start month to fetch usage data from, formatted `YYYY-MM`. If omitted results are generated from one year ago.
-
-### Response Structure
-
-- `metric`: The metric that was measured
-- `object_type`: Type of object the metric was measured for (version or pipeline)
-- `usage`: an array of objects each containing the following:
-     - `month`: Timestamp denoting the start of the month
-     - `value`: Aggregated metric value for the given unit over the given month
-
-## Response Examples
-
-```
-[
-  {
-    "object_type": "pipeline_version",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "month": "2019-08-01T00:00:00Z",
-        "value": 1840
-      },
-      {
-        "month": "2019-09-01T00:00:00Z",
-        "value": 400
-      },
-      {
-        "month": "2019-10-01T00:00:00Z",
-        "value": 1204
-      },
-      {
-        "month": "2019-11-01T00:00:00Z",
-        "value": 1598
-      },
-      {
-        "month": "2019-12-01T00:00:00Z",
-        "value": 824
-      },
-      {
-        "month": "2020-01-01T00:00:00Z",
-        "value": 2036
-      },
-      {
-        "month": "2020-02-01T00:00:00Z",
-        "value": 1438
-      },
-      {
-        "month": "2020-03-01T00:00:00Z",
-        "value": 932
-      },
-      {
-        "month": "2020-04-01T00:00:00Z",
-        "value": 528
-      },
-      {
-        "month": "2020-05-01T00:00:00Z",
-        "value": 1484
-      },
-      {
-        "month": "2020-06-01T00:00:00Z",
-        "value": 1942
-      },
-      {
-        "month": "2020-07-01T00:00:00Z",
-        "value": 1332
-      }
-    ]
-  }
-]
-
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::project_usage_get(
-  
-  start.month = NULL
-)
-
-# Or provide directly
-result <- ubiops::project_usage_get(
-  
-  start.month = NULL, 
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
 # **project_users_create**
 > project_users_create(data)
 
@@ -889,8 +781,12 @@ Create a new project with the provided name.
 ### Required Parameters
 
 - `name`: Name of the project. The name is globally unique. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
-
 - `organization_name`: Name of the organization in which the project is going to be created
+
+### Optional Parameters
+
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project. It defaults to False.
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running. It defaults to null, meaning that there are no limits.
 
 ## Request Examples
 
@@ -905,12 +801,13 @@ Create a new project with the provided name.
 Details of the created project
 
 - `id`: Unique identifier for the project (UUID)
-
 - `name`: Name of the project
-
 - `creation_date`: Time the project was created
-
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
 
@@ -919,7 +816,11 @@ Details of the created project
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "name": "project-1",
   "creation_date": "2018-10-26",
-  "organization_name": "organization-1"
+  "advanced_permissions": false,
+  "organization_name": "organization-1",
+  "gb_seconds": null,
+  "suspended": false,
+  "suspended_reason": null
 }
 ```
 
@@ -927,7 +828,9 @@ Details of the created project
 ```R
 data <- list(
   name = "name",
-  organization_name = "organization_name"
+  organization_name = "organization_name",
+  advanced_permissions = FALSE,  # (optional)
+  gb_seconds = 0  # (optional)
 )
 
 # Use environment variables
@@ -991,12 +894,13 @@ Get the details of a single project. The user making the request must have appro
 Details of a project
 
 - `id`: Unique identifier for the project (UUID)
-
 - `name`: Name of the project
-
 - `creation_date`: Time the project was created
-
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
 
@@ -1005,7 +909,11 @@ Details of a project
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "name": "project-1",
   "creation_date": "2018-10-26",
-  "organization_name": "organization-1"
+  "advanced_permissions": false,
+  "organization_name": "organization-1",
+  "gb_seconds": 10000,
+  "suspended": false,
+  "suspended_reason": null
 }
 ```
 
@@ -1050,6 +958,8 @@ A list of details of the projects
 
 - `creation_date`: Time the project was created
 
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
+
 - `organization_name`: Name of the organization in which the project is created
 
 ## Response Examples
@@ -1060,12 +970,14 @@ A list of details of the projects
     "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
     "name": "project-1",
     "creation_date": "2018-10-26",
+    "advanced_permissions": false,
     "organization_name": "organization-1"
   },
   {
     "id": "e6a85cd7-94cc-44cf-9fa0-4b462d5a71ab",
     "name": "project-2",
     "creation_date": "2019-06-20",
+    "advanced_permissions": false,
     "organization_name": "organization-2"
   }
 ]
@@ -1354,6 +1266,9 @@ Update the name of a single project. The user making the request must have appro
 ### Optional Parameters
 
 - `name`: New project name
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspend`: A boolean to suspend and activate projects. If the project is already suspended by UbiOps, it is not possible to suspend/activate the project.
 
 ## Request Examples
 
@@ -1367,12 +1282,13 @@ Update the name of a single project. The user making the request must have appro
 Details of a project
 
 - `id`: Unique identifier for the project (UUID)
-
 - `name`: Name of the project
-
 - `creation_date`: Time the project was created
-
+- `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
+- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
 
@@ -1381,14 +1297,21 @@ Details of a project
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
   "name": "project-1",
   "creation_date": "2018-10-26",
-  "organization_name": "organization-1"
+  "advanced_permissions": false,
+  "organization_name": "organization-1",
+  "gb_seconds": 10000,
+  "suspended": false,
+  "suspended_reason": null
 }
 ```
 
 ### Example
 ```R
 data <- list(
-  name = "name"
+  name = "name",  # (optional)
+  advanced_permissions = FALSE,  # (optional)
+  gb_seconds = 0,  # (optional)
+  suspend = FALSE  # (optional)
 )
 
 # Use environment variables
@@ -1401,6 +1324,121 @@ result <- ubiops::projects_update(
 # Or provide directly
 result <- ubiops::projects_update(
   data,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **projects_usage_get**
+> projects_usage_get(start.date=NULL, end.date=NULL, interval='month')
+
+Get resource usage
+
+## Description
+Get resource usage for the project. It contains **the details of each metric aggregated per month.**
+
+### Optional Parameters
+
+- `start_date`: date indicating the start date to fetch usage data from. If omitted, results are generated for current subscription period.
+- `end_date`: date indicating the end date to fetch usage data until. If omitted, results are generated for current subscription period.
+- `interval`: interval for which the usage data is fetched. It can be 'day' or 'month'. It defaults to 'month'.
+
+If no **start_date** or **end_date** is given, the current subscription period is used, e.g. if the usage details are requested on 01-12-2020 and the subscription started on 20-11-2020, the results will contain data from 20-11-2020 to 20-12-2020.
+When **start_date** and **end_date** are given, this month period is used, e.g. if 12-11-2020 is given as start date and 12-12-2020 as end date, the results will contain data from 12-11-2020 to 12-12-2020.
+
+### Response Structure
+
+- `metric`: Metric name
+- `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
+- `usage`: an array of objects each containing the following:
+  - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
+  - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+  - `value`: Aggregated metric value for the given unit over the given month
+
+## Response Examples
+2019-08-01 as start date and 2019-09-01 as end date
+
+```
+[
+  {
+    "object_type": "deployment_version",
+    "metric": "gb_seconds",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 13543
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 136
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 468
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 125
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 135
+      } 
+    ]
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::projects_usage_get(
+  
+  start.date = NULL, end.date = NULL, interval = 'month'
+)
+
+# Or provide directly
+result <- ubiops::projects_usage_get(
+  
+  start.date = NULL, end.date = NULL, interval = 'month', 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

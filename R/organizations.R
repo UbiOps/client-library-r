@@ -73,145 +73,6 @@ instance_types_list <- function(organization.name,  preload_content=TRUE, ...){
 }
 
 
-#' @title Get resource usage details
-#' @description Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per day.
-#' @param organization.name  character
-#' @param start.date (optional) character
-#' @param end.date (optional) character
-#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
-#' @param ...
-#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
-#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
-#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
-#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
-#' @return Response from the API
-#'  - `metric`: The metric that was measured
-#'    - `object_type`: Type of object the metric was measured for (version or pipeline)
-#'    - `usage`: an array of objects each containing the following:
-#'        - `day`: Timestamp denoting the start of the day
-#'        - `value`: Aggregated metric value for the given unit over the given day
-#' @examples
-#' \dontrun{
-#' # Use environment variables
-#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-#' result <- ubiops::organization_usage_details_get(
-#'    organization.name,
-#'    start.date = NULL, end.date = NULL
-#' )
-#' 
-#' # Or provide directly
-#' result <- ubiops::organization_usage_details_get(
-#'    organization.name,
-#'    start.date = NULL, end.date = NULL, 
-#'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
-#' )
-#' 
-#' print(result)
-#' 
-#' # The default API url is https://api.ubiops.com/v2.1
-#' # Want to use a different API url?
-#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
-#' }
-#' @export
-organization_usage_details_get <- function(organization.name, start.date=NULL, end.date=NULL,  preload_content=TRUE, ...){
-  query_params <- list()
-
-  if (missing(`organization.name`)) {
-    stop("Missing required parameter `organization.name`.")
-  }
-  query_params['start_date'] <- start.date
-  query_params['end_date'] <- end.date
-  
-  url_path <- "/organizations/{organization_name}/usage/details"
-  if (!missing(`organization.name`)) {
-    url_path <- gsub("\\{organization_name\\}", utils::URLencode(as.character(`organization.name`), reserved = TRUE), url_path)
-  }
-
-  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
-  if (preload_content) {
-    deserializedRespObj <- tryCatch(
-      deserialize(api.response),
-      error = function(e){
-        stop("Failed to deserialize response")
-      }
-    )
-
-  } else {
-    ApiResponse$new(api.response)
-  }
-}
-
-
-#' @title Get resource usage
-#' @description Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per subscription iteration.
-#' @param organization.name  character
-#' @param start.date (optional) character
-#' @param end.date (optional) character
-#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
-#' @param ...
-#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
-#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
-#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
-#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
-#' @return Response from the API
-#'  - `metric`: The metric that was measured
-#'    - `object_type`: Type of object the metric was measured for (version or pipeline)
-#'    - `usage`: an array of objects each containing the following:
-#'        - `start_date`: Timestamp denoting the start of the active subscription period or provided date
-#'        - `end_date`: Timestamp denoting the end of the active subscription period or provided date
-#'        - `value`: Aggregated metric value for the given unit over the given month
-#' @examples
-#' \dontrun{
-#' # Use environment variables
-#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-#' result <- ubiops::organization_usage_get(
-#'    organization.name,
-#'    start.date = NULL, end.date = NULL
-#' )
-#' 
-#' # Or provide directly
-#' result <- ubiops::organization_usage_get(
-#'    organization.name,
-#'    start.date = NULL, end.date = NULL, 
-#'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
-#' )
-#' 
-#' print(result)
-#' 
-#' # The default API url is https://api.ubiops.com/v2.1
-#' # Want to use a different API url?
-#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
-#' }
-#' @export
-organization_usage_get <- function(organization.name, start.date=NULL, end.date=NULL,  preload_content=TRUE, ...){
-  query_params <- list()
-
-  if (missing(`organization.name`)) {
-    stop("Missing required parameter `organization.name`.")
-  }
-  query_params['start_date'] <- start.date
-  query_params['end_date'] <- end.date
-  
-  url_path <- "/organizations/{organization_name}/usage"
-  if (!missing(`organization.name`)) {
-    url_path <- gsub("\\{organization_name\\}", utils::URLencode(as.character(`organization.name`), reserved = TRUE), url_path)
-  }
-
-  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
-  if (preload_content) {
-    deserializedRespObj <- tryCatch(
-      deserialize(api.response),
-      error = function(e){
-        stop("Failed to deserialize response")
-      }
-    )
-
-  } else {
-    ApiResponse$new(api.response)
-  }
-}
-
-
 #' @title Add a user to an organization
 #' @description Add a user to an organization as admin or normal user. The user making the request must be admin of the organization. The user can later be assigned roles in the projects defined in the scope the organization, such as project-admin, project-viewer etc.
 #' @param organization.name  character
@@ -635,7 +496,7 @@ organizations_create <- function(data,  preload_content=TRUE, ...){
 #'   - `id`: Unique identifier for the organization (UUID) 
 #'   - `name`: Name of the organization 
 #'   - `creation_date`: Time the organization was created 
-#'   - `subscription`: Dictionary with details of the active subscription 
+#'   - `subscription`: Name of the subscription of the organization 
 #'   - `subscription_self_service`: Boolean indicating if the organization subscription is self service
 #' @examples
 #' \dontrun{
@@ -807,7 +668,7 @@ organizations_resource_usage <- function(organization.name,  preload_content=TRU
 #' @title Update details of an organization
 #' @description Update an organization. The user making the request must be admin of the organization. Users are able to update the name of the organization, but changes to the subscription can only be done by Dutch Analytics. To delete the end date of the current subscription, give the 'subscription_end_date' parameter with value null.
 #' @param organization.name  character
-#' @param data  named list of: [ name (optional), subscription (optional), subscription_end_date (optional) ]
+#' @param data  named list of: [ name (optional), subscription (optional), subscription_end_date (optional), subscription_start_date (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -825,7 +686,8 @@ organizations_resource_usage <- function(organization.name,  preload_content=TRU
 #' data <- list(
 #'  name = "name",  # (optional)
 #'  subscription = "subscription",  # (optional)
-#'  subscription_end_date = subscription_end_date  # (optional)
+#'  subscription_end_date = subscription_end_date,  # (optional)
+#'  subscription_start_date = subscription_start_date  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -865,6 +727,78 @@ organizations_update <- function(organization.name, data,  preload_content=TRUE,
   }
 
   api.response <- call_api(url_path, "PATCH", body, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Get resource usage
+#' @description Get resource usage for the organization. It contains **the details of each metric aggregated per month.**
+#' @param organization.name  character
+#' @param start.date (optional) character
+#' @param end.date (optional) character
+#' @param interval (optional) character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  - `metric`: Metric name
+#'   - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
+#'   - `usage`: an array of objects each containing the following:
+#'     - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
+#'     - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+#'     - `value`: Aggregated metric value for the given unit over the given month
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::organizations_usage_get(
+#'    organization.name,
+#'    start.date = NULL, end.date = NULL, interval = 'month'
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::organizations_usage_get(
+#'    organization.name,
+#'    start.date = NULL, end.date = NULL, interval = 'month', 
+#'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+organizations_usage_get <- function(organization.name, start.date=NULL, end.date=NULL, interval='month',  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`organization.name`)) {
+    stop("Missing required parameter `organization.name`.")
+  }
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
+  query_params['interval'] <- interval
+  
+  url_path <- "/organizations/{organization_name}/usage"
+  if (!missing(`organization.name`)) {
+    url_path <- gsub("\\{organization_name\\}", utils::URLencode(as.character(`organization.name`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),

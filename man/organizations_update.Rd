@@ -9,7 +9,7 @@ organizations_update(organization.name, data, preload_content = TRUE, ...)
 \arguments{
 \item{organization.name}{character}
 
-\item{data}{named list of: [ name (optional), subscription (optional), subscription_end_date (optional) ]}
+\item{data}{named list of: [ name (optional), subscription (optional), subscription_end_date (optional), subscription_start_date (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -34,7 +34,8 @@ Update an organization. The user making the request must be admin of the organiz
 data <- list(
  name = "name",  # (optional)
  subscription = "subscription",  # (optional)
- subscription_end_date = subscription_end_date  # (optional)
+ subscription_end_date = subscription_end_date,  # (optional)
+ subscription_start_date = subscription_start_date  # (optional)
 )
 
 # Use environment variables

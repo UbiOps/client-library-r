@@ -84,8 +84,6 @@ export(notification_groups_update)
 
 # Organizations
 export(instance_types_list)
-export(organization_usage_details_get)
-export(organization_usage_get)
 export(organization_users_create)
 export(organization_users_delete)
 export(organization_users_get)
@@ -96,6 +94,7 @@ export(organizations_get)
 export(organizations_list)
 export(organizations_resource_usage)
 export(organizations_update)
+export(organizations_usage_get)
 
 # PipelineRequests
 export(batch_pipeline_requests_create)
@@ -145,7 +144,6 @@ export(project_environment_variables_delete)
 export(project_environment_variables_get)
 export(project_environment_variables_list)
 export(project_environment_variables_update)
-export(project_usage_get)
 export(project_users_create)
 export(project_users_delete)
 export(project_users_get)
@@ -157,6 +155,7 @@ export(projects_list)
 export(projects_log_list)
 export(projects_resource_usage)
 export(projects_update)
+export(projects_usage_get)
 
 # RequestSchedules
 export(request_schedules_create)

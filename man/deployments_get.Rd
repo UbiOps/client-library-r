@@ -25,8 +25,8 @@ Response from the API
   - `project`: Project name in which the deployment is defined
   - `input_type`: Type of the input of the deployment
   - `output_type`: Type of the output of the deployment
-  - `input_fields`: The list of deployment input fields containing name and data_type
-  - `output_fields`: The list of deployment output fields containing name and data_type
+  - `input_fields`: The list of deployment input fields containing name, data_type and widget
+  - `output_fields`: The list of deployment output fields containing name, data_type and widget
   - `description`: Description of the deployment
   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
   - `creation_date`: The date when the deployment was created

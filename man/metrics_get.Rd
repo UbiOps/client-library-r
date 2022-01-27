@@ -6,8 +6,8 @@
 \usage{
 metrics_get(
   metric,
-  start.time,
-  end.time,
+  start.date,
+  end.date,
   object.type,
   interval = NULL,
   object.id = NULL,
@@ -18,9 +18,9 @@ metrics_get(
 \arguments{
 \item{metric}{character}
 
-\item{start.time}{character}
+\item{start.date}{character}
 
-\item{end.time}{character}
+\item{end.date}{character}
 
 \item{object.type}{character}
 
@@ -38,8 +38,8 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 }
 \value{
 Response from the API
- - `start_time`: Timestamp denoting the start of the period over which the metric was measured
-  - `end_time`: Timestamp denoting the end of the period over which the metric was measured
+ - `start_date`: Timestamp denoting the start of the period over which the metric was measured
+  - `end_date`: Timestamp denoting the end of the period over which the metric was measured
   - `value`: Aggregated metric value for the given interval
 }
 \description{
@@ -51,13 +51,13 @@ Get metrics for the project or a specified object. The following metrics are ava
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::metrics_get(
-   metric, start.time, end.time, object.type,
+   metric, start.date, end.date, object.type,
    interval = NULL, object.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::metrics_get(
-   metric, start.time, end.time, object.type,
+   metric, start.date, end.date, object.type,
    interval = NULL, object.id = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )

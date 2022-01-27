@@ -5,8 +5,6 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**instance_types_list**](organizations.md#instance_types_list) | **GET** /organizations/{organization_name}/instance-types | List instance types
-[**organization_usage_details_get**](organizations.md#organization_usage_details_get) | **GET** /organizations/{organization_name}/usage/details | Get resource usage details
-[**organization_usage_get**](organizations.md#organization_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 [**organization_users_create**](organizations.md#organization_users_create) | **POST** /organizations/{organization_name}/users | Add a user to an organization
 [**organization_users_delete**](organizations.md#organization_users_delete) | **DELETE** /organizations/{organization_name}/users/{user_id} | Delete a user from an organization
 [**organization_users_get**](organizations.md#organization_users_get) | **GET** /organizations/{organization_name}/users/{user_id} | Get details of a user in an organization
@@ -17,6 +15,7 @@ Method | HTTP request | Description
 [**organizations_list**](organizations.md#organizations_list) | **GET** /organizations | List organizations
 [**organizations_resource_usage**](organizations.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | List resource usage of an organization
 [**organizations_update**](organizations.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
+[**organizations_usage_get**](organizations.md#organizations_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 
 
 # **instance_types_list**
@@ -68,230 +67,6 @@ result <- ubiops::instance_types_list(
 # Or provide directly
 result <- ubiops::instance_types_list(
   organization.name,
-  UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **organization_usage_details_get**
-> organization_usage_details_get(organization.name, start.date=NULL, end.date=NULL)
-
-Get resource usage details
-
-## Description
-Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per day.
-
-### Optional Parameters
-
-- `start_date`: date indicating the start date to fetch usage data from, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-- `end_date`: date indicating the end date to fetch usage data until, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-
-### Response Structure
-
-- `metric`: The metric that was measured
-- `object_type`: Type of object the metric was measured for (version or pipeline)
-- `usage`: an array of objects each containing the following:
-     - `day`: Timestamp denoting the start of the day
-     - `value`: Aggregated metric value for the given unit over the given day
-
-## Response Examples
-
-```
-[
-  {
-    "object_type": "version",
-    "metric": "gb_seconds",
-    "usage": [
-      {
-        "day": "2020-07-29T00:00:00Z",
-        "value": 4200
-      },
-      {
-        "day": "2020-07-28T00:00:00Z",
-        "value": 840
-      },
-      {
-        "day": "2020-07-30T00:00:00Z",
-        "value": 960
-      }
-    ]
-  },
-  {
-    "object_type": "pipeline",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "day": "2020-07-28T00:00:00Z",
-        "value": 1098
-      },
-      {
-        "day": "2020-07-06T00:00:00Z",
-        "value": 18
-      },
-      {
-        "day": "2020-07-16T00:00:00Z",
-        "value": 9
-      },
-      {
-        "day": "2020-07-15T00:00:00Z",
-        "value": 117
-      },
-      {
-        "day": "2020-07-08T00:00:00Z",
-        "value": 90
-      }
-    ]
-  }
-]
-
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::organization_usage_details_get(
-  organization.name,
-  start.date = NULL, end.date = NULL
-)
-
-# Or provide directly
-result <- ubiops::organization_usage_details_get(
-  organization.name,
-  start.date = NULL, end.date = NULL, 
-  UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **organization_usage_get**
-> organization_usage_get(organization.name, start.date=NULL, end.date=NULL)
-
-Get resource usage
-
-## Description
-Get resource usage for the organization. This returns a list of metrics that are used for billing, aggregated per
-subscription iteration.
-
-### Optional Parameters
-
-- `start_date`: date indicating the start date to fetch usage data from, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-- `end_date`: date indicating the end date to fetch usage data until, formatted `YYYY-MM-DD`. If omitted results are
-generated for current subscription period.
-
-### Response Structure
-
-- `metric`: The metric that was measured
-- `object_type`: Type of object the metric was measured for (version or pipeline)
-- `usage`: an array of objects each containing the following:
-     - `start_date`: Timestamp denoting the start of the active subscription period or provided date
-     - `end_date`: Timestamp denoting the end of the active subscription period or provided date
-     - `value`: Aggregated metric value for the given unit over the given month
-
-## Response Examples
-
-```
-[
-  {
-    "object_type": "pipeline",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "start_date": "2019-08-01T00:00:00Z",
-        "end_date": "2019-09-01T00:00:00Z",
-        "value": 1840
-      },
-      {
-        "start_date": "2019-09-01T00:00:00Z",
-        "end_date": "2019-10-01T00:00:00Z",
-        "value": 400
-      },
-      {
-        "start_date": "2019-10-01T00:00:00Z",
-        "end_date": "2019-11-01T00:00:00Z",
-        "value": 1204
-      },
-      {
-        "start_date": "2019-11-01T00:00:00Z",
-        "end_date": "2019-12-01T00:00:00Z",
-        "value": 1598
-      },
-      {
-        "start_date": "2019-12-01T00:00:00Z",
-        "end_date": "2020-01-01T00:00:00Z",
-        "value": 824
-      },
-      {
-        "start_date": "2020-01-01T00:00:00Z",
-        "end_date": "2020-02-01T00:00:00Z",
-        "value": 2036
-      },
-      {
-        "start_date": "2020-02-01T00:00:00Z",
-        "end_date": "2020-03-01T00:00:00Z",
-        "value": 1438
-      },
-      {
-        "start_date": "2020-03-01T00:00:00Z",
-        "end_date": "2020-04-01T00:00:00Z",
-        "value": 932
-      },
-      {
-        "start_date": "2020-04-01T00:00:00Z",
-        "end_date": "2020-05-01T00:00:00Z",
-        "value": 528
-      },
-      {
-        "start_date": "2020-05-01T00:00:00Z",
-        "end_date": "2020-06-01T00:00:00Z",
-        "value": 1484
-      },
-      {
-        "start_date": "2020-06-01T00:00:00Z",
-        "end_date": "2020-07-01T00:00:00Z",
-        "value": 1942
-      },
-      {
-        "start_date": "2020-07-01T00:00:00Z",
-        "end_date": "2020-08-01T00:00:00Z",
-        "value": 1332
-      }
-    ]
-  }
-]
-
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::organization_usage_get(
-  organization.name,
-  start.date = NULL, end.date = NULL
-)
-
-# Or provide directly
-result <- ubiops::organization_usage_get(
-  organization.name,
-  start.date = NULL, end.date = NULL, 
   UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -707,7 +482,7 @@ Details of the organization
 
 - `creation_date`: Time the organization was created
 
-- `subscription`: Dictionary with details of the active subscription
+- `subscription`: Name of the subscription of the organization
 
 - `subscription_self_service`: Boolean indicating if the organization subscription is self service
 
@@ -718,16 +493,7 @@ Details of the organization
   "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
   "name": "test-organization",
   "creation_date": "2020-03-25T15:43:46.101877Z",
-  "subscription": {
-    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
-    "name": "custom-subscription",
-    "max_projects": 2,
-    "max_users": 3,
-    "agreement": "",
-    "terms_conditions": "",
-    "gb_seconds": 10000,
-    "deployment_versions": 15
-  },
+  "subscription": "free",
   "subscription_self_service": true
 }
 ```
@@ -879,6 +645,7 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 - `name`: New organization name
 - `subscription`: New subscription
 - `subscription_end_date`: End date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will be cancelled on this date. If you are going to update the subscription plan of the organization to a subscription other than free, you have to provide the end date.
+- `subscription_start_date`: Start date of the new subscription. The required format is `YYYY-MM-DD`. The subscription will start from the provided date. If you are going to update the subscription of the organization or schedule a subscription for a time in future, you have to provide the start date.
 
 ## Request Examples
 
@@ -893,13 +660,15 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 ```
 {
   "subscription": "professional",
-  "subscription_end_date": "2020-08-30"
+  "subscription_end_date": "2020-08-30",
+  "subscription_start_date": "2020-07-30"
 }
 ```
 
 ```
 {
-  "subscription_end_date": "2020-08-30"
+  "subscription_end_date": "2020-08-30",
+  "subscription_start_date": "2020-07-30"
 }
 ```
 
@@ -930,7 +699,8 @@ Details of the organization
 data <- list(
   name = "name",  # (optional)
   subscription = "subscription",  # (optional)
-  subscription_end_date = subscription_end_date  # (optional)
+  subscription_end_date = subscription_end_date,  # (optional)
+  subscription_start_date = subscription_start_date  # (optional)
 )
 
 # Use environment variables
@@ -942,6 +712,120 @@ result <- ubiops::organizations_update(
 # Or provide directly
 result <- ubiops::organizations_update(
   organization.name, data,
+  UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **organizations_usage_get**
+> organizations_usage_get(organization.name, start.date=NULL, end.date=NULL, interval='month')
+
+Get resource usage
+
+## Description
+Get resource usage for the organization. It contains **the details of each metric aggregated per month.**
+
+### Optional Parameters
+
+- `start_date`: date indicating the start date to fetch usage data from. If omitted, results are generated for current subscription period.
+- `end_date`: date indicating the end date to fetch usage data until. If omitted, results are generated for current subscription period.
+- `interval`: interval for which the usage data is fetched. It can be 'day' or 'month'. It defaults to 'month'.
+
+If no **start_date** or **end_date** is given, the current subscription period is used, e.g. if the usage details are requested on 01-12-2020 and the subscription started on 20-11-2020, the results will contain data from 20-11-2020 to 20-12-2020.
+When **start_date** and **end_date** are given, this month period is used, e.g. if 12-11-2020 is given as start date and 12-12-2020 as end date, the results will contain data from 12-11-2020 to 12-12-2020.
+
+### Response Structure
+
+- `metric`: Metric name
+- `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
+- `usage`: an array of objects each containing the following:
+  - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
+  - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+  - `value`: Aggregated metric value for the given unit over the given month
+
+## Response Examples
+2019-08-01 as start date and 2019-09-01 as end date
+
+```
+[
+  {
+    "object_type": "deployment_version",
+    "metric": "gb_seconds",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1484124
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1204
+      } 
+    ]
+  },
+  {
+    "object_type": "deployment_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1598
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "input_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 1840
+      } 
+    ]
+  },
+  {
+    "object_type": "pipeline_version",
+    "metric": "output_volume",
+    "usage": [
+      {
+        "start_date": "2019-08-01T00:00:00Z",
+        "end_date": "2019-09-01T00:00:00Z",
+        "value": 400
+      } 
+    ]
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::organizations_usage_get(
+  organization.name,
+  start.date = NULL, end.date = NULL, interval = 'month'
+)
+
+# Or provide directly
+result <- ubiops::organizations_usage_get(
+  organization.name,
+  start.date = NULL, end.date = NULL, interval = 'month', 
   UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

@@ -36,6 +36,8 @@ Response from the API
       - *none* - the requests will not be stored
       - *metadata* - only the metadata of the requests will be stored
       - *full* - both the metadata and input/output of the requests will be stored
+  - `objects`: List of pipeline version objects
+  - `attachments`: List of pipeline version object attachments
 }
 \description{
 Get the details of a single pipeline version

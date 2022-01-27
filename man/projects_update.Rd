@@ -7,7 +7,7 @@
 projects_update(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ name ]}
+\item{data}{named list of: [ name (optional), advanced_permissions (optional), gb_seconds (optional), suspend (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -20,10 +20,14 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of a project
-  - `id`: Unique identifier for the project (UUID) 
-  - `name`: Name of the project 
-  - `creation_date`: Time the project was created 
+  - `id`: Unique identifier for the project (UUID)
+  - `name`: Name of the project
+  - `creation_date`: Time the project was created
+  - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
   - `organization_name`: Name of the organization in which the project is created
+  - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+  - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+  - `suspended_reason`: Description explaining why the project is suspended
 }
 \description{
 Update the name of a single project. The user making the request must have appropriate permissions.
@@ -31,7 +35,10 @@ Update the name of a single project. The user making the request must have appro
 \examples{
 \dontrun{
 data <- list(
- name = "name"
+ name = "name",  # (optional)
+ advanced_permissions = FALSE,  # (optional)
+ gb_seconds = 0,  # (optional)
+ suspend = FALSE  # (optional)
 )
 
 # Use environment variables

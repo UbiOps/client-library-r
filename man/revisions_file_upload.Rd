@@ -10,6 +10,7 @@ revisions_file_upload(
   file = NULL,
   source.deployment = NULL,
   source.version = NULL,
+  template.deployment.id = NULL,
   preload_content = TRUE,
   ...
 )
@@ -24,6 +25,8 @@ revisions_file_upload(
 \item{source.deployment}{(optional) character}
 
 \item{source.version}{(optional) character}
+
+\item{template.deployment.id}{(optional) character}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -49,13 +52,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::revisions_file_upload(
    deployment.name, version,
-   file = NULL, source.deployment = NULL, source.version = NULL
+   file = NULL, source.deployment = NULL, source.version = NULL, template.deployment.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::revisions_file_upload(
    deployment.name, version,
-   file = NULL, source.deployment = NULL, source.version = NULL, 
+   file = NULL, source.deployment = NULL, source.version = NULL, template.deployment.id = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

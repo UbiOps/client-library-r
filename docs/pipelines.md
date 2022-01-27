@@ -933,6 +933,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Request Examples
 
@@ -950,7 +952,47 @@ Provide the parameter 'default_notification_group' as the name of a notification
   "labels": {
     "type": "production"
   },
-  "monitoring": "notification-group-1"
+  "monitoring": "notification-group-1",
+  "request_retention_time": 604800,
+  "request_retention_mode": "full"
+}
+```
+
+A pipeline version with objects and attachments
+
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  },
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -968,6 +1010,8 @@ Details of the created pipeline version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Response Examples
 
@@ -985,7 +1029,50 @@ Details of the created pipeline version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "objects": [],
+  "attachments": []
+}
+```
+
+
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -996,9 +1083,32 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
+  request_retention_time = 0, (optional)
   request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
-  default_notification_group = "default_notification_group"  # (optional)
+  default_notification_group = "default_notification_group",  # (optional)
+  objects = list(  # (optional)
+    list(
+      name = "name",
+      reference_name = "reference_name",
+      version = "version"  # (optional)
+    )
+  ),
+  attachments = list(  # (optional)
+    list(
+      destination_name = "destination_name",
+      sources = list(  # (optional)
+        list(
+          source_name = "source_name",
+          mapping = list(  # (optional)
+            list(
+              source_field_name = source_field_name,
+              destination_field_name = destination_field_name
+            )
+          )
+        )
+      )
+    )
+  )
 )
 
 # Use environment variables
@@ -1075,6 +1185,8 @@ Details of the pipeline version
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Response Examples
 
@@ -1092,7 +1204,50 @@ Details of the pipeline version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "objects": [],
+  "attachments": []
+}
+```
+
+
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -1223,6 +1378,8 @@ Update a pipeline version. When updating labels, the labels will replace the exi
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
 Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
 
+**Attention:** *In case either the `objects` or `attachments` parameter is null or an empty list, all of the objects or attachments of the pipeline will be removed.*
+
 ### Optional Parameters
 
 - `version`: Name of the version of the pipeline
@@ -1235,6 +1392,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Request Examples
 
@@ -1246,6 +1405,59 @@ Provide the parameter 'default_notification_group' as the name of a notification
     "type": "production"
   },
   "monitoring": "notification-group-1"
+}
+```
+
+Updating a pipeline version with new objects and attachments
+
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  },
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Updating a pipeline version by removing objects and attachments
+
+```
+{
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "type": "production"
+  },
+  "monitoring": ["test@example.com"],
+  "objects": null,
+  "attachments": null
 }
 ```
 
@@ -1263,6 +1475,8 @@ Details of the created pipeline
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
+- `objects`: List of pipeline version objects
+- `attachments`: List of pipeline version object attachments
 
 ## Response Examples
 
@@ -1280,7 +1494,50 @@ Details of the created pipeline
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "objects": [],
+  "attachments": []
+}
+```
+
+
+```
+{
+  "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "description": "my description",
+  "labels": {
+    "tag": "production"
+  },
+  "creation_date": "2020-05-12T16:23:15.456812Z",
+  "last_updated": "2020-06-22T18:04:76.123754Z",
+  "monitoring": ["test@example.com"],
+  "request_retention_time": 604800,
+  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "example-field",
+              "destination_field_name": "example-field"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -1291,9 +1548,32 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
+  request_retention_time = 0, (optional)
   request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
-  default_notification_group = "default_notification_group"  # (optional)
+  default_notification_group = "default_notification_group",  # (optional)
+  objects = list(  # (optional)
+    list(
+      name = "name",
+      reference_name = "reference_name",
+      version = "version"  # (optional)
+    )
+  ),
+  attachments = list(  # (optional)
+    list(
+      destination_name = "destination_name",
+      sources = list(  # (optional)
+        list(
+          source_name = "source_name",
+          mapping = list(  # (optional)
+            list(
+              source_field_name = source_field_name,
+              destination_field_name = destination_field_name
+            )
+          )
+        )
+      )
+    )
+  )
 )
 
 # Use environment variables
@@ -1332,9 +1612,9 @@ The input_fields represent the fields that the input data for pipeline requests 
 
 - `name`: Name of the pipeline. It is unique within a project.
 - `input_type`: Type of the pipeline input. It can be either structured or plain.
-- `input_fields`: A list of input fields with name and data_type. In case of plain pipelines, the input_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
+- `input_fields`: A list of input fields with name, data_type and (optional) widget. In case of plain pipelines, the input_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
 - `output_type`: Type of the pipeline output. It can be either structured or plain.
-- `output_fields`: A list of output fields with name and data_type. In case of plain pipelines, the output_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
+- `output_fields`: A list of output fields with name, data_type and (optional) widget. In case of plain pipelines, the output_fields should be omitted or given as an empty list. For structured pipelines, it is possible to leave this field empty.
 
 ### Optional Parameters
 
@@ -1383,6 +1663,52 @@ A plain pipeline
 }
 ```
 
+A structured pipeline with input/output field widgets
+
+```
+{
+  "name": "pipeline-1",
+  "input_type": "structured",
+  "output_type": "structured",
+  "input_fields": [
+    {
+      "name": "field-1",
+      "data_type": "int",
+      "widget": {
+        "type": "slider",
+        "configuration": {"min": 0, "max": 10, "default": 4, "step": 2}
+      }
+    },
+    {
+      "name": "field-2",
+      "data_type": "double",
+      "widget": {
+        "type": "numberbox",
+        "configuration": {"min": 0, "max": 1, "default": 0.5, "step": 0.1}
+      }
+    }
+  ],
+  "output_fields": [
+    {
+      "name": "field-1",
+      "data_type": "double",
+      "widget": {
+        "type": "textbox",
+        "configuration": {}
+      }
+    },
+    {
+      "name": "field-2",
+      "data_type": "double",
+      "widget": {
+        "type": "textbox",
+        "configuration": {}
+      }
+    }
+  ]
+}
+```
+
 ### Response Structure
 Details of the created pipeline
 
@@ -1391,9 +1717,9 @@ Details of the created pipeline
 - `description`: Description of the pipeline
 - `project`: Project name in which the pipeline is created
 - `input_type`: Type of the pipeline input
-- `input_fields`: A list of pipeline input fields with name and data_type
+- `input_fields`: A list of pipeline input fields with name, data_type and widget
 - `output_type`: Type of the pipeline output
-- `output_fields`: A list of pipeline output fields with name and data_type
+- `output_fields`: A list of pipeline output fields with name, data_type and widget
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
@@ -1410,22 +1736,26 @@ Details of the created pipeline
   "input_fields": [
     {
       "name": "field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "output_type": "structured",
   "output_fields": [
     {
       "name": "field-1",
-      "data_type": "int"
+      "data_type": "int",
+      "widget": {}
     },
     {
       "name": "field-2",
-      "data_type": "double"
+      "data_type": "double",
+      "widget": {}
     }
   ],
   "labels": {
@@ -1464,14 +1794,16 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   output_type = "output_type",  # one of: [structured, plain]  (optional)
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   labels = list(key = "value")  # (optional)
@@ -1542,9 +1874,9 @@ Details of the pipeline
 - `description` Description of the pipeline
 - `project`: Project name in which the pipeline is defined
 - `input_type`: Type of the pipeline input
-- `input_fields`: A list of pipeline input fields with name and data_type
+- `input_fields`: A list of pipeline input fields with name, data_type and widget
 - `output_type`: Type of the pipeline output
-- `output_fields`: A list of pipeline output fields with name and data_type
+- `output_fields`: A list of pipeline output fields with name, data_type and widget
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
@@ -1759,11 +2091,13 @@ The same goes for updating the pipeline output.
   "input_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ]
 }
@@ -1782,11 +2116,13 @@ The same goes for updating the pipeline output.
   "output_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ]
 }
@@ -1800,9 +2136,9 @@ Details of the updated pipeline
 - `project`: Project name in which the pipeline is defined
 - `description`: Description for the pipeline
 - `input_type`: Type of the pipeline input
-- `input_fields`: A list of pipeline input fields with name and data_type
+- `input_fields`: A list of pipeline input fields with name, data_type and widget
 - `output_type`: Type of the pipeline output
-- `output_fields`: A list of pipeline output fields with name and data_type
+- `output_fields`: A list of pipeline output fields with name, data_type and widget
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline was created
 - `last_updated`: The date when the pipeline was last updated
@@ -1820,22 +2156,26 @@ Details of the updated pipeline
   "input_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ],
   "output_type": "structured",
   "output_fields": [
     {
       "name": "new-field-1",
-      "data_type": "array_double"
+      "data_type": "array_double",
+      "widget": {}
     },
     {
       "name": "new-field-2",
-      "data_type": "array_string"
+      "data_type": "array_string",
+      "widget": {}
     }
   ],
   "labels": {
@@ -1856,14 +2196,16 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   output_type = "output_type",  # one of: [structured, plain]  (optional)
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      widget = widget  # (optional)
     )
   ),
   labels = list(key = "value"),  # (optional)

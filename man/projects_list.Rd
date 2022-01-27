@@ -20,6 +20,7 @@ Response from the API
   - `id`: Unique identifier for the project (UUID) 
   - `name`: Name of the project 
   - `creation_date`: Time the project was created 
+  - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project 
   - `organization_name`: Name of the organization in which the project is created
 }
 \description{

@@ -1192,7 +1192,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'  description = "description",  # (optional)
 #'  labels = list(key = "value"),  # (optional)
 #'  monitoring = "monitoring",  # (optional)
-#'  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
+#'  request_retention_time = 0, (optional)
 #'  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
 #'  deployment_mode = 'express',  # one of: [express, batch]  (optional)
 #'  default_notification_group = "default_notification_group"  # (optional)
@@ -1534,7 +1534,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'  description = "description",  # (optional)
 #'  labels = list(key = "value"),  # (optional)
 #'  monitoring = "monitoring",  # (optional)
-#'  request_retention_time = 0,  # [min: 3.6E+3; max: 2.4192E+6] (optional)
+#'  request_retention_time = 0, (optional)
 #'  request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
 #'  default_notification_group = "default_notification_group"  # (optional)
 #' )
@@ -1598,7 +1598,7 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 
 
 #' @title Create deployments
-#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (False/True) - **timestamp**: timestamp - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.
+#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (False/True) - **timestamp**: timestamp - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
 #' @param data  named list of: [ name, description (optional), input_type, output_type, input_fields (optional), output_fields (optional), labels (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -1630,13 +1630,15 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  labels = list(key = "value")  # (optional)
@@ -1752,8 +1754,8 @@ deployments_delete <- function(deployment.name,  ...){
 #'   - `project`: Project name in which the deployment is defined
 #'   - `input_type`: Type of the input of the deployment
 #'   - `output_type`: Type of the output of the deployment
-#'   - `input_fields`: The list of deployment input fields containing name and data_type
-#'   - `output_fields`: The list of deployment output fields containing name and data_type
+#'   - `input_fields`: The list of deployment input fields containing name, data_type and widget
+#'   - `output_fields`: The list of deployment output fields containing name, data_type and widget
 #'   - `description`: Description of the deployment
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the deployment was created
@@ -1895,8 +1897,8 @@ deployments_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'   - `project`: Project name in which the deployment is defined
 #'   - `input_type`: Type of the input of the deployment
 #'   - `output_type`: Type of the output of the deployment
-#'   - `input_fields`: The list of deployment input fields containing name and data_type
-#'   - `output_fields`: The list of deployment output fields containing name and data_type
+#'   - `input_fields`: The list of deployment input fields containing name, data_type and (optional) widget
+#'   - `output_fields`: The list of deployment output fields containing name, data_type and (optional) widget
 #'   - `description`: Description of the deployment
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the deployment was created
@@ -1911,13 +1913,15 @@ deployments_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  labels = list(key = "value")  # (optional)
@@ -2065,6 +2069,7 @@ revisions_file_download <- function(deployment.name, revision.id, version,  prel
 #' @param file (optional) file path - Example: file.path("path", "to", "file")
 #' @param source.deployment (optional) character
 #' @param source.version (optional) character
+#' @param template.deployment.id (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -2083,13 +2088,13 @@ revisions_file_download <- function(deployment.name, revision.id, version,  prel
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::revisions_file_upload(
 #'    deployment.name, version,
-#'    file = NULL, source.deployment = NULL, source.version = NULL
+#'    file = NULL, source.deployment = NULL, source.version = NULL, template.deployment.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::revisions_file_upload(
 #'    deployment.name, version,
-#'    file = NULL, source.deployment = NULL, source.version = NULL, 
+#'    file = NULL, source.deployment = NULL, source.version = NULL, template.deployment.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -2100,7 +2105,7 @@ revisions_file_download <- function(deployment.name, revision.id, version,  prel
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-revisions_file_upload <- function(deployment.name, version, file=NULL, source.deployment=NULL, source.version=NULL,  preload_content=TRUE, ...){
+revisions_file_upload <- function(deployment.name, version, file=NULL, source.deployment=NULL, source.version=NULL, template.deployment.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -2112,7 +2117,8 @@ revisions_file_upload <- function(deployment.name, version, file=NULL, source.de
   body <- list(
     "file" = if (!is.null(`file`)) httr::upload_file(file) else NULL,
     "source_deployment" = source.deployment,
-    "source_version" = source.version
+    "source_version" = source.version,
+    "template_deployment_id" = template.deployment.id
   )
   
   url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions"

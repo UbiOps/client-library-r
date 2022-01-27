@@ -27,8 +27,8 @@ Response from the API
   - `project`: Project name in which the deployment is defined
   - `input_type`: Type of the input of the deployment
   - `output_type`: Type of the output of the deployment
-  - `input_fields`: The list of deployment input fields containing name and data_type
-  - `output_fields`: The list of deployment output fields containing name and data_type
+  - `input_fields`: The list of deployment input fields containing name, data_type and (optional) widget
+  - `output_fields`: The list of deployment output fields containing name, data_type and (optional) widget
   - `description`: Description of the deployment
   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
   - `creation_date`: The date when the deployment was created
@@ -47,13 +47,15 @@ data <- list(
  input_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     widget = widget  # (optional)
    )
  ),
  output_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     widget = widget  # (optional)
    )
  ),
  labels = list(key = "value")  # (optional)

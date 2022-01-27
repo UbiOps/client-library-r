@@ -25,7 +25,7 @@ Response from the API
   - `token`: The new API token for the service user
 }
 \description{
-Reset the token of a service user. The old token will be deleted and a new one will be created for the service user. No data should be sent in the body of the request.
+Reset the token of a service user. The old token will be deleted and a new one will be created for the service user. No data should be sent in the body of the request.  It is not possible to reset the token of a service user whose expiry date has been reached.
 }
 \examples{
 \dontrun{

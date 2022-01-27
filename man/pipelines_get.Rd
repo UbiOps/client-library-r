@@ -25,9 +25,9 @@ Response from the API
   - `description` Description of the pipeline
   - `project`: Project name in which the pipeline is defined
   - `input_type`: Type of the pipeline input
-  - `input_fields`: A list of pipeline input fields with name and data_type
+  - `input_fields`: A list of pipeline input fields with name, data_type and widget
   - `output_type`: Type of the pipeline output
-  - `output_fields`: A list of pipeline output fields with name and data_type
+  - `output_fields`: A list of pipeline output fields with name, data_type and widget
   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
   - `creation_date`: The date when the pipeline was created
   - `last_updated`: The date when the pipeline was last updated

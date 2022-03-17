@@ -928,7 +928,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
-- `request_retention_time`: Number of seconds to store requests to the pipeline version
+- `request_retention_time`: Number of seconds to store requests to the pipeline version. It defaults to 604800 seconds (1 week).
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
@@ -1083,7 +1083,7 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0, (optional)
+  request_retention_time = 0,  # (optional)
   request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
   default_notification_group = "default_notification_group",  # (optional)
   objects = list(  # (optional)
@@ -1548,7 +1548,7 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0, (optional)
+  request_retention_time = 0,  # (optional)
   request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
   default_notification_group = "default_notification_group",  # (optional)
   objects = list(  # (optional)

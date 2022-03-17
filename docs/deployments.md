@@ -1046,18 +1046,18 @@ Provide the parameter 'default_notification_group' as the name of a notification
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9 or r4.0. The default value is python3.7.
+- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9, python3.6_cuda, python3.7_cuda, python3.8_cuda, python3.9_cuda or r4.0. The default value is python3.7.
 - `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
-- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 (300 for GPU deployments) and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
 
 - `description`: Description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
-- `request_retention_time`: Number of seconds to store requests to the version
+- `request_retention_time`: Number of seconds to store requests to the version. It defaults to 604800 seconds (1 week).
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
@@ -1086,6 +1086,13 @@ If the time that a request takes does not matter, keep the default values.
 }
 ```
 
+
+```
+  "version": "version-1",
+  "language": "python3.6_cuda",
+  "instance_type": "16384mb_t4",
+  "maximum_instances": 1
+```
 
 ```
 {
@@ -1164,7 +1171,7 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0, (optional)
+  request_retention_time = 0,  # (optional)
   request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
   deployment_mode = 'express',  # one of: [express, batch]  (optional)
   default_notification_group = "default_notification_group"  # (optional)
@@ -1551,7 +1558,7 @@ data <- list(
   description = "description",  # (optional)
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
-  request_retention_time = 0, (optional)
+  request_retention_time = 0,  # (optional)
   request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
   default_notification_group = "default_notification_group"  # (optional)
 )

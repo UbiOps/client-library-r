@@ -7,7 +7,7 @@
 projects_create(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ name, organization_name, advanced_permissions (optional), gb_seconds (optional) ]}
+\item{data}{named list of: [ name, organization_name, advanced_permissions (optional), credits (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -24,8 +24,8 @@ Response from the API
   - `creation_date`: Time the project was created
   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
   - `organization_name`: Name of the organization in which the project is created
-  - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
-  - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+  - `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
+  - `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
   - `suspended_reason`: Description explaining why the project is suspended
 }
 \description{
@@ -37,7 +37,7 @@ data <- list(
  name = "name",
  organization_name = "organization_name",
  advanced_permissions = FALSE,  # (optional)
- gb_seconds = 0  # (optional)
+ credits = 0  # (optional)
 )
 
 # Use environment variables

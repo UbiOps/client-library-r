@@ -11,6 +11,7 @@ metrics_get(
   object.type,
   interval = NULL,
   object.id = NULL,
+  user.id = NULL,
   preload_content = TRUE,
   ...
 )
@@ -28,6 +29,8 @@ metrics_get(
 
 \item{object.id}{(optional) character}
 
+\item{user.id}{(optional) character}
+
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
 \item{...}{UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -43,7 +46,7 @@ Response from the API
   - `value`: Aggregated metric value for the given interval
 }
 \description{
-Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline  Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running  - `gpu_seconds`: Usage of GPU in seconds, calculated by multiplying the deployment GPUs by the number of seconds the deployments are running  - `active_time`: Time in seconds that the deployment is active
+Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline  Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `credits`: Usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours the deployments are running  - `active_time`: Time in seconds that the deployment is active
 }
 \examples{
 \dontrun{
@@ -52,13 +55,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::metrics_get(
    metric, start.date, end.date, object.type,
-   interval = NULL, object.id = NULL
+   interval = NULL, object.id = NULL, user.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::metrics_get(
    metric, start.date, end.date, object.type,
-   interval = NULL, object.id = NULL, 
+   interval = NULL, object.id = NULL, user.id = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

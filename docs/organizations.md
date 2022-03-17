@@ -33,6 +33,8 @@ Details of the instance type
 
 - `name`: Name of the deployment instance type
 
+- `display_name`: Readable name of the deployment instance type
+
 - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi)
 
 - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU)
@@ -48,6 +50,7 @@ Details of the instance type
   {
     "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
     "name": "512mb",
+    "display_name": "512 MB"
     "memory_allocation": 512,
     "cpu_allocation": 125,
     "gpu_allocation": 0,
@@ -757,7 +760,7 @@ When **start_date** and **end_date** are given, this month period is used, e.g. 
 [
   {
     "object_type": "deployment_version",
-    "metric": "gb_seconds",
+    "metric": "credits",
     "usage": [
       {
         "start_date": "2019-08-01T00:00:00Z",

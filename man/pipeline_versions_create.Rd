@@ -46,7 +46,7 @@ data <- list(
  description = "description",  # (optional)
  labels = list(key = "value"),  # (optional)
  monitoring = "monitoring",  # (optional)
- request_retention_time = 0, (optional)
+ request_retention_time = 0,  # (optional)
  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
  default_notification_group = "default_notification_group",  # (optional)
  objects = list(  # (optional)

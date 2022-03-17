@@ -9,13 +9,14 @@
 
 
 #' @title Get metrics
-#' @description Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline  Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running  - `gpu_seconds`: Usage of GPU in seconds, calculated by multiplying the deployment GPUs by the number of seconds the deployments are running  - `active_time`: Time in seconds that the deployment is active
+#' @description Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline  Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `credits`: Usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours the deployments are running  - `active_time`: Time in seconds that the deployment is active
 #' @param metric  character
 #' @param start.date  character
 #' @param end.date  character
 #' @param object.type  character
 #' @param interval (optional) character
 #' @param object.id (optional) character
+#' @param user.id (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -34,13 +35,13 @@
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::metrics_get(
 #'    metric, start.date, end.date, object.type,
-#'    interval = NULL, object.id = NULL
+#'    interval = NULL, object.id = NULL, user.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::metrics_get(
 #'    metric, start.date, end.date, object.type,
-#'    interval = NULL, object.id = NULL, 
+#'    interval = NULL, object.id = NULL, user.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -51,7 +52,7 @@
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-metrics_get <- function(metric, start.date, end.date, object.type, interval=NULL, object.id=NULL,  preload_content=TRUE, ...){
+metrics_get <- function(metric, start.date, end.date, object.type, interval=NULL, object.id=NULL, user.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`metric`)) {
@@ -71,6 +72,7 @@ metrics_get <- function(metric, start.date, end.date, object.type, interval=NULL
   query_params['end_date'] <- end.date
   query_params['object_type'] <- object.type
   query_params['object_id'] <- object.id
+  query_params['user_id'] <- user.id
   
   url_path <- "/projects/{project_name}/metrics/{metric}"
   if (!missing(`metric`)) {
@@ -722,7 +724,7 @@ project_users_list <- function(user.type=NULL,  preload_content=TRUE, ...){
 
 #' @title Create projects
 #' @description Create a new project with the provided name. **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
-#' @param data  named list of: [ name, organization_name, advanced_permissions (optional), gb_seconds (optional) ]
+#' @param data  named list of: [ name, organization_name, advanced_permissions (optional), credits (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -736,8 +738,8 @@ project_users_list <- function(user.type=NULL,  preload_content=TRUE, ...){
 #'   - `creation_date`: Time the project was created
 #'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 #'   - `organization_name`: Name of the organization in which the project is created
-#'   - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
-#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+#'   - `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
+#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
 #'   - `suspended_reason`: Description explaining why the project is suspended
 #' @examples
 #' \dontrun{
@@ -745,7 +747,7 @@ project_users_list <- function(user.type=NULL,  preload_content=TRUE, ...){
 #'  name = "name",
 #'  organization_name = "organization_name",
 #'  advanced_permissions = FALSE,  # (optional)
-#'  gb_seconds = 0  # (optional)
+#'  credits = 0  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -848,8 +850,8 @@ projects_delete <- function( ...){
 #'   - `creation_date`: Time the project was created
 #'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 #'   - `organization_name`: Name of the organization in which the project is created
-#'   - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
-#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+#'   - `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
+#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
 #'   - `suspended_reason`: Description explaining why the project is suspended
 #' @examples
 #' \dontrun{
@@ -973,7 +975,8 @@ projects_list <- function( preload_content=TRUE, ...){
 #'   - `pipeline_object_name`: The pipeline object which the log is related to 
 #'   - `deployment_request_id`:  The deployment request the log is related to 
 #'   - `pipeline_request_id`:  The pipeline request the log is related to 
-#'   - `system`:  Whether the log was generated by the system (true / false)
+#'   - `system`:  Whether the log was generated by the system (true / false) 
+#'   - `level`: The level of the log (info / error)
 #' @examples
 #' \dontrun{
 #' data <- list(
@@ -1093,7 +1096,7 @@ projects_resource_usage <- function( preload_content=TRUE, ...){
 
 #' @title Update a project
 #' @description Update the name of a single project. The user making the request must have appropriate permissions.
-#' @param data  named list of: [ name (optional), advanced_permissions (optional), gb_seconds (optional), suspend (optional) ]
+#' @param data  named list of: [ name (optional), advanced_permissions (optional), credits (optional), suspend (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1108,15 +1111,15 @@ projects_resource_usage <- function( preload_content=TRUE, ...){
 #'   - `creation_date`: Time the project was created
 #'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 #'   - `organization_name`: Name of the organization in which the project is created
-#'   - `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
-#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+#'   - `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
+#'   - `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
 #'   - `suspended_reason`: Description explaining why the project is suspended
 #' @examples
 #' \dontrun{
 #' data <- list(
 #'  name = "name",  # (optional)
 #'  advanced_permissions = FALSE,  # (optional)
-#'  gb_seconds = 0,  # (optional)
+#'  credits = 0,  # (optional)
 #'  suspend = FALSE  # (optional)
 #' )
 #'

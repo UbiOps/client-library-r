@@ -21,6 +21,7 @@
 #'  Details of the instance type
 #'   - `id`: Unique identifier for the instance type (UUID) 
 #'   - `name`: Name of the deployment instance type 
+#'   - `display_name`: Readable name of the deployment instance type 
 #'   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi) 
 #'   - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU) 
 #'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type 

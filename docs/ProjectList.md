@@ -7,7 +7,7 @@ Name | Type | Notes
 **name** | **str** | 
 **creation_date** | **date** | [optional] [readonly] 
 **advanced_permissions** | **bool** | [optional] 
-**gb_seconds** | **int** | [optional] 
+**credits** | **float** | [optional] 
 **organization_name** | **str** | 
 
 

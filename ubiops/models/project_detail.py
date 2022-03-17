@@ -38,7 +38,7 @@ class ProjectDetail(object):
         'creation_date': 'date',
         'organization_name': 'str',
         'advanced_permissions': 'bool',
-        'gb_seconds': 'int',
+        'credits': 'float',
         'suspended': 'str',
         'suspended_reason': 'str'
     }
@@ -49,12 +49,12 @@ class ProjectDetail(object):
         'creation_date': 'creation_date',
         'organization_name': 'organization_name',
         'advanced_permissions': 'advanced_permissions',
-        'gb_seconds': 'gb_seconds',
+        'credits': 'credits',
         'suspended': 'suspended',
         'suspended_reason': 'suspended_reason'
     }
 
-    def __init__(self, id=None, name=None, creation_date=None, organization_name=None, advanced_permissions=None, gb_seconds=None, suspended=None, suspended_reason=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, creation_date=None, organization_name=None, advanced_permissions=None, credits=None, suspended=None, suspended_reason=None, local_vars_configuration=None):  # noqa: E501
         """ProjectDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -65,7 +65,7 @@ class ProjectDetail(object):
         self._creation_date = None
         self._organization_name = None
         self._advanced_permissions = None
-        self._gb_seconds = None
+        self._credits = None
         self._suspended = None
         self._suspended_reason = None
         self.discriminator = None
@@ -78,7 +78,7 @@ class ProjectDetail(object):
         self.organization_name = organization_name
         if advanced_permissions is not None:
             self.advanced_permissions = advanced_permissions
-        self.gb_seconds = gb_seconds
+        self.credits = credits
         if suspended is not None:
             self.suspended = suspended
         if suspended_reason is not None:
@@ -217,28 +217,28 @@ class ProjectDetail(object):
         self._advanced_permissions = advanced_permissions
 
     @property
-    def gb_seconds(self):
-        """Gets the gb_seconds of this ProjectDetail.  # noqa: E501
+    def credits(self):
+        """Gets the credits of this ProjectDetail.  # noqa: E501
 
 
-        :return: The gb_seconds of this ProjectDetail.  # noqa: E501
-        :rtype: int
+        :return: The credits of this ProjectDetail.  # noqa: E501
+        :rtype: float
         """
-        return self._gb_seconds
+        return self._credits
 
-    @gb_seconds.setter
-    def gb_seconds(self, gb_seconds):
-        """Sets the gb_seconds of this ProjectDetail.
+    @credits.setter
+    def credits(self, credits):
+        """Sets the credits of this ProjectDetail.
 
 
-        :param gb_seconds: The gb_seconds of this ProjectDetail.  # noqa: E501
-        :type: int
+        :param credits: The credits of this ProjectDetail.  # noqa: E501
+        :type: float
         """
         if (self.local_vars_configuration.client_side_validation and
-                gb_seconds is not None and not isinstance(gb_seconds, int)):
-            raise ValueError("Parameter `gb_seconds` must be an integer")  # noqa: E501
+                credits is not None and not isinstance(credits, float)):
+            raise ValueError("Parameter `credits` must be a float")  # noqa: E501
 
-        self._gb_seconds = gb_seconds
+        self._credits = credits
 
     @property
     def suspended(self):

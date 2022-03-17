@@ -5,7 +5,7 @@ Name | Type | Notes
 ------------ | ------------- | -------------
 **name** | **str** | [optional] 
 **advanced_permissions** | **bool** | [optional] 
-**gb_seconds** | **int** | [optional] 
+**credits** | **float** | [optional] 
 **suspend** | **bool** | [optional] 
 
 

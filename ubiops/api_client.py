@@ -81,7 +81,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'UbiOps/python/3.7.0'
+        self.user_agent = 'UbiOps/python/3.8.0'
         self.client_side_validation = configuration.client_side_validation
 
     def __enter__(self):

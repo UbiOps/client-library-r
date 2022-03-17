@@ -37,7 +37,7 @@ class ProjectList(object):
         'name': 'str',
         'creation_date': 'date',
         'advanced_permissions': 'bool',
-        'gb_seconds': 'int',
+        'credits': 'float',
         'organization_name': 'str'
     }
 
@@ -46,11 +46,11 @@ class ProjectList(object):
         'name': 'name',
         'creation_date': 'creation_date',
         'advanced_permissions': 'advanced_permissions',
-        'gb_seconds': 'gb_seconds',
+        'credits': 'credits',
         'organization_name': 'organization_name'
     }
 
-    def __init__(self, id=None, name=None, creation_date=None, advanced_permissions=None, gb_seconds=None, organization_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, creation_date=None, advanced_permissions=None, credits=None, organization_name=None, local_vars_configuration=None):  # noqa: E501
         """ProjectList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,7 +60,7 @@ class ProjectList(object):
         self._name = None
         self._creation_date = None
         self._advanced_permissions = None
-        self._gb_seconds = None
+        self._credits = None
         self._organization_name = None
         self.discriminator = None
 
@@ -71,7 +71,7 @@ class ProjectList(object):
             self.creation_date = creation_date
         if advanced_permissions is not None:
             self.advanced_permissions = advanced_permissions
-        self.gb_seconds = gb_seconds
+        self.credits = credits
         self.organization_name = organization_name
 
     @property
@@ -177,28 +177,28 @@ class ProjectList(object):
         self._advanced_permissions = advanced_permissions
 
     @property
-    def gb_seconds(self):
-        """Gets the gb_seconds of this ProjectList.  # noqa: E501
+    def credits(self):
+        """Gets the credits of this ProjectList.  # noqa: E501
 
 
-        :return: The gb_seconds of this ProjectList.  # noqa: E501
-        :rtype: int
+        :return: The credits of this ProjectList.  # noqa: E501
+        :rtype: float
         """
-        return self._gb_seconds
+        return self._credits
 
-    @gb_seconds.setter
-    def gb_seconds(self, gb_seconds):
-        """Sets the gb_seconds of this ProjectList.
+    @credits.setter
+    def credits(self, credits):
+        """Sets the credits of this ProjectList.
 
 
-        :param gb_seconds: The gb_seconds of this ProjectList.  # noqa: E501
-        :type: int
+        :param credits: The credits of this ProjectList.  # noqa: E501
+        :type: float
         """
         if (self.local_vars_configuration.client_side_validation and
-                gb_seconds is not None and not isinstance(gb_seconds, int)):
-            raise ValueError("Parameter `gb_seconds` must be an integer")  # noqa: E501
+                credits is not None and not isinstance(credits, float)):
+            raise ValueError("Parameter `credits` must be a float")  # noqa: E501
 
-        self._gb_seconds = gb_seconds
+        self._credits = credits
 
     @property
     def organization_name(self):

@@ -34,40 +34,44 @@ class DeploymentInstanceType(object):
     """
     openapi_types = {
         'name': 'str',
+        'display_name': 'str',
         'memory_allocation': 'int',
         'cpu_allocation': 'int',
         'gpu_allocation': 'int',
         'gpu_enabled': 'str',
         'gpu_memory_allocation': 'int',
-        'accelerator': 'str'
+        'gpu_type': 'str'
     }
 
     attribute_map = {
         'name': 'name',
+        'display_name': 'display_name',
         'memory_allocation': 'memory_allocation',
         'cpu_allocation': 'cpu_allocation',
         'gpu_allocation': 'gpu_allocation',
         'gpu_enabled': 'gpu_enabled',
         'gpu_memory_allocation': 'gpu_memory_allocation',
-        'accelerator': 'accelerator'
+        'gpu_type': 'gpu_type'
     }
 
-    def __init__(self, name=None, memory_allocation=None, cpu_allocation=None, gpu_allocation=None, gpu_enabled=None, gpu_memory_allocation=None, accelerator=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, display_name=None, memory_allocation=None, cpu_allocation=None, gpu_allocation=None, gpu_enabled=None, gpu_memory_allocation=None, gpu_type=None, local_vars_configuration=None):  # noqa: E501
         """DeploymentInstanceType - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
         self._name = None
+        self._display_name = None
         self._memory_allocation = None
         self._cpu_allocation = None
         self._gpu_allocation = None
         self._gpu_enabled = None
         self._gpu_memory_allocation = None
-        self._accelerator = None
+        self._gpu_type = None
         self.discriminator = None
 
         self.name = name
+        self.display_name = display_name
         if memory_allocation is not None:
             self.memory_allocation = memory_allocation
         if cpu_allocation is not None:
@@ -78,8 +82,7 @@ class DeploymentInstanceType(object):
             self.gpu_enabled = gpu_enabled
         if gpu_memory_allocation is not None:
             self.gpu_memory_allocation = gpu_memory_allocation
-        if accelerator is not None:
-            self.accelerator = accelerator
+        self.gpu_type = gpu_type
 
     @property
     def name(self):
@@ -113,6 +116,34 @@ class DeploymentInstanceType(object):
             raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._name = name
+
+    @property
+    def display_name(self):
+        """Gets the display_name of this DeploymentInstanceType.  # noqa: E501
+
+
+        :return: The display_name of this DeploymentInstanceType.  # noqa: E501
+        :rtype: str
+        """
+        return self._display_name
+
+    @display_name.setter
+    def display_name(self, display_name):
+        """Sets the display_name of this DeploymentInstanceType.
+
+
+        :param display_name: The display_name of this DeploymentInstanceType.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                display_name is not None and not isinstance(display_name, str)):
+            raise ValueError("Parameter `display_name` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                display_name is not None and len(display_name) > 256):
+            raise ValueError("Invalid value for `display_name`, length must be less than or equal to `256`")  # noqa: E501
+
+        self._display_name = display_name
 
     @property
     def memory_allocation(self):
@@ -184,10 +215,6 @@ class DeploymentInstanceType(object):
                 gpu_allocation is not None and not isinstance(gpu_allocation, int)):
             raise ValueError("Parameter `gpu_allocation` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                gpu_allocation is not None and gpu_allocation > 1):  # noqa: E501
-            raise ValueError("Invalid value for `gpu_allocation`, must be a value less than or equal to `1`")  # noqa: E501
-
         self._gpu_allocation = gpu_allocation
 
     @property
@@ -239,32 +266,32 @@ class DeploymentInstanceType(object):
         self._gpu_memory_allocation = gpu_memory_allocation
 
     @property
-    def accelerator(self):
-        """Gets the accelerator of this DeploymentInstanceType.  # noqa: E501
+    def gpu_type(self):
+        """Gets the gpu_type of this DeploymentInstanceType.  # noqa: E501
 
 
-        :return: The accelerator of this DeploymentInstanceType.  # noqa: E501
+        :return: The gpu_type of this DeploymentInstanceType.  # noqa: E501
         :rtype: str
         """
-        return self._accelerator
+        return self._gpu_type
 
-    @accelerator.setter
-    def accelerator(self, accelerator):
-        """Sets the accelerator of this DeploymentInstanceType.
+    @gpu_type.setter
+    def gpu_type(self, gpu_type):
+        """Sets the gpu_type of this DeploymentInstanceType.
 
 
-        :param accelerator: The accelerator of this DeploymentInstanceType.  # noqa: E501
+        :param gpu_type: The gpu_type of this DeploymentInstanceType.  # noqa: E501
         :type: str
         """
         if (self.local_vars_configuration.client_side_validation and
-                accelerator is not None and not isinstance(accelerator, str)):
-            raise ValueError("Parameter `accelerator` must be a string")  # noqa: E501
+                gpu_type is not None and not isinstance(gpu_type, str)):
+            raise ValueError("Parameter `gpu_type` must be a string")  # noqa: E501
 
         if (self.local_vars_configuration.client_side_validation and
-                accelerator is not None and len(accelerator) > 64):
-            raise ValueError("Invalid value for `accelerator`, length must be less than or equal to `64`")  # noqa: E501
+                gpu_type is not None and len(gpu_type) > 64):
+            raise ValueError("Invalid value for `gpu_type`, length must be less than or equal to `64`")  # noqa: E501
 
-        self._accelerator = accelerator
+        self._gpu_type = gpu_type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

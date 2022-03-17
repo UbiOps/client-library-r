@@ -233,10 +233,6 @@ class BlobList(object):
                 size is not None and not isinstance(size, int)):
             raise ValueError("Parameter `size` must be an integer")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                size is not None and size < 0):  # noqa: E501
-            raise ValueError("Invalid value for `size`, must be a value greater than or equal to `0`")  # noqa: E501
-
         self._size = size
 
     @property

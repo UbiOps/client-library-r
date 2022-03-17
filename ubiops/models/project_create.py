@@ -36,17 +36,17 @@ class ProjectCreate(object):
         'name': 'str',
         'organization_name': 'str',
         'advanced_permissions': 'bool',
-        'gb_seconds': 'int'
+        'credits': 'float'
     }
 
     attribute_map = {
         'name': 'name',
         'organization_name': 'organization_name',
         'advanced_permissions': 'advanced_permissions',
-        'gb_seconds': 'gb_seconds'
+        'credits': 'credits'
     }
 
-    def __init__(self, name=None, organization_name=None, advanced_permissions=False, gb_seconds=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, organization_name=None, advanced_permissions=False, credits=None, local_vars_configuration=None):  # noqa: E501
         """ProjectCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -55,14 +55,14 @@ class ProjectCreate(object):
         self._name = None
         self._organization_name = None
         self._advanced_permissions = None
-        self._gb_seconds = None
+        self._credits = None
         self.discriminator = None
 
         self.name = name
         self.organization_name = organization_name
         if advanced_permissions is not None:
             self.advanced_permissions = advanced_permissions
-        self.gb_seconds = gb_seconds
+        self.credits = credits
 
     @property
     def name(self):
@@ -152,28 +152,28 @@ class ProjectCreate(object):
         self._advanced_permissions = advanced_permissions
 
     @property
-    def gb_seconds(self):
-        """Gets the gb_seconds of this ProjectCreate.  # noqa: E501
+    def credits(self):
+        """Gets the credits of this ProjectCreate.  # noqa: E501
 
 
-        :return: The gb_seconds of this ProjectCreate.  # noqa: E501
-        :rtype: int
+        :return: The credits of this ProjectCreate.  # noqa: E501
+        :rtype: float
         """
-        return self._gb_seconds
+        return self._credits
 
-    @gb_seconds.setter
-    def gb_seconds(self, gb_seconds):
-        """Sets the gb_seconds of this ProjectCreate.
+    @credits.setter
+    def credits(self, credits):
+        """Sets the credits of this ProjectCreate.
 
 
-        :param gb_seconds: The gb_seconds of this ProjectCreate.  # noqa: E501
-        :type: int
+        :param credits: The credits of this ProjectCreate.  # noqa: E501
+        :type: float
         """
         if (self.local_vars_configuration.client_side_validation and
-                gb_seconds is not None and not isinstance(gb_seconds, int)):
-            raise ValueError("Parameter `gb_seconds` must be an integer")  # noqa: E501
+                credits is not None and not isinstance(credits, float)):
+            raise ValueError("Parameter `credits` must be a float")  # noqa: E501
 
-        self._gb_seconds = gb_seconds
+        self._credits = credits
 
     def to_dict(self):
         """Returns the model properties as a dict"""

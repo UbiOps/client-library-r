@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "3.7.0"
+__version__ = "3.8.0"
 
 # import apis into sdk package
 from ubiops.api.core_api import CoreApi

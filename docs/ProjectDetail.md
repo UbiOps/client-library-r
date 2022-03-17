@@ -8,7 +8,7 @@ Name | Type | Notes
 **creation_date** | **date** | [optional] [readonly] 
 **organization_name** | **str** | 
 **advanced_permissions** | **bool** | [optional] 
-**gb_seconds** | **int** | [optional] 
+**credits** | **float** | [optional] 
 **suspended** | **str** | [optional] [readonly] 
 **suspended_reason** | **str** | [optional] [readonly] 
 

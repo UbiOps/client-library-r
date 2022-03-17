@@ -15,5 +15,6 @@ Name | Type | Notes
 **pipeline_request_id** | **str** | [optional] 
 **build_id** | **str** | [optional] 
 **system** | **bool** | [optional] 
+**level** | **str** | [optional] 
 
 

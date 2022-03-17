@@ -212,8 +212,8 @@ class PipelineDetail(object):
             raise ValueError("Parameter `description` must be a string")  # noqa: E501
 
         if (self.local_vars_configuration.client_side_validation and
-                description is not None and len(description) > 200):
-            raise ValueError("Invalid value for `description`, length must be less than or equal to `200`")  # noqa: E501
+                description is not None and len(description) > 400):
+            raise ValueError("Invalid value for `description`, length must be less than or equal to `400`")  # noqa: E501
 
         self._description = description
 

@@ -44,7 +44,8 @@ class Logs(object):
         'deployment_request_id': 'str',
         'pipeline_request_id': 'str',
         'build_id': 'str',
-        'system': 'bool'
+        'system': 'bool',
+        'level': 'str'
     }
 
     attribute_map = {
@@ -59,10 +60,11 @@ class Logs(object):
         'deployment_request_id': 'deployment_request_id',
         'pipeline_request_id': 'pipeline_request_id',
         'build_id': 'build_id',
-        'system': 'system'
+        'system': 'system',
+        'level': 'level'
     }
 
-    def __init__(self, id=None, log=None, date=None, deployment_name=None, deployment_version=None, pipeline_name=None, pipeline_version=None, pipeline_object_name=None, deployment_request_id=None, pipeline_request_id=None, build_id=None, system=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, log=None, date=None, deployment_name=None, deployment_version=None, pipeline_name=None, pipeline_version=None, pipeline_object_name=None, deployment_request_id=None, pipeline_request_id=None, build_id=None, system=None, level=None, local_vars_configuration=None):  # noqa: E501
         """Logs - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -80,6 +82,7 @@ class Logs(object):
         self._pipeline_request_id = None
         self._build_id = None
         self._system = None
+        self._level = None
         self.discriminator = None
 
         if id is not None:
@@ -106,6 +109,8 @@ class Logs(object):
             self.build_id = build_id
         if system is not None:
             self.system = system
+        if level is not None:
+            self.level = level
 
     @property
     def id(self):
@@ -422,6 +427,34 @@ class Logs(object):
             raise ValueError("Parameter `system` must be a boolean")  # noqa: E501
 
         self._system = system
+
+    @property
+    def level(self):
+        """Gets the level of this Logs.  # noqa: E501
+
+
+        :return: The level of this Logs.  # noqa: E501
+        :rtype: str
+        """
+        return self._level
+
+    @level.setter
+    def level(self, level):
+        """Sets the level of this Logs.
+
+
+        :param level: The level of this Logs.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                level is not None and not isinstance(level, str)):
+            raise ValueError("Parameter `level` must be a string")  # noqa: E501
+
+        if (self.local_vars_configuration.client_side_validation and
+                level is not None and len(level) < 1):
+            raise ValueError("Invalid value for `level`, length must be greater than or equal to `1`")  # noqa: E501
+
+        self._level = level
 
     def to_dict(self):
         """Returns the model properties as a dict"""

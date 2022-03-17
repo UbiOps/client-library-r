@@ -57,8 +57,7 @@ class OrganizationCreate(object):
 
         self.name = name
         self.subscription = subscription
-        if subscription_end_date is not None:
-            self.subscription_end_date = subscription_end_date
+        self.subscription_end_date = subscription_end_date
 
     @property
     def name(self):

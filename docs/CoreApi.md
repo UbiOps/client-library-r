@@ -3781,18 +3781,18 @@ Provide the parameter 'default_notification_group' as the name of a notification
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9 or r4.0. The default value is python3.7.
+- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9, python3.6_cuda, python3.7_cuda, python3.8_cuda, python3.9_cuda or r4.0. The default value is python3.7.
 - `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
-- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
+- `maximum_idle_time`: Maximum time in seconds a version stays idle before it is stopped. The default value is 300, the minimum value is 10 (300 for GPU deployments) and the maximum value is 3600. A high value means that the version stays available longer. Sending requests to a running version means that it will be already initialized and thus take a shorter timer.
 
 - `description`: Description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
-- `request_retention_time`: Number of seconds to store requests to the version
+- `request_retention_time`: Number of seconds to store requests to the version. It defaults to 604800 seconds (1 week).
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
@@ -3821,6 +3821,13 @@ If the time that a request takes does not matter, keep the default values.
 }
 ```
 
+
+```
+  "version": "version-1",
+  "language": "python3.6_cuda",
+  "instance_type": "16384mb_t4",
+  "maximum_instances": 1
+```
 
 ```
 {
@@ -6070,6 +6077,8 @@ Details of the instance type
 
 - `name`: Name of the deployment instance type
 
+- `display_name`: Readable name of the deployment instance type
+
 - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi)
 
 - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU)
@@ -6085,6 +6094,7 @@ Details of the instance type
   {
     "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
     "name": "512mb",
+    "display_name": "512 MB"
     "memory_allocation": 512,
     "cpu_allocation": 125,
     "gpu_allocation": 0,
@@ -6138,7 +6148,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **metrics_get**
-> list[Metrics] metrics_get(project_name, metric, start_date, end_date, object_type, interval=interval, object_id=object_id)
+> list[Metrics] metrics_get(project_name, metric, start_date, end_date, object_type, interval=interval, object_id=object_id, user_id=user_id)
 
 Get metrics
 
@@ -6162,8 +6172,7 @@ Metrics on deployment version level:
 - `compute`: Average time in seconds for a request to complete
 - `memory_peak`: Peak memory used during a request
 - `instances`: Number of active deployment instances
-- `gb_seconds`: Usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds the deployments are running
-- `gpu_seconds`: Usage of GPU in seconds, calculated by multiplying the deployment GPUs by the number of seconds the deployments are running
+- `credits`: Usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours the deployments are running
 - `active_time`: Time in seconds that the deployment is active
 
 ### Required Parameters
@@ -6176,6 +6185,7 @@ Metrics on deployment version level:
 
 - `interval`: Interval for the metric value. It can be minute, hour, day or month. The metric values will be aggregated according to this interval. The default value is hour.
 - `object_id`: Uuid of the specific object for which the metrics are requested. When it is not provided, the metrics are aggregated for the given `object_type`.
+- `user_id`: Uuid of the user for which the metrics are requested. When it is not provided, the metrics are aggregated for the given `object_type` generated by all users.
 
 ### Response Structure
 
@@ -6280,9 +6290,10 @@ end_date = 'end_date_example' # str
 object_type = 'object_type_example' # str 
 interval = 'interval_example' # str  (optional)
 object_id = 'object_id_example' # str  (optional)
+user_id = 'user_id_example' # str  (optional)
 
 # Get metrics
-api_response = api_instance.metrics_get(project_name, metric, start_date, end_date, object_type, interval=interval, object_id=object_id)
+api_response = api_instance.metrics_get(project_name, metric, start_date, end_date, object_type, interval=interval, object_id=object_id, user_id=user_id)
 print(api_response)
 
 # Close the connection
@@ -6302,6 +6313,7 @@ Name | Type | Notes
  **object_type** | **str** | 
  **interval** | **str** | [optional] 
  **object_id** | **str** | [optional] 
+ **user_id** | **str** | [optional] 
 
 ### Return type
 
@@ -7644,7 +7656,7 @@ When **start_date** and **end_date** are given, this month period is used, e.g. 
 [
   {
     "object_type": "deployment_version",
-    "metric": "gb_seconds",
+    "metric": "credits",
     "usage": [
       {
         "start_date": "2019-08-01T00:00:00Z",
@@ -10263,7 +10275,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
-- `request_retention_time`: Number of seconds to store requests to the pipeline version
+- `request_retention_time`: Number of seconds to store requests to the pipeline version. It defaults to 604800 seconds (1 week).
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
@@ -12523,7 +12535,7 @@ Create a new project with the provided name.
 ### Optional Parameters
 
 - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project. It defaults to False.
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running. It defaults to null, meaning that there are no limits.
+- `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running. It defaults to null, meaning that there are no limits.
 
 ## Request Examples
 
@@ -12542,8 +12554,8 @@ Details of the created project
 - `creation_date`: Time the project was created
 - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
-- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
 - `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
@@ -12555,7 +12567,7 @@ Details of the created project
   "creation_date": "2018-10-26",
   "advanced_permissions": false,
   "organization_name": "organization-1",
-  "gb_seconds": null,
+  "credits": null,
   "suspended": false,
   "suspended_reason": null
 }
@@ -12673,8 +12685,8 @@ Details of a project
 - `creation_date`: Time the project was created
 - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
-- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
 - `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
@@ -12686,7 +12698,7 @@ Details of a project
   "creation_date": "2018-10-26",
   "advanced_permissions": false,
   "organization_name": "organization-1",
-  "gb_seconds": 10000,
+  "credits": 10000,
   "suspended": false,
   "suspended_reason": null
 }
@@ -12848,6 +12860,8 @@ Retrieve the logs of all objects in a project, including deployments, pipelines 
 
     - `system`: whether the log was generated by the system or user code (true / false)
 
+    - `level`: the level of the log (info / error)
+
 
 Any combination of filters may be given in the request. For example, if only a deployment_name is provided, all logs for that deployment are returned. These logs can contain information from all the pipelines that deployment is referenced in. If the filters dictionary is empty, all logs for all objects in the project are returned.
 Either `date` or `id` should be provided, as they both refer to a starting point of the logs. If no `date` or `id` is specified, the API will use the current time as a starting point and try to fetch the logs starting from now minus date range seconds into the past.
@@ -12933,6 +12947,8 @@ The following fields will be returned on response if they are set for the log li
 - `pipeline_request_id`:  The pipeline request the log is related to
 
 - `system`:  Whether the log was generated by the system (true / false)
+
+- `level`: The level of the log (info / error)
 
 ## Response Examples
 Logs for a specific deployment and version
@@ -13114,7 +13130,7 @@ Update the name of a single project. The user making the request must have appro
 
 - `name`: New project name
 - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
+- `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
 - `suspend`: A boolean to suspend and activate projects. If the project is already suspended by UbiOps, it is not possible to suspend/activate the project.
 
 ## Request Examples
@@ -13133,8 +13149,8 @@ Details of a project
 - `creation_date`: Time the project was created
 - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 - `organization_name`: Name of the organization in which the project is created
-- `gb_seconds`: Maximum usage of GB seconds, calculated by multiplying the deployment memory sizes in GB by the number of seconds they are running
-- `suspended`: A boolean indicating whether the project is suspended due to going over the gb_seconds limit
+- `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
+- `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
 - `suspended_reason`: Description explaining why the project is suspended
 
 ## Response Examples
@@ -13146,7 +13162,7 @@ Details of a project
   "creation_date": "2018-10-26",
   "advanced_permissions": false,
   "organization_name": "organization-1",
-  "gb_seconds": 10000,
+  "credits": 10000,
   "suspended": false,
   "suspended_reason": null
 }
@@ -13231,7 +13247,7 @@ When **start_date** and **end_date** are given, this month period is used, e.g. 
 [
   {
     "object_type": "deployment_version",
-    "metric": "gb_seconds",
+    "metric": "credits",
     "usage": [
       {
         "start_date": "2019-08-01T00:00:00Z",

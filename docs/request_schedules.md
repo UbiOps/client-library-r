@@ -79,8 +79,6 @@ Details of the created request schedule
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false). For pipeline schedules, this variable is true by default. For deployment schedules, the deployment mode is used to determine its value. It is false for express mode and true for batch mode.
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -105,7 +103,6 @@ Details of the created request schedule
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": false,
   "timeout": 300,
   "enabled": true,
   "creation_date": "2020-09-16T08:06:34.457679Z",
@@ -205,8 +202,6 @@ Details of a request schedule
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -231,7 +226,6 @@ Details of a request schedule
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": false,
   "timeout": 200,
   "enabled": true,
   "creation_date": "2020-09-16T08:06:34.457679Z",
@@ -289,8 +283,6 @@ A list of details of all request schedules in a project
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -316,7 +308,6 @@ A list of details of all request schedules in a project
       "input_field_1": 2345,
       "input_field_2": 8765
     },
-    "batch": false,
     "timeout": 200",
     "enabled": true,
     "creation_date": "2020-09-16T08:06:34.457679Z",
@@ -406,8 +397,6 @@ Details of the updated request schedule
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -432,7 +421,6 @@ Details of the updated request schedule
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": false,
   "timeout": 360,
   "enabled": true,
   "creation_date": "2020-09-16T08:06:34.457679Z",

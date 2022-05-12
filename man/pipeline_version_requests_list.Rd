@@ -61,7 +61,7 @@ Response from the API
    - `time_completed`: Server time that the processing of the request was completed
 }
 \description{
-List all batch requests for a pipeline version
+List all requests for a pipeline version
 }
 \examples{
 \dontrun{

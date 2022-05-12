@@ -1038,7 +1038,7 @@ Create deployment versions
 ## Description
 Create a version for a deployment. The first version of a deployment is set as default.
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
-Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 
 ### Required Parameters
 
@@ -1062,9 +1062,6 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
-- `deployment_mode`: the type of the deployment version. It can be one of the following:
-    - *express* - Direct requests can be made to the deployment version.
-    - *batch* - Batch requests can be made to the deployment version.
 
 If the time that a request takes does not matter, keep the default values.
 
@@ -1126,7 +1123,6 @@ Details of the created version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1153,8 +1149,7 @@ Details of the created version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full",
-  "deployment_mode": "express"
+  "request_retention_mode": "full"
 }
 ```
 
@@ -1173,7 +1168,6 @@ data <- list(
   monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # (optional)
   request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
-  deployment_mode = 'express',  # one of: [express, batch]  (optional)
   default_notification_group = "default_notification_group"  # (optional)
 )
 
@@ -1263,7 +1257,6 @@ Details of a version
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1291,8 +1284,7 @@ Details of a version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full",
-  "deployment_mode": "express"
+  "request_retention_mode": "full"
 }
 ```
 
@@ -1358,7 +1350,6 @@ A list of details of the versions
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1386,8 +1377,7 @@ A list of details of the versions
     "monitoring": "notification-group-1",
     "default_notification_group": null,
     "request_retention_time": 604800,
-    "request_retention_mode": "full",
-    "deployment_mode": "express"
+    "request_retention_mode": "full"
   },
   {
     "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
@@ -1411,8 +1401,7 @@ A list of details of the versions
     "monitoring": "notification-group-2",
     "default_notification_group": "notification-group-2",
     "request_retention_time": 86400,
-    "request_retention_mode": "metadata",
-    "deployment_mode": "batch"
+    "request_retention_mode": "metadata"
   }
 ]
 ```
@@ -1451,7 +1440,7 @@ Update deployment version
 ## Description
 Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
-Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 
 ### Optional Parameters
 
@@ -1513,7 +1502,6 @@ Details of the updated version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -1541,8 +1529,7 @@ Details of the updated version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full",
-  "deployment_mode": "express"
+  "request_retention_mode": "full"
 }
 ```
 

@@ -25,7 +25,8 @@
 #'   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi) 
 #'   - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU) 
 #'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type 
-#'   - `gpu_enabled`: Boolean indicating if the gpu resource is enabled for this instance type
+#'   - `gpu_enabled`: Boolean indicating if the GPU resource is enabled for this instance type 
+#'   - `gpu_type`: Type of the GPU enabled for this instance type
 #' @examples
 #' \dontrun{
 #' # Use environment variables

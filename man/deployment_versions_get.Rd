@@ -45,8 +45,7 @@ Response from the API
   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
       - *none* - the requests will not be stored
       - *metadata* - only the metadata of the requests will be stored
-      - *full* - both the metadata and input/output of the requests will be stored 
-  - `deployment_mode`: the type of the deployment version
+      - *full* - both the metadata and input/output of the requests will be stored
 }
 \description{
 Retrieve details of a version of a deployment in a project

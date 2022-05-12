@@ -480,6 +480,74 @@ project_environment_variables_update <- function(id, data,  preload_content=TRUE
 }
 
 
+#' @title List requests in project
+#' @description List the deployment/pipeline requests of the given project
+#' @param object.type  character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  A list of dictionaries containing the metadata of the deployment/pipeline requests with the following fields:
+#'   - `id`: The UUID of the object
+#'   - `deployment`: Name of the deployment the request was made to (Optional: in case it's a deployment request. Else NULL)
+#'   - `pipeline`: Name of the pipeline the request was made to (Optional: in case it's a pipeline request. Else NULL)
+#'   - `version`: Name of the version the request was made to
+#'   - `status`: Status of the request
+#'   - `success`: A boolean value that indicates whether the deployment/pipeline request was successful. NULL if the request is not yet finished.
+#'   - `time_created`: Server time that the request was made (current time)
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::project_requests_list(
+#'    object.type
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::project_requests_list(
+#'    object.type,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+project_requests_list <- function(object.type,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`object.type`)) {
+    stop("Missing required parameter `object.type`.")
+  }
+  query_params['object_type'] <- object.type
+  
+  url_path <- "/projects/{project_name}/requests"
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title Add user to a project
 #' @description Add a user to a project. The user making the request must be admin of the organization. The user can later be assigned roles in the project, such as project-admin, project-viewer etc.
 #' @param data  named list of: [ user_id ]
@@ -898,6 +966,7 @@ projects_get <- function( preload_content=TRUE, ...){
 
 #' @title List projects
 #' @description List all projects to which the user making request has access. The projects in organizations to which the user belongs are shown.
+#' @param organization (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -917,10 +986,12 @@ projects_get <- function( preload_content=TRUE, ...){
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::projects_list(
 #'    
+#'    organization = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::projects_list(
+#'    organization = NULL, 
 #'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -931,9 +1002,10 @@ projects_get <- function( preload_content=TRUE, ...){
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-projects_list <- function( preload_content=TRUE, ...){
+projects_list <- function(organization=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
+  query_params['organization'] <- organization
   
   url_path <- "/projects"
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)

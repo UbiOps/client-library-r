@@ -1077,7 +1077,7 @@ pipeline_version_requests_get <- function(pipeline.name, request.id, version, me
 
 
 #' @title List pipeline version requests
-#' @description List all batch requests for a pipeline version
+#' @description List all requests for a pipeline version
 #' @param pipeline.name  character
 #' @param version  character
 #' @param status (optional) character

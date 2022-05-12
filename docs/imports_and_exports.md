@@ -601,7 +601,6 @@ Confirm (and update) an import by selecting the objects in the import
           "description": "",
           "labels": {},
           "language": "python3.7",
-          "deployment_mode": "express",
           "maximum_idle_time": 300,
           "maximum_instances": 5,
           "memory_allocation": 256,

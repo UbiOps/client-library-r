@@ -38,7 +38,7 @@ In case of plain input pipeline: A list of strings. It is also possible to send 
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
-The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+The deployment request timeouts default to 14400 seconds for deployments in the pipeline.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
@@ -143,7 +143,7 @@ In case of plain input pipeline: A list of strings. It is also possible to send 
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
-The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+The deployment request timeouts default to 14400 seconds for deployments in the pipeline.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
@@ -1093,7 +1093,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 List pipeline version requests
 
 ## Description
-List all batch requests for a pipeline version
+List all requests for a pipeline version
 
 ### Optional Parameters
 The following parameters should be given as query parameters:

@@ -4,9 +4,11 @@
 \alias{projects_list}
 \title{List projects}
 \usage{
-projects_list(preload_content = TRUE, ...)
+projects_list(organization = NULL, preload_content = TRUE, ...)
 }
 \arguments{
+\item{organization}{(optional) character}
+
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
 \item{...}{UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -32,10 +34,12 @@ List all projects to which the user making request has access. The projects in o
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::projects_list(
    
+   organization = NULL
 )
 
 # Or provide directly
 result <- ubiops::projects_list(
+   organization = NULL, 
    UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

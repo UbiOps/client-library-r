@@ -41,7 +41,9 @@ Details of the instance type
 
 - `gpu_allocation`: Integer indicating number of GPU cores for this instance type
 
-- `gpu_enabled`: Boolean indicating if the gpu resource is enabled for this instance type
+- `gpu_enabled`: Boolean indicating if the GPU resource is enabled for this instance type
+
+- `gpu_type`: Type of the GPU enabled for this instance type
 
 ## Response Examples
 
@@ -50,11 +52,12 @@ Details of the instance type
   {
     "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
     "name": "512mb",
-    "display_name": "512 MB"
+    "display_name": "512 MB",
     "memory_allocation": 512,
     "cpu_allocation": 125,
     "gpu_allocation": 0,
-    "gpu_enabled": false
+    "gpu_enabled": false,
+    "gpu_type": null
   }
 ]
 ```

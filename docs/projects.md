@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**project_environment_variables_get**](projects.md#project_environment_variables_get) | **GET** /projects/{project_name}/environment-variables/{id} | Get project environment variable
 [**project_environment_variables_list**](projects.md#project_environment_variables_list) | **GET** /projects/{project_name}/environment-variables | List project environment variables
 [**project_environment_variables_update**](projects.md#project_environment_variables_update) | **PATCH** /projects/{project_name}/environment-variables/{id} | Update project environment variable
+[**project_requests_list**](projects.md#project_requests_list) | **GET** /projects/{project_name}/requests | List requests in project
 [**project_users_create**](projects.md#project_users_create) | **POST** /projects/{project_name}/users | Add user to a project
 [**project_users_delete**](projects.md#project_users_delete) | **DELETE** /projects/{project_name}/users/{user_id} | Delete user from a project
 [**project_users_get**](projects.md#project_users_get) | **GET** /projects/{project_name}/users/{user_id} | Get user in a project
@@ -552,6 +553,96 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
+# **project_requests_list**
+> project_requests_list(object.type)
+
+List requests in project
+
+## Description
+List the deployment/pipeline requests of the given project
+
+### Required Parameters
+
+- `object_type`: The type of the object. It can be either deployment or pipeline.
+
+### Optional Parameters
+
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `limit`: The maximum number of requests given back, default is 50
+- `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
+- `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `pipeline`: A boolean value that indicates whether the deployment request was part of a pipeline request
+- `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
+
+### Response Structure
+A list of dictionaries containing the metadata of the deployment/pipeline requests with the following fields:
+
+- `id`: The UUID of the object
+- `deployment`: Name of the deployment the request was made to (Optional: in case it's a deployment request. Else NULL)
+- `pipeline`: Name of the pipeline the request was made to (Optional: in case it's a pipeline request. Else NULL)
+- `version`: Name of the version the request was made to
+- `status`: Status of the request
+- `success`: A boolean value that indicates whether the deployment/pipeline request was successful. NULL if the request is not yet finished.
+- `time_created`: Server time that the request was made (current time)
+- `time_started`: Server time that the processing of the request was started
+- `time_completed`: Server time that the processing of the request was completed
+
+## Response Examples
+
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "deployment": "deployment-1",
+    "pipeline": null,
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "deployment": null,
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "status": "completed",
+    "success": true,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::project_requests_list(
+  object.type
+)
+
+# Or provide directly
+result <- ubiops::project_requests_list(
+  object.type,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
 # **project_users_create**
 > project_users_create(data)
 
@@ -942,7 +1033,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **projects_list**
-> projects_list()
+> projects_list(organization=NULL)
 
 List projects
 
@@ -961,6 +1052,11 @@ A list of details of the projects
 - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 
 - `organization_name`: Name of the organization in which the project is created
+
+### Optional Parameters
+These parameters should be given as query parameters
+
+- `organization`: Name of the organization whose projects should be obtained
 
 ## Response Examples
 
@@ -987,10 +1083,13 @@ A list of details of the projects
 ```R
 # Use environment variables
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::projects_list()
+result <- ubiops::projects_list(
+  organization = NULL
+)
 
 # Or provide directly
 result <- ubiops::projects_list(
+  organization = NULL, 
   UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

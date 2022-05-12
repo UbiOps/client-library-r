@@ -64,7 +64,7 @@ class Logs(object):
         'level': 'level'
     }
 
-    def __init__(self, id=None, log=None, date=None, deployment_name=None, deployment_version=None, pipeline_name=None, pipeline_version=None, pipeline_object_name=None, deployment_request_id=None, pipeline_request_id=None, build_id=None, system=None, level=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, log=None, date=None, deployment_name=None, deployment_version=None, pipeline_name=None, pipeline_version=None, pipeline_object_name=None, deployment_request_id=None, pipeline_request_id=None, build_id=None, system=None, level=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """Logs - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

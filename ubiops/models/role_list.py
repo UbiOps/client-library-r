@@ -44,7 +44,7 @@ class RoleList(object):
         'default': 'default'
     }
 
-    def __init__(self, id=None, name=None, default=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, default=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """RoleList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

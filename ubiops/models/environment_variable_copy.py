@@ -42,7 +42,7 @@ class EnvironmentVariableCopy(object):
         'source_version': 'source_version'
     }
 
-    def __init__(self, source_deployment=None, source_version=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, source_deployment=None, source_version=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """EnvironmentVariableCopy - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

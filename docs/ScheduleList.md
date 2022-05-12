@@ -10,7 +10,6 @@ Name | Type | Notes
 **version** | **str** | [optional] [readonly] 
 **schedule** | **str** | [optional] [readonly] 
 **request_data** | **str** or **dict(str, str)** | [optional] [readonly] 
-**batch** | **bool** | [optional] [readonly] 
 **timeout** | **int** | [optional] [readonly] 
 **enabled** | **bool** | 
 **creation_date** | **datetime** | [optional] 

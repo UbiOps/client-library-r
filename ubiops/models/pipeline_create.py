@@ -52,7 +52,7 @@ class PipelineCreate(object):
         'labels': 'labels'
     }
 
-    def __init__(self, name=None, description=None, input_type=None, input_fields=None, output_type=None, output_fields=None, labels=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, description=None, input_type=None, input_fields=None, output_type=None, output_fields=None, labels=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """PipelineCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

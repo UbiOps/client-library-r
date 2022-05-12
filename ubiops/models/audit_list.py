@@ -52,7 +52,7 @@ class AuditList(object):
         'object_name': 'object_name'
     }
 
-    def __init__(self, id=None, date=None, action=None, user=None, event=None, object_type=None, object_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, date=None, action=None, user=None, event=None, object_type=None, object_name=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """AuditList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

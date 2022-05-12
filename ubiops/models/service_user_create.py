@@ -44,7 +44,7 @@ class ServiceUserCreate(object):
         'expiry_date': 'expiry_date'
     }
 
-    def __init__(self, name=None, allowed_cors_origins=None, expiry_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, allowed_cors_origins=None, expiry_date=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """ServiceUserCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

@@ -45,7 +45,6 @@ class DeploymentVersionCreate(object):
         'monitoring': 'str',
         'request_retention_time': 'int',
         'request_retention_mode': 'str',
-        'deployment_mode': 'str',
         'default_notification_group': 'str'
     }
 
@@ -62,11 +61,10 @@ class DeploymentVersionCreate(object):
         'monitoring': 'monitoring',
         'request_retention_time': 'request_retention_time',
         'request_retention_mode': 'request_retention_mode',
-        'deployment_mode': 'deployment_mode',
         'default_notification_group': 'default_notification_group'
     }
 
-    def __init__(self, version=None, language='python3.7', memory_allocation=None, instance_type=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode='full', deployment_mode='express', default_notification_group=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, version=None, language='python3.7', memory_allocation=None, instance_type=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode='full', default_notification_group=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """DeploymentVersionCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -84,7 +82,6 @@ class DeploymentVersionCreate(object):
         self._monitoring = None
         self._request_retention_time = None
         self._request_retention_mode = None
-        self._deployment_mode = None
         self._default_notification_group = None
         self.discriminator = None
 
@@ -109,8 +106,6 @@ class DeploymentVersionCreate(object):
             self.request_retention_time = request_retention_time
         if request_retention_mode is not None:
             self.request_retention_mode = request_retention_mode
-        if deployment_mode is not None:
-            self.deployment_mode = deployment_mode
         self.default_notification_group = default_notification_group
 
     @property
@@ -424,36 +419,6 @@ class DeploymentVersionCreate(object):
             )
 
         self._request_retention_mode = request_retention_mode
-
-    @property
-    def deployment_mode(self):
-        """Gets the deployment_mode of this DeploymentVersionCreate.  # noqa: E501
-
-
-        :return: The deployment_mode of this DeploymentVersionCreate.  # noqa: E501
-        :rtype: str
-        """
-        return self._deployment_mode
-
-    @deployment_mode.setter
-    def deployment_mode(self, deployment_mode):
-        """Sets the deployment_mode of this DeploymentVersionCreate.
-
-
-        :param deployment_mode: The deployment_mode of this DeploymentVersionCreate.  # noqa: E501
-        :type: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                deployment_mode is not None and not isinstance(deployment_mode, str)):
-            raise ValueError("Parameter `deployment_mode` must be a string")  # noqa: E501
-        allowed_values = ["express", "batch"]  # noqa: E501
-        if self.local_vars_configuration.client_side_validation and deployment_mode not in allowed_values:  # noqa: E501
-            raise ValueError(
-                "Invalid value for `deployment_mode` ({0}), must be one of {1}"  # noqa: E501
-                .format(deployment_mode, allowed_values)
-            )
-
-        self._deployment_mode = deployment_mode
 
     @property
     def default_notification_group(self):

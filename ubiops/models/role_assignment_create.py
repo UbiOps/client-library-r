@@ -46,7 +46,7 @@ class RoleAssignmentCreate(object):
         'object_type': 'object_type'
     }
 
-    def __init__(self, user_id=None, role=None, object_name=None, object_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, user_id=None, role=None, object_name=None, object_type=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """RoleAssignmentCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

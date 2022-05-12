@@ -64,7 +64,7 @@ class PipelineVersionDetail(object):
         'attachments': 'attachments'
     }
 
-    def __init__(self, id=None, version=None, pipeline=None, description=None, labels=None, creation_date=None, last_updated=None, monitoring=None, request_retention_time=None, request_retention_mode=None, default_notification_group=None, objects=None, attachments=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, version=None, pipeline=None, description=None, labels=None, creation_date=None, last_updated=None, monitoring=None, request_retention_time=None, request_retention_mode=None, default_notification_group=None, objects=None, attachments=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """PipelineVersionDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

@@ -62,7 +62,7 @@ class DeploymentList(object):
         'number_of_versions': 'number_of_versions'
     }
 
-    def __init__(self, id=None, name=None, project=None, description=None, input_type=None, output_type=None, input_fields=None, output_fields=None, labels=None, creation_date=None, last_updated=None, number_of_versions=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, project=None, description=None, input_type=None, output_type=None, input_fields=None, output_fields=None, labels=None, creation_date=None, last_updated=None, number_of_versions=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """DeploymentList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

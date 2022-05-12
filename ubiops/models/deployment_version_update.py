@@ -62,7 +62,7 @@ class DeploymentVersionUpdate(object):
         'default_notification_group': 'default_notification_group'
     }
 
-    def __init__(self, version=None, memory_allocation=None, instance_type=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode=None, default_notification_group=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, version=None, memory_allocation=None, instance_type=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode=None, default_notification_group=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """DeploymentVersionUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

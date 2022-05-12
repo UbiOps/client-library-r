@@ -44,7 +44,7 @@ class OrganizationCreate(object):
         'subscription_end_date': 'subscription_end_date'
     }
 
-    def __init__(self, name=None, subscription=None, subscription_end_date=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, subscription=None, subscription_end_date=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """OrganizationCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

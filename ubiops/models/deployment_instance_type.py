@@ -33,6 +33,7 @@ class DeploymentInstanceType(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'id': 'str',
         'name': 'str',
         'display_name': 'str',
         'memory_allocation': 'int',
@@ -44,6 +45,7 @@ class DeploymentInstanceType(object):
     }
 
     attribute_map = {
+        'id': 'id',
         'name': 'name',
         'display_name': 'display_name',
         'memory_allocation': 'memory_allocation',
@@ -54,12 +56,13 @@ class DeploymentInstanceType(object):
         'gpu_type': 'gpu_type'
     }
 
-    def __init__(self, name=None, display_name=None, memory_allocation=None, cpu_allocation=None, gpu_allocation=None, gpu_enabled=None, gpu_memory_allocation=None, gpu_type=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, display_name=None, memory_allocation=None, cpu_allocation=None, gpu_allocation=None, gpu_enabled=None, gpu_memory_allocation=None, gpu_type=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """DeploymentInstanceType - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
         self.local_vars_configuration = local_vars_configuration
 
+        self._id = None
         self._name = None
         self._display_name = None
         self._memory_allocation = None
@@ -70,6 +73,8 @@ class DeploymentInstanceType(object):
         self._gpu_type = None
         self.discriminator = None
 
+        if id is not None:
+            self.id = id
         self.name = name
         self.display_name = display_name
         if memory_allocation is not None:
@@ -83,6 +88,30 @@ class DeploymentInstanceType(object):
         if gpu_memory_allocation is not None:
             self.gpu_memory_allocation = gpu_memory_allocation
         self.gpu_type = gpu_type
+
+    @property
+    def id(self):
+        """Gets the id of this DeploymentInstanceType.  # noqa: E501
+
+
+        :return: The id of this DeploymentInstanceType.  # noqa: E501
+        :rtype: str
+        """
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        """Sets the id of this DeploymentInstanceType.
+
+
+        :param id: The id of this DeploymentInstanceType.  # noqa: E501
+        :type: str
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                id is not None and not isinstance(id, str)):
+            raise ValueError("Parameter `id` must be a string")  # noqa: E501
+
+        self._id = id
 
     @property
     def name(self):

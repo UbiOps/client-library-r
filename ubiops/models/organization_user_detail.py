@@ -50,7 +50,7 @@ class OrganizationUserDetail(object):
         'admin': 'admin'
     }
 
-    def __init__(self, id=None, email=None, name=None, surname=None, status=None, admin=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, email=None, name=None, surname=None, status=None, admin=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """OrganizationUserDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

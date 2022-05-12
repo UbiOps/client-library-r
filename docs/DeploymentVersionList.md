@@ -21,7 +21,6 @@ Name | Type | Notes
 **last_updated** | **datetime** | [optional] 
 **request_retention_time** | **int** | [optional] 
 **request_retention_mode** | **str** | 
-**deployment_mode** | **str** | 
 **monitoring** | **str** | [optional] [readonly] 
 **default_notification_group** | **str** | [optional] [readonly] 
 

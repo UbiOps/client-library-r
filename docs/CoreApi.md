@@ -122,6 +122,7 @@ Method | HTTP request | Description
 [**project_environment_variables_get**](CoreApi.md#project_environment_variables_get) | **GET** /projects/{project_name}/environment-variables/{id} | Get project environment variable
 [**project_environment_variables_list**](CoreApi.md#project_environment_variables_list) | **GET** /projects/{project_name}/environment-variables | List project environment variables
 [**project_environment_variables_update**](CoreApi.md#project_environment_variables_update) | **PATCH** /projects/{project_name}/environment-variables/{id} | Update project environment variable
+[**project_requests_list**](CoreApi.md#project_requests_list) | **GET** /projects/{project_name}/requests | List requests in project
 [**project_users_create**](CoreApi.md#project_users_create) | **POST** /projects/{project_name}/users | Add user to a project
 [**project_users_delete**](CoreApi.md#project_users_delete) | **DELETE** /projects/{project_name}/users/{user_id} | Delete user from a project
 [**project_users_get**](CoreApi.md#project_users_get) | **GET** /projects/{project_name}/users/{user_id} | Get user in a project
@@ -441,7 +442,7 @@ In case of plain input pipeline: A list of strings. It is also possible to send 
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
-The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+The deployment request timeouts default to 14400 seconds for deployments in the pipeline.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
@@ -570,7 +571,7 @@ In case of plain input pipeline: A list of strings. It is also possible to send 
 These parameters should be given as query parameters
 
 - `timeout`: Timeout for the entire pipeline request in seconds. The maximum allowed value is 172800 (48 hours) and the default value is 14400 (4 hours).
-The deployment request timeouts default to 300 seconds for express deployments in the pipeline and to 14400 seconds for batch deployments.
+The deployment request timeouts default to 14400 seconds for deployments in the pipeline.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 
 ## Request Examples
@@ -3773,7 +3774,7 @@ Create deployment versions
 ## Description
 Create a version for a deployment. The first version of a deployment is set as default.
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
-Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 
 ### Required Parameters
 
@@ -3797,9 +3798,6 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
-- `deployment_mode`: the type of the deployment version. It can be one of the following:
-    - *express* - Direct requests can be made to the deployment version.
-    - *batch* - Batch requests can be made to the deployment version.
 
 If the time that a request takes does not matter, keep the default values.
 
@@ -3861,7 +3859,6 @@ Details of the created version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -3888,8 +3885,7 @@ Details of the created version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full",
-  "deployment_mode": "express"
+  "request_retention_mode": "full"
 }
 ```
 
@@ -4033,7 +4029,6 @@ Details of a version
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -4061,8 +4056,7 @@ Details of a version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full",
-  "deployment_mode": "express"
+  "request_retention_mode": "full"
 }
 ```
 
@@ -4152,7 +4146,6 @@ A list of details of the versions
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -4180,8 +4173,7 @@ A list of details of the versions
     "monitoring": "notification-group-1",
     "default_notification_group": null,
     "request_retention_time": 604800,
-    "request_retention_mode": "full",
-    "deployment_mode": "express"
+    "request_retention_mode": "full"
   },
   {
     "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
@@ -4205,8 +4197,7 @@ A list of details of the versions
     "monitoring": "notification-group-2",
     "default_notification_group": "notification-group-2",
     "request_retention_time": 86400,
-    "request_retention_mode": "metadata",
-    "deployment_mode": "batch"
+    "request_retention_mode": "metadata"
   }
 ]
 ```
@@ -4267,7 +4258,7 @@ Update deployment version
 ## Description
 Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels.
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
-Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for versions with **batch deployment mode**.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 
 ### Optional Parameters
 
@@ -4329,7 +4320,6 @@ Details of the updated version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
-- `deployment_mode`: the type of the deployment version
 
 ## Response Examples
 
@@ -4357,8 +4347,7 @@ Details of the updated version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full",
-  "deployment_mode": "express"
+  "request_retention_mode": "full"
 }
 ```
 
@@ -5870,7 +5859,6 @@ Confirm (and update) an import by selecting the objects in the import
           "description": "",
           "labels": {},
           "language": "python3.7",
-          "deployment_mode": "express",
           "maximum_idle_time": 300,
           "maximum_instances": 5,
           "memory_allocation": 256,
@@ -6085,7 +6073,9 @@ Details of the instance type
 
 - `gpu_allocation`: Integer indicating number of GPU cores for this instance type
 
-- `gpu_enabled`: Boolean indicating if the gpu resource is enabled for this instance type
+- `gpu_enabled`: Boolean indicating if the GPU resource is enabled for this instance type
+
+- `gpu_type`: Type of the GPU enabled for this instance type
 
 ## Response Examples
 
@@ -6094,11 +6084,12 @@ Details of the instance type
   {
     "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
     "name": "512mb",
-    "display_name": "512 MB"
+    "display_name": "512 MB",
     "memory_allocation": 512,
     "cpu_allocation": 125,
     "gpu_allocation": 0,
-    "gpu_enabled": false
+    "gpu_enabled": false,
+    "gpu_type": null
   }
 ]
 ```
@@ -10136,7 +10127,7 @@ Name | Type | Notes
 List pipeline version requests
 
 ## Description
-List all batch requests for a pipeline version
+List all requests for a pipeline version
 
 ### Optional Parameters
 The following parameters should be given as query parameters:
@@ -10263,7 +10254,7 @@ Create pipeline versions
 ## Description
 Create a version for a pipeline. The first version of a pipeline is set as default.
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
-Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 
 ### Required Parameters
 
@@ -10788,7 +10779,7 @@ Update pipeline version
 ## Description
 Update a pipeline version. When updating labels, the labels will replace the existing value for labels.
 Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version.
-Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version. This field is only used for **batch requests** to the version.
+Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 
 **Attention:** *In case either the `objects` or `attachments` parameter is null or an empty list, all of the objects or attachments of the pipeline will be removed.*
 
@@ -12215,6 +12206,118 @@ Name | Type | Notes
 
 [[Back to top]](#)
 
+# **project_requests_list**
+> list[RequestsOverview] project_requests_list(project_name, object_type)
+
+List requests in project
+
+## Description
+List the deployment/pipeline requests of the given project
+
+### Required Parameters
+
+- `object_type`: The type of the object. It can be either deployment or pipeline.
+
+### Optional Parameters
+
+- `status`: Status of the request. Can be 'pending', 'processing', 'failed', 'completed', 'cancelled' or 'cancelled_pending'.
+- `success`: A boolean value that indicates whether the deployment request was successful
+- `limit`: The maximum number of requests given back, default is 50
+- `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
+- `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `pipeline`: A boolean value that indicates whether the deployment request was part of a pipeline request
+- `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
+- `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
+
+### Response Structure
+A list of dictionaries containing the metadata of the deployment/pipeline requests with the following fields:
+
+- `id`: The UUID of the object
+- `deployment`: Name of the deployment the request was made to (Optional: in case it's a deployment request. Else NULL)
+- `pipeline`: Name of the pipeline the request was made to (Optional: in case it's a pipeline request. Else NULL)
+- `version`: Name of the version the request was made to
+- `status`: Status of the request
+- `success`: A boolean value that indicates whether the deployment/pipeline request was successful. NULL if the request is not yet finished.
+- `time_created`: Server time that the request was made (current time)
+- `time_started`: Server time that the processing of the request was started
+- `time_completed`: Server time that the processing of the request was completed
+
+## Response Examples
+
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "deployment": "deployment-1",
+    "pipeline": null,
+    "version": "v1",
+    "status": "pending",
+    "success": false,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "deployment": null,
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "status": "completed",
+    "success": true,
+    "time_created": "2020-03-28T20:00:26.613+00:00",
+    "time_started": "2020-03-28T20:00:41.276+00:00",
+    "time_completed": "2020-03-28T20:00:42.241+00:00"
+  }
+]
+```
+
+### Example
+
+```python
+import ubiops
+configuration = ubiops.Configuration()
+# Configure API token authorization
+configuration.api_key['Authorization'] = 'Token <YOUR_API_TOKEN>'
+
+# Defining host is optional and default to https://api.ubiops.com/v2.1
+configuration.host = "https://api.ubiops.com/v2.1"
+# Enter a context with an instance of the API client
+api_client = ubiops.ApiClient(configuration)
+
+# Create an instance of the API class
+api_instance = ubiops.CoreApi(api_client)
+
+project_name = 'project_name_example' # str 
+object_type = 'object_type_example' # str 
+
+# List requests in project
+api_response = api_instance.project_requests_list(project_name, object_type)
+print(api_response)
+
+# Close the connection
+api_client.close()
+```
+
+
+### Parameters
+
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **project_name** | **str** | 
+ **object_type** | **str** | 
+
+### Return type
+
+[**list[RequestsOverview]**](RequestsOverview.md)
+
+### Authorization
+
+[API token](https://ubiops.com/docs/organizations/service-users)
+
+[[Back to top]](#)
+
 # **project_users_create**
 > ProjectUserList project_users_create(project_name, data)
 
@@ -12749,7 +12852,7 @@ Name | Type | Notes
 [[Back to top]](#)
 
 # **projects_list**
-> list[ProjectList] projects_list()
+> list[ProjectList] projects_list(organization=organization)
 
 List projects
 
@@ -12768,6 +12871,11 @@ A list of details of the projects
 - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 
 - `organization_name`: Name of the organization in which the project is created
+
+### Optional Parameters
+These parameters should be given as query parameters
+
+- `organization`: Name of the organization whose projects should be obtained
 
 ## Response Examples
 
@@ -12806,9 +12914,10 @@ api_client = ubiops.ApiClient(configuration)
 # Create an instance of the API class
 api_instance = ubiops.CoreApi(api_client)
 
+organization = 'organization_example' # str  (optional)
 
 # List projects
-api_response = api_instance.projects_list()
+api_response = api_instance.projects_list(organization=organization)
 print(api_response)
 
 # Close the connection
@@ -12818,7 +12927,10 @@ api_client.close()
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Notes
+------------- | ------------- | -------------
+ **organization** | **str** | [optional] 
 
 ### Return type
 
@@ -13421,8 +13533,6 @@ Details of the created request schedule
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false). For pipeline schedules, this variable is true by default. For deployment schedules, the deployment mode is used to determine its value. It is false for express mode and true for batch mode.
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -13447,7 +13557,6 @@ Details of the created request schedule
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": false,
   "timeout": 300,
   "enabled": true,
   "creation_date": "2020-09-16T08:06:34.457679Z",
@@ -13582,8 +13691,6 @@ Details of a request schedule
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -13608,7 +13715,6 @@ Details of a request schedule
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": false,
   "timeout": 200,
   "enabled": true,
   "creation_date": "2020-09-16T08:06:34.457679Z",
@@ -13688,8 +13794,6 @@ A list of details of all request schedules in a project
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -13715,7 +13819,6 @@ A list of details of all request schedules in a project
       "input_field_1": 2345,
       "input_field_2": 8765
     },
-    "batch": false,
     "timeout": 200",
     "enabled": true,
     "creation_date": "2020-09-16T08:06:34.457679Z",
@@ -13825,8 +13928,6 @@ Details of the updated request schedule
 
 - `request_data`: Input data for the request schedule
 
-- `batch`: Boolean value indicating whether the requests will be performed as batch requests (true) or as direct requests (false)
-
 - `timeout`: Timeout of the request in seconds
 
 - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
@@ -13851,7 +13952,6 @@ Details of the updated request schedule
     "input_field_1": 2345,
     "input_field_2": 8765
   },
-  "batch": false,
   "timeout": 360,
   "enabled": true,
   "creation_date": "2020-09-16T08:06:34.457679Z",

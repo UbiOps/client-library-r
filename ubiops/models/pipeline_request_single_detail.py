@@ -66,7 +66,7 @@ class PipelineRequestSingleDetail(object):
         'origin': 'origin'
     }
 
-    def __init__(self, id=None, pipeline=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, request_data=None, result=None, deployment_requests=None, error_message=None, notification_group=None, origin=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, pipeline=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, request_data=None, result=None, deployment_requests=None, error_message=None, notification_group=None, origin=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """PipelineRequestSingleDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

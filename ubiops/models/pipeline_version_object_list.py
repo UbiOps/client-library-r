@@ -39,7 +39,6 @@ class PipelineVersionObjectList(object):
         'version': 'str',
         'input_type': 'str',
         'output_type': 'str',
-        'deployment_mode': 'str',
         'input_fields': 'list[DeploymentInputFieldCreate]',
         'output_fields': 'list[DeploymentOutputFieldCreate]'
     }
@@ -51,12 +50,11 @@ class PipelineVersionObjectList(object):
         'version': 'version',
         'input_type': 'input_type',
         'output_type': 'output_type',
-        'deployment_mode': 'deployment_mode',
         'input_fields': 'input_fields',
         'output_fields': 'output_fields'
     }
 
-    def __init__(self, id=None, name=None, reference_name=None, version=None, input_type=None, output_type=None, deployment_mode=None, input_fields=None, output_fields=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, reference_name=None, version=None, input_type=None, output_type=None, input_fields=None, output_fields=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """PipelineVersionObjectList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -68,7 +66,6 @@ class PipelineVersionObjectList(object):
         self._version = None
         self._input_type = None
         self._output_type = None
-        self._deployment_mode = None
         self._input_fields = None
         self._output_fields = None
         self.discriminator = None
@@ -81,7 +78,6 @@ class PipelineVersionObjectList(object):
             self.input_type = input_type
         if output_type is not None:
             self.output_type = output_type
-        self.deployment_mode = deployment_mode
         if input_fields is not None:
             self.input_fields = input_fields
         if output_fields is not None:
@@ -252,30 +248,6 @@ class PipelineVersionObjectList(object):
             raise ValueError("Invalid value for `output_type`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._output_type = output_type
-
-    @property
-    def deployment_mode(self):
-        """Gets the deployment_mode of this PipelineVersionObjectList.  # noqa: E501
-
-
-        :return: The deployment_mode of this PipelineVersionObjectList.  # noqa: E501
-        :rtype: str
-        """
-        return self._deployment_mode
-
-    @deployment_mode.setter
-    def deployment_mode(self, deployment_mode):
-        """Sets the deployment_mode of this PipelineVersionObjectList.
-
-
-        :param deployment_mode: The deployment_mode of this PipelineVersionObjectList.  # noqa: E501
-        :type: str
-        """
-        if (self.local_vars_configuration.client_side_validation and
-                deployment_mode is not None and not isinstance(deployment_mode, str)):
-            raise ValueError("Parameter `deployment_mode` must be a string")  # noqa: E501
-
-        self._deployment_mode = deployment_mode
 
     @property
     def input_fields(self):

@@ -50,7 +50,7 @@ class InheritedEnvironmentVariableList(object):
         'inheritance_name': 'inheritance_name'
     }
 
-    def __init__(self, id=None, name=None, value=None, secret=None, inheritance_type=None, inheritance_name=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, name=None, value=None, secret=None, inheritance_type=None, inheritance_name=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """InheritedEnvironmentVariableList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

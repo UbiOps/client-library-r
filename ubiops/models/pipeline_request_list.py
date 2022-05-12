@@ -54,7 +54,7 @@ class PipelineRequestList(object):
         'time_completed': 'time_completed'
     }
 
-    def __init__(self, id=None, pipeline=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, pipeline=None, version=None, status=None, success=None, time_created=None, time_started=None, time_completed=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """PipelineRequestList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

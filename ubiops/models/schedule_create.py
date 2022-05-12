@@ -58,7 +58,7 @@ class ScheduleCreate(object):
         'labels': 'labels'
     }
 
-    def __init__(self, name=None, object_type=None, object_name=None, version=None, schedule=None, request_data=None, timeout=None, enabled=None, description=None, labels=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, object_type=None, object_name=None, version=None, schedule=None, request_data=None, timeout=None, enabled=None, description=None, labels=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """ScheduleCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

@@ -48,7 +48,7 @@ class LogsCreate(object):
         'limit': 'limit'
     }
 
-    def __init__(self, filters=None, date_range=None, date=None, id=None, limit=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, filters=None, date_range=None, date=None, id=None, limit=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """LogsCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

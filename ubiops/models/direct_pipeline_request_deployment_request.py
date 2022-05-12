@@ -50,7 +50,7 @@ class DirectPipelineRequestDeploymentRequest(object):
         'error_message': 'error_message'
     }
 
-    def __init__(self, id=None, pipeline_object=None, deployment=None, version=None, success=None, error_message=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, pipeline_object=None, deployment=None, version=None, success=None, error_message=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """DirectPipelineRequestDeploymentRequest - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

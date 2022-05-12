@@ -56,7 +56,7 @@ class ImportDetail(object):
         'environment_variables': 'environment_variables'
     }
 
-    def __init__(self, id=None, imported_by=None, creation_date=None, status='pending', error_message=None, size=None, deployments=None, pipelines=None, environment_variables=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, imported_by=None, creation_date=None, status='pending', error_message=None, size=None, deployments=None, pipelines=None, environment_variables=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """ImportDetail - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

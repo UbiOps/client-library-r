@@ -50,7 +50,7 @@ class ExportList(object):
         'size': 'size'
     }
 
-    def __init__(self, id=None, exported_by=None, creation_date=None, status='pending', error_message=None, size=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, exported_by=None, creation_date=None, status='pending', error_message=None, size=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """ExportList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

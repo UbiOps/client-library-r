@@ -44,7 +44,7 @@ class Usage(object):
         'usage': 'usage'
     }
 
-    def __init__(self, object_type=None, metric=None, usage=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, object_type=None, metric=None, usage=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """Usage - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

@@ -52,7 +52,7 @@ class ScheduleUpdate(object):
         'labels': 'labels'
     }
 
-    def __init__(self, name=None, schedule=None, request_data=None, timeout=None, enabled=None, description=None, labels=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, name=None, schedule=None, request_data=None, timeout=None, enabled=None, description=None, labels=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """ScheduleUpdate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()

@@ -109,6 +109,7 @@ from ubiops.models.project_resource_usage import ProjectResourceUsage
 from ubiops.models.project_update import ProjectUpdate
 from ubiops.models.project_user_create import ProjectUserCreate
 from ubiops.models.project_user_list import ProjectUserList
+from ubiops.models.requests_overview import RequestsOverview
 from ubiops.models.resource_usage import ResourceUsage
 from ubiops.models.revision_create import RevisionCreate
 from ubiops.models.revision_list import RevisionList

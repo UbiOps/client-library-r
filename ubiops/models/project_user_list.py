@@ -46,7 +46,7 @@ class ProjectUserList(object):
         'surname': 'surname'
     }
 
-    def __init__(self, id=None, email=None, name=None, surname=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, id=None, email=None, name=None, surname=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """ProjectUserList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -60,10 +60,8 @@ class ProjectUserList(object):
 
         self.id = id
         self.email = email
-        if name is not None:
-            self.name = name
-        if surname is not None:
-            self.surname = surname
+        self.name = name
+        self.surname = surname
 
     @property
     def id(self):
@@ -143,10 +141,6 @@ class ProjectUserList(object):
                 name is not None and not isinstance(name, str)):
             raise ValueError("Parameter `name` must be a string")  # noqa: E501
 
-        if (self.local_vars_configuration.client_side_validation and
-                name is not None and len(name) < 1):
-            raise ValueError("Invalid value for `name`, length must be greater than or equal to `1`")  # noqa: E501
-
         self._name = name
 
     @property
@@ -170,10 +164,6 @@ class ProjectUserList(object):
         if (self.local_vars_configuration.client_side_validation and
                 surname is not None and not isinstance(surname, str)):
             raise ValueError("Parameter `surname` must be a string")  # noqa: E501
-
-        if (self.local_vars_configuration.client_side_validation and
-                surname is not None and len(surname) < 1):
-            raise ValueError("Invalid value for `surname`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._surname = surname
 

@@ -50,6 +50,8 @@ Response from the API
       - *none* - the requests will not be stored
       - *metadata* - only the metadata of the requests will be stored
       - *full* - both the metadata and input/output of the requests will be stored
+  - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+  - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 }
 \description{
 Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.

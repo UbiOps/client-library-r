@@ -17,7 +17,7 @@ deployment_versions_update(
 
 \item{version}{character}
 
-\item{data}{named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional) ]}
+\item{data}{named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -51,6 +51,8 @@ Response from the API
   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
   - `request_retention_time`: Number of seconds to store requests to the version
   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
+  - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+  - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 }
 \description{
 Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
@@ -69,7 +71,9 @@ data <- list(
  monitoring = "monitoring",  # (optional)
  request_retention_time = 0,  # (optional)
  request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
- default_notification_group = "default_notification_group"  # (optional)
+ default_notification_group = "default_notification_group",  # (optional)
+ maximum_queue_size_express = 0,  # (optional)
+ maximum_queue_size_batch = 0  # (optional)
 )
 
 # Use environment variables

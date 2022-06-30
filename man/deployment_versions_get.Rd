@@ -46,6 +46,8 @@ Response from the API
       - *none* - the requests will not be stored
       - *metadata* - only the metadata of the requests will be stored
       - *full* - both the metadata and input/output of the requests will be stored
+  - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+  - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 }
 \description{
 Retrieve details of a version of a deployment in a project

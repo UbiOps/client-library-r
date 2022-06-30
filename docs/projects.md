@@ -53,6 +53,10 @@ Metrics on deployment version level:
 - `instances`: Number of active deployment instances
 - `credits`: Usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours the deployments are running
 - `active_time`: Time in seconds that the deployment is active
+- `express_queue_size`: Average number of queued express requests
+- `batch_queue_size`: Average number of queued batch requests
+- `express_queue_time`: Average time in seconds for an express request to start processing
+- `batch_queue_time`: Average time in seconds for a batch request to start processing
 
 ### Required Parameters
 

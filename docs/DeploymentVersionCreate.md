@@ -16,5 +16,7 @@ Name | Type | Notes
 **request_retention_time** | **int** | [optional] 
 **request_retention_mode** | **str** | [optional] [default to 'full']
 **default_notification_group** | **str** | [optional] 
+**maximum_queue_size_express** | **int** | [optional] 
+**maximum_queue_size_batch** | **int** | [optional] 
 
 

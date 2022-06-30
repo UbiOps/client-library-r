@@ -3798,6 +3798,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+- `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 
 If the time that a request takes does not matter, keep the default values.
 
@@ -3859,6 +3861,8 @@ Details of the created version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
+- `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+- `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 
 ## Response Examples
 
@@ -3885,7 +3889,9 @@ Details of the created version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "maximum_queue_size_express": 100,
+  "maximum_queue_size_batch": 100000
 }
 ```
 
@@ -4029,6 +4035,8 @@ Details of a version
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+- `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 
 ## Response Examples
 
@@ -4056,7 +4064,9 @@ Details of a version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "maximum_queue_size_express": 100,
+  "maximum_queue_size_batch": 100000
 }
 ```
 
@@ -4146,6 +4156,8 @@ A list of details of the versions
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+- `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 
 ## Response Examples
 
@@ -4173,7 +4185,9 @@ A list of details of the versions
     "monitoring": "notification-group-1",
     "default_notification_group": null,
     "request_retention_time": 604800,
-    "request_retention_mode": "full"
+    "request_retention_mode": "full",
+    "maximum_queue_size_express": 100,
+    "maximum_queue_size_batch": 100000
   },
   {
     "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
@@ -4197,7 +4211,9 @@ A list of details of the versions
     "monitoring": "notification-group-2",
     "default_notification_group": "notification-group-2",
     "request_retention_time": 86400,
-    "request_retention_mode": "metadata"
+    "request_retention_mode": "metadata",
+    "maximum_queue_size_express": 100,
+    "maximum_queue_size_batch": 100000
   }
 ]
 ```
@@ -4277,6 +4293,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *none* - the requests will not be stored
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
+- `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+- `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 
 ## Request Examples
 
@@ -4320,6 +4338,8 @@ Details of the updated version
 - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
+- `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
+- `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 
 ## Response Examples
 
@@ -4347,7 +4367,9 @@ Details of the updated version
   "monitoring": "notification-group-1",
   "default_notification_group": null,
   "request_retention_time": 604800,
-  "request_retention_mode": "full"
+  "request_retention_mode": "full",
+  "maximum_queue_size_express": 100,
+  "maximum_queue_size_batch": 100000
 }
 ```
 
@@ -6165,6 +6187,10 @@ Metrics on deployment version level:
 - `instances`: Number of active deployment instances
 - `credits`: Usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours the deployments are running
 - `active_time`: Time in seconds that the deployment is active
+- `express_queue_size`: Average number of queued express requests
+- `batch_queue_size`: Average number of queued batch requests
+- `express_queue_time`: Average time in seconds for an express request to start processing
+- `batch_queue_time`: Average time in seconds for a batch request to start processing
 
 ### Required Parameters
 

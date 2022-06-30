@@ -45,7 +45,9 @@ class DeploymentVersionCreate(object):
         'monitoring': 'str',
         'request_retention_time': 'int',
         'request_retention_mode': 'str',
-        'default_notification_group': 'str'
+        'default_notification_group': 'str',
+        'maximum_queue_size_express': 'int',
+        'maximum_queue_size_batch': 'int'
     }
 
     attribute_map = {
@@ -61,10 +63,12 @@ class DeploymentVersionCreate(object):
         'monitoring': 'monitoring',
         'request_retention_time': 'request_retention_time',
         'request_retention_mode': 'request_retention_mode',
-        'default_notification_group': 'default_notification_group'
+        'default_notification_group': 'default_notification_group',
+        'maximum_queue_size_express': 'maximum_queue_size_express',
+        'maximum_queue_size_batch': 'maximum_queue_size_batch'
     }
 
-    def __init__(self, version=None, language='python3.7', memory_allocation=None, instance_type=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode='full', default_notification_group=None, local_vars_configuration=None, **kwargs):  # noqa: E501
+    def __init__(self, version=None, language='python3.7', memory_allocation=None, instance_type=None, maximum_instances=None, minimum_instances=None, maximum_idle_time=None, description=None, labels=None, monitoring=None, request_retention_time=None, request_retention_mode='full', default_notification_group=None, maximum_queue_size_express=None, maximum_queue_size_batch=None, local_vars_configuration=None, **kwargs):  # noqa: E501
         """DeploymentVersionCreate - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -83,6 +87,8 @@ class DeploymentVersionCreate(object):
         self._request_retention_time = None
         self._request_retention_mode = None
         self._default_notification_group = None
+        self._maximum_queue_size_express = None
+        self._maximum_queue_size_batch = None
         self.discriminator = None
 
         self.version = version
@@ -107,6 +113,10 @@ class DeploymentVersionCreate(object):
         if request_retention_mode is not None:
             self.request_retention_mode = request_retention_mode
         self.default_notification_group = default_notification_group
+        if maximum_queue_size_express is not None:
+            self.maximum_queue_size_express = maximum_queue_size_express
+        if maximum_queue_size_batch is not None:
+            self.maximum_queue_size_batch = maximum_queue_size_batch
 
     @property
     def version(self):
@@ -447,6 +457,54 @@ class DeploymentVersionCreate(object):
             raise ValueError("Invalid value for `default_notification_group`, length must be greater than or equal to `1`")  # noqa: E501
 
         self._default_notification_group = default_notification_group
+
+    @property
+    def maximum_queue_size_express(self):
+        """Gets the maximum_queue_size_express of this DeploymentVersionCreate.  # noqa: E501
+
+
+        :return: The maximum_queue_size_express of this DeploymentVersionCreate.  # noqa: E501
+        :rtype: int
+        """
+        return self._maximum_queue_size_express
+
+    @maximum_queue_size_express.setter
+    def maximum_queue_size_express(self, maximum_queue_size_express):
+        """Sets the maximum_queue_size_express of this DeploymentVersionCreate.
+
+
+        :param maximum_queue_size_express: The maximum_queue_size_express of this DeploymentVersionCreate.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                maximum_queue_size_express is not None and not isinstance(maximum_queue_size_express, int)):
+            raise ValueError("Parameter `maximum_queue_size_express` must be an integer")  # noqa: E501
+
+        self._maximum_queue_size_express = maximum_queue_size_express
+
+    @property
+    def maximum_queue_size_batch(self):
+        """Gets the maximum_queue_size_batch of this DeploymentVersionCreate.  # noqa: E501
+
+
+        :return: The maximum_queue_size_batch of this DeploymentVersionCreate.  # noqa: E501
+        :rtype: int
+        """
+        return self._maximum_queue_size_batch
+
+    @maximum_queue_size_batch.setter
+    def maximum_queue_size_batch(self, maximum_queue_size_batch):
+        """Sets the maximum_queue_size_batch of this DeploymentVersionCreate.
+
+
+        :param maximum_queue_size_batch: The maximum_queue_size_batch of this DeploymentVersionCreate.  # noqa: E501
+        :type: int
+        """
+        if (self.local_vars_configuration.client_side_validation and
+                maximum_queue_size_batch is not None and not isinstance(maximum_queue_size_batch, int)):
+            raise ValueError("Parameter `maximum_queue_size_batch` must be an integer")  # noqa: E501
+
+        self._maximum_queue_size_batch = maximum_queue_size_batch
 
     def to_dict(self):
         """Returns the model properties as a dict"""

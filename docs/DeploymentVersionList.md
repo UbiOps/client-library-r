@@ -23,5 +23,7 @@ Name | Type | Notes
 **request_retention_mode** | **str** | 
 **monitoring** | **str** | [optional] [readonly] 
 **default_notification_group** | **str** | [optional] [readonly] 
+**maximum_queue_size_express** | **int** | [optional] 
+**maximum_queue_size_batch** | **int** | [optional] 
 
 

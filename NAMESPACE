@@ -83,7 +83,6 @@ export(notification_groups_list)
 export(notification_groups_update)
 
 # Organizations
-export(instance_types_list)
 export(organization_users_create)
 export(organization_users_delete)
 export(organization_users_get)
@@ -114,17 +113,7 @@ export(pipeline_version_requests_list)
 
 # Pipelines
 export(pipeline_audit_events_list)
-export(pipeline_version_object_attachments_create)
-export(pipeline_version_object_attachments_delete)
-export(pipeline_version_object_attachments_destination_get)
-export(pipeline_version_object_attachments_get)
-export(pipeline_version_object_attachments_list)
 export(pipeline_version_object_environment_variables_list)
-export(pipeline_version_objects_create)
-export(pipeline_version_objects_delete)
-export(pipeline_version_objects_get)
-export(pipeline_version_objects_list)
-export(pipeline_version_objects_update)
 export(pipeline_versions_create)
 export(pipeline_versions_delete)
 export(pipeline_versions_get)
@@ -137,6 +126,7 @@ export(pipelines_list)
 export(pipelines_update)
 
 # Projects
+export(instance_types_list)
 export(metrics_get)
 export(project_audit_events_list)
 export(project_environment_variables_create)

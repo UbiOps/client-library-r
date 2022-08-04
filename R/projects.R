@@ -8,6 +8,67 @@
 # Projects operations
 
 
+#' @title List instance types
+#' @description Get list of available deployment instance types for a project
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  Details of the instance type
+#'   - `id`: Unique identifier for the instance type (UUID) 
+#'   - `name`: Name of the deployment instance type 
+#'   - `display_name`: Readable name of the deployment instance type 
+#'   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi) 
+#'   - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU) 
+#'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type 
+#'   - `gpu_type`: Type of the GPU enabled for this instance type
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::instance_types_list(
+#'    
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::instance_types_list(
+#'    
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+instance_types_list <- function( preload_content=TRUE, ...){
+  query_params <- list()
+
+  
+  url_path <- "/projects/{project_name}/instance-types"
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title Get metrics
 #' @description Get metrics for the project or a specified object. The following metrics are available:  Metrics on pipeline version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `request_duration`: Average time in seconds for a pipeline request to complete  - `input_volume`: Volume of incoming data in bytes  - `object_requests`: Number of requests made to objects in the pipeline version  - `object_failed_requests`: Number of failed requests made to deployments in a pipeline  Metrics on deployment version level:   - `requests`: Number of requests made to the object  - `failed_requests`: Number of failed requests made to the object  - `input_volume`: Volume of incoming data in bytes  - `output_volume`: Volume of outgoing data in bytes  - `outputs`: Number of outgoing data items   - `compute`: Average time in seconds for a request to complete  - `memory_peak`: Peak memory used during a request  - `instances`: Number of active deployment instances  - `credits`: Usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours the deployments are running  - `active_time`: Time in seconds that the deployment is active  - `express_queue_size`: Average number of queued express requests  - `batch_queue_size`: Average number of queued batch requests  - `express_queue_time`: Average time in seconds for an express request to start processing  - `batch_queue_time`: Average time in seconds for a batch request to start processing
 #' @param metric  character

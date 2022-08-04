@@ -5,17 +5,7 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**pipeline_audit_events_list**](pipelines.md#pipeline_audit_events_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/audit | List audit events for a pipeline
-[**pipeline_version_object_attachments_create**](pipelines.md#pipeline_version_object_attachments_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments | Create object attachments
-[**pipeline_version_object_attachments_delete**](pipelines.md#pipeline_version_object_attachments_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments/{attachment_id} | Delete object attachment
-[**pipeline_version_object_attachments_destination_get**](pipelines.md#pipeline_version_object_attachments_destination_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{destination_name}/attachments | List the attachments of a destination object
-[**pipeline_version_object_attachments_get**](pipelines.md#pipeline_version_object_attachments_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments/{attachment_id} | Get object attachment
-[**pipeline_version_object_attachments_list**](pipelines.md#pipeline_version_object_attachments_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/attachments | List object attachments
 [**pipeline_version_object_environment_variables_list**](pipelines.md#pipeline_version_object_environment_variables_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name}/environment-variables | List pipeline object environment variables
-[**pipeline_version_objects_create**](pipelines.md#pipeline_version_objects_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects | Create pipeline object
-[**pipeline_version_objects_delete**](pipelines.md#pipeline_version_objects_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name} | Delete pipeline object
-[**pipeline_version_objects_get**](pipelines.md#pipeline_version_objects_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name} | Get pipeline object
-[**pipeline_version_objects_list**](pipelines.md#pipeline_version_objects_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects | List pipeline objects
-[**pipeline_version_objects_update**](pipelines.md#pipeline_version_objects_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name} | Update pipeline object
 [**pipeline_versions_create**](pipelines.md#pipeline_versions_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions | Create pipeline versions
 [**pipeline_versions_delete**](pipelines.md#pipeline_versions_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version} | Delete pipeline version
 [**pipeline_versions_get**](pipelines.md#pipeline_versions_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version} | Get pipeline version
@@ -105,453 +95,6 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
-# **pipeline_version_object_attachments_create**
-> pipeline_version_object_attachments_create(pipeline.name, version, data)
-
-Create object attachments
-
-## Description
-Create an attachment between objects in a pipeline version. An attachment can only be made between objects that have already been added to the pipeline version.
-The objects where the attachment starts is called the source objects. The object that is linked is called the destination object. When attaching source objects to a destination object, one must also define which source object output fields map to which destination object input fields.
-All the input fields in the destination object must be provided in the mapping. In contrast, not all output fields of all source objects need to be used in the mapping. It is also possible that one source output field links to multiple destination input fields.
-
-The *pipeline_start* object can only be a source object.
-The *pipeline_end* object can only be a destination object.
-
-In case of plain type of objects, the mapping `source_field_name` and `destination_field_name` must be omitted or given as null.
-
-### Required Parameters
-
-- `destination_name`: Name of the destination object in the pipeline version
-- `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name).
-Each item in the sources list must contain source_field_name and destination_field_name keys. The source and destination fields should match in data type, e.g. integer source fields can only be mapped to integer type destination fields.
-
-## Request Examples
-An attachment between two structured deployments
-
-```
-{
-  "destination_name": "deployment-2-v1",
-  "sources": [
-    {
-      "source_name": "deployment-1-v1",
-      "mapping": [
-        {
-          "source_field_name": "deployment-output-field-1",
-          "destination_field_name": "deployment-2-input-field-1"
-        },
-        {
-          "source_field_name": "deployment-output-field-2",
-          "destination_field_name": "deployment-2-input-field-2"
-        },
-        {
-          "source_field_name": "deployment-output-field-3",
-          "destination_field_name": "deployment-2-input-field-3"
-        }
-      ]
-    },
-  ]
-}
-```
-An attachment between two plain input/output type deployments
-
-```
-{
-  "destination_name": "plain-deployment-v4",
-  "sources": [
-    {
-      "source_name": "plain-deployment-v3",
-      "mapping": []
-    }
-  ]
-}
-```
-
-An attachment between a pipeline_start object and deployment
-
-```
-{
-  "destination_name": "deployment-2-v2",
-  "sources": [
-    {
-      "source_name": "pipeline_start",
-      "mapping": [
-        {
-          "source_field_name": "pipeline-input-field-1",
-          "destination_field_name": "deployment-input-field-1"
-        },
-        {
-          "source_field_name": "pipeline-input-field-2",
-          "destination_field_name": "deployment-input-field-2"
-        }
-      ]
-    }
-  ]
-}
-```
-
-An attachment between a deployment and a pipeline_end object
-```
-{
-  "destination_name": "pipeline_end",
-  "sources": [
-    {
-      "source_name": "deployment-3-v1",
-      "mapping": [
-        {
-          "source_field_name": "deployment-3-output-field-1",
-          "destination_field_name": "pipeline-output-field-1"
-        },
-        {
-          "source_field_name": "deployment-3-output-field-2",
-          "destination_field_name": "pipeline-output-field-2"
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Response Structure
-Details of the created attachment
-
-- `destination_name`: Name of the destination pipeline object
-- `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)
-
-## Response Examples
-
-```
-{
-  "destination_name": "deployment-2-v2",
-  "sources": [
-    {
-      "source_name": "pipeline_start",
-      "mapping": [
-        {
-          "source_field_name": "pipeline-input-field-1",
-          "destination_field_name": "deployment-input-field-1"
-        },
-        {
-          "source_field_name": "pipeline-input-field-2",
-          "destination_field_name": "deployment-input-field-2"
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Example
-```R
-data <- list(
-  destination_name = "destination_name",
-  sources = list(  # (optional)
-    list(
-      source_name = "source_name",
-      mapping = list(  # (optional)
-        list(
-          source_field_name = "source_field_name",
-          destination_field_name = "destination_field_name"
-        )
-      )
-    )
-  )
-)
-
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_object_attachments_create(
-  pipeline.name, version, data
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_object_attachments_create(
-  pipeline.name, version, data,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_object_attachments_delete**
-> pipeline_version_object_attachments_delete(attachment.id, pipeline.name, version)
-
-Delete object attachment
-
-## Description
-Delete an attachment in a pipeline version. The referenced and original objects of the attachment still exist in the pipeline version, only the link between them is deleted.
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-ubiops::pipeline_version_object_attachments_delete(
-  attachment.id, pipeline.name, version
-)
-
-# Or provide directly
-ubiops::pipeline_version_object_attachments_delete(
-  attachment.id, pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_object_attachments_destination_get**
-> pipeline_version_object_attachments_destination_get(destination.name, pipeline.name, version)
-
-List the attachments of a destination object
-
-## Description
-List attachments of a destination object in a pipeline version
-
-### Response Structure
-A list of details of the attachments of the given destination object in the pipeline version
-
-- `destination_name`: Name of the destination object
-- `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)
-
-## Response Examples
-
-```
-[
-  {
-    "destination_name": "deployment-3-v1",
-    "sources": [
-      {
-        "source_name": "deployment-2-v1",
-        "mapping": [
-          {
-            "source_field_name": "deployment-2-output-field-1",
-            "destination_field_name": "deployment-3-input-field-1"
-          },
-          {
-            "source_field_name": "deployment-2-output-field-2",
-            "destination_field_name": "deployment-3-input-field-2"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "destination_name": "deployment-3-v1",
-    "sources": [
-      {
-        "source_name": "deployment-2-v2",
-        "mapping": [
-          {
-            "source_field_name": "deployment-2-output-field-1",
-            "destination_field_name": "deployment-3-input-field-1"
-          },
-          {
-            "source_field_name": "deployment-2-output-field-2",
-            "destination_field_name": "deployment-3-input-field-2"
-          }
-        ]
-      }
-    ]
-  }
-]
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_object_attachments_destination_get(
-  destination.name, pipeline.name, version
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_object_attachments_destination_get(
-  destination.name, pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_object_attachments_get**
-> pipeline_version_object_attachments_get(attachment.id, pipeline.name, version)
-
-Get object attachment
-
-## Description
-Get the details of a single attachment in a pipeline
-
-### Response Structure
-Details of the attachment
-
-- `destination_name`: Name of the destination pipeline object
-- `sources`: A list of dictionaries containing the link between a source object (source_name) and mapping of the source output field (source_field_name) and destination object input field (destination_field_name)
-
-## Response Examples
-
-```
-{
-  "destination_name": "deployment-3-v1",
-  "sources": [
-    {
-      "source_name": "deployment-2-v2",
-      "mapping": [
-        {
-          "source_field_name": "deployment-2-output-field-1",
-          "destination_field_name": "deployment-3-input-field-1"
-        },
-        {
-          "source_field_name": "deployment-2-output-field-2",
-          "destination_field_name": "deployment-3-input-field-2"
-        }
-      ]
-    }
-  ]
-}
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_object_attachments_get(
-  attachment.id, pipeline.name, version
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_object_attachments_get(
-  attachment.id, pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_object_attachments_list**
-> pipeline_version_object_attachments_list(pipeline.name, version)
-
-List object attachments
-
-## Description
-List all attachments in a pipeline version
-
-### Response Structure
-A list of details of the attachments in the pipeline
-
-- `destination_name`: Name of the destination pipeline object
-- `sources`: A list of dictionaries containing the source object(s) and mapping of the fields. One attachment can have multiple source objects.
-
-## Response Examples
-
-```
-[
-  {
-    "destination_name": "deployment-2-v2",
-    "sources": [
-      {
-        "source_name": "pipeline_start",
-        "mapping": [
-          {
-            "source_field_name": "pipeline-input-field-1",
-            "destination_field_name": "deployment-input-field-1"
-          },
-          {
-            "source_field_name": "pipeline-input-field-2",
-            "destination_field_name": "deployment-input-field-2"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "destination_name": "deployment-3-v1",
-    "sources": [
-      {
-        "source_name": "deployment-2-v2",
-        "mapping": [
-          {
-            "source_field_name": "deployment-output-field-1",
-            "destination_field_name": "deployment-3-input-field-1"
-          },
-          {
-            "source_field_name": "deployment-output-field-2",
-            "destination_field_name": "deployment-3-input-field-2"
-          },
-          {
-            "source_field_name": "deployment-output-field-3",
-            "destination_field_name": "deployment-3-input-field-3"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "destination_name": "pipeline_end",
-    "sources": [
-      {
-        "source_name": "deployment-3-v1",
-        "mapping": [
-          {
-            "source_field_name": "deployment-3-output-field-1",
-            "destination_field_name": "pipeline-output-field-1"
-          },
-          {
-            "source_field_name": "deployment-3-output-field-2",
-            "destination_field_name": "pipeline-output-field-2"
-          }
-        ]
-      }
-    ]
-  }
-]
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_object_attachments_list(
-  pipeline.name, version
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_object_attachments_list(
-  pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
 # **pipeline_version_object_environment_variables_list**
 > pipeline_version_object_environment_variables_list(name, pipeline.name, version)
 
@@ -605,297 +148,6 @@ result <- ubiops::pipeline_version_object_environment_variables_list(
 # Or provide directly
 result <- ubiops::pipeline_version_object_environment_variables_list(
   name, pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_objects_create**
-> pipeline_version_objects_create(pipeline.name, version, data)
-
-Create pipeline object
-
-## Description
-Create a pipeline object for a pipeline version. The pipeline object that is added is a reference to the real object. In this way, multiple references to the same object may be added to a pipeline version.
-The reference_name refers to the deployment name and the version is the version of the deployment which will be added to the pipeline version as an object.
-
-### Required Parameters
-
-- `name`: Name of the pipeline object. It is unique within a pipeline version.
-- `reference_name`: Name of the object it will reference
-- `version`: Version name of reference object. Do not provide this field to refer to the default version of the reference.
-
-## Request Examples
-
-```
-{
-  "name": "deployment-1-v1",
-  "reference_name": "deployment-1",
-  "version": "version-1"
-}
-```
-
-### Response Structure
-Details of the created pipeline object
-
-- `id`: Unique identifier for the pipeline object (UUID)
-- `name`: Name of the pipeline object
-- `reference_name`: Name of the object it will reference
-- `version`: Version name of reference object
-
-## Response Examples
-
-```
-{
-  "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
-  "name": "deployment-1-v1",
-  "reference_name": "deployment-1",
-  "version": "version-1"
-}
-```
-
-### Example
-```R
-data <- list(
-  name = "name",
-  reference_name = "reference_name",
-  version = "version"  # (optional)
-)
-
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_objects_create(
-  pipeline.name, version, data
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_objects_create(
-  pipeline.name, version, data,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_objects_delete**
-> pipeline_version_objects_delete(name, pipeline.name, version)
-
-Delete pipeline object
-
-## Description
-Delete a pipeline object. Only the reference in the pipeline version is deleted. The original object (deployment and version) still exists.
-If the object is attached to another object, the attachment is also deleted.
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-ubiops::pipeline_version_objects_delete(
-  name, pipeline.name, version
-)
-
-# Or provide directly
-ubiops::pipeline_version_objects_delete(
-  name, pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_objects_get**
-> pipeline_version_objects_get(name, pipeline.name, version)
-
-Get pipeline object
-
-## Description
-Retrieve the details of a single pipeline object
-
-### Response Structure
-Details of the pipeline object
-
-- `id`: Unique identifier for the pipeline object (UUID)
-- `name`: Name of the pipeline object
-- `reference_name`: Name of the object it references
-- `version`: Version name of reference object
-
-## Response Examples
-A dictionary containing details of the pipeline object
-
-```
-{
-  "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
-  "name": "deployment-1-v1",
-  "reference_name": "deployment-1",
-  "version": "version-1"
-}
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_objects_get(
-  name, pipeline.name, version
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_objects_get(
-  name, pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_objects_list**
-> pipeline_version_objects_list(pipeline.name, version)
-
-List pipeline objects
-
-## Description
-List all pipeline objects in a pipeline version
-
-### Response Structure
-A list of details of the pipeline objects in the pipeline version
-
-- `id`: Unique identifier for the pipeline object (UUID)
-- `name`: Name of the pipeline object
-- `reference_name`: Name of the object it references
-- `version`: Version name of reference object
-
-## Response Examples
-A list of pipeline objects
-
-```
-[
-  {
-    "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
-    "name": "deployment-1-v1",
-    "reference_name": "deployment-1",
-    "version": "version-1"
-  },
-  {
-    "id": "1a4b0e28-3de1-442a-b1eb-947f22a69381",
-    "name": "deployment-2-v1",
-    "reference_name": "deployment-2",
-    "version": "v1"
-  }
-]
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_objects_list(
-  pipeline.name, version
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_objects_list(
-  pipeline.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **pipeline_version_objects_update**
-> pipeline_version_objects_update(name, pipeline.name, version, data)
-
-Update pipeline object
-
-## Description
-Update a pipeline object. It is not possible to update the reference_name. All necessary fields are validated again.
-
-### Optional Parameters
-
-- `name`: New name for the pipeline object
-- `version`: New version for the pipeline object. Since the input/output fields of different versions are the same, the version of a deployment pipeline object can be changed with another version of the same deployment. To use the default version of the reference deployment, provide NULL for this field.
-
-## Request Examples
-
-```
-{
-  "name": "new-pipeline-object-name"
-}
-```
-
-
-```
-{
-  "name": "deployment-1-v2"
-  "version": "version-2"
-}
-```
-
-### Response Structure
-Details of the updated pipeline object
-
-- `id`: Unique identifier for the pipeline object (UUID)
-- `name`: Name of the pipeline object
-- `reference_name`: Name of the object it references
-- `version`: Version name of reference object
-
-## Response Examples
-
-```
-{
-  "id": "c91724b6-d73c-4933-b2aa-aefd9e34ce3e",
-  "name": "deployment-1-v2",
-  "reference_name": "deployment-1",
-  "version": "version-2"
-}
-```
-
-### Example
-```R
-data <- list(
-  name = "name",  # (optional)
-  version = "version"  # (optional)
-)
-
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::pipeline_version_objects_update(
-  name, pipeline.name, version, data
-)
-
-# Or provide directly
-result <- ubiops::pipeline_version_objects_update(
-  name, pipeline.name, version, data,
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -974,6 +226,7 @@ A pipeline version with objects and attachments
     {
       "name": "object-1",
       "reference_name": "deployment-1",
+      "reference_type": "deployment",
       "version": "v1"
     }
   ],
@@ -985,8 +238,8 @@ A pipeline version with objects and attachments
           "source_name": "pipeline_start",
           "mapping": [
             {
-              "source_field_name": "example-field",
-              "destination_field_name": "example-field"
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
             }
           ]
         }
@@ -1052,9 +305,26 @@ Details of the created pipeline version
   "request_retention_mode": "full",
   "objects": [
     {
+      "id": "38549ff5-5bf0-4803-8571-236077c77e62",
       "name": "object-1",
       "reference_name": "deployment-1",
-      "version": "v1"
+      "reference_type": "deployment",
+      "version": "v1",
+      "input_type": "structured",
+      "output_type": "structured",
+      "configuration": {},
+      "input_fields": [
+        {
+          "name": "input",
+          "data_type": "int"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "output",
+          "data_type": "int"
+        }
+      ]
     }
   ],
   "attachments": [
@@ -1065,8 +335,8 @@ Details of the created pipeline version
           "source_name": "pipeline_start",
           "mapping": [
             {
-              "source_field_name": "example-field",
-              "destination_field_name": "example-field"
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
             }
           ]
         }
@@ -1089,8 +359,10 @@ data <- list(
   objects = list(  # (optional)
     list(
       name = "name",
+      reference_type = 'deployment',  # one of: [deployment, operator, pipeline]  (optional)
       reference_name = "reference_name",
-      version = "version"  # (optional)
+      version = "version",  # (optional)
+      configuration = list(key = "value")  # (optional)
     )
   ),
   attachments = list(  # (optional)
@@ -1227,9 +499,26 @@ Details of the pipeline version
   "request_retention_mode": "full",
   "objects": [
     {
+      "id": "38549ff5-5bf0-4803-8571-236077c77e62",
       "name": "object-1",
       "reference_name": "deployment-1",
-      "version": "v1"
+      "reference_type": "deployment",
+      "version": "v1",
+      "input_type": "structured",
+      "output_type": "structured",
+      "configuration": {},
+      "input_fields": [
+        {
+          "name": "input",
+          "data_type": "int"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "output",
+          "data_type": "int"
+        }
+      ]
     }
   ],
   "attachments": [
@@ -1240,8 +529,8 @@ Details of the pipeline version
           "source_name": "pipeline_start",
           "mapping": [
             {
-              "source_field_name": "example-field",
-              "destination_field_name": "example-field"
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
             }
           ]
         }
@@ -1424,6 +713,7 @@ Updating a pipeline version with new objects and attachments
     {
       "name": "object-1",
       "reference_name": "deployment-1",
+      "reference_type": "deployment",
       "version": "v1"
     }
   ],
@@ -1435,8 +725,8 @@ Updating a pipeline version with new objects and attachments
           "source_name": "pipeline_start",
           "mapping": [
             {
-              "source_field_name": "example-field",
-              "destination_field_name": "example-field"
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
             }
           ]
         }
@@ -1517,9 +807,26 @@ Details of the created pipeline
   "request_retention_mode": "full",
   "objects": [
     {
+      "id": "38549ff5-5bf0-4803-8571-236077c77e62",
       "name": "object-1",
       "reference_name": "deployment-1",
-      "version": "v1"
+      "reference_type": "deployment",
+      "version": "v1",
+      "input_type": "structured",
+      "output_type": "structured",
+      "configuration": {},
+      "input_fields": [
+        {
+          "name": "input",
+          "data_type": "int"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "output",
+          "data_type": "int"
+        }
+      ]
     }
   ],
   "attachments": [
@@ -1530,8 +837,8 @@ Details of the created pipeline
           "source_name": "pipeline_start",
           "mapping": [
             {
-              "source_field_name": "example-field",
-              "destination_field_name": "example-field"
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
             }
           ]
         }
@@ -1554,8 +861,10 @@ data <- list(
   objects = list(  # (optional)
     list(
       name = "name",
+      reference_type = 'deployment',  # one of: [deployment, operator, pipeline]  (optional)
       reference_name = "reference_name",
-      version = "version"  # (optional)
+      version = "version",  # (optional)
+      configuration = list(key = "value")  # (optional)
     )
   ),
   attachments = list(  # (optional)

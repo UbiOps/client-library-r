@@ -28,6 +28,8 @@ Response from the API
   - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
   - `trigger`: Action that triggered the build
+  - `has_request_method`: Whether the build has a 'request' method
+  - `has_requests_method`: Whether the build has a 'requests' method
 }
 \description{
 List all builds associated with a version. A build is triggered when a new deployment file is uploaded.

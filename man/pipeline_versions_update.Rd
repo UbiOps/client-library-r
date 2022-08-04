@@ -60,8 +60,10 @@ data <- list(
  objects = list(  # (optional)
    list(
      name = "name",
+     reference_type = 'deployment',  # one of: [deployment, operator, pipeline]  (optional)
      reference_name = "reference_name",
-     version = "version"  # (optional)
+     version = "version",  # (optional)
+     configuration = list(key = "value")  # (optional)
    )
  ),
  attachments = list(  # (optional)

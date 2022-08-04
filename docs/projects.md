@@ -4,6 +4,7 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**instance_types_list**](projects.md#instance_types_list) | **GET** /projects/{project_name}/instance-types | List instance types
 [**metrics_get**](projects.md#metrics_get) | **GET** /projects/{project_name}/metrics/{metric} | Get metrics
 [**project_audit_events_list**](projects.md#project_audit_events_list) | **GET** /projects/{project_name}/audit | List audit events in a project
 [**project_environment_variables_create**](projects.md#project_environment_variables_create) | **POST** /projects/{project_name}/environment-variables | Create project environment variable
@@ -25,6 +26,71 @@ Method | HTTP request | Description
 [**projects_update**](projects.md#projects_update) | **PATCH** /projects/{project_name} | Update a project
 [**projects_usage_get**](projects.md#projects_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
 
+
+# **instance_types_list**
+> instance_types_list()
+
+List instance types
+
+## Description
+Get list of available deployment instance types for a project
+
+### Response Structure
+Details of the instance type
+
+- `id`: Unique identifier for the instance type (UUID)
+
+- `name`: Name of the deployment instance type
+
+- `display_name`: Readable name of the deployment instance type
+
+- `memory_allocation`: Integer indicating memory allocation for this instance type (Mi)
+
+- `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU)
+
+- `gpu_allocation`: Integer indicating number of GPU cores for this instance type
+
+- `gpu_type`: Type of the GPU enabled for this instance type
+
+## Response Examples
+
+```
+[
+  {
+    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
+    "name": "512mb",
+    "display_name": "512 MB",
+    "memory_allocation": 512,
+    "cpu_allocation": 125,
+    "gpu_allocation": 0,
+    "gpu_type": null
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::instance_types_list(
+  
+)
+
+# Or provide directly
+result <- ubiops::instance_types_list(
+  
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
 
 # **metrics_get**
 > metrics_get(metric, start.date, end.date, object.type, interval=NULL, object.id=NULL, user.id=NULL)

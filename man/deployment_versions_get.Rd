@@ -48,6 +48,9 @@ Response from the API
       - *full* - both the metadata and input/output of the requests will be stored
   - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
   - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+  - `has_request_method`: Whether the latest build of the version has a 'request' method
+  - `has_requests_method`: Whether the latest build of the version has a 'requests' method
+  - `static_ip`: A boolean indicating whether the deployment version should get a static IP
 }
 \description{
 Retrieve details of a version of a deployment in a project

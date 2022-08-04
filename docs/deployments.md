@@ -52,6 +52,8 @@ A dictionary containing details of the build
 - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
 - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
 - `trigger`: Action that triggered the build
+- `has_request_method`: Whether the build has a 'request' method
+- `has_requests_method`: Whether the build has a 'requests' method
 
 ## Response Examples
 
@@ -62,7 +64,9 @@ A dictionary containing details of the build
   "creation_date": "2020-12-23T16:15:11.200+00:00",
   "status": "building",
   "error_message": "",
-  "trigger": "Deployment file upload"
+  "trigger": "Deployment file upload",
+  "has_request_method": true,
+  "has_requests_method": false
 }
 ```
 
@@ -107,6 +111,8 @@ A list of details of the builds
 - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
 - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
 - `trigger`: Action that triggered the build
+- `has_request_method`: Whether the build has a 'request' method
+- `has_requests_method`: Whether the build has a 'requests' method
 
 ## Response Examples
 
@@ -118,7 +124,9 @@ A list of details of the builds
     "creation_date": "2020-12-23T16:15:11.200+00:00",
     "status": "failed",
     "error_message": "Could not find the deployment file",
-    "trigger": "Deployment file upload"
+    "trigger": "Deployment file upload",
+    "has_request_method": true,
+    "has_requests_method": false
   },
   {
     "id": "baf88570-d884-4bc6-9308-01068b051f5f",
@@ -126,7 +134,9 @@ A list of details of the builds
     "creation_date": "2020-12-23T16:35:13.088+00:00",
     "status": "queued",
     "error_message": "",
-    "trigger": "Deployment file upload"
+    "trigger": "Deployment file upload",
+    "has_request_method": true,
+    "has_requests_method": false
   }
 ]
 ```
@@ -1064,6 +1074,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *full* - both the metadata and input/output of the requests will be stored
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+- `static_ip`: A boolean indicating whether the deployment version should get a static IP. It defaults to False.
 
 If the time that a request takes does not matter, keep the default values.
 
@@ -1127,6 +1138,7 @@ Details of the created version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+- `static_ip`: A boolean indicating whether the deployment version should get a static IP
 
 ## Response Examples
 
@@ -1155,7 +1167,8 @@ Details of the created version
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "maximum_queue_size_express": 100,
-  "maximum_queue_size_batch": 100000
+  "maximum_queue_size_batch": 100000,
+  "static_ip": false
 }
 ```
 
@@ -1176,7 +1189,8 @@ data <- list(
   request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
   default_notification_group = "default_notification_group",  # (optional)
   maximum_queue_size_express = 0,  # (optional)
-  maximum_queue_size_batch = 0  # (optional)
+  maximum_queue_size_batch = 0,  # (optional)
+  static_ip = FALSE  # (optional)
 )
 
 # Use environment variables
@@ -1267,6 +1281,9 @@ Details of a version
     - *full* - both the metadata and input/output of the requests will be stored
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+- `has_request_method`: Whether the latest build of the version has a 'request' method
+- `has_requests_method`: Whether the latest build of the version has a 'requests' method
+- `static_ip`: A boolean indicating whether the deployment version should get a static IP
 
 ## Response Examples
 
@@ -1296,7 +1313,10 @@ Details of a version
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "maximum_queue_size_express": 100,
-  "maximum_queue_size_batch": 100000
+  "maximum_queue_size_batch": 100000,
+  "has_request_method": true,
+  "has_requests_method": false,
+  "static_ip": false
 }
 ```
 
@@ -1479,6 +1499,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *full* - both the metadata and input/output of the requests will be stored
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+- `static_ip`: A boolean indicating whether the deployment version should get a static IP
 
 ## Request Examples
 
@@ -1524,6 +1545,9 @@ Details of the updated version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+- `has_request_method`: Whether the latest build of the version has a 'request' method
+- `has_requests_method`: Whether the latest build of the version has a 'requests' method
+- `static_ip`: A boolean indicating whether the deployment version should get a static IP
 
 ## Response Examples
 
@@ -1553,7 +1577,10 @@ Details of the updated version
   "request_retention_time": 604800,
   "request_retention_mode": "full",
   "maximum_queue_size_express": 100,
-  "maximum_queue_size_batch": 100000
+  "maximum_queue_size_batch": 100000,
+  "has_request_method": true,
+  "has_requests_method": false,
+  "static_ip": false
 }
 ```
 
@@ -1573,7 +1600,8 @@ data <- list(
   request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
   default_notification_group = "default_notification_group",  # (optional)
   maximum_queue_size_express = 0,  # (optional)
-  maximum_queue_size_batch = 0  # (optional)
+  maximum_queue_size_batch = 0,  # (optional)
+  static_ip = FALSE  # (optional)
 )
 
 # Use environment variables

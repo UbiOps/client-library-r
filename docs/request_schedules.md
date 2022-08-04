@@ -261,12 +261,16 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **request_schedules_list**
-> request_schedules_list()
+> request_schedules_list(labels=NULL)
 
 List request schedules
 
 ## Description
 List the request schedules in a project. The user has to have 'requests.list' permission on either 'deployments.versions' or 'pipelines.versions' to list the request schedules.
+
+### Optional Parameters
+
+- `labels`: Filter on labels of the request schedules. Should be given in the format 'label:label_value'. Separate multiple label-pairs with a comma (,). This parameter should be given as query parameter.
 
 ### Response Structure
 A list of details of all request schedules in a project
@@ -326,11 +330,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::request_schedules_list(
   
+  labels = NULL
 )
 
 # Or provide directly
 result <- ubiops::request_schedules_list(
   
+  labels = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

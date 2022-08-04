@@ -4,7 +4,6 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instance_types_list**](organizations.md#instance_types_list) | **GET** /organizations/{organization_name}/instance-types | List instance types
 [**organization_users_create**](organizations.md#organization_users_create) | **POST** /organizations/{organization_name}/users | Add a user to an organization
 [**organization_users_delete**](organizations.md#organization_users_delete) | **DELETE** /organizations/{organization_name}/users/{user_id} | Delete a user from an organization
 [**organization_users_get**](organizations.md#organization_users_get) | **GET** /organizations/{organization_name}/users/{user_id} | Get details of a user in an organization
@@ -17,73 +16,6 @@ Method | HTTP request | Description
 [**organizations_update**](organizations.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
 [**organizations_usage_get**](organizations.md#organizations_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
 
-
-# **instance_types_list**
-> instance_types_list(organization.name)
-
-List instance types
-
-## Description
-Get list of available deployment instance types for an organization
-
-### Response Structure
-Details of the instance type
-
-- `id`: Unique identifier for the instance type (UUID)
-
-- `name`: Name of the deployment instance type
-
-- `display_name`: Readable name of the deployment instance type
-
-- `memory_allocation`: Integer indicating memory allocation for this instance type (Mi)
-
-- `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU)
-
-- `gpu_allocation`: Integer indicating number of GPU cores for this instance type
-
-- `gpu_enabled`: Boolean indicating if the GPU resource is enabled for this instance type
-
-- `gpu_type`: Type of the GPU enabled for this instance type
-
-## Response Examples
-
-```
-[
-  {
-    "id": "abe2e406-fae5-4bcf-a3bc-956d756e4ecb",
-    "name": "512mb",
-    "display_name": "512 MB",
-    "memory_allocation": 512,
-    "cpu_allocation": 125,
-    "gpu_allocation": 0,
-    "gpu_enabled": false,
-    "gpu_type": null
-  }
-]
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::instance_types_list(
-  organization.name
-)
-
-# Or provide directly
-result <- ubiops::instance_types_list(
-  organization.name,
-  UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
 
 # **organization_users_create**
 > organization_users_create(organization.name, data)

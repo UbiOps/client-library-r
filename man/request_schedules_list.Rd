@@ -4,9 +4,11 @@
 \alias{request_schedules_list}
 \title{List request schedules}
 \usage{
-request_schedules_list(preload_content = TRUE, ...)
+request_schedules_list(labels = NULL, preload_content = TRUE, ...)
 }
 \arguments{
+\item{labels}{(optional) character - Example: "label1:value1,label2:value2"}
+
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
 \item{...}{UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -40,11 +42,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::request_schedules_list(
    
+   labels = NULL
 )
 
 # Or provide directly
 result <- ubiops::request_schedules_list(
    
+   labels = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

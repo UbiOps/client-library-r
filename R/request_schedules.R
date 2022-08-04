@@ -213,6 +213,7 @@ request_schedules_get <- function(schedule.name,  preload_content=TRUE, ...){
 
 #' @title List request schedules
 #' @description List the request schedules in a project. The user has to have 'requests.list' permission on either 'deployments.versions' or 'pipelines.versions' to list the request schedules.
+#' @param labels (optional) character - Example: "label1:value1,label2:value2"
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -240,11 +241,13 @@ request_schedules_get <- function(schedule.name,  preload_content=TRUE, ...){
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::request_schedules_list(
 #'    
+#'    labels = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::request_schedules_list(
 #'    
+#'    labels = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -255,9 +258,10 @@ request_schedules_get <- function(schedule.name,  preload_content=TRUE, ...){
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-request_schedules_list <- function( preload_content=TRUE, ...){
+request_schedules_list <- function(labels=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
+  query_params['labels'] <- labels
   
   url_path <- "/projects/{project_name}/schedules"
 

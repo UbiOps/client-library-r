@@ -33,7 +33,7 @@ Response from the API
   - `last_updated`: The date when the deployment was last updated
 }
 \description{
-Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (False/True) - **timestamp**: timestamp - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
+Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (False/True) - **timestamp**: timestamp - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **file**: a file field. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field.  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
 }
 \examples{
 \dontrun{
@@ -45,14 +45,14 @@ data <- list(
  input_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
      widget = widget  # (optional)
    )
  ),
  output_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
      widget = widget  # (optional)
    )
  ),

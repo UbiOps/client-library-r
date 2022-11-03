@@ -43,7 +43,7 @@ Response from the API
    - `time_created`: Server time that the request was made (current time)
 }
 \description{
-Request multiple predictions from a deployment version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state). In case of a **blob** field, the uuid of a previously uploaded blob must be provided.  If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
+Request multiple predictions from a deployment version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).  If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
 }
 \examples{
 \dontrun{

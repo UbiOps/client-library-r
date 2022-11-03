@@ -2,7 +2,7 @@
 % Please edit documentation in R/roles.R
 \name{role_assignments_delete}
 \alias{role_assignments_delete}
-\title{Delete a role from a user with the given role assignment id}
+\title{Delete role of user}
 \usage{
 role_assignments_delete(id, ...)
 }
@@ -19,7 +19,7 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 Response from the API
 }
 \description{
-Delete a role of a user. The user making the request must have appropriate permissions. It is possible for a user to delete their own role if they have permissions to do so.
+Delete a role of a user.  It is possible for a user to delete their own role if they have permissions to do so.
 }
 \examples{
 \dontrun{

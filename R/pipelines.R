@@ -8,6 +8,73 @@
 # Pipelines operations
 
 
+#' @title Evaluate expression
+#' @description Evaluate a pipeline version operator expression.
+#' @param data  named list of: [ expression, input_fields, request_data (optional) ]
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#' @examples
+#' \dontrun{
+#' data <- list(
+#'  expression = "expression",
+#'  input_fields = list(  # (optional)
+#'    list(
+#'      name = "name",
+#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'    )
+#'  ),
+#'  request_data = list(key = "value")  # (optional)
+#' )
+#'
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::expressions_evaluate(
+#'    data
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::expressions_evaluate(
+#'    data,
+#'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+expressions_evaluate <- function(data,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`data`)) {
+    stop("Missing required parameter `data`.")
+  }
+  
+  body <- rjson::toJSON(data)
+  
+  url_path <- "/expressions/evaluate"
+  api.response <- call_api(url_path, "POST", body, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title List audit events for a pipeline
 #' @description List all audit events for a pipeline including objects and attachments
 #' @param pipeline.name  character
@@ -651,7 +718,7 @@ pipeline_versions_update <- function(pipeline.name, version, data,  preload_cont
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -659,7 +726,7 @@ pipeline_versions_update <- function(pipeline.name, version, data,  preload_cont
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -935,7 +1002,7 @@ pipelines_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -943,7 +1010,7 @@ pipelines_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),

@@ -9,7 +9,7 @@
 
 
 #' @title Create a batch deployment request
-#' @description Request multiple predictions from the default version of a deployment. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. In case of a **blob** field, the uuid of a previously uploaded blob must be provided.  If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
+#' @description Request multiple predictions from the default version of a deployment. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods.  If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
 #' @param deployment.name  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
 #' @param timeout (optional) integer
@@ -95,7 +95,7 @@ batch_deployment_requests_create <- function(deployment.name, data, timeout=NULL
 
 
 #' @title Create a batch deployment version request
-#' @description Request multiple predictions from a deployment version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state). In case of a **blob** field, the uuid of a previously uploaded blob must be provided.  If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
+#' @description Request multiple predictions from a deployment version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).  If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
 #' @param deployment.name  character
 #' @param version  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
@@ -336,7 +336,7 @@ deployment_requests_batch_get <- function(deployment.name, data,  preload_conten
 
 
 #' @title Create a direct deployment request
-#' @description Request a prediction from a deployment. Deployment requests are made for the default version of a deployment. In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
+#' @description Request a prediction from a deployment. Deployment requests are made for the default version of a deployment. When using the 'requests' function of a deployment a list should be provided as input, see the example below.
 #' @param deployment.name  character
 #' @param data  list(key = "value") - Example: list(input_field_1 = "input_value_1", input_field_2 = "input_value_2")
 #' @param timeout (optional) integer
@@ -829,7 +829,8 @@ deployment_version_requests_batch_delete <- function(deployment.name, version, d
 #'    - `time_completed`: Server time that the processing of the request was completed
 #'    - `request_data`: A dictionary containing the data that was sent when the request was created
 #'    - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
-#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+#'    - `retries`: Number of times that the request has been retried
 #' @examples
 #' \dontrun{
 #' data <- list("request_id_1", "request_id_2")
@@ -893,7 +894,7 @@ deployment_version_requests_batch_get <- function(deployment.name, version, data
 
 
 #' @title Create a direct deployment version request
-#' @description Request a prediction from a deployment version. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state). In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
+#' @description Request a prediction from a deployment version. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state). When using the 'requests' function of a deployment a list should be provided as input, see the example below.
 #' @param deployment.name  character
 #' @param version  character
 #' @param data  list(key = "value") - Example: list(input_field_1 = "input_value_1", input_field_2 = "input_value_2")
@@ -1073,6 +1074,7 @@ deployment_version_requests_delete <- function(deployment.name, request.id, vers
 #'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #'    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
 #'    - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+#'    - `retries`: Number of times that the request has been retried
 #' @examples
 #' \dontrun{
 #' # Use environment variables

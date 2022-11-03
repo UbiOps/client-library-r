@@ -534,7 +534,7 @@ organizations_list <- function( preload_content=TRUE, ...){
 }
 
 
-#' @title List resource usage of an organization
+#' @title Get resource usage
 #' @description List the total number of resources used by this organization
 #' @param organization.name  character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -676,7 +676,7 @@ organizations_update <- function(organization.name, data,  preload_content=TRUE,
 }
 
 
-#' @title Get resource usage
+#' @title Get organization usage
 #' @description Get resource usage for the organization. It contains **the details of each metric aggregated per month.**
 #' @param organization.name  character
 #' @param start.date (optional) character

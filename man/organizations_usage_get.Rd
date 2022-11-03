@@ -2,7 +2,7 @@
 % Please edit documentation in R/organizations.R
 \name{organizations_usage_get}
 \alias{organizations_usage_get}
-\title{Get resource usage}
+\title{Get organization usage}
 \usage{
 organizations_usage_get(
   organization.name,

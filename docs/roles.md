@@ -5,10 +5,10 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**permissions_list**](roles.md#permissions_list) | **GET** /permissions | List the available permissions
-[**role_assignments_create**](roles.md#role_assignments_create) | **POST** /projects/{project_name}/role-assignments | Assign a role to a user in a project
-[**role_assignments_delete**](roles.md#role_assignments_delete) | **DELETE** /projects/{project_name}/role-assignments/{id} | Delete a role from a user with the given role assignment id
-[**role_assignments_get**](roles.md#role_assignments_get) | **GET** /projects/{project_name}/role-assignments/{id} | Get details of a role assignment
-[**role_assignments_per_user_list**](roles.md#role_assignments_per_user_list) | **GET** /projects/{project_name}/users/{user_id}/role-assignments | List the roles assigned to a specific user in a project
+[**role_assignments_create**](roles.md#role_assignments_create) | **POST** /projects/{project_name}/role-assignments | Assign role to user/object
+[**role_assignments_delete**](roles.md#role_assignments_delete) | **DELETE** /projects/{project_name}/role-assignments/{id} | Delete role of user
+[**role_assignments_get**](roles.md#role_assignments_get) | **GET** /projects/{project_name}/role-assignments/{id} | Get role assignment
+[**role_assignments_per_object_list**](roles.md#role_assignments_per_object_list) | **GET** /projects/{project_name}/role-assignments | List roles on object/user
 [**roles_create**](roles.md#roles_create) | **POST** /projects/{project_name}/roles | Create a custom role scoped in a project
 [**roles_delete**](roles.md#roles_delete) | **DELETE** /projects/{project_name}/roles/{role_name} | Delete a role from a project
 [**roles_get**](roles.md#roles_get) | **GET** /projects/{project_name}/roles/{role_name} | Get details of a role
@@ -52,11 +52,10 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # **role_assignments_create**
 > role_assignments_create(data)
 
-Assign a role to a user in a project
+Assign role to user/object
 
 ## Description
-Assign a role to a user in the scope of a project. This role can be assigned on either project level or on object level, which can be a deployment or pipeline.
-The user making the request must have appropriate permissions.
+Assign a role to a user or an object in the scope of a project. This role can be assigned on either project level or on object level, which can be a deployment, pipeline or bucket.
 
 ### Required Parameters
 
@@ -64,20 +63,22 @@ The user making the request must have appropriate permissions.
 
 - `role`: Name of the role to be assigned to the user
 
-### Optional Parameters
+- `assignee`: UUID of the user or the name of the object for which the role will be assigned
 
-- `object_name`: Name of the object for which the role will be assigned
+- `assignee_type`: Type of the assignee. It can be user or deployment.
+- `resource`: Name of the object for which the role will be assigned
 
-- `object_type`: Type of the object for which the role will be assigned. It can be project, deployment or pipeline.
+- `resource_type`: Type of the object for which the role will be assigned. It can be project, deployment, pipeline or bucket.
 
-**object_name and object_type must be provided together. If neither of them is provided, the role is set on project level.**
+**resource and resource_type must be provided together. If neither of them is provided, the role is set on project level.**
 
 ## Request Examples
 Setting the role deployment-admin on project level for user with id 02b77d8f-b312-47ef-990f-4685a7ab9363
 
 ```
 {
-  "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+  "assignee": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+  "assignee_type": "user",
   "role": "deployment-admin"
 }
 ```
@@ -86,10 +87,23 @@ Setting the role deployment-viewer on deployment-1 for user with id 02b77d8f-b31
 
 ```
 {
-  "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+  "assignee": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+  "assignee_type": "user",
   "role": "deployment-viewer",
-  "object_name": "deployment-1",
-  "object_type": "deployment"
+  "resource": "deployment-1",
+  "resource_type": "deployment"
+}
+```
+
+Setting the role files-reader on bucket-1 for deployment-1
+
+```
+{
+  "assignee": "deployment-1",
+  "assignee_type": "deployment",
+  "role": "file-reader",
+  "resource": "bucket-1",
+  "resource_type": "bucket"
 }
 ```
 
@@ -97,24 +111,22 @@ Setting the role deployment-viewer on deployment-1 for user with id 02b77d8f-b31
 Details of the created role assignment
 
 - `id`: Unique identifier for the role assignment (UUID)
-
-- `user_id`: Unique identifier for the user (UUID)
-
+- `assignee`: UUID of the user or the name of the object
+- `assignee_type`: Type of the assignee
 - `role`: Name of the role assigned to the user
-
-- `object_name`: Name of the object for which the role is assigned
-
-- `object_type`: Type of the object for which the role is assigned. It can be project, deployment or pipeline.
+- `resource`: Name of the object for which the role is assigned
+- `resource_type`: Type of the object for which the role is assigned
 
 ## Response Examples
 
 ```
 {
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
-  "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+  "assignee": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+  "assignee_type": "user",
   "role": "deployment-admin",
-  "object_name": "project-1",
-  "object_type": "project"
+  "resource": "project-1",
+  "resource_type": "project"
 }
 ```
 
@@ -122,20 +134,22 @@ Details of the created role assignment
 ```
 {
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
-  "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-  "role": "deployment-viewer",
-  "object_name": "deployment-1",
-  "object_type": "deployment"
+  "assignee": "deployment-1",
+  "assignee_type": "deployment",
+  "role": "file-reader",
+  "resource": "bucket-1",
+  "resource_type": "bucket"
 }
 ```
 
 ### Example
 ```R
 data <- list(
-  user_id = "user_id",
   role = "role",
-  object_name = "object_name",  # (optional)
-  object_type = "object_type"  # (optional)
+  assignee = "assignee",  # (optional)
+  assignee_type = "assignee_type",  # (optional)
+  resource = "resource",  # (optional)
+  resource_type = "resource_type"  # (optional)
 )
 
 # Use environment variables
@@ -163,10 +177,10 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # **role_assignments_delete**
 > role_assignments_delete(id)
 
-Delete a role from a user with the given role assignment id
+Delete role of user
 
 ## Description
-Delete a role of a user. The user making the request must have appropriate permissions. It is possible for a user to delete their own role if they have permissions to do so.
+Delete a role of a user.  It is possible for a user to delete their own role if they have permissions to do so.
 
 ### Example
 ```R
@@ -190,33 +204,31 @@ ubiops::role_assignments_delete(
 # **role_assignments_get**
 > role_assignments_get(id)
 
-Get details of a role assignment
+Get role assignment
 
 ## Description
-Get the details of a role assignment of a user. The user making the request must have appropriate permissions.
+Get the details of a role assignment of a user/deployment.
 
 ### Response Structure
 Details of the role assignment
 
 - `id`: Unique identifier for the role assignment (UUID)
-
-- `user_id`: Unique identifier for the user (UUID)
-
-- `role`: Name of the role assigned to the user
-
-- `object_name`: Name of the object for which the role is assigned
-
-- `object_type`: Type of the object for which the role is assigned. It can be project, deployment or pipeline.
+- `assignee`: UUID of the user or the name of the object
+- `assignee_type`: Type of the assignee
+- `role`: Name of the role assigned to the user/object
+- `resource`: Name of the object for which the role is assigned
+- `resource_type`: Type of the object for which the role is assigned
 
 ## Response Examples
 
 ```
 {
   "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
-  "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-  "role": "deployment-viewer",
-  "object_name": "deployment-1",
-  "object_type": "deployment"
+  "assignee": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+  "assignee_type": "user",
+  "role": "deployment-admin",
+  "resource": "project-1",
+  "resource_type": "project"
 }
 ```
 
@@ -244,43 +256,74 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
-# **role_assignments_per_user_list**
-> role_assignments_per_user_list(user.id)
+# **role_assignments_per_object_list**
+> role_assignments_per_object_list(resource=NULL, resource.type=NULL, assignee=NULL, assignee.type=NULL)
 
-List the roles assigned to a specific user in a project
+List roles on object/user
 
 ## Description
-List the roles assigned to a user in the scope of a project.
+List the roles assigned to a user or on an object in the scope of a project.
+
+### Optional Parameters
+These parameters should be given as query parameters
+
+- `resource`: Name of the object on which the assigned roles will be listed
+- `resource_type`: Type of the object on which the assigned roles will be listed
+- `assignee`: UUID of the user or the name of the object for which the assigned roles will be listed
+- `assignee_type`: Type of the assignee for which the assigned roles will be listed
 
 ### Response Structure
 
 - `id`: Unique identifier for the role assignment (UUID)
-
-- `user_id`: Unique identifier for the user (UUID)
-
-- `role`: Name of the role assigned to the user
-
-- `object_name`: Name of the object for which the role is assigned
-
-- `object_type`: Type of the object for which the role is assigned. It can be project, deployment or pipeline.
+- `assignee`: UUID of the user or the name of the object
+- `assignee_type`: Type of the assignee
+- `role`: Name of the role assigned to the user/object
+- `resource`: Name of the object for which the role is assigned
+- `resource_type`: Type of the object for which the role is assigned
 
 ## Response Examples
+Roles assigned to user with id 02b77d8f-b312-47ef-990f-4685a7ab9363
 
 ```
 [
   {
     "id": "e988ddc0-3ef1-42d2-ab30-9f810a5e7063",
-    "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
-    "role": "deployment-viewer",
-    "object_name": "deployment-1",
-    "object_type": "deployment"
+    "assignee": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+    "assignee_type": "user",
+    "role": "deployment-admin",
+    "resource": "project-1",
+    "resource_type": "project"
   },
   {
     "id": "13cf9dd7-7356-4797-b453-e0cb6b416162",
-    "user_id": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+    "assignee": "02b77d8f-b312-47ef-990f-4685a7ab9363",
+    "assignee_type": "user",
     "role": "pipeline-admin",
-    "object_name": "pipeline-1",
-    "object_type": "pipeline"
+    "resource": "pipeline-1",
+    "resource_type": "pipeline"
+  }
+]
+```
+
+Roles assigned on deployment with name deployment-1
+
+```
+[
+  {
+    "id": "a24aabc2-c7df-4f7b-b177-f80827aea1bb",
+    "assignee": "258771bb-1bc4-4f2f-a3f4-9309cc64d1dd",
+    "assignee_type": "user",
+    "role": "deployment-admin",
+    "resource": "deployment-1",
+    "resource_type": "deployment"
+  },
+  {
+    "id": "dfd4e714-9c2d-446e-ae96-4db18f91d3de",
+    "assignee": "0ca8a61d-962e-48e3-b558-61e8ca2dae88",
+    "assignee_type": "user",
+    "role": "deployment-viewer",
+    "resource": "deployment-1",
+    "resource_type": "deployment"
   }
 ]
 ```
@@ -290,13 +333,15 @@ List the roles assigned to a user in the scope of a project.
 # Use environment variables
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::role_assignments_per_user_list(
-  user.id
+result <- ubiops::role_assignments_per_object_list(
+  
+  resource = NULL, resource.type = NULL, assignee = NULL, assignee.type = NULL
 )
 
 # Or provide directly
-result <- ubiops::role_assignments_per_user_list(
-  user.id,
+result <- ubiops::role_assignments_per_object_list(
+  
+  resource = NULL, resource.type = NULL, assignee = NULL, assignee.type = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

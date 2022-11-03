@@ -29,7 +29,6 @@ Create a batch deployment request
 
 ## Description
 Request multiple predictions from the default version of a deployment. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods.
-In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
 
 If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
 
@@ -134,7 +133,6 @@ Create a batch deployment version request
 
 ## Description
 Request multiple predictions from a deployment version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the deployment request collect methods. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
-In case of a **blob** field, the uuid of a previously uploaded blob must be provided.
 
 If one of the requests is faulty, all requests are denied. The maximum number of requests per batch call is 250.
 
@@ -377,7 +375,7 @@ Create a direct deployment request
 
 ## Description
 Request a prediction from a deployment. Deployment requests are made for the default version of a deployment.
-In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
+When using the 'requests' function of a deployment a list should be provided as input, see the example below.
 
 ### Required Parameters
 The input for the request. In case of a structured deployment, this is a dictionary which contains the input fields of the deployment as keys. In case of a plain deployment, give a string or list of strings.
@@ -398,12 +396,12 @@ A structured deployment request
 }
 ```
 
-A structured deployment request with a blob field
+A structured deployment request with a file field
 
 ```
 {
   "input-field-1": 5.0,
-  "blob-input-field": "f52ff875-4980-4d71-9798-a469ef8cece2"
+  "file-input-field": "ubiops-file://my-bucket/file-1.jpg"
 }
 ```
 
@@ -411,6 +409,18 @@ A plain deployment request
 
 ```
 "example-plain-data"
+```
+
+Multiple structured deployment requests using the 'requests' function of a deployment
+```
+[
+    {
+        "input-field-1": 5.0
+    },
+    {
+        "input-field-1": 10.0
+    }
+]
 ```
 
 ### Response Structure
@@ -806,6 +816,7 @@ A list of dictionaries containing the details of the retrieved deployment reques
 - `request_data`: A dictionary containing the data that was sent when the request was created
 - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+- `retries`: Number of times that the request has been retried
 
 ## Response Examples
 
@@ -824,7 +835,8 @@ A list of dictionaries containing the details of the retrieved deployment reques
       "input": 82.2
     },
     "result": null,
-    "error_message": null
+    "error_message": null,
+    "retries": 0
   },
   {
     "id": "85711124-54db-4794-b83d-24492247c6e1",
@@ -839,7 +851,8 @@ A list of dictionaries containing the details of the retrieved deployment reques
       "input": 52.4
     },
     "result": null,
-    "error_message": null
+    "error_message": null,
+    "retries": 1
   }
 ]
 ```
@@ -877,7 +890,7 @@ Create a direct deployment version request
 
 ## Description
 Request a prediction from a deployment version. It is only possible to make a request if a deployment file is uploaded for that version and the deployment build has succeeded (meaning that the version is in available state).
-In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
+When using the 'requests' function of a deployment a list should be provided as input, see the example below.
 
 ### Required Parameters
 The input for the request. In case of a structured deployment, this is a dictionary which contains the input fields of the deployment as keys. In case of a plain deployment, give a string or list of strings.
@@ -898,12 +911,12 @@ A structured deployment request
 }
 ```
 
-A structured deployment request with a blob field
+A structured deployment request with a file field
 
 ```
 {
   "input-field-1": 5.0,
-  "blob-input-field": "f52ff875-4980-4d71-9798-a469ef8cece2"
+  "file-input-field": "ubiops-file://my-bucket/file-1.jpg"
 }
 ```
 
@@ -911,6 +924,18 @@ A plain deployment request
 
 ```
 "example-plain-data"
+```
+
+Multiple structured deployment requests using the 'requests' function of a deployment version
+```
+[
+    {
+        "input-field-1": 5.0
+    },
+    {
+        "input-field-1": 10.0
+    }
+]
 ```
 
 ### Response Structure
@@ -1037,6 +1062,7 @@ A dictionary containing the details of the deployment request with the following
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+- `retries`: Number of times that the request has been retried
 
 ## Response Examples
 
@@ -1056,7 +1082,8 @@ A dictionary containing the details of the deployment request with the following
   "result": null,
   "error_message": null,
   "created_by": "my.example.user@ubiops.com",
-  "notification_group": "notification-group-1"
+  "notification_group": "notification-group-1",
+  "retries": 0
 }
 ```
 

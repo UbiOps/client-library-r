@@ -49,7 +49,7 @@ A dictionary containing details of the build
 - `id`: Unique identifier for the build (UUID)
 - `revision`: UUID of the revision to which the build is linked
 - `creation_date`: The date when the build was created
-- `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
+- `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
 - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
 - `trigger`: Action that triggered the build
 - `has_request_method`: Whether the build has a 'request' method
@@ -108,7 +108,7 @@ A list of details of the builds
 - `id`: Unique identifier for the build (UUID)
 - `revision`: UUID of the revision to which the build is linked
 - `creation_date`: The date when the build was created
-- `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
+- `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
 - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
 - `trigger`: Action that triggered the build
 - `has_request_method`: Whether the build has a 'request' method
@@ -1056,7 +1056,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9, python3.6_cuda, python3.7_cuda, python3.8_cuda, python3.9_cuda or r4.0. The default value is python3.7.
+- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9, python3.10, python3.6_cuda, python3.7_cuda, python3.8_cuda, python3.9_cuda, python3.10_cuda or r4.0. The default value is python3.7.
 - `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
@@ -1075,6 +1075,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 - `static_ip`: A boolean indicating whether the deployment version should get a static IP. It defaults to False.
+- `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption. It defaults to False.
 
 If the time that a request takes does not matter, keep the default values.
 
@@ -1139,6 +1140,7 @@ Details of the created version
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+- `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 
 ## Response Examples
 
@@ -1168,7 +1170,8 @@ Details of the created version
   "request_retention_mode": "full",
   "maximum_queue_size_express": 100,
   "maximum_queue_size_batch": 100000,
-  "static_ip": false
+  "static_ip": false,
+  "restart_request_interruption": false
 }
 ```
 
@@ -1190,7 +1193,8 @@ data <- list(
   default_notification_group = "default_notification_group",  # (optional)
   maximum_queue_size_express = 0,  # (optional)
   maximum_queue_size_batch = 0,  # (optional)
-  static_ip = FALSE  # (optional)
+  static_ip = FALSE,  # (optional)
+  restart_request_interruption = FALSE  # (optional)
 )
 
 # Use environment variables
@@ -1284,6 +1288,7 @@ Details of a version
 - `has_request_method`: Whether the latest build of the version has a 'request' method
 - `has_requests_method`: Whether the latest build of the version has a 'requests' method
 - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+- `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 
 ## Response Examples
 
@@ -1316,7 +1321,8 @@ Details of a version
   "maximum_queue_size_batch": 100000,
   "has_request_method": true,
   "has_requests_method": false,
-  "static_ip": false
+  "static_ip": false,
+  "restart_request_interruption": false
 }
 ```
 
@@ -1384,6 +1390,8 @@ A list of details of the versions
     - *full* - both the metadata and input/output of the requests will be stored
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+- `static_ip`: A boolean indicating whether the deployment version should get a static IP
+- `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 
 ## Response Examples
 
@@ -1413,7 +1421,9 @@ A list of details of the versions
     "request_retention_time": 604800,
     "request_retention_mode": "full",
     "maximum_queue_size_express": 100,
-    "maximum_queue_size_batch": 100000
+    "maximum_queue_size_batch": 100000,
+    "static_ip": false,
+    "restart_request_interruption": false
   },
   {
     "id": "24f6b80a-08c3-4d52-ac1a-2ea7e70f16a6",
@@ -1439,7 +1449,9 @@ A list of details of the versions
     "request_retention_time": 86400,
     "request_retention_mode": "metadata",
     "maximum_queue_size_express": 100,
-    "maximum_queue_size_batch": 100000
+    "maximum_queue_size_batch": 100000,
+    "static_ip": true,
+    "restart_request_interruption": false
   }
 ]
 ```
@@ -1500,6 +1512,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+- `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 
 ## Request Examples
 
@@ -1548,6 +1561,7 @@ Details of the updated version
 - `has_request_method`: Whether the latest build of the version has a 'request' method
 - `has_requests_method`: Whether the latest build of the version has a 'requests' method
 - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+- `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 
 ## Response Examples
 
@@ -1580,7 +1594,8 @@ Details of the updated version
   "maximum_queue_size_batch": 100000,
   "has_request_method": true,
   "has_requests_method": false,
-  "static_ip": false
+  "static_ip": false,
+  "restart_request_interruption": false
 }
 ```
 
@@ -1601,7 +1616,8 @@ data <- list(
   default_notification_group = "default_notification_group",  # (optional)
   maximum_queue_size_express = 0,  # (optional)
   maximum_queue_size_batch = 0,  # (optional)
-  static_ip = FALSE  # (optional)
+  static_ip = FALSE,  # (optional)
+  restart_request_interruption = FALSE  # (optional)
 )
 
 # Use environment variables
@@ -1643,7 +1659,7 @@ Possible data types for the input and output fields are:
 - **array_int**: an array of integers
 - **array_double**: an array of double precision floating points
 - **array_string**: an array of strings
-- **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.
+- **file**: a file field. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field.
 
 Possible widgets for the input fields are:
 - **textbox**: textbox
@@ -1829,14 +1845,14 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),
@@ -2189,14 +2205,14 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),

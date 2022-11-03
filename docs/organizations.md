@@ -12,9 +12,9 @@ Method | HTTP request | Description
 [**organizations_create**](organizations.md#organizations_create) | **POST** /organizations | Create organizations
 [**organizations_get**](organizations.md#organizations_get) | **GET** /organizations/{organization_name} | Get details of an organization
 [**organizations_list**](organizations.md#organizations_list) | **GET** /organizations | List organizations
-[**organizations_resource_usage**](organizations.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | List resource usage of an organization
+[**organizations_resource_usage**](organizations.md#organizations_resource_usage) | **GET** /organizations/{organization_name}/resources | Get resource usage
 [**organizations_update**](organizations.md#organizations_update) | **PATCH** /organizations/{organization_name} | Update details of an organization
-[**organizations_usage_get**](organizations.md#organizations_usage_get) | **GET** /organizations/{organization_name}/usage | Get resource usage
+[**organizations_usage_get**](organizations.md#organizations_usage_get) | **GET** /organizations/{organization_name}/usage | Get organization usage
 
 
 # **organization_users_create**
@@ -511,7 +511,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # **organizations_resource_usage**
 > organizations_resource_usage(organization.name)
 
-List resource usage of an organization
+Get resource usage
 
 ## Description
 List the total number of resources used by this organization
@@ -665,7 +665,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # **organizations_usage_get**
 > organizations_usage_get(organization.name, start.date=NULL, end.date=NULL, interval='month')
 
-Get resource usage
+Get organization usage
 
 ## Description
 Get resource usage for the organization. It contains **the details of each metric aggregated per month.**

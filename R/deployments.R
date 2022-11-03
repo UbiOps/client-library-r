@@ -25,7 +25,7 @@
 #'   - `id`: Unique identifier for the build (UUID)
 #'   - `revision`: UUID of the revision to which the build is linked
 #'   - `creation_date`: The date when the build was created
-#'   - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
+#'   - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
 #'   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
 #'   - `trigger`: Action that triggered the build
 #'   - `has_request_method`: Whether the build has a 'request' method
@@ -107,7 +107,7 @@ builds_get <- function(build.id, deployment.name, version,  preload_content=TRUE
 #'   - `id`: Unique identifier for the build (UUID)
 #'   - `revision`: UUID of the revision to which the build is linked
 #'   - `creation_date`: The date when the build was created
-#'   - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
+#'   - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
 #'   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
 #'   - `trigger`: Action that triggered the build
 #'   - `has_request_method`: Whether the build has a 'request' method
@@ -1152,7 +1152,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' @title Create deployment versions
 #' @description Create a version for a deployment. The first version of a deployment is set as default. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
-#' @param data  named list of: [ version, language (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional) ]
+#' @param data  named list of: [ version, language (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1185,6 +1185,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 #'   - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 #'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+#'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 #' @examples
 #' \dontrun{
 #' data <- list(
@@ -1203,7 +1204,8 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'  default_notification_group = "default_notification_group",  # (optional)
 #'  maximum_queue_size_express = 0,  # (optional)
 #'  maximum_queue_size_batch = 0,  # (optional)
-#'  static_ip = FALSE  # (optional)
+#'  static_ip = FALSE,  # (optional)
+#'  restart_request_interruption = FALSE  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -1354,6 +1356,7 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `has_request_method`: Whether the latest build of the version has a 'request' method
 #'   - `has_requests_method`: Whether the latest build of the version has a 'requests' method
 #'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+#'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1447,6 +1450,8 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'       - *full* - both the metadata and input/output of the requests will be stored
 #'   - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
 #'   - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
+#'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+#'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1503,7 +1508,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #' @description Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
 #' @param version  character
-#' @param data  named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional) ]
+#' @param data  named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1539,6 +1544,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `has_request_method`: Whether the latest build of the version has a 'request' method
 #'   - `has_requests_method`: Whether the latest build of the version has a 'requests' method
 #'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+#'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 #' @examples
 #' \dontrun{
 #' data <- list(
@@ -1556,7 +1562,8 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'  default_notification_group = "default_notification_group",  # (optional)
 #'  maximum_queue_size_express = 0,  # (optional)
 #'  maximum_queue_size_batch = 0,  # (optional)
-#'  static_ip = FALSE  # (optional)
+#'  static_ip = FALSE,  # (optional)
+#'  restart_request_interruption = FALSE  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -1618,7 +1625,7 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 
 
 #' @title Create deployments
-#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (False/True) - **timestamp**: timestamp - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **blob**: a blob field. This type of field can be used to pass blobs to the deployment. In deployment and pipeline requests, the uuid of a previously uploaded blob must be provided for this field.  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
+#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (False/True) - **timestamp**: timestamp - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **file**: a file field. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field.  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
 #' @param data  named list of: [ name, description (optional), input_type, output_type, input_fields (optional), output_fields (optional), labels (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -1650,14 +1657,14 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -1933,14 +1940,14 @@ deployments_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),

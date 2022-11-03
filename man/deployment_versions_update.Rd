@@ -17,7 +17,7 @@ deployment_versions_update(
 
 \item{version}{character}
 
-\item{data}{named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional) ]}
+\item{data}{named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -56,6 +56,7 @@ Response from the API
   - `has_request_method`: Whether the latest build of the version has a 'request' method
   - `has_requests_method`: Whether the latest build of the version has a 'requests' method
   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+  - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 }
 \description{
 Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
@@ -77,7 +78,8 @@ data <- list(
  default_notification_group = "default_notification_group",  # (optional)
  maximum_queue_size_express = 0,  # (optional)
  maximum_queue_size_batch = 0,  # (optional)
- static_ip = FALSE  # (optional)
+ static_ip = FALSE,  # (optional)
+ restart_request_interruption = FALSE  # (optional)
 )
 
 # Use environment variables

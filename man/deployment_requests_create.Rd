@@ -38,7 +38,7 @@ Response from the API
   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 }
 \description{
-Request a prediction from a deployment. Deployment requests are made for the default version of a deployment. In case of a **blob** type field, the uuid of a previously uploaded blob must be provided.
+Request a prediction from a deployment. Deployment requests are made for the default version of a deployment. When using the 'requests' function of a deployment a list should be provided as input, see the example below.
 }
 \examples{
 \dontrun{

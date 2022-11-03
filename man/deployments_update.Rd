@@ -47,14 +47,14 @@ data <- list(
  input_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
      widget = widget  # (optional)
    )
  ),
  output_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+     data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
      widget = widget  # (optional)
    )
  ),

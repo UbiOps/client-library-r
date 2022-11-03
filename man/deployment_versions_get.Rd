@@ -51,6 +51,7 @@ Response from the API
   - `has_request_method`: Whether the latest build of the version has a 'request' method
   - `has_requests_method`: Whether the latest build of the version has a 'requests' method
   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
+  - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
 }
 \description{
 Retrieve details of a version of a deployment in a project

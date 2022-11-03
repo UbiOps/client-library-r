@@ -25,7 +25,7 @@ Response from the API
   - `id`: Unique identifier for the build (UUID)
   - `revision`: UUID of the revision to which the build is linked
   - `creation_date`: The date when the build was created
-  - `status`: Status of the build. Can be 'queued', 'building', 'deploying', 'validating', 'success' or 'failed'.
+  - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
   - `trigger`: Action that triggered the build
   - `has_request_method`: Whether the build has a 'request' method

@@ -46,6 +46,7 @@ Response from the API
    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
    - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+   - `retries`: Number of times that the request has been retried
 }
 \description{
 Get a request for a deployment version. With this method, the result of a request may be retrieved.

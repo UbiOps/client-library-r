@@ -50,7 +50,8 @@ Details of the instance type
 
 - `gpu_allocation`: Integer indicating number of GPU cores for this instance type
 
-- `gpu_type`: Type of the GPU enabled for this instance type
+- `gpu_allocation_type`: Type of the GPU allocation. Normally, this is nvidia.com/gpu, but in case of mixed mode MIG
+this can change to nvidia.com/mig-1g.10gb or alike
 
 ## Response Examples
 
@@ -63,7 +64,7 @@ Details of the instance type
     "memory_allocation": 512,
     "cpu_allocation": 125,
     "gpu_allocation": 0,
-    "gpu_type": null
+    "gpu_allocation_type": null
   }
 ]
 ```

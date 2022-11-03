@@ -20,15 +20,15 @@ ApiFileResponse Class
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{ApiFileResponse$new()}}
-\item \href{#method-getContent}{\code{ApiFileResponse$getContent()}}
-\item \href{#method-getFileName}{\code{ApiFileResponse$getFileName()}}
-\item \href{#method-clone}{\code{ApiFileResponse$clone()}}
+\item \href{#method-ApiFileResponse-new}{\code{ApiFileResponse$new()}}
+\item \href{#method-ApiFileResponse-getContent}{\code{ApiFileResponse$getContent()}}
+\item \href{#method-ApiFileResponse-getFileName}{\code{ApiFileResponse$getFileName()}}
+\item \href{#method-ApiFileResponse-clone}{\code{ApiFileResponse$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-ApiFileResponse-new"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiFileResponse-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiFileResponse$new(response)}\if{html}{\out{</div>}}
@@ -36,8 +36,8 @@ ApiFileResponse Class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getContent"></a>}}
-\if{latex}{\out{\hypertarget{method-getContent}{}}}
+\if{html}{\out{<a id="method-ApiFileResponse-getContent"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiFileResponse-getContent}{}}}
 \subsection{Method \code{getContent()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiFileResponse$getContent()}\if{html}{\out{</div>}}
@@ -45,8 +45,8 @@ ApiFileResponse Class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getFileName"></a>}}
-\if{latex}{\out{\hypertarget{method-getFileName}{}}}
+\if{html}{\out{<a id="method-ApiFileResponse-getFileName"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiFileResponse-getFileName}{}}}
 \subsection{Method \code{getFileName()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiFileResponse$getFileName()}\if{html}{\out{</div>}}
@@ -54,8 +54,8 @@ ApiFileResponse Class
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-ApiFileResponse-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiFileResponse-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -40,7 +40,8 @@ Response from the API
    - `time_completed`: Server time that the processing of the request was completed
    - `request_data`: A dictionary containing the data that was sent when the request was created
    - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
-   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+   - `retries`: Number of times that the request has been retried
 }
 \description{
 Retrieve multiple deployment requests for a deployment version. If one of the given deployment requests does not exist, an error message is given and no request is returned. A maximum of 250 deployment requests can be retrieved with this method. The deployment requests are NOT returned in the order they are given in.

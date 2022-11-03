@@ -2,12 +2,12 @@
 % Please edit documentation in R/roles.R
 \name{role_assignments_create}
 \alias{role_assignments_create}
-\title{Assign a role to a user in a project}
+\title{Assign role to user/object}
 \usage{
 role_assignments_create(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ user_id, role, object_name (optional), object_type (optional) ]}
+\item{data}{named list of: [ role, assignee (optional), assignee_type (optional), resource (optional), resource_type (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -20,22 +20,24 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the created role assignment
-  - `id`: Unique identifier for the role assignment (UUID) 
-  - `user_id`: Unique identifier for the user (UUID) 
-  - `role`: Name of the role assigned to the user 
-  - `object_name`: Name of the object for which the role is assigned 
-  - `object_type`: Type of the object for which the role is assigned. It can be project, deployment or pipeline.
+  - `id`: Unique identifier for the role assignment (UUID)
+  - `assignee`: UUID of the user or the name of the object
+  - `assignee_type`: Type of the assignee
+  - `role`: Name of the role assigned to the user
+  - `resource`: Name of the object for which the role is assigned
+  - `resource_type`: Type of the object for which the role is assigned
 }
 \description{
-Assign a role to a user in the scope of a project. This role can be assigned on either project level or on object level, which can be a deployment or pipeline. The user making the request must have appropriate permissions.
+Assign a role to a user or an object in the scope of a project. This role can be assigned on either project level or on object level, which can be a deployment, pipeline or bucket.
 }
 \examples{
 \dontrun{
 data <- list(
- user_id = "user_id",
  role = "role",
- object_name = "object_name",  # (optional)
- object_type = "object_type"  # (optional)
+ assignee = "assignee",  # (optional)
+ assignee_type = "assignee_type",  # (optional)
+ resource = "resource",  # (optional)
+ resource_type = "resource_type"  # (optional)
 )
 
 # Use environment variables

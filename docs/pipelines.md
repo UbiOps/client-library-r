@@ -4,6 +4,7 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**expressions_evaluate**](pipelines.md#expressions_evaluate) | **POST** /expressions/evaluate | Evaluate expression
 [**pipeline_audit_events_list**](pipelines.md#pipeline_audit_events_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/audit | List audit events for a pipeline
 [**pipeline_version_object_environment_variables_list**](pipelines.md#pipeline_version_object_environment_variables_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/objects/{name}/environment-variables | List pipeline object environment variables
 [**pipeline_versions_create**](pipelines.md#pipeline_versions_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions | Create pipeline versions
@@ -17,6 +18,83 @@ Method | HTTP request | Description
 [**pipelines_list**](pipelines.md#pipelines_list) | **GET** /projects/{project_name}/pipelines | List pipelines
 [**pipelines_update**](pipelines.md#pipelines_update) | **PATCH** /projects/{project_name}/pipelines/{pipeline_name} | Update a pipeline
 
+
+# **expressions_evaluate**
+> expressions_evaluate(data)
+
+Evaluate expression
+
+## Description
+Evaluate a pipeline version operator expression.
+
+### Required Parameters
+
+- `expression`: The expression to evaluate.
+- `input_fields`: A list of input fields with name, data_type.
+- `request_data`: Data to test the expression with. All its keys must be defined in 'input_fields'.
+
+## Request Examples
+
+```
+{
+  "expression": "var1 + 10",
+  "input_fields": [
+    {
+      "name": "var1",
+      "data_type": "int"
+    }
+  ],
+  "request_data": {
+    "var1": 123
+  }
+}
+```
+
+### Response Structure
+
+- `result`: The result of the expression
+
+## Response Examples
+
+```
+{
+  "result": 133
+}
+```
+
+### Example
+```R
+data <- list(
+  expression = "expression",
+  input_fields = list(  # (optional)
+    list(
+      name = "name",
+      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+    )
+  ),
+  request_data = list(key = "value")  # (optional)
+)
+
+# Use environment variables
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::expressions_evaluate(
+  data
+)
+
+# Or provide directly
+result <- ubiops::expressions_evaluate(
+  data,
+  UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
 
 # **pipeline_audit_events_list**
 > pipeline_audit_events_list(pipeline.name, action=NULL, limit=NULL, offset=NULL)
@@ -1103,7 +1181,7 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),
@@ -1111,7 +1189,7 @@ data <- list(
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),
@@ -1505,7 +1583,7 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),
@@ -1513,7 +1591,7 @@ data <- list(
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob] 
+      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
       widget = widget  # (optional)
     )
   ),

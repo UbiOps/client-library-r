@@ -24,7 +24,8 @@ Response from the API
   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi) 
   - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU) 
   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type 
-  - `gpu_type`: Type of the GPU enabled for this instance type
+  - `gpu_allocation_type`: Type of the GPU allocation. Normally, this is nvidia.com/gpu, but in case of mixed mode MIG 
+  this can change to nvidia.com/mig-1g.10gb or alike
 }
 \description{
 Get list of available deployment instance types for a project

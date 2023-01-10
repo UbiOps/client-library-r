@@ -11,6 +11,7 @@ pipeline_requests_list(
   limit = NULL,
   offset = NULL,
   sort = NULL,
+  request.schedule = NULL,
   start.date = NULL,
   end.date = NULL,
   search.id = NULL,
@@ -30,6 +31,8 @@ pipeline_requests_list(
 \item{offset}{(optional) integer}
 
 \item{sort}{(optional) character}
+
+\item{request.schedule}{(optional) character}
 
 \item{start.date}{(optional) character}
 
@@ -67,13 +70,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_requests_list(
    pipeline.name,
-   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_requests_list(
    pipeline.name,
-   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

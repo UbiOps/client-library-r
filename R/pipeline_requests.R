@@ -279,6 +279,7 @@ pipeline_requests_batch_delete <- function(pipeline.name, data,  preload_content
 #'    - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
 #'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 #'    - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+#'    - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
 #'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #' @examples
 #' \dontrun{
@@ -507,6 +508,7 @@ pipeline_requests_delete <- function(pipeline.name, request.id,  ...){
 #'    - `time_completed`: Server time that the processing of the request was completed
 #'    - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
 #'    - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+#'    - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
 #'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 #'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #'    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
@@ -580,6 +582,7 @@ pipeline_requests_get <- function(pipeline.name, request.id, metadata.only=NULL,
 #' @param limit (optional) integer
 #' @param offset (optional) integer
 #' @param sort (optional) character
+#' @param request.schedule (optional) character
 #' @param start.date (optional) character
 #' @param end.date (optional) character
 #' @param search.id (optional) character
@@ -607,13 +610,13 @@ pipeline_requests_get <- function(pipeline.name, request.id, metadata.only=NULL,
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::pipeline_requests_list(
 #'    pipeline.name,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::pipeline_requests_list(
 #'    pipeline.name,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -624,7 +627,7 @@ pipeline_requests_get <- function(pipeline.name, request.id, metadata.only=NULL,
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-pipeline_requests_list <- function(pipeline.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
+pipeline_requests_list <- function(pipeline.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`pipeline.name`)) {
@@ -635,6 +638,7 @@ pipeline_requests_list <- function(pipeline.name, status=NULL, success=NULL, lim
   query_params['limit'] <- limit
   query_params['offset'] <- offset
   query_params['sort'] <- sort
+  query_params['request_schedule'] <- request.schedule
   query_params['start_date'] <- start.date
   query_params['end_date'] <- end.date
   query_params['search_id'] <- search.id
@@ -642,6 +646,99 @@ pipeline_requests_list <- function(pipeline.name, status=NULL, success=NULL, lim
   url_path <- "/projects/{project_name}/pipelines/{pipeline_name}/requests"
   if (!missing(`pipeline.name`)) {
     url_path <- gsub("\\{pipeline_name\\}", utils::URLencode(as.character(`pipeline.name`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Get an operator request
+#' @description Get a request for an operator object of a version of a pipeline. With this method, the result of the request may be retrieved.
+#' @param pipeline.name  character
+#' @param request.id  character
+#' @param version  character
+#' @param metadata.only (optional) character ("true"|"false")
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  A dictionary containing the details of the operator request with the following fields:
+#'    - `id`: Unique identifier for the pipeline version object request
+#'    - `pipeline_request_id`: Unique identifier for the pipeline request to which the object request belongs
+#'    - `pipeline`: Name of the pipeline for which the request is made
+#'    - `version`: Name of the pipeline version for which the request was made
+#'    - `object`: Name of the pipeline version object for which the request was made
+#'    - `operator`: Name of the pipeline operator for which the request was made
+#'    - `status`: Status of the request. Can be 'failed' or 'completed'.
+#'    - `success`: A boolean value that indicates whether the request was successful
+#'    - `time_created`: Server time that the request was made
+#'    - `time_started`: Server time that the processing of the request was started
+#'    - `time_completed`: Server time that the processing of the request was completed
+#'    - `request_data`: A dictionary containing the data that was sent when the request was created
+#'    - `result`: Request result value. NULL if the request failed.
+#'    - `error_message`: An error message explaining why the request has failed
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::pipeline_version_object_requests_get(
+#'    pipeline.name, request.id, version,
+#'    metadata.only = NULL
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::pipeline_version_object_requests_get(
+#'    pipeline.name, request.id, version,
+#'    metadata.only = NULL, 
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+pipeline_version_object_requests_get <- function(pipeline.name, request.id, version, metadata.only=NULL,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`pipeline.name`)) {
+    stop("Missing required parameter `pipeline.name`.")
+  }
+  if (missing(`request.id`)) {
+    stop("Missing required parameter `request.id`.")
+  }
+  if (missing(`version`)) {
+    stop("Missing required parameter `version`.")
+  }
+  query_params['metadata_only'] <- metadata.only
+  
+  url_path <- "/projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/object-requests/{request_id}"
+  if (!missing(`pipeline.name`)) {
+    url_path <- gsub("\\{pipeline_name\\}", utils::URLencode(as.character(`pipeline.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`request.id`)) {
+    url_path <- gsub("\\{request_id\\}", utils::URLencode(as.character(`request.id`), reserved = TRUE), url_path)
+  }
+  if (!missing(`version`)) {
+    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
   }
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)
@@ -1085,6 +1182,7 @@ pipeline_version_requests_get <- function(pipeline.name, request.id, version, me
 #' @param limit (optional) integer
 #' @param offset (optional) integer
 #' @param sort (optional) character
+#' @param request.schedule (optional) character
 #' @param start.date (optional) character
 #' @param end.date (optional) character
 #' @param search.id (optional) character
@@ -1112,13 +1210,13 @@ pipeline_version_requests_get <- function(pipeline.name, request.id, version, me
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::pipeline_version_requests_list(
 #'    pipeline.name, version,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::pipeline_version_requests_list(
 #'    pipeline.name, version,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -1129,7 +1227,7 @@ pipeline_version_requests_get <- function(pipeline.name, request.id, version, me
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-pipeline_version_requests_list <- function(pipeline.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
+pipeline_version_requests_list <- function(pipeline.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`pipeline.name`)) {
@@ -1143,6 +1241,7 @@ pipeline_version_requests_list <- function(pipeline.name, version, status=NULL, 
   query_params['limit'] <- limit
   query_params['offset'] <- offset
   query_params['sort'] <- sort
+  query_params['request_schedule'] <- request.schedule
   query_params['start_date'] <- start.date
   query_params['end_date'] <- end.date
   query_params['search_id'] <- search.id

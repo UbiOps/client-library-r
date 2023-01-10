@@ -167,6 +167,99 @@ builds_list <- function(deployment.name, version,  preload_content=TRUE, ...){
 }
 
 
+#' @title Update build
+#' @description Cancel a build of a version
+#' @param build.id  character
+#' @param deployment.name  character
+#' @param version  character
+#' @param data  named list of: [ status ]
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  A dictionary containing details of the build
+#'   - `id`: Unique identifier for the build (UUID)
+#'   - `revision`: UUID of the revision to which the build is linked
+#'   - `creation_date`: The date when the build was created
+#'   - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success', 'failed' or 'cancelled'.
+#'   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
+#'   - `trigger`: Action that triggered the build
+#'   - `has_request_method`: Whether the build has a 'request' method
+#'   - `has_requests_method`: Whether the build has a 'requests' method
+#' @examples
+#' \dontrun{
+#' data <- list(
+#'  status = "status"
+#' )
+#'
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::builds_update(
+#'    build.id, deployment.name, version, data
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::builds_update(
+#'    build.id, deployment.name, version, data,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+builds_update <- function(build.id, deployment.name, version, data,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`build.id`)) {
+    stop("Missing required parameter `build.id`.")
+  }
+  if (missing(`deployment.name`)) {
+    stop("Missing required parameter `deployment.name`.")
+  }
+  if (missing(`version`)) {
+    stop("Missing required parameter `version`.")
+  }
+  if (missing(`data`)) {
+    stop("Missing required parameter `data`.")
+  }
+  
+  body <- rjson::toJSON(data)
+  
+  url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id}"
+  if (!missing(`build.id`)) {
+    url_path <- gsub("\\{build_id\\}", utils::URLencode(as.character(`build.id`), reserved = TRUE), url_path)
+  }
+  if (!missing(`deployment.name`)) {
+    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`version`)) {
+    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "PATCH", body, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title List audit events for a deployment
 #' @description List all audit events for a deployment including versions
 #' @param deployment.name  character
@@ -1167,6 +1260,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `version`: Version name
 #'   - `description`: Description of the version
 #'   - `language`: Language in which the version is provided
+#'   - `language_description`: Human readable name of the language
 #'   - `status`: The status of the version
 #'   - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 #'   - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
@@ -1332,6 +1426,7 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `version`: Version name
 #'   - `description`: Description of the version
 #'   - `language`: Language in which the version is provided
+#'   - `language_description`: Human readable name of the language
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
@@ -1430,6 +1525,7 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'   - `version`: Version name
 #'   - `description`: Description of the version
 #'   - `language`: Language in which the version is provided
+#'   - `language_description`: Human readable name of the language
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
@@ -1523,6 +1619,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `version`: Version name
 #'   - `description`: Description of the version
 #'   - `language`: Language in which the version is provided
+#'   - `language_description`: Human readable name of the language
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
@@ -2308,6 +2405,97 @@ revisions_list <- function(deployment.name, version,  preload_content=TRUE, ...)
   }
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Rebuild revision
+#' @description Create a new build for a revision of a deployment version
+#' @param deployment.name  character
+#' @param revision.id  character
+#' @param version  character
+#' @param data (optional) list(key = "value")
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  A dictionary containing details of the build
+#'   - `id`: Unique identifier for the build (UUID)
+#'   - `revision`: UUID of the revision to which the build is linked
+#'   - `creation_date`: The date when the build was created
+#'   - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
+#'   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
+#'   - `trigger`: Action that triggered the build
+#'   - `has_request_method`: Whether the build has a 'request' method
+#'   - `has_requests_method`: Whether the build has a 'requests' method
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::revisions_rebuild(
+#'    deployment.name, revision.id, version,
+#'    data = NULL
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::revisions_rebuild(
+#'    deployment.name, revision.id, version,
+#'    data = NULL, 
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+revisions_rebuild <- function(deployment.name, revision.id, version, data=NULL,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`deployment.name`)) {
+    stop("Missing required parameter `deployment.name`.")
+  }
+  if (missing(`revision.id`)) {
+    stop("Missing required parameter `revision.id`.")
+  }
+  if (missing(`version`)) {
+    stop("Missing required parameter `version`.")
+  }
+  
+  if (!missing(`data`) && !is.null(`data`)) {
+    body <- rjson::toJSON(data)
+  } else {
+    body <- NULL
+  }
+  url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}/rebuild"
+  if (!missing(`deployment.name`)) {
+    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`revision.id`)) {
+    url_path <- gsub("\\{revision_id\\}", utils::URLencode(as.character(`revision.id`), reserved = TRUE), url_path)
+  }
+  if (!missing(`version`)) {
+    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "POST", body, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),

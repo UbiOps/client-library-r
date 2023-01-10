@@ -32,6 +32,7 @@ Response from the API
   - `version`: Version name
   - `description`: Description of the version
   - `language`: Language in which the version is provided
+  - `language_description`: Human readable name of the language
   - `status`: The status of the version
   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.

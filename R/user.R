@@ -9,7 +9,7 @@
 
 
 #' @title Create a new user
-#' @description Create a new user with the given details - email, password, name and surname. After creation, an email is send to the email address to activate the account. The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
+#' @description Create a new user with the given details. After creation, an email is send to the email address to activate the account. The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
 #' @param data  named list of: [ email, password, name (optional), surname (optional), terms_conditions, newsletter (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -19,8 +19,8 @@
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the created user
-#'    - `email`: Email of the user 
-#'    - `name`: Name of the user 
+#'    - `email`: Email of the user
+#'    - `name`: Name of the user
 #'    - `surname`: Surname of the user
 #' @examples
 #' \dontrun{

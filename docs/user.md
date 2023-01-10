@@ -14,24 +14,19 @@ Method | HTTP request | Description
 Create a new user
 
 ## Description
-Create a new user with the given details - email, password, name and surname. After creation, an email is send to the email address to activate the account.
-The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
+Create a new user with the given details. After creation, an email is send to the email address to activate the account. The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
 
 ### Required Parameters
 
-- `email`: Email of the user. This is a unique field.
-
+- `email`: Email of the user
 - `password`: Password of the user
-
-- `terms_conditions`: Boolean field. Pass True to accept terms and conditions.
+- `terms_conditions`: A boolean indicating whether the user accepts terms and conditions
 
 ### Optional Parameters
 
 - `name`: Name of the user
-
 - `surname`: Surname of the user
-
-- `newsletter`: Boolean field. Pass True to subscribe to the newsletters.
+- `newsletter`: A boolean indicating whether to subscribe to the newsletters
 
 ## Request Examples
 
@@ -53,7 +48,6 @@ The user is required to accept the terms and conditions. The password needs to b
   "password": "secret-password",
   "terms_conditions": true,
   "newsletter": false
-
 }
 ```
 
@@ -61,9 +55,7 @@ The user is required to accept the terms and conditions. The password needs to b
 Details of the created user
 
 - `email`: Email of the user
-
 - `name`: Name of the user
-
 - `surname`: Surname of the user
 
 ## Response Examples

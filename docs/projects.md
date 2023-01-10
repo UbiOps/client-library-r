@@ -625,7 +625,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **project_requests_list**
-> project_requests_list(object.type)
+> project_requests_list(object.type, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List requests in project
 
@@ -644,6 +644,7 @@ List the deployment/pipeline requests of the given project
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
 - `pipeline`: A boolean value that indicates whether the deployment request was part of a pipeline request
+- `request_schedule`: The name of a request schedule that created requests
 - `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
@@ -696,12 +697,14 @@ A list of dictionaries containing the metadata of the deployment/pipeline reques
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::project_requests_list(
-  object.type
+  object.type,
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::project_requests_list(
   object.type,
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

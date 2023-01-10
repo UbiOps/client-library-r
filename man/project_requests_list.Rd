@@ -4,10 +4,44 @@
 \alias{project_requests_list}
 \title{List requests in project}
 \usage{
-project_requests_list(object.type, preload_content = TRUE, ...)
+project_requests_list(
+  object.type,
+  status = NULL,
+  success = NULL,
+  limit = NULL,
+  offset = NULL,
+  sort = NULL,
+  pipeline = NULL,
+  request.schedule = NULL,
+  start.date = NULL,
+  end.date = NULL,
+  search.id = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{object.type}{character}
+
+\item{status}{(optional) character}
+
+\item{success}{(optional) character ("true"|"false")}
+
+\item{limit}{(optional) integer}
+
+\item{offset}{(optional) integer}
+
+\item{sort}{(optional) character}
+
+\item{pipeline}{(optional) character ("true"|"false")}
+
+\item{request.schedule}{(optional) character}
+
+\item{start.date}{(optional) character}
+
+\item{end.date}{(optional) character}
+
+\item{search.id}{(optional) character}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -39,12 +73,14 @@ List the deployment/pipeline requests of the given project
 Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::project_requests_list(
-   object.type
+   object.type,
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::project_requests_list(
    object.type,
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

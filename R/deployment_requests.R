@@ -572,6 +572,7 @@ deployment_requests_get <- function(deployment.name, request.id, metadata.only=N
 #' @param offset (optional) integer
 #' @param sort (optional) character
 #' @param pipeline (optional) character ("true"|"false")
+#' @param request.schedule (optional) character
 #' @param start.date (optional) character
 #' @param end.date (optional) character
 #' @param search.id (optional) character
@@ -599,13 +600,13 @@ deployment_requests_get <- function(deployment.name, request.id, metadata.only=N
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::deployment_requests_list(
 #'    deployment.name,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::deployment_requests_list(
 #'    deployment.name,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -616,7 +617,7 @@ deployment_requests_get <- function(deployment.name, request.id, metadata.only=N
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-deployment_requests_list <- function(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
+deployment_requests_list <- function(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -628,6 +629,7 @@ deployment_requests_list <- function(deployment.name, status=NULL, success=NULL,
   query_params['offset'] <- offset
   query_params['sort'] <- sort
   query_params['pipeline'] <- pipeline
+  query_params['request_schedule'] <- request.schedule
   query_params['start_date'] <- start.date
   query_params['end_date'] <- end.date
   query_params['search_id'] <- search.id
@@ -1149,6 +1151,7 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
 #' @param offset (optional) integer
 #' @param sort (optional) character
 #' @param pipeline (optional) character ("true"|"false")
+#' @param request.schedule (optional) character
 #' @param start.date (optional) character
 #' @param end.date (optional) character
 #' @param search.id (optional) character
@@ -1176,13 +1179,13 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::deployment_version_requests_list(
 #'    deployment.name, version,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::deployment_version_requests_list(
 #'    deployment.name, version,
-#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -1193,7 +1196,7 @@ deployment_version_requests_get <- function(deployment.name, request.id, version
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-deployment_version_requests_list <- function(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
+deployment_version_requests_list <- function(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`deployment.name`)) {
@@ -1208,6 +1211,7 @@ deployment_version_requests_list <- function(deployment.name, version, status=NU
   query_params['offset'] <- offset
   query_params['sort'] <- sort
   query_params['pipeline'] <- pipeline
+  query_params['request_schedule'] <- request.schedule
   query_params['start_date'] <- start.date
   query_params['end_date'] <- end.date
   query_params['search_id'] <- search.id

@@ -19,12 +19,12 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the created user
-   - `email`: Email of the user 
-   - `name`: Name of the user 
+   - `email`: Email of the user
+   - `name`: Name of the user
    - `surname`: Surname of the user
 }
 \description{
-Create a new user with the given details - email, password, name and surname. After creation, an email is send to the email address to activate the account. The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
+Create a new user with the given details. After creation, an email is send to the email address to activate the account. The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
 }
 \examples{
 \dontrun{

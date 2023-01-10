@@ -27,6 +27,7 @@ Response from the API
   - `version`: Version name
   - `description`: Description of the version
   - `language`: Language in which the version is provided
+  - `language_description`: Human readable name of the language
   - `status`: The status of the version
   - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
   - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.

@@ -4,81 +4,50 @@ docs/README.md
 docs/getting_started.md
 docs/installation_guide.md
 
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# ref: https://github.com/github/gitignore/blob/master/R.gitignore
 
-# C extensions
-*.so
+# History files
+.Rhistory
+.Rapp.history
 
-# Distribution / packaging
-.Python
-env/
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
+# Session Data files
+.RData
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Example code in package build process
+*-Ex.R
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# Output files from R CMD build
+/*.tar.gz
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-.hypothesis/
-venv/
-.python-version
-tests/
+# Output files from R CMD check
+/*.Rcheck/
 
-# Translations
-*.mo
-*.pot
+# RStudio files
+.Rproj.user/
 
-# Django stuff:
-*.log
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
 
-# Sphinx documentation
-docs/_build/
+# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+.httr-oauth
 
-# PyBuilder
-target/
+# knitr and R markdown default cache directories
+/*_cache/
+/cache/
 
-# Ipython Notebook
-.ipynb_checkpoints
+# Temporary files created by R markdown
+*.utf8.md
+*.knit.md
 
 # OpenAPI generator
 .travis.yml
 .openapi-generator-ignore
 .openapi-generator/
 test/
+tests/
 test-requirements.txt
 tox.ini
 git_push.sh
 .setup.cfg
 *.py.orig
-pypi_push.sh
-pypi_test_push.sh

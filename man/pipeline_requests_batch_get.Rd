@@ -33,6 +33,7 @@ Response from the API
    - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
    - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+   - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 }
 \description{

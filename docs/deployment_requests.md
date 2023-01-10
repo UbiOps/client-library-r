@@ -605,7 +605,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **deployment_requests_list**
-> deployment_requests_list(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
+> deployment_requests_list(deployment.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List deployment requests
 
@@ -621,6 +621,7 @@ The following parameters should be given as query parameters:
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
 - `pipeline`: A boolean value that indicates whether the deployment request was part of a pipeline request
+- `request_schedule`: The name of a request schedule that created requests
 - `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
@@ -673,13 +674,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_requests_list(
   deployment.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_requests_list(
   deployment.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -1114,7 +1115,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **deployment_version_requests_list**
-> deployment_version_requests_list(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
+> deployment_version_requests_list(deployment.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List deployment version requests
 
@@ -1130,6 +1131,7 @@ The following parameters should be given as query parameters:
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
 - `pipeline`: A boolean value that indicates whether the deployment request was part of a pipeline request
+- `request_schedule`: The name of a request schedule that created requests
 - `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
@@ -1182,13 +1184,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_version_requests_list(
   deployment.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_version_requests_list(
   deployment.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

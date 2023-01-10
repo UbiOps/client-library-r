@@ -545,6 +545,16 @@ project_environment_variables_update <- function(id, data,  preload_content=TRUE
 #' @title List requests in project
 #' @description List the deployment/pipeline requests of the given project
 #' @param object.type  character
+#' @param status (optional) character
+#' @param success (optional) character ("true"|"false")
+#' @param limit (optional) integer
+#' @param offset (optional) integer
+#' @param sort (optional) character
+#' @param pipeline (optional) character ("true"|"false")
+#' @param request.schedule (optional) character
+#' @param start.date (optional) character
+#' @param end.date (optional) character
+#' @param search.id (optional) character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -569,12 +579,14 @@ project_environment_variables_update <- function(id, data,  preload_content=TRUE
 #' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::project_requests_list(
-#'    object.type
+#'    object.type,
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::project_requests_list(
 #'    object.type,
+#'    status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -585,13 +597,23 @@ project_environment_variables_update <- function(id, data,  preload_content=TRUE
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-project_requests_list <- function(object.type,  preload_content=TRUE, ...){
+project_requests_list <- function(object.type, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, pipeline=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`object.type`)) {
     stop("Missing required parameter `object.type`.")
   }
   query_params['object_type'] <- object.type
+  query_params['status'] <- status
+  query_params['success'] <- success
+  query_params['limit'] <- limit
+  query_params['offset'] <- offset
+  query_params['sort'] <- sort
+  query_params['pipeline'] <- pipeline
+  query_params['request_schedule'] <- request.schedule
+  query_params['start_date'] <- start.date
+  query_params['end_date'] <- end.date
+  query_params['search_id'] <- search.id
   
   url_path <- "/projects/{project_name}/requests"
 

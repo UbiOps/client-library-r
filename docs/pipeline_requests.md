@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**pipeline_requests_delete**](pipeline_requests.md#pipeline_requests_delete) | **DELETE** /projects/{project_name}/pipelines/{pipeline_name}/requests/{request_id} | Delete a pipeline request
 [**pipeline_requests_get**](pipeline_requests.md#pipeline_requests_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/requests/{request_id} | Get a pipeline request
 [**pipeline_requests_list**](pipeline_requests.md#pipeline_requests_list) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/requests | List pipeline requests
+[**pipeline_version_object_requests_get**](pipeline_requests.md#pipeline_version_object_requests_get) | **GET** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/object-requests/{request_id} | Get an operator request
 [**pipeline_version_requests_batch_delete**](pipeline_requests.md#pipeline_version_requests_batch_delete) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/requests/delete | Delete multiple pipeline version requests
 [**pipeline_version_requests_batch_get**](pipeline_requests.md#pipeline_version_requests_batch_get) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/requests/collect | Retrieve multiple pipeline version requests
 [**pipeline_version_requests_create**](pipeline_requests.md#pipeline_version_requests_create) | **POST** /projects/{project_name}/pipelines/{pipeline_name}/versions/{version}/requests | Create a pipeline version request
@@ -304,6 +305,7 @@ A list of dictionaries containing the details of the retrieved pipeline requests
 - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
 - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+- `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 
 ## Response Examples
@@ -327,7 +329,20 @@ A list of dictionaries containing the details of the retrieved pipeline requests
         "id": "4b9c8a81-b3ef-437a-8d35-187490eda3e4",
         "pipeline_object": "deployment-1-v1-object",
         "deployment": "deployment-1",
-        "version": "v1"
+        "version": "v1",
+        "sequence_id": "16699092560130860",
+        "success": true,
+        "error_message": null
+      }
+    ],
+    "operator_requests": [
+      {
+        "id": "bd6d6ce5-ba9d-4c91-af61-0cf16f1f5452",
+        "pipeline_object": "function-1",
+        "operator": "function",
+        "sequence_id": "16699092560130861",
+        "success": true,
+        "error_message": null
       }
     ],
     "result": {
@@ -451,14 +466,26 @@ example-plain-data
     {
       "id": "a7524614-bdb7-41e1-b4c1-653bb72c30b4",
       "pipeline_object": "deployment-object-1",
+      "sequence_id": "16699092560130860",
       "success": true,
       "error_message": null
     },
     {
       "id": "fe322c50-58f8-4e67-b7d6-cba14273874e",
       "pipeline_object": "deployment-object-2",
+      "sequence_id": "16699092560130861",
       "success": false,
       "error_message": "Invalid message format"
+    }
+  ],
+  "operator_requests": [
+    {
+      "id": "bd6d6ce5-ba9d-4c91-af61-0cf16f1f5452",
+      "pipeline_object": "function-1",
+      "operator": "function",
+      "sequence_id": "16699092560130860",
+      "success": true,
+      "error_message": null
     }
   ],
   "result": {
@@ -548,6 +575,7 @@ A dictionary containing the details of the pipeline request with the following f
 - `time_completed`: Server time that the processing of the request was completed
 - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
 - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+- `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
 - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
@@ -576,7 +604,20 @@ A dictionary containing the details of the pipeline request with the following f
       "id": "4b9c8a81-b3ef-437a-8d35-187490eda3e4",
       "pipeline_object": "deployment-1-v1-object",
       "deployment": "deployment-1",
-      "version": "v1"
+      "version": "v1",
+      "sequence_id": "16699092560130860",
+      "success": true,
+      "error_message": null
+    }
+  ],
+  "operator_requests": [
+    {
+      "id": "bd6d6ce5-ba9d-4c91-af61-0cf16f1f5452",
+      "pipeline_object": "function-1",
+      "operator": "function",
+      "sequence_id": "16699092560130861",
+      "success": true,
+      "error_message": null
     }
   ],
   "result": {
@@ -619,7 +660,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **pipeline_requests_list**
-> pipeline_requests_list(pipeline.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
+> pipeline_requests_list(pipeline.name, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List pipeline requests
 
@@ -634,6 +675,7 @@ The following parameters should be given as query parameters:
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `request_schedule`: The name of a request schedule that created requests
 - `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
@@ -686,13 +728,95 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_requests_list(
   pipeline.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_requests_list(
   pipeline.name,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **pipeline_version_object_requests_get**
+> pipeline_version_object_requests_get(pipeline.name, request.id, version, metadata.only=NULL)
+
+Get an operator request
+
+## Description
+Get a request for an operator object of a version of a pipeline. With this method, the result of the request may be retrieved.
+
+### Optional Parameters
+The following parameters should be given as query parameters:
+
+- `metadata_only`: A boolean value that indicates whether the response should include the request data and result. The default value is False.
+
+### Response Structure
+A dictionary containing the details of the operator request with the following fields:
+
+- `id`: Unique identifier for the pipeline version object request
+- `pipeline_request_id`: Unique identifier for the pipeline request to which the object request belongs
+- `pipeline`: Name of the pipeline for which the request is made
+- `version`: Name of the pipeline version for which the request was made
+- `object`: Name of the pipeline version object for which the request was made
+- `operator`: Name of the pipeline operator for which the request was made
+- `status`: Status of the request. Can be 'failed' or 'completed'.
+- `success`: A boolean value that indicates whether the request was successful
+- `time_created`: Server time that the request was made
+- `time_started`: Server time that the processing of the request was started
+- `time_completed`: Server time that the processing of the request was completed
+- `request_data`: A dictionary containing the data that was sent when the request was created
+- `result`: Request result value. NULL if the request failed.
+- `error_message`: An error message explaining why the request has failed
+
+## Response Examples
+
+```
+{
+  "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+  "pipeline_request_id": "ce488fed-04c2-4ce5-a839-f6e5580ad40f",
+  "pipeline": "pipeline-1",
+  "version": "v1",
+  "object": "function-1",
+  "operator": "function",
+  "status": "completed",
+  "success": true,
+  "time_created": "2020-03-28T20:00:26.613+00:00",
+  "time_started": "2020-03-28T20:00:41.276+00:00",
+  "time_completed": "2020-03-28T20:00:42.241+00:00",
+  "request_data": {
+    "input_field": 23.5
+  },
+  "result": {
+    "output": 23.5
+  },
+  "error_message": ""
+}
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::pipeline_version_object_requests_get(
+  pipeline.name, request.id, version,
+  metadata.only = NULL
+)
+
+# Or provide directly
+result <- ubiops::pipeline_version_object_requests_get(
+  pipeline.name, request.id, version,
+  metadata.only = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -1088,7 +1212,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 ```
 
 # **pipeline_version_requests_list**
-> pipeline_version_requests_list(pipeline.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
+> pipeline_version_requests_list(pipeline.name, version, status=NULL, success=NULL, limit=NULL, offset=NULL, sort=NULL, request.schedule=NULL, start.date=NULL, end.date=NULL, search.id=NULL)
 
 List pipeline version requests
 
@@ -1103,6 +1227,7 @@ The following parameters should be given as query parameters:
 - `limit`: The maximum number of requests given back, default is 50
 - `offset`: The number which forms the starting point of the requests given back. If offset equals 2, then the first 2 requests will be omitted from the list.
 - `sort`: Direction of sorting according to the creation date of the request, can be 'asc' or 'desc'. The default sorting is done in descending order.
+- `request_schedule`: The name of a request schedule that created requests
 - `start_date`: Start date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `end_date`: End date of the interval for which the requests are retrieved, looking at the creation date of the request
 - `search_id`: A string to search inside request ids. It will filter all request ids that contain this string
@@ -1155,13 +1280,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::pipeline_version_requests_list(
   pipeline.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::pipeline_version_requests_list(
   pipeline.name, version,
-  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+  status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

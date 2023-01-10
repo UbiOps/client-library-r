@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**builds_get**](deployments.md#builds_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id} | Get build
 [**builds_list**](deployments.md#builds_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds | List builds
+[**builds_update**](deployments.md#builds_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id} | Update build
 [**deployment_audit_events_list**](deployments.md#deployment_audit_events_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/audit | List audit events for a deployment
 [**deployment_environment_variables_copy**](deployments.md#deployment_environment_variables_copy) | **POST** /projects/{project_name}/deployments/{deployment_name}/copy-environment-variables | Copy deployment environment variable
 [**deployment_environment_variables_create**](deployments.md#deployment_environment_variables_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/environment-variables | Create deployment environment variable
@@ -33,6 +34,7 @@ Method | HTTP request | Description
 [**revisions_file_upload**](deployments.md#revisions_file_upload) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions | Upload deployment file
 [**revisions_get**](deployments.md#revisions_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id} | Get revision
 [**revisions_list**](deployments.md#revisions_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions | List revisions
+[**revisions_rebuild**](deployments.md#revisions_rebuild) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}/rebuild | Rebuild revision
 
 
 # **builds_get**
@@ -153,6 +155,81 @@ result <- ubiops::builds_list(
 # Or provide directly
 result <- ubiops::builds_list(
   deployment.name, version,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **builds_update**
+> builds_update(build.id, deployment.name, version, data)
+
+Update build
+
+## Description
+Cancel a build of a version
+
+### Required Parameters
+
+- `status`: Status that the build will be updated to. It can only be cancelled.
+
+## Request Examples
+
+```
+{
+    "status": "cancelled"
+}
+```
+
+### Response Structure
+A dictionary containing details of the build
+
+- `id`: Unique identifier for the build (UUID)
+- `revision`: UUID of the revision to which the build is linked
+- `creation_date`: The date when the build was created
+- `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success', 'failed' or 'cancelled'.
+- `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
+- `trigger`: Action that triggered the build
+- `has_request_method`: Whether the build has a 'request' method
+- `has_requests_method`: Whether the build has a 'requests' method
+
+## Response Examples
+
+```
+{
+  "id": "49d857fd-39ca-48db-9547-0d5d1a91b62d",
+  "revision": "7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6",
+  "creation_date": "2020-12-23T16:15:11.200+00:00",
+  "status": "cancelled",
+  "error_message": "",
+  "trigger": "Deployment file upload",
+  "has_request_method": true,
+  "has_requests_method": false
+}
+```
+
+### Example
+```R
+data <- list(
+  status = "status"
+)
+
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::builds_update(
+  build.id, deployment.name, version, data
+)
+
+# Or provide directly
+result <- ubiops::builds_update(
+  build.id, deployment.name, version, data,
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -1056,7 +1133,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. It can be python3.6, python3.7, python3.8, python3.9, python3.10, python3.6_cuda, python3.7_cuda, python3.8_cuda, python3.9_cuda, python3.10_cuda or r4.0. The default value is python3.7.
+- `language`: Language in which the version is provided. Python 3.7-3.11 and R4.0 are supported. The default value is python3.7.
 - `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
@@ -1122,6 +1199,7 @@ Details of the created version
 - `version`: Version name
 - `description`: Description of the version
 - `language`: Language in which the version is provided
+- `language_description`: Human readable name of the language
 - `status`: The status of the version
 - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
@@ -1151,6 +1229,7 @@ Details of the created version
   "version": "version-1",
   "description": "",
   "language": "python3.8",
+  "language_description": "Python 3.8",
   "status": "unavailable",
   "active_revision": null,
   "latest_build": null,
@@ -1264,6 +1343,7 @@ Details of a version
 - `version`: Version name
 - `description`: Description of the version
 - `language`: Language in which the version is provided
+- `language_description`: Human readable name of the language
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
@@ -1299,6 +1379,7 @@ Details of a version
   "version": "version-1",
   "description": "",
   "language": "python3.7",
+  "language_description": "Python 3.7",
   "status": "available",
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "9f7fd6ec-53b7-41c6-949e-09efc2ee2d31",
@@ -1370,6 +1451,7 @@ A list of details of the versions
 - `version`: Version name
 - `description`: Description of the version
 - `language`: Language in which the version is provided
+- `language_description`: Human readable name of the language
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
@@ -1403,6 +1485,7 @@ A list of details of the versions
     "version": "version-1",
     "description": "",
     "language": "python3.8",
+    "language_description": "Python 3.8",
     "status": "available",
     "active_revision": "da27ef7c-aa3f-4963-a815-6ebf1865638e",
     "latest_build": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
@@ -1431,6 +1514,7 @@ A list of details of the versions
     "version": "version-2",
     "description": "",
     "language": "r4.0",
+    "language_description": "R 4.0",
     "status": "available",
     "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
     "latest_build": "4534e479-ea2e-4161-876a-1d382191a031",
@@ -1540,6 +1624,7 @@ Details of the updated version
 - `version`: Version name
 - `description`: Description of the version
 - `language`: Language in which the version is provided
+- `language_description`: Human readable name of the language
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
@@ -1572,6 +1657,7 @@ Details of the updated version
   "version": "version-1",
   "description": "",
   "language": "python3.8",
+  "language_description": "Python 3.8",
   "status": "available",
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "0d07337e-96d6-4ce6-8c63-c2f07edd2ce4",
@@ -2437,6 +2523,67 @@ result <- ubiops::revisions_list(
 # Or provide directly
 result <- ubiops::revisions_list(
   deployment.name, version,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **revisions_rebuild**
+> revisions_rebuild(deployment.name, revision.id, version, data=NULL)
+
+Rebuild revision
+
+## Description
+Create a new build for a revision of a deployment version
+
+### Response Structure
+A dictionary containing details of the build
+
+- `id`: Unique identifier for the build (UUID)
+- `revision`: UUID of the revision to which the build is linked
+- `creation_date`: The date when the build was created
+- `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
+- `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
+- `trigger`: Action that triggered the build
+- `has_request_method`: Whether the build has a 'request' method
+- `has_requests_method`: Whether the build has a 'requests' method
+
+## Response Examples
+
+```
+{
+  "id": "49d857fd-39ca-48db-9547-0d5d1a91b62d",
+  "revision": "7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6",
+  "creation_date": "2020-12-23T16:15:11.200+00:00",
+  "status": "building",
+  "error_message": "",
+  "trigger": "Deployment file upload",
+  "has_request_method": true,
+  "has_requests_method": false
+}
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::revisions_rebuild(
+  deployment.name, revision.id, version,
+  data = NULL
+)
+
+# Or provide directly
+result <- ubiops::revisions_rebuild(
+  deployment.name, revision.id, version,
+  data = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

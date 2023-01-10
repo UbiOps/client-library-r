@@ -12,6 +12,7 @@ deployment_requests_list(
   offset = NULL,
   sort = NULL,
   pipeline = NULL,
+  request.schedule = NULL,
   start.date = NULL,
   end.date = NULL,
   search.id = NULL,
@@ -33,6 +34,8 @@ deployment_requests_list(
 \item{sort}{(optional) character}
 
 \item{pipeline}{(optional) character ("true"|"false")}
+
+\item{request.schedule}{(optional) character}
 
 \item{start.date}{(optional) character}
 
@@ -70,13 +73,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::deployment_requests_list(
    deployment.name,
-   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL
 )
 
 # Or provide directly
 result <- ubiops::deployment_requests_list(
    deployment.name,
-   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
+   status = NULL, success = NULL, limit = NULL, offset = NULL, sort = NULL, pipeline = NULL, request.schedule = NULL, start.date = NULL, end.date = NULL, search.id = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

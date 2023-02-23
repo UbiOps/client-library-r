@@ -25,8 +25,7 @@
 #'   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi) 
 #'   - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU) 
 #'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type 
-#'   - `gpu_allocation_type`: Type of the GPU allocation. Normally, this is nvidia.com/gpu, but in case of mixed mode MIG 
-#'   this can change to nvidia.com/mig-1g.10gb or alike
+#'   - `storage_allocation`: Integer indicating the maximum storage that can be used by this instance type (MB)
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1376,6 +1375,61 @@ projects_usage_get <- function(start.date=NULL, end.date=NULL, interval='month',
   query_params['interval'] <- interval
   
   url_path <- "/projects/{project_name}/usage"
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title List quotas
+#' @description List the quotas defined for a project. Project members can see quotas.
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  - `resource`: The resource for the quota
+#'   - `quota`: Limit of how much the resource can be used in the project
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::quotas_list(
+#'    
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::quotas_list(
+#'    
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+quotas_list <- function( preload_content=TRUE, ...){
+  query_params <- list()
+
+  
+  url_path <- "/projects/{project_name}/quotas"
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)
   if (preload_content) {

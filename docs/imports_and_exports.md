@@ -603,7 +603,7 @@ Confirm (and update) an import by selecting the objects in the import
           "language": "python3.7",
           "maximum_idle_time": 300,
           "maximum_instances": 5,
-          "memory_allocation": 256,
+          "instance_type": "256mb",
           "minimum_instances": 0,
           "environment_variables": {
             "VERSION_ENV_VAR_1": {

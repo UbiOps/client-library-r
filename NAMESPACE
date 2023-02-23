@@ -163,6 +163,7 @@ export(projects_log_list)
 export(projects_resource_usage)
 export(projects_update)
 export(projects_usage_get)
+export(quotas_list)
 
 # RequestSchedules
 export(request_schedules_create)

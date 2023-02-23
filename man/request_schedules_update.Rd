@@ -22,20 +22,20 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the updated request schedule
-  - `name`: Name of the request 
-  - `object_type`: Type of object for which the request is made 
-  - `object_name`: Name of deployment/pipeline for which the request is made 
-  - `schedule`: Schedule in crontab format 
-  - `version`: Name of version for which the request schedule is made 
-  - `request_data`: Input data for the request schedule 
-  - `timeout`: Timeout of the request in seconds 
-  - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
-  - `creation_date`: The date when the request schedule was created 
-  - `description`: Description of the request schedule 
+  - `name`: Name of the request
+  - `object_type`: Type of object for which the request is made
+  - `object_name`: Name of deployment/pipeline for which the request is made
+  - `schedule`: Schedule in crontab format
+  - `version`: Name of version for which the request schedule is made
+  - `request_data`: Input data for the request schedule
+  - `timeout`: Timeout of the request in seconds
+  - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
+  - `creation_date`: The date when the request schedule was created
+  - `description`: Description of the request schedule
   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 }
 \description{
-Update a request schedule in a project. Create permissions on the object are necessary for this action.
+Update a request schedule in a project
 }
 \examples{
 \dontrun{

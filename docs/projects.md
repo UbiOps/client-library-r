@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**projects_resource_usage**](projects.md#projects_resource_usage) | **GET** /projects/{project_name}/resources | List resource usage of a project
 [**projects_update**](projects.md#projects_update) | **PATCH** /projects/{project_name} | Update a project
 [**projects_usage_get**](projects.md#projects_usage_get) | **GET** /projects/{project_name}/usage | Get resource usage
+[**quotas_list**](projects.md#quotas_list) | **GET** /projects/{project_name}/quotas | List quotas
 
 
 # **instance_types_list**
@@ -50,8 +51,7 @@ Details of the instance type
 
 - `gpu_allocation`: Integer indicating number of GPU cores for this instance type
 
-- `gpu_allocation_type`: Type of the GPU allocation. Normally, this is nvidia.com/gpu, but in case of mixed mode MIG
-this can change to nvidia.com/mig-1g.10gb or alike
+- `storage_allocation`: Integer indicating the maximum storage that can be used by this instance type (MB)
 
 ## Response Examples
 
@@ -64,7 +64,7 @@ this can change to nvidia.com/mig-1g.10gb or alike
     "memory_allocation": 512,
     "cpu_allocation": 125,
     "gpu_allocation": 0,
-    "gpu_allocation_type": null
+    "storage_allocation": 2048
   }
 ]
 ```
@@ -1616,6 +1616,62 @@ result <- ubiops::projects_usage_get(
 result <- ubiops::projects_usage_get(
   
   start.date = NULL, end.date = NULL, interval = 'month', 
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **quotas_list**
+> quotas_list()
+
+List quotas
+
+## Description
+List the quotas defined for a project. Project members can see quotas.
+
+### Response Structure
+
+- `resource`: The resource for the quota
+- `quota`: Limit of how much the resource can be used in the project
+
+## Response Examples
+
+```
+[
+  {
+    "resource": "memory_standard",
+    "quota": 274877906944
+  },
+  {
+    "resource": "cpu_standard",
+    "quota": 62
+  },
+  {
+    "resource": "gpu_standard",
+    "quota": 0
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::quotas_list(
+  
+)
+
+# Or provide directly
+result <- ubiops::quotas_list(
+  
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

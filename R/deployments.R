@@ -1245,7 +1245,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' @title Create deployment versions
 #' @description Create a version for a deployment. The first version of a deployment is set as default. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
-#' @param data  named list of: [ version, language (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
+#' @param data  named list of: [ version, language (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1264,7 +1264,6 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `status`: The status of the version
 #'   - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 #'   - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-#'   - `memory_allocation`: (deprecated) Reserved memory for the version in MiB
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
@@ -1285,7 +1284,6 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' data <- list(
 #'  version = "version",
 #'  language = 'python3.7',  # (optional)
-#'  memory_allocation = 0,  # (optional)
 #'  instance_type = "instance_type",  # (optional)
 #'  maximum_instances = 0,  # (optional)
 #'  minimum_instances = 0,  # (optional)
@@ -1430,7 +1428,6 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-#'   - `memory_allocation`: (deprecated) Reserved memory for the version in MiB
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 #'   - `minimum_instances`: Lower bound of number of deployment pods running in parallel
@@ -1529,7 +1526,6 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-#'   - `memory_allocation`: (deprecated) Reserved memory usage for the version in MiB
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
@@ -1604,7 +1600,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #' @description Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
 #' @param version  character
-#' @param data  named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
+#' @param data  named list of: [ version (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1623,7 +1619,6 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-#'   - `memory_allocation`: (deprecated) Reserved memory for the version in MiB
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
@@ -1646,7 +1641,6 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #' \dontrun{
 #' data <- list(
 #'  version = "version",  # (optional)
-#'  memory_allocation = 0,  # (optional)
 #'  instance_type = "instance_type",  # (optional)
 #'  maximum_instances = 0,  # (optional)
 #'  minimum_instances = 0,  # (optional)

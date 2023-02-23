@@ -19,7 +19,7 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 Response from the API
 }
 \description{
-Delete the request schedule from the project.   If you want to temporarily disable a request schedule, update the request with `enabled` set to False.
+Delete the request schedule from the project.  If you want to temporarily disable a request schedule, update the request with `enabled` set to False.
 }
 \examples{
 \dontrun{

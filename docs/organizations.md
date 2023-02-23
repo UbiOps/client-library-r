@@ -341,7 +341,7 @@ If you are going to use a subscription other than the free subscription, you sho
 ```
 {
   "name": "test-organization",
-  "subscription": "professional",
+  "subscription": "premium",
   "subscription_end_date": "2021-03-25"
 }
 ```
@@ -350,7 +350,7 @@ If you are going to use a subscription other than the free subscription, you sho
 ```
 {
   "name": "test-organization",
-  "subscription": "professional",
+  "subscription": "premium",
   "subscription_end_date": "2021-03-25"
 }
 ```
@@ -597,7 +597,7 @@ To delete the end date of the current subscription, give the 'subscription_end_d
 
 ```
 {
-  "subscription": "professional",
+  "subscription": "premium",
   "subscription_end_date": "2020-08-30",
   "subscription_start_date": "2020-07-30"
 }

@@ -1134,7 +1134,6 @@ Provide the parameter 'default_notification_group' as the name of a notification
 ### Optional Parameters
 
 - `language`: Language in which the version is provided. Python 3.7-3.11 and R4.0 are supported. The default value is python3.7.
-- `memory_allocation`: (deprecated) Reserved memory for the version in MiB. This value determines the memory allocated to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048. The minimum and maximum values are 256 and 16384 respectively.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
@@ -1203,7 +1202,6 @@ Details of the created version
 - `status`: The status of the version
 - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
@@ -1233,7 +1231,6 @@ Details of the created version
   "status": "unavailable",
   "active_revision": null,
   "latest_build": null,
-  "memory_allocation": 512,
   "instance_type": "512mb",
   "maximum_instances": 5,
   "minimum_instances": 0,
@@ -1259,7 +1256,6 @@ Details of the created version
 data <- list(
   version = "version",
   language = 'python3.7',  # (optional)
-  memory_allocation = 0,  # (optional)
   instance_type = "instance_type",  # (optional)
   maximum_instances = 0,  # (optional)
   minimum_instances = 0,  # (optional)
@@ -1347,7 +1343,6 @@ Details of a version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 - `minimum_instances`: Lower bound of number of deployment pods running in parallel
@@ -1383,7 +1378,6 @@ Details of a version
   "status": "available",
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "9f7fd6ec-53b7-41c6-949e-09efc2ee2d31",
-  "memory_allocation": 512,
   "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
@@ -1455,7 +1449,6 @@ A list of details of the versions
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: (deprecated) Reserved memory usage for the version in MiB
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
@@ -1489,7 +1482,6 @@ A list of details of the versions
     "status": "available",
     "active_revision": "da27ef7c-aa3f-4963-a815-6ebf1865638e",
     "latest_build": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
-    "memory_allocation": 512,
     "instance_type": "512mb",
     "maximum_instances": 4,
     "minimum_instances": 1,
@@ -1518,7 +1510,6 @@ A list of details of the versions
     "status": "available",
     "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
     "latest_build": "4534e479-ea2e-4161-876a-1d382191a031",
-    "memory_allocation": 256,
     "instance_type": "256mb",
     "maximum_instances": 5,
     "minimum_instances": 0,
@@ -1579,7 +1570,6 @@ Provide the parameter 'default_notification_group' as the name of a notification
 ### Optional Parameters
 
 - `version`: New name for the version
-- `memory_allocation`: (deprecated) New reserved memory for the version in MiB
 - `instance_type`: New instance type for the version
 - `maximum_instances`: New upper bound of number of versions running
 - `minimum_instances`: New lower bound of number of versions running
@@ -1628,7 +1618,6 @@ Details of the updated version
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
 - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-- `memory_allocation`: (deprecated) Reserved memory for the version in MiB
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
@@ -1661,7 +1650,6 @@ Details of the updated version
   "status": "available",
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "latest_build": "0d07337e-96d6-4ce6-8c63-c2f07edd2ce4",
-  "memory_allocation": 512,
   "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
@@ -1689,7 +1677,6 @@ Details of the updated version
 ```R
 data <- list(
   version = "version",  # (optional)
-  memory_allocation = 0,  # (optional)
   instance_type = "instance_type",  # (optional)
   maximum_instances = 0,  # (optional)
   minimum_instances = 0,  # (optional)

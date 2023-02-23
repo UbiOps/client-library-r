@@ -17,7 +17,7 @@ deployment_versions_update(
 
 \item{version}{character}
 
-\item{data}{named list of: [ version (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
+\item{data}{named list of: [ version (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -39,7 +39,6 @@ Response from the API
   - `status`: The status of the version
   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
-  - `memory_allocation`: (deprecated) Reserved memory for the version in MiB
   - `instance_type`: The reserved instance type for the version
   - `maximum_instances`: Upper bound of number of versions running
   - `minimum_instances`: Lower bound of number of versions running
@@ -66,7 +65,6 @@ Update a version of a deployment in a project. All necessary fields are validate
 \dontrun{
 data <- list(
  version = "version",  # (optional)
- memory_allocation = 0,  # (optional)
  instance_type = "instance_type",  # (optional)
  maximum_instances = 0,  # (optional)
  minimum_instances = 0,  # (optional)

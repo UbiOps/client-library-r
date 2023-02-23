@@ -9,7 +9,7 @@ deployment_versions_create(deployment.name, data, preload_content = TRUE, ...)
 \arguments{
 \item{deployment.name}{character}
 
-\item{data}{named list of: [ version, language (optional), memory_allocation (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
+\item{data}{named list of: [ version, language (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -31,7 +31,6 @@ Response from the API
   - `status`: The status of the version
   - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
   - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
-  - `memory_allocation`: (deprecated) Reserved memory for the version in MiB
   - `instance_type`: The reserved instance type for the version
   - `maximum_instances`: Upper bound of number of versions running
   - `minimum_instances`: Lower bound of number of versions running
@@ -56,7 +55,6 @@ Create a version for a deployment. The first version of a deployment is set as d
 data <- list(
  version = "version",
  language = 'python3.7',  # (optional)
- memory_allocation = 0,  # (optional)
  instance_type = "instance_type",  # (optional)
  maximum_instances = 0,  # (optional)
  minimum_instances = 0,  # (optional)

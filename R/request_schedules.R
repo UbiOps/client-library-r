@@ -20,16 +20,16 @@
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the created request schedule
-#'   - `name`: Name of the request 
-#'   - `object_type`: Type of object for which the request is made 
-#'   - `object_name`: Name of deployment/pipeline for which the request schedule is made 
-#'   - `schedule`: Schedule in crontab format 
-#'   - `version`: Name of version for which the request schedule is made 
-#'   - `request_data`: Input data for the request schedule 
-#'   - `timeout`: Timeout of the request in seconds 
-#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
-#'   - `creation_date`: The date when the request schedule was created 
-#'   - `description`: Description of the request schedule 
+#'   - `name`: Name of the request
+#'   - `object_type`: Type of object for which the request is made
+#'   - `object_name`: Name of deployment/pipeline for which the request schedule is made
+#'   - `schedule`: Schedule in crontab format
+#'   - `version`: Name of version for which the request schedule is made
+#'   - `request_data`: Input data for the request schedule
+#'   - `timeout`: Timeout of the request in seconds
+#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
+#'   - `creation_date`: The date when the request schedule was created
+#'   - `description`: Description of the request schedule
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #' @examples
 #' \dontrun{
@@ -93,7 +93,7 @@ request_schedules_create <- function(data,  preload_content=TRUE, ...){
 
 
 #' @title Delete a request schedule
-#' @description Delete the request schedule from the project.   If you want to temporarily disable a request schedule, update the request with `enabled` set to False.
+#' @description Delete the request schedule from the project.  If you want to temporarily disable a request schedule, update the request with `enabled` set to False.
 #' @param schedule.name  character
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -151,16 +151,16 @@ request_schedules_delete <- function(schedule.name,  ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of a request schedule
-#'   - `name`: Name of the request 
-#'   - `object_type`: Type of object for which the request is made 
-#'   - `object_name`: Name of deployment/pipeline for which the request is made 
-#'   - `schedule`: Schedule in crontab format 
-#'   - `version`: Name of version for which the request schedule is made 
-#'   - `request_data`: Input data for the request schedule 
-#'   - `timeout`: Timeout of the request in seconds 
-#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
-#'   - `creation_date`: The date when the request schedule was created 
-#'   - `description`: Description of the request schedule 
+#'   - `name`: Name of the request
+#'   - `object_type`: Type of object for which the request is made
+#'   - `object_name`: Name of deployment/pipeline for which the request is made
+#'   - `schedule`: Schedule in crontab format
+#'   - `version`: Name of version for which the request schedule is made
+#'   - `request_data`: Input data for the request schedule
+#'   - `timeout`: Timeout of the request in seconds
+#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
+#'   - `creation_date`: The date when the request schedule was created
+#'   - `description`: Description of the request schedule
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #' @examples
 #' \dontrun{
@@ -223,16 +223,16 @@ request_schedules_get <- function(schedule.name,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of details of all request schedules in a project
-#'   - `name`: Name of the request 
-#'   - `object_type`: Type of object for which the request is made 
-#'   - `object_name`: Name of deployment/pipeline for which the request is made 
-#'   - `schedule`: Schedule in crontab format 
-#'   - `version`: Name of version for which the request schedule is made  
-#'   - `request_data`: Input data for the request schedule 
-#'   - `timeout`: Timeout of the request in seconds 
-#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
-#'   - `creation_date`: The date when the request schedule was created 
-#'   - `description`: Description of the request schedule 
+#'   - `name`: Name of the request
+#'   - `object_type`: Type of object for which the request is made
+#'   - `object_name`: Name of deployment/pipeline for which the request is made
+#'   - `schedule`: Schedule in crontab format
+#'   - `version`: Name of version for which the request schedule is made
+#'   - `request_data`: Input data for the request schedule
+#'   - `timeout`: Timeout of the request in seconds
+#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
+#'   - `creation_date`: The date when the request schedule was created
+#'   - `description`: Description of the request schedule
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #' @examples
 #' \dontrun{
@@ -281,7 +281,7 @@ request_schedules_list <- function(labels=NULL,  preload_content=TRUE, ...){
 
 
 #' @title Update a request schedule
-#' @description Update a request schedule in a project. Create permissions on the object are necessary for this action.
+#' @description Update a request schedule in a project
 #' @param schedule.name  character
 #' @param data  named list of: [ name (optional), schedule (optional), request_data (optional), timeout (optional), enabled (optional), description (optional), labels (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -293,16 +293,16 @@ request_schedules_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the updated request schedule
-#'   - `name`: Name of the request 
-#'   - `object_type`: Type of object for which the request is made 
-#'   - `object_name`: Name of deployment/pipeline for which the request is made 
-#'   - `schedule`: Schedule in crontab format 
-#'   - `version`: Name of version for which the request schedule is made 
-#'   - `request_data`: Input data for the request schedule 
-#'   - `timeout`: Timeout of the request in seconds 
-#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled 
-#'   - `creation_date`: The date when the request schedule was created 
-#'   - `description`: Description of the request schedule 
+#'   - `name`: Name of the request
+#'   - `object_type`: Type of object for which the request is made
+#'   - `object_name`: Name of deployment/pipeline for which the request is made
+#'   - `schedule`: Schedule in crontab format
+#'   - `version`: Name of version for which the request schedule is made
+#'   - `request_data`: Input data for the request schedule
+#'   - `timeout`: Timeout of the request in seconds
+#'   - `enabled`: Boolean value indicating whether the request schedule is enabled or disabled
+#'   - `creation_date`: The date when the request schedule was created
+#'   - `description`: Description of the request schedule
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #' @examples
 #' \dontrun{

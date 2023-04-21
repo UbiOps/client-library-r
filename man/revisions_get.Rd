@@ -29,11 +29,15 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 }
 \value{
 Response from the API
- A dictionary containing details of the build
+ A dictionary containing details of the revision
   - `id`: Unique identifier for the revision (UUID)
   - `version`: Version to which the revision is linked
   - `creation_date`: The date when the revision was created
   - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a "UbiOps" value.
+  - `status`: Status of the revision. Can be 'queued', 'building', 'success' or 'failed'.
+  - `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+  - `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+  - `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
 }
 \description{
 Retrieve details of a single revision of a version

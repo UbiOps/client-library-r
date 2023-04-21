@@ -1124,7 +1124,9 @@ projects_list <- function(organization=NULL,  preload_content=TRUE, ...){
 #'   The following fields will be returned on response if they are set for the log line:
 #'   - `deployment_name`:  The deployment which the log is related to 
 #'   - `deployment_version`:  The deployment version which the log is related to 
-#'   - `build_id`: The UUID of the build 
+#'   - `deployment_version_revision_id`: The UUID of the deployment version revision 
+#'   - `environment_name`:  The environment which the log is related to 
+#'   - `environment_build_id`: The UUID of the environment build 
 #'   - `pipeline_name`: The pipeline which the log is related to 
 #'   - `pipeline_version`: The pipeline version which the log is related to 
 #'   - `pipeline_object_name`: The pipeline object which the log is related to 

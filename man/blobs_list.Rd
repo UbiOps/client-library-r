@@ -2,7 +2,7 @@
 % Please edit documentation in R/blobs.R
 \name{blobs_list}
 \alias{blobs_list}
-\title{List blobs}
+\title{[DEPRECATED] List blobs}
 \usage{
 blobs_list(range = NULL, creation.date = NULL, preload_content = TRUE, ...)
 }

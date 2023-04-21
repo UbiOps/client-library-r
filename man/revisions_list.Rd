@@ -26,6 +26,10 @@ Response from the API
   - `version`: Version to which the revision is linked
   - `creation_date`: The date when the revision was created
   - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a "UbiOps" value.
+  - `status`: Status of the revision. Can be 'queued', 'building', 'success' or 'failed'.
+  - `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+  - `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+  - `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
 }
 \description{
 List all revisions associated with a version. A new revision is created every time a new deployment file is uploaded for a version.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/blobs.R
 \name{blobs_update}
 \alias{blobs_update}
-\title{Update a blob}
+\title{[DEPRECATED] Update a blob}
 \usage{
 blobs_update(blob.id, file, blob.ttl = NULL, preload_content = TRUE, ...)
 }

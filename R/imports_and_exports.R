@@ -10,7 +10,7 @@
 
 #' @title Create an export
 #' @description Create an export by selecting the objects in the export
-#' @param data  named list of: [ deployments (optional), pipelines (optional), environment_variables (optional) ]
+#' @param data  named list of: [ deployments (optional), pipelines (optional), environment_variables (optional), environments (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -30,7 +30,8 @@
 #' data <- list(
 #'  deployments = list(key = list(key = "value")),  # (optional)
 #'  pipelines = list(key = list(key = "value")),  # (optional)
-#'  environment_variables = list(key = list(key = "value"))  # (optional)
+#'  environment_variables = list(key = list(key = "value")),  # (optional)
+#'  environments = list(key = list(key = "value"))  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -214,6 +215,7 @@ exports_download <- function(export.id,  preload_content=FALSE, ...){
 #'   - `deployments`: Dictionary of the deployments in the export
 #'   - `pipelines`: Dictionary of the pipelines in the export
 #'   - `environment_variables`: Dictionary of the environment variables in the export
+#'   - `environments`: Dictionary of the environments in the export
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -532,6 +534,7 @@ imports_download <- function(import.id,  preload_content=FALSE, ...){
 #'   - `deployments`: Dictionary of the deployments in the import
 #'   - `pipelines`: Dictionary of the pipelines in the import
 #'   - `environment_variables`: Dictionary of the environment variables in the import
+#'   - `environments`: Dictionary of the environments in the import
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -647,7 +650,7 @@ imports_list <- function(status=NULL,  preload_content=TRUE, ...){
 #' @title Confirm an import
 #' @description Confirm (and update) an import by selecting the objects in the import
 #' @param import.id  character
-#' @param data  named list of: [ deployments (optional), pipelines (optional), environment_variables (optional) ]
+#' @param data  named list of: [ deployments (optional), pipelines (optional), environment_variables (optional), environments (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -667,7 +670,8 @@ imports_list <- function(status=NULL,  preload_content=TRUE, ...){
 #' data <- list(
 #'  deployments = list(key = list(key = "value")),  # (optional)
 #'  pipelines = list(key = list(key = "value")),  # (optional)
-#'  environment_variables = list(key = list(key = "value"))  # (optional)
+#'  environment_variables = list(key = list(key = "value")),  # (optional)
+#'  environments = list(key = list(key = "value"))  # (optional)
 #' )
 #'
 #' # Use environment variables

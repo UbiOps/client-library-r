@@ -34,8 +34,8 @@ Response from the API
   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
   - `creation_date`: The date when the pipeline version was created
   - `last_updated`: The date when the pipeline version was last updated
-  - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-  - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+  - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+  - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
   - `request_retention_time`: Number of seconds to store requests to the pipeline version
   - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
       - *none* - the requests will not be stored

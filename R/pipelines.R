@@ -25,7 +25,7 @@
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type"  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'    )
 #'  ),
 #'  request_data = list(key = "value")  # (optional)
@@ -252,8 +252,8 @@ pipeline_version_object_environment_variables_list <- function(name, pipeline.na
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created
 #'   - `last_updated`: The date when the pipeline version was last updated
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the pipeline version
 #'   - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 #'   - `objects`: List of pipeline version objects
@@ -421,8 +421,8 @@ pipeline_versions_delete <- function(pipeline.name, version,  ...){
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created
 #'   - `last_updated`: The date when the pipeline version was last updated
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the pipeline version
 #'   - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
 #'       - *none* - the requests will not be stored
@@ -505,8 +505,8 @@ pipeline_versions_get <- function(pipeline.name, version,  preload_content=TRUE,
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created
 #'   - `last_updated`: The date when the pipeline version was last updated
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the pipeline version
 #'   - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
 #'       - *none* - the requests will not be stored
@@ -585,8 +585,8 @@ pipeline_versions_list <- function(pipeline.name, labels=NULL,  preload_content=
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created
 #'   - `last_updated`: The date when the pipeline version was last updated
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the pipeline version
 #'   - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 #'   - `objects`: List of pipeline version objects
@@ -718,7 +718,7 @@ pipeline_versions_update <- function(pipeline.name, version, data,  preload_cont
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -726,7 +726,7 @@ pipeline_versions_update <- function(pipeline.name, version, data,  preload_cont
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -1002,7 +1002,7 @@ pipelines_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -1010,7 +1010,7 @@ pipelines_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),

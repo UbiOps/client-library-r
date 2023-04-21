@@ -36,7 +36,7 @@ Create a bucket in a project
   - For Azure Blob Storage, provide the field `connection_string` in the format: *DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net*.
   - For Google Cloud Storage, provide the field `json_key_file`.
 - `configuration`: A dictionary for additional configuration details for the bucket. It is only required for providers other than *ubiops*. Each provider requires a different set of fields:
-  - For Amazon S3, provide the fields `bucket` and `prefix`. One of the fields `region` or `endpoint_url` needs to be provided. The fields `verify` and `use_ssl` are optional.
+  - For Amazon S3, provide the fields `bucket` and `prefix`. One of the fields `region` or `endpoint_url` needs to be provided. The fields `signature_version`, `verify` and `use_ssl` are optional.
   - For Azure Blob Storage, provide the fields `container` and `prefix`.
   - For Google Cloud Storage, provide the fields `bucket` and `prefix`.
   UbiOps always makes sure that the prefix ends with a '/'.

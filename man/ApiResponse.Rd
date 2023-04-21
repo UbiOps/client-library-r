@@ -20,32 +20,41 @@ ApiResponse Class
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{ApiResponse$new()}}
-\item \href{#method-getContent}{\code{ApiResponse$getContent()}}
-\item \href{#method-clone}{\code{ApiResponse$clone()}}
+\item \href{#method-ApiResponse-new}{\code{ApiResponse$new()}}
+\item \href{#method-ApiResponse-getContent}{\code{ApiResponse$getContent()}}
+\item \href{#method-ApiResponse-clone}{\code{ApiResponse$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-ApiResponse-new"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiResponse-new}{}}}
 \subsection{Method \code{new()}}{
+Initialize ApiResponse
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiResponse$new(response)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{response}}{The raw response from the endpoint}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getContent"></a>}}
-\if{latex}{\out{\hypertarget{method-getContent}{}}}
+\if{html}{\out{<a id="method-ApiResponse-getContent"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiResponse-getContent}{}}}
 \subsection{Method \code{getContent()}}{
+Get the http response content
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ApiResponse$getContent()}\if{html}{\out{</div>}}
 }
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-ApiResponse-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-ApiResponse-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -5,8 +5,6 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**builds_get**](deployments.md#builds_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id} | Get build
-[**builds_list**](deployments.md#builds_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds | List builds
-[**builds_update**](deployments.md#builds_update) | **PATCH** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id} | Update build
 [**deployment_audit_events_list**](deployments.md#deployment_audit_events_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/audit | List audit events for a deployment
 [**deployment_environment_variables_copy**](deployments.md#deployment_environment_variables_copy) | **POST** /projects/{project_name}/deployments/{deployment_name}/copy-environment-variables | Copy deployment environment variable
 [**deployment_environment_variables_create**](deployments.md#deployment_environment_variables_create) | **POST** /projects/{project_name}/deployments/{deployment_name}/environment-variables | Create deployment environment variable
@@ -34,7 +32,7 @@ Method | HTTP request | Description
 [**revisions_file_upload**](deployments.md#revisions_file_upload) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions | Upload deployment file
 [**revisions_get**](deployments.md#revisions_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id} | Get revision
 [**revisions_list**](deployments.md#revisions_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions | List revisions
-[**revisions_rebuild**](deployments.md#revisions_rebuild) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}/rebuild | Rebuild revision
+[**template_deployments_list**](deployments.md#template_deployments_list) | **GET** /template-deployments | List template deployments
 
 
 # **builds_get**
@@ -84,152 +82,6 @@ result <- ubiops::builds_get(
 # Or provide directly
 result <- ubiops::builds_get(
   build.id, deployment.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **builds_list**
-> builds_list(deployment.name, version)
-
-List builds
-
-## Description
-List all builds associated with a version. A build is triggered when a new deployment file is uploaded.
-
-### Response Structure
-A list of details of the builds
-
-- `id`: Unique identifier for the build (UUID)
-- `revision`: UUID of the revision to which the build is linked
-- `creation_date`: The date when the build was created
-- `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
-- `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
-- `trigger`: Action that triggered the build
-- `has_request_method`: Whether the build has a 'request' method
-- `has_requests_method`: Whether the build has a 'requests' method
-
-## Response Examples
-
-```
-[
-  {
-    "id": "49d857fd-39ca-48db-9547-0d5d1a91b62d",
-    "revision": "7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6",
-    "creation_date": "2020-12-23T16:15:11.200+00:00",
-    "status": "failed",
-    "error_message": "Could not find the deployment file",
-    "trigger": "Deployment file upload",
-    "has_request_method": true,
-    "has_requests_method": false
-  },
-  {
-    "id": "baf88570-d884-4bc6-9308-01068b051f5f",
-    "revision": "a009d7c9-67e4-4d3c-89fd-d3c8b07c7242",
-    "creation_date": "2020-12-23T16:35:13.088+00:00",
-    "status": "queued",
-    "error_message": "",
-    "trigger": "Deployment file upload",
-    "has_request_method": true,
-    "has_requests_method": false
-  }
-]
-```
-
-### Example
-```R
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::builds_list(
-  deployment.name, version
-)
-
-# Or provide directly
-result <- ubiops::builds_list(
-  deployment.name, version,
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-)
-
-print(result)
-
-# Or print in JSON format
-print(jsonlite::toJSON(result, auto_unbox=TRUE))
-
-# The default API url is https://api.ubiops.com/v2.1
-# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
-```
-
-# **builds_update**
-> builds_update(build.id, deployment.name, version, data)
-
-Update build
-
-## Description
-Cancel a build of a version
-
-### Required Parameters
-
-- `status`: Status that the build will be updated to. It can only be cancelled.
-
-## Request Examples
-
-```
-{
-    "status": "cancelled"
-}
-```
-
-### Response Structure
-A dictionary containing details of the build
-
-- `id`: Unique identifier for the build (UUID)
-- `revision`: UUID of the revision to which the build is linked
-- `creation_date`: The date when the build was created
-- `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success', 'failed' or 'cancelled'.
-- `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
-- `trigger`: Action that triggered the build
-- `has_request_method`: Whether the build has a 'request' method
-- `has_requests_method`: Whether the build has a 'requests' method
-
-## Response Examples
-
-```
-{
-  "id": "49d857fd-39ca-48db-9547-0d5d1a91b62d",
-  "revision": "7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6",
-  "creation_date": "2020-12-23T16:15:11.200+00:00",
-  "status": "cancelled",
-  "error_message": "",
-  "trigger": "Deployment file upload",
-  "has_request_method": true,
-  "has_requests_method": false
-}
-```
-
-### Example
-```R
-data <- list(
-  status = "status"
-)
-
-# Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::builds_update(
-  build.id, deployment.name, version, data
-)
-
-# Or provide directly
-result <- ubiops::builds_update(
-  build.id, deployment.name, version, data,
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
@@ -1133,7 +985,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 
 ### Optional Parameters
 
-- `language`: Language in which the version is provided. Python 3.7-3.11 and R4.0 are supported. The default value is python3.7.
+- `environment`: Environment of the version. It can be either a base or a custom environment.
 - `instance_type`: Reserved instance type for the version. This value determines the allocation of memory to the version: it should be enough to encompass the deployment file and all requirements that need to be installed. The default value is 2048mb. The minimum and maximum values are 256mb and 16384mb respectively.
 - `maximum_instances`: Upper bound of number of versions running. The default value is 5. *Indicator of resource capacity:* if many deployment requests need to be handled in a short time, this number can be set higher to avoid long waiting times.
 - `minimum_instances`: Lower bound of number of versions running. The default value is 0. Set this value greater than 0 to always have a always running version.
@@ -1141,8 +993,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
 
 - `description`: Description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version. It defaults to 604800 seconds (1 week).
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1160,7 +1012,7 @@ If the time that a request takes does not matter, keep the default values.
 ```
 {
   "version": "version-1",
-  "language": "python3.8"
+  "environment": "python3-8"
 }
 ```
 
@@ -1168,7 +1020,7 @@ If the time that a request takes does not matter, keep the default values.
 ```
 {
   "version": "version-1",
-  "language": "r4.0",
+  "environment": "r4-0",
   "instance_type": "512mb"
 }
 ```
@@ -1176,7 +1028,7 @@ If the time that a request takes does not matter, keep the default values.
 
 ```
   "version": "version-1",
-  "language": "python3.6_cuda",
+  "environment": "python3-6-cuda",
   "instance_type": "16384mb_t4",
   "maximum_instances": 1
 ```
@@ -1193,15 +1045,15 @@ If the time that a request takes does not matter, keep the default values.
 ### Response Structure
 Details of the created version
 
-- `id`: Unique identifier for the deployment (UUID)
+- `id`: Unique identifier for the deployment version (UUID)
 - `deployment`: Deployment name to which the version is associated
 - `version`: Version name
 - `description`: Description of the version
-- `language`: Language in which the version is provided
-- `language_description`: Human readable name of the language
+- `environment`: Environment of the version
+- `environment_display_name`: Human readable name of the environment
 - `status`: The status of the version
-- `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
-- `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
+- `active_revision`: UUID of the active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
+- `latest_revision`: UUID of the latest revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
@@ -1209,8 +1061,8 @@ Details of the created version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
@@ -1226,11 +1078,11 @@ Details of the created version
   "deployment": "deployment-1",
   "version": "version-1",
   "description": "",
-  "language": "python3.8",
-  "language_description": "Python 3.8",
+  "environment": "python3-8",
+  "environment_display_name": "Python 3.8",
   "status": "unavailable",
   "active_revision": null,
-  "latest_build": null,
+  "latest_revision": null,
   "instance_type": "512mb",
   "maximum_instances": 5,
   "minimum_instances": 0,
@@ -1255,7 +1107,8 @@ Details of the created version
 ```R
 data <- list(
   version = "version",
-  language = 'python3.7',  # (optional)
+  language = "language",  # (optional)
+  environment = 'python3-7',  # (optional)
   instance_type = "instance_type",  # (optional)
   maximum_instances = 0,  # (optional)
   minimum_instances = 0,  # (optional)
@@ -1338,11 +1191,11 @@ Details of a version
 - `deployment`: Deployment name to which the version is associated
 - `version`: Version name
 - `description`: Description of the version
-- `language`: Language in which the version is provided
-- `language_description`: Human readable name of the language
+- `environment`: Environment of the version
+- `environment_display_name`: Human readable name of the environment
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+- `latest_revision`: UUID of the latest build of the version. If no deployment files have been uploaded yet, it is None.
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 - `minimum_instances`: Lower bound of number of deployment pods running in parallel
@@ -1351,8 +1204,8 @@ Details of a version
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
 - `last_file_upload`: The date when a deployment file was last uploaded for the version
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1373,11 +1226,11 @@ Details of a version
   "deployment": "deployment-1",
   "version": "version-1",
   "description": "",
-  "language": "python3.7",
-  "language_description": "Python 3.7",
+  "environment": "python3-7",
+  "environment_display_name": "Python 3.7",
   "status": "available",
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
-  "latest_build": "9f7fd6ec-53b7-41c6-949e-09efc2ee2d31",
+  "latest_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
@@ -1440,15 +1293,15 @@ Versions can be filtered according to the labels they have by giving labels as a
 ### Response Structure
 A list of details of the versions
 
-- `id`: Unique identifier for the deployment (UUID)
+- `id`: Unique identifier for the deployment version (UUID)
 - `deployment`: Deployment name to which the version is associated
 - `version`: Version name
 - `description`: Description of the version
-- `language`: Language in which the version is provided
-- `language_description`: Human readable name of the language
+- `environment`: Environment of the version
+- `environment_display_name`: Human readable name of the environment
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+- `latest_revision`: UUID of the latest revision of the version. If no deployment files have been uploaded yet, it is None.
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
@@ -1456,8 +1309,8 @@ A list of details of the versions
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1477,11 +1330,11 @@ A list of details of the versions
     "deployment": "deployment-1",
     "version": "version-1",
     "description": "",
-    "language": "python3.8",
-    "language_description": "Python 3.8",
+    "environment": "python3-8",
+    "environment_display_name": "Python 3.8",
     "status": "available",
     "active_revision": "da27ef7c-aa3f-4963-a815-6ebf1865638e",
-    "latest_build": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
+    "latest_revision": "0f4a94c6-ec4c-4d1e-81d7-8f3e40471f75",
     "instance_type": "512mb",
     "maximum_instances": 4,
     "minimum_instances": 1,
@@ -1505,11 +1358,11 @@ A list of details of the versions
     "deployment": "deployment-1",
     "version": "version-2",
     "description": "",
-    "language": "r4.0",
-    "language_description": "R 4.0",
+    "environment": "r4-0",
+    "environment_display_name": "R 4.0",
     "status": "available",
     "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
-    "latest_build": "4534e479-ea2e-4161-876a-1d382191a031",
+    "latest_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
     "instance_type": "256mb",
     "maximum_instances": 5,
     "minimum_instances": 0,
@@ -1576,8 +1429,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `maximum_idle_time`: New maximum time in seconds a version stays idle before it is stopped
 - `description`: New description for the version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label. The new labels will replace the existing value for labels.
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -1587,6 +1440,7 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 - `static_ip`: A boolean indicating whether the deployment version should get a static IP
 - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+- `environment`: New environment for the version. It can be either a base or a custom environment.
 
 ## Request Examples
 
@@ -1609,15 +1463,15 @@ Provide the parameter 'default_notification_group' as the name of a notification
 ### Response Structure
 Details of the updated version
 
-- `id`: Unique identifier for the deployment (UUID)
+- `id`: Unique identifier for the deployment version (UUID)
 - `deployment`: Deployment name to which the version is associated
 - `version`: Version name
 - `description`: Description of the version
-- `language`: Language in which the version is provided
-- `language_description`: Human readable name of the language
+- `environment`: Environment of the version
+- `environment_display_name`: Human readable name of the environment
 - `status`: The status of the version
 - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-- `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+- `latest_revision`: UUID of the latest build of the version. If no deployment files have been uploaded yet, it is None.
 - `instance_type`: The reserved instance type for the version
 - `maximum_instances`: Upper bound of number of versions running
 - `minimum_instances`: Lower bound of number of versions running
@@ -1626,8 +1480,8 @@ Details of the updated version
 - `creation_date`: The date when the version was created
 - `last_updated`: The date when the version was last updated
 - `last_file_upload`: The date when a deployment file was last uploaded for the version
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the version
 - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
@@ -1645,11 +1499,11 @@ Details of the updated version
   "deployment": "deployment-1",
   "version": "version-1",
   "description": "",
-  "language": "python3.8",
-  "language_description": "Python 3.8",
+  "environment": "python3-8",
+  "environment_display_name": "Python 3.8",
   "status": "available",
   "active_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
-  "latest_build": "0d07337e-96d6-4ce6-8c63-c2f07edd2ce4",
+  "latest_revision": "a74662be-c938-4104-872a-8be1b85f64ff",
   "instance_type": "512mb",
   "maximum_instances": 4,
   "minimum_instances": 1,
@@ -1677,6 +1531,7 @@ Details of the updated version
 ```R
 data <- list(
   version = "version",  # (optional)
+  environment = "environment",  # (optional)
   instance_type = "instance_type",  # (optional)
   maximum_instances = 0,  # (optional)
   minimum_instances = 0,  # (optional)
@@ -1918,14 +1773,14 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),
@@ -2278,14 +2133,14 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),
@@ -2366,10 +2221,10 @@ output_path <- ubiops::revisions_file_download(
 Upload deployment file
 
 ## Description
-Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a build.
+Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a validation.
 This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.
 
-It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a build.
+It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a validation.
 
 ### Optional Parameters
 
@@ -2384,7 +2239,7 @@ Either **file** or **source_deployment** and **source_version** must be provided
 
 - `success`: Boolean indicating whether the deployment file upload/copy succeeded or not
 - `revision`: UUID of the created revision for the file upload
-- `build`: UUID of the build created for the file upload
+- `build`: [DEPRECATED] UUID of the created revision for the file upload
 
 ### Example
 ```R
@@ -2421,12 +2276,16 @@ Get revision
 Retrieve details of a single revision of a version
 
 ### Response Structure
-A dictionary containing details of the build
+A dictionary containing details of the revision
 
 - `id`: Unique identifier for the revision (UUID)
 - `version`: Version to which the revision is linked
 - `creation_date`: The date when the revision was created
 - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a "UbiOps" value.
+- `status`: Status of the revision. Can be 'queued', 'building', 'success' or 'failed'.
+- `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+- `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+- `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
 
 ## Response Examples
 
@@ -2435,7 +2294,11 @@ A dictionary containing details of the build
   "id": "a009d7c9-67e4-4d3c-89fd-d3c8b07c7242",
   "version": "v1",
   "creation_date": "2020-12-23T16:35:13.069+00:00",
-  "created_by": "test@example.com"
+  "created_by": "test@example.com",
+  "status": "success",
+  "error_message": "",
+  "has_request_method": true,
+  "has_requests_method": false
 }
 ```
 
@@ -2478,6 +2341,10 @@ A list of details of the revisions
 - `version`: Version to which the revision is linked
 - `creation_date`: The date when the revision was created
 - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a "UbiOps" value.
+- `status`: Status of the revision. Can be 'queued', 'building', 'success' or 'failed'.
+- `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+- `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+- `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
 
 ## Response Examples
 
@@ -2487,13 +2354,21 @@ A list of details of the revisions
     "id": "7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6",
     "version": "v1",
     "creation_date": "2020-12-23T16:15:11.181+00:00",
-    "created_by": "UbiOps"
+    "created_by": "UbiOps",
+    "status": "building",
+    "error_message": "",
+    "has_request_method": true,
+    "has_requests_method": false
   },
   {
     "id": "a009d7c9-67e4-4d3c-89fd-d3c8b07c7242",
     "version": "v1",
     "creation_date": "2020-12-23T16:35:13.069+00:00",
-    "created_by": "test@example.com"
+    "created_by": "test@example.com",
+    "status": "success",
+    "error_message": "",
+    "has_request_method": true,
+    "has_requests_method": false
   }
 ]
 ```
@@ -2522,56 +2397,74 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
-# **revisions_rebuild**
-> revisions_rebuild(deployment.name, revision.id, version, data=NULL)
+# **template_deployments_list**
+> template_deployments_list()
 
-Rebuild revision
+List template deployments
 
 ## Description
-Create a new build for a revision of a deployment version
+Get the list of all available template deployments
 
 ### Response Structure
-A dictionary containing details of the build
 
-- `id`: Unique identifier for the build (UUID)
-- `revision`: UUID of the revision to which the build is linked
-- `creation_date`: The date when the build was created
-- `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
-- `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
-- `trigger`: Action that triggered the build
-- `has_request_method`: Whether the build has a 'request' method
-- `has_requests_method`: Whether the build has a 'requests' method
+- `id`: Unique identifier for the template deployment (UUID)
+
+- `details`: A dictionary containing all the required fields to create a deployment and a deployment version for the template deployment
 
 ## Response Examples
 
-```
-{
-  "id": "49d857fd-39ca-48db-9547-0d5d1a91b62d",
-  "revision": "7ead8a18-c1d2-4751-80d2-d8e0e0e2fed6",
-  "creation_date": "2020-12-23T16:15:11.200+00:00",
-  "status": "building",
-  "error_message": "",
-  "trigger": "Deployment file upload",
-  "has_request_method": true,
-  "has_requests_method": false
-}
+```	
+[
+  {
+    "id": "acb0c49a-23f8-4b04-94ed-a9c1a5a0119b",
+    "details": {
+      "name": "deployment-2",
+      "input_type": "structured",
+      "output_type": "structured",
+      "input_fields": [
+        {
+          "name": "field-1",
+          "data_type": "int"
+        }
+      ],
+      "output_fields": [
+        {
+          "name": "field-1",
+          "data_type": "int"
+        }
+      ],
+      "labels": {
+        "template": "True"
+      },
+      "description": "",
+      "version": {
+        "name": "v2",
+        "environment": "python3-7",
+        "description": "",
+        "labels": {
+          "template": "True"
+        },
+        "instance_type": "2048mb",
+        "maximum_idle_time": "300",
+        "maximum_instances": "1",
+        "minimum_instances": "0",
+        "request_retention_mode": "full",
+        "request_retention_time": 604800
+      }
+    }
+  }
+]
 ```
 
 ### Example
 ```R
 # Use environment variables
-Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-result <- ubiops::revisions_rebuild(
-  deployment.name, revision.id, version,
-  data = NULL
-)
+result <- ubiops::template_deployments_list()
 
 # Or provide directly
-result <- ubiops::revisions_rebuild(
-  deployment.name, revision.id, version,
-  data = NULL, 
-  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+result <- ubiops::template_deployments_list(
+  UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 
 print(result)

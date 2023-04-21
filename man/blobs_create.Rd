@@ -2,7 +2,7 @@
 % Please edit documentation in R/blobs.R
 \name{blobs_create}
 \alias{blobs_create}
-\title{Upload a blob}
+\title{[DEPRECATED] Upload a blob}
 \usage{
 blobs_create(file, blob.ttl = NULL, preload_content = TRUE, ...)
 }

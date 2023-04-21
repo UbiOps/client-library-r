@@ -2,7 +2,7 @@
 % Please edit documentation in R/deployments.R
 \name{builds_get}
 \alias{builds_get}
-\title{Get build}
+\title{[DEPRECATED] Get build}
 \usage{
 builds_get(build.id, deployment.name, version, preload_content = TRUE, ...)
 }

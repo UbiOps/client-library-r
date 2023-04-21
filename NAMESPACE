@@ -33,8 +33,6 @@ export(deployment_version_requests_update)
 
 # Deployments
 export(builds_get)
-export(builds_list)
-export(builds_update)
 export(deployment_audit_events_list)
 export(deployment_environment_variables_copy)
 export(deployment_environment_variables_create)
@@ -62,7 +60,23 @@ export(revisions_file_download)
 export(revisions_file_upload)
 export(revisions_get)
 export(revisions_list)
-export(revisions_rebuild)
+export(template_deployments_list)
+
+# Environments
+export(environment_builds_get)
+export(environment_builds_list)
+export(environment_builds_update)
+export(environment_revisions_file_download)
+export(environment_revisions_file_upload)
+export(environment_revisions_get)
+export(environment_revisions_list)
+export(environment_revisions_rebuild)
+export(environments_create)
+export(environments_delete)
+export(environments_get)
+export(environments_list)
+export(environments_update)
+export(environments_usage)
 
 # Files
 export(buckets_create)

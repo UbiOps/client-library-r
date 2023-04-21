@@ -27,6 +27,7 @@ Response from the API
   - `deployments`: Dictionary of the deployments in the import
   - `pipelines`: Dictionary of the pipelines in the import
   - `environment_variables`: Dictionary of the environment variables in the import
+  - `environments`: Dictionary of the environments in the import
 }
 \description{
 Get the details of an import in a project

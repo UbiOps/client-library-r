@@ -1,6 +1,6 @@
 Package: ubiops
 Title: R Package Client for UbiOps
-Version: 0.12.0
+Version: 0.13.0
 Authors@R: person("UbiOps", email = "info@ubiops.com", role = c("aut", "cre"))
 Description: Client Library to interact with the UbiOps API.
 URL: https://github.com/UbiOps/client-library-r
@@ -19,13 +19,14 @@ Imports:
     readr,
     rjson,
     stringr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Collate: 
     'api_response.R'
     'api_client.R'
     'blobs.R'
     'deployment_requests.R'
     'deployments.R'
+    'environments.R'
     'files.R'
     'imports_and_exports.R'
     'monitoring.R'

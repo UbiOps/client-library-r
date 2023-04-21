@@ -72,7 +72,7 @@ call_api <- function(url_path, http_method, body = NULL, query_params = NULL, co
     header.params <- get_authorization_headers(get_setting("UBIOPS_API_TOKEN", UBIOPS_API_TOKEN))
     header.defaults <- get_default_headers(get_setting("UBIOPS_DEFAULT_HEADERS", UBIOPS_DEFAULT_HEADERS))
     timeout <- get_http_timeout(get_setting("UBIOPS_TIMEOUT", UBIOPS_TIMEOUT, default = NA))
-    user_agent <- "UbiOps/r/0.12.0"
+    user_agent <- "UbiOps/r/0.13.0"
 
     if (project.name != "") {
         url_path <- gsub("\\{project_name\\}", utils::URLencode(as.character(project.name), reserved = TRUE), url_path)
@@ -125,16 +125,19 @@ call_api <- function(url_path, http_method, body = NULL, query_params = NULL, co
 }
 
 
-# Deserialize the content of api response
+#' @title Deserialize the content of api response
 #' @param resp API response
+#' @return Deserialized content
 deserialize <- function(resp) {
     jsonlite::parse_json(httr::content(resp, "text", encoding = "UTF-8"))
 }
 
 
-# Write file to storage location
+#' @title Write file to storage location
 #' @param resp API response
+#' @param ... additional parameters
 #' @include api_response.R
+#' @return File path
 deserialize_file <- function(resp, ...) {
     tmp_dir <- get_setting("UBIOPS_TEMP_FOLDER_PATH", list(...), default = getwd())
 

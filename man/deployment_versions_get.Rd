@@ -26,11 +26,11 @@ Response from the API
   - `deployment`: Deployment name to which the version is associated
   - `version`: Version name
   - `description`: Description of the version
-  - `language`: Language in which the version is provided
-  - `language_description`: Human readable name of the language
+  - `environment`: Environment of the version
+  - `environment_display_name`: Human readable name of the environment
   - `status`: The status of the version
   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-  - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+  - `latest_revision`: UUID of the latest build of the version. If no deployment files have been uploaded yet, it is None.
   - `instance_type`: The reserved instance type for the version
   - `maximum_instances`: Upper bound of number of deployment pods running in parallel
   - `minimum_instances`: Lower bound of number of deployment pods running in parallel
@@ -39,8 +39,8 @@ Response from the API
   - `creation_date`: The date when the version was created
   - `last_updated`: The date when the version was last updated
   - `last_file_upload`: The date when a deployment file was last uploaded for the version
-  - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-  - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+  - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+  - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
   - `request_retention_time`: Number of seconds to store requests to the version
   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
       - *none* - the requests will not be stored

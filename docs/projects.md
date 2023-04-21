@@ -1192,7 +1192,11 @@ Retrieve the logs of all objects in a project, including deployments, pipelines 
 
     - `deployment_version`: name of a deployment version. If this field is present in the request, deployment_name must also be given. The deployment versions are only meaningful in combination with the deployments they are defined for.
 
-    - `build_id`: the UUID of a build. It does not have to be given in combination with the version and deployment name.
+    - `deployment_version_revision_id`: the UUID of a deployment version revision. It does not have to be given in combination with the deployment and version name.
+
+    - `environment_name`: name of an environment
+
+    - `environment_build_id`: the UUID of an environment build. It does not have to be given in combination with the environment name.
 
     - `pipeline_name`: name of a pipeline
 
@@ -1280,7 +1284,11 @@ The following fields will be returned on response if they are set for the log li
 
 - `deployment_version`:  The deployment version which the log is related to
 
-- `build_id`: The UUID of the build
+- `deployment_version_revision_id`: The UUID of the deployment version revision
+
+- `environment_name`:  The environment which the log is related to
+
+- `environment_build_id`: The UUID of the environment build
 
 - `pipeline_name`: The pipeline which the log is related to
 

@@ -69,7 +69,7 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type"  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
     )
   ),
   request_data = list(key = "value")  # (optional)
@@ -256,8 +256,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
 
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version. It defaults to 604800 seconds (1 week).
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -337,8 +337,8 @@ Details of the created pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 - `objects`: List of pipeline version objects
@@ -528,8 +528,8 @@ Details of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -664,8 +664,8 @@ A list of details of the versions of the pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -752,8 +752,8 @@ Provide the parameter 'default_notification_group' as the name of a notification
 - `version`: Name of the version of the pipeline
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following:
     - *none* - the requests will not be stored
@@ -839,8 +839,8 @@ Details of the created pipeline
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
 - `last_updated`: The date when the pipeline version was last updated
-- `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-- `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+- `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+- `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 - `request_retention_time`: Number of seconds to store requests to the pipeline version
 - `request_retention_mode`: Mode of request retention for requests to the pipeline version. It can be one of the following: *none*, *metadata* or *full*.
 - `objects`: List of pipeline version objects
@@ -1181,7 +1181,7 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),
@@ -1189,7 +1189,7 @@ data <- list(
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),
@@ -1583,7 +1583,7 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),
@@ -1591,7 +1591,7 @@ data <- list(
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
       widget = widget  # (optional)
     )
   ),

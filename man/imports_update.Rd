@@ -9,7 +9,7 @@ imports_update(import.id, data, preload_content = TRUE, ...)
 \arguments{
 \item{import.id}{character}
 
-\item{data}{named list of: [ deployments (optional), pipelines (optional), environment_variables (optional) ]}
+\item{data}{named list of: [ deployments (optional), pipelines (optional), environment_variables (optional), environments (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -36,7 +36,8 @@ Confirm (and update) an import by selecting the objects in the import
 data <- list(
  deployments = list(key = list(key = "value")),  # (optional)
  pipelines = list(key = list(key = "value")),  # (optional)
- environment_variables = list(key = list(key = "value"))  # (optional)
+ environment_variables = list(key = list(key = "value")),  # (optional)
+ environments = list(key = list(key = "value"))  # (optional)
 )
 
 # Use environment variables

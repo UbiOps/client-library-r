@@ -8,7 +8,7 @@
 # Deployments operations
 
 
-#' @title Get build
+#' @title [DEPRECATED] Get build
 #' @description Retrieve details of a single build of a version
 #' @param build.id  character
 #' @param deployment.name  character
@@ -53,6 +53,8 @@
 #' }
 #' @export
 builds_get <- function(build.id, deployment.name, version,  preload_content=TRUE, ...){
+  base::.Deprecated(msg = "'builds_get' is deprecated and will be removed in version 1.0.0")
+
   query_params <- list()
 
   if (missing(`build.id`)) {
@@ -77,175 +79,6 @@ builds_get <- function(build.id, deployment.name, version,  preload_content=TRUE
   }
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)
-  if (preload_content) {
-    deserializedRespObj <- tryCatch(
-      deserialize(api.response),
-      error = function(e){
-        stop("Failed to deserialize response")
-      }
-    )
-
-  } else {
-    ApiResponse$new(api.response)
-  }
-}
-
-
-#' @title List builds
-#' @description List all builds associated with a version. A build is triggered when a new deployment file is uploaded.
-#' @param deployment.name  character
-#' @param version  character
-#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
-#' @param ...
-#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
-#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
-#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
-#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
-#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
-#' @return Response from the API
-#'  A list of details of the builds
-#'   - `id`: Unique identifier for the build (UUID)
-#'   - `revision`: UUID of the revision to which the build is linked
-#'   - `creation_date`: The date when the build was created
-#'   - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
-#'   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
-#'   - `trigger`: Action that triggered the build
-#'   - `has_request_method`: Whether the build has a 'request' method
-#'   - `has_requests_method`: Whether the build has a 'requests' method
-#' @examples
-#' \dontrun{
-#' # Use environment variables
-#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-#' result <- ubiops::builds_list(
-#'    deployment.name, version
-#' )
-#' 
-#' # Or provide directly
-#' result <- ubiops::builds_list(
-#'    deployment.name, version,
-#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-#' )
-#' 
-#' print(result)
-#' 
-#' # The default API url is https://api.ubiops.com/v2.1
-#' # Want to use a different API url?
-#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
-#' }
-#' @export
-builds_list <- function(deployment.name, version,  preload_content=TRUE, ...){
-  query_params <- list()
-
-  if (missing(`deployment.name`)) {
-    stop("Missing required parameter `deployment.name`.")
-  }
-  if (missing(`version`)) {
-    stop("Missing required parameter `version`.")
-  }
-  
-  url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds"
-  if (!missing(`deployment.name`)) {
-    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
-  }
-  if (!missing(`version`)) {
-    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
-  }
-
-  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
-  if (preload_content) {
-    deserializedRespObj <- tryCatch(
-      deserialize(api.response),
-      error = function(e){
-        stop("Failed to deserialize response")
-      }
-    )
-
-  } else {
-    ApiResponse$new(api.response)
-  }
-}
-
-
-#' @title Update build
-#' @description Cancel a build of a version
-#' @param build.id  character
-#' @param deployment.name  character
-#' @param version  character
-#' @param data  named list of: [ status ]
-#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
-#' @param ...
-#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
-#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
-#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
-#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
-#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
-#' @return Response from the API
-#'  A dictionary containing details of the build
-#'   - `id`: Unique identifier for the build (UUID)
-#'   - `revision`: UUID of the revision to which the build is linked
-#'   - `creation_date`: The date when the build was created
-#'   - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success', 'failed' or 'cancelled'.
-#'   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
-#'   - `trigger`: Action that triggered the build
-#'   - `has_request_method`: Whether the build has a 'request' method
-#'   - `has_requests_method`: Whether the build has a 'requests' method
-#' @examples
-#' \dontrun{
-#' data <- list(
-#'  status = "status"
-#' )
-#'
-#' # Use environment variables
-#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
-#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-#' result <- ubiops::builds_update(
-#'    build.id, deployment.name, version, data
-#' )
-#' 
-#' # Or provide directly
-#' result <- ubiops::builds_update(
-#'    build.id, deployment.name, version, data,
-#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
-#' )
-#' 
-#' print(result)
-#' 
-#' # The default API url is https://api.ubiops.com/v2.1
-#' # Want to use a different API url?
-#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
-#' }
-#' @export
-builds_update <- function(build.id, deployment.name, version, data,  preload_content=TRUE, ...){
-  query_params <- list()
-
-  if (missing(`build.id`)) {
-    stop("Missing required parameter `build.id`.")
-  }
-  if (missing(`deployment.name`)) {
-    stop("Missing required parameter `deployment.name`.")
-  }
-  if (missing(`version`)) {
-    stop("Missing required parameter `version`.")
-  }
-  if (missing(`data`)) {
-    stop("Missing required parameter `data`.")
-  }
-  
-  body <- rjson::toJSON(data)
-  
-  url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/builds/{build_id}"
-  if (!missing(`build.id`)) {
-    url_path <- gsub("\\{build_id\\}", utils::URLencode(as.character(`build.id`), reserved = TRUE), url_path)
-  }
-  if (!missing(`deployment.name`)) {
-    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
-  }
-  if (!missing(`version`)) {
-    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
-  }
-
-  api.response <- call_api(url_path, "PATCH", body, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),
@@ -1245,7 +1078,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' @title Create deployment versions
 #' @description Create a version for a deployment. The first version of a deployment is set as default. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
-#' @param data  named list of: [ version, language (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
+#' @param data  named list of: [ version, language (optional), environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1255,15 +1088,15 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the created version
-#'   - `id`: Unique identifier for the deployment (UUID)
+#'   - `id`: Unique identifier for the deployment version (UUID)
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
 #'   - `description`: Description of the version
-#'   - `language`: Language in which the version is provided
-#'   - `language_description`: Human readable name of the language
+#'   - `environment`: Environment of the version
+#'   - `environment_display_name`: Human readable name of the environment
 #'   - `status`: The status of the version
-#'   - `active_revision`: Active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
-#'   - `latest_build`: Latest build of the version. It is initialised as None since no build is triggered for the version yet.
+#'   - `active_revision`: UUID of the active revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
+#'   - `latest_revision`: UUID of the latest revision of the version. It is initialised as None since there are no deployment files uploaded for the version yet.
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
@@ -1271,8 +1104,8 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the version was created
 #'   - `last_updated`: The date when the version was last updated
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the version
 #'   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 #'   - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
@@ -1283,7 +1116,8 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' \dontrun{
 #' data <- list(
 #'  version = "version",
-#'  language = 'python3.7',  # (optional)
+#'  language = "language",  # (optional)
+#'  environment = 'python3-7',  # (optional)
 #'  instance_type = "instance_type",  # (optional)
 #'  maximum_instances = 0,  # (optional)
 #'  minimum_instances = 0,  # (optional)
@@ -1423,11 +1257,11 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
 #'   - `description`: Description of the version
-#'   - `language`: Language in which the version is provided
-#'   - `language_description`: Human readable name of the language
+#'   - `environment`: Environment of the version
+#'   - `environment_display_name`: Human readable name of the environment
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-#'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+#'   - `latest_revision`: UUID of the latest build of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of deployment pods running in parallel
 #'   - `minimum_instances`: Lower bound of number of deployment pods running in parallel
@@ -1436,8 +1270,8 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `creation_date`: The date when the version was created
 #'   - `last_updated`: The date when the version was last updated
 #'   - `last_file_upload`: The date when a deployment file was last uploaded for the version
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the version
 #'   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
 #'       - *none* - the requests will not be stored
@@ -1517,15 +1351,15 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of details of the versions
-#'   - `id`: Unique identifier for the deployment (UUID)
+#'   - `id`: Unique identifier for the deployment version (UUID)
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
 #'   - `description`: Description of the version
-#'   - `language`: Language in which the version is provided
-#'   - `language_description`: Human readable name of the language
+#'   - `environment`: Environment of the version
+#'   - `environment_display_name`: Human readable name of the environment
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-#'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+#'   - `latest_revision`: UUID of the latest revision of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
@@ -1533,8 +1367,8 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the version was created
 #'   - `last_updated`: The date when the version was last updated
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the version
 #'   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following:
 #'       - *none* - the requests will not be stored
@@ -1600,7 +1434,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #' @description Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
 #' @param version  character
-#' @param data  named list of: [ version (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
+#' @param data  named list of: [ version (optional), environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1610,15 +1444,15 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the updated version
-#'   - `id`: Unique identifier for the deployment (UUID)
+#'   - `id`: Unique identifier for the deployment version (UUID)
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
 #'   - `description`: Description of the version
-#'   - `language`: Language in which the version is provided
-#'   - `language_description`: Human readable name of the language
+#'   - `environment`: Environment of the version
+#'   - `environment_display_name`: Human readable name of the environment
 #'   - `status`: The status of the version
 #'   - `active_revision`: UUID of the active revision of the version. If no deployment files have been uploaded yet, it is None.
-#'   - `latest_build`: UUID of the latest build of the version. If no build has been triggered yet, it is None.
+#'   - `latest_revision`: UUID of the latest build of the version. If no deployment files have been uploaded yet, it is None.
 #'   - `instance_type`: The reserved instance type for the version
 #'   - `maximum_instances`: Upper bound of number of versions running
 #'   - `minimum_instances`: Lower bound of number of versions running
@@ -1627,8 +1461,8 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `creation_date`: The date when the version was created
 #'   - `last_updated`: The date when the version was last updated
 #'   - `last_file_upload`: The date when a deployment file was last uploaded for the version
-#'   - `monitoring`: Name of a notification group which contain contacts to send monitoring notifications
-#'   - `default_notification_group`: Name of a notification group which contain contacts to send notifications when requests for the version are completed
+#'   - `monitoring`: Name of a notification group which contains contacts to send notifications when requests for the version fail and recover
+#'   - `default_notification_group`: Name of a notification group which contains contacts to send notifications when requests for the version are completed
 #'   - `request_retention_time`: Number of seconds to store requests to the version
 #'   - `request_retention_mode`: Mode of request retention for requests to the version. It can be one of the following: *none*, *metadata* or *full*.
 #'   - `maximum_queue_size_express`: Maximum number of queued express requests for all instances of this deployment version
@@ -1641,6 +1475,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #' \dontrun{
 #' data <- list(
 #'  version = "version",  # (optional)
+#'  environment = "environment",  # (optional)
 #'  instance_type = "instance_type",  # (optional)
 #'  maximum_instances = 0,  # (optional)
 #'  minimum_instances = 0,  # (optional)
@@ -1748,14 +1583,14 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -2031,14 +1866,14 @@ deployments_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, array_int, array_double, array_string, blob, file] 
+#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -2181,7 +2016,7 @@ revisions_file_download <- function(deployment.name, revision.id, version,  prel
 
 
 #' @title Upload deployment file
-#' @description Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a build. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.   It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a build.
+#' @description Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a validation. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.   It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a validation.
 #' @param deployment.name  character
 #' @param version  character
 #' @param file (optional) file path - Example: file.path("path", "to", "file")
@@ -2198,7 +2033,7 @@ revisions_file_download <- function(deployment.name, revision.id, version,  prel
 #' @return Response from the API
 #'  - `success`: Boolean indicating whether the deployment file upload/copy succeeded or not
 #'   - `revision`: UUID of the created revision for the file upload
-#'   - `build`: UUID of the build created for the file upload
+#'   - `build`: [DEPRECATED] UUID of the created revision for the file upload
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -2275,11 +2110,15 @@ revisions_file_upload <- function(deployment.name, version, file=NULL, source.de
 #'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
-#'  A dictionary containing details of the build
+#'  A dictionary containing details of the revision
 #'   - `id`: Unique identifier for the revision (UUID)
 #'   - `version`: Version to which the revision is linked
 #'   - `creation_date`: The date when the revision was created
 #'   - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a "UbiOps" value.
+#'   - `status`: Status of the revision. Can be 'queued', 'building', 'success' or 'failed'.
+#'   - `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+#'   - `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+#'   - `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -2358,6 +2197,10 @@ revisions_get <- function(deployment.name, revision.id, version,  preload_conten
 #'   - `version`: Version to which the revision is linked
 #'   - `creation_date`: The date when the revision was created
 #'   - `created_by`: The email of the user that uploaded the deployment file. In case the revision is created by a service, the field will have a "UbiOps" value.
+#'   - `status`: Status of the revision. Can be 'queued', 'building', 'success' or 'failed'.
+#'   - `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+#'   - `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+#'   - `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -2413,44 +2256,28 @@ revisions_list <- function(deployment.name, version,  preload_content=TRUE, ...)
 }
 
 
-#' @title Rebuild revision
-#' @description Create a new build for a revision of a deployment version
-#' @param deployment.name  character
-#' @param revision.id  character
-#' @param version  character
-#' @param data (optional) list(key = "value")
+#' @title List template deployments
+#' @description Get the list of all available template deployments
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
-#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
 #'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
 #'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
-#'  A dictionary containing details of the build
-#'   - `id`: Unique identifier for the build (UUID)
-#'   - `revision`: UUID of the revision to which the build is linked
-#'   - `creation_date`: The date when the build was created
-#'   - `status`: Status of the build. Can be 'queued', 'building', 'validating', 'success' or 'failed'.
-#'   - `error_message`: Error message which explains why the build has failed. It is empty if the build is successful.
-#'   - `trigger`: Action that triggered the build
-#'   - `has_request_method`: Whether the build has a 'request' method
-#'   - `has_requests_method`: Whether the build has a 'requests' method
+#'  - `id`: Unique identifier for the template deployment (UUID) 
+#'   - `details`: A dictionary containing all the required fields to create a deployment and a deployment version for the template deployment
 #' @examples
 #' \dontrun{
 #' # Use environment variables
-#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
-#' result <- ubiops::revisions_rebuild(
-#'    deployment.name, revision.id, version,
-#'    data = NULL
+#' result <- ubiops::template_deployments_list(
+#'    
 #' )
 #' 
 #' # Or provide directly
-#' result <- ubiops::revisions_rebuild(
-#'    deployment.name, revision.id, version,
-#'    data = NULL, 
-#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' result <- ubiops::template_deployments_list(
+#'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
 #' print(result)
@@ -2460,36 +2287,12 @@ revisions_list <- function(deployment.name, version,  preload_content=TRUE, ...)
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-revisions_rebuild <- function(deployment.name, revision.id, version, data=NULL,  preload_content=TRUE, ...){
+template_deployments_list <- function( preload_content=TRUE, ...){
   query_params <- list()
 
-  if (missing(`deployment.name`)) {
-    stop("Missing required parameter `deployment.name`.")
-  }
-  if (missing(`revision.id`)) {
-    stop("Missing required parameter `revision.id`.")
-  }
-  if (missing(`version`)) {
-    stop("Missing required parameter `version`.")
-  }
   
-  if (!missing(`data`) && !is.null(`data`)) {
-    body <- rjson::toJSON(data)
-  } else {
-    body <- NULL
-  }
-  url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}/rebuild"
-  if (!missing(`deployment.name`)) {
-    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
-  }
-  if (!missing(`revision.id`)) {
-    url_path <- gsub("\\{revision_id\\}", utils::URLencode(as.character(`revision.id`), reserved = TRUE), url_path)
-  }
-  if (!missing(`version`)) {
-    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
-  }
-
-  api.response <- call_api(url_path, "POST", body, query_params, ...)
+  url_path <- "/template-deployments"
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),

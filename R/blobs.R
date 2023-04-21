@@ -8,7 +8,7 @@
 # Blobs operations
 
 
-#' @title Upload a blob
+#' @title [DEPRECATED] Upload a blob
 #' @description Upload a blob to a project. The uploaded blob file can be retrieved by passing the blob_id. The returned blob_id may be passed in a deployment or pipeline request as input.
 #' @param file  file path - Example: file.path("path", "to", "file")
 #' @param blob.ttl (optional) integer
@@ -54,6 +54,8 @@
 #' }
 #' @export
 blobs_create <- function(file, blob.ttl=NULL,  preload_content=TRUE, ...){
+  base::.Deprecated(msg = "'blobs_create' is deprecated and will be removed in version 1.0.0")
+
   query_params <- list()
 
   if (missing(`file`)) {
@@ -80,7 +82,7 @@ blobs_create <- function(file, blob.ttl=NULL,  preload_content=TRUE, ...){
 }
 
 
-#' @title Delete a blob
+#' @title [DEPRECATED] Delete a blob
 #' @description Delete a blob from a project
 #' @param blob.id  character
 #' @param ...
@@ -111,6 +113,8 @@ blobs_create <- function(file, blob.ttl=NULL,  preload_content=TRUE, ...){
 #' }
 #' @export
 blobs_delete <- function(blob.id,  ...){
+  base::.Deprecated(msg = "'blobs_delete' is deprecated and will be removed in version 1.0.0")
+
   query_params <- list()
 
   if (missing(`blob.id`)) {
@@ -127,7 +131,7 @@ blobs_delete <- function(blob.id,  ...){
 }
 
 
-#' @title Get a blob
+#' @title [DEPRECATED] Get a blob
 #' @description Download a blob file in a project
 #' @param blob.id  character
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the output file is loaded and written to the storage location defined by UBIOPS_TEMP_FOLDER_PATH. When FALSE, unprocessed API response object is returned. - Default = FALSE
@@ -175,6 +179,8 @@ blobs_delete <- function(blob.id,  ...){
 #' }
 #' @export
 blobs_get <- function(blob.id,  preload_content=FALSE, ...){
+  base::.Deprecated(msg = "'blobs_get' is deprecated and will be removed in version 1.0.0")
+
   query_params <- list()
 
   if (missing(`blob.id`)) {
@@ -196,7 +202,7 @@ blobs_get <- function(blob.id,  preload_content=FALSE, ...){
 }
 
 
-#' @title List blobs
+#' @title [DEPRECATED] List blobs
 #' @description List all blobs in a project
 #' @param range (optional) integer
 #' @param creation.date (optional) character
@@ -240,6 +246,8 @@ blobs_get <- function(blob.id,  preload_content=FALSE, ...){
 #' }
 #' @export
 blobs_list <- function(range=NULL, creation.date=NULL,  preload_content=TRUE, ...){
+  base::.Deprecated(msg = "'blobs_list' is deprecated and will be removed in version 1.0.0")
+
   query_params <- list()
 
   query_params['range'] <- range
@@ -262,7 +270,7 @@ blobs_list <- function(range=NULL, creation.date=NULL,  preload_content=TRUE, ..
 }
 
 
-#' @title Update a blob
+#' @title [DEPRECATED] Update a blob
 #' @description Overwrite a blob with given blob id. The uploaded blob file can be retrieved by passing the blob_id.
 #' @param blob.id  character
 #' @param file  file path - Example: file.path("path", "to", "file")
@@ -309,6 +317,8 @@ blobs_list <- function(range=NULL, creation.date=NULL,  preload_content=TRUE, ..
 #' }
 #' @export
 blobs_update <- function(blob.id, file, blob.ttl=NULL,  preload_content=TRUE, ...){
+  base::.Deprecated(msg = "'blobs_update' is deprecated and will be removed in version 1.0.0")
+
   query_params <- list()
 
   if (missing(`blob.id`)) {

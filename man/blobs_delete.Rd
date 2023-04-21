@@ -2,7 +2,7 @@
 % Please edit documentation in R/blobs.R
 \name{blobs_delete}
 \alias{blobs_delete}
-\title{Delete a blob}
+\title{[DEPRECATED] Delete a blob}
 \usage{
 blobs_delete(blob.id, ...)
 }

@@ -41,8 +41,8 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 }
 \value{
 Response from the API
- - `start_date`: Timestamp denoting the start of the period over which the metric was measured
-  - `end_date`: Timestamp denoting the end of the period over which the metric was measured
+ - `start_date`: Start date of the period over which the metric was measured
+  - `end_date`: End date of the period which the metric was measured
   - `value`: Aggregated metric value for the given interval
 }
 \description{

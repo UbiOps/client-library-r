@@ -520,17 +520,13 @@ List the total number of resources used by this organization
 A list containing the number of
 
 - projects
-
 - users
-
 - deployments
-
 - deployment_versions
-
 - pipelines
-
 - pipeline_versions
-
+- buckets
+- environments
 currently used by the organization.
 
 ## Response Examples
@@ -542,7 +538,9 @@ currently used by the organization.
   "deployments": 30,
   "deployment_versions": 47,
   "pipelines": 2,
-  "pipeline_versions": 4
+  "pipeline_versions": 4,
+  "buckets": 2,
+  "environments": 2
 }
 ```
 
@@ -672,9 +670,9 @@ Get resource usage for the organization. It contains **the details of each metri
 
 ### Optional Parameters
 
-- `start_date`: date indicating the start date to fetch usage data from. If omitted, results are generated for current subscription period.
-- `end_date`: date indicating the end date to fetch usage data until. If omitted, results are generated for current subscription period.
-- `interval`: interval for which the usage data is fetched. It can be 'day' or 'month'. It defaults to 'month'.
+- `start_date`: Start date for the usage data to be returned. If omitted, results are generated for current subscription period.
+- `end_date`: End date for the usage data to be returned. If omitted, results are generated for current subscription period.
+- `interval`: Interval for the usage data. It can be 'day' or 'month'. It defaults to 'month'.
 
 If no **start_date** or **end_date** is given, the current subscription period is used, e.g. if the usage details are requested on 01-12-2020 and the subscription started on 20-11-2020, the results will contain data from 20-11-2020 to 20-12-2020.
 When **start_date** and **end_date** are given, this month period is used, e.g. if 12-11-2020 is given as start date and 12-12-2020 as end date, the results will contain data from 12-11-2020 to 12-12-2020.
@@ -684,8 +682,8 @@ When **start_date** and **end_date** are given, this month period is used, e.g. 
 - `metric`: Metric name
 - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
 - `usage`: an array of objects each containing the following:
-  - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
-  - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+  - `start_date`: Start date of the current subscription period or the provided date
+  - `end_date`: End date of the current subscription period or the provided date
   - `value`: Aggregated metric value for the given unit over the given month
 
 ## Response Examples

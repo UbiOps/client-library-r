@@ -4,6 +4,7 @@ All URIs are relative to *https://api.ubiops.com/v2.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**environment_build_dependencies_list**](environments.md#environment_build_dependencies_list) | **GET** /projects/{project_name}/environments/{environment_name}/revisions/{revision_id}/builds/{build_id}/dependency-files | List dependency files
 [**environment_builds_get**](environments.md#environment_builds_get) | **GET** /projects/{project_name}/environments/{environment_name}/revisions/{revision_id}/builds/{build_id} | Get build
 [**environment_builds_list**](environments.md#environment_builds_list) | **GET** /projects/{project_name}/environments/{environment_name}/revisions/{revision_id}/builds | List builds
 [**environment_builds_update**](environments.md#environment_builds_update) | **PATCH** /projects/{project_name}/environments/{environment_name}/revisions/{revision_id}/builds/{build_id} | Update build
@@ -19,6 +20,59 @@ Method | HTTP request | Description
 [**environments_update**](environments.md#environments_update) | **PATCH** /projects/{project_name}/environments/{environment_name} | Update environment
 [**environments_usage**](environments.md#environments_usage) | **GET** /projects/{project_name}/environments/{environment_name}/usage | List usage of environment
 
+
+# **environment_build_dependencies_list**
+> environment_build_dependencies_list(build.id, environment.name, revision.id)
+
+List dependency files
+
+## Description
+List the dependency files and their contents in an environment build
+
+### Response Structure
+A list of details of the dependency files
+
+- `name`: Name of the dependency file
+- `content`: Content of the dependency file
+
+## Response Examples
+
+```
+[
+  {
+    "name": "requirements.txt",
+    "content": "ubiops==3.6.1\nrequests==2.30.0\n"
+  },
+  {
+    "name": "ubiops.yaml",
+    "content": "environment_variables:\n- ACCEPT_EULA=Y\napt:\n  packages:\n    - python3-dev\n"
+  }
+]
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::environment_build_dependencies_list(
+  build.id, environment.name, revision.id
+)
+
+# Or provide directly
+result <- ubiops::environment_build_dependencies_list(
+  build.id, environment.name, revision.id,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
 
 # **environment_builds_get**
 > environment_builds_get(build.id, environment.name, revision.id)
@@ -530,6 +584,8 @@ Details of the created environment
 - `gpu_required`: A boolean indicating whether the environment requires GPUs
 - `status`: Status of the environment
 - `implicit`: A boolean indicating whether the environment is implicitly created
+- `hidden`: A boolean indicating whether the environment is hidden
+- `deprecated`: A boolean indicating whether the environment is deprecated
 
 ## Response Examples
 
@@ -548,7 +604,9 @@ Details of the created environment
   },
   "gpu_required": false,
   "status": "active",
-  "implicit": false
+  "implicit": false,
+  "deprecated": false,
+  "hidden": false
 }
 ```
 
@@ -638,6 +696,8 @@ Details of an environment
 - `latest_revision`: UUID of the latest revision of the environment
 - `latest_build`: UUID of the latest build of the environment
 - `implicit`: A boolean indicating whether the environment is implicitly created
+- `hidden`: A boolean indicating whether the environment is hidden
+- `deprecated`: A boolean indicating whether the environment is deprecated
 
 ## Response Examples
 
@@ -657,6 +717,8 @@ Details of an environment
   "gpu_required": false,
   "status": "active",
   "implicit": false,
+  "deprecated": false,
+  "hidden": false,
   "active_revision": "8760570f-6eda-470b-99af-bde810d418d8",
   "active_build": "e3021050-b9ac-4b8e-89f4-adb9e7c9aba6",
   "latest_revision": "8760570f-6eda-470b-99af-bde810d418d8",
@@ -716,6 +778,8 @@ A list of details of the environments
 - `gpu_required`: A boolean indicating whether the environment requires GPUs
 - `status`: Status of the environment
 - `implicit`: A boolean indicating whether the environment is implicitly created
+- `hidden`: A boolean indicating whether the environment is hidden
+- `deprecated`: A boolean indicating whether the environment is deprecated
 
 ## Response Examples
 
@@ -733,7 +797,9 @@ A list of details of the environments
     "labels": {},
     "gpu_required": false,
     "status": "active",
-    "implicit": false
+    "implicit": false,
+    "deprecated": false,
+    "hidden": false
   },
   {
     "id": "3a7d94ca-4df4-4be3-857c-d6b9995cd17a",
@@ -749,7 +815,9 @@ A list of details of the environments
     },
     "gpu_required": false,
     "status": "active",
-    "implicit": false
+    "implicit": false,
+    "deprecated": false,
+    "hidden": false
   }
 ]
 ```
@@ -822,6 +890,8 @@ Details of the updated environment
 - `latest_revision`: UUID of the latest revision of the environment
 - `latest_build`: UUID of the latest build of the environment
 - `implicit`: A boolean indicating whether the environment is implicitly created
+- `hidden`: A boolean indicating whether the environment is hidden
+- `deprecated`: A boolean indicating whether the environment is deprecated
 
 ## Response Examples
 
@@ -841,6 +911,8 @@ Details of the updated environment
   "gpu_required": false,
   "status": "active",
   "implicit": false,
+  "deprecated": false,
+  "hidden": false,
   "active_revision": "8760570f-6eda-470b-99af-bde810d418d8",
   "active_build": "e3021050-b9ac-4b8e-89f4-adb9e7c9aba6",
   "latest_revision": "8760570f-6eda-470b-99af-bde810d418d8",

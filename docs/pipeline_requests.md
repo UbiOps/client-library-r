@@ -721,6 +721,33 @@ A list of dictionaries containing the details of the pipeline requests with the 
 ]
 ```
 
+With start_date="2020-03-28T20:00:26+00:00" and end_date="2020-03-28T22:00:26+00:00":
+
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "status": "completed",
+    "success": false,
+    "time_created": "2020-03-28T20:00:43.613+00:00",
+    "time_started": "2020-03-28T20:00:50.276+00:00",
+    "time_completed": "2020-03-28T20:00:55.241+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "status": "completed",
+    "success": true,
+    "time_created": "2020-03-28T21:12:45.613+00:00",
+    "time_started": "2020-03-28T21:13:00.276+00:00",
+    "time_completed": "2020-03-28T21:13:05.241+00:00"
+  }
+]
+```
+
 ### Example
 ```R
 # Use environment variables
@@ -1269,6 +1296,33 @@ A list of dictionaries containing the details of the pipeline version requests w
     "time_created": "2020-03-28T20:00:26.613+00:00",
     "time_started": "2020-03-28T20:00:41.276+00:00",
     "time_completed": "2020-03-28T20:00:42.241+00:00"
+  }
+]
+```
+
+With start_date="2020-03-28T20:00:26+00:00" and end_date="2020-03-28T22:00:26+00:00":
+
+```
+[
+  {
+    "id": "69eca481-8576-49e8-8e20-ea56f2005bcb",
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "status": "completed",
+    "success": false,
+    "time_created": "2020-03-28T20:00:43.613+00:00",
+    "time_started": "2020-03-28T20:00:50.276+00:00",
+    "time_completed": "2020-03-28T20:00:55.241+00:00"
+  },
+  {
+    "id": "2521378e-263e-4e2e-85e9-a96254b36536",
+    "pipeline": "pipeline-1",
+    "version": "v1",
+    "status": "completed",
+    "success": true,
+    "time_created": "2020-03-28T21:12:45.613+00:00",
+    "time_started": "2020-03-28T21:13:00.276+00:00",
+    "time_completed": "2020-03-28T21:13:05.241+00:00"
   }
 ]
 ```

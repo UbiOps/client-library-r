@@ -63,6 +63,7 @@ export(revisions_list)
 export(template_deployments_list)
 
 # Environments
+export(environment_build_dependencies_list)
 export(environment_builds_get)
 export(environment_builds_list)
 export(environment_builds_update)

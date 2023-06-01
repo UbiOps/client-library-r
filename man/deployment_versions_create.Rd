@@ -55,7 +55,7 @@ Create a version for a deployment. The first version of a deployment is set as d
 data <- list(
  version = "version",
  language = "language",  # (optional)
- environment = 'python3-7',  # (optional)
+ environment = 'python3-10',  # (optional)
  instance_type = "instance_type",  # (optional)
  maximum_instances = 0,  # (optional)
  minimum_instances = 0,  # (optional)

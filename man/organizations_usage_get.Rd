@@ -34,8 +34,8 @@ Response from the API
  - `metric`: Metric name
   - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
   - `usage`: an array of objects each containing the following:
-    - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
-    - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+    - `start_date`: Start date of the current subscription period or the provided date
+    - `end_date`: End date of the current subscription period or the provided date
     - `value`: Aggregated metric value for the given unit over the given month
 }
 \description{

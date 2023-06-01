@@ -545,12 +545,14 @@ organizations_list <- function( preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list containing the number of
-#'   - projects 
-#'   - users 
-#'   - deployments 
-#'   - deployment_versions 
-#'   - pipelines 
-#'   - pipeline_versions 
+#'   - projects
+#'   - users
+#'   - deployments
+#'   - deployment_versions
+#'   - pipelines
+#'   - pipeline_versions
+#'   - buckets
+#'   - environments
 #'   currently used by the organization.
 #' @examples
 #' \dontrun{
@@ -692,8 +694,8 @@ organizations_update <- function(organization.name, data,  preload_content=TRUE,
 #'  - `metric`: Metric name
 #'   - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
 #'   - `usage`: an array of objects each containing the following:
-#'     - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
-#'     - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+#'     - `start_date`: Start date of the current subscription period or the provided date
+#'     - `end_date`: End date of the current subscription period or the provided date
 #'     - `value`: Aggregated metric value for the given unit over the given month
 #' @examples
 #' \dontrun{

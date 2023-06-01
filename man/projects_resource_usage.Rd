@@ -18,10 +18,12 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list containing the number of
-  - deployments 
-  - deployment_versions 
-  - pipelines 
-  - pipeline_versions 
+  - deployments
+  - deployment_versions
+  - pipelines
+  - pipeline_versions
+  - buckets
+  - environments
   currently defined in the project.
 }
 \description{

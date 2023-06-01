@@ -1117,7 +1117,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' data <- list(
 #'  version = "version",
 #'  language = "language",  # (optional)
-#'  environment = 'python3-7',  # (optional)
+#'  environment = 'python3-10',  # (optional)
 #'  instance_type = "instance_type",  # (optional)
 #'  maximum_instances = 0,  # (optional)
 #'  minimum_instances = 0,  # (optional)

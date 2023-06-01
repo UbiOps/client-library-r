@@ -38,6 +38,8 @@ Response from the API
   - `latest_revision`: UUID of the latest revision of the environment
   - `latest_build`: UUID of the latest build of the environment
   - `implicit`: A boolean indicating whether the environment is implicitly created
+  - `hidden`: A boolean indicating whether the environment is hidden
+  - `deprecated`: A boolean indicating whether the environment is deprecated
 }
 \description{
 Update an environment. When updating labels, the labels will replace the existing value for labels.

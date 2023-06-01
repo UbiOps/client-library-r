@@ -8,6 +8,83 @@
 # Environments operations
 
 
+#' @title List dependency files
+#' @description List the dependency files and their contents in an environment build
+#' @param build.id  character
+#' @param environment.name  character
+#' @param revision.id  character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  A list of details of the dependency files
+#'   - `name`: Name of the dependency file
+#'   - `content`: Content of the dependency file
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::environment_build_dependencies_list(
+#'    build.id, environment.name, revision.id
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::environment_build_dependencies_list(
+#'    build.id, environment.name, revision.id,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+environment_build_dependencies_list <- function(build.id, environment.name, revision.id,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`build.id`)) {
+    stop("Missing required parameter `build.id`.")
+  }
+  if (missing(`environment.name`)) {
+    stop("Missing required parameter `environment.name`.")
+  }
+  if (missing(`revision.id`)) {
+    stop("Missing required parameter `revision.id`.")
+  }
+  
+  url_path <- "/projects/{project_name}/environments/{environment_name}/revisions/{revision_id}/builds/{build_id}/dependency-files"
+  if (!missing(`build.id`)) {
+    url_path <- gsub("\\{build_id\\}", utils::URLencode(as.character(`build.id`), reserved = TRUE), url_path)
+  }
+  if (!missing(`environment.name`)) {
+    url_path <- gsub("\\{environment_name\\}", utils::URLencode(as.character(`environment.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`revision.id`)) {
+    url_path <- gsub("\\{revision_id\\}", utils::URLencode(as.character(`revision.id`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title Get build
 #' @description Retrieve details of a build of an environment
 #' @param build.id  character
@@ -646,6 +723,8 @@ environment_revisions_rebuild <- function(environment.name, revision.id, data=NU
 #'   - `gpu_required`: A boolean indicating whether the environment requires GPUs
 #'   - `status`: Status of the environment
 #'   - `implicit`: A boolean indicating whether the environment is implicitly created
+#'   - `hidden`: A boolean indicating whether the environment is hidden
+#'   - `deprecated`: A boolean indicating whether the environment is deprecated
 #' @examples
 #' \dontrun{
 #' data <- list(
@@ -777,6 +856,8 @@ environments_delete <- function(environment.name,  ...){
 #'   - `latest_revision`: UUID of the latest revision of the environment
 #'   - `latest_build`: UUID of the latest build of the environment
 #'   - `implicit`: A boolean indicating whether the environment is implicitly created
+#'   - `hidden`: A boolean indicating whether the environment is hidden
+#'   - `deprecated`: A boolean indicating whether the environment is deprecated
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -851,6 +932,8 @@ environments_get <- function(environment.name,  preload_content=TRUE, ...){
 #'   - `gpu_required`: A boolean indicating whether the environment requires GPUs
 #'   - `status`: Status of the environment
 #'   - `implicit`: A boolean indicating whether the environment is implicitly created
+#'   - `hidden`: A boolean indicating whether the environment is hidden
+#'   - `deprecated`: A boolean indicating whether the environment is deprecated
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -927,6 +1010,8 @@ environments_list <- function(labels=NULL, environment.type=NULL,  preload_conte
 #'   - `latest_revision`: UUID of the latest revision of the environment
 #'   - `latest_build`: UUID of the latest build of the environment
 #'   - `implicit`: A boolean indicating whether the environment is implicitly created
+#'   - `hidden`: A boolean indicating whether the environment is hidden
+#'   - `deprecated`: A boolean indicating whether the environment is deprecated
 #' @examples
 #' \dontrun{
 #' data <- list(

@@ -86,8 +86,8 @@ instance_types_list <- function( preload_content=TRUE, ...){
 #'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
-#'  - `start_date`: Timestamp denoting the start of the period over which the metric was measured
-#'   - `end_date`: Timestamp denoting the end of the period over which the metric was measured
+#'  - `start_date`: Start date of the period over which the metric was measured
+#'   - `end_date`: End date of the period which the metric was measured
 #'   - `value`: Aggregated metric value for the given interval
 #' @examples
 #' \dontrun{
@@ -1203,10 +1203,12 @@ projects_log_list <- function(data=NULL,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list containing the number of
-#'   - deployments 
-#'   - deployment_versions 
-#'   - pipelines 
-#'   - pipeline_versions 
+#'   - deployments
+#'   - deployment_versions
+#'   - pipelines
+#'   - pipeline_versions
+#'   - buckets
+#'   - environments
 #'   currently defined in the project.
 #' @examples
 #' \dontrun{
@@ -1342,8 +1344,8 @@ projects_update <- function(data,  preload_content=TRUE, ...){
 #'  - `metric`: Metric name
 #'   - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
 #'   - `usage`: an array of objects each containing the following:
-#'     - `start_date`: Timestamp denoting the start of the current subscription period or the provided date
-#'     - `end_date`: Timestamp denoting the end of the current subscription period or the provided date
+#'     - `start_date`: Start date of the current subscription period or the provided date
+#'     - `end_date`: End date of the current subscription period or the provided date
 #'     - `value`: Aggregated metric value for the given unit over the given month
 #' @examples
 #' \dontrun{

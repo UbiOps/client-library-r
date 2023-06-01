@@ -32,6 +32,8 @@ Response from the API
   - `gpu_required`: A boolean indicating whether the environment requires GPUs
   - `status`: Status of the environment
   - `implicit`: A boolean indicating whether the environment is implicitly created
+  - `hidden`: A boolean indicating whether the environment is hidden
+  - `deprecated`: A boolean indicating whether the environment is deprecated
 }
 \description{
 Create a custom environment

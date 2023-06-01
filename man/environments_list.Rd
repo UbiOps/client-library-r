@@ -39,6 +39,8 @@ Response from the API
   - `gpu_required`: A boolean indicating whether the environment requires GPUs
   - `status`: Status of the environment
   - `implicit`: A boolean indicating whether the environment is implicitly created
+  - `hidden`: A boolean indicating whether the environment is hidden
+  - `deprecated`: A boolean indicating whether the environment is deprecated
 }
 \description{
 Environments can be filtered according to the labels they have by giving labels as a query parameter. Environments that have at least one of the labels on which is filtered, are returned.

@@ -1,6 +1,6 @@
 Package: ubiops
 Title: R Package Client for UbiOps
-Version: 0.13.0
+Version: 0.14.0
 Authors@R: person("UbiOps", email = "info@ubiops.com", role = c("aut", "cre"))
 Description: Client Library to interact with the UbiOps API.
 URL: https://github.com/UbiOps/client-library-r

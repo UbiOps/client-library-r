@@ -9,8 +9,8 @@
 
 
 #' @title Create a new user
-#' @description Create a new user with the given details. After creation, an email is send to the email address to activate the account. The user is required to accept the terms and conditions. The password needs to be at least 8 characters long.
-#' @param data  named list of: [ email, password, name (optional), surname (optional), terms_conditions, newsletter (optional) ]
+#' @description Create a new user with the given details. After creation, an email is send to the email address to activate the account. The password needs to be at least 8 characters long.
+#' @param data  named list of: [ email, password, name (optional), surname (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -28,9 +28,7 @@
 #'  email = "email",
 #'  password = "password",
 #'  name = "name",  # (optional)
-#'  surname = "surname",  # (optional)
-#'  terms_conditions = FALSE,
-#'  newsletter = FALSE  # (optional)
+#'  surname = "surname"  # (optional)
 #' )
 #'
 #' # Use environment variables

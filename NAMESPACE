@@ -60,6 +60,7 @@ export(revisions_file_download)
 export(revisions_file_upload)
 export(revisions_get)
 export(revisions_list)
+export(revisions_rebuild)
 export(template_deployments_list)
 
 # Environments

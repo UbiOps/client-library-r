@@ -34,6 +34,7 @@ Response from the API
    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
    - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
    - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
+   - `pipeline_requests`: A list of requests to the sub-pipelines in the pipeline. With the sub-pipeline request ids provided in this list, it's possible to collect the results of the sub-pipeline requests separately.
    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 }
 \description{

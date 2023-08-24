@@ -32,6 +32,7 @@ Method | HTTP request | Description
 [**revisions_file_upload**](deployments.md#revisions_file_upload) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions | Upload deployment file
 [**revisions_get**](deployments.md#revisions_get) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id} | Get revision
 [**revisions_list**](deployments.md#revisions_list) | **GET** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions | List revisions
+[**revisions_rebuild**](deployments.md#revisions_rebuild) | **POST** /projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}/rebuild | Rebuild revision
 [**template_deployments_list**](deployments.md#template_deployments_list) | **GET** /template-deployments | List template deployments
 
 
@@ -1582,12 +1583,13 @@ Possible data types for the input and output fields are:
 - **int**: integer
 - **string**: string
 - **double**: double precision floating point
-- **bool**: boolean value (False/True)
-- **timestamp**: timestamp
+- **bool**: boolean value (True/False)
+- **dict**: Python dictionary
+- **file**: a file. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field.
 - **array_int**: an array of integers
 - **array_double**: an array of double precision floating points
 - **array_string**: an array of strings
-- **file**: a file field. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field.
+- **array_file**: an array of files
 
 Possible widgets for the input fields are:
 - **textbox**: textbox
@@ -2385,6 +2387,67 @@ result <- ubiops::revisions_list(
 # Or provide directly
 result <- ubiops::revisions_list(
   deployment.name, version,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
+# **revisions_rebuild**
+> revisions_rebuild(deployment.name, revision.id, version, data)
+
+Rebuild revision
+
+## Description
+Trigger a rebuild for a revision of a deployment
+
+### Response Structure
+Details of the created revision
+
+- `id`: Unique identifier for the revision (UUID)
+- `version`: Version to which the revision is linked
+- `creation_date`: The date when the revision was created
+- `created_by`: The email of the user that created the revision
+- `status`: Status of the revision
+- `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+- `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+- `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
+
+## Response Examples
+
+```
+{
+  "id": "a009d7c9-67e4-4d3c-89fd-d3c8b07c7242",
+  "version": "v1",
+  "creation_date": "2022-12-23T16:35:13.069+00:00",
+  "created_by": "test@example.com",
+  "status": "building",
+  "error_message": "",
+  "has_request_method": true,
+  "has_requests_method": false
+}
+```
+
+### Example
+```R
+data <- list(input_field_1 = "input_value_1", input_field_2 = "input_value_2")
+
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::revisions_rebuild(
+  deployment.name, revision.id, version, data
+)
+
+# Or provide directly
+result <- ubiops::revisions_rebuild(
+  deployment.name, revision.id, version, data,
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

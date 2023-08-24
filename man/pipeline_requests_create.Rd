@@ -44,10 +44,23 @@ Response from the API
       - `version`: Name of the version the request was made to
       - `success`: A boolean value that indicates whether the deployment request was successful
       - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
-   - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
+  - `operator_requests`: A list of dictionaries containing the results of the operator requests made for the version objects in the pipeline. The dictionaries contain the following fields:
+      - `id`: Unique identifier for the operator request
+      - `pipeline_object`: Name of the object in the pipeline
+      - `operator`: Name of the operator the request was made to
+      - `success`: A boolean value that indicates whether the operator request was successful
+      - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+  - `pipeline_requests`: A list of dictionaries containing the results of the sub-pipeline requests made for the version objects in the pipeline. The dictionaries contain the following fields:
+      - `id`: Unique identifier for the sub-pipeline request
+      - `pipeline_object`: Name of the object in the pipeline
+      - `pipeline`: Name of the sub-pipeline the request was made to
+      - `version`: Name of the version the request was made to
+      - `success`: A boolean value that indicates whether the sub-pipeline request was successful
+      - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+  - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
 }
 \description{
-Make a direct request to the default version of a pipeline. This method returns all the results of the deployment requests made within the pipeline version.
+Make a direct request to the default version of a pipeline. This method returns all the results of the deployment/operator/sub-pipeline requests made within the pipeline version.
 }
 \examples{
 \dontrun{

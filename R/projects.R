@@ -19,13 +19,14 @@
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the instance type
-#'   - `id`: Unique identifier for the instance type (UUID) 
-#'   - `name`: Name of the deployment instance type 
-#'   - `display_name`: Readable name of the deployment instance type 
-#'   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi) 
-#'   - `cpu_allocation`: Integer indicating CPU allocation for this instance type (milliCPU) 
-#'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type 
+#'   - `id`: Unique identifier for the instance type (UUID)
+#'   - `name`: Name of the deployment instance type
+#'   - `display_name`: Readable name of the deployment instance type
+#'   - `memory_allocation`: Integer indicating memory allocation for this instance type (Mi)
+#'   - `cpu_allocation`: Float indicating vCPU allocation for this instance type
+#'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type
 #'   - `storage_allocation`: Integer indicating the maximum storage that can be used by this instance type (MB)
+#'   - `credit_rate`: Credits used per hour for this instance type
 #' @examples
 #' \dontrun{
 #' # Use environment variables

@@ -1551,7 +1551,7 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 
 
 #' @title Create deployments
-#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (False/True) - **timestamp**: timestamp - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **file**: a file field. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field.  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
+#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (True/False) - **dict**: Python dictionary - **file**: a file. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field. - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **array_file**: an array of files  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
 #' @param data  named list of: [ name, description (optional), input_type, output_type, input_fields (optional), output_fields (optional), labels (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -2242,6 +2242,97 @@ revisions_list <- function(deployment.name, version,  preload_content=TRUE, ...)
   }
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Rebuild revision
+#' @description Trigger a rebuild for a revision of a deployment
+#' @param deployment.name  character
+#' @param revision.id  character
+#' @param version  character
+#' @param data  list(key = "value") - Example: list(input_field_1 = "input_value_1", input_field_2 = "input_value_2")
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  Details of the created revision
+#'   - `id`: Unique identifier for the revision (UUID)
+#'   - `version`: Version to which the revision is linked
+#'   - `creation_date`: The date when the revision was created
+#'   - `created_by`: The email of the user that created the revision
+#'   - `status`: Status of the revision
+#'   - `error_message`: Error message which explains why the revision has failed. It is empty if the revision is successful.
+#'   - `has_request_method`: Whether the deployment code corresponding to the revision has a 'request' method
+#'   - `has_requests_method`: Whether the deployment code corresponding to the revision has a 'requests' method
+#' @examples
+#' \dontrun{
+#' data <- list(input_field_1 = "input_value_1", input_field_2 = "input_value_2")
+#'
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::revisions_rebuild(
+#'    deployment.name, revision.id, version, data
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::revisions_rebuild(
+#'    deployment.name, revision.id, version, data,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+revisions_rebuild <- function(deployment.name, revision.id, version, data,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`deployment.name`)) {
+    stop("Missing required parameter `deployment.name`.")
+  }
+  if (missing(`revision.id`)) {
+    stop("Missing required parameter `revision.id`.")
+  }
+  if (missing(`version`)) {
+    stop("Missing required parameter `version`.")
+  }
+  if (missing(`data`)) {
+    stop("Missing required parameter `data`.")
+  }
+  
+  body <- rjson::toJSON(data)
+  
+  url_path <- "/projects/{project_name}/deployments/{deployment_name}/versions/{version}/revisions/{revision_id}/rebuild"
+  if (!missing(`deployment.name`)) {
+    url_path <- gsub("\\{deployment_name\\}", utils::URLencode(as.character(`deployment.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`revision.id`)) {
+    url_path <- gsub("\\{revision_id\\}", utils::URLencode(as.character(`revision.id`), reserved = TRUE), url_path)
+  }
+  if (!missing(`version`)) {
+    url_path <- gsub("\\{version\\}", utils::URLencode(as.character(`version`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "POST", body, query_params, ...)
   if (preload_content) {
     deserializedRespObj <- tryCatch(
       deserialize(api.response),

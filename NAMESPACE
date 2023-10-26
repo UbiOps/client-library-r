@@ -214,3 +214,12 @@ export(service_status)
 # User
 export(user_create)
 export(user_delete)
+
+# Webhooks
+export(webhook_tests_create)
+export(webhook_tests_get)
+export(webhooks_create)
+export(webhooks_delete)
+export(webhooks_get)
+export(webhooks_list)
+export(webhooks_update)

@@ -69,7 +69,7 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type"  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type"
     )
   ),
   request_data = list(key = "value")  # (optional)
@@ -432,12 +432,12 @@ data <- list(
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # (optional)
-  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = 'full',  # (optional)
   default_notification_group = "default_notification_group",  # (optional)
   objects = list(  # (optional)
     list(
       name = "name",
-      reference_type = 'deployment',  # one of: [deployment, operator, pipeline]  (optional)
+      reference_type = 'deployment',  # (optional)
       reference_name = "reference_name",
       version = "version",  # (optional)
       configuration = list(key = "value")  # (optional)
@@ -934,12 +934,12 @@ data <- list(
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # (optional)
-  request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = "request_retention_mode",  # (optional)
   default_notification_group = "default_notification_group",  # (optional)
   objects = list(  # (optional)
     list(
       name = "name",
-      reference_type = 'deployment',  # one of: [deployment, operator, pipeline]  (optional)
+      reference_type = 'deployment',  # (optional)
       reference_name = "reference_name",
       version = "version",  # (optional)
       configuration = list(key = "value")  # (optional)
@@ -1177,19 +1177,19 @@ Details of the created pipeline
 data <- list(
   name = "name",
   description = "description",  # (optional)
-  input_type = "input_type",  # one of: [structured, plain] 
+  input_type = "input_type",
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),
-  output_type = "output_type",  # one of: [structured, plain]  (optional)
+  output_type = "output_type",  # (optional)
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),
@@ -1579,19 +1579,19 @@ Details of the updated pipeline
 data <- list(
   name = "name",  # (optional)
   description = "description",  # (optional)
-  input_type = "input_type",  # one of: [structured, plain]  (optional)
+  input_type = "input_type",  # (optional)
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),
-  output_type = "output_type",  # one of: [structured, plain]  (optional)
+  output_type = "output_type",  # (optional)
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),

@@ -34,7 +34,7 @@
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  provider = "provider",  # one of: [ubiops, google_cloud_storage, amazon_s3, azure_blob_storage] 
+#'  provider = "provider",
 #'  credentials = list(key = "value"),  # (optional)
 #'  configuration = list(key = "value"),  # (optional)
 #'  ttl = 0,  # (optional)

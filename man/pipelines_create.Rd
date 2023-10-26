@@ -40,19 +40,19 @@ Create a pipeline in a project.   The input_fields represent the fields that the
 data <- list(
  name = "name",
  description = "description",  # (optional)
- input_type = "input_type",  # one of: [structured, plain] 
+ input_type = "input_type",
  input_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+     data_type = "data_type",
      widget = widget  # (optional)
    )
  ),
- output_type = "output_type",  # one of: [structured, plain]  (optional)
+ output_type = "output_type",  # (optional)
  output_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+     data_type = "data_type",
      widget = widget  # (optional)
    )
  ),

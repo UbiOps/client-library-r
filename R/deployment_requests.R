@@ -670,7 +670,7 @@ deployment_requests_list <- function(deployment.name, status=NULL, success=NULL,
 #' @examples
 #' \dontrun{
 #' data <- list(
-#'  status = "status",  # one of: [cancelled]  (optional)
+#'  status = "status",  # (optional)
 #'  notification_group = "notification_group"  # (optional)
 #' )
 #'
@@ -1256,7 +1256,7 @@ deployment_version_requests_list <- function(deployment.name, version, status=NU
 #' @examples
 #' \dontrun{
 #' data <- list(
-#'  status = "status",  # one of: [cancelled]  (optional)
+#'  status = "status",  # (optional)
 #'  notification_group = "notification_group"  # (optional)
 #' )
 #'

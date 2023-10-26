@@ -39,7 +39,7 @@ Update a deployment request for a deployment version. It is possible to **cancel
 \examples{
 \dontrun{
 data <- list(
- status = "status",  # one of: [cancelled]  (optional)
+ status = "status",  # (optional)
  notification_group = "notification_group"  # (optional)
 )
 

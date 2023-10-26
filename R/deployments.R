@@ -1078,7 +1078,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' @title Create deployment versions
 #' @description Create a version for a deployment. The first version of a deployment is set as default. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
-#' @param data  named list of: [ version, language (optional), environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
+#' @param data  named list of: [ version, environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1116,7 +1116,6 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' \dontrun{
 #' data <- list(
 #'  version = "version",
-#'  language = "language",  # (optional)
 #'  environment = 'python3-10',  # (optional)
 #'  instance_type = "instance_type",  # (optional)
 #'  maximum_instances = 0,  # (optional)
@@ -1126,7 +1125,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'  labels = list(key = "value"),  # (optional)
 #'  monitoring = "monitoring",  # (optional)
 #'  request_retention_time = 0,  # (optional)
-#'  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+#'  request_retention_mode = 'full',  # (optional)
 #'  default_notification_group = "default_notification_group",  # (optional)
 #'  maximum_queue_size_express = 0,  # (optional)
 #'  maximum_queue_size_batch = 0,  # (optional)
@@ -1484,7 +1483,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'  labels = list(key = "value"),  # (optional)
 #'  monitoring = "monitoring",  # (optional)
 #'  request_retention_time = 0,  # (optional)
-#'  request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
+#'  request_retention_mode = "request_retention_mode",  # (optional)
 #'  default_notification_group = "default_notification_group",  # (optional)
 #'  maximum_queue_size_express = 0,  # (optional)
 #'  maximum_queue_size_batch = 0,  # (optional)
@@ -1578,19 +1577,19 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 #' data <- list(
 #'  name = "name",
 #'  description = "description",  # (optional)
-#'  input_type = "input_type",  # one of: [structured, plain] 
-#'  output_type = "output_type",  # one of: [structured, plain] 
+#'  input_type = "input_type",
+#'  output_type = "output_type",
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+#'      data_type = "data_type",
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+#'      data_type = "data_type",
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
@@ -1866,14 +1865,14 @@ deployments_list <- function(labels=NULL,  preload_content=TRUE, ...){
 #'  input_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+#'      data_type = "data_type",
 #'      widget = widget  # (optional)
 #'    )
 #'  ),
 #'  output_fields = list(  # (optional)
 #'    list(
 #'      name = "name",
-#'      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+#'      data_type = "data_type",
 #'      widget = widget  # (optional)
 #'    )
 #'  ),

@@ -744,7 +744,7 @@ Update a deployment request for the default version of a deployment. It is possi
 ### Example
 ```R
 data <- list(
-  status = "status",  # one of: [cancelled]  (optional)
+  status = "status",  # (optional)
   notification_group = "notification_group"  # (optional)
 )
 
@@ -1281,7 +1281,7 @@ Update a deployment request for a deployment version. It is possible to **cancel
 ### Example
 ```R
 data <- list(
-  status = "status",  # one of: [cancelled]  (optional)
+  status = "status",  # (optional)
   notification_group = "notification_group"  # (optional)
 )
 

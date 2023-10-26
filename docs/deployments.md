@@ -1108,7 +1108,6 @@ Details of the created version
 ```R
 data <- list(
   version = "version",
-  language = "language",  # (optional)
   environment = 'python3-10',  # (optional)
   instance_type = "instance_type",  # (optional)
   maximum_instances = 0,  # (optional)
@@ -1118,7 +1117,7 @@ data <- list(
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # (optional)
-  request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = 'full',  # (optional)
   default_notification_group = "default_notification_group",  # (optional)
   maximum_queue_size_express = 0,  # (optional)
   maximum_queue_size_batch = 0,  # (optional)
@@ -1541,7 +1540,7 @@ data <- list(
   labels = list(key = "value"),  # (optional)
   monitoring = "monitoring",  # (optional)
   request_retention_time = 0,  # (optional)
-  request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
+  request_retention_mode = "request_retention_mode",  # (optional)
   default_notification_group = "default_notification_group",  # (optional)
   maximum_queue_size_express = 0,  # (optional)
   maximum_queue_size_batch = 0,  # (optional)
@@ -1770,19 +1769,19 @@ Details of the created deployment
 data <- list(
   name = "name",
   description = "description",  # (optional)
-  input_type = "input_type",  # one of: [structured, plain] 
-  output_type = "output_type",  # one of: [structured, plain] 
+  input_type = "input_type",
+  output_type = "output_type",
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),
@@ -2135,14 +2134,14 @@ data <- list(
   input_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),
   output_fields = list(  # (optional)
     list(
       name = "name",
-      data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+      data_type = "data_type",
       widget = widget  # (optional)
     )
   ),

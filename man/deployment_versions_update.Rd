@@ -74,7 +74,7 @@ data <- list(
  labels = list(key = "value"),  # (optional)
  monitoring = "monitoring",  # (optional)
  request_retention_time = 0,  # (optional)
- request_retention_mode = "request_retention_mode",  # one of: [none, metadata, full]  (optional)
+ request_retention_mode = "request_retention_mode",  # (optional)
  default_notification_group = "default_notification_group",  # (optional)
  maximum_queue_size_express = 0,  # (optional)
  maximum_queue_size_batch = 0,  # (optional)

@@ -9,7 +9,7 @@ deployment_versions_create(deployment.name, data, preload_content = TRUE, ...)
 \arguments{
 \item{deployment.name}{character}
 
-\item{data}{named list of: [ version, language (optional), environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
+\item{data}{named list of: [ version, environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -54,7 +54,6 @@ Create a version for a deployment. The first version of a deployment is set as d
 \dontrun{
 data <- list(
  version = "version",
- language = "language",  # (optional)
  environment = 'python3-10',  # (optional)
  instance_type = "instance_type",  # (optional)
  maximum_instances = 0,  # (optional)
@@ -64,7 +63,7 @@ data <- list(
  labels = list(key = "value"),  # (optional)
  monitoring = "monitoring",  # (optional)
  request_retention_time = 0,  # (optional)
- request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+ request_retention_mode = 'full',  # (optional)
  default_notification_group = "default_notification_group",  # (optional)
  maximum_queue_size_express = 0,  # (optional)
  maximum_queue_size_batch = 0,  # (optional)

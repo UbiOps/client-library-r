@@ -40,19 +40,19 @@ Create a deployment by defining the input/output type and input/output fields. I
 data <- list(
  name = "name",
  description = "description",  # (optional)
- input_type = "input_type",  # one of: [structured, plain] 
- output_type = "output_type",  # one of: [structured, plain] 
+ input_type = "input_type",
+ output_type = "output_type",
  input_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+     data_type = "data_type",
      widget = widget  # (optional)
    )
  ),
  output_fields = list(  # (optional)
    list(
      name = "name",
-     data_type = "data_type",  # one of: [int, string, double, bool, dict, array_int, array_double, array_string, blob, file, array_file] 
+     data_type = "data_type",
      widget = widget  # (optional)
    )
  ),

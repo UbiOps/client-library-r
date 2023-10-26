@@ -47,12 +47,12 @@ data <- list(
  labels = list(key = "value"),  # (optional)
  monitoring = "monitoring",  # (optional)
  request_retention_time = 0,  # (optional)
- request_retention_mode = 'full',  # one of: [none, metadata, full]  (optional)
+ request_retention_mode = 'full',  # (optional)
  default_notification_group = "default_notification_group",  # (optional)
  objects = list(  # (optional)
    list(
      name = "name",
-     reference_type = 'deployment',  # one of: [deployment, operator, pipeline]  (optional)
+     reference_type = 'deployment',  # (optional)
      reference_name = "reference_name",
      version = "version",  # (optional)
      configuration = list(key = "value")  # (optional)

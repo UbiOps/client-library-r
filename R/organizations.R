@@ -679,7 +679,7 @@ organizations_update <- function(organization.name, data,  preload_content=TRUE,
 
 
 #' @title Get organization usage
-#' @description Get resource usage for the organization. It contains **the details of each metric aggregated per month.**
+#' @description Get credits usage for the organization
 #' @param organization.name  character
 #' @param start.date (optional) character
 #' @param end.date (optional) character
@@ -691,12 +691,10 @@ organizations_update <- function(organization.name, data,  preload_content=TRUE,
 #'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
-#'  - `metric`: Metric name
-#'   - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
-#'   - `usage`: an array of objects each containing the following:
-#'     - `start_date`: Start date of the current subscription period or the provided date
-#'     - `end_date`: End date of the current subscription period or the provided date
-#'     - `value`: Aggregated metric value for the given unit over the given month
+#'  - `interval`: Interval for the usage data
+#'   - `data_organization`: A list of dictionaries containing the organization usage for the given date range
+#'   - `data_projects`: A list of dictionaries containing the usage of each project in the organization for the given date range
+#'   - `data_projects_deleted`: A list of dictionaries containing the usage corresponds to deleted projects in the organization for the given date range
 #' @examples
 #' \dontrun{
 #' # Use environment variables

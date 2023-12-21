@@ -264,6 +264,11 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
 - `objects`: List of pipeline version objects
+    - `name`: The name of the object in the pipeline. It must be unique within the pipeline.
+    - `reference_type`: The type of object it references. It can be 'deployment', 'pipeline' or 'operator'. It defaults to 'deployment'.
+    - `reference_name`: The name of the object it references. The name of the deployment, pipeline or operator.
+    - `version`: Optional version for the referenced deployment or pipeline. If not provided, it defaults to the default version of the deployment or pipeline.
+    - `configuration`: The configuration specific for the referenced operator, or the 'on_error' policy for the deployment or pipeline.
 - `attachments`: List of pipeline version object attachments
 
 ## Request Examples
@@ -288,18 +293,31 @@ Provide the parameter 'default_notification_group' as the name of a notification
 }
 ```
 
-A pipeline version with objects and attachments
+A pipeline version referencing a default deployment version and a specific deployment version
 
 ```
 {
   "version": "v1",
-  "description": "my description",
-  "labels": {
-    "type": "production"
-  },
-  "monitoring": ["test@example.com"],
-  "request_retention_time": 604800,
-  "request_retention_mode": "full",
+  "objects": [
+    {
+      "name": "default-version",
+      "reference_name": "deployment-1",
+      "reference_type": "deployment"
+    },
+    {
+      "name": "specific-version",
+      "reference_name": "deployment-1",
+      "reference_type": "deployment",
+      "version": "v1"
+    }
+  ]
+}
+```
+
+A pipeline version with objects and attachments
+```
+{
+  "version": "v1",
   "objects": [
     {
       "name": "object-1",
@@ -318,6 +336,250 @@ A pipeline version with objects and attachments
             {
               "source_field_name": "pipeline-input",
               "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+A pipeline version with a sub-pipeline
+```
+{
+  "version": "v1",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "pipeline-1",
+      "reference_type": "pipeline",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+A pipeline version with deployment object configuration
+```
+{
+  "version": "v1",
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "reference_type": "deployment",
+      "version": "v1",
+      "configuration": {
+        "on_error": "stop"
+      }
+    }
+  ]
+}
+```
+
+A pipeline version with operators
+```
+{
+  "version": "v1",
+  "objects": [
+    {
+      "name": "operator-if-condition",
+      "reference_name": "if-condition",
+      "reference_type": "operator",
+      "configuration": {
+        "expression": "input > 0",
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": []
+      }
+    },
+    {
+      "name": "operator-variable",
+      "reference_name": "pipeline-variable",
+      "reference_type": "operator",
+      "configuration": {
+        "input_fields": [],
+        "output_fields": [{"name": "variable", "data_type": "int"}],
+        "output_values": [{"name": "variable", "value": 1}]
+      }
+    },
+    {
+      "name": "operator-function",
+      "reference_name": "function",
+      "reference_type": "operator",
+      "configuration": {
+        "expression": "input * 5",
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": [{"name": "output", "data_type": "int"}]
+      }
+    },
+    {
+      "name": "operator-if-condition-2",
+      "reference_name": "if-condition",
+      "reference_type": "operator",
+      "configuration": {
+        "expression": "input > 50",
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": []
+      }
+    },
+    {
+      "name": "operator-raise-error",
+      "reference_name": "raise-error",
+      "reference_type": "operator",
+      "configuration": {
+        "error_message": "My error message!",
+        "input_fields": [],
+        "output_fields": []
+      }
+    },
+    {
+      "name": "operator-one-to-many",
+      "reference_name": "one-to-many",
+      "reference_type": "operator",
+      "configuration": {
+        "batch_size": 10,
+        "input_fields": [{"name": "output", "data_type": "int"}],
+        "output_fields": [{"name": "output", "data_type": "int"}]
+      }
+    },
+    {
+      "name": "operator-many-to-one",
+      "reference_name": "many-to-one",
+      "reference_type": "operator",
+      "configuration": {
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": [{"name": "input", "data_type": "int"}]
+      }
+    },
+    {
+      "name": "operator-count-many",
+      "reference_name": "count-many",
+      "reference_type": "operator",
+      "configuration": {
+        "input_fields": [],
+        "output_fields": [{"name": "output", "data_type": "int"}]
+      }
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "operator-if-condition",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-function",
+      "sources": [
+        {
+          "source_name": "operator-if-condition",
+          "mapping": []
+        },
+        {
+          "source_name": "operator-variable",
+          "mapping": [
+            {
+              "source_field_name": "variable",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-one-to-many",
+      "sources": [
+        {
+          "source_name": "operator-function",
+          "mapping": [
+            {
+              "source_field_name": "output",
+              "destination_field_name": "output"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-count-many",
+      "sources": [
+        {
+          "source_name": "operator-one-to-many",
+          "mapping": []
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-many-to-one",
+      "sources": [
+        {
+          "source_name": "operator-one-to-many",
+          "mapping": [
+            {
+              "source_field_name": "output",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-if-condition-2",
+      "sources": [
+        {
+          "source_name": "operator-many-to-one",
+          "mapping": [
+            {
+              "source_field_name": "input",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-raise-error",
+      "sources": [
+        {
+          "source_name": "operator-if-condition-2",
+          "mapping": []
+        }
+      ]
+    },
+    {
+      "destination_name": "pipeline_end",
+      "sources": [
+        {
+          "source_name": "operator-count-many",
+          "mapping": [
+            {
+              "source_field_name": "output",
+              "destination_field_name": "pipeline-output"
             }
           ]
         }
@@ -760,6 +1022,11 @@ Provide the parameter 'default_notification_group' as the name of a notification
     - *metadata* - only the metadata of the requests will be stored
     - *full* - both the metadata and input/output of the requests will be stored
 - `objects`: List of pipeline version objects
+    - `name`: The name of the object in the pipeline. It must be unique within the pipeline.
+    - `reference_type`: The type of object it references. It can be 'deployment', 'pipeline' or 'operator'. It defaults to 'deployment'.
+    - `reference_name`: The name of the object it references. The name of the deployment, pipeline or operator.
+    - `version`: Optional version for the referenced deployment or pipeline. If not provided, it defaults to the default version of the deployment or pipeline.
+    - `configuration`: The configuration specific for the referenced operator, or the 'on_error' policy for the deployment or pipeline.
 - `attachments`: List of pipeline version object attachments
 
 ## Request Examples
@@ -826,6 +1093,267 @@ Updating a pipeline version by removing objects and attachments
   "monitoring": ["test@example.com"],
   "objects": null,
   "attachments": null
+}
+```
+
+
+A pipeline version referencing a default deployment version and a specific deployment version
+```
+{
+  "objects": [
+    {
+      "name": "default-version",
+      "reference_name": "deployment-1",
+      "reference_type": "deployment"
+    },
+    {
+      "name": "specific-version",
+      "reference_name": "deployment-1",
+      "reference_type": "deployment",
+      "version": "v1"
+    }
+  ]
+}
+```
+
+A pipeline version with a sub-pipeline
+```
+{
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "pipeline-1",
+      "reference_type": "pipeline",
+      "version": "v1"
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "object-1",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+A pipeline version with deployment object configuration
+```
+{
+  "objects": [
+    {
+      "name": "object-1",
+      "reference_name": "deployment-1",
+      "reference_type": "deployment",
+      "version": "v1",
+      "configuration": {
+        "on_error": "stop"
+      }
+    }
+  ]
+}
+```
+
+A pipeline version with operators
+```
+{
+  "objects": [
+    {
+      "name": "operator-if-condition",
+      "reference_name": "if-condition",
+      "reference_type": "operator",
+      "configuration": {
+        "expression": "input > 0",
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": []
+      }
+    },
+    {
+      "name": "operator-variable",
+      "reference_name": "pipeline-variable",
+      "reference_type": "operator",
+      "configuration": {
+        "input_fields": [],
+        "output_fields": [{"name": "variable", "data_type": "int"}],
+        "output_values": [{"name": "variable", "value": 1}]
+      }
+    },
+    {
+      "name": "operator-function",
+      "reference_name": "function",
+      "reference_type": "operator",
+      "configuration": {
+        "expression": "input * 5",
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": [{"name": "output", "data_type": "int"}]
+      }
+    },
+    {
+      "name": "operator-if-condition-2",
+      "reference_name": "if-condition",
+      "reference_type": "operator",
+      "configuration": {
+        "expression": "input > 50",
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": []
+      }
+    },
+    {
+      "name": "operator-raise-error",
+      "reference_name": "raise-error",
+      "reference_type": "operator",
+      "configuration": {
+        "error_message": "My error message!",
+        "input_fields": [],
+        "output_fields": []
+      }
+    },
+    {
+      "name": "operator-one-to-many",
+      "reference_name": "one-to-many",
+      "reference_type": "operator",
+      "configuration": {
+        "batch_size": 10,
+        "input_fields": [{"name": "output", "data_type": "int"}],
+        "output_fields": [{"name": "output", "data_type": "int"}]
+      }
+    },
+    {
+      "name": "operator-many-to-one",
+      "reference_name": "many-to-one",
+      "reference_type": "operator",
+      "configuration": {
+        "input_fields": [{"name": "input", "data_type": "int"}],
+        "output_fields": [{"name": "input", "data_type": "int"}]
+      }
+    },
+    {
+      "name": "operator-count-many",
+      "reference_name": "count-many",
+      "reference_type": "operator",
+      "configuration": {
+        "input_fields": [],
+        "output_fields": [{"name": "output", "data_type": "int"}]
+      }
+    }
+  ],
+  "attachments": [
+    {
+      "destination_name": "operator-if-condition",
+      "sources": [
+        {
+          "source_name": "pipeline_start",
+          "mapping": [
+            {
+              "source_field_name": "pipeline-input",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-function",
+      "sources": [
+        {
+          "source_name": "operator-if-condition",
+          "mapping": []
+        },
+        {
+          "source_name": "operator-variable",
+          "mapping": [
+            {
+              "source_field_name": "variable",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-one-to-many",
+      "sources": [
+        {
+          "source_name": "operator-function",
+          "mapping": [
+            {
+              "source_field_name": "output",
+              "destination_field_name": "output"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-count-many",
+      "sources": [
+        {
+          "source_name": "operator-one-to-many",
+          "mapping": []
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-many-to-one",
+      "sources": [
+        {
+          "source_name": "operator-one-to-many",
+          "mapping": [
+            {
+              "source_field_name": "output",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-if-condition-2",
+      "sources": [
+        {
+          "source_name": "operator-many-to-one",
+          "mapping": [
+            {
+              "source_field_name": "input",
+              "destination_field_name": "input"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "destination_name": "operator-raise-error",
+      "sources": [
+        {
+          "source_name": "operator-if-condition-2",
+          "mapping": []
+        }
+      ]
+    },
+    {
+      "destination_name": "pipeline_end",
+      "sources": [
+        {
+          "source_name": "operator-count-many",
+          "mapping": [
+            {
+              "source_field_name": "output",
+              "destination_field_name": "pipeline-output"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
 ```
 

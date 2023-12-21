@@ -29,15 +29,13 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 }
 \value{
 Response from the API
- - `metric`: Metric name
-  - `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
-  - `usage`: an array of objects each containing the following:
-    - `start_date`: Start date of the current subscription period or the provided date
-    - `end_date`: End date of the current subscription period or the provided date
-    - `value`: Aggregated metric value for the given unit over the given month
+ - `interval`: Interval for the usage data
+  - `data_project`: A list of dictionaries containing the project usage for the given date range
+  - `data_deployments`: A list of dictionaries containing the usage of each deployment in the project for the given date range
+  - `data_deployments_deleted`: A list of dictionaries containing the usage corresponds to deleted deployments in the project for the given date range
 }
 \description{
-Get resource usage for the project. It contains **the details of each metric aggregated per month.**
+Get credits usage for the project
 }
 \examples{
 \dontrun{

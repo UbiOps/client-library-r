@@ -29,7 +29,7 @@ Create a batch pipeline request
 ## Description
 Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.
 
-The maximum number of requests that can be created per batch is 100.
+The maximum number of requests that can be created per batch is 250.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -134,7 +134,7 @@ Create a batch pipeline version request
 ## Description
 Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.
 
-The maximum number of requests that can be created per batch is 100.
+The maximum number of requests that can be created per batch is 250.
 
 ### Required Parameters
 In case of structured input pipeline: A list of dictionaries, where each dictionary contains the input fields of the pipeline as keys. It is also possible to send a single dictionary as input.
@@ -237,7 +237,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete multiple pipeline requests
 
 ## Description
-Delete multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 100 pipeline requests can be deleted with this method.
+Delete multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 250 pipeline requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids of the requests
@@ -280,7 +280,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Retrieve multiple pipeline requests
 
 ## Description
-Retrieve multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
+Retrieve multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 250 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids of the requests
@@ -923,7 +923,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Delete multiple pipeline version requests
 
 ## Description
-Delete multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 100 pipeline requests can be deleted with this method.
+Delete multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 250 pipeline requests can be deleted with this method.
 
 ### Required Parameters
 A list of ids of the requests
@@ -966,7 +966,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Retrieve multiple pipeline version requests
 
 ## Description
-Retrieve multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline version requests can be retrieved with this method. The pipeline version requests are NOT returned in the order they are given in.
+Retrieve multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 250 pipeline version requests can be retrieved with this method. The pipeline version requests are NOT returned in the order they are given in.
 
 ### Required Parameters
 A list of ids of the requests

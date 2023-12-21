@@ -40,7 +40,7 @@ Response from the API
    - `time_created`: Server time that the request was made (current time)
 }
 \description{
-Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 100.
+Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 250.
 }
 \examples{
 \dontrun{

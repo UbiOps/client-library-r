@@ -7,7 +7,7 @@
 projects_update(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ name (optional), advanced_permissions (optional), credits (optional), suspend (optional) ]}
+\item{data}{named list of: [ name (optional), advanced_permissions (optional), credits (optional), suspend (optional), cors_origins (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -28,6 +28,7 @@ Response from the API
   - `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
   - `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
   - `suspended_reason`: Description explaining why the project is suspended
+  - `cors_origins`: List of origins from which the requests are allowed for the project
 }
 \description{
 Update the name of a single project. The user making the request must have appropriate permissions.
@@ -38,7 +39,8 @@ data <- list(
  name = "name",  # (optional)
  advanced_permissions = FALSE,  # (optional)
  credits = 0,  # (optional)
- suspend = FALSE  # (optional)
+ suspend = FALSE,  # (optional)
+ cors_origins = list("value-1", "value-2")  # (optional)
 )
 
 # Use environment variables

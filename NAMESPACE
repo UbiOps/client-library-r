@@ -105,6 +105,18 @@ export(imports_get)
 export(imports_list)
 export(imports_update)
 
+# Metrics
+export(metrics_create)
+export(metrics_delete)
+export(metrics_get)
+export(metrics_list)
+export(metrics_update)
+export(time_series_data_aggregate)
+export(time_series_data_create)
+export(time_series_data_list)
+export(time_series_delete)
+export(time_series_search)
+
 # Monitoring
 export(notification_groups_create)
 export(notification_groups_delete)
@@ -159,7 +171,6 @@ export(pipelines_update)
 
 # Projects
 export(instance_types_list)
-export(metrics_get)
 export(project_audit_events_list)
 export(project_environment_variables_create)
 export(project_environment_variables_delete)

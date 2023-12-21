@@ -10,7 +10,7 @@
 
 #' @title Create a new service user
 #' @description Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API. It is possible to set an expiry date for this token. In addition, allowed cors origins can be configured for the service user. The service user will be allowed to make a deployment or pipeline request from these origins.   The token is **ONLY** returned on creation and will not be accessible afterwards.
-#' @param data  named list of: [ name (optional), allowed_cors_origins (optional), expiry_date (optional) ]
+#' @param data  named list of: [ name (optional), expiry_date (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -25,13 +25,11 @@
 #'   - `token`: The API token for the created service user  
 #'   - `name`: Name of the service user 
 #'   - `creation_date`: Date when the service user was created 
-#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{
 #' data <- list(
 #'  name = "name",  # (optional)
-#'  allowed_cors_origins = list("value-1", "value-2")  # (optional),
 #'  expiry_date = expiry_date  # (optional)
 #' )
 #'
@@ -144,7 +142,6 @@ service_users_delete <- function(service.user.id,  ...){
 #'   - `email`: Email of the service user  
 #'   - `name`: Name of the service user 
 #'   - `creation_date`: Date when the service user was created 
-#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{
@@ -210,7 +207,6 @@ service_users_get <- function(service.user.id,  preload_content=TRUE, ...){
 #'   - `email`: Email of the service user 
 #'   - `name`: Name of the service user 
 #'   - `creation_date`: Date when the service user was created 
-#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{
@@ -328,7 +324,7 @@ service_users_token <- function(service.user.id, data=NULL,  preload_content=TRU
 #' @title Update service user details
 #' @description Update the name, expiry date and cors allowed origins of a service user. The new value for the cors_allowed_origin will replace the old value. Leave as an empty list to remove the previous list of allowed origins.  It is not possible to update a service user whose expiry date has been reached.
 #' @param service.user.id  character
-#' @param data  named list of: [ name (optional), allowed_cors_origins (optional), expiry_date (optional) ]
+#' @param data  named list of: [ name (optional), expiry_date (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -342,13 +338,11 @@ service_users_token <- function(service.user.id, data=NULL,  preload_content=TRU
 #'   - `email`: Email of the service user  
 #'   - `name`: Name of the service user 
 #'   - `creation_date`: Date when the service user was created 
-#'   - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{
 #' data <- list(
 #'  name = "name",  # (optional)
-#'  allowed_cors_origins = list("value-1", "value-2")  # (optional),
 #'  expiry_date = expiry_date  # (optional)
 #' )
 #'

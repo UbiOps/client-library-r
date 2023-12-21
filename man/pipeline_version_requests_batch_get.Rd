@@ -44,7 +44,7 @@ Response from the API
    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 }
 \description{
-Retrieve multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline version requests can be retrieved with this method. The pipeline version requests are NOT returned in the order they are given in.
+Retrieve multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 250 pipeline version requests can be retrieved with this method. The pipeline version requests are NOT returned in the order they are given in.
 }
 \examples{
 \dontrun{

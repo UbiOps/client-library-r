@@ -9,7 +9,7 @@
 
 
 #' @title Create a batch pipeline request
-#' @description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 100.
+#' @description Make a batch request to the default version of a pipeline. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline request collect methods.  The maximum number of requests that can be created per batch is 250.
 #' @param pipeline.name  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
 #' @param timeout (optional) integer
@@ -95,7 +95,7 @@ batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL, no
 
 
 #' @title Create a batch pipeline version request
-#' @description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 100.
+#' @description Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 250.
 #' @param pipeline.name  character
 #' @param version  character
 #' @param data  list() - Example: list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
@@ -188,7 +188,7 @@ batch_pipeline_version_requests_create <- function(pipeline.name, version, data,
 
 
 #' @title Delete multiple pipeline requests
-#' @description Delete multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 100 pipeline requests can be deleted with this method.
+#' @description Delete multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 250 pipeline requests can be deleted with this method.
 #' @param pipeline.name  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -256,7 +256,7 @@ pipeline_requests_batch_delete <- function(pipeline.name, data,  preload_content
 
 
 #' @title Retrieve multiple pipeline requests
-#' @description Retrieve multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
+#' @description Retrieve multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 250 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.
 #' @param pipeline.name  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -772,7 +772,7 @@ pipeline_version_object_requests_get <- function(pipeline.name, request.id, vers
 
 
 #' @title Delete multiple pipeline version requests
-#' @description Delete multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 100 pipeline requests can be deleted with this method.
+#' @description Delete multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is deleted. A maximum of 250 pipeline requests can be deleted with this method.
 #' @param pipeline.name  character
 #' @param version  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")
@@ -847,7 +847,7 @@ pipeline_version_requests_batch_delete <- function(pipeline.name, version, data,
 
 
 #' @title Retrieve multiple pipeline version requests
-#' @description Retrieve multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 100 pipeline version requests can be retrieved with this method. The pipeline version requests are NOT returned in the order they are given in.
+#' @description Retrieve multiple requests for a pipeline version. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 250 pipeline version requests can be retrieved with this method. The pipeline version requests are NOT returned in the order they are given in.
 #' @param pipeline.name  character
 #' @param version  character
 #' @param data  list() - Example: list("request_id_1", "request_id_2")

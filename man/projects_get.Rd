@@ -26,6 +26,7 @@ Response from the API
   - `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
   - `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
   - `suspended_reason`: Description explaining why the project is suspended
+  - `cors_origins`: List of origins from which the requests are allowed for the project
 }
 \description{
 Get the details of a single project. The user making the request must have appropriate permissions.

@@ -7,7 +7,7 @@
 service_users_create(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ name (optional), allowed_cors_origins (optional), expiry_date (optional) ]}
+\item{data}{named list of: [ name (optional), expiry_date (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -25,7 +25,6 @@ Response from the API
   - `token`: The API token for the created service user  
   - `name`: Name of the service user 
   - `creation_date`: Date when the service user was created 
-  - `allowed_cors_origins`: List of origin url's of which the service user is allowed to make a request from 
   - `expiry_date`: Date when the service user account will expire (UTC)
 }
 \description{
@@ -35,7 +34,6 @@ Create a new service user. A unique email is generated for the service user. Add
 \dontrun{
 data <- list(
  name = "name",  # (optional)
- allowed_cors_origins = list("value-1", "value-2")  # (optional),
  expiry_date = expiry_date  # (optional)
 )
 

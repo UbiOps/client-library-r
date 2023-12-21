@@ -7,7 +7,7 @@
 projects_create(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ name, organization_name, advanced_permissions (optional), credits (optional) ]}
+\item{data}{named list of: [ name, organization_name, advanced_permissions (optional), credits (optional), cors_origins (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -27,6 +27,7 @@ Response from the API
   - `credits`: Maximum usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours they are running
   - `suspended`: A boolean indicating whether the project is suspended due to going over the credits limit
   - `suspended_reason`: Description explaining why the project is suspended
+  - `cors_origins`: List of origins from which the requests are allowed for the project
 }
 \description{
 Create a new project with the provided name. **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
@@ -37,7 +38,8 @@ data <- list(
  name = "name",
  organization_name = "organization_name",
  advanced_permissions = FALSE,  # (optional)
- credits = 0  # (optional)
+ credits = 0,  # (optional)
+ cors_origins = list("value-1", "value-2")  # (optional)
 )
 
 # Use environment variables

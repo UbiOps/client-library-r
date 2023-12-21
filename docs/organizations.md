@@ -666,7 +666,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 Get organization usage
 
 ## Description
-Get resource usage for the organization. It contains **the details of each metric aggregated per month.**
+Get credits usage for the organization
 
 ### Optional Parameters
 
@@ -679,74 +679,56 @@ When **start_date** and **end_date** are given, this month period is used, e.g. 
 
 ### Response Structure
 
-- `metric`: Metric name
-- `object_type`: Type of object the metric was measured for (deployment_version or pipeline_version)
-- `usage`: an array of objects each containing the following:
-  - `start_date`: Start date of the current subscription period or the provided date
-  - `end_date`: End date of the current subscription period or the provided date
-  - `value`: Aggregated metric value for the given unit over the given month
+- `interval`: Interval for the usage data
+- `data_organization`: A list of dictionaries containing the organization usage for the given date range
+- `data_projects`: A list of dictionaries containing the usage of each project in the organization for the given date range
+- `data_projects_deleted`: A list of dictionaries containing the usage corresponds to deleted projects in the organization for the given date range
 
 ## Response Examples
 2019-08-01 as start date and 2019-09-01 as end date
 
 ```
-[
-  {
-    "object_type": "deployment_version",
-    "metric": "credits",
-    "usage": [
-      {
-        "start_date": "2019-08-01T00:00:00Z",
-        "end_date": "2019-09-01T00:00:00Z",
-        "value": 1484124
-      } 
-    ]
-  },
-  {
-    "object_type": "deployment_version",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "start_date": "2019-08-01T00:00:00Z",
-        "end_date": "2019-09-01T00:00:00Z",
-        "value": 1204
-      } 
-    ]
-  },
-  {
-    "object_type": "deployment_version",
-    "metric": "output_volume",
-    "usage": [
-      {
-        "start_date": "2019-08-01T00:00:00Z",
-        "end_date": "2019-09-01T00:00:00Z",
-        "value": 1598
-      } 
-    ]
-  },
-  {
-    "object_type": "pipeline_version",
-    "metric": "input_volume",
-    "usage": [
-      {
-        "start_date": "2019-08-01T00:00:00Z",
-        "end_date": "2019-09-01T00:00:00Z",
-        "value": 1840
-      } 
-    ]
-  },
-  {
-    "object_type": "pipeline_version",
-    "metric": "output_volume",
-    "usage": [
-      {
-        "start_date": "2019-08-01T00:00:00Z",
-        "end_date": "2019-09-01T00:00:00Z",
-        "value": 400
-      } 
-    ]
-  }
-]
+{
+  "interval": "month",
+  "data_organization": [
+    {
+      "start_date": "2019-08-01T00:00:00Z",
+      "end_date": "2019-09-01T00:00:00Z",
+      "value": 600
+    } 
+  ],
+  "data_projects": [
+    {
+      "project_id": "4aa10f82-24f3-4872-8883-f7a40e3a0733",
+      "project_name": "project-1",
+      "data": [
+        {
+          "start_date": "2019-08-01T00:00:00Z",
+          "end_date": "2019-09-01T00:00:00Z",
+          "value": 200
+        }
+      ]
+    },
+    {
+      "project_id": "7e6238f3-d2c7-4d7d-a003-3e06a1c7a348",
+      "project_name": "project-2",
+      "data": [
+        {
+          "start_date": "2019-08-01T00:00:00Z",
+          "end_date": "2019-09-01T00:00:00Z",
+          "value": 300
+        }
+      ]
+    }
+  ],
+  "data_deleted_projects": [
+    {
+      "start_date": "2019-08-01T00:00:00Z",
+      "end_date": "2019-09-01T00:00:00Z",
+      "value": 100
+    }
+  ]
+}
 ```
 
 ### Example

@@ -618,6 +618,8 @@ time_series_delete <- function(time.series.id,  ...){
 #' @param labels (optional) character - Example: "label1:value1,label2:value2"
 #' @param custom (optional) character ("true"|"false")
 #' @param exact.match (optional) character ("true"|"false")
+#' @param limit (optional) integer
+#' @param offset (optional) integer
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -637,13 +639,13 @@ time_series_delete <- function(time.series.id,  ...){
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::time_series_search(
 #'    
-#'    metric = NULL, labels = NULL, custom = NULL, exact.match = NULL
+#'    metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, limit = NULL, offset = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::time_series_search(
 #'    
-#'    metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, 
+#'    metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, limit = NULL, offset = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -654,13 +656,15 @@ time_series_delete <- function(time.series.id,  ...){
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-time_series_search <- function(metric=NULL, labels=NULL, custom=NULL, exact.match=NULL,  preload_content=TRUE, ...){
+time_series_search <- function(metric=NULL, labels=NULL, custom=NULL, exact.match=NULL, limit=NULL, offset=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   query_params['metric'] <- metric
   query_params['labels'] <- labels
   query_params['custom'] <- custom
   query_params['exact_match'] <- exact.match
+  query_params['limit'] <- limit
+  query_params['offset'] <- offset
   
   url_path <- "/projects/{project_name}/time-series/search"
 

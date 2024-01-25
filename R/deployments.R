@@ -1091,6 +1091,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `id`: Unique identifier for the deployment version (UUID)
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the version
 #'   - `environment`: Environment of the version
 #'   - `environment_display_name`: Human readable name of the environment
@@ -1255,6 +1256,7 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `id`: Unique identifier for the version (UUID)
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the version
 #'   - `environment`: Environment of the version
 #'   - `environment_display_name`: Human readable name of the environment
@@ -1353,6 +1355,7 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'   - `id`: Unique identifier for the deployment version (UUID)
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the version
 #'   - `environment`: Environment of the version
 #'   - `environment_display_name`: Human readable name of the environment
@@ -1446,6 +1449,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `id`: Unique identifier for the deployment version (UUID)
 #'   - `deployment`: Deployment name to which the version is associated
 #'   - `version`: Version name
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the version
 #'   - `environment`: Environment of the version
 #'   - `environment_display_name`: Human readable name of the environment

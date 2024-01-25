@@ -639,7 +639,7 @@ ubiops::time_series_delete(
 ```
 
 # **time_series_search**
-> time_series_search(metric=NULL, labels=NULL, custom=NULL, exact.match=NULL)
+> time_series_search(metric=NULL, labels=NULL, custom=NULL, exact.match=NULL, limit=NULL, offset=NULL)
 
 Search time series
 
@@ -652,6 +652,8 @@ Search through time series
 - `labels`: Comma-separated values for labels to filter on data points. It must be in the format: key-1:value-1,key-2:value-2.
 - `custom`: A boolean indicating whether only default or custom metrics should be returned. If this parameter is not provided, both types are returned.
 - `exact_match`: A boolean indicating whether the provided labels should match exactly or whether matching a subset is allowed. Defaults to false (matching a subset is allowed).
+- `limit`: The maximum number of time series to return. It defaults to 500.
+- `offset`: The number that indicates the starting point of the time series to return. It defaults to 0.
 
 ### Response Structure
 A list of time series
@@ -682,13 +684,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::time_series_search(
   
-  metric = NULL, labels = NULL, custom = NULL, exact.match = NULL
+  metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, limit = NULL, offset = NULL
 )
 
 # Or provide directly
 result <- ubiops::time_series_search(
   
-  metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, 
+  metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, limit = NULL, offset = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

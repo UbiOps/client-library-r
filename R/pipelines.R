@@ -248,6 +248,7 @@ pipeline_version_object_environment_variables_list <- function(name, pipeline.na
 #'   - `id`: Unique identifier for the pipeline version (UUID)
 #'   - `pipeline`: Name of the pipeline to which the version is associated
 #'   - `version`: Name of the version of the pipeline
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the pipeline version
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created
@@ -417,6 +418,7 @@ pipeline_versions_delete <- function(pipeline.name, version,  ...){
 #'   - `id`: Unique identifier for the pipeline version (UUID)
 #'   - `pipeline`: Name of the pipeline to which the version is associated
 #'   - `version`: Name of the version of the pipeline
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the pipeline version
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created
@@ -501,6 +503,7 @@ pipeline_versions_get <- function(pipeline.name, version,  preload_content=TRUE,
 #'   - `id`: Unique identifier for the pipeline version (UUID)
 #'   - `pipeline`: Name of the pipeline to which the version is associated
 #'   - `version`: Name of the version of the pipeline
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the pipeline version
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created
@@ -581,6 +584,7 @@ pipeline_versions_list <- function(pipeline.name, labels=NULL,  preload_content=
 #'   - `id`: Unique identifier for the pipeline version (UUID)
 #'   - `pipeline`: Name of the pipeline to which the version is associated
 #'   - `version`: Name of the version of the pipeline
+#'   - `default`: A boolean indicating whether the version is the default version
 #'   - `description`: Description of the pipeline version
 #'   - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 #'   - `creation_date`: The date when the pipeline version was created

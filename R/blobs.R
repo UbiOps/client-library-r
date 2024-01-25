@@ -22,6 +22,7 @@
 #' @return Response from the API
 #'  The details of the uploaded blob
 #'   - `id`: Unique identifier for the blob (UUID)
+#'   - `created_by`: The email of the user who created/updated the blob
 #'   - `creation_date`: Time the blob was created
 #'   - `last_updated`: Time the blob was last updated
 #'   - `filename`: Original filename of the blob
@@ -216,6 +217,7 @@ blobs_get <- function(blob.id,  preload_content=FALSE, ...){
 #' @return Response from the API
 #'  A list of details of the blobs in the project
 #'    - `id`: Unique identifier for the blob (UUID)
+#'    - `created_by`: The email of the user who created the blob
 #'    - `creation_date`: Time the blob was created
 #'    - `last_updated`: Time the blob was last updated
 #'    - `filename`: Original filename of the blob
@@ -285,6 +287,7 @@ blobs_list <- function(range=NULL, creation.date=NULL,  preload_content=TRUE, ..
 #' @return Response from the API
 #'  The details of the uploaded blob
 #'   - `id`: Unique identifier for the blob (UUID)
+#'   - `created_by`: The email of the user who created the blob
 #'   - `creation_date`: Time the blob was created
 #'   - `last_updated`: Time the blob was last updated
 #'   - `filename`: Original filename of the blob

@@ -23,6 +23,7 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 Response from the API
  A list of details of the blobs in the project
    - `id`: Unique identifier for the blob (UUID)
+   - `created_by`: The email of the user who created the blob
    - `creation_date`: Time the blob was created
    - `last_updated`: Time the blob was last updated
    - `filename`: Original filename of the blob

@@ -28,6 +28,7 @@ These parameters should be given in the header.
 The details of the uploaded blob
 
 - `id`: Unique identifier for the blob (UUID)
+- `created_by`: The email of the user who created/updated the blob
 - `creation_date`: Time the blob was created
 - `last_updated`: Time the blob was last updated
 - `filename`: Original filename of the blob
@@ -37,14 +38,15 @@ The details of the uploaded blob
 ## Response Examples
 
 ```
-{{
+{
   "id": "b58fb853-9311-4583-9688-abed61830abc",
+  "created_by": "test-user@ubiops.com",
   "creation_date": "2020-05-18T11:26:57.904+00:00",
   "last_updated": "2020-05-18T11:26:57.904+00:00",
   "filename": "original-filename.jpg",
   "size": 3439,
   "ttl": 86400
-}}
+}
 ```
 
 ### Example
@@ -166,6 +168,7 @@ These parameters should be given as GET parameters.
 A list of details of the blobs in the project
 
 - `id`: Unique identifier for the blob (UUID)
+- `created_by`: The email of the user who created the blob
 - `creation_date`: Time the blob was created
 - `last_updated`: Time the blob was last updated
 - `filename`: Original filename of the blob
@@ -178,6 +181,7 @@ A list of details of the blobs in the project
 [
   {
     "id": "ecb39626-2a14-4224-a57a-592a51567e17",
+    "created_by": "test-user@ubiops.com",
     "creation_date": "2020-05-18T11:26:57.904+00:00",
     "last_updated": "2020-05-18T11:26:57.904+00:00",
     "filename": "original-filename.jpg",
@@ -186,6 +190,7 @@ A list of details of the blobs in the project
   },
   {
     "id": "f629a052-a827-44d9-97cf-3902504edc79",
+    "created_by": "test-user@ubiops.com",
     "creation_date": "2020-05-18T11:26:57.904+00:00",
     "last_updated": "2020-05-18T11:26:57.904+00:00",
     "filename": "original-filename2.jpg",
@@ -238,6 +243,7 @@ These parameters should be given in the header.
 The details of the uploaded blob
 
 - `id`: Unique identifier for the blob (UUID)
+- `created_by`: The email of the user who created the blob
 - `creation_date`: Time the blob was created
 - `last_updated`: Time the blob was last updated
 - `filename`: Original filename of the blob
@@ -247,14 +253,15 @@ The details of the uploaded blob
 ## Response Examples
 
 ```
-{{
+{
   "id": "b58fb853-9311-4583-9688-abed61830abc",
+  "created_by": "test-user@ubiops.com",
   "creation_date": "2020-05-18T11:26:57.904+00:00",
   "last_updated": "2020-05-18T11:26:57.904+00:00",
   "filename": "original-filename.jpg",
   "size": 3439,
   "ttl": 86400
-}}
+}
 ```
 
 ### Example

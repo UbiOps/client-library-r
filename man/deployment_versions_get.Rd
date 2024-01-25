@@ -25,6 +25,7 @@ Response from the API
   - `id`: Unique identifier for the version (UUID)
   - `deployment`: Deployment name to which the version is associated
   - `version`: Version name
+  - `default`: A boolean indicating whether the version is the default version
   - `description`: Description of the version
   - `environment`: Environment of the version
   - `environment_display_name`: Human readable name of the environment

@@ -9,6 +9,8 @@ time_series_search(
   labels = NULL,
   custom = NULL,
   exact.match = NULL,
+  limit = NULL,
+  offset = NULL,
   preload_content = TRUE,
   ...
 )
@@ -21,6 +23,10 @@ time_series_search(
 \item{custom}{(optional) character ("true"|"false")}
 
 \item{exact.match}{(optional) character ("true"|"false")}
+
+\item{limit}{(optional) integer}
+
+\item{offset}{(optional) integer}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -47,13 +53,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::time_series_search(
    
-   metric = NULL, labels = NULL, custom = NULL, exact.match = NULL
+   metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, limit = NULL, offset = NULL
 )
 
 # Or provide directly
 result <- ubiops::time_series_search(
    
-   metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, 
+   metric = NULL, labels = NULL, custom = NULL, exact.match = NULL, limit = NULL, offset = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

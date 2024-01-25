@@ -595,6 +595,7 @@ Details of the created pipeline version
 - `id`: Unique identifier for the pipeline version (UUID)
 - `pipeline`: Name of the pipeline to which the version is associated
 - `version`: Name of the version of the pipeline
+- `default`: A boolean indicating whether the version is the default version
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
@@ -613,6 +614,7 @@ Details of the created pipeline version
   "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
   "pipeline": "pipeline-1",
   "version": "v1",
+  "default": true,
   "description": "my description",
   "labels": {
     "tag": "production"
@@ -634,6 +636,7 @@ Details of the created pipeline version
   "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
   "pipeline": "pipeline-1",
   "version": "v1",
+  "default": true,
   "description": "my description",
   "labels": {
     "tag": "production"
@@ -650,6 +653,7 @@ Details of the created pipeline version
       "reference_name": "deployment-1",
       "reference_type": "deployment",
       "version": "v1",
+      "default": true,
       "input_type": "structured",
       "output_type": "structured",
       "configuration": {},
@@ -786,6 +790,7 @@ Details of the pipeline version
 - `id`: Unique identifier for the pipeline version (UUID)
 - `pipeline`: Name of the pipeline to which the version is associated
 - `version`: Name of the version of the pipeline
+- `default`: A boolean indicating whether the version is the default version
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
@@ -807,6 +812,7 @@ Details of the pipeline version
   "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
   "pipeline": "pipeline-1",
   "version": "v1",
+  "default": true,
   "description": "my description",
   "labels": {
     "tag": "production"
@@ -828,6 +834,7 @@ Details of the pipeline version
   "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
   "pipeline": "pipeline-1",
   "version": "v1",
+  "default": true,
   "description": "my description",
   "labels": {
     "tag": "production"
@@ -844,6 +851,7 @@ Details of the pipeline version
       "reference_name": "deployment-1",
       "reference_type": "deployment",
       "version": "v1",
+      "default": true,
       "input_type": "structured",
       "output_type": "structured",
       "configuration": {},
@@ -922,6 +930,7 @@ A list of details of the versions of the pipeline
 - `id`: Unique identifier for the pipeline version (UUID)
 - `pipeline`: Name of the pipeline to which the version is associated
 - `version`: Name of the version of the pipeline
+- `default`: A boolean indicating whether the version is the default version
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
@@ -942,6 +951,7 @@ A list of details of the versions of the pipeline
     "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
     "pipeline": "pipeline-1",
     "version": "v1",
+    "default": true,
     "description": "my description",
     "labels": {
       "tag": "production"
@@ -956,7 +966,8 @@ A list of details of the versions of the pipeline
   {
     "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
     "pipeline": "pipeline-1",
-    "version": "v1",
+    "version": "v2",
+    "default": false,
     "description": "my description",
     "labels": {
       "tag": "production"
@@ -1363,6 +1374,7 @@ Details of the created pipeline
 - `id`: Unique identifier for the pipeline version (UUID)
 - `pipeline`: Name of the pipeline to which the version is associated
 - `version`: Name of the version of the pipeline
+- `default`: A boolean indicating whether the version is the default version
 - `description`: Description of the pipeline version
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `creation_date`: The date when the pipeline version was created
@@ -1381,6 +1393,7 @@ Details of the created pipeline
   "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
   "pipeline": "pipeline-1",
   "version": "v1",
+  "default": true,
   "description": "my description",
   "labels": {
     "tag": "production"
@@ -1402,6 +1415,7 @@ Details of the created pipeline
   "id": "6b0cea21-2657-4fa3-a331-de646e3cfdc4",
   "pipeline": "pipeline-1",
   "version": "v1",
+  "default": true,
   "description": "my description",
   "labels": {
     "tag": "production"

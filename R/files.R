@@ -360,6 +360,86 @@ buckets_update <- function(bucket.name, data,  preload_content=TRUE, ...){
 }
 
 
+#' @title Complete multipart upload
+#' @description Complete a multipart upload for a file
+#' @param bucket.name  character
+#' @param file  character
+#' @param data  named list of: [ upload_id (optional), parts ]
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  - `upload_id`: ID of the uploaded for the file
+#'   - `provider`: Provider of the bucket where the file will be uploaded
+#' @examples
+#' \dontrun{
+#' data <- list(
+#'  upload_id = "upload_id",  # (optional)
+#'  parts = list("value-1", "value-2")  # (optional)
+#' )
+#'
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::files_complete_multipart_upload(
+#'    bucket.name, file, data
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::files_complete_multipart_upload(
+#'    bucket.name, file, data,
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+files_complete_multipart_upload <- function(bucket.name, file, data,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`bucket.name`)) {
+    stop("Missing required parameter `bucket.name`.")
+  }
+  if (missing(`file`)) {
+    stop("Missing required parameter `file`.")
+  }
+  if (missing(`data`)) {
+    stop("Missing required parameter `data`.")
+  }
+  
+  body <- rjson::toJSON(data)
+  
+  url_path <- "/projects/{project_name}/buckets/{bucket_name}/files/{file}/complete-multipart-upload"
+  if (!missing(`bucket.name`)) {
+    url_path <- gsub("\\{bucket_name\\}", utils::URLencode(as.character(`bucket.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`file`)) {
+    url_path <- gsub("\\{file\\}", utils::URLencode(as.character(`file`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "POST", body, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title Delete a file
 #' @description Delete a file from a bucket
 #' @param bucket.name  character
@@ -627,10 +707,89 @@ files_list <- function(bucket.name, prefix=NULL, delimiter=NULL, continuation.to
 }
 
 
+#' @title Start multipart upload
+#' @description Start a multipart upload for a file
+#' @param bucket.name  character
+#' @param file  character
+#' @param data (optional) list(key = "value")
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_PROJECT (system environment variable) UbiOps project name
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#'  - `upload_id`: ID of the upload for the file
+#'   - `provider`: Provider of the bucket where the file will be uploaded
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::files_start_multipart_upload(
+#'    bucket.name, file,
+#'    data = NULL
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::files_start_multipart_upload(
+#'    bucket.name, file,
+#'    data = NULL, 
+#'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+files_start_multipart_upload <- function(bucket.name, file, data=NULL,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`bucket.name`)) {
+    stop("Missing required parameter `bucket.name`.")
+  }
+  if (missing(`file`)) {
+    stop("Missing required parameter `file`.")
+  }
+  
+  if (!missing(`data`) && !is.null(`data`)) {
+    body <- rjson::toJSON(data)
+  } else {
+    body <- NULL
+  }
+  url_path <- "/projects/{project_name}/buckets/{bucket_name}/files/{file}/start-multipart-upload"
+  if (!missing(`bucket.name`)) {
+    url_path <- gsub("\\{bucket_name\\}", utils::URLencode(as.character(`bucket.name`), reserved = TRUE), url_path)
+  }
+  if (!missing(`file`)) {
+    url_path <- gsub("\\{file\\}", utils::URLencode(as.character(`file`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "POST", body, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
 #' @title Upload a file
 #' @description Generate a signed url to upload a file. Request body should be an empty dictionary.  Note: When using the url generated by this endpoint for Azure Blob Storage, the following headers must be added to the upload request to Azure Blob Storage: - `x-ms-version`: '2020-04-08' - `x-ms-blob-type`: 'BlockBlob'
 #' @param bucket.name  character
 #' @param file  character
+#' @param upload.id (optional) character
+#' @param part.number (optional) character
 #' @param data (optional) list(key = "value")
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -649,13 +808,13 @@ files_list <- function(bucket.name, prefix=NULL, delimiter=NULL, continuation.to
 #' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 #' result <- ubiops::files_upload(
 #'    bucket.name, file,
-#'    data = NULL
+#'    upload.id = NULL, part.number = NULL, data = NULL
 #' )
 #' 
 #' # Or provide directly
 #' result <- ubiops::files_upload(
 #'    bucket.name, file,
-#'    data = NULL, 
+#'    upload.id = NULL, part.number = NULL, data = NULL, 
 #'    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 #' )
 #' 
@@ -666,7 +825,7 @@ files_list <- function(bucket.name, prefix=NULL, delimiter=NULL, continuation.to
 #' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
 #' }
 #' @export
-files_upload <- function(bucket.name, file, data=NULL,  preload_content=TRUE, ...){
+files_upload <- function(bucket.name, file, upload.id=NULL, part.number=NULL, data=NULL,  preload_content=TRUE, ...){
   query_params <- list()
 
   if (missing(`bucket.name`)) {
@@ -675,6 +834,8 @@ files_upload <- function(bucket.name, file, data=NULL,  preload_content=TRUE, ..
   if (missing(`file`)) {
     stop("Missing required parameter `file`.")
   }
+  query_params['upload_id'] <- upload.id
+  query_params['part_number'] <- part.number
   
   if (!missing(`data`) && !is.null(`data`)) {
     body <- rjson::toJSON(data)

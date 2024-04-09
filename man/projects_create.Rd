@@ -30,7 +30,7 @@ Response from the API
   - `cors_origins`: List of origins from which the requests are allowed for the project
 }
 \description{
-Create a new project with the provided name. **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
+Create a new project with the provided name.  **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
 }
 \examples{
 \dontrun{

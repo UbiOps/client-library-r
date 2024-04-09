@@ -60,14 +60,10 @@ Assign a role to a user or an object in the scope of a project. This role can be
 ### Required Parameters
 
 - `user_id`: Unique identifier for the user (UUID)
-
 - `role`: Name of the role to be assigned to the user
-
 - `assignee`: UUID of the user or the name of the object for which the role will be assigned
-
 - `assignee_type`: Type of the assignee. It can be user or deployment.
 - `resource`: Name of the object for which the role will be assigned
-
 - `resource_type`: Type of the object for which the role will be assigned. It can be project, deployment, pipeline or bucket.
 
 **resource and resource_type must be provided together. If neither of them is provided, the role is set on project level.**
@@ -361,12 +357,12 @@ Create a custom role scoped in a project
 
 ## Description
 Create a custom role in the scope of a project. This role is not accessible from other projects.
+
 The user making the request must have appropriate permissions.
 
 ### Required Parameters
 
 - `name`: Name of the role which will be created. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
-
 - `permissions`: A list of permissions which the role will contain. The list of available permissions can be obtained with */permissions* endpoint.
 
 ## Request Examples
@@ -386,11 +382,8 @@ The user making the request must have appropriate permissions.
 Details of the created role
 
 - `id`: Unique identifier for the created role (UUID)
-
 - `name`: Name of the created role
-
 - `default`: A boolean value that indicates whether the role is a default role or not
-
 - `permissions`: A list of permissions which the role contains
 
 ## Response Examples
@@ -444,6 +437,7 @@ Delete a role from a project
 
 ## Description
 Delete a role from a project. The user making the request must have appropriate permissions.
+
 **Default roles cannot be deleted.**
 
 ### Example
@@ -477,11 +471,8 @@ Get the details of a role. The user making the request must have appropriate per
 Details of the role
 
 - `id`: Unique identifier for the role (UUID)
-
 - `name`: Name of the role
-
 - `default`: A boolean value that indicates whether the role is a default role or not
-
 - `permissions`: A list of permissions which the role contains
 
 ## Response Examples
@@ -534,9 +525,7 @@ List the roles available in the scope of a project. Information on which permiss
 ### Response Structure
 
 - `id`: Unique identifier for the role (UUID)
-
 - `name`: Name of the role
-
 - `default`: A boolean value that indicates whether the role is a default role or not
 
 ## Response Examples
@@ -592,12 +581,12 @@ Update a role in a project
 
 ## Description
 Update a role in a project. The user making the request must have appropriate permissions.
+
 **Default roles cannot be updated.**
 
 ### Optional Parameters
 
 - `name`: New name for the role. It can only consist of lowercase letters, numbers and dashes (-), and must start with a lowercase letter.
-
 - `permissions`: A new list of permissions which the role will contain. The previous permissions will be replaced with the given ones. The list of available permissions can be obtained with */permissions* endpoint.
 
 ## Request Examples
@@ -616,11 +605,8 @@ Update a role in a project. The user making the request must have appropriate pe
 Details of the updated role
 
 - `id`: Unique identifier for the role (UUID)
-
 - `name`: Name of the updated role
-
 - `default`: A boolean value that indicates whether the role is a default role or not
-
 - `permissions`: A list of permissions which the role contains
 
 ## Response Examples

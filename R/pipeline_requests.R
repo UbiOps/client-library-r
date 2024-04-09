@@ -23,11 +23,11 @@
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of dictionaries containing the details of the created pipeline requests with the following fields:
-#'    - `id`: Unique identifier for the pipeline request, which can be used to collect the result
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request is made
-#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
-#'    - `time_created`: Server time that the request was made (current time)
+#'   - `id`: Unique identifier for the pipeline request, which can be used to collect the result
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request is made
+#'   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'   - `time_created`: Server time that the request was made (current time)
 #' @examples
 #' \dontrun{
 #' data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
@@ -110,11 +110,11 @@ batch_pipeline_requests_create <- function(pipeline.name, data, timeout=NULL, no
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of dictionaries containing the details of the created pipeline version requests with the following fields:
-#'    - `id`: Unique identifier for the pipeline version request, which can be used to collect the result
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request is made
-#'    - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
-#'    - `time_created`: Server time that the request was made (current time)
+#'   - `id`: Unique identifier for the pipeline version request, which can be used to collect the result
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request is made
+#'   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+#'   - `time_created`: Server time that the request was made (current time)
 #' @examples
 #' \dontrun{
 #' data <- list( list(input_field_1 = "input_value_1", input_field_2 = "input_value_2") )
@@ -268,20 +268,20 @@ pipeline_requests_batch_delete <- function(pipeline.name, data,  preload_content
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
-#'    - `id`: Unique identifier for the pipeline request
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request was made
-#'    - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
-#'    - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
-#'    - `time_created`: Server time that the request was made (current time)
-#'    - `time_started`: Server time that the processing of the request was started
-#'    - `time_completed`: Server time that the processing of the request was completed
-#'    - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
-#'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
-#'    - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
-#'    - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
-#'    - `pipeline_requests`: A list of requests to the sub-pipelines in the pipeline. With the sub-pipeline request ids provided in this list, it's possible to collect the results of the sub-pipeline requests separately.
-#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+#'   - `id`: Unique identifier for the pipeline request
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request was made
+#'   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+#'   - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
+#'   - `time_created`: Server time that the request was made (current time)
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
+#'   - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
+#'   - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
+#'   - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+#'   - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
+#'   - `pipeline_requests`: A list of requests to the sub-pipelines in the pipeline. With the sub-pipeline request ids provided in this list, it's possible to collect the results of the sub-pipeline requests separately.
+#'   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #' @examples
 #' \dontrun{
 #' data <- list("request_id_1", "request_id_2")
@@ -512,25 +512,25 @@ pipeline_requests_delete <- function(pipeline.name, request.id,  ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A dictionary containing the details of the pipeline request with the following fields:
-#'    - `id`: Unique identifier for the pipeline request
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request was made
-#'    - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
-#'    - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
-#'    - `time_created`: Server time that the request was made (current time)
-#'    - `time_started`: Server time that the processing of the request was started
-#'    - `time_completed`: Server time that the processing of the request was completed
-#'    - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
-#'    - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
-#'    - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
-#'    - `pipeline_requests`: A list of requests of the sub-pipelines in the pipeline. With the sub-pipeline request ids provided in this list, it's possible to collect the results of the sub-pipeline requests separately.
-#'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
-#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
-#'    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
-#'    - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
-#'    - `origin`: A dictionary containing the information on where the request originated from. It contains:
-#'      - the pipeline (and version) names if the request is directly made to the pipeline
-#'      - the request schedule name if the request is created via a request schedule
+#'   - `id`: Unique identifier for the pipeline request
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request was made
+#'   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+#'   - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
+#'   - `time_created`: Server time that the request was made (current time)
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
+#'   - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
+#'   - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+#'   - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
+#'   - `pipeline_requests`: A list of requests of the sub-pipelines in the pipeline. With the sub-pipeline request ids provided in this list, it's possible to collect the results of the sub-pipeline requests separately.
+#'   - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
+#'   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+#'   - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+#'   - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+#'   - `origin`: A dictionary containing the information on where the request originated from. It contains:
+#'       - the pipeline (and version) names if the request is directly made to the pipeline
+#'       - the request schedule name if the request is created via a request schedule
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -610,14 +610,14 @@ pipeline_requests_get <- function(pipeline.name, request.id, metadata.only=NULL,
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of dictionaries containing the details of the pipeline requests with the following fields:
-#'    - `id`: Unique identifier for the pipeline request
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request was made
-#'    - `status`: Status of the request
-#'    - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
-#'    - `time_created`: Server time that the request was made (current time)
-#'    - `time_started`: Server time that the processing of the request was started
-#'    - `time_completed`: Server time that the processing of the request was completed
+#'   - `id`: Unique identifier for the pipeline request
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request was made
+#'   - `status`: Status of the request
+#'   - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
+#'   - `time_created`: Server time that the request was made (current time)
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -693,20 +693,20 @@ pipeline_requests_list <- function(pipeline.name, status=NULL, success=NULL, lim
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A dictionary containing the details of the operator request with the following fields:
-#'    - `id`: Unique identifier for the pipeline version object request
-#'    - `pipeline_request_id`: Unique identifier for the pipeline request to which the object request belongs
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request was made
-#'    - `object`: Name of the pipeline version object for which the request was made
-#'    - `operator`: Name of the pipeline operator for which the request was made
-#'    - `status`: Status of the request. Can be 'failed' or 'completed'.
-#'    - `success`: A boolean value that indicates whether the request was successful
-#'    - `time_created`: Server time that the request was made
-#'    - `time_started`: Server time that the processing of the request was started
-#'    - `time_completed`: Server time that the processing of the request was completed
-#'    - `request_data`: A dictionary containing the data that was sent when the request was created
-#'    - `result`: Request result value. NULL if the request failed.
-#'    - `error_message`: An error message explaining why the request has failed
+#'   - `id`: Unique identifier for the pipeline version object request
+#'   - `pipeline_request_id`: Unique identifier for the pipeline request to which the object request belongs
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request was made
+#'   - `object`: Name of the pipeline version object for which the request was made
+#'   - `operator`: Name of the pipeline operator for which the request was made
+#'   - `status`: Status of the request. Can be 'failed' or 'completed'.
+#'   - `success`: A boolean value that indicates whether the request was successful
+#'   - `time_created`: Server time that the request was made
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
+#'   - `request_data`: A dictionary containing the data that was sent when the request was created
+#'   - `result`: Request result value. NULL if the request failed.
+#'   - `error_message`: An error message explaining why the request has failed
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -860,18 +860,18 @@ pipeline_version_requests_batch_delete <- function(pipeline.name, version, data,
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
-#'    - `id`: Unique identifier for the pipeline request
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request was made
-#'    - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
-#'    - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
-#'    - `time_created`: Server time that the request was made (current time)
-#'    - `time_started`: Server time that the processing of the request was started
-#'    - `time_completed`: Server time that the processing of the request was completed
-#'    - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
-#'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
-#'    - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
-#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+#'   - `id`: Unique identifier for the pipeline request
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request was made
+#'   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+#'   - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
+#'   - `time_created`: Server time that the request was made (current time)
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
+#'   - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
+#'   - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
+#'   - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+#'   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #' @examples
 #' \dontrun{
 #' data <- list("request_id_1", "request_id_2")
@@ -1110,20 +1110,20 @@ pipeline_version_requests_delete <- function(pipeline.name, request.id, version,
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A dictionary containing the details of the pipeline version request with the following fields:
-#'    - `id`: Unique identifier for the pipeline version request
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request was made
-#'    - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
-#'    - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
-#'    - `time_created`: Server time that the request was made (current time)
-#'    - `time_started`: Server time that the processing of the request was started
-#'    - `time_completed`: Server time that the processing of the request was completed
-#'    - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
-#'    - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
-#'    - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
-#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
-#'    - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
-#'    - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+#'   - `id`: Unique identifier for the pipeline version request
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request was made
+#'   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+#'   - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
+#'   - `time_created`: Server time that the request was made (current time)
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
+#'   - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
+#'   - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+#'   - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
+#'   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+#'   - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+#'   - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1210,14 +1210,14 @@ pipeline_version_requests_get <- function(pipeline.name, request.id, version, me
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of dictionaries containing the details of the pipeline version requests with the following fields:
-#'    - `id`: Unique identifier for the pipeline version request
-#'    - `pipeline`: Name of the pipeline for which the request is made
-#'    - `version`: Name of the pipeline version for which the request was made
-#'    - `status`: Status of the request
-#'    - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
-#'    - `time_created`: Server time that the request was made (current time)
-#'    - `time_started`: Server time that the processing of the request was started
-#'    - `time_completed`: Server time that the processing of the request was completed
+#'   - `id`: Unique identifier for the pipeline version request
+#'   - `pipeline`: Name of the pipeline for which the request is made
+#'   - `version`: Name of the pipeline version for which the request was made
+#'   - `status`: Status of the request
+#'   - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
+#'   - `time_created`: Server time that the request was made (current time)
+#'   - `time_started`: Server time that the processing of the request was started
+#'   - `time_completed`: Server time that the processing of the request was completed
 #' @examples
 #' \dontrun{
 #' # Use environment variables

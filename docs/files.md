@@ -9,10 +9,12 @@ Method | HTTP request | Description
 [**buckets_get**](files.md#buckets_get) | **GET** /projects/{project_name}/buckets/{bucket_name} | Get details of a bucket
 [**buckets_list**](files.md#buckets_list) | **GET** /projects/{project_name}/buckets | List buckets
 [**buckets_update**](files.md#buckets_update) | **PATCH** /projects/{project_name}/buckets/{bucket_name} | Update a bucket
+[**files_complete_multipart_upload**](files.md#files_complete_multipart_upload) | **POST** /projects/{project_name}/buckets/{bucket_name}/files/{file}/complete-multipart-upload | Complete multipart upload
 [**files_delete**](files.md#files_delete) | **DELETE** /projects/{project_name}/buckets/{bucket_name}/files/{file} | Delete a file
 [**files_download**](files.md#files_download) | **GET** /projects/{project_name}/buckets/{bucket_name}/files/{file}/download | Download a file
 [**files_get**](files.md#files_get) | **GET** /projects/{project_name}/buckets/{bucket_name}/files/{file} | Get a file
 [**files_list**](files.md#files_list) | **GET** /projects/{project_name}/buckets/{bucket_name}/files | List files
+[**files_start_multipart_upload**](files.md#files_start_multipart_upload) | **POST** /projects/{project_name}/buckets/{bucket_name}/files/{file}/start-multipart-upload | Start multipart upload
 [**files_upload**](files.md#files_upload) | **POST** /projects/{project_name}/buckets/{bucket_name}/files/{file} | Upload a file
 
 
@@ -32,14 +34,14 @@ Create a bucket in a project
 
 - `provider`: Provider of the bucket. It can be 'ubiops', 'google_cloud_storage', 'amazon_s3' or 'azure_blob_storage'. The default is **ubiops**.
 - `credentials`: A dictionary for credentials to connect to the bucket. It is only required for providers other than *ubiops*. Each provider requires a different set of fields:
-  - For Amazon S3, provide the fields `access_key` and `secret_key`.
-  - For Azure Blob Storage, provide the field `connection_string` in the format: *DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net*.
-  - For Google Cloud Storage, provide the field `json_key_file`.
+    - For Amazon S3, provide the fields `access_key` and `secret_key`.
+    - For Azure Blob Storage, provide the field `connection_string` in the format: *DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net*.
+    - For Google Cloud Storage, provide the field `json_key_file`.
 - `configuration`: A dictionary for additional configuration details for the bucket. It is only required for providers other than *ubiops*. Each provider requires a different set of fields:
-  - For Amazon S3, provide the fields `bucket` and `prefix`. One of the fields `region` or `endpoint_url` needs to be provided. The fields `signature_version`, `verify` and `use_ssl` are optional.
-  - For Azure Blob Storage, provide the fields `container` and `prefix`.
-  - For Google Cloud Storage, provide the fields `bucket` and `prefix`.
-  UbiOps always makes sure that the prefix ends with a '/'.
+    - For Amazon S3, provide the fields `bucket` and `prefix`. One of the fields `region` or `endpoint_url` needs to be provided. The fields `signature_version`, `verify` and `use_ssl` are optional.
+    - For Azure Blob Storage, provide the fields `container` and `prefix`.
+    - For Google Cloud Storage, provide the fields `bucket` and `prefix`.
+    UbiOps always makes sure that the prefix ends with a '/'.
 - `description`: Description of the bucket
 - `labels`: Dictionary containing key/value pairs where key indicates the label and value is the corresponding value of that label
 - `ttl`: Time to live for the files in the bucket. It must be a multiple of 604800 (1 week). Pass `null` to keep them forever.
@@ -393,6 +395,77 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
+# **files_complete_multipart_upload**
+> files_complete_multipart_upload(bucket.name, file, data)
+
+Complete multipart upload
+
+## Description
+Complete a multipart upload for a file
+
+### Request Structure
+- `parts`: A list of parts that were uploaded
+
+## Request Examples
+
+```
+{
+  "parts": [
+    {
+      "ETag": "etag-2",
+      "PartNumber": 1
+    },
+    {
+      "ETag": "etag-2",
+      "PartNumber": 2
+    }
+  ]
+}
+```
+
+### Response Structure
+
+- `upload_id`: ID of the uploaded for the file
+- `provider`: Provider of the bucket where the file will be uploaded
+
+## Response Examples
+
+```
+{
+  "upload_id": "upload-id",
+  "provider": "google_cloud_storage"
+}
+```
+
+### Example
+```R
+data <- list(
+  upload_id = "upload_id",  # (optional)
+  parts = list("value-1", "value-2")  # (optional)
+)
+
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::files_complete_multipart_upload(
+  bucket.name, file, data
+)
+
+# Or provide directly
+result <- ubiops::files_complete_multipart_upload(
+  bucket.name, file, data,
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
 # **files_delete**
 > files_delete(bucket.name, file)
 
@@ -587,8 +660,56 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 # Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
 ```
 
+# **files_start_multipart_upload**
+> files_start_multipart_upload(bucket.name, file, data=NULL)
+
+Start multipart upload
+
+## Description
+Start a multipart upload for a file
+
+### Response Structure
+
+- `upload_id`: ID of the upload for the file
+- `provider`: Provider of the bucket where the file will be uploaded
+
+## Response Examples
+
+```
+{
+  "upload_id": "upload-id",
+  "provider": "google_cloud_storage"
+}
+```
+
+### Example
+```R
+# Use environment variables
+Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
+Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+result <- ubiops::files_start_multipart_upload(
+  bucket.name, file,
+  data = NULL
+)
+
+# Or provide directly
+result <- ubiops::files_start_multipart_upload(
+  bucket.name, file,
+  data = NULL, 
+  UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
+)
+
+print(result)
+
+# Or print in JSON format
+print(jsonlite::toJSON(result, auto_unbox=TRUE))
+
+# The default API url is https://api.ubiops.com/v2.1
+# Want to use a different API url? Provide `UBIOPS_API_URL`, either directly or as environment variable.
+```
+
 # **files_upload**
-> files_upload(bucket.name, file, data=NULL)
+> files_upload(bucket.name, file, upload.id=NULL, part.number=NULL, data=NULL)
 
 Upload a file
 
@@ -598,6 +719,11 @@ Generate a signed url to upload a file. Request body should be an empty dictiona
 Note: When using the url generated by this endpoint for Azure Blob Storage, the following headers must be added to the upload request to Azure Blob Storage:
 - `x-ms-version`: '2020-04-08'
 - `x-ms-blob-type`: 'BlockBlob'
+
+### Optional Parameters
+
+- `upload_id`: ID of the upload for the file. It should be used with multipart uploads.
+- `part_number`: Part number of the upload. It should be used with multipart uploads.
 
 ### Response Structure
 
@@ -620,13 +746,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::files_upload(
   bucket.name, file,
-  data = NULL
+  upload.id = NULL, part.number = NULL, data = NULL
 )
 
 # Or provide directly
 result <- ubiops::files_upload(
   bucket.name, file,
-  data = NULL, 
+  upload.id = NULL, part.number = NULL, data = NULL, 
   UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

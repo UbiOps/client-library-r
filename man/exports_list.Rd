@@ -20,11 +20,11 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list of details of the exports in the project
-   - `id`: Unique identifier for the export (UUID)
-   - `creation_date`: Time the export was created
-   - `status`: The status of the export
-   - `error_message`: The error message in case of a failure
-   - `size`: Size of the export in bytes
+  - `id`: Unique identifier for the export (UUID)
+  - `creation_date`: Time the export was created
+  - `status`: The status of the export
+  - `error_message`: The error message in case of a failure
+  - `size`: Size of the export in bytes
 }
 \description{
 List all exports in a project

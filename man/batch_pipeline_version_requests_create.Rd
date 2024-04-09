@@ -36,11 +36,11 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list of dictionaries containing the details of the created pipeline version requests with the following fields:
-   - `id`: Unique identifier for the pipeline version request, which can be used to collect the result
-   - `pipeline`: Name of the pipeline for which the request is made
-   - `version`: Name of the pipeline version for which the request is made
-   - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
-   - `time_created`: Server time that the request was made (current time)
+  - `id`: Unique identifier for the pipeline version request, which can be used to collect the result
+  - `pipeline`: Name of the pipeline for which the request is made
+  - `version`: Name of the pipeline version for which the request is made
+  - `status`: Status of the request. Always 'pending' when initialised, later it can be 'processing', 'failed' or 'completed'.
+  - `time_created`: Server time that the request was made (current time)
 }
 \description{
 Make a batch request to a pipeline version. The request follows an asynchronous method, as the requests are queued in our back-end and can be collected at a later time using the pipeline version request collect methods.  The maximum number of requests that can be created per batch is 250.

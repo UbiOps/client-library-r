@@ -250,7 +250,7 @@ deployment_environment_variables_copy <- function(deployment.name, data,  preloa
 #' @title Create deployment environment variable
 #' @description Create an environment variable for the deployment. This variable will be inherited by all versions of this deployment. Variables inherited from the project can be shadowed by creating a variable with the same name.
 #' @param deployment.name  character
-#' @param data  named list of: [ name, value (optional), secret ]
+#' @param data  named list of: [ name, value, secret ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -268,7 +268,7 @@ deployment_environment_variables_copy <- function(deployment.name, data,  preloa
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  value = "value",  # (optional)
+#'  value = "value",
 #'  secret = FALSE
 #' )
 #'
@@ -521,7 +521,7 @@ deployment_environment_variables_list <- function(deployment.name,  preload_cont
 #' @description Update an environment variable for the deployment. This cannot be used to update inherited variables; to change an inherited variable for a specific deployment you can create a variable with the same name for the deployment.
 #' @param deployment.name  character
 #' @param id  character
-#' @param data  named list of: [ name, value (optional), secret ]
+#' @param data  named list of: [ name, value, secret ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -539,7 +539,7 @@ deployment_environment_variables_list <- function(deployment.name,  preload_cont
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  value = "value",  # (optional)
+#'  value = "value",
 #'  secret = FALSE
 #' )
 #'
@@ -690,7 +690,7 @@ deployment_version_environment_variables_copy <- function(deployment.name, versi
 #' @description Create an environment variable for the deployment version. Variables inherited from the project or deployment can be shadowed by creating a variable with the same name.
 #' @param deployment.name  character
 #' @param version  character
-#' @param data  named list of: [ name, value (optional), secret ]
+#' @param data  named list of: [ name, value, secret ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -708,7 +708,7 @@ deployment_version_environment_variables_copy <- function(deployment.name, versi
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  value = "value",  # (optional)
+#'  value = "value",
 #'  secret = FALSE
 #' )
 #'
@@ -989,7 +989,7 @@ deployment_version_environment_variables_list <- function(deployment.name, versi
 #' @param deployment.name  character
 #' @param id  character
 #' @param version  character
-#' @param data  named list of: [ name, value (optional), secret ]
+#' @param data  named list of: [ name, value, secret ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1007,7 +1007,7 @@ deployment_version_environment_variables_list <- function(deployment.name, versi
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  value = "value",  # (optional)
+#'  value = "value",
 #'  secret = FALSE
 #' )
 #'
@@ -1078,7 +1078,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #' @title Create deployment versions
 #' @description Create a version for a deployment. The first version of a deployment is set as default. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
-#' @param data  named list of: [ version, environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
+#' @param data  named list of: [ version, environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional), ports (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1131,7 +1131,14 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'  maximum_queue_size_express = 0,  # (optional)
 #'  maximum_queue_size_batch = 0,  # (optional)
 #'  static_ip = FALSE,  # (optional)
-#'  restart_request_interruption = FALSE  # (optional)
+#'  restart_request_interruption = FALSE,  # (optional)
+#'  ports = list(  # (optional)
+#'    list(
+#'      public_port = 0,
+#'      deployment_port = 0,
+#'      protocol = "protocol"
+#'    )
+#'  )
 #' )
 #'
 #' # Use environment variables
@@ -1436,7 +1443,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #' @description Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.
 #' @param deployment.name  character
 #' @param version  character
-#' @param data  named list of: [ version (optional), environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]
+#' @param data  named list of: [ version (optional), environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional), ports (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -1492,7 +1499,14 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'  maximum_queue_size_express = 0,  # (optional)
 #'  maximum_queue_size_batch = 0,  # (optional)
 #'  static_ip = FALSE,  # (optional)
-#'  restart_request_interruption = FALSE  # (optional)
+#'  restart_request_interruption = FALSE,  # (optional)
+#'  ports = list(  # (optional)
+#'    list(
+#'      public_port = 0,
+#'      deployment_port = 0,
+#'      protocol = "protocol"
+#'    )
+#'  )
 #' )
 #'
 #' # Use environment variables
@@ -1554,7 +1568,7 @@ deployment_versions_update <- function(deployment.name, version, data,  preload_
 
 
 #' @title Create deployments
-#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are: - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (True/False) - **dict**: Python dictionary - **file**: a file. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field. - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **array_file**: an array of files  Possible widgets for the input fields are: - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are: - **textbox**: textbox - **button**: download button - **image_preview**: image preview
+#' @description Create a deployment by defining the input/output type and input/output fields. In case of **plain** type of input or output, input and output fields should not be given or passed as an empty list.  Possible data types for the input and output fields are:  - **int**: integer - **string**: string - **double**: double precision floating point - **bool**: boolean value (True/False) - **dict**: Python dictionary - **file**: a file. This type of field can be used to pass files to the deployment. In deployment and pipeline requests, the path to the file in the bucket must be provided for this field. - **array_int**: an array of integers - **array_double**: an array of double precision floating points - **array_string**: an array of strings - **array_file**: an array of files  Possible widgets for the input fields are:  - **textbox**: textbox - **numberbox**: numberbox - **slider**: slider - **dropdown**: dropdown - **switch**: switch - **button**: upload button - **drawer**: drawer - **image_preview**: image upload with preview  Possible widgets for the output fields are:  - **textbox**: textbox - **button**: download button - **image_preview**: image preview
 #' @param data  named list of: [ name, description (optional), input_type, output_type, input_fields (optional), output_fields (optional), labels (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -2019,7 +2033,7 @@ revisions_file_download <- function(deployment.name, revision.id, version,  prel
 
 
 #' @title Upload deployment file
-#' @description Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a validation. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.   It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a validation.
+#' @description Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a validation. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.  It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a validation.
 #' @param deployment.name  character
 #' @param version  character
 #' @param file (optional) file path - Example: file.path("path", "to", "file")
@@ -2359,7 +2373,7 @@ revisions_rebuild <- function(deployment.name, revision.id, version, data,  prel
 #'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
-#'  - `id`: Unique identifier for the template deployment (UUID) 
+#'  - `id`: Unique identifier for the template deployment (UUID)
 #'   - `details`: A dictionary containing all the required fields to create a deployment and a deployment version for the template deployment
 #' @examples
 #' \dontrun{

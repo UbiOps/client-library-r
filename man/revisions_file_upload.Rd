@@ -43,7 +43,7 @@ Response from the API
   - `build`: [DEPRECATED] UUID of the created revision for the file upload
 }
 \description{
-Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a validation. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.   It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a validation.
+Upload a deployment file for a version. Uploading a deployment file will create a new revision and trigger a validation. This file should contain the deployment that will be run. It should be provided as a zip and a template can be found on https://github.com/UbiOps/deployment-template. The file is saved under a directory in the storage specified in the settings.  It is **also possible** to provide a source version from which the deployment file will be copied. This will also create a new revision and trigger a validation.
 }
 \examples{
 \dontrun{

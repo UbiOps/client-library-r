@@ -19,10 +19,10 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list of details of the projects
-  - `id`: Unique identifier for the project (UUID) 
-  - `name`: Name of the project 
-  - `creation_date`: Time the project was created 
-  - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project 
+  - `id`: Unique identifier for the project (UUID)
+  - `name`: Name of the project
+  - `creation_date`: Time the project was created
+  - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
   - `organization_name`: Name of the organization in which the project is created
 }
 \description{

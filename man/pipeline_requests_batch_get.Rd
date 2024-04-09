@@ -22,20 +22,20 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list of dictionaries containing the details of the retrieved pipeline requests with the following fields:
-   - `id`: Unique identifier for the pipeline request
-   - `pipeline`: Name of the pipeline for which the request is made
-   - `version`: Name of the pipeline version for which the request was made
-   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
-   - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
-   - `time_created`: Server time that the request was made (current time)
-   - `time_started`: Server time that the processing of the request was started
-   - `time_completed`: Server time that the processing of the request was completed
-   - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
-   - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
-   - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
-   - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
-   - `pipeline_requests`: A list of requests to the sub-pipelines in the pipeline. With the sub-pipeline request ids provided in this list, it's possible to collect the results of the sub-pipeline requests separately.
-   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+  - `id`: Unique identifier for the pipeline request
+  - `pipeline`: Name of the pipeline for which the request is made
+  - `version`: Name of the pipeline version for which the request was made
+  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+  - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
+  - `time_created`: Server time that the request was made (current time)
+  - `time_started`: Server time that the processing of the request was started
+  - `time_completed`: Server time that the processing of the request was completed
+  - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
+  - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
+  - `deployment_requests`: A list of requests to the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+  - `operator_requests`: A list of requests of the operators in the pipeline. With the operator request ids provided in this list, it's possible to collect the results of the operator requests separately.
+  - `pipeline_requests`: A list of requests to the sub-pipelines in the pipeline. With the sub-pipeline request ids provided in this list, it's possible to collect the results of the sub-pipeline requests separately.
+  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 }
 \description{
 Retrieve multiple pipeline requests for the default version of a pipeline. If one of the given pipeline requests does not exist, an error message is given and no request is returned. A maximum of 250 pipeline requests can be retrieved with this method. The pipeline requests are NOT returned in the order they are given in.

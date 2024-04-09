@@ -17,7 +17,7 @@ deployment_environment_variables_update(
 
 \item{id}{character}
 
-\item{data}{named list of: [ name, value (optional), secret ]}
+\item{data}{named list of: [ name, value, secret ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -42,7 +42,7 @@ Update an environment variable for the deployment. This cannot be used to update
 \dontrun{
 data <- list(
  name = "name",
- value = "value",  # (optional)
+ value = "value",
  secret = FALSE
 )
 

@@ -19,7 +19,7 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 Response from the API
 }
 \description{
-Delete a role from a project. The user making the request must have appropriate permissions. **Default roles cannot be deleted.**
+Delete a role from a project. The user making the request must have appropriate permissions.  **Default roles cannot be deleted.**
 }
 \examples{
 \dontrun{

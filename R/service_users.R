@@ -9,7 +9,7 @@
 
 
 #' @title Create a new service user
-#' @description Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API. It is possible to set an expiry date for this token. In addition, allowed cors origins can be configured for the service user. The service user will be allowed to make a deployment or pipeline request from these origins.   The token is **ONLY** returned on creation and will not be accessible afterwards.
+#' @description Create a new service user. A unique email is generated for the service user. Additionally, a token for this service user is generated. This token can be used to authorize requests sent to our API. It is possible to set an expiry date for this token. In addition, allowed cors origins can be configured for the service user. The service user will be allowed to make a deployment or pipeline request from these origins.  The token is **ONLY** returned on creation and will not be accessible afterwards.
 #' @param data  named list of: [ name (optional), expiry_date (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -20,11 +20,11 @@
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the created service user
-#'   - `id`: Unique identifier for the service user (UUID) 
-#'   - `email`: Email of the service user  
-#'   - `token`: The API token for the created service user  
-#'   - `name`: Name of the service user 
-#'   - `creation_date`: Date when the service user was created 
+#'   - `id`: Unique identifier for the service user (UUID)
+#'   - `email`: Email of the service user
+#'   - `token`: The API token for the created service user
+#'   - `name`: Name of the service user
+#'   - `creation_date`: Date when the service user was created
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{
@@ -138,10 +138,10 @@ service_users_delete <- function(service.user.id,  ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the service user
-#'   - `id`: Unique identifier for the service user (UUID) 
-#'   - `email`: Email of the service user  
-#'   - `name`: Name of the service user 
-#'   - `creation_date`: Date when the service user was created 
+#'   - `id`: Unique identifier for the service user (UUID)
+#'   - `email`: Email of the service user
+#'   - `name`: Name of the service user
+#'   - `creation_date`: Date when the service user was created
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{
@@ -203,10 +203,10 @@ service_users_get <- function(service.user.id,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  List of details of the service users:
-#'   - `id`: Unique identifier for the service user (UUID) 
-#'   - `email`: Email of the service user 
-#'   - `name`: Name of the service user 
-#'   - `creation_date`: Date when the service user was created 
+#'   - `id`: Unique identifier for the service user (UUID)
+#'   - `email`: Email of the service user
+#'   - `name`: Name of the service user
+#'   - `creation_date`: Date when the service user was created
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{
@@ -334,10 +334,10 @@ service_users_token <- function(service.user.id, data=NULL,  preload_content=TRU
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the updated service user
-#'   - `id`: Unique identifier for the service user (UUID) 
-#'   - `email`: Email of the service user  
-#'   - `name`: Name of the service user 
-#'   - `creation_date`: Date when the service user was created 
+#'   - `id`: Unique identifier for the service user (UUID)
+#'   - `email`: Email of the service user
+#'   - `name`: Name of the service user
+#'   - `creation_date`: Date when the service user was created
 #'   - `expiry_date`: Date when the service user account will expire (UTC)
 #' @examples
 #' \dontrun{

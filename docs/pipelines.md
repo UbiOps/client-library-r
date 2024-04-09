@@ -454,7 +454,7 @@ A pipeline version with operators
       "reference_name": "one-to-many",
       "reference_type": "operator",
       "configuration": {
-        "batch_size": 10,
+        "batch_size": null,
         "input_fields": [{"name": "output", "data_type": "int"}],
         "output_fields": [{"name": "output", "data_type": "int"}]
       }

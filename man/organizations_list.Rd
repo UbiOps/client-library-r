@@ -17,8 +17,8 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list of details of the organizations
-  - `id`: Unique identifier for the organization (UUID) 
-  - `name`: Name of the organization 
+  - `id`: Unique identifier for the organization (UUID)
+  - `name`: Name of the organization
   - `creation_date`: Date and time the organization was created
 }
 \description{

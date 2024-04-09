@@ -20,9 +20,9 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the user
-  - `id`: Unique identifier for the user (UUID) 
-  - `email`: Email of the user 
-  - `name`: Name of the user 
+  - `id`: Unique identifier for the user (UUID)
+  - `email`: Email of the user
+  - `name`: Name of the user
   - `surname`: Surname of the user
 }
 \description{

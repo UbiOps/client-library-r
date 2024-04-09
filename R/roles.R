@@ -18,7 +18,7 @@
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of available permissions
-#'    - `name`: Name of the permission
+#'   - `name`: Name of the permission
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -328,9 +328,9 @@ role_assignments_per_object_list <- function(resource=NULL, resource.type=NULL, 
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the created role
-#'   - `id`: Unique identifier for the created role (UUID) 
-#'   - `name`: Name of the created role 
-#'   - `default`: A boolean value that indicates whether the role is a default role or not 
+#'   - `id`: Unique identifier for the created role (UUID)
+#'   - `name`: Name of the created role
+#'   - `default`: A boolean value that indicates whether the role is a default role or not
 #'   - `permissions`: A list of permissions which the role contains
 #' @examples
 #' \dontrun{
@@ -386,7 +386,7 @@ roles_create <- function(data,  preload_content=TRUE, ...){
 
 
 #' @title Delete a role from a project
-#' @description Delete a role from a project. The user making the request must have appropriate permissions. **Default roles cannot be deleted.**
+#' @description Delete a role from a project. The user making the request must have appropriate permissions.  **Default roles cannot be deleted.**
 #' @param role.name  character
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -444,9 +444,9 @@ roles_delete <- function(role.name,  ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the role
-#'   - `id`: Unique identifier for the role (UUID) 
-#'   - `name`: Name of the role 
-#'   - `default`: A boolean value that indicates whether the role is a default role or not 
+#'   - `id`: Unique identifier for the role (UUID)
+#'   - `name`: Name of the role
+#'   - `default`: A boolean value that indicates whether the role is a default role or not
 #'   - `permissions`: A list of permissions which the role contains
 #' @examples
 #' \dontrun{
@@ -507,8 +507,8 @@ roles_get <- function(role.name,  preload_content=TRUE, ...){
 #'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
-#'  - `id`: Unique identifier for the role (UUID) 
-#'   - `name`: Name of the role 
+#'  - `id`: Unique identifier for the role (UUID)
+#'   - `name`: Name of the role
 #'   - `default`: A boolean value that indicates whether the role is a default role or not
 #' @examples
 #' \dontrun{
@@ -554,7 +554,7 @@ roles_list <- function( preload_content=TRUE, ...){
 
 
 #' @title Update a role in a project
-#' @description Update a role in a project. The user making the request must have appropriate permissions. **Default roles cannot be updated.**
+#' @description Update a role in a project. The user making the request must have appropriate permissions.  **Default roles cannot be updated.**
 #' @param role.name  character
 #' @param data  named list of: [ name (optional), permissions (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
@@ -566,9 +566,9 @@ roles_list <- function( preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the updated role
-#'   - `id`: Unique identifier for the role (UUID) 
-#'   - `name`: Name of the updated role 
-#'   - `default`: A boolean value that indicates whether the role is a default role or not 
+#'   - `id`: Unique identifier for the role (UUID)
+#'   - `name`: Name of the updated role
+#'   - `default`: A boolean value that indicates whether the role is a default role or not
 #'   - `permissions`: A list of permissions which the role contains
 #' @examples
 #' \dontrun{

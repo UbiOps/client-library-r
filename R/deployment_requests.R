@@ -502,9 +502,9 @@ deployment_requests_delete <- function(deployment.name, request.id,  ...){
 #'   - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
 #'   - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 #'   - `origin`: A dictionary containing the information on where the request originated from. It contains:
-#'      - the deployment (and version) names if the request is directly made to the deployment
-#'      - the pipeline (and version) names if the request is part of a pipeline request
-#'      - the request schedule name if the request is created via a request schedule
+#'       - the deployment (and version) names if the request is directly made to the deployment
+#'       - the pipeline (and version) names if the request is part of a pipeline request
+#'       - the request schedule name if the request is created via a request schedule
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -831,7 +831,7 @@ deployment_version_requests_batch_delete <- function(deployment.name, version, d
 #'    - `time_completed`: Server time that the processing of the request was completed
 #'    - `request_data`: A dictionary containing the data that was sent when the request was created
 #'    - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
-#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+#'    - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
 #'    - `retries`: Number of times that the request has been retried
 #' @examples
 #' \dontrun{

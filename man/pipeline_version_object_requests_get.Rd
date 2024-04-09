@@ -33,20 +33,20 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A dictionary containing the details of the operator request with the following fields:
-   - `id`: Unique identifier for the pipeline version object request
-   - `pipeline_request_id`: Unique identifier for the pipeline request to which the object request belongs
-   - `pipeline`: Name of the pipeline for which the request is made
-   - `version`: Name of the pipeline version for which the request was made
-   - `object`: Name of the pipeline version object for which the request was made
-   - `operator`: Name of the pipeline operator for which the request was made
-   - `status`: Status of the request. Can be 'failed' or 'completed'.
-   - `success`: A boolean value that indicates whether the request was successful
-   - `time_created`: Server time that the request was made
-   - `time_started`: Server time that the processing of the request was started
-   - `time_completed`: Server time that the processing of the request was completed
-   - `request_data`: A dictionary containing the data that was sent when the request was created
-   - `result`: Request result value. NULL if the request failed.
-   - `error_message`: An error message explaining why the request has failed
+  - `id`: Unique identifier for the pipeline version object request
+  - `pipeline_request_id`: Unique identifier for the pipeline request to which the object request belongs
+  - `pipeline`: Name of the pipeline for which the request is made
+  - `version`: Name of the pipeline version for which the request was made
+  - `object`: Name of the pipeline version object for which the request was made
+  - `operator`: Name of the pipeline operator for which the request was made
+  - `status`: Status of the request. Can be 'failed' or 'completed'.
+  - `success`: A boolean value that indicates whether the request was successful
+  - `time_created`: Server time that the request was made
+  - `time_started`: Server time that the processing of the request was started
+  - `time_completed`: Server time that the processing of the request was completed
+  - `request_data`: A dictionary containing the data that was sent when the request was created
+  - `result`: Request result value. NULL if the request failed.
+  - `error_message`: An error message explaining why the request has failed
 }
 \description{
 Get a request for an operator object of a version of a pipeline. With this method, the result of the request may be retrieved.

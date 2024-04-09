@@ -26,6 +26,7 @@ Response from the API
   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type
   - `storage_allocation`: Integer indicating the maximum storage that can be used by this instance type (MB)
   - `credit_rate`: Credits used per hour for this instance type
+  - `dedicated_node`: A boolean indicating whether an entire node is dedicated to this instance type
 }
 \description{
 Get list of available deployment instance types for a project

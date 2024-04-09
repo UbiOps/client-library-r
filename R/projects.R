@@ -27,6 +27,7 @@
 #'   - `gpu_allocation`: Integer indicating number of GPU cores for this instance type
 #'   - `storage_allocation`: Integer indicating the maximum storage that can be used by this instance type (MB)
 #'   - `credit_rate`: Credits used per hour for this instance type
+#'   - `dedicated_node`: A boolean indicating whether an entire node is dedicated to this instance type
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -141,7 +142,7 @@ project_audit_events_list <- function(action=NULL, limit=NULL, offset=NULL,  pre
 
 #' @title Create project environment variable
 #' @description Create an environment variable for the project. This variable will be inherited by all deployments in this project.
-#' @param data  named list of: [ name, value (optional), secret ]
+#' @param data  named list of: [ name, value, secret ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -159,7 +160,7 @@ project_audit_events_list <- function(action=NULL, limit=NULL, offset=NULL,  pre
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  value = "value",  # (optional)
+#'  value = "value",
 #'  secret = FALSE
 #' )
 #'
@@ -382,7 +383,7 @@ project_environment_variables_list <- function( preload_content=TRUE, ...){
 #' @title Update project environment variable
 #' @description Update an environment variable for the projects
 #' @param id  character
-#' @param data  named list of: [ name, value (optional), secret ]
+#' @param data  named list of: [ name, value, secret ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
@@ -400,7 +401,7 @@ project_environment_variables_list <- function( preload_content=TRUE, ...){
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  value = "value",  # (optional)
+#'  value = "value",
 #'  secret = FALSE
 #' )
 #'
@@ -558,9 +559,9 @@ project_requests_list <- function(object.type, status=NULL, success=NULL, limit=
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the added user
-#'   - `id`: Unique identifier for the user (UUID) 
-#'   - `email`: Email of the user 
-#'   - `name`: Name of the user 
+#'   - `id`: Unique identifier for the user (UUID)
+#'   - `email`: Email of the user
+#'   - `name`: Name of the user
 #'   - `surname`: Surname of the user
 #' @examples
 #' \dontrun{
@@ -673,9 +674,9 @@ project_users_delete <- function(user.id,  ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the user
-#'   - `id`: Unique identifier for the user (UUID) 
-#'   - `email`: Email of the user 
-#'   - `name`: Name of the user 
+#'   - `id`: Unique identifier for the user (UUID)
+#'   - `email`: Email of the user
+#'   - `name`: Name of the user
 #'   - `surname`: Surname of the user
 #' @examples
 #' \dontrun{
@@ -738,9 +739,9 @@ project_users_get <- function(user.id,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  List of users
-#'   - `id`: Unique identifier for the user (UUID) 
-#'   - `email`: Email of the user 
-#'   - `name`: Name of the user 
+#'   - `id`: Unique identifier for the user (UUID)
+#'   - `email`: Email of the user
+#'   - `name`: Name of the user
 #'   - `surname`: Surname of the user
 #' @examples
 #' \dontrun{
@@ -789,7 +790,7 @@ project_users_list <- function(user.type=NULL,  preload_content=TRUE, ...){
 
 
 #' @title Create projects
-#' @description Create a new project with the provided name. **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
+#' @description Create a new project with the provided name.  **Only the organization admins have permission to make this request.** When a new project is created, the current organization admins are assigned project-admin role for the created project.
 #' @param data  named list of: [ name, organization_name, advanced_permissions (optional), credits (optional), cors_origins (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
@@ -863,7 +864,7 @@ projects_create <- function(data,  preload_content=TRUE, ...){
 
 
 #' @title Delete a project
-#' @description Delete a project. The user making the request must have appropriate permissions. **When project is deleted, all the deployments and pipelines defined in it are also deleted.**
+#' @description Delete a project. The user making the request must have appropriate permissions.  **When project is deleted, all the deployments and pipelines defined in it are also deleted.**
 #' @param ...
 #'  UBIOPS_PROJECT (system environment variable) UbiOps project name
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -976,10 +977,10 @@ projects_get <- function( preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of details of the projects
-#'   - `id`: Unique identifier for the project (UUID) 
-#'   - `name`: Name of the project 
-#'   - `creation_date`: Time the project was created 
-#'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project 
+#'   - `id`: Unique identifier for the project (UUID)
+#'   - `name`: Name of the project
+#'   - `creation_date`: Time the project was created
+#'   - `advanced_permissions`: A boolean to enable/disable advanced permissions for the project
 #'   - `organization_name`: Name of the organization in which the project is created
 #' @examples
 #' \dontrun{
@@ -1036,21 +1037,21 @@ projects_list <- function(organization=NULL,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of log details
-#'   - `id`: Unique UUID of the log line 
-#'   - `log`: Log line text 
+#'   - `id`: Unique UUID of the log line
+#'   - `log`: Log line text
 #'   - `date`: Time the log line was created
 #'   The following fields will be returned on response if they are set for the log line:
-#'   - `deployment_name`:  The deployment which the log is related to 
-#'   - `deployment_version`:  The deployment version which the log is related to 
-#'   - `deployment_version_revision_id`: The UUID of the deployment version revision 
-#'   - `environment_name`:  The environment which the log is related to 
-#'   - `environment_build_id`: The UUID of the environment build 
-#'   - `pipeline_name`: The pipeline which the log is related to 
-#'   - `pipeline_version`: The pipeline version which the log is related to 
-#'   - `pipeline_object_name`: The pipeline object which the log is related to 
-#'   - `deployment_request_id`:  The deployment request the log is related to 
-#'   - `pipeline_request_id`:  The pipeline request the log is related to 
-#'   - `system`:  Whether the log was generated by the system (true / false) 
+#'   - `deployment_name`:  The deployment which the log is related to
+#'   - `deployment_version`:  The deployment version which the log is related to
+#'   - `deployment_version_revision_id`: The UUID of the deployment version revision
+#'   - `environment_name`:  The environment which the log is related to
+#'   - `environment_build_id`: The UUID of the environment build
+#'   - `pipeline_name`: The pipeline which the log is related to
+#'   - `pipeline_version`: The pipeline version which the log is related to
+#'   - `pipeline_object_name`: The pipeline object which the log is related to
+#'   - `deployment_request_id`:  The deployment request the log is related to
+#'   - `pipeline_request_id`:  The pipeline request the log is related to
+#'   - `system`:  Whether the log was generated by the system (true / false)
 #'   - `level`: The level of the log (info / error)
 #' @examples
 #' \dontrun{

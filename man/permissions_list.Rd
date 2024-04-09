@@ -17,7 +17,7 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list of available permissions
-   - `name`: Name of the permission
+  - `name`: Name of the permission
 }
 \description{
 List all the available permissions which can be used to create custom roles.

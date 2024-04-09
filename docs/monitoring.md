@@ -26,8 +26,8 @@ Create a notification group by defining a name and a list of contacts
 ### Optional Parameters
 
 - `contacts`: A list of dictionaries containing the following keys:
-  - `type`: Type of the contact. It can be `email`.
-  - `configuration`: A custom dictionary that contains required information for the type. For `email` type, it should contain the key `email_address`.
+    - `type`: Type of the contact. It can be `email`.
+    - `configuration`: A custom dictionary that contains required information for the type. For `email` type, it should contain the key `email_address`.
 
 ## Request Examples
 
@@ -292,8 +292,8 @@ Update a notification group
 
 - `name`: New name for the deployment
 - `contacts`: A list of dictionaries containing the following keys:
-- `type`: Type of the contact. It can be `email`.
-- `configuration`: A custom dictionary that contains required information for the type. For `email` type, it should contain the key `email_address`.
+    - `type`: Type of the contact. It can be `email`.
+    - `configuration`: A custom dictionary that contains required information for the type. For `email` type, it should contain the key `email_address`.
 
 ## Request Examples
 

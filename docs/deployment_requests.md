@@ -548,9 +548,9 @@ A dictionary containing the details of the deployment request with the following
 - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
 - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 - `origin`: A dictionary containing the information on where the request originated from. It contains:
-   - the deployment (and version) names if the request is directly made to the deployment
-   - the pipeline (and version) names if the request is part of a pipeline request
-   - the request schedule name if the request is created via a request schedule
+    - the deployment (and version) names if the request is directly made to the deployment
+    - the pipeline (and version) names if the request is part of a pipeline request
+    - the request schedule name if the request is created via a request schedule
 
 ## Response Examples
 

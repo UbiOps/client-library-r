@@ -33,20 +33,20 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A dictionary containing the details of the pipeline version request with the following fields:
-   - `id`: Unique identifier for the pipeline version request
-   - `pipeline`: Name of the pipeline for which the request is made
-   - `version`: Name of the pipeline version for which the request was made
-   - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
-   - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
-   - `time_created`: Server time that the request was made (current time)
-   - `time_started`: Server time that the processing of the request was started
-   - `time_completed`: Server time that the processing of the request was completed
-   - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
-   - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
-   - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
-   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
-   - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
-   - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
+  - `id`: Unique identifier for the pipeline version request
+  - `pipeline`: Name of the pipeline for which the request is made
+  - `version`: Name of the pipeline version for which the request was made
+  - `status`: Status of the request. Can be 'pending', 'processing', 'failed' or 'completed'.
+  - `success`: A boolean value that indicates whether the pipeline version request was successful. NULL if the request is not yet finished.
+  - `time_created`: Server time that the request was made (current time)
+  - `time_started`: Server time that the processing of the request was started
+  - `time_completed`: Server time that the processing of the request was completed
+  - `request_data`: A dictionary (structured input type) or string (plain input type) containing the data that was sent when the request was created
+  - `deployment_requests`: A list of requests of the deployments in the pipeline. With the deployment request ids provided in this list, it's possible to collect the results of the deployment requests separately.
+  - `result`: A dictionary (structured output type) or string (plain output type) containing the data connected to the pipeline end
+  - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
+  - `created_by`: The email of the user that created the request. In case the request is created by a service, the field will have a "UbiOps" value.
+  - `notification_group`: Name of a notification group to send notifications (e.g., emails) when the request is completed
 }
 \description{
 Get a request for a pipeline version. With this method, the result of a request may be retrieved.

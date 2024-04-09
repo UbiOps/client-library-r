@@ -51,14 +51,14 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  A list of dictionaries containing the details of the pipeline requests with the following fields:
-   - `id`: Unique identifier for the pipeline request
-   - `pipeline`: Name of the pipeline for which the request is made
-   - `version`: Name of the pipeline version for which the request was made
-   - `status`: Status of the request
-   - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
-   - `time_created`: Server time that the request was made (current time)
-   - `time_started`: Server time that the processing of the request was started
-   - `time_completed`: Server time that the processing of the request was completed
+  - `id`: Unique identifier for the pipeline request
+  - `pipeline`: Name of the pipeline for which the request is made
+  - `version`: Name of the pipeline version for which the request was made
+  - `status`: Status of the request
+  - `success`: A boolean value that indicates whether the pipeline request was successful. NULL if the request is not yet finished.
+  - `time_created`: Server time that the request was made (current time)
+  - `time_started`: Server time that the processing of the request was started
+  - `time_completed`: Server time that the processing of the request was completed
 }
 \description{
 List all requests for the default version of a pipeline

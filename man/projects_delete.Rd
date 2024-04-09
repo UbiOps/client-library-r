@@ -17,7 +17,7 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 Response from the API
 }
 \description{
-Delete a project. The user making the request must have appropriate permissions. **When project is deleted, all the deployments and pipelines defined in it are also deleted.**
+Delete a project. The user making the request must have appropriate permissions.  **When project is deleted, all the deployments and pipelines defined in it are also deleted.**
 }
 \examples{
 \dontrun{

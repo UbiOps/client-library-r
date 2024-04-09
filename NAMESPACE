@@ -86,10 +86,12 @@ export(buckets_delete)
 export(buckets_get)
 export(buckets_list)
 export(buckets_update)
+export(files_complete_multipart_upload)
 export(files_delete)
 export(files_download)
 export(files_get)
 export(files_list)
+export(files_start_multipart_upload)
 export(files_upload)
 
 # ImportsAndExports
@@ -136,6 +138,7 @@ export(organizations_list)
 export(organizations_resource_usage)
 export(organizations_update)
 export(organizations_usage_get)
+export(vouchers_get)
 
 # PipelineRequests
 export(batch_pipeline_requests_create)

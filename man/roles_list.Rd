@@ -17,8 +17,8 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 }
 \value{
 Response from the API
- - `id`: Unique identifier for the role (UUID) 
-  - `name`: Name of the role 
+ - `id`: Unique identifier for the role (UUID)
+  - `name`: Name of the role
   - `default`: A boolean value that indicates whether the role is a default role or not
 }
 \description{

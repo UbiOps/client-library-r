@@ -9,7 +9,7 @@ deployment_versions_create(deployment.name, data, preload_content = TRUE, ...)
 \arguments{
 \item{deployment.name}{character}
 
-\item{data}{named list of: [ version, environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional) ]}
+\item{data}{named list of: [ version, environment (optional), instance_type (optional), maximum_instances (optional), minimum_instances (optional), maximum_idle_time (optional), description (optional), labels (optional), monitoring (optional), request_retention_time (optional), request_retention_mode (optional), default_notification_group (optional), maximum_queue_size_express (optional), maximum_queue_size_batch (optional), static_ip (optional), restart_request_interruption (optional), ports (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -69,7 +69,14 @@ data <- list(
  maximum_queue_size_express = 0,  # (optional)
  maximum_queue_size_batch = 0,  # (optional)
  static_ip = FALSE,  # (optional)
- restart_request_interruption = FALSE  # (optional)
+ restart_request_interruption = FALSE,  # (optional)
+ ports = list(  # (optional)
+   list(
+     public_port = 0,
+     deployment_port = 0,
+     protocol = "protocol"
+   )
+ )
 )
 
 # Use environment variables

@@ -26,7 +26,6 @@ The token is **ONLY** returned on creation and will not be accessible afterwards
 ### Optional Parameters
 
 - `name`: Name of the service user
-
 - `expiry_date`: Date when the service user account expires (UTC). If null is passed, the account will never expire.
 
 ## Request Examples
@@ -49,15 +48,10 @@ The token is **ONLY** returned on creation and will not be accessible afterwards
 Details of the created service user
 
 - `id`: Unique identifier for the service user (UUID)
-
-- `email`: Email of the service user 
-
-- `token`: The API token for the created service user 
-
+- `email`: Email of the service user
+- `token`: The API token for the created service user
 - `name`: Name of the service user
-
 - `creation_date`: Date when the service user was created
-
 - `expiry_date`: Date when the service user account will expire (UTC)
 
 ## Response Examples
@@ -141,13 +135,9 @@ Retrieve details of a service user
 Details of the service user
 
 - `id`: Unique identifier for the service user (UUID)
-
-- `email`: Email of the service user 
-
+- `email`: Email of the service user
 - `name`: Name of the service user
-
 - `creation_date`: Date when the service user was created
-
 - `expiry_date`: Date when the service user account will expire (UTC)
 
 ## Response Examples
@@ -198,13 +188,9 @@ List service users defined in a project
 List of details of the service users:
 
 - `id`: Unique identifier for the service user (UUID)
-
 - `email`: Email of the service user
-
 - `name`: Name of the service user
-
 - `creation_date`: Date when the service user was created
-
 - `expiry_date`: Date when the service user account will expire (UTC)
 
 ## Response Examples
@@ -315,7 +301,6 @@ It is not possible to update a service user whose expiry date has been reached.
 ### Optional Parameters
 
 - `name`: Name of the service user
-
 - `expiry_date`: Date when the service user account will expire (UTC). If null is passed, the account will never expire.
 
 ## Request Examples
@@ -338,13 +323,9 @@ It is not possible to update a service user whose expiry date has been reached.
 Details of the updated service user
 
 - `id`: Unique identifier for the service user (UUID)
-
-- `email`: Email of the service user 
-
+- `email`: Email of the service user
 - `name`: Name of the service user
-
 - `creation_date`: Date when the service user was created
-
 - `expiry_date`: Date when the service user account will expire (UTC)
 
 ## Response Examples

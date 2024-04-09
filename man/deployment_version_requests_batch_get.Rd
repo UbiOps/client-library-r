@@ -40,7 +40,7 @@ Response from the API
    - `time_completed`: Server time that the processing of the request was completed
    - `request_data`: A dictionary containing the data that was sent when the request was created
    - `result`: Deployment request result value. NULL if the request is 'pending', 'processing' or 'failed'.
-   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful. 
+   - `error_message`: An error message explaining why the request has failed. NULL if the request was successful.
    - `retries`: Number of times that the request has been retried
 }
 \description{

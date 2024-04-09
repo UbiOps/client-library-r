@@ -20,10 +20,10 @@
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the added user
-#'   - `id`: Unique identifier for the user (UUID) 
-#'   - `email`: Email of the user 
-#'   - `name`: Name of the user 
-#'   - `surname`: Surname of the user 
+#'   - `id`: Unique identifier for the user (UUID)
+#'   - `email`: Email of the user
+#'   - `name`: Name of the user
+#'   - `surname`: Surname of the user
 #'   - `admin`: Boolean value indicating whether the user is an admin of the organization or not
 #' @examples
 #' \dontrun{
@@ -147,10 +147,10 @@ organization_users_delete <- function(organization.name, user.id,  ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the user
-#'   - `id`: Unique identifier for the user (UUID) 
-#'   - `email`: Email of the user 
-#'   - `name`: Name of the user 
-#'   - `surname`: Surname of the user 
+#'   - `id`: Unique identifier for the user (UUID)
+#'   - `email`: Email of the user
+#'   - `name`: Name of the user
+#'   - `surname`: Surname of the user
 #'   - `admin`: Boolean value indicating whether the user is an admin of the organization or not
 #' @examples
 #' \dontrun{
@@ -217,10 +217,10 @@ organization_users_get <- function(organization.name, user.id,  preload_content=
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  List of details of users
-#'   - `id`: Unique identifier for the user (UUID) 
-#'   - `email`: Email of the user 
-#'   - `name`: Name of the user 
-#'   - `surname`: Surname of the user 
+#'   - `id`: Unique identifier for the user (UUID)
+#'   - `email`: Email of the user
+#'   - `name`: Name of the user
+#'   - `surname`: Surname of the user
 #'   - `admin`: Boolean value indicating whether the user is an admin of the organization or not
 #' @examples
 #' \dontrun{
@@ -283,10 +283,10 @@ organization_users_list <- function(organization.name,  preload_content=TRUE, ..
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the user
-#'   - `id`: Unique identifier for the user (UUID) 
-#'   - `email`: Email of the user 
-#'   - `name`: Name of the user 
-#'   - `surname`: Surname of the user 
+#'   - `id`: Unique identifier for the user (UUID)
+#'   - `email`: Email of the user
+#'   - `name`: Name of the user
+#'   - `surname`: Surname of the user
 #'   - `admin`: Boolean value indicating whether the user is an admin of the organization or not
 #' @examples
 #' \dontrun{
@@ -353,7 +353,7 @@ organization_users_update <- function(organization.name, user.id, data,  preload
 
 #' @title Create organizations
 #' @description Create a new organization. When a user creates an organization, s/he will automatically become an organization admin.
-#' @param data  named list of: [ name, subscription, subscription_end_date (optional) ]
+#' @param data  named list of: [ name, subscription (optional), subscription_end_date (optional), voucher (optional) ]
 #' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
 #' @param ...
 #'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
@@ -362,15 +362,16 @@ organization_users_update <- function(organization.name, user.id, data,  preload
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the created organization
-#'   - `id`: Unique identifier for the organization (UUID) 
-#'   - `name`: Name of the organization 
+#'   - `id`: Unique identifier for the organization (UUID)
+#'   - `name`: Name of the organization
 #'   - `creation_date`: Date and time the organization was created
 #' @examples
 #' \dontrun{
 #' data <- list(
 #'  name = "name",
-#'  subscription = "subscription",
-#'  subscription_end_date = subscription_end_date  # (optional)
+#'  subscription = "subscription",  # (optional)
+#'  subscription_end_date = subscription_end_date,  # (optional)
+#'  voucher = "voucher"  # (optional)
 #' )
 #'
 #' # Use environment variables
@@ -428,9 +429,9 @@ organizations_create <- function(data,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the organization
-#'   - `id`: Unique identifier for the organization (UUID) 
-#'   - `name`: Name of the organization 
-#'   - `creation_date`: Time the organization was created 
+#'   - `id`: Unique identifier for the organization (UUID)
+#'   - `name`: Name of the organization
+#'   - `creation_date`: Time the organization was created
 #'   - `subscription`: Name of the subscription of the organization
 #' @examples
 #' \dontrun{
@@ -490,8 +491,8 @@ organizations_get <- function(organization.name,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of details of the organizations
-#'   - `id`: Unique identifier for the organization (UUID) 
-#'   - `name`: Name of the organization 
+#'   - `id`: Unique identifier for the organization (UUID)
+#'   - `name`: Name of the organization
 #'   - `creation_date`: Date and time the organization was created
 #' @examples
 #' \dontrun{
@@ -613,9 +614,9 @@ organizations_resource_usage <- function(organization.name,  preload_content=TRU
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  Details of the organization
-#'   - `id`: Unique identifier for the organization (UUID) 
-#'   - `name`: Name of the organization 
-#'   - `creation_date`: Time the organization was created 
+#'   - `id`: Unique identifier for the organization (UUID)
+#'   - `name`: Name of the organization
+#'   - `creation_date`: Time the organization was created
 #'   - `subscription`: Name of the subscription
 #' @examples
 #' \dontrun{
@@ -730,6 +731,64 @@ organizations_usage_get <- function(organization.name, start.date=NULL, end.date
   url_path <- "/organizations/{organization_name}/usage"
   if (!missing(`organization.name`)) {
     url_path <- gsub("\\{organization_name\\}", utils::URLencode(as.character(`organization.name`), reserved = TRUE), url_path)
+  }
+
+  api.response <- call_api(url_path, "GET", NULL, query_params, ...)
+  if (preload_content) {
+    deserializedRespObj <- tryCatch(
+      deserialize(api.response),
+      error = function(e){
+        stop("Failed to deserialize response")
+      }
+    )
+
+  } else {
+    ApiResponse$new(api.response)
+  }
+}
+
+
+#' @title Get voucher
+#' @description Get the description of a voucher from its code
+#' @param code  character
+#' @param preload_content (optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE
+#' @param ...
+#'  UBIOPS_API_TOKEN (system environment variable) Token to connect to UbiOps API
+#'  UBIOPS_API_URL (optional - system environment variable) UbiOps API url - Default = "https://api.ubiops.com/v2.1"
+#'  UBIOPS_TIMEOUT (optional - system environment variable) Maximum request timeout to connect to UbiOps API - Default = NA
+#'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
+#' @return Response from the API
+#' @examples
+#' \dontrun{
+#' # Use environment variables
+#' Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
+#' result <- ubiops::vouchers_get(
+#'    code
+#' )
+#' 
+#' # Or provide directly
+#' result <- ubiops::vouchers_get(
+#'    code,
+#'    UBIOPS_API_TOKEN = "YOUR API TOKEN"
+#' )
+#' 
+#' print(result)
+#' 
+#' # The default API url is https://api.ubiops.com/v2.1
+#' # Want to use a different API url?
+#' # Provide `UBIOPS_API_URL`, either directly or as environment variable.
+#' }
+#' @export
+vouchers_get <- function(code,  preload_content=TRUE, ...){
+  query_params <- list()
+
+  if (missing(`code`)) {
+    stop("Missing required parameter `code`.")
+  }
+  
+  url_path <- "/vouchers/{code}"
+  if (!missing(`code`)) {
+    url_path <- gsub("\\{code\\}", utils::URLencode(as.character(`code`), reserved = TRUE), url_path)
   }
 
   api.response <- call_api(url_path, "GET", NULL, query_params, ...)

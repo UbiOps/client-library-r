@@ -22,13 +22,13 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the updated role
-  - `id`: Unique identifier for the role (UUID) 
-  - `name`: Name of the updated role 
-  - `default`: A boolean value that indicates whether the role is a default role or not 
+  - `id`: Unique identifier for the role (UUID)
+  - `name`: Name of the updated role
+  - `default`: A boolean value that indicates whether the role is a default role or not
   - `permissions`: A list of permissions which the role contains
 }
 \description{
-Update a role in a project. The user making the request must have appropriate permissions. **Default roles cannot be updated.**
+Update a role in a project. The user making the request must have appropriate permissions.  **Default roles cannot be updated.**
 }
 \examples{
 \dontrun{

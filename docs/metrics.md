@@ -442,7 +442,7 @@ Insert data points for a metric. Multiple metrics for different types is support
 
 - `metric`: Name of the metric
 - `labels`: Dictionary containing key/value pairs where key indicates the string that can be used to query this metric later and value is the corresponding value of that
-- `data`: A list of dictionaries containing 'date' and 'value' fields to indicate the value of the metric for a specific date
+- `data`: A list of dictionaries containing 'date' and 'value' fields to indicate the value of the metric for a specific date. The value is inserted for the minute provided in the date field.
 
 ## Request Examples
 
@@ -511,6 +511,7 @@ List time series data
 List data points for a metric
 
 Available metrics for deployments:
+
 - `deployments.requests`: Number of requests to a deployment version
 - `deployments.failed_requests`: Number of failed requests to a deployment version
 - `deployments.request_duration`: Average time in seconds for a deployment request to complete
@@ -527,6 +528,7 @@ Available metrics for deployments:
 - `deployments.credits`: Usage of credits, calculated by multiplying the credit rate of a deployment instance type by the number of hours the deployments are running
 
 Available metrics for pipelines:
+
 - `pipelines.requests`: Number of requests to a pipeline version
 - `pipelines.failed_requests`: Number of failed requests to a pipeline version
 - `pipelines.request_duration`: Average time in seconds for a pipeline request to complete

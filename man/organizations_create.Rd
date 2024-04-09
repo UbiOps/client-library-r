@@ -7,7 +7,7 @@
 organizations_create(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ name, subscription, subscription_end_date (optional) ]}
+\item{data}{named list of: [ name, subscription (optional), subscription_end_date (optional), voucher (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -19,8 +19,8 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the created organization
-  - `id`: Unique identifier for the organization (UUID) 
-  - `name`: Name of the organization 
+  - `id`: Unique identifier for the organization (UUID)
+  - `name`: Name of the organization
   - `creation_date`: Date and time the organization was created
 }
 \description{
@@ -30,8 +30,9 @@ Create a new organization. When a user creates an organization, s/he will automa
 \dontrun{
 data <- list(
  name = "name",
- subscription = "subscription",
- subscription_end_date = subscription_end_date  # (optional)
+ subscription = "subscription",  # (optional)
+ subscription_end_date = subscription_end_date,  # (optional)
+ voucher = "voucher"  # (optional)
 )
 
 # Use environment variables

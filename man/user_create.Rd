@@ -7,7 +7,7 @@
 user_create(data, preload_content = TRUE, ...)
 }
 \arguments{
-\item{data}{named list of: [ email, password, name (optional), surname (optional) ]}
+\item{data}{named list of: [ email, password, name (optional), surname (optional), phone (optional) ]}
 
 \item{preload_content}{(optional) Whether the API response should be preloaded. When TRUE the JSON response string is parsed to an R object. When FALSE, unprocessed API response object is returned. - Default = TRUE}
 
@@ -19,9 +19,10 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the created user
-   - `email`: Email of the user
-   - `name`: Name of the user
-   - `surname`: Surname of the user
+  - `email`: Email of the user
+  - `name`: Name of the user
+  - `surname`: Surname of the user
+  - `phone`: Phone number of the user
 }
 \description{
 Create a new user with the given details. After creation, an email is send to the email address to activate the account. The password needs to be at least 8 characters long.
@@ -32,7 +33,8 @@ data <- list(
  email = "email",
  password = "password",
  name = "name",  # (optional)
- surname = "surname"  # (optional)
+ surname = "surname",  # (optional)
+ phone = "phone"  # (optional)
 )
 
 # Use environment variables

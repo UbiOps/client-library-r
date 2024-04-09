@@ -40,7 +40,7 @@ Response from the API
   - `size`: Size of the import in bytes
 }
 \description{
-Create an import by uploading a zip file, providing a link to an import file or by giving an export id. Only one of the fields `file`, `import_link` or `export_id` may be given at a time.  When providing a link to an import file, make sure it is publicly downloadable.
+Create an import by uploading a zip file, providing a link to an import file or by giving an export id. Only one of the fields `file`, `import_link` or `export_id` may be given at a time. When providing a link to an import file, make sure it is publicly downloadable.
 }
 \examples{
 \dontrun{

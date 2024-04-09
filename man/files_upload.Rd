@@ -4,12 +4,24 @@
 \alias{files_upload}
 \title{Upload a file}
 \usage{
-files_upload(bucket.name, file, data = NULL, preload_content = TRUE, ...)
+files_upload(
+  bucket.name,
+  file,
+  upload.id = NULL,
+  part.number = NULL,
+  data = NULL,
+  preload_content = TRUE,
+  ...
+)
 }
 \arguments{
 \item{bucket.name}{character}
 
 \item{file}{character}
+
+\item{upload.id}{(optional) character}
+
+\item{part.number}{(optional) character}
 
 \item{data}{(optional) list(key = "value")}
 
@@ -36,13 +48,13 @@ Sys.setenv("UBIOPS_PROJECT" = "YOUR PROJECT NAME")
 Sys.setenv("UBIOPS_API_TOKEN" = "YOUR API TOKEN")
 result <- ubiops::files_upload(
    bucket.name, file,
-   data = NULL
+   upload.id = NULL, part.number = NULL, data = NULL
 )
 
 # Or provide directly
 result <- ubiops::files_upload(
    bucket.name, file,
-   data = NULL, 
+   upload.id = NULL, part.number = NULL, data = NULL, 
    UBIOPS_PROJECT = "YOUR PROJECT NAME", UBIOPS_API_TOKEN = "YOUR API TOKEN"
 )
 

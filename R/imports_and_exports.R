@@ -277,11 +277,11 @@ exports_get <- function(export.id,  preload_content=TRUE, ...){
 #'  UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers to pass to UbiOps API, formatted like "header1:value1,header2:value2" - Default = ""
 #' @return Response from the API
 #'  A list of details of the exports in the project
-#'    - `id`: Unique identifier for the export (UUID)
-#'    - `creation_date`: Time the export was created
-#'    - `status`: The status of the export
-#'    - `error_message`: The error message in case of a failure
-#'    - `size`: Size of the export in bytes
+#'   - `id`: Unique identifier for the export (UUID)
+#'   - `creation_date`: Time the export was created
+#'   - `status`: The status of the export
+#'   - `error_message`: The error message in case of a failure
+#'   - `size`: Size of the export in bytes
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -329,7 +329,7 @@ exports_list <- function(status=NULL,  preload_content=TRUE, ...){
 
 
 #' @title Create an import
-#' @description Create an import by uploading a zip file, providing a link to an import file or by giving an export id. Only one of the fields `file`, `import_link` or `export_id` may be given at a time.  When providing a link to an import file, make sure it is publicly downloadable.
+#' @description Create an import by uploading a zip file, providing a link to an import file or by giving an export id. Only one of the fields `file`, `import_link` or `export_id` may be given at a time. When providing a link to an import file, make sure it is publicly downloadable.
 #' @param file (optional) file path - Example: file.path("path", "to", "file")
 #' @param import.link (optional) character
 #' @param export.id (optional) character

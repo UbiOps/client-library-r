@@ -22,10 +22,10 @@ UBIOPS_DEFAULT_HEADERS (optional - system environment variable) Default headers 
 \value{
 Response from the API
  Details of the updated service user
-  - `id`: Unique identifier for the service user (UUID) 
-  - `email`: Email of the service user  
-  - `name`: Name of the service user 
-  - `creation_date`: Date when the service user was created 
+  - `id`: Unique identifier for the service user (UUID)
+  - `email`: Email of the service user
+  - `name`: Name of the service user
+  - `creation_date`: Date when the service user was created
   - `expiry_date`: Date when the service user account will expire (UTC)
 }
 \description{

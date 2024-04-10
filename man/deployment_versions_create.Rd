@@ -47,6 +47,7 @@ Response from the API
   - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+  - `ports`: A list of ports to open up in the deployment
 }
 \description{
 Create a version for a deployment. The first version of a deployment is set as default. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.

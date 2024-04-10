@@ -593,7 +593,7 @@ print(jsonlite::toJSON(result, auto_unbox=TRUE))
 List files
 
 ## Description
-List files in a bucket
+List files in a bucket. The maximum number of files that can be listed at once is 1000.
 
 ### Optional Parameters
 The following parameters should be given as query parameters:

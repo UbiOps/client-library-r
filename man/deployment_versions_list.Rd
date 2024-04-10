@@ -55,6 +55,7 @@ Response from the API
   - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+  - `ports`: A list of ports to open up in the deployment
 }
 \description{
 Versions can be filtered according to the labels they have by giving labels as a query parameter. Versions that have at least one of the labels on which is filtered, are returned.

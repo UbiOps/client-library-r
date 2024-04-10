@@ -1113,6 +1113,7 @@ deployment_version_environment_variables_update <- function(deployment.name, id,
 #'   - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 #'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
 #'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+#'   - `ports`: A list of ports to open up in the deployment
 #' @examples
 #' \dontrun{
 #' data <- list(
@@ -1291,6 +1292,7 @@ deployment_versions_delete <- function(deployment.name, version,  ...){
 #'   - `has_requests_method`: Whether the latest build of the version has a 'requests' method
 #'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
 #'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+#'   - `ports`: A list of ports to open up in the deployment
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1387,6 +1389,7 @@ deployment_versions_get <- function(deployment.name, version,  preload_content=T
 #'   - `maximum_queue_size_batch`: Maximum number of queued batch requests for all instances of this deployment version
 #'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
 #'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+#'   - `ports`: A list of ports to open up in the deployment
 #' @examples
 #' \dontrun{
 #' # Use environment variables
@@ -1481,6 +1484,7 @@ deployment_versions_list <- function(deployment.name, labels=NULL,  preload_cont
 #'   - `has_requests_method`: Whether the latest build of the version has a 'requests' method
 #'   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
 #'   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+#'   - `ports`: A list of ports to open up in the deployment
 #' @examples
 #' \dontrun{
 #' data <- list(

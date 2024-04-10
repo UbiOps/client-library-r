@@ -634,7 +634,7 @@ files_get <- function(bucket.name, file,  preload_content=TRUE, ...){
 
 
 #' @title List files
-#' @description List files in a bucket
+#' @description List files in a bucket. The maximum number of files that can be listed at once is 1000.
 #' @param bucket.name  character
 #' @param prefix (optional) character
 #' @param delimiter (optional) character

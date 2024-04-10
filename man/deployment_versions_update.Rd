@@ -58,6 +58,7 @@ Response from the API
   - `has_requests_method`: Whether the latest build of the version has a 'requests' method
   - `static_ip`: A boolean indicating whether the deployment version should get a static IP
   - `restart_request_interruption`: A boolean indicating whether the requests should be restarted in case of an interruption
+  - `ports`: A list of ports to open up in the deployment
 }
 \description{
 Update a version of a deployment in a project. All necessary fields are validated again. When updating labels, the labels will replace the existing value for labels. Provide the parameter 'monitoring' as the name of a notification group to send monitoring notifications to. A notification will be sent in the case of a failed/recovered request. Pass `null` to switch off monitoring notifications for this version. Provide the parameter 'default_notification_group' as the name of a notification group to send notifications when requests for the version are completed. Pass `null` to switch off request notifications for this version.

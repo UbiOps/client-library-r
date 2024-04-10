@@ -41,7 +41,7 @@ Response from the API
   - `prefixes`: A list of directories
 }
 \description{
-List files in a bucket
+List files in a bucket. The maximum number of files that can be listed at once is 1000.
 }
 \examples{
 \dontrun{

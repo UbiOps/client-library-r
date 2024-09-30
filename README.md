@@ -1,3 +1,6 @@
+*This respository is no longer maintained.*
+
+
 # ubiops
 
 [www.ubiops.com](https://ubiops.com)
